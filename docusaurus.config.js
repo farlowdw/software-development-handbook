@@ -6,10 +6,14 @@ const katex = require('rehype-katex');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const macros = {
+  "\\x": "x+1"
+};
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Handbook',
+  tagline: 'Software engineering handbooks are cool',
   url: 'https://dwf.netlify.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -41,7 +45,11 @@ const config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           remarkPlugins: [math],
-          rehypePlugins: [katex],
+          rehypePlugins: [[katex, {
+            throwOnError: true,
+            globalGroup: true,
+            macros
+          }]],
         },
         blog: {
           showReadingTime: true,
@@ -50,10 +58,16 @@ const config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           remarkPlugins: [math],
-          rehypePlugins: [katex],
+          rehypePlugins: [[katex, {
+            throwOnError: true,
+            globalGroup: true,
+            macros
+          }]],
+          blogTitle: 'My Blog Title',
+          sortPosts: 'ascending'
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       }),
     ],
@@ -67,6 +81,10 @@ const config = {
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
+  ],
+
+  plugins: [
+    'docusaurus-plugin-sass',
   ],
 
   themeConfig:
