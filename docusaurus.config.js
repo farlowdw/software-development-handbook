@@ -1,6 +1,12 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+require('dotenv').config()
+
+const { LicenseInfo } = require('@mui/x-license-pro');
+const licenseKey = process.env.MUI_LICENSE_KEY;
+// LicenseInfo.setLicenseKey(licenseKey);
+
 const math = require('remark-math');
 const katex = require('rehype-katex');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
@@ -85,11 +91,26 @@ const config = {
 
   plugins: [
     'docusaurus-plugin-sass',
+    require.resolve("docusaurus-plugin-image-zoom")
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
+      },
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
+      },
       navbar: {
         title: 'My Site',
         logo: {
@@ -156,9 +177,97 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)'
+          }
+        }
+      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ["apacheconf",
+          "applescript",
+          "asciidoc",
+          "aspnet",
+          "awk",
+          "bash",
+          "basic",
+          "c",
+          "clojure",
+          "cpp",
+          "csharp",
+          "css",
+          "csv",
+          "django",
+          "docker",
+          "editorconfig",
+          "ejs",
+          "elixir",
+          "erlang",
+          "excel-formula",
+          "flow",
+          "fortran",
+          "git",
+          "go",
+          "go-module",
+          "graphql",
+          "handlebars",
+          "http",
+          "java",
+          "javadoclike",
+          "javascript",
+          "js-extras",
+          "jsdoc",
+          "json",
+          "jsonp",
+          "jsx",
+          "latex",
+          "less",
+          "lisp",
+          "log",
+          "lua",
+          "makefile",
+          "markdown",
+          "markup",
+          "markup-templating",
+          "mermaid",
+          "mongodb",
+          "nginx",
+          "perl",
+          "php",
+          "php-extras",
+          "phpdoc",
+          "plsql",
+          "powerquery",
+          "powershell",
+          "pug",
+          "python",
+          "r",
+          "regex",
+          "ruby",
+          "rust",
+          "sas",
+          "sass",
+          "scheme",
+          "scss",
+          "shell-session",
+          "sql",
+          "systemd",
+          "toml",
+          "tsx",
+          "turtle",
+          "typescript",
+          "vim",
+          "visual-basic",
+          "wasm",
+          "wiki",
+          "wolfram",
+          "yaml"]
       },
     }),
 };

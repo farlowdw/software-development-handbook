@@ -1,0 +1,139 @@
+---
+sidebar_position: 1
+---
+
+import VideoContent from '../src/components/VideoContent';
+import ReactPlayer from 'react-player';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import { orange } from '@mui/material/colors';
+
+# Tutorial Intro
+
+Let's discover **Docusaurus in less than 5 minutes**.
+
+## Getting Started
+
+Get started by **creating a new site**.
+
+Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+
+### What you'll need
+
+- [Node.js](https://nodejs.org/en/download/) version 14 or above:
+  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+
+## Generate a new site
+
+Generate a new Docusaurus site using the **classic template**.
+
+The classic template will automatically be added to your project after you run the command:
+
+```bash
+npm init docusaurus@latest my-website classic
+```
+
+You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+
+The command also installs all necessary dependencies you need to run Docusaurus.
+
+## Start your site
+
+Run the development server:
+
+```bash
+cd my-website
+npm run start
+```
+
+The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+
+The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+
+Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+
+And this: $\x$.
+
+:::note
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::info
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+And something else.
+
+<VideoContent type='tip' videoUrls={['https://www.youtube.com/embed/bxYdeMb9ffw']}>
+	This content in this guide is also available in video format.
+</VideoContent>
+
+Some lame content and a video:
+
+<div className="player-wrapper">
+<ReactPlayer
+  width="100%"
+  height="100%"
+  className="react-player"
+	controls={true}
+	playing={false}
+	loop={false}
+	volume={1}
+	muted={false}
+	url="https://www.youtube.com/watch?v=KekJ-X9UAD0"
+/>
+</div>
+
+Check it out: <AcUnitIcon className='material-icon' sx={{ color: orange[500] }} />. How cool?
+
+```js showLineNumbers {2-4,10-12}
+function HighlightSomeText(highlight) {
+  if (highlight) {
+    return 'This text is highlighted!';
+  }
+
+  return 'Nothing highlighted';
+}
+
+function HighlightMoreText(highlight) {
+  if (highlight) {
+    return 'This range is highlighted!';
+  }
+
+  return 'Nothing highlighted';
+}
+```
+
+Something:
+
+<p align='center'>
+  <img width='200px' src='/img/experiment.png' />
+</p>
+
+
+```sql
+SELECT * FROM users;
+```
+
+Here:
