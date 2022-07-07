@@ -112,7 +112,7 @@ const config = {
         maxHeadingLevel: 5,
       },
       navbar: {
-        title: 'My Site',
+        title: 'Software Engineering Handbook',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',

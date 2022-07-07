@@ -1,7 +1,10 @@
 ---
-sidebar_position: 1
+description: Something nifty
 ---
 
+import ImageSwitcher from '../src/components/ImageSwitcher';
+import PartialExample from './_markdown-partial-example.mdx';
+import ExportCustomToolbar from '../src/components/CustomToolbar'
 import VideoContent from '../src/components/VideoContent';
 import ReactPlayer from 'react-player';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
@@ -137,3 +140,66 @@ SELECT * FROM users;
 ```
 
 Here:
+
+:::note
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::info
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+$f(x)=\sin(x)$
+
+:::
+
+And something else.
+
+This content in this guide is also available in video format. We know $f(x)=\sin(x)$.
+
+<VideoContent type="caution" title="something cool and something nice" videoUrls={["https://www.youtube.com/embed/8aGhZQkoFbQ", "https://www.youtube.com/embed/bxYdeMb9ffw"]}>
+
+This content in this guide is also available in video format. We know $f(x)=\sin(x)$.
+
+</VideoContent>
+
+Some other content:
+
+>! Wow that is cool.
+
+Something here:
+
+<ExportCustomToolbar />
+
+## Wow
+
+Now cool.
+
+<PartialExample name="Sebastien" />
+
+And some images:
+
+<ImageSwitcher
+	lightImageSrc="https://picsum.photos/200"
+	darkImageSrc="https://picsum.photos/300"
+/>
