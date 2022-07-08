@@ -91,7 +91,22 @@ const config = {
 
   plugins: [
     'docusaurus-plugin-sass',
-    require.resolve("docusaurus-plugin-image-zoom")
+    require.resolve("docusaurus-plugin-image-zoom"),
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'leetcode',
+        path: 'leetcode',
+        routeBasePath: 'leetcode',
+        sidebarPath: require.resolve('./sidebarsLeetcode.js'),
+        remarkPlugins: [math],
+        rehypePlugins: [[katex, {
+          throwOnError: true,
+          globalGroup: true,
+          macros
+        }]],
+      }
+    ],
   ],
 
   themeConfig:
@@ -114,17 +129,28 @@ const config = {
       navbar: {
         title: 'Software Engineering Handbook',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Software Engineering Handbook Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
+            to: '/docs/intro',
+            label: 'Docs',
+            position: 'left',
+            activeBaseRegex: `/docs/`,
+          },
+          {
             type: 'doc',
             docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
+            to: '/leetcode/intro',
+            docsPluginId: 'leetcode',
+            label: 'Leetcode'
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          {
+            to: '/blog',
+            label: 'Blog',
+            position: 'left'
+          },
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',

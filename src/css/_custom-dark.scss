@@ -22,6 +22,9 @@ html[data-theme='dark'] {
   [class^="codeBlockContent_"] span.token.keyword {
     font-style: normal !important;
   }
+  [class^="details_"] {
+    background-color: var(--color-gray-72) !important;
+  }
 
 	code {
 		background-color: var(--color-gray-78);

@@ -20,14 +20,10 @@ const sidebars = {
     'intro',
     {
       type: 'category',
-      label: 'Getting Started',
-      link: {
-        type: 'generated-index'
-      },
-      collapsed: false,
+      label: 'LC 1-99',
       items: [
-        'tutorial-extras/manage-docs-versions',
-        'tutorial-extras/translate-your-site'
+        '1-99/lc-1',
+        '1-99/lc-2',
       ]
     }
   ],
