@@ -1,7 +1,6 @@
 ---
 id: lc-1
 tags: [LC-1]
-authors: [slorber]
 ---
 # 1. Two Sum
 
@@ -17,7 +16,6 @@ You can return the answer in any order.
 - **Output:** `[0,1]`
 - **Explanation:** Because `nums[0] + nums[1] == 9`, we return `[0, 1]`.
 
----
 </details>
 
 <details><summary> Example 2</summary>
@@ -25,7 +23,6 @@ You can return the answer in any order.
 - **Input:** `nums = [3,2,4], target = 6`
 - **Output:** `[1,2]`
 
----
 </details>
 
 <details><summary> Example 3</summary>
@@ -33,7 +30,6 @@ You can return the answer in any order.
 - **Input:** `nums = [3,3], target = 6`
 - **Output:** `[0,1]`
 
----
 </details>
 
 **Constraints:**
@@ -61,14 +57,12 @@ Sometimes it do be that way.
 
 :::
 
----
 </details>
 
 <details><summary> Hint 3</summary>
 
 The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?
 
----
 </details>
 
 We know $f(x)=\sin(x)$ but

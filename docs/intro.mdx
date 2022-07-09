@@ -5,11 +5,42 @@ tags: [Introduction]
 
 import ImageSwitcher from '../src/components/ImageSwitcher';
 import PartialExample from './_markdown-partial-example.mdx';
-import ExportCustomToolbar from '../src/components/CustomToolbar'
+import ExportCustomToolbar from '../src/components/CustomToolbar';
 import VideoContent from '../src/components/VideoContent';
 import ReactPlayer from 'react-player';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import { orange } from '@mui/material/colors';
+import Pseudocode from '../src/components/Pseudocode';
+
+export const quicksortAlgorithm = String.raw`
+<pre id="_alg_quicksort" class="pseudocode" style="display: hidden">
+% This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
+\begin{algorithm}
+\caption{Quicksort}
+\begin{algorithmic}
+\PROCEDURE{Quicksort}{$A, p, r$}
+    \IF{$p &lt; r$} 
+        \STATE $q = $ \CALL{Partition}{$A, p, r$}
+        \STATE \CALL{Quicksort}{$A, p, q - 1$}
+        \STATE \CALL{Quicksort}{$A, q + 1, r$}
+    \ENDIF
+\ENDPROCEDURE
+\PROCEDURE{Partition}{$A, p, r$}
+    \STATE $x = A[r]$
+    \STATE $i = p - 1$
+    \FOR{$j = p$ \TO $r - 1$}
+        \IF{$A[j] &lt; x$}
+            \STATE $i = i + 1$
+            \STATE exchange
+            $A[i]$ with $A[j]$
+        \ENDIF
+        \STATE exchanges $A[i]$ with $A[r]$
+    \ENDFOR
+\ENDPROCEDURE
+\end{algorithmic}
+\end{algorithm}
+</pre>
+`
 
 # Tutorial Intro
 
@@ -89,52 +120,53 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
 And something else.
 
-<VideoContent type='tip' videoUrls={['https://www.youtube.com/embed/bxYdeMb9ffw']}>
+<VideoContent
+	type="tip"
+	videoUrls={['https://www.youtube.com/embed/bxYdeMb9ffw']}>
 	This content in this guide is also available in video format.
 </VideoContent>
 
 Some lame content and a video:
 
 <div className="player-wrapper">
-<ReactPlayer
-  width="100%"
-  height="100%"
-  className="react-player"
-	controls={true}
-	playing={false}
-	loop={false}
-	volume={1}
-	muted={false}
-	url="https://www.youtube.com/watch?v=KekJ-X9UAD0"
-/>
+	<ReactPlayer
+		width="100%"
+		height="100%"
+		className="react-player"
+		controls={true}
+		playing={false}
+		loop={false}
+		volume={1}
+		muted={false}
+		url="https://www.youtube.com/watch?v=KekJ-X9UAD0"
+	/>
 </div>
 
 Check it out: <AcUnitIcon className='material-icon' sx={{ color: orange[500] }} />. How cool?
 
 ```js showLineNumbers {2-4,10-12}
 function HighlightSomeText(highlight) {
-  if (highlight) {
-    return 'This text is highlighted!';
-  }
+	if (highlight) {
+		return 'This text is highlighted!';
+	}
 
-  return 'Nothing highlighted';
+	return 'Nothing highlighted';
 }
 
 function HighlightMoreText(highlight) {
-  if (highlight) {
-    return 'This range is highlighted!';
-  }
+	if (highlight) {
+		return 'This range is highlighted!';
+	}
 
-  return 'Nothing highlighted';
+	return 'Nothing highlighted';
 }
 ```
 
 Something:
 
-<p align='center'>
-  <img width='200px' src='/img/experiment.png' />
+<p align="center">
+	<img width="200px" src="/img/experiment.png" />
 </p>
-
 
 ```sql
 SELECT * FROM users;
@@ -186,7 +218,7 @@ This content in this guide is also available in video format. We know $f(x)=\sin
 
 Some other content:
 
->! Wow that is cool.
+> ! Wow that is cool.
 
 Something here:
 
@@ -204,3 +236,7 @@ And some images:
 	lightImageSrc="https://picsum.photos/200"
 	darkImageSrc="https://picsum.photos/300"
 />
+
+<Pseudocode content={quicksortAlgorithm} algID='_alg_quicksort' />
+
+Lower content

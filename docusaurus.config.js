@@ -89,6 +89,20 @@ const config = {
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
+    {
+      href: "https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css"
+    }
+  ],
+
+  scripts: [
+    {
+      src: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js",
+      async: true,
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js",
+      async: true,
+    },
   ],
 
   plugins: [
@@ -138,7 +152,7 @@ const config = {
         items: [
           {
             to: '/docs/intro',
-            label: 'Docs',
+            label: 'DSA',
             position: 'left',
             activeBaseRegex: `/docs/`,
           },
