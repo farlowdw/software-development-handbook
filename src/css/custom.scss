@@ -82,6 +82,24 @@
 :root {
   --docusaurus-highlighted-code-line-bg: var(--color-gray-12);
   --ifm-link-hover-decoration: none;
+
+	/* Begin pseudocode styles */
+	div.ps-root {
+		background-color: var(--ifm-code-background);
+		color: #393A34;
+	}
+
+  .ps-root .ps-algorithm {
+    border-top: 3px solid var(--ifm-table-border-color);
+    border-bottom: 2px solid var(--ifm-table-border-color);
+  }
+
+  .ps-root .ps-algorithm.with-caption>p.ps-line:first-child {
+    border-bottom: 2px solid var(--ifm-table-border-color);
+  }
+	/* End pseudocode styles */
+
+
 	/* Custom Variables */
 	--color-gray-0: #ffffff;
 	--color-gray-4: #f3f5f7;

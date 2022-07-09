@@ -1,6 +1,17 @@
 import React, { useEffect } from 'react';
 
-export default function Pseudocode({ content, algID }) {
+export default function Pseudocode({
+	content,
+	algID,
+	options = {
+		indentSize: '1.2em',
+		commentDelimiter: '//',
+		lineNumber: false,
+		lineNumberPunc: ':',
+		noEnd: false,
+		captionCount: undefined,
+	},
+}) {
 	useEffect(() => {
 		if (window && document) {
 			const script = document.createElement('script');
@@ -9,7 +20,7 @@ export default function Pseudocode({ content, algID }) {
 				'https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js';
 			body.appendChild(script);
 			script.addEventListener('load', () => {
-				pseudocode.renderElement(document.getElementById(algID));
+				pseudocode.renderElement(document.getElementById(algID), options);
 			});
 		}
 	}, []);

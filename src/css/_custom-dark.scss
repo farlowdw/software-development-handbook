@@ -14,17 +14,35 @@ html[data-theme='dark'] {
 	--collapse-button-bg-color-dark: var(--color-gray-86);
 	--docsearch-searchbox-background: var(--color-gray-90) !important;
 	--docsearch-searchbox-focus-background: var(--color-gray-86) !important;
-	
-  --docusaurus-highlighted-code-line-bg: var(--color-gray-82);
-  [class^="codeLineNumber_"] {
-    background-color: var(--ifm-code-background) !important;
+
+	--docusaurus-highlighted-code-line-bg: var(--color-gray-82);
+	[class^='codeLineNumber_'] {
+		background-color: var(--ifm-code-background) !important;
+	}
+	[class^='codeBlockContent_'] span.token.keyword {
+		font-style: normal !important;
+	}
+	[class^='details_'] {
+		background-color: var(--color-gray-72) !important;
+	}
+
+	/* Begin pseudocode styles */
+
+	div.ps-root {
+		background-color: var(--ifm-code-background);
+		color: #e3e3e3;
+	}
+
+  .ps-root .ps-algorithm {
+    border-top: 3px solid var(--ifm-navbar-background-color);
+    border-bottom: 2px solid var(--ifm-navbar-background-color);
   }
-  [class^="codeBlockContent_"] span.token.keyword {
-    font-style: normal !important;
+
+  .ps-root .ps-algorithm.with-caption>p.ps-line:first-child {
+    border-bottom: 2px solid var(--ifm-navbar-background-color);
   }
-  [class^="details_"] {
-    background-color: var(--color-gray-72) !important;
-  }
+
+	/* End pseudocode styles */
 
 	code {
 		background-color: var(--color-gray-78);

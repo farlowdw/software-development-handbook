@@ -12,6 +12,8 @@ import AcUnitIcon from '@mui/icons-material/AcUnit';
 import { orange } from '@mui/material/colors';
 import Pseudocode from '../src/components/Pseudocode';
 
+import quicksortingAlgorithm from '!!raw-loader!@site/src/components/_Pseudocodes/_quicksort.html';
+
 export const quicksortAlgorithm = String.raw`
 <pre id="_alg_quicksort" class="pseudocode" style="display: hidden">
 % This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
@@ -40,7 +42,7 @@ export const quicksortAlgorithm = String.raw`
 \end{algorithmic}
 \end{algorithm}
 </pre>
-`
+`;
 
 # Tutorial Intro
 
@@ -233,10 +235,14 @@ Now cool.
 And some images:
 
 <ImageSwitcher
-	lightImageSrc="https://picsum.photos/200"
+	lightImageSrc="https://picsum.photos/300"
 	darkImageSrc="https://picsum.photos/300"
 />
 
-<Pseudocode content={quicksortAlgorithm} algID='_alg_quicksort' />
+<Pseudocode
+	content={quicksortingAlgorithm}
+	algID="_alg_quicksort"
+	options={{ lineNumber: false }}
+/>
 
 Lower content
