@@ -20,14 +20,54 @@ const sidebars = {
     'intro',
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'Books',
+      collapsed: true,
       link: {
-        type: 'generated-index'
+        type: 'generated-index',
+        title: 'Book Notes',
+        description: 'Book notes for a variety of books.',
+        keywords: ['books', 'notes']
       },
-      collapsed: false,
       items: [
-        'tutorial-extras/manage-docs-versions',
-        'tutorial-extras/translate-your-site'
+        {
+          type: 'category',
+          label: 'Algorithm Design Manual',
+          link: {
+            type: 'doc',
+            id: 'books/algorithm-design-manual/index'
+          },
+          items: [
+            'books/algorithm-design-manual/book-notes',
+            'books/algorithm-design-manual/lecture-notes',
+            'books/algorithm-design-manual/exercises-and-solutions',
+          ]
+        },
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Reference',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        title: 'Reference Resources',
+        description: 'Something kind of wonderful.',
+        keywords: ['reference']
+      },
+      items: [
+        'reference/docusaurus',
+        {
+          type: 'category',
+          label: 'CSS',
+          link: {
+            type: 'doc',
+            id: 'reference/css/index'
+          },
+          items: [
+            'reference/css/css-diner'
+          ]
+        },
+        'reference/katex-reference',
       ]
     }
   ],

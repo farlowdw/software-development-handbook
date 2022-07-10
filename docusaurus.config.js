@@ -108,22 +108,6 @@ const config = {
   plugins: [
     'docusaurus-plugin-sass',
     require.resolve("docusaurus-plugin-image-zoom"),
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'leetcode',
-        path: 'leetcode',
-        routeBasePath: 'leetcode',
-        sidebarPath: require.resolve('./sidebarsLeetcode.js'),
-        remarkPlugins: [math],
-        rehypePlugins: [[katex, {
-          throwOnError: true,
-          globalGroup: true,
-          macros
-        }]],
-        showLastUpdateTime: true,
-      }
-    ],
   ],
 
   themeConfig:
@@ -152,16 +136,9 @@ const config = {
         items: [
           {
             to: '/docs/intro',
-            label: 'DSA',
+            label: 'Handbook',
             position: 'left',
             activeBaseRegex: `/docs/`,
-          },
-          {
-            type: 'doc',
-            docId: 'intro',
-            to: '/leetcode/intro',
-            docsPluginId: 'leetcode',
-            label: 'Leetcode'
           },
           {
             to: '/blog',
