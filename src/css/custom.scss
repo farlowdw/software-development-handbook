@@ -80,25 +80,28 @@
 /* You can override the default Infima variables here. */
 
 :root {
-  --docusaurus-highlighted-code-line-bg: var(--color-gray-12);
-  --ifm-link-hover-decoration: none;
+	--docusaurus-highlighted-code-line-bg: var(--color-gray-12);
+	--ifm-link-hover-decoration: none;
+
+  [class^='admonition_node_modules-'] {
+    color: orange;
+  }
 
 	/* Begin pseudocode styles */
 	div.ps-root {
 		background-color: var(--ifm-code-background);
-		color: #393A34;
+		color: #393a34;
 	}
 
-  .ps-root .ps-algorithm {
-    border-top: 3px solid var(--ifm-table-border-color);
-    border-bottom: 2px solid var(--ifm-table-border-color);
-  }
+	.ps-root .ps-algorithm {
+		border-top: 3px solid var(--ifm-table-border-color);
+		border-bottom: 2px solid var(--ifm-table-border-color);
+	}
 
-  .ps-root .ps-algorithm.with-caption>p.ps-line:first-child {
-    border-bottom: 2px solid var(--ifm-table-border-color);
-  }
+	.ps-root .ps-algorithm.with-caption > p.ps-line:first-child {
+		border-bottom: 2px solid var(--ifm-table-border-color);
+	}
 	/* End pseudocode styles */
-
 
 	/* Custom Variables */
 	--color-gray-0: #ffffff;
@@ -617,44 +620,6 @@ div[class*='codeBlockTitle_'] {
 	opacity: 0.75;
 }
 
-/* Video content container */
-
-.unleash-video-container {
-	display: grid;
-	--gap: 0.5em;
-	--border-radius: var(--ifm-alert-border-radius);
-	gap: var(--gap);
-	margin-bottom: 1em;
-}
-
-.unleash-video-container > .videos {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-	gap: var(--gap);
-}
-
-.unleash-video-container > .admonition {
-	box-shadow: none;
-	margin: 0;
-}
-
-.unleash-video-container iframe {
-	aspect-ratio: 16/9;
-}
-
-@media screen and (min-width: 450px) {
-	.unleash-video-container {
-		grid-template-columns: 1fr min(250px, 25%);
-	}
-	.unleash-video-container > .videos {
-		display: flex;
-		flex-direction: column;
-		gap: var(--gap);
-	}
-}
-
-/* end video content container */
-
 .material-icon {
 	display: inline-flex;
 	align-items: center;
@@ -677,3 +642,56 @@ div[class*='codeBlockTitle_'] {
 }
 
 /* end react-player styles */
+
+/* Begin code block error line styling */
+.code-block-error-line {
+  background-color: #ff000020;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  border-left: 3px solid #ff000080;
+}
+/* End code block error line styling */
+
+/* Video content container */
+
+.unleash-video-container {
+	display: grid;
+	--gap: 0.5em;
+	--border-radius: var(--ifm-alert-border-radius);
+	gap: var(--gap);
+	margin-bottom: 1em;
+}
+
+.unleash-video-container > .videos {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: var(--gap);
+  margin-bottom: 1em; // fixes issue of videos spilling beyond admonition
+}
+
+.unleash-video-container > .admonition {
+	box-shadow: none;
+	background-color: var(--unleash-color-admonition-background);
+	color: var(--unleash-color-admonition-text);
+	border-color: var(--unleash-color-admonition-border);
+	margin: 0;
+}
+
+.unleash-video-container iframe {
+	aspect-ratio: 16/9;
+}
+
+@media screen and (min-width: 450px) {
+	.unleash-video-container {
+		grid-template-columns: 1fr min(250px, 25%);
+	}
+	.unleash-video-container > .videos {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap);
+    margin-bottom: 1em; // fixes issue of videos spilling beyond admonition
+	}
+}
+
+/* end video content container */
