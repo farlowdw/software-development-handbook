@@ -20,9 +20,15 @@ export default function Pseudocode({
 				'https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js';
 			body.appendChild(script);
 			script.addEventListener('load', () => {
-				pseudocode.renderElement(document.getElementById(algID), options);
+				pseudocode.renderElement(document.getElementById(`_ps_${algID}`), options);
 			});
 		}
 	}, []);
-	return <div dangerouslySetInnerHTML={{ __html: content }} />;
+	const openingTag = `<pre id="_ps_${algID}" class="pseudocode" style="display: hidden" >`;
+	const closingTag = `</pre>`;
+	return (
+		<div
+			dangerouslySetInnerHTML={{ __html: openingTag + content + closingTag }}
+		/>
+	);
 }

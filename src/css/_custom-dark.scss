@@ -33,14 +33,14 @@ html[data-theme='dark'] {
 		color: #e3e3e3;
 	}
 
-  .ps-root .ps-algorithm {
-    border-top: 3px solid var(--ifm-navbar-background-color);
-    border-bottom: 2px solid var(--ifm-navbar-background-color);
-  }
+	.ps-root .ps-algorithm {
+		border-top: 3px solid var(--ifm-navbar-background-color);
+		border-bottom: 2px solid var(--ifm-navbar-background-color);
+	}
 
-  .ps-root .ps-algorithm.with-caption>p.ps-line:first-child {
-    border-bottom: 2px solid var(--ifm-navbar-background-color);
-  }
+	.ps-root .ps-algorithm.with-caption > p.ps-line:first-child {
+		border-bottom: 2px solid var(--ifm-navbar-background-color);
+	}
 
 	/* End pseudocode styles */
 
@@ -128,17 +128,6 @@ html[data-theme='dark'] {
 		}
 	}
 
-	.admonition {
-		&.alert {
-			background-color: var(--color-gray-86);
-		}
-
-		.admonition-icon svg {
-			fill: var(--ifm-alert-border-color);
-			stroke: var(--ifm-alert-border-color);
-		}
-	}
-
 	.theme-edit-this-page {
 		&::before,
 		&::after {
@@ -168,4 +157,25 @@ html[data-theme='dark'] {
 			}
 		}
 	}
+
+	/* begin admonition styling */
+	.theme-admonition {
+		&.alert {
+			background-color: var(--color-gray-86);
+		}
+
+		.admonition-icon svg {
+			fill: var(--ifm-alert-border-color);
+			stroke: var(--ifm-alert-border-color);
+		}
+	}
+
+	div[class^='admonitionHeading_'] {
+		text-transform: capitalize;
+
+		span[class^='admonitionIcon_'] svg {
+			fill: var(--ifm-alert-border-color);
+		}
+	}
+	/* begin admonition styling */
 }

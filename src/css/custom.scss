@@ -83,10 +83,6 @@
 	--docusaurus-highlighted-code-line-bg: var(--color-gray-12);
 	--ifm-link-hover-decoration: none;
 
-  [class^='admonition_node_modules-'] {
-    color: orange;
-  }
-
 	/* Begin pseudocode styles */
 	div.ps-root {
 		background-color: var(--ifm-code-background);
@@ -270,7 +266,7 @@
 		&::before {
 			content: '';
 			display: inline-block;
-			background: url('/icons/collapse-arrow-left.svg') no-repeat;
+			background: url('/static/icons/collapse-arrow-left.svg') no-repeat;
 			width: 1.25rem;
 			height: 1.25rem;
 			margin-top: 0.25rem;
@@ -695,3 +691,15 @@ div[class*='codeBlockTitle_'] {
 }
 
 /* end video content container */
+
+/* begin admonition styling */
+// .theme-admonition {
+//   background-color: var(--color-gray-86);
+// }
+
+div[class^='admonitionHeading_'] {
+  text-transform: capitalize;
+}
+/* end admonition styling */
+
+

@@ -1,16 +1,17 @@
 ---
-title: Docusaurus Reference
-sidebar_label: Docusaurus
-slug: /reference/docusaurus-reference
+title: Documentation Features and Capabilities
+sidebar_label: Features
+description: Explores some of the features of Docusaurus in a visual manner
 last_update: 
   date: '03 Jul 2022'
   author: Daniel Farlow
 tags: [Docusaurus]
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import ImageSwitcher from '@site/src/components/ImageSwitcher';
-import PartialExample from '@site/src/components/_Partials/_markdown-partial-example.mdx';
+import PartialExample from '@site/docs/_Partials/_markdown-partial-example.mdx';
 import ExportCustomToolbar from '@site/src/components/CustomToolbar';
 import VideoContent from '@site/src/components/VideoContent';
 import ReactPlayer from 'react-player';
@@ -18,19 +19,15 @@ import AcUnitIcon from '@mui/icons-material/AcUnit';
 import { orange } from '@mui/material/colors';
 import Pseudocode from '@site/src/components/Pseudocode';
 
-import sampleTextStyle from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-text-style.html';
-import sampleTestAtoms from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-atoms.html';
-import sampleTestControlBlocks from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-control-blocks.html';
-import sampleTestStatementsAndComments from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-statements-and-comments.html';
-import sampleQuicksort from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-quicksort.html';
-
-# Intro
-
-Work in progress ...
+import sampleTextStyle from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-text-style.tex';
+import sampleTestAtoms from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-atoms.tex';
+import sampleTestControlBlocks from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-control-blocks.tex';
+import sampleTestStatementsAndComments from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-statements-and-comments.tex';
+import sampleQuicksort from '!!raw-loader!@site/src/components/_PseudocodesSamples/_test-quicksort.tex';
 
 ## Math
 
-See the [KaTeX](#katex) reference below to understand the full scope of what math can be typeset, but the very basics appear immediately below.
+See the [KaTeX](./katex) reference below to understand the full scope of what math can be typeset, but the very basics appear immediately below.
 
 ### Inline math
 
@@ -58,11 +55,12 @@ Math macros like
 
 ```js title="docusaurus.config.js"
 const macros = {
-  "\\x": "x+1"
+	'\\x': 'x+1',
 };
 ```
 
 can be defined so that something like `$\x$` can be used as a shortcut for $\x$.
+
 
 ## Code Blocks
 
@@ -263,7 +261,7 @@ You can also highlight error blocks by using [magic comments](https://docusaurus
 
 ```js
 const name = null;
-// This will error
+// highlight-error-next-line
 console.log(name.toUpperCase());
 // Uncaught TypeError: Cannot read properties of null (reading 'toUpperCase')
 ```
@@ -543,7 +541,7 @@ Pseudocode similar to that found in CLRS can be typeset.
 
 <Pseudocode
 	content={sampleTextStyle}
-	algID="_alg_test-text-style"
+	algID="text-style"
 	options={{ lineNumber: true }}
 />
 
@@ -551,7 +549,7 @@ Pseudocode similar to that found in CLRS can be typeset.
 
 <Pseudocode
 	content={sampleTestAtoms}
-	algID="_alg_test-atoms"
+	algID="atoms"
 	options={{ lineNumber: true, captionCount: 1 }}
 />
 
@@ -559,7 +557,7 @@ Pseudocode similar to that found in CLRS can be typeset.
 
 <Pseudocode
 	content={sampleTestControlBlocks}
-	algID="_alg_test-control-blocks"
+	algID="control-blocks"
 	options={{ lineNumber: true, captionCount: 2 }}
 />
 
@@ -567,7 +565,7 @@ Pseudocode similar to that found in CLRS can be typeset.
 
 <Pseudocode
 	content={sampleTestStatementsAndComments}
-	algID="_alg_test-statements-and-comments"
+	algID="statements-and-comments"
 	options={{ lineNumber: true, captionCount: 3 }}
 />
 
@@ -575,7 +573,7 @@ Pseudocode similar to that found in CLRS can be typeset.
 
 <Pseudocode
 	content={sampleQuicksort}
-	algID="_alg_test-quicksort"
+	algID="quicksort"
 	options={{ lineNumber: true, captionCount: 4 }}
 />
 

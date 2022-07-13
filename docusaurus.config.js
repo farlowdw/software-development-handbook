@@ -9,6 +9,7 @@ const licenseKey = process.env.MUI_LICENSE_KEY;
 
 const math = require('remark-math');
 const katex = require('rehype-katex');
+const mermaid = require('mdx-mermaid');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -31,6 +32,12 @@ const config = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
+  customFields: {
+    things: {
+      something: 'Whaaaa'
+    }
+  },
+
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -50,7 +57,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/farlowdw/software-development-handbook/tree/master/',
-          remarkPlugins: [math],
+          remarkPlugins: [math, mermaid],
           rehypePlugins: [[katex, {
             throwOnError: true,
             globalGroup: true,
@@ -64,7 +71,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          remarkPlugins: [math],
+          remarkPlugins: [math, mermaid],
           rehypePlugins: [[katex, {
             throwOnError: true,
             globalGroup: true,
@@ -76,6 +83,13 @@ const config = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
+        },
+        pages: {
+          rehypePlugins: [[katex, {
+            throwOnError: true,
+            globalGroup: true,
+            macros
+          }]],
         },
       }),
     ],
@@ -106,6 +120,17 @@ const config = {
   ],
 
   plugins: [
+    [
+      'docusaurus2-dotenv',
+      {
+        path: "./.env", // The path to your environment variables.
+        safe: false, // If false ignore safe-mode, if true load './.env.example', if a string load that file as the sample
+        systemvars: false, // Set to true if you would rather load all system variables as well (useful for CI purposes)
+        silent: false, //  If true, all warnings will be suppressed
+        expand: false, // Allows your variables to be "expanded" for reusability within your .env file
+        defaults: false, //  Adds support for dotenv-defaults. If set to true, uses ./.env.defaults
+      }
+    ],
     'docusaurus-plugin-sass',
     require.resolve("docusaurus-plugin-image-zoom"),
   ],
@@ -219,7 +244,7 @@ const config = {
           },
           {
             className: 'code-block-error-line',
-            line: 'This will error',
+            line: 'highlight-error-next-line',
           },
         ],
         additionalLanguages: [

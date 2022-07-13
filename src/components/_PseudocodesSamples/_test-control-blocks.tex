@@ -1,0 +1,61 @@
+\begin{algorithm}
+\caption{Test control blocks}
+\begin{algorithmic}
+\PROCEDURE{Test-If}{}
+    \IF{&lt;cond&gt;}
+        \STATE &lt;block&gt;
+    \ELIF{&lt;cond&gt;}
+        \STATE &lt;block&gt;
+    \ELSE
+        \STATE &lt;block&gt;
+    \ENDIF
+\ENDPROCEDURE
+\PROCEDURE{Test-For}{$n$}
+    \STATE $i \gets 0$
+    \FOR{$i &lt; n$}
+        \PRINT $i$
+        \STATE $i \gets i + 1$
+    \ENDFOR
+\ENDPROCEDURE
+\PROCEDURE{Test-For-To}{$n$}
+    \STATE $i \gets 0$
+    \FOR{$i$ \TO $n$}
+        \PRINT $i$
+    \ENDFOR
+\ENDPROCEDURE
+\PROCEDURE{Test-For-DownTo}{$n$}
+    \FOR{$i \gets n$ \DOWNTO $0$}
+        \PRINT $i$
+    \ENDFOR
+\ENDPROCEDURE
+\PROCEDURE{Test-For-All}{$n$}
+    \FORALL{$i \in \{0, 1, \cdots, n\}$}
+        \PRINT $i$
+    \ENDFOR
+\ENDPROCEDURE
+\PROCEDURE{Test-While}{$n$}
+    \STATE $i \gets 0$
+    \WHILE{$i &lt; n$}
+        \PRINT $i$
+        \STATE $i \gets i + 1$
+    \ENDWHILE
+\ENDPROCEDURE
+\PROCEDURE{Test-Repeat}{$n$}
+    \STATE $i \gets 0$
+    \REPEAT
+        \PRINT $i$
+        \STATE $i \gets i + 1$
+    \UNTIL{$i>n$}
+\ENDPROCEDURE
+\PROCEDURE{Test-Break-Continue}{$n$}
+    \FOR{$i = 0$ \TO $2n$}
+        \IF{$i &lt; n/2$}
+            \CONTINUE
+        \ELIF{$i > n$}
+            \BREAK
+        \ENDIF
+        \PRINT $i$
+    \ENDFOR
+\ENDPROCEDURE
+\end{algorithmic}
+\end{algorithm}

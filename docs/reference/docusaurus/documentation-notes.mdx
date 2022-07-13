@@ -1,0 +1,1343 @@
+---
+title: Documentation Notes
+sidebar_label: Notes from the Docs
+description: Highlights from the Docusaurus documentation.
+last_update: 
+  date: '03 Jul 2022'
+  author: Daniel Farlow
+tags: [Docusaurus]
+---
+
+import TOCInline from '@theme/TOCInline';
+
+## Staying current
+
+### Helpful links
+
+#### Support and Discussion
+
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/docusaurus)
+- [Discord](https://discord.com/invite/docusaurus)
+- [Twitter](https://twitter.com/docusaurus)
+- [Reddit](https://www.reddit.com/r/docusaurus/)
+- [Docusaurus Blog](https://docusaurus.io/blog)
+- [Request Feature](https://docusaurus.io/feature-requests)
+
+#### Reference
+
+- [Showcase](https://docusaurus.io/showcase): Showcase of different sites built using Docusaurus. It can be helpful to draw inspiration from what others have done in terms of styling, components, etc.
+  + [Hasura](https://hasura.io/docs/latest/graphql/core/index/) ([GitHub](https://github.com/hasura/graphql-engine/tree/master/docs))
+- [Infima](https://infima.dev/): Styling framework used by Docusaurus under the hood.
+- [Awesome Docusaurus](https://github.com/webbertakken/awesome-docusaurus#readme): Community curated list of Docusaurus resources.
+
+#### GitHub
+
+- [Base Repo](https://github.com/facebook/docusaurus)
+- [Docs Repo](https://github.com/facebook/docusaurus/tree/main/website)
+- [Changelog](https://github.com/facebook/docusaurus/blob/main/CHANGELOG.md)
+- [File Issue](https://github.com/facebook/docusaurus/issues)
+- [Contributing](https://docusaurus.io/community/contributing)
+- [`docusaurus-theme-classic` components (source code)](https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme): Useful for swizzling and customization. See the [advanced routing docs guide](https://docusaurus.io/docs/advanced/routing) for more helpful details.
+- [Client exports](https://github.com/facebook/docusaurus/tree/main/packages/docusaurus/src/client/exports): The kind of thing when you see `import BrowserOnly from '@docusaurus/BrowserOnly';`. The `BrowserOnly.tsx` file is located in the directory referenced in this link.
+
+### API
+
+#### CLI
+
+Docusaurus [CLI](https://docusaurus.io/docs/cli) provides a set of scripts to help you generate, serve, and deploy your website. Once your website is bootstrapped, the website source will contain the Docusaurus scripts that you can invoke with your package manager. This link covers the different Docusaurus CLI commands.
+
+Includes details on scripts of the following form: 
+
+``` 
+docusaurus start|build|swizzle|deploy|serve|clear|write-translations|write-heading-ids [options]
+```
+
+#### Client API
+
+The Docusaurus [client API](https://docusaurus.io/docs/docusaurus-core) provides some APIs on the clients that can be helpful to you when building your site. Includes contents on a variety of useful things.
+
+Components:
+
+- `<ErrorBoundary />`
+- `<Head/>`
+- `<Link/>`
+- `<Redirect/>`
+- `<BrowserOnly/>`
+- `<Interpolate/>`
+- `<Translate/>`
+
+Hooks: 
+
+- `useDocusaurusContext`
+- `useIsBrowser`
+- `useBaseUrl`
+- `useBaseUrlUtils`
+- `useGlobalData`
+- `usePluginData`
+- `useAllPluginInstancesData`
+ 
+Functions: 
+ 
+- `interpolate`
+- `translate`
+
+Modules: 
+
+- `ExecutionEnvironment`
+- `constants`
+
+#### Site configuration file
+
+[`docusaurus.config.js`](https://docusaurus.io/docs/api/docusaurus-config) contains configurations for your site and is placed in the root directory of your site. It usually exports a site configuration object. 
+
+Required fields: 
+
+- `title`
+- `url`
+- `baseUrl`
+
+Optional fields: 
+
+- `favicon`
+- `trailingSlash`
+- `i18n`
+- `noIndex`
+- `onBrokenLinks`
+- `onBrokenMarkdownLinks`
+- `onDuplicateRoutes`
+- `tagline`
+- `organizationName`
+- `projectName`
+- `deploymentBranch`
+- `githubHost`
+- `githubPort`
+- `themeConfig`
+- `plugins`
+- `themes`
+- `presets`
+- `customFields`
+- `staticDirectories`
+- `scripts`
+- `stylesheets`
+- `clientModules`
+- `ssrTemplate`
+- `titleDelimiter`
+- `baseUrlIssueBanner`
+
+#### Plugins
+
+A variety of [plugins](https://docusaurus.io/docs/api/plugins) are available.
+
+**Content Plugins**
+
+These plugins are responsible for loading your site's content, and creating pages for your theme to render.
+
+| Plugin | Description |
+| :-- | :-- |
+| [@docusaurus/plugin-content-docs](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs) | Provides the [Docs](https://docusaurus.io/docs/docs-introduction) functionality and is the default docs plugin for Docusaurus. |
+| [@docusaurus/plugin-content-blog](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog) | Provides the [Blog](https://docusaurus.io/docs/blog) feature and is the default blog plugin for Docusaurus. |
+| [@docusaurus/plugin-content-pages](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-pages) | The default pages plugin for Docusaurus. The classic template ships with this plugin with default configurations. This plugin provides [creating pages](https://docusaurus.io/docs/creating-pages) functionality. |
+
+**Behavior Plugins**
+
+These plugins will add a useful behavior to your Docusaurus site.
+
+| Plugin | Description |
+| :-- | :-- |
+| [@docusaurus/plugin-client-redirects](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects) | Docusaurus Plugin to generate client-side redirects. This plugin will write additional HTML pages to your static site that redirect the user to your existing Docusaurus pages with JavaScript. |
+| [@docusaurus/plugin-debug](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-debug) | The debug plugin will display useful debug information at http://localhost:3000/__docusaurus/debug. Mostly useful for plugin authors. |
+| [@docusaurus/plugin-google-analytics](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-analytics) | The default [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/) plugin. It is a JavaScript library for measuring how users interact with your website in the production build. If you are using Google Analytics 4 you might need to consider using [plugin-google-gtag](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-gtag) instead. |
+| [@docusaurus/plugin-google-gtag](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-gtag) | The default [Global Site Tag (gtag.js)](https://developers.google.com/analytics/devguides/collection/gtagjs/) plugin. It is a JavaScript tagging framework and API that allows you to send event data to Google Analytics, Google Ads, and Google Marketing Platform. This section describes how to configure a Docusaurus site to enable global site tag for Google Analytics. |
+| [@docusaurus/plugin-ideal-image](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image) | Docusaurus Plugin to generate an almost ideal image (responsive, lazy-loading, and low quality placeholder). By default, the plugin is inactive in development so you could always view full-scale images. If you want to debug the ideal image behavior, you could set the `disableInDev` option to `false`. |
+| [@docusaurus/plugin-pwa](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-pwa) | Docusaurus Plugin to add PWA support using [Workbox](https://developer.chrome.com/docs/workbox/). This plugin generates a [Service Worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) in production build only, and allows you to create fully PWA-compliant documentation site with offline and installation support. |
+| [@docusaurus/plugin-sitemap](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap) | This plugin creates sitemaps for your site so that search engine crawlers can crawl your site more accurately. |
+
+#### Themes
+
+Official [Docusaurus themes](https://docusaurus.io/docs/api/themes) are provided (more are planned).
+
+| Theme | Description |
+| :-- | :-- |
+| [Configuration](https://docusaurus.io/docs/api/themes/configuration) | This configuration applies to all [main themes](https://docusaurus.io/docs/api/themes). |
+| [@docusaurus/theme-classic](https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic) | You can refer to the theme configuration page for more details on the configuration. |
+| [@docusaurus/theme-live-codeblock](https://docusaurus.io/docs/api/themes/@docusaurus/theme-live-codeblock) | This theme provides a `@theme/CodeBlock` component that is powered by [`react-live`](https://www.npmjs.com/package/react-live). You can read more on [interactive code editor documentation](https://docusaurus.io/docs/markdown-features/code-blocks#interactive-code-editor). |
+| [@docusaurus/theme-search-algolia](https://docusaurus.io/docs/api/themes/@docusaurus/theme-search-algolia) | This theme provides a `@theme/SearchBar` component that integrates with Algolia DocSearch easily. Combined with `@docusaurus/theme-classic`, it provides a very easy search integration. You can read more on [search](https://docusaurus.io/docs/search) documentation. |
+
+See the [configuration page](https://docusaurus.io/docs/api/themes/configuration) for more on all the possibilities for what can be customized. A small outline (from July 13, 2022):
+
+- Common
+  + Color mode
+  + Meta image
+  + Metadata
+  + Announcement bar
+- Navbar
+  + Navbar logo
+  + Navbar items
+    * Navbar link
+    * Navbar dropdown
+    * Navbar doc link
+    * Navbar linked to a sidebar
+    * Navbar docs version dropdown
+    * Navbar docs version
+    * Navbar locale dropdown
+    * Navbar search
+    * Navbar with custom HTML
+  + Auto-hide sticky navbar
+  + Navbar style
+- CodeBlock
+  + Theme
+  + Default language
+- Footer
+  + Footer Links
+- Table of Contents
+- Hooks
+  + useColorMode
+- i18n
+  + Translation files location
+  + Example file-system structure
+
+#### Client exports
+
+What are [client exports](https://github.com/facebook/docusaurus/tree/main/packages/docusaurus/src/client/exports)? When you see something like `import BrowserOnly from '@docusaurus/BrowserOnly';`, know that the `BrowserOnly.tsx` file is located in the directory referenced in the link above. Here are some of the other files:
+
+- `BrowserOnly.tsx`
+- `ComponentCreator.tsx`
+- `ErrorBoundary.tsx`
+- `ExecutionEnvironment.ts`
+- `Head.tsx`
+- `Interpolate.tsx`
+- `Link.tsx`
+- `Noop.ts`
+- `Translate.tsx`
+- `constants.ts`
+- `isInternalUrl.ts`
+- `renderRoutes.ts`
+- `router.ts`
+- `useBaseUrl.ts`
+- `useDocusaurusContext.ts`
+- `useGlobalData.ts`
+- `uselsBrowser.ts`
+- `useRouteContext.tsx`
+
+#### Theme components and customization
+
+The [`docusaurus-theme-classic`](https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme) components are useful for swizzling and customization (the link above links to the source code for these components). See the [advanced routing docs guide](https://docusaurus.io/docs/advanced/routing) for more helpful details.
+
+Below is a list of some of the components and files related to `docusaurus-theme-classic`. 
+
+- `Admonition`
+- `AnnouncementBar`
+- `BackToTopButton`
+- `BlogArchivePage`
+- `BlogLayout`
+- `BlogListPage`
+- `BlogListPaginator`
+- `BlogPostitem`
+- `BlogPostitems`
+- `BlogPostPage`
+- `BlogPostPaginator`
+- `BlogSidebar`
+- `BlogTagsListPage`
+- `BlogTagsPostsPage`
+- `CodeBlock`
+- `ColorModeToggle`
+- `Details`
+- `DocBreadcrumbs`
+- `DocCard`
+- `DocCardList`
+- `DocCategoryGeneratedIndexPage`
+- `Docitem`
+- `DocPage`
+- `DocPaginator`
+- `DocSidebar`
+- `DocSidebarltem`
+- `DocSidebarltems`
+- `DocTagDocListPage`
+- `DocTagsListPage`
+- `DocVersionBadge`
+- `DocVersionBanner`
+- `EditThisPage`
+- `Footer`
+- `Heading`
+- `Icon`
+- `LastUpdated`
+- `Layout`
+- `Logo`
+- `MDXComponents`
+- `MDXContent`
+- `MDXPage`
+- `Navbar`
+- `Navbarltem`
+- `PaginatorNavLink`
+- `SearchMetadata`
+- `SiteMetadata`
+- `SkipToContent`
+- `TOC`
+- `TOCCollapsible`
+- `TOCInline`
+- `TOCitems`
+- `Tabitem`
+- `Tabs`
+- `Tag`
+- `TagsListByLetter`
+- `TagsListinline`
+- `Themedimage`
+- `ErrorPageContent.tsx`
+- `NotFound.tsx`
+- `SearchBar.tsx`
+- `prism-include-languages.ts`
+
+Visit the link to see the source code and/or execute
+
+```bash 
+npm run swizzle -- --list
+```
+
+to see a summary of what kind of swizzling is allowed and/or recommended. Sample output (from Jul 13, 2022 using `2.0.0-beta.22`) is included below.
+
+<details><summary> Sample output from <code>npm run swizzle -- --list</code></summary>
+
+Components available for swizzle in `@docusaurus/theme-classic`:
+
+| Component name | Wrap |Eject  Description |
+| :-- | :-- | :-- | :-- |
+| CodeBlock                                | Safe      | Safe      | The component used to render multi-line code blocks, generally used in Markdown files.|
+| ColorModeToggle                          | Safe      | Safe      | The color mode toggle to switch between light and dark mode.|
+| Footer                                   | Safe      | Safe      | The footer component of you site's layout |
+| Footer/Copyright                         | Safe      | Safe      | The footer copyright |
+| Footer/Layout                            | Safe      | Safe      | The footer main layout component |
+| Footer/LinkItem                          | Safe      | Safe      | The footer link item component |
+| Footer/Links                             | Safe      | Safe      | The footer component rendering the footer links |
+| Footer/Links/MultiColumn                 | Safe      | Safe      | The footer component rendering the footer links with a multi-column layout |
+| Footer/Links/Simple                      | Safe      | Safe      | The footer component rendering the footer links with a simple layout (single row)|
+| Footer/Logo                              | Safe      | Safe      | The footer logo |
+| Icon/Arrow                               | Safe      | Safe      | The arrow icon component |
+| Icon/DarkMode                            | Safe      | Safe      | The dark mode icon component.|
+| Icon/Edit                                | Safe      | Safe      | The edit icon component |
+| Icon/LightMode                           | Safe      | Safe      | The light mode icon component.|
+| Icon/Menu                                | Safe      | Safe      | The menu icon component |
+| MDXComponents/A                          | Safe      | Safe      | The component used to render `<a>` tags and Markdown links in MDX |
+| MDXComponents/Code                       | Safe      | Safe      | The component used to render `<code>` tags and Markdown code blocks in MDX |
+| MDXComponents/Details                    | Safe      | Safe      | The component used to render `<details>` tags in MDX |
+| MDXComponents/Heading                    | Safe      | Safe      | The component used to render heading tags (`<h1>`, `<h2>`...) and Markdown headings in MDX |
+| MDXComponents/Img                        | Safe      | Safe      | The component used to render `<img>` tags and Markdown images in MDX |
+| MDXComponents/Pre                        | Safe      | Safe      | The component used to render `<pre>` tags in MDX |
+| MDXComponents/Ul                         | Safe      | Safe      | The component used to render `<ul>` tags and Markdown unordered lists in MDX |
+| MDXContent                               | Safe      | Safe      | A component wrapping all MDX content and providing the MDXComponents to the MDX context |
+| NotFound                                 | Safe      | Safe      | The global 404 page of your site, meant to be ejected and customized |
+| SearchBar                                | Safe      | Safe      | The search bar component of your site, appearing in the navbar.|
+| DocSidebar                               | Safe      | Unsafe    | The sidebar component on docs pages |
+| MDXComponents                            | Forbidden | Safe      | The MDX components to use for rendering MDX files. Meant to be ejected.|
+| NavbarItem/ComponentTypes                | Forbidden | Safe      | The Navbar item components mapping. Can be ejected to add custom navbar item types. See https://github.com/facebook/docusaurus/issues/7227. |
+| prism-include-languages                  | Forbidden | Safe      | The Prism languages to include for code block syntax highlighting. Meant to be ejected. |
+| Admonition                               | Unsafe    | Unsafe    | N/A |
+| AnnouncementBar                          | Unsafe    | Unsafe    | N/A |
+| BackToTopButton                          | Unsafe    | Unsafe    | N/A |
+| BlogArchivePage                          | Unsafe    | Unsafe    | N/A |
+| BlogLayout                               | Unsafe    | Unsafe    | N/A |
+| BlogListPage                             | Unsafe    | Unsafe    | N/A |
+| BlogListPaginator                        | Unsafe    | Unsafe    | N/A |
+| BlogPostItem                             | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Container                   | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Content                     | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Footer                      | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Footer/ReadMoreLink         | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Header                      | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Header/Author               | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Header/Authors              | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Header/Info                 | Unsafe    | Unsafe    | N/A |
+| BlogPostItem/Header/Title                | Unsafe    | Unsafe    | N/A |
+| BlogPostItems                            | Unsafe    | Unsafe    | N/A |
+| BlogPostPage                             | Unsafe    | Unsafe    | N/A |
+| BlogPostPage/Metadata                    | Unsafe    | Unsafe    | N/A |
+| BlogPostPaginator                        | Unsafe    | Unsafe    | N/A |
+| BlogSidebar                              | Unsafe    | Unsafe    | N/A |
+| BlogSidebar/Desktop                      | Unsafe    | Unsafe    | N/A |
+| BlogSidebar/Mobile                       | Unsafe    | Unsafe    | N/A |
+| BlogTagsListPage                         | Unsafe    | Unsafe    | N/A |
+| BlogTagsPostsPage                        | Unsafe    | Unsafe    | N/A |
+| CodeBlock/Container                      | Unsafe    | Unsafe    | N/A |
+| CodeBlock/Content                        | Forbidden | Unsafe    | N/A |
+| CodeBlock/Content/Element                | Unsafe    | Unsafe    | N/A |
+| CodeBlock/Content/String                 | Unsafe    | Unsafe    | N/A |
+| CodeBlock/CopyButton                     | Unsafe    | Unsafe    | N/A |
+| CodeBlock/Line                           | Unsafe    | Unsafe    | N/A |
+| CodeBlock/WordWrapButton                 | Unsafe    | Unsafe    | N/A |
+| Details                                  | Unsafe    | Unsafe    | N/A |
+| DocBreadcrumbs                           | Unsafe    | Unsafe    | N/A |
+| DocCard                                  | Unsafe    | Unsafe    | N/A |
+| DocCardList                              | Unsafe    | Unsafe    | N/A |
+| DocCategoryGeneratedIndexPage            | Unsafe    | Unsafe    | N/A |
+| DocItem                                  | Unsafe    | Unsafe    | N/A |
+| DocItem/Content                          | Unsafe    | Unsafe    | N/A |
+| DocItem/Footer                           | Unsafe    | Unsafe    | N/A |
+| DocItem/Layout                           | Unsafe    | Unsafe    | N/A |
+| DocItem/Metadata                         | Unsafe    | Unsafe    | N/A |
+| DocItem/Paginator                        | Unsafe    | Unsafe    | N/A |
+| DocItem/TOC                              | Forbidden | Unsafe    | N/A |
+| DocItem/TOC/Desktop                      | Unsafe    | Unsafe    | N/A |
+| DocItem/TOC/Mobile                       | Unsafe    | Unsafe    | N/A |
+| DocPage                                  | Unsafe    | Unsafe    | N/A |
+| DocPage/Layout                           | Unsafe    | Unsafe    | N/A |
+| DocPage/Layout/Main                      | Unsafe    | Unsafe    | N/A |
+| DocPage/Layout/Sidebar                   | Unsafe    | Unsafe    | N/A |
+| DocPage/Layout/Sidebar/ExpandButton      | Unsafe    | Unsafe    | N/A |
+| DocPaginator                             | Unsafe    | Unsafe    | N/A |
+| DocSidebar/Desktop                       | Unsafe    | Unsafe    | N/A |
+| DocSidebar/Desktop/CollapseButton        | Unsafe    | Unsafe    | N/A |
+| DocSidebar/Desktop/Content               | Unsafe    | Unsafe    | N/A |
+| DocSidebar/Mobile                        | Unsafe    | Unsafe    | N/A |
+| DocSidebarItem                           | Unsafe    | Unsafe    | N/A |
+| DocSidebarItem/Category                  | Unsafe    | Unsafe    | N/A |
+| DocSidebarItem/Html                      | Unsafe    | Unsafe    | N/A |
+| DocSidebarItem/Link                      | Unsafe    | Unsafe    | N/A |
+| DocSidebarItems                          | Unsafe    | Unsafe    | N/A |
+| DocTagDocListPage                        | Unsafe    | Unsafe    | N/A |
+| DocTagsListPage                          | Unsafe    | Unsafe    | N/A |
+| DocVersionBadge                          | Unsafe    | Unsafe    | N/A |
+| DocVersionBanner                         | Unsafe    | Unsafe    | N/A |
+| EditThisPage                             | Unsafe    | Unsafe    | N/A |
+| ErrorPageContent                         | Unsafe    | Unsafe    | N/A |
+| Heading                                  | Unsafe    | Unsafe    | N/A |
+| Icon                                     | Forbidden | Unsafe    | N/A |
+| Icon/Close                               | Unsafe    | Unsafe    | N/A |
+| Icon/ExternalLink                        | Unsafe    | Unsafe    | N/A |
+| Icon/Home                                | Unsafe    | Unsafe    | N/A |
+| Icon/Language                            | Unsafe    | Unsafe    | N/A |
+| LastUpdated                              | Unsafe    | Unsafe    | N/A |
+| Layout                                   | Unsafe    | Unsafe    | N/A |
+| Layout/Provider                          | Unsafe    | Unsafe    | N/A |
+| Logo                                     | Unsafe    | Unsafe    | N/A |
+| MDXComponents/Head                       | Forbidden | Forbidden | Technical component used to assign metadata (generally for SEO purpose) to the current MDX document |
+| MDXPage                                  | Unsafe    | Unsafe    | N/A |
+| Navbar                                   | Unsafe    | Unsafe    | N/A |
+| Navbar/ColorModeToggle                   | Unsafe    | Unsafe    | N/A |
+| Navbar/Content                           | Unsafe    | Unsafe    | N/A |
+| Navbar/Layout                            | Unsafe    | Unsafe    | N/A |
+| Navbar/Logo                              | Unsafe    | Unsafe    | N/A |
+| Navbar/MobileSidebar                     | Unsafe    | Unsafe    | N/A |
+| Navbar/MobileSidebar/Header              | Unsafe    | Unsafe    | N/A |
+| Navbar/MobileSidebar/Layout              | Unsafe    | Unsafe    | N/A |
+| Navbar/MobileSidebar/PrimaryMenu         | Unsafe    | Unsafe    | N/A |
+| Navbar/MobileSidebar/SecondaryMenu       | Unsafe    | Unsafe    | N/A |
+| Navbar/MobileSidebar/Toggle              | Unsafe    | Unsafe    | N/A |
+| Navbar/Search                            | Unsafe    | Unsafe    | N/A |
+| NavbarItem                               | Unsafe    | Unsafe    | N/A |
+| NavbarItem/DefaultNavbarItem             | Unsafe    | Unsafe    | N/A |
+| NavbarItem/DocNavbarItem                 | Unsafe    | Unsafe    | N/A |
+| NavbarItem/DocSidebarNavbarItem          | Unsafe    | Unsafe    | N/A |
+| NavbarItem/DocsVersionDropdownNavbarItem | Unsafe    | Unsafe    | N/A |
+| NavbarItem/DocsVersionNavbarItem         | Unsafe    | Unsafe    | N/A |
+| NavbarItem/DropdownNavbarItem            | Unsafe    | Unsafe    | N/A |
+| NavbarItem/HtmlNavbarItem                | Unsafe    | Unsafe    | N/A |
+| NavbarItem/LocaleDropdownNavbarItem      | Unsafe    | Unsafe    | N/A |
+| NavbarItem/NavbarNavLink                 | Unsafe    | Unsafe    | N/A |
+| NavbarItem/SearchNavbarItem              | Unsafe    | Unsafe    | N/A |
+| PaginatorNavLink                         | Unsafe    | Unsafe    | N/A |
+| SearchMetadata                           | Unsafe    | Unsafe    | N/A |
+| SiteMetadata                             | Unsafe    | Unsafe    | N/A |
+| SkipToContent                            | Unsafe    | Unsafe    | N/A |
+| TOC                                      | Unsafe    | Unsafe    | N/A |
+| TOCCollapsible                           | Unsafe    | Unsafe    | N/A |
+| TOCCollapsible/CollapseButton            | Unsafe    | Unsafe    | N/A |
+| TOCInline                                | Unsafe    | Unsafe    | N/A |
+| TOCItems                                 | Unsafe    | Unsafe    | N/A |
+| TOCItems/Tree                            | Unsafe    | Unsafe    | N/A |
+| TabItem                                  | Unsafe    | Unsafe    | N/A |
+| Tabs                                     | Unsafe    | Unsafe    | N/A |
+| Tag                                      | Unsafe    | Unsafe    | N/A |
+| TagsListByLetter                         | Unsafe    | Unsafe    | N/A |
+| TagsListInline                           | Unsafe    | Unsafe    | N/A |
+| ThemedImage                              | Unsafe    | Unsafe    | N/A |
+
+Components available for swizzle in `@docusaurus/plugin-debug`:
+
+| Component name    | Wrap   | Eject  | Description |
+| :-- | :-- | :-- | :-- |
+| DebugConfig       | Unsafe | Unsafe | N/A         |
+| DebugContent      | Unsafe | Unsafe | N/A         |
+| DebugGlobalData   | Unsafe | Unsafe | N/A         |
+| DebugJsonView     | Unsafe | Unsafe | N/A         |
+| DebugLayout       | Unsafe | Unsafe | N/A         |
+| DebugRegistry     | Unsafe | Unsafe | N/A         |
+| DebugRoutes       | Unsafe | Unsafe | N/A         |
+| DebugSiteMetadata | Unsafe | Unsafe | N/A         |
+
+Swizzle actions:
+
+| Actions | CLI option | Description |
+| :-- | :-- | :-- |
+| Wrap    | `--wrap` | Creates a wrapper around the original theme component. Allows rendering other components before/after the original theme component. Tip: prefer `--wrap` whenever possible to reduce the amount of code to maintain. |
+| Eject   | `--eject` | Ejects the full source code of the original theme component. Allows overriding of the original component entirely with your own UI and logic. Tip: `--eject` can be useful for completely redesigning a component. |
+
+Swizzle safety statuses:
+
+| Status | CLI option | Description |
+| :-- | :-- | :-- |
+| Safe |  | This component is safe to swizzle and was designed for this purpose. The swizzled component is retro-compatible with minor version upgrades. |
+| Unsafe | `--danger` | This component is unsafe to swizzle, but you can still do it! Warning: we may release breaking changes within minor version upgrades. You will have to upgrade your component manually and maintain it over time. Tip: your customization can't be done in a Safe way? [https://github.com/facebook/docusaurus/discussions/5468] |
+| Forbidden |  | This component is not meant to be swizzled. |
+
+See the [swizzle guide](https://docusaurus.io/docs/swizzling) for more info.
+
+</details>
+
+## New Projects
+
+### Create and start
+
+Create a new Docusaurus site and then start the site:
+
+```bash
+npx create-docusaurus@latest my-website classic
+cd my-website
+npx docusaurus start
+```
+
+### New project structure
+
+Assuming you used the setup like the above, then you will get the following directory structure:
+
+```md 
+my-website
+├── blog
+|   ├── 2019-05-28-hola.md
+|   ├── 2019-05-29-hello-world.md
+|   └── 2020-05-30-welcome.md
+├── docs
+|   ├── doc1.md
+|   ├── doc2.md
+|   ├── doc3.md
+|   └── mdx.md
+├── src
+|   ├── css
+|   |   └── custom.css
+|   └── pages
+|       ├── styles.module.css
+|       └── index.js
+├── static
+|   └── img
+├── docusaurus.config.js
+├── package.json
+├── README.md
+├── sidebars.js
+└── yarn.lock
+```
+
+- `/blog/` - Contains the blog Markdown files. You can delete the directory if you've disabled the blog plugin, or you can change its name after setting the `path` option. More details can be found in the [blog guide](https://docusaurus.io/docs/blog)
+- `/docs/` - Contains the Markdown files for the docs. Customize the order of the docs sidebar in `sidebars.js`. You can delete the directory if you've disabled the docs plugin, or you can change its name after setting the `path` option. More details can be found in the [docs guide](https://docusaurus.io/docs/docs-introduction)
+- `/src/` - Non-documentation files like pages or custom React components. You don't have to strictly put your non-documentation files here, but putting them under a centralized directory makes it easier to specify in case you need to do some sort of linting/processing
+  - `/src/pages` - Any JSX/TSX/MDX file within this directory will be converted into a website page. More details can be found in the [pages guide](https://docusaurus.io/docs/creating-pages)
+- `/static/` - Static directory. Any contents inside here will be copied into the root of the final `build` directory
+- `/docusaurus.config.js` - A config file containing the site configuration. This is the equivalent of `siteConfig.js` in Docusaurus v1
+- `/package.json` - A Docusaurus website is a React app. You can install and use any npm packages you like in them
+- `/sidebars.js` - Used by the documentation to specify the order of documents in the sidebar
+
+## Existing Projects
+
+### Updating Docusaurus version
+
+You can manually change the version number in `package.json` to the desired version. Note that all `@docusaurus/`-namespaced packages should be using the same version.
+
+```json title="package.json"
+{
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-beta.22",
+    "@docusaurus/preset-classic": "2.0.0-beta.22",
+    // ...
+  }
+}
+```
+
+Then, in the directory containing `package.json`, run your package manager's install command, and then check to make sure the update occurred successfully (you should see the correct version as output in the second command):
+
+```bash
+npm install
+npx docusaurus --version
+```
+
+## Configuration
+
+Site configuration details are stored in the [`docusaurus.config.js`](https://docusaurus.io/docs/api/docusaurus-config) file at the root level of your Docusaurus site directory. The high-level overview of Docusaurus configuration can be categorized as follows:
+
+<TOCInline toc={toc.filter(({ id }, _, arr) => ['site-metadata', 'deployment-configurations', 'theme-plugin-and-preset-configurations', 'custom-configurations'].includes(id))} />
+
+### Site metadata {#site-metadata}
+
+Site metadata contains the essential global metadata such as `title`, `url`, `baseUrl`, and `favicon`. They are used in several places such as your site's title and headings, browser tab icon, social sharing (Facebook, Twitter) information or even to generate the correct path to serve your static files.
+
+### Deployment configurations {#deployment-configurations}
+
+Deployment configurations such as `projectName`, `organizationName`, and optionally `deploymentBranch` are used when you deploy your site with the `deploy` command. It is recommended to check the [deployment docs](https://docusaurus.io/docs/deployment) for more information.
+
+### Theme, plugin, and preset configurations {#theme-plugin-and-preset-configurations}
+
+List the [themes](https://docusaurus.io/docs/using-plugins#using-themes), [plugins](https://docusaurus.io/docs/using-plugins), and [presets](https://docusaurus.io/docs/using-plugins#using-presets) for your site in the `themes`, `plugins`, and `presets` fields, respectively. These are typically npm packages:
+
+```js title="docusaurus.config.js"
+module.exports = {
+  // ...
+  plugins: [
+    '@docusaurus/plugin-content-blog',
+    '@docusaurus/plugin-content-pages',
+  ],
+  themes: ['@docusaurus/theme-classic'],
+};
+```
+
+See the [using plugins](https://docusaurus.io/docs/using-plugins) guide for more information and help.
+
+### Custom configurations {#custom-configurations}
+
+Docusaurus guards `docusaurus.config.js` from unknown fields. To add custom fields, define them in `customFields`. For example:
+
+```js title="docusaurus.config.js"
+module.exports = {
+  // ...
+  // highlight-start
+  customFields: {
+    image: '',
+    keywords: [],
+  },
+  // highlight-end
+  // ...
+};
+```
+
+### Access Docusaurus configuration from components
+
+Your configuration object, `customFields`, as well as all other Docusaurus configuration details will be made available to all the components of your site. And you may access them via React context as `siteConfig`. Basic example:
+
+```jsx
+import React from 'react';
+// highlight-next-line
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+const Hello = () => {
+  // highlight-start
+  const {siteConfig} = useDocusaurusContext();
+  console.log(JSON.stringify(siteConfig, null, 2));
+  // highlight-end
+  const {title, tagline} = siteConfig;
+
+  return <div>{`${title} · ${tagline}`}</div>;
+};
+```
+
+A sample `siteConfig` logged to the console appears below for inspection.
+
+<details><summary> Sample configuration object</summary>
+
+```json
+{
+  "siteConfig": {
+    "title": "Handbook",
+    "tagline": "Software engineering handbooks are cool",
+    "url": "https://dwf.netlify.app",
+    "baseUrl": "/",
+    "onBrokenLinks": "throw",
+    "onBrokenMarkdownLinks": "warn",
+    "favicon": "img/favicon.ico",
+    "organizationName": "facebook",
+    "projectName": "docusaurus",
+    "customFields": {
+      "things": {
+        "something": "Whaaaa"
+      }
+    },
+    "i18n": {
+      "defaultLocale": "en",
+      "locales": [
+        "en"
+      ],
+      "path": "i18n",
+      "localeConfigs": {}
+    },
+    "presets": [
+      [
+        "classic",
+        {
+          "docs": {
+            "sidebarPath": "/Volumes/DWF/D/development-and-engineering/software-development-handbook/sidebars.js",
+            "editUrl": "https://github.com/farlowdw/software-development-handbook/tree/master/",
+            "remarkPlugins": [
+              null
+            ],
+            "rehypePlugins": [
+              [
+                null,
+                {
+                  "throwOnError": true,
+                  "globalGroup": true,
+                  "macros": {
+                    "\\x": "x+1"
+                  }
+                }
+              ]
+            ],
+            "showLastUpdateTime": true
+          },
+          "blog": {
+            "showReadingTime": true,
+            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "remarkPlugins": [
+              null
+            ],
+            "rehypePlugins": [
+              [
+                null,
+                {
+                  "throwOnError": true,
+                  "globalGroup": true,
+                  "macros": {
+                    "\\x": "x+1"
+                  }
+                }
+              ]
+            ],
+            "blogTitle": "My Blog Title",
+            "sortPosts": "ascending"
+          },
+          "theme": {
+            "customCss": "/Volumes/DWF/D/development-and-engineering/software-development-handbook/src/css/custom.scss"
+          },
+          "pages": {
+            "rehypePlugins": [
+              [
+                null,
+                {
+                  "throwOnError": true,
+                  "globalGroup": true,
+                  "macros": {
+                    "\\x": "x+1"
+                  }
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    ],
+    "stylesheets": [
+      {
+        "href": "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+        "type": "text/css",
+        "integrity": "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+        "crossorigin": "anonymous"
+      },
+      {
+        "href": "https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css"
+      }
+    ],
+    "scripts": [
+      {
+        "src": "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js",
+        "async": true
+      },
+      {
+        "src": "https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js",
+        "async": true
+      }
+    ],
+    "plugins": [
+      "docusaurus-plugin-sass",
+      "/Volumes/DWF/D/development-and-engineering/software-development-handbook/node_modules/docusaurus-plugin-image-zoom/src/index.js"
+    ],
+    "themeConfig": {
+      "colorMode": {
+        "defaultMode": "dark",
+        "disableSwitch": false,
+        "respectPrefersColorScheme": false
+      },
+      "docs": {
+        "sidebar": {
+          "hideable": true,
+          "autoCollapseCategories": false
+        },
+        "versionPersistence": "localStorage"
+      },
+      "tableOfContents": {
+        "minHeadingLevel": 2,
+        "maxHeadingLevel": 5
+      },
+      "navbar": {
+        "title": "Software Engineering Handbook",
+        "logo": {
+          "alt": "Software Engineering Handbook Logo",
+          "src": "img/logo.svg"
+        },
+        "items": [
+          {
+            "to": "/docs/intro",
+            "label": "Handbook",
+            "position": "left",
+            "activeBaseRegex": "/docs/"
+          },
+          {
+            "to": "/blog",
+            "label": "Blog",
+            "position": "left"
+          },
+          {
+            "href": "https://github.com/facebook/docusaurus",
+            "label": "GitHub",
+            "position": "right"
+          }
+        ],
+        "hideOnScroll": false
+      },
+      "footer": {
+        "style": "dark",
+        "links": [
+          {
+            "title": "Docs",
+            "items": [
+              {
+                "label": "Tutorial",
+                "to": "/docs/intro"
+              }
+            ]
+          },
+          {
+            "title": "Community",
+            "items": [
+              {
+                "label": "Stack Overflow",
+                "href": "https://stackoverflow.com/questions/tagged/docusaurus"
+              },
+              {
+                "label": "Discord",
+                "href": "https://discordapp.com/invite/docusaurus"
+              },
+              {
+                "label": "Twitter",
+                "href": "https://twitter.com/docusaurus"
+              }
+            ]
+          },
+          {
+            "title": "More",
+            "items": [
+              {
+                "label": "Blog",
+                "to": "/blog"
+              },
+              {
+                "label": "GitHub",
+                "href": "https://github.com/facebook/docusaurus"
+              }
+            ]
+          }
+        ],
+        "copyright": "Copyright © 2022 My Project, Inc. Built with Docusaurus."
+      },
+      "zoom": {
+        "selector": ".markdown :not(em) > img",
+        "config": {
+          "background": "rgb(50, 50, 50)"
+        }
+      },
+      "prism": {
+        "theme": {
+          "plain": {
+            "color": "#393A34",
+            "backgroundColor": "#f6f8fa"
+          },
+          "styles": [
+            {
+              "types": [
+                "comment",
+                "prolog",
+                "doctype",
+                "cdata"
+              ],
+              "style": {
+                "color": "#999988",
+                "fontStyle": "italic"
+              }
+            },
+            {
+              "types": [
+                "namespace"
+              ],
+              "style": {
+                "opacity": 0.7
+              }
+            },
+            {
+              "types": [
+                "string",
+                "attr-value"
+              ],
+              "style": {
+                "color": "#e3116c"
+              }
+            },
+            {
+              "types": [
+                "punctuation",
+                "operator"
+              ],
+              "style": {
+                "color": "#393A34"
+              }
+            },
+            {
+              "types": [
+                "entity",
+                "url",
+                "symbol",
+                "number",
+                "boolean",
+                "variable",
+                "constant",
+                "property",
+                "regex",
+                "inserted"
+              ],
+              "style": {
+                "color": "#36acaa"
+              }
+            },
+            {
+              "types": [
+                "atrule",
+                "keyword",
+                "attr-name",
+                "selector"
+              ],
+              "style": {
+                "color": "#00a4db"
+              }
+            },
+            {
+              "types": [
+                "function",
+                "deleted",
+                "tag"
+              ],
+              "style": {
+                "color": "#d73a49"
+              }
+            },
+            {
+              "types": [
+                "function-variable"
+              ],
+              "style": {
+                "color": "#6f42c1"
+              }
+            },
+            {
+              "types": [
+                "tag",
+                "selector",
+                "keyword"
+              ],
+              "style": {
+                "color": "#00009f"
+              }
+            }
+          ]
+        },
+        "darkTheme": {
+          "plain": {
+            "color": "#F8F8F2",
+            "backgroundColor": "#282A36"
+          },
+          "styles": [
+            {
+              "types": [
+                "prolog",
+                "constant",
+                "builtin"
+              ],
+              "style": {
+                "color": "rgb(189, 147, 249)"
+              }
+            },
+            {
+              "types": [
+                "inserted",
+                "function"
+              ],
+              "style": {
+                "color": "rgb(80, 250, 123)"
+              }
+            },
+            {
+              "types": [
+                "deleted"
+              ],
+              "style": {
+                "color": "rgb(255, 85, 85)"
+              }
+            },
+            {
+              "types": [
+                "changed"
+              ],
+              "style": {
+                "color": "rgb(255, 184, 108)"
+              }
+            },
+            {
+              "types": [
+                "punctuation",
+                "symbol"
+              ],
+              "style": {
+                "color": "rgb(248, 248, 242)"
+              }
+            },
+            {
+              "types": [
+                "string",
+                "char",
+                "tag",
+                "selector"
+              ],
+              "style": {
+                "color": "rgb(255, 121, 198)"
+              }
+            },
+            {
+              "types": [
+                "keyword",
+                "variable"
+              ],
+              "style": {
+                "color": "rgb(189, 147, 249)",
+                "fontStyle": "italic"
+              }
+            },
+            {
+              "types": [
+                "comment"
+              ],
+              "style": {
+                "color": "rgb(98, 114, 164)"
+              }
+            },
+            {
+              "types": [
+                "attr-name"
+              ],
+              "style": {
+                "color": "rgb(241, 250, 140)"
+              }
+            }
+          ]
+        },
+        "magicComments": [
+          {
+            "className": "theme-code-block-highlighted-line",
+            "line": "highlight-next-line",
+            "block": {
+              "start": "highlight-start",
+              "end": "highlight-end"
+            }
+          },
+          {
+            "className": "code-block-error-line",
+            "line": "highlight-error-next-line"
+          }
+        ],
+        "additionalLanguages": [
+          "apacheconf",
+          "applescript",
+          "asciidoc",
+          "aspnet",
+          "awk",
+          "bash",
+          "basic",
+          "c",
+          "clojure",
+          "cpp",
+          "csharp",
+          "css",
+          "csv",
+          "django",
+          "docker",
+          "editorconfig",
+          "ejs",
+          "elixir",
+          "erlang",
+          "excel-formula",
+          "flow",
+          "fortran",
+          "git",
+          "go",
+          "go-module",
+          "graphql",
+          "handlebars",
+          "http",
+          "java",
+          "javadoclike",
+          "javascript",
+          "js-extras",
+          "jsdoc",
+          "json",
+          "jsonp",
+          "jsx",
+          "latex",
+          "less",
+          "lisp",
+          "log",
+          "lua",
+          "makefile",
+          "markdown",
+          "markup",
+          "markup-templating",
+          "mermaid",
+          "mongodb",
+          "nginx",
+          "perl",
+          "php",
+          "php-extras",
+          "phpdoc",
+          "plsql",
+          "powerquery",
+          "powershell",
+          "pug",
+          "python",
+          "r",
+          "regex",
+          "ruby",
+          "rust",
+          "sas",
+          "sass",
+          "scheme",
+          "scss",
+          "shell-session",
+          "sql",
+          "systemd",
+          "toml",
+          "tsx",
+          "turtle",
+          "typescript",
+          "vim",
+          "visual-basic",
+          "wasm",
+          "wiki",
+          "wolfram",
+          "yaml"
+        ]
+      },
+      "metadata": []
+    },
+    "baseUrlIssueBanner": true,
+    "onDuplicateRoutes": "warn",
+    "staticDirectories": [
+      "static"
+    ],
+    "themes": [],
+    "clientModules": [],
+    "titleDelimiter": "|",
+    "noIndex": false
+  },
+  "siteMetadata": {
+    "docusaurusVersion": "2.0.0-beta.22",
+    "siteVersion": "0.0.0",
+    "pluginVersions": {
+      "docusaurus-plugin-content-docs": {
+        "type": "package",
+        "name": "@docusaurus/plugin-content-docs",
+        "version": "2.0.0-beta.22"
+      },
+      "docusaurus-plugin-content-blog": {
+        "type": "package",
+        "name": "@docusaurus/plugin-content-blog",
+        "version": "2.0.0-beta.22"
+      },
+      "docusaurus-plugin-content-pages": {
+        "type": "package",
+        "name": "@docusaurus/plugin-content-pages",
+        "version": "2.0.0-beta.22"
+      },
+      "docusaurus-plugin-debug": {
+        "type": "package",
+        "name": "@docusaurus/plugin-debug",
+        "version": "2.0.0-beta.22"
+      },
+      "docusaurus-theme-classic": {
+        "type": "package",
+        "name": "@docusaurus/theme-classic",
+        "version": "2.0.0-beta.22"
+      },
+      "docusaurus-plugin-sass": {
+        "type": "package",
+        "name": "docusaurus-plugin-sass",
+        "version": "0.2.2"
+      },
+      "docusaurus-plugin-image-zoom": {
+        "type": "package",
+        "name": "docusaurus-plugin-image-zoom",
+        "version": "0.1.1"
+      }
+    }
+  },
+  "globalData": {
+    "docusaurus-plugin-content-docs": {
+      "default": {
+        "path": "/docs",
+        "versions": [
+          {
+            "name": "current",
+            "label": "Next",
+            "isLast": true,
+            "path": "/docs",
+            "mainDocId": "intro",
+            "docs": [
+              {
+                "id": "books/algorithm-design-manual/book-notes",
+                "path": "/docs/books/algorithm-design-manual/book-notes",
+                "sidebar": "docs"
+              },
+              {
+                "id": "books/algorithm-design-manual/exercises-and-solutions",
+                "path": "/docs/books/algorithm-design-manual/exercises-and-solutions",
+                "sidebar": "docs"
+              },
+              {
+                "id": "books/algorithm-design-manual/index",
+                "path": "/docs/books/algorithm-design-manual",
+                "sidebar": "docs"
+              },
+              {
+                "id": "books/algorithm-design-manual/lecture-notes",
+                "path": "/docs/books/algorithm-design-manual/lecture-notes",
+                "sidebar": "docs"
+              },
+              {
+                "id": "intro",
+                "path": "/docs/intro",
+                "sidebar": "docs"
+              },
+              {
+                "id": "reference/css/css-diner",
+                "path": "/docs/reference/css/css-diner",
+                "sidebar": "docs"
+              },
+              {
+                "id": "reference/css/index",
+                "path": "/docs/css",
+                "sidebar": "docs"
+              },
+              {
+                "id": "reference/docusaurus/documentation-notes",
+                "path": "/docs/reference/docusaurus/documentation-notes",
+                "sidebar": "docs"
+              },
+              {
+                "id": "reference/docusaurus/features",
+                "path": "/docs/reference/docusaurus/features",
+                "sidebar": "docs"
+              },
+              {
+                "id": "reference/docusaurus/index",
+                "path": "/docs/reference/docusaurus/",
+                "sidebar": "docs"
+              },
+              {
+                "id": "reference/docusaurus/katex",
+                "path": "/docs/reference/docusaurus/katex",
+                "sidebar": "docs"
+              },
+              {
+                "id": "reference/docusaurus/templates",
+                "path": "/docs/reference/docusaurus/templates",
+                "sidebar": "docs"
+              },
+              {
+                "id": "tutorial-basics/congratulations",
+                "path": "/docs/tutorial-basics/congratulations"
+              },
+              {
+                "id": "tutorial-basics/create-a-blog-post",
+                "path": "/docs/tutorial-basics/create-a-blog-post"
+              },
+              {
+                "id": "tutorial-basics/create-a-document",
+                "path": "/docs/tutorial-basics/create-a-document"
+              },
+              {
+                "id": "tutorial-basics/create-a-page",
+                "path": "/docs/tutorial-basics/create-a-page"
+              },
+              {
+                "id": "tutorial-basics/deploy-your-site",
+                "path": "/docs/tutorial-basics/deploy-your-site"
+              },
+              {
+                "id": "tutorial-basics/markdown-features",
+                "path": "/docs/tutorial-basics/markdown-features"
+              },
+              {
+                "id": "tutorial-extras/manage-docs-versions",
+                "path": "/docs/tutorial-extras/manage-docs-versions"
+              },
+              {
+                "id": "tutorial-extras/translate-your-site",
+                "path": "/docs/tutorial-extras/translate-your-site"
+              },
+              {
+                "id": "/category/books",
+                "path": "/docs/category/books",
+                "sidebar": "docs"
+              },
+              {
+                "id": "/category/reference",
+                "path": "/docs/category/reference",
+                "sidebar": "docs"
+              }
+            ],
+            "draftIds": [],
+            "sidebars": {
+              "docs": {
+                "link": {
+                  "path": "/docs/intro",
+                  "label": "intro"
+                }
+              }
+            }
+          }
+        ],
+        "breadcrumbs": true
+      }
+    }
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "locales": [
+      "en"
+    ],
+    "path": "i18n",
+    "currentLocale": "en",
+    "localeConfigs": {
+      "en": {
+        "label": "English",
+        "direction": "ltr",
+        "htmlLang": "en",
+        "calendar": "gregory",
+        "path": "en"
+      }
+    }
+  },
+  "codeTranslations": {}
+}
+```
+
+</details>
+
+### Babel Configuration {#customizing-babel-configuration}
+
+For new Docusaurus projects, we automatically generated a `babel.config.js` in the project root.
+
+```js title="babel.config.js"
+module.exports = {
+  presets: [require.resolve('@docusaurus/core/lib/babel/preset')],
+};
+```
+
+Most of the time, this configuration will work just fine. If you want to customize your Babel configuration (e.g., to add support for [Flow](https://flow.org/en/docs/getting-started/)), you can directly edit this file. For your changes to take effect, you need to restart the Docusaurus dev server.

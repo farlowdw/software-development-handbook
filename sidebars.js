@@ -55,7 +55,6 @@ const sidebars = {
         keywords: ['reference']
       },
       items: [
-        'reference/docusaurus',
         {
           type: 'category',
           label: 'CSS',
@@ -67,7 +66,20 @@ const sidebars = {
             'reference/css/css-diner'
           ]
         },
-        'reference/katex-reference',
+        {
+          type: 'category',
+          label: 'Docusaurus',
+          link: {
+            type: 'doc',
+            id: 'reference/docusaurus/index'
+          },
+          items: [
+            'reference/docusaurus/documentation-notes',
+            'reference/docusaurus/features',
+            'reference/docusaurus/katex',
+            'reference/docusaurus/templates',
+          ]
+        },
       ]
     }
   ],
