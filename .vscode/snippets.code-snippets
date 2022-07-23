@@ -20,7 +20,7 @@
 		"body": [
       "---",
       "title: ${1:blogTitle}",
-      "draft: true",
+      "draft: false",
       "slug: ${3:<string>/blog/blogURL}",
       "description: ${2:descriptionInHead}",
       "tags: [${4:tags}]",
@@ -44,7 +44,7 @@
       "hide_title: false",
       "sidebar_label: ${2:Array}",
       "description: ${3:descForHead}",
-      "draft: true",
+      "draft: false",
       "last_update: ",
       "\tdate: '${4:2022-07-04}'",
       "\tauthor: farlow",

@@ -30,21 +30,14 @@ const sidebars = {
       type: 'category',
       label: 'Books',
       collapsed: true,
-      link: {
-        type: 'generated-index',
-        title: 'Book Notes',
-        description: 'Book notes for a variety of books.',
-        keywords: ['books', 'notes']
-      },
       items: [
         {
           type: 'category',
           label: 'Algorithm Design Manual',
-          link: {
-            type: 'doc',
-            id: 'books/algorithm-design-manual/index'
-          },
+          collapsed: true,
           items: [
+            'books/algorithm-design-manual/lecture-notes',
+            'books/algorithm-design-manual/exercises-and-solutions',
             {
               type: 'category',
               label: 'Book Notes',
@@ -65,8 +58,6 @@ const sidebars = {
                 'books/algorithm-design-manual/book-notes/how-to-design-algorithms',
               ]
             },
-            'books/algorithm-design-manual/lecture-notes',
-            'books/algorithm-design-manual/exercises-and-solutions',
           ]
         },
       ]
@@ -90,7 +81,7 @@ const sidebars = {
             id: 'reference/css/index'
           },
           items: [
-            'reference/css/css-diner'
+            'reference/css/css-diner',
           ]
         },
         {
