@@ -20,6 +20,14 @@ const sidebars = {
     'intro',
     {
       type: 'category',
+      label: 'Data Structures',
+      collapsed: true,
+      items: [
+        'data-structures/array'
+      ]
+    },
+    {
+      type: 'category',
       label: 'Books',
       collapsed: true,
       link: {
@@ -37,7 +45,26 @@ const sidebars = {
             id: 'books/algorithm-design-manual/index'
           },
           items: [
-            'books/algorithm-design-manual/book-notes',
+            {
+              type: 'category',
+              label: 'Book Notes',
+              collapsed: true,
+              items: [
+                'books/algorithm-design-manual/book-notes/introduction-to-algorithm-design',
+                'books/algorithm-design-manual/book-notes/algorithm-analysis',
+                'books/algorithm-design-manual/book-notes/data-structures',
+                'books/algorithm-design-manual/book-notes/sorting',
+                'books/algorithm-design-manual/book-notes/divide-and-conquer',
+                'books/algorithm-design-manual/book-notes/hashing-and-randomized-algorithms',
+                'books/algorithm-design-manual/book-notes/graph-traversal',
+                'books/algorithm-design-manual/book-notes/weighted-graph-algorithms',
+                'books/algorithm-design-manual/book-notes/combinatorial-search',
+                'books/algorithm-design-manual/book-notes/dynamic-programming',
+                'books/algorithm-design-manual/book-notes/np-completeness',
+                'books/algorithm-design-manual/book-notes/dealing-with-hard-problems',
+                'books/algorithm-design-manual/book-notes/how-to-design-algorithms',
+              ]
+            },
             'books/algorithm-design-manual/lecture-notes',
             'books/algorithm-design-manual/exercises-and-solutions',
           ]
@@ -75,6 +102,7 @@ const sidebars = {
           },
           items: [
             'reference/docusaurus/documentation-notes',
+            'reference/docusaurus/cheatsheet',
             'reference/docusaurus/features',
             'reference/docusaurus/katex',
             'reference/docusaurus/templates',

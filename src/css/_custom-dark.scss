@@ -177,5 +177,11 @@ html[data-theme='dark'] {
 			fill: var(--ifm-alert-border-color);
 		}
 	}
-	/* begin admonition styling */
+	/* end admonition styling */
+
+	/* begin KaTeX styling */
+	.mord.boxpad {
+		color: white;
+	}
+	/* end KaTeX styling */
 }

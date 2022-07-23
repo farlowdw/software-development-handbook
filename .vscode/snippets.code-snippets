@@ -1,0 +1,81 @@
+{
+	// Place your software-development-handbook workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Boilerplate blog front-matter": {
+		"prefix": "blog-front-matter",
+		"body": [
+      "---",
+      "title: ${1:blogTitle}",
+      "draft: true",
+      "slug: ${3:<string>/blog/blogURL}",
+      "description: ${2:descriptionInHead}",
+      "tags: [${4:tags}]",
+      "keywords: [${5:keywords}]",
+      "authors: [farlow]",
+      "# image: <string>Cover or thumbnail image that will be used when displaying the link to your post.",
+      "hide_table_of_contents: false",
+      "toc_min_heading_level: 2",
+      "toc_max_heading_level: 3",
+      "---",
+      "",
+      "$0"
+		],
+		"description": "Provides sensible default front matter options for blog posts"
+	},
+	"Boilerplate docs frontmatter": {
+		"prefix": "docs-front-matter",
+		"body": [
+      "---",
+      "title: ${1:docTitle}",
+      "hide_title: false",
+      "sidebar_label: ${2:Array}",
+      "description: ${3:descForHead}",
+      "draft: true",
+      "last_update: ",
+      "\tdate: '${4:2022-07-04}'",
+      "\tauthor: farlow",
+      "tags: [${5:tbd}]",
+      "keywords: [${6:tbd}]",
+      "image: https://github.com/farlowdw.png",
+      "hide_table_of_contents: false",
+      "toc_min_heading_level: 2",
+      "toc_max_heading_level: 5",
+      "---",
+      "",
+      "$0",
+		],
+		"description": "Provides sensible default front matter options for a docs post"
+	},
+	"Blog truncation": {
+		"prefix": "blog-truncate",
+		"body": [
+      "",
+			"<!--truncate-->",
+      "",
+			"$0"
+		],
+		"description": "Log output to console"
+	},
+	"Import complexity table": {
+		"prefix": "import-complexity-table",
+		"body": [
+      "import ${2:ComplexityTable} from '@site/docs/_Partials/_time-and-space-complexities/${1:_array}.mdx'",
+      "<${2:ComplexityTable} />$0",
+		],
+		"description": "Streamlines process for importing complexity tables"
+	},
+}

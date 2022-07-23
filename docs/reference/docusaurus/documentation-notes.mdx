@@ -1341,3 +1341,194 @@ module.exports = {
 ```
 
 Most of the time, this configuration will work just fine. If you want to customize your Babel configuration (e.g., to add support for [Flow](https://flow.org/en/docs/getting-started/)), you can directly edit this file. For your changes to take effect, you need to restart the Docusaurus dev server.
+
+## Guides
+
+### Pages 
+
+#### Caveats
+
+The [`@docusaurus/plugin-content-pages`](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-pages) plugin empowers you to create one-off standalone pages like a showcase page, playground page, or support page. You can use React components or Markdown (hence, file extensions `.js`, `.jsx`, `.md`, and `mdx` are all valid). Note that Pages do not have sidebars (only docs do). Check the link above for a more exhaustive list of options for what you can do with Pages.
+
+Each page doesn't come with any styling. You will need to import the `Layout` component from `@theme/Layout` and wrap your contents within that component if you want the navbar and/or footer to appear. (See the [source code](https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme/Layout) for the `Layout` component if desired.)
+
+Routing behavior is similar to other static site generators (e.g., Jekyll and Next). Any JavaScript file you create under the `/src/pages/` directory will be automatically converted to a website page following the `/src/pages/` directory hierarchy. For example:
+
+- `/src/pages/index.js` → `[baseUrl]`
+- `/src/pages/foo.js` → `[baseUrl]/foo`
+- `/src/pages/foo/test.js` → `[baseUrl]/foo/test`
+- `/src/pages/foo/index.js` → `[baseUrl]/foo/`
+
+#### Creating pages
+
+Anything created in the `/src/pages` directory will be a [standalone page](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-pages). 
+
+In this component-based development era, it is encouraged to co-locate your styling, markup, and behavior together into components. Each page is a component, and if you need to customize your page design with your own styles, we recommend co-locating your styles with the page component in its own directory. For example, to create a "Support" page, you could do one of the following:
+
+- Add a `/src/pages/support.js` file
+- Create a `/src/pages/support/` directory and a `/src/pages/support/index.js` file.
+
+The latter is preferred as it has the benefits of letting you put files related to the page within that directory. For example, a CSS module file (`styles.module.css`) with styles meant to only be used on the "Support" page. Note that this is merely a recommended directory structure, and you will still need to manually import the CSS module file within your component module (`support/index.js`).
+
+#### Omitting routes for files and folders
+
+By default, any Markdown or JavaScript file starting with `_` will be ignored and no routes will be created for that file (see the `exclude` option). The same is true for directories.
+
+#### Duplicate routes 
+
+You may accidentally create multiple pages that are meant to be accessed on the same route. When this happens, Docusaurus will warn you about duplicate routes when you run `yarn start` or `yarn build`, but the site will still be built successfully. The page that was created last will be accessible, but it will override other conflicting pages. To resolve this issue, you should modify or remove any conflicting routes.
+
+### Docs 
+
+The docs feature provides users with a way to organize Markdown files in a hierarchical format. Check the [Docs Plugin API Reference documentation](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs) for an exhaustive list of options.
+
+#### Default docs and blog structure
+
+A freshly initialized Docusaurus site has the following structure:
+
+```
+example.com/                                -> generated from `src/pages/index.js`
+
+example.com/docs/intro                      -> generated from `docs/intro.md`
+example.com/docs/tutorial-basics/...        -> generated from `docs/tutorial-basics/...`
+...
+
+example.com/blog/2021/08/26/welcome         -> generated from `blog/2021-08-26-welcome/index.md`
+example.com/blog/2021/08/01/mdx-blog-post   -> generated from `blog/2021-08-01-mdx-blog-post.mdx`
+...
+```
+
+#### Markdown front matter
+
+See the [API documentation](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter) for all possible fields. The front matter is not *necessary*, but it should be used when possible.
+
+#### Doc tags 
+
+Optionally, you can add tags to your doc pages, which introduces another dimension of categorization in addition to the docs sidebar. Tags are passed in the front matter as a list of labels:
+
+Tags can also be declared with `tags: [Demo, Getting started]`. Read more about all the possible [Yaml array syntaxes](https://www.w3schools.io/file/yaml-arrays/). 
+
+#### Document IDs
+
+Every document has a unique `id`. By default, a document `id` is the name of the document (without the extension) relative to the root docs directory. For example, the ID of `greeting.md` is `greeting`, and the ID of `guide/hello.md` is `guide/hello`.
+
+```bash
+website # Root directory of your site
+└── docs
+   ├── greeting.md
+   └── guide
+      └── hello.md
+```
+
+However, the **last part** of the `id` can be defined by the user in the front matter. For example, if `guide/hello.md`'s content is defined as below, its final `id` is `guide/part1`.
+
+```md 
+---
+id: part1
+---
+
+Lorem ipsum
+```
+
+The ID is used to refer to a document when hand-writing sidebars, or when using docs-related layout components or hooks.
+
+#### Doc URLs and `slug`
+
+By default, a document's URL location is its file path relative to the `docs` folder. Use the `slug` front matter to change a document's URL. For example, suppose your site structure looks like this:
+
+```bash 
+website # Root directory of your site
+└── docs
+    └── guide
+        └── hello.md
+```
+
+By default, `hello.md` will be available at `/docs/guide/hello`. You can change its URL location to `/docs/bonjour`:
+
+```md
+---
+slug: /bonjour
+---
+
+Lorem ipsum
+```
+
+`slug` will be appended to the doc plugin's `routeBasePath`, which is `/docs` by default. See [Docs-only mode](https://docusaurus.io/docs/create-doc#docs-only-mode) for how to remove the `/docs` part from the URL.
+
+Note that it is possible to use:
+
+- absolute slugs: `slug: /mySlug`, `slug: /`...
+- relative slugs: `slug: mySlug`, `slug: ./../mySlug`...
+
+If you want a document to be available at the root, and have a path like `https://docusaurus.io/docs/`, you can use the slug front matter:
+
+```md
+---
+id: my-home-doc
+slug: /
+---
+
+Lorem ipsum
+```
+
+#### Sidebars
+
+##### Sidebar items
+
+Here's a summary of what kind of `type` of sidebar items are available, namely an item like the following for an example:
+
+```ts
+type SidebarItemDoc =
+  // Normal syntax
+  | {
+      type: 'doc';
+      id: string;
+      label: string; // Sidebar label text
+      className?: string; // Class name for sidebar label
+      customProps?: Record<string, unknown>; // Custom props
+    }
+
+  // Shorthand syntax
+  | string; // docId shortcut
+```
+
+- [Doc](https://docusaurus.io/docs/sidebar/items#sidebar-item-doc): link to a doc page, associating it with the sidebar
+- [Link](https://docusaurus.io/docs/sidebar/items#sidebar-item-link): link to any internal or external page
+- [Category](https://docusaurus.io/docs/sidebar/items#sidebar-item-category): creates a dropdown of sidebar items
+- [Autogenerated](https://docusaurus.io/docs/sidebar/autogenerated): generate a sidebar slice automatically
+- [HTML](https://docusaurus.io/docs/sidebar/items#sidebar-item-html): renders pure HTML in the item's position
+- [*Ref](https://docusaurus.io/docs/sidebar/multiple-sidebars#sidebar-item-ref): link to a doc page, without making the item take part in navigation generation
+
+### Blog 
+
+#### Options
+
+Check the [Blog Plugin API Reference documentation](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog) for an exhaustive list of options when using the blog capabilities that come along with Docusaurus.
+
+#### Front matter 
+
+See the [Markdown front matter reference](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog#markdown-front-matter) for all options that can be used with blog posts.
+
+#### Blog list and truncated summaries
+
+The blog's index page (by default, it is at `/blog`) is the blog list page, where all blog posts are collectively displayed. Use the `<!--truncate-->` marker in your blog post to represent what will be shown as the summary when viewing all published blog posts. Anything above `<!--truncate-->` will be part of the summary. For example:
+
+```md 
+---
+title: Truncation Example
+---
+
+Everything here will be part of the blog post summary.
+
+Even this.
+
+<!--truncate-->
+
+But anything from here on down will not be.
+
+Not this.
+
+Or this.
+```
+
+I can conveniently use <highlight color="#25c2a0">Docusaurus green</highlight> everywhere!

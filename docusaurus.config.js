@@ -66,7 +66,7 @@ const config = {
           showLastUpdateTime: true
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -77,7 +77,11 @@ const config = {
             globalGroup: true,
             macros
           }]],
-          blogTitle: 'My Blog Title',
+          blogTitle: 'Blog title coming soon',
+          blogDescription: 'Description coming soon',
+          postsPerPage: 'ALL',
+          // blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 0,
           sortPosts: 'ascending',
           // showLastUpdateTime: true
         },
@@ -146,6 +150,7 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
       tableOfContents: {
@@ -168,6 +173,11 @@ const config = {
           {
             to: '/blog',
             label: 'Blog',
+            position: 'left'
+          },
+          {
+            to: '/blog/archive',
+            label: 'Blog Archive',
             position: 'left'
           },
           {
