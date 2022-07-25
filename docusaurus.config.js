@@ -20,6 +20,7 @@ const macros = {
   "\\perfBad": "\\colorbox{b36200}{$#1(#2)$}",
   "\\perfVeryBad": "\\colorbox{darkred}{$#1(#2)$}",
   "\\perfCustom": "\\colorbox{#3}{$#1(#2)$}",
+  "\\perfNeutral": "\\colorbox{gray}{$#1(#2)$}",
 };
 
 /** @type {import('@docusaurus/types').Config} */

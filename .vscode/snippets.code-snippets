@@ -122,4 +122,40 @@
 		],
 		"description": "Facilitates creation of color box with big-O details"
 	},
+	"Time complexity table boilerplate": {
+		"prefix": "tc-table",
+		"body": [
+      "| Context | Worst | Average | Note |",
+      "| :-- | :-: | :-: | :-- |",
+      "| Access | $\\perfVeryGood{O}{1}$ | $\\perfVeryGood{\\Theta}{1}$ |  |",
+      "| Search | $\\perfAverage{O}{n}$ | $\\perfAverage{\\Theta}{n}$ |  |",
+      "| Insert | $\\perfAverage{O}{n}$ | $\\perfAverage{\\Theta}{n}$ |  |",
+      "| Delete | $\\perfAverage{O}{n}$ | $\\perfAverage{\\Theta}{n}$ |  |",
+      "| | | | |"
+		],
+		"description": "Facilitates creation of time complexity tables"
+	},
+	"Tabs for snapshot overviews": {
+		"prefix": "tabs-dsa-snapshot-overview",
+		"body": [
+      "<Tabs>",
+      "<TabItem value='tc-worst' label='TC - Worst'>",
+      "",
+      "tbd$0",
+      "",
+      "</TabItem>",
+      "<TabItem value='tc-average' label='TC - Average'>",
+      "",
+      "tbd",
+      "",
+      "</TabItem>",
+      "<TabItem value='summary' label='Quick Summary'>",
+      "",
+      "tbd",
+      "",
+      "</TabItem>",
+      "</Tabs>"
+		],
+		"description": "Facilitates creation of snapshot overview tabs for different data structures"
+	},
 }

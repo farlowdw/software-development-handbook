@@ -27,7 +27,12 @@ const sidebars = {
         id: 'data-structures/index'
       },
       items: [
-        'data-structures/array'
+        'data-structures/array',
+        'data-structures/string',
+        'data-structures/hash-table',
+        'data-structures/stack',
+        'data-structures/queue',
+        'data-structures/linked-list',
       ]
     },
     {
