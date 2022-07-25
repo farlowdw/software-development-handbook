@@ -78,4 +78,48 @@
 		],
 		"description": "Streamlines process for importing complexity tables"
 	},
+	"Image boilerplate (basic)": {
+		"prefix": "image-basic",
+		"body": [
+      "<img $0 src={require('@site/static/${1:folderOrFile}').default}/>",
+		],
+		"description": "Allows for easy insertion of images."
+	},
+	"Image boilerplate (centered)": {
+		"prefix": "image-centered",
+		"body": [
+      "<p align='center'>",
+      "\t<img width='$0' src={require('@site/static/${1:folderOrFile}').default} />",
+      "</p>"
+		],
+		"description": "Allows for easy insertion of centered images."
+	},
+	"Tabs boilerplate (with import statements)": {
+		"prefix": "tabs-with-import-statements",
+		"body": [
+      "import Tabs from '@theme/Tabs';$0",
+      "import TabItem from '@theme/TabItem';",
+      "",
+      "<Tabs>",
+      "<TabItem value='${1:value1}' label='${2:label1}'>",
+      "",
+      "tbd",
+      "",
+      "</TabItem>",
+      "<TabItem value='${3:value2}' label='${4:label2}'>",
+      "",
+      "tbd",
+      "",
+      "</TabItem>",
+      "</Tabs>",
+		],
+		"description": "Allows for easy insertion of centered images."
+	},
+	"Perf best (dark green)": {
+		"prefix": "perf-darkgreen",
+		"body": [
+      "$$\\colorbox{darkgreen}{$$O(1)$}$$"
+		],
+		"description": "Facilitates creation of color box with big-O details"
+	},
 }

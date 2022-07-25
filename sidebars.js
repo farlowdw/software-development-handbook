@@ -22,6 +22,10 @@ const sidebars = {
       type: 'category',
       label: 'Data Structures',
       collapsed: true,
+      link: {
+        type: 'doc',
+        id: 'data-structures/index'
+      },
       items: [
         'data-structures/array'
       ]

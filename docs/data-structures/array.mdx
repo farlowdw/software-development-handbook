@@ -3,7 +3,7 @@ title: Array
 hide_title: false
 sidebar_label: Array
 description: Overview of array data structure.
-draft: true
+draft: false
 last_update: 
   date: '2022-07-22'
   author: farlow
@@ -15,26 +15,37 @@ toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import ArrayComplexityTable from '@site/docs/_Partials/_time-and-space-complexities/_array.mdx'
-import ArraysComplexityTable from '@site/docs/_Partials/_time-and-space-complexities/_all-average-case.mdx'
-import ArrayssComplexityTable from '@site/docs/_Partials/_time-and-space-complexities/_all-worst-case.mdx'
-import ArraysssComplexityTable from '@site/docs/_Partials/_time-and-space-complexities/_all-array-sorting-algorithms.mdx'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## Introduction
+import ArrayStaticTC from '@site/docs/_Partials/_time-and-space-complexities/_array-static.mdx'
 
-Something
+## Static Array
 
-<ArrayComplexityTable />
+### Description
 
-Cool
+Stores things in order. Has quick lookups by index. An array organizes items sequentially, one after another in memory. Each position in the array has an index, starting at 0.
 
-<ArraysComplexityTable />
+### Strengths
 
-Cool
+#### Fast lookups
 
-<ArrayssComplexityTable />
+Retrieving the element at a given index takes $O(1)$ time, regardless of the length of the array.
 
-Cool
+#### Fast appends
 
-<ArraysssComplexityTable />
+Adding a new element at the end of the array takes $O(1)$ time (i.e., if the array has space).
 
+### Weaknesses
+
+#### Fixed size
+
+You need to specify how many elements you're going to store in your array ahead of time. (Unless you're using a dynamic array.)
+
+#### Inserts and deletes
+
+You have to "scoot over" the other elements to fill in or close gaps, which takes worst-case $O(n)$ time (i.e., inserts and deletes can be costly).
+
+### Time Complexity - Worst Case Analysis {#tc-static}
+
+<ArrayStaticTC />
