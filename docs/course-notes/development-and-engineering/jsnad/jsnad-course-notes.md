@@ -3,7 +3,7 @@ title: JSNAD Course Notes
 hide_title: false
 sidebar_label: JSNAD
 description: Notes in preparation for JSNAD
-draft: true
+draft: false
 tags: [jsnad]
 keywords: [jsnad]
 image: https://github.com/farlowdw.png

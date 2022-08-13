@@ -3,7 +3,7 @@ title: JSNSD Course Notes
 hide_title: false
 sidebar_label: JSNSD
 description: Notes in preparation for JSNSD
-draft: true
+draft: false
 tags: [jsnsd]
 keywords: [jsnsd]
 image: https://github.com/farlowdw.png
