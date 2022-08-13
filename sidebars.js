@@ -224,6 +224,18 @@ const sidebars = {
           label: 'Development and Engineering',
           collapsed: true,
           items: [
+            {
+              type: 'category',
+              label: 'MIT Missing Semester',
+              link: {
+                type: 'doc',
+                id: 'course-notes/development-and-engineering/mit-missing-semester/index'
+              },
+              items: [
+                'course-notes/development-and-engineering/mit-missing-semester/2020',
+                'course-notes/development-and-engineering/mit-missing-semester/2019',
+              ]
+            },
             'course-notes/development-and-engineering/jsnad/jsnad-course-notes',
             'course-notes/development-and-engineering/jsnsd/jsnsd-course-notes',
           ]

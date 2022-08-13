@@ -1,0 +1,1539 @@
+---
+title: MIT Missing Semester (2019)
+hide_title: false
+sidebar_label: 2019
+description: MIT Missing Semester course notes from 2019 class.
+draft: false
+tags: [Missing Semester]
+keywords: [missing semester]
+image: https://github.com/farlowdw.png
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## 2 - Virtual machines and containers
+
+### Exercises
+
+#### 2.1
+
+<Tabs>
+<TabItem value='2.1-q' label='Question'>
+
+Choose a container software (Docker, LXC, …) and install a simple Linux image. Try SSHing into it.
+
+</TabItem>
+<TabItem value='2.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='2.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 2.2
+
+<Tabs>
+<TabItem value='2.2-q' label='Question'>
+
+Search and download a prebuilt container image for a popular web server (nginx, apache, …)
+
+</TabItem>
+<TabItem value='2.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='2.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 3 - Shell scripting
+
+### Exercises
+
+#### 3.1 (bash and Linux)
+
+<Tabs>
+<TabItem value='3.1-q' label='Question'>
+
+If you are completely new to the shell you may want to read a more comprehensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide). If you want a more in-depth introduction [The Linux Command Line](http://linuxcommand.org/tlcl.php) is a good resource.
+
+</TabItem>
+<TabItem value='3.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 3.2 (`PATH`, `which`, `type`)
+
+<Tabs>
+<TabItem value='3.2-q' label='Question'>
+
+We briefly discussed that the `PATH` environment variable is used to locate the programs that you run through the command line. Let's explore that a little further
+
+- Run echo `$PATH` (or `echo $PATH | tr -s ':' '\n`' for pretty printing) and examine its contents. What locations are listed?
+- The command `which` locates a program in the user `PATH`. Try running `which` for common commands like `echo`, `ls`, or `mv`. Note that `which` is a bit limited since it does not understand shell aliases. Try running `type` and `command -v` for those same commands. How is the output different?
+- Run `PATH=` and try running the previous commands again, some work and some don't, can you figure out why?
+
+</TabItem>
+<TabItem value='3.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 3.3 (special variables)
+
+<Tabs>
+<TabItem value='3.3-q' label='Question'>
+
+- What does the variable `~` expands as? What about `.`? And `..`?
+- What does the variable `$?` do?
+- What does the variable `$_` do?
+- What does the variable `!!` expand to? What about `!!*`? And `!l`?
+- Look for documentation for these options and familiarize yourself with them
+
+</TabItem>
+<TabItem value='3.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 3.4
+
+<Tabs>
+<TabItem value='3.4-q' label='Question'>
+
+Sometimes piping doesn't quite work because the command being piped into does not expect the newline separated format. For example `file` command tells you properties of the file.
+
+Try running `ls | file` and `ls | xargs file`. What is `xargs` doing?
+
+</TabItem>
+<TabItem value='3.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 3.5
+
+<Tabs>
+<TabItem value='3.5-q' label='Question'>
+
+When you write a script you can specify to your shell what interpreter should be used to interpret the script by using a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line. Write a script called `hello` with the following contents and make it executable with `chmod +x hello`. Then execute it with `./hello`. Then remove the first line and execute it again? How is the shell using that first line?
+
+```bash
+#! /usr/bin/python
+
+print("Hello World!")
+```
+
+You will often see programs that have a shebang that looks like #! usr/bin/env bash. This is a more portable solution with it own set of [advantages and disadvantages](https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my). How is `env` different from `which`? What environment variable does `env` use to decide what program to run?
+
+</TabItem>
+<TabItem value='3.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 3.6 (pipes, process substitution, subshell)
+
+<Tabs>
+<TabItem value='3.6-q' label='Question'>
+
+Create a script called `slow_seq.sh` with the following contents and do `chmod +x slow_seq.sh` to make it executable.
+
+``` BASH
+#! /usr/bin/env bash
+
+for i in $(seq 1 10); do
+  echo $i;
+  sleep 1;
+done
+```
+
+There is a way in which pipes (and process substitution) differ from using subshell execution, i.e. `$()`. Run the following commands and observe the differences:
+
+- `./slow_seq.sh | grep -P "[3-6]"`
+- `grep -P "[3-6]" <(./slow_seq.sh)`
+- `echo $(./slow_seq.sh) | grep -P "[3-6]"`
+
+</TabItem>
+<TabItem value='3.6-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.6-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 3.7 (misc)
+
+<Tabs>
+<TabItem value='3.7-q' label='Question'>
+
+- Try running `touch {a,b}{a,b}` then `ls` what did appear?
+- Sometimes you want to keep `stdin` and still pipe it to a file. Try running `echo HELLO | tee hello.txt`
+- Try running `cat hello.txt > hello.txt` what do you expect to happen? What does happen?
+- Run `echo HELLO > hello.txt` and then run `echo WORLD >> hello.txt`. What are the contents of `hello.txt`? How is `>` different from `>>`?
+- Run `printf "\e[38;5;81mfoo\e[0m\n"`. How was the output different? If you want to know more, search for ANSI color escape sequences.
+- Run `touch a.txt` then run `^txt^log` what did bash do for you? In the same vein, run `fc`. What does it do?
+
+</TabItem>
+<TabItem value='3.7-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.7-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 3.8 (keyboard shortcuts)
+
+<Tabs>
+<TabItem value='3.8-q' label='Question'>
+
+As with any application you use frequently is worth familiarising yourself with its keyboard shortcuts. Type the following ones and try figuring out what they do and in what scenarios it might be convenient knowing about them. For some of them it might be easier searching online about what they do. (remember that `^X` means pressing `Ctrl+X`)
+
+- `^A`, `^E`
+- `^R`
+- `^L`
+- `^C`, `^\` and `^D`
+- `^U` and `^Y`
+
+</TabItem>
+<TabItem value='3.8-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='3.8-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 4 - Command line environment
+
+### Exercises
+
+#### 4.1
+
+<Tabs>
+<TabItem value='4.1-q' label='Question'>
+
+Run 
+
+``` BASH
+cat .bash_history | sort | uniq -c | sort -rn | head -n 10
+```
+
+or
+
+``` ZSH
+cat .zhistory | sort | uniq -c | sort -rn | head -n 10
+```
+
+for `zsh` to get top 10 most used commands and consider writing shorter aliases for them.
+
+</TabItem>
+<TabItem value='4.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='4.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 4.2
+
+<Tabs>
+<TabItem value='4.2-q' label='Question'>
+
+Choose a terminal emulator and figure out how to change the following properties:
+
+- Font choice
+- Color scheme. How many colors does a standard scheme have? why?
+- Scrollback history size
+
+</TabItem>
+<TabItem value='4.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='4.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 4.3
+
+<Tabs>
+<TabItem value='4.3-q' label='Question'>
+
+Install `fasd` or some similar software and write a bash/zsh function called `v` that performs fuzzy matching on the passed arguments and opens up the top result in your editor of choice. Then, modify it so that if there are multiple matches you can select them with `fzf`.
+
+</TabItem>
+<TabItem value='4.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='4.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 4.4
+
+<Tabs>
+<TabItem value='4.4-q' label='Question'>
+
+Since `fzf` is quite convenient for performing fuzzy searches and the shell history is quite prone to those kind of searches, investigate how to bind `fzf` to `^R`. You can find some info [here](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings).
+
+</TabItem>
+<TabItem value='4.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='4.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 4.5
+
+<Tabs>
+<TabItem value='4.5-q' label='Question'>
+
+What does the `--bar` option do in `ack`?
+
+</TabItem>
+<TabItem value='4.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='4.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 5 - Data wrangling
+
+### Exercises
+
+#### 5.1
+
+<Tabs>
+<TabItem value='5.1-q' label='Question'>
+
+If you are not familiar with Regular Expressions [here](https://regexone.com/) is a short interactive tutorial that covers most of the basics.
+
+</TabItem>
+<TabItem value='5.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.2
+
+<Tabs>
+<TabItem value='5.2-q' label='Question'>
+
+How is `sed s/REGEX/SUBSTITUTION/g` different from the regular sed? What about `/I` or `/m`?
+
+</TabItem>
+<TabItem value='5.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.3
+
+<Tabs>
+<TabItem value='5.3-q' label='Question'>
+
+To do in-place substitution it is quite tempting to do something like `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a bad idea, why? Is this particular to `sed`?
+
+</TabItem>
+<TabItem value='5.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.4
+
+<Tabs>
+<TabItem value='5.4-q' label='Question'>
+
+Implement a simple grep equivalent tool in a language you are familiar with using regex. If you want the output to be color highlighted like grep is, search for ANSI color escape sequences.
+
+</TabItem>
+<TabItem value='5.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.5
+
+<Tabs>
+<TabItem value='5.5-q' label='Question'>
+
+Sometimes some operations like renaming files can be tricky with raw commands like `mv`. `rename` is a nifty tool to achieve this and has a sed-like syntax. Try creating a bunch of files with spaces in their names and use `rename` to replace them with underscores.
+
+</TabItem>
+<TabItem value='5.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.6
+
+<Tabs>
+<TabItem value='5.6-q' label='Question'>
+
+Look for boot messages that are *not* shared between your past three reboots (see `journalctl`'s `-b` flag). You may want to just mash all the boot logs together in a single file, as that may make things easier.
+
+</TabItem>
+<TabItem value='5.6-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.6-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.7
+
+<Tabs>
+<TabItem value='5.7-q' label='Question'>
+
+Produce some statistics of your system boot time over the last ten boots using the log timestamp of the messages
+
+```
+Logs begin at ...
+```
+
+and
+
+```
+systemd[577]: Startup finished in ...
+```
+
+</TabItem>
+<TabItem value='5.7-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.7-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.8
+
+<Tabs>
+<TabItem value='5.8-q' label='Question'>
+
+Find the number of words (in `/usr/share/dict/words`) that contain at least three `a`s and don't have a `'s` ending. What are the three most common last two letters of those words? `sed`'s `y` command, or the `tr` program, may help you with case insensitivity. How many of those two-letter combinations are there? And for a challenge: which combinations do not occur?
+
+</TabItem>
+<TabItem value='5.8-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.8-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 5.9
+
+<Tabs>
+<TabItem value='5.9-q' label='Question'>
+
+Find an online data set [like this](https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm) one or [this one](https://ucr.fbi.gov/crime-in-the-u.s/2016/crime-in-the-u.s.-2016/topic-pages/tables/table-1). Maybe another one [from here](https://www.springboard.com/blog/data-science/free-public-data-sets-data-science-project/). Fetch it using `curl` and extract out just two columns of numerical data. If you're fetching HTML data, [`pup`](https://github.com/EricChiang/pup) might be helpful. For JSON data, try [`jq`](https://stedolan.github.io/jq/). Find the min and max of one column in a single command, and the sum of the difference between the two columns in another.
+
+</TabItem>
+<TabItem value='5.9-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='5.9-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 6 - Editors (Vim)
+
+### Exercises
+
+#### 6.1
+
+<Tabs>
+<TabItem value='6.1-q' label='Question'>
+
+Experiment with some editors. Try at least one command-line editor (e.g. Vim) and at least one GUI editor (e.g. Atom). Learn through tutorials like `vimtutor` (or the equivalents for other editors). To get a real feel for a new editor, commit to using it exclusively for a couple days while going about your work.
+
+</TabItem>
+<TabItem value='6.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='6.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 6.2
+
+<Tabs>
+<TabItem value='6.2-q' label='Question'>
+
+Customize your editor. Look through tips and tricks online, and look through other people's configurations (often, they are well-documented).
+
+</TabItem>
+<TabItem value='6.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='6.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 6.3
+
+<Tabs>
+<TabItem value='6.3-q' label='Question'>
+
+Experiment with plugins for your editor.
+
+</TabItem>
+<TabItem value='6.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='6.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 6.4
+
+<Tabs>
+<TabItem value='6.4-q' label='Question'>
+
+Commit to using a powerful editor for at least a couple weeks: you should start seeing the benefits by then. At some point, you should be able to get your editor to work as fast as you think.
+
+</TabItem>
+<TabItem value='6.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='6.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 6.5
+
+<Tabs>
+<TabItem value='6.5-q' label='Question'>
+
+Install a linter (e.g. pyflakes for python) link it to your editor and test it is working.
+
+</TabItem>
+<TabItem value='6.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='6.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 7 - Version control (Git)
+
+### Exercises
+
+#### 7.1
+
+<Tabs>
+<TabItem value='7.1-q' label='Question'>
+
+On a repo try modifying an existing file. What happens when you do `git stash`? What do you see when running `git log --all --oneline`? Run `git stash pop` to undo what you did with `git stash`. In what scenario might this be useful?
+
+</TabItem>
+<TabItem value='7.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.2
+
+<Tabs>
+<TabItem value='7.2-q' label='Question'>
+
+One common mistake when learning git is to commit large files that should not be managed by git or adding sensitive information. Try adding a file to a repository, making some commits and then deleting that file from history (you may want to look at [this](https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository)). Also if you do want git to manage large files for you, look into [Git-LFS](https://git-lfs.github.com/).
+
+</TabItem>
+<TabItem value='7.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.3
+
+<Tabs>
+<TabItem value='7.3-q' label='Question'>
+
+Git is really convenient for undoing changes but one has to be familiar even with the most unlikely changes
+
+1. If a file is mistakenly modified in some commit it can be reverted with `git revert`. However if a commit involves several changes `revert` might not be the best option. How can we use `git checkout` to recover a file version from a specific commit?
+2. Create a branch, make a commit in said branch and then delete it. Can you still recover said commit? Try looking into `git reflog`. (Note: Recover dangling things quickly, git will periodically automatically clean up commits that nothing points to.)
+3. If one is too trigger happy with `git reset --hard` instead of `git reset` changes can be easily lost. However since the changes were staged, we can recover them. (look into `git fsck --lost-found` and `.git/lost-found`).
+
+</TabItem>
+<TabItem value='7.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.4
+
+<Tabs>
+<TabItem value='7.4-q' label='Question'>
+
+In any git repo look under the folder `.git/hooks` you will find a bunch of scripts that end with `.sample`. If you rename them without the `.sample` they will run based on their name. For instance `pre-commit` will execute before doing a commit. Experiment with them.
+
+</TabItem>
+<TabItem value='7.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.5
+
+<Tabs>
+<TabItem value='7.5-q' label='Question'>
+
+Like many command line tools `git` provides a configuration file (or dotfile) called `~/.gitconfig` . Create an alias using `~/.gitconfig` so that when you run `git graph` you get the output of `git log --oneline --decorate --all --graph` (this is a good command to quickly visualize the commit graph).
+
+</TabItem>
+<TabItem value='7.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.6
+
+<Tabs>
+<TabItem value='7.6-q' label='Question'>
+
+Git also lets you define global ignore patterns under `~/.gitignore_global`, this is useful to prevent common errors like adding RSA keys. Create a `~/.gitignore_global` file and add the pattern `*rsa`, then test that it works in a repo.
+
+</TabItem>
+<TabItem value='7.6-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.6-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.7
+
+<Tabs>
+<TabItem value='7.7-q' label='Question'>
+
+Once you start to get more familiar with `git`, you will find yourself running into common tasks, such as editing your `.gitignore`. [git extras](https://github.com/tj/git-extras/blob/master/Commands.md) provides a bunch of little utilities that integrate with `git`. For example `git ignore PATTERN` will add the specified pattern to the `.gitignore` file in your repo and `git ignore-io LANGUAGE` will fetch the common ignore patterns for that language from [`gitignore.io`](https://www.toptal.com/developers/gitignore). Install `git extras` and try using some tools like `git alias` or `git ignore`.
+
+</TabItem>
+<TabItem value='7.7-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.7-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.8
+
+<Tabs>
+<TabItem value='7.8-q' label='Question'>
+
+Git GUI programs can be a great resource sometimes. Try running [`gitk`](https://git-scm.com/docs/gitk) in a git repo and explore the different parts of the interface. Then run `gitk --all` what are the differences?
+
+</TabItem>
+<TabItem value='7.8-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.8-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 7.9
+
+<Tabs>
+<TabItem value='7.9-q' label='Question'>
+
+Once you get used to command line applications GUI tools can feel cumbersome/bloated. A nice compromise between the two are ncurses based tools which can be navigated from the command line and still provide an interactive interface. Git has [`tig`](https://github.com/jonas/tig), try installing it and running it in a repo. You can find some usage examples [here](https://www.atlassian.com/blog/git/git-tig).
+
+</TabItem>
+<TabItem value='7.9-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='7.9-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 8 - Dotfiles
+
+### Exercises
+
+#### 8.1
+
+<Tabs>
+<TabItem value='8.1-q' label='Question'>
+
+Create a folder for your dotfiles and set up [version control](https://missing.csail.mit.edu/2019/version-control/).
+
+</TabItem>
+<TabItem value='8.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='8.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 8.2
+
+<Tabs>
+<TabItem value='8.2-q' label='Question'>
+
+Add a configuration for at least one program, e.g. your shell, with some customization (to start off, it can be something as simple as customizing your shell prompt by setting `$PS1`).
+
+</TabItem>
+<TabItem value='8.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='8.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 8.3
+
+<Tabs>
+<TabItem value='8.3-q' label='Question'>
+
+Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls ln -s for each file, or you could use a [specialized utility](http://dotfiles.github.io/utilities/).
+
+</TabItem>
+<TabItem value='8.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='8.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 8.4
+
+<Tabs>
+<TabItem value='8.4-q' label='Question'>
+
+Test your installation script on a fresh virtual machine.
+
+</TabItem>
+<TabItem value='8.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='8.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 8.5
+
+<Tabs>
+<TabItem value='8.5-q' label='Question'>
+
+Migrate all of your current tool configurations to your dotfiles repository.
+
+</TabItem>
+<TabItem value='8.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='8.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 8.6
+
+<Tabs>
+<TabItem value='8.6-q' label='Question'>
+
+Publish your dotfiles on GitHub.
+
+</TabItem>
+<TabItem value='8.6-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='8.6-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 9 - Backups
+
+### Exercises
+
+#### 9.1
+
+<Tabs>
+<TabItem value='9.1-q' label='Question'>
+
+Consider how you are (not) backing up your data and look into fixing/improving that.
+
+</TabItem>
+<TabItem value='9.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='9.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 9.2
+
+<Tabs>
+<TabItem value='9.2-q' label='Question'>
+
+Figure out how to backup your email accounts.
+
+</TabItem>
+<TabItem value='9.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='9.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 9.3
+
+<Tabs>
+<TabItem value='9.3-q' label='Question'>
+
+Choose a webservice you use often (Spotify, Google Music, etc.) and figure out what options for backing up your data are. Often people have already made tools (such as [`youtube-dl`](https://youtube-dl.org/)) solutions based on available APIs.
+
+</TabItem>
+<TabItem value='9.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='9.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 9.4
+
+<Tabs>
+<TabItem value='9.4-q' label='Question'>
+
+Think of a website you have visited repeatedly over the years and look it up in [archive.org](https://archive.org/web/), how many versions does it have?
+
+</TabItem>
+<TabItem value='9.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='9.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 9.5
+
+<Tabs>
+<TabItem value='9.5-q' label='Question'>
+
+One way to efficiently implement deduplication is to use hardlinks. Whereas symbolic link (also called a soft link or a symlink) is a file that points to another file or folder, a hardlink is a exact copy of the pointer (it uses the same inode and points to the same place in the disk). Thus if the original file is removed a symlink stops working whereas a hard link doesn’t. However, hardlinks only work for files. Try using the command ln to create hard links and compare them to symlinks created with `ln -s`. (In macOS you will need to install the gnu coreutils or the `hln` package).
+
+</TabItem>
+<TabItem value='9.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='9.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 10 - Automation
+
+### Exercises
+
+#### 10.1
+
+<Tabs>
+<TabItem value='10.1-q' label='Question'>
+
+Make a script that looks every minute in your downloads folder for any file that is a picture (you can look into [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) or use a regular expression to match common extensions) and moves them into your Pictures folder.
+
+</TabItem>
+<TabItem value='10.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='10.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 10.2
+
+<Tabs>
+<TabItem value='10.2-q' label='Question'>
+
+Write a cron script to weekly check for outdated packages in your system and prompts you to update them or updates them automatically.
+
+</TabItem>
+<TabItem value='10.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='10.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 11 - Machine introspection
+
+### Exercises
+
+#### 11.1
+
+<Tabs>
+<TabItem value='11.1-q' label='Question'>
+
+`locate`? `dmidecode`? `tcpdump`? `/boot`? `iptables`? `/proc`?
+
+</TabItem>
+<TabItem value='11.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='11.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 12 - Program introspection
+
+tbd
+
+## 13 - Package dependency management
+
+tbd
+
+## 14 - OS customization
+
+### Exercises
+
+#### 14.1
+
+<Tabs>
+<TabItem value='14.1-q' label='Question'>
+
+Figure out how to remap your Caps Lock key to something you use more often (such as Escape or Ctrl or Backspace).
+
+</TabItem>
+<TabItem value='14.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='14.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 14.2
+
+<Tabs>
+<TabItem value='14.2-q' label='Question'>
+
+Make a custom global keyboard shortcut to open a new terminal window or a new browser window.
+
+</TabItem>
+<TabItem value='14.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='14.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 15 - Remote machines
+
+### Exercises
+
+#### 15.1
+
+<Tabs>
+<TabItem value='15.1-q' label='Question'>
+
+For SSH to work the host needs to be running an SSH server. Install an SSH server (such as OpenSSH) in a virtual machine so you can complete the rest of the exercises. To figure out what is the ip of the machine run the command `ip addr` and look for the inet field (ignore the `127.0.0.1` entry, that corresponds to the loopback interface).
+
+</TabItem>
+<TabItem value='15.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='15.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 15.2
+
+<Tabs>
+<TabItem value='15.2-q' label='Question'>
+
+Go to `~/.ssh/` and check if you have a pair of SSH keys there. If not, generate them with `ssh-keygen -t rsa -b 4096`. It is recommended that you use a password and use `ssh-agent`, more info [here](https://www.ssh.com/academy/ssh/agent).
+
+</TabItem>
+<TabItem value='15.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='15.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 15.3
+
+<Tabs>
+<TabItem value='15.3-q' label='Question'>
+
+Use `ssh-copy-id` to copy the key to your virtual machine. Test that you can ssh without a password. Then, edit your `sshd_config` in the server to disable password authentication by editing the value of `PasswordAuthentication`. Disable root login by editing the value of `PermitRootLogin`.
+
+</TabItem>
+<TabItem value='15.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='15.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 15.4
+
+<Tabs>
+<TabItem value='15.4-q' label='Question'>
+
+Edit the `sshd_config` in the server to change the ssh port and check that you can still ssh. If you ever have a public facing server, a non default port and key only login will throttle a significant amount of malicious attacks.
+
+</TabItem>
+<TabItem value='15.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='15.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 15.5
+
+<Tabs>
+<TabItem value='15.5-q' label='Question'>
+
+Install mosh in your server/VM, establish a connection and then disconnect the network adapter of the server/VM. Can mosh properly recover from it?
+
+</TabItem>
+<TabItem value='15.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='15.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 15.6
+
+<Tabs>
+<TabItem value='15.6-q' label='Question'>
+
+Another use of local port forwarding is to tunnel certain host to the server. If your network filters some website like for example `reddit.com` you can tunnel it through the server as follows:
+
+- Run `ssh remote_server -L 80:reddit.com:80`
+- Set `reddit.com` and `www.reddit.com` to `127.0.0.1` in `/etc/hosts`
+- Check that you are accessing that website through the server
+- If it is not obvious use a website such as [ipinfo.io](https://ipinfo.io/) which will change depending on your host public ip.
+
+</TabItem>
+<TabItem value='15.6-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='15.6-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 15.7
+
+<Tabs>
+<TabItem value='15.7-q' label='Question'>
+
+Background port forwarding can easily be achieved with a couple of extra flags. Look into what the `-N` and `-f` flags do in `ssh` and figure out what a command such as this `ssh -N -f -L 9999:localhost:8888 foobar@remote_server` does.
+
+</TabItem>
+<TabItem value='15.7-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='15.7-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 16 - Web and browsers
+
+### Exercises
+
+#### 16.1
+
+<Tabs>
+<TabItem value='16.1-q' label='Question'>
+
+Edit a keyword search engine that you use often in your web browser.
+
+</TabItem>
+<TabItem value='16.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='16.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 16.2
+
+<Tabs>
+<TabItem value='16.2-q' label='Question'>
+
+Install the mentioned extensions. Look into how uBlock Origin/Privacy Badger can be disabled for a website. What differences do you see? Try doing it in a website with plenty of ads like YouTube.
+
+</TabItem>
+<TabItem value='16.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='16.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 16.3
+
+<Tabs>
+<TabItem value='16.3-q' label='Question'>
+
+Install Stylus and write a custom style for the class website using the CSS provided. Here are some common programming characters `= == === >= => ++ /= ~=`. What happens to them when changing the font to `Fira Code`? If you want to know more search for programming font ligatures.
+
+</TabItem>
+<TabItem value='16.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='16.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 16.4
+
+<Tabs>
+<TabItem value='16.4-q' label='Question'>
+
+Find a web api to get the weather in your city/area.
+
+</TabItem>
+<TabItem value='16.4-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='16.4-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 16.5
+
+<Tabs>
+<TabItem value='16.5-q' label='Question'>
+
+Use a WebDriver software like [Selenium](https://www.selenium.dev/) to automate some repetitive manual task that you perform often with your browser.
+
+</TabItem>
+<TabItem value='16.5-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='16.5-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+## 17 - Security and privacy
+
+### Exercises
+
+#### 17.1
+
+<Tabs>
+<TabItem value='17.1-q' label='Question'>
+
+Encrypt a file using PGP.
+
+</TabItem>
+<TabItem value='17.1-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='17.1-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 17.2
+
+<Tabs>
+<TabItem value='17.2-q' label='Question'>
+
+Use veracrypt to create a simple encrypted volume.
+
+</TabItem>
+<TabItem value='17.2-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='17.2-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
+
+#### 17.3
+
+<Tabs>
+<TabItem value='17.3-q' label='Question'>
+
+Enable 2FA for your most data sensitive accounts (e.g., GMail, Dropbox, Github, etc.).
+
+</TabItem>
+<TabItem value='17.3-a' label='Answer'>
+
+answer
+
+</TabItem>
+<TabItem value='17.3-ad' label='Additional Details'>
+
+None
+
+</TabItem>
+</Tabs>
