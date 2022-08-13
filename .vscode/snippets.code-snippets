@@ -1,23 +1,23 @@
 {
-	// Place your software-development-handbook workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"scope": "javascript,typescript",
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-	"Boilerplate blog front-matter": {
-		"prefix": "blog-front-matter",
-		"body": [
+  // Place your software-development-handbook workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "Boilerplate blog front-matter": {
+    "prefix": "blog-front-matter",
+    "body": [
       "---",
       "title: ${1:blogTitle}",
       "draft: false",
@@ -33,12 +33,12 @@
       "---",
       "",
       "$0"
-		],
-		"description": "Provides sensible default front matter options for blog posts"
-	},
-	"Boilerplate docs frontmatter": {
-		"prefix": "docs-front-matter",
-		"body": [
+    ],
+    "description": "Provides sensible default front matter options for blog posts"
+  },
+  "Boilerplate docs frontmatter": {
+    "prefix": "docs-front-matter",
+    "body": [
       "---",
       "title: ${1:docTitle}",
       "hide_title: false",
@@ -57,46 +57,46 @@
       "---",
       "",
       "$0",
-		],
-		"description": "Provides sensible default front matter options for a docs post"
-	},
-	"Blog truncation": {
-		"prefix": "blog-truncate",
-		"body": [
+    ],
+    "description": "Provides sensible default front matter options for a docs post"
+  },
+  "Blog truncation": {
+    "prefix": "blog-truncate",
+    "body": [
       "",
-			"<!--truncate-->",
+      "<!--truncate-->",
       "",
-			"$0"
-		],
-		"description": "Log output to console"
-	},
-	"Import complexity table": {
-		"prefix": "import-complexity-table",
-		"body": [
+      "$0"
+    ],
+    "description": "Log output to console"
+  },
+  "Import complexity table": {
+    "prefix": "import-complexity-table",
+    "body": [
       "import ${2:ComplexityTable} from '@site/docs/_Partials/_time-and-space-complexities/${1:_array}.mdx'",
       "<${2:ComplexityTable} />$0",
-		],
-		"description": "Streamlines process for importing complexity tables"
-	},
-	"Image boilerplate (basic)": {
-		"prefix": "image-basic",
-		"body": [
+    ],
+    "description": "Streamlines process for importing complexity tables"
+  },
+  "Image boilerplate (basic)": {
+    "prefix": "image-basic",
+    "body": [
       "<img $0 src={require('@site/static/${1:folderOrFile}').default}/>",
-		],
-		"description": "Allows for easy insertion of images."
-	},
-	"Image boilerplate (centered)": {
-		"prefix": "image-centered",
-		"body": [
+    ],
+    "description": "Allows for easy insertion of images."
+  },
+  "Image boilerplate (centered)": {
+    "prefix": "image-centered",
+    "body": [
       "<p align='center'>",
       "\t<img width='$0' src={require('@site/static/${1:folderOrFile}').default} />",
       "</p>"
-		],
-		"description": "Allows for easy insertion of centered images."
-	},
-	"Tabs boilerplate (with import statements)": {
-		"prefix": "tabs-with-import-statements",
-		"body": [
+    ],
+    "description": "Allows for easy insertion of centered images."
+  },
+  "Tabs boilerplate (with import statements)": {
+    "prefix": "tabs-with-import-statements",
+    "body": [
       "import Tabs from '@theme/Tabs';$0",
       "import TabItem from '@theme/TabItem';",
       "",
@@ -112,19 +112,19 @@
       "",
       "</TabItem>",
       "</Tabs>",
-		],
-		"description": "Allows for easy insertion of centered images."
-	},
-	"Perf best (dark green)": {
-		"prefix": "perf-darkgreen",
-		"body": [
+    ],
+    "description": "Allows for easy insertion of centered images."
+  },
+  "Perf best (dark green)": {
+    "prefix": "perf-darkgreen",
+    "body": [
       "$$\\colorbox{darkgreen}{$$O(1)$}$$"
-		],
-		"description": "Facilitates creation of color box with big-O details"
-	},
-	"Time complexity table boilerplate": {
-		"prefix": "tc-table",
-		"body": [
+    ],
+    "description": "Facilitates creation of color box with big-O details"
+  },
+  "Time complexity table boilerplate": {
+    "prefix": "tc-table",
+    "body": [
       "| Context | Worst | Average | Note |",
       "| :-- | :-: | :-: | :-- |",
       "| Access | $\\perfVeryGood{O}{1}$ | $\\perfVeryGood{\\Theta}{1}$ |  |",
@@ -132,12 +132,12 @@
       "| Insert | $\\perfAverage{O}{n}$ | $\\perfAverage{\\Theta}{n}$ |  |",
       "| Delete | $\\perfAverage{O}{n}$ | $\\perfAverage{\\Theta}{n}$ |  |",
       "| | | | |"
-		],
-		"description": "Facilitates creation of time complexity tables"
-	},
-	"Tabs for snapshot overviews": {
-		"prefix": "tabs-dsa-snapshot-overview",
-		"body": [
+    ],
+    "description": "Facilitates creation of time complexity tables"
+  },
+  "Tabs for snapshot overviews": {
+    "prefix": "tabs-dsa-snapshot-overview",
+    "body": [
       "<Tabs>",
       "<TabItem value='tc-worst' label='TC - Worst'>",
       "",
@@ -155,7 +155,57 @@
       "",
       "</TabItem>",
       "</Tabs>"
-		],
-		"description": "Facilitates creation of snapshot overview tabs for different data structures"
-	},
+    ],
+    "description": "Facilitates creation of snapshot overview tabs for different data structures"
+  },
+  "Questions/Answer tabs for JSNAD": {
+    "prefix": "jsnad-qa",
+    "body": [
+      "#### ${1:qNum}",
+      "",
+      "<Tabs>",
+      "<TabItem value='${1:qNum}-q' label='Question'>",
+      "",
+      "question$0",
+      "",
+      "</TabItem>",
+      "<TabItem value='${1:qNum}-a' label='Answer'>",
+      "",
+      "answer",
+      "",
+      "</TabItem>",
+      "<TabItem value='${1:qNum}-ad' label='Additional Details'>",
+      "",
+      "None",
+      "",
+      "</TabItem>",
+      "</Tabs>"
+    ],
+    "description": "Facilitates creation of Q&A for JSNAD quizzes"
+  },
+  "Question, Solution, Hints block for Algorithm Design Manual (ADM)": {
+    "prefix": "adm-problem",
+    "body": [
+      "<Tabs>",
+      "<TabItem value='adm-p${1:num}' label='Problem'>",
+      "",
+      "tbd$0",
+      "",
+      "</TabItem>",
+      "<TabItem value='adm-s${1:num}' label='Solution'>",
+      "",
+      "tbd",
+      "",
+      "</TabItem>",
+      "<TabItem value='adm-h${1:num}' label='Hints'>",
+      "",
+      "tbd",
+      "",
+      "</TabItem>",
+      "</Tabs>",
+      "",
+      "---"
+    ],
+    "description": "Facilitates creation of problems in ADM"
+  },
 }

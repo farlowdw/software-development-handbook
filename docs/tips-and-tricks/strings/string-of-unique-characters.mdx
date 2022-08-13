@@ -1,0 +1,28 @@
+---
+title: String of Unique Characters
+hide_title: false
+sidebar_label: String of unique characters
+description: Article on string of unique characters
+draft: false
+tags: [Unique Characters]
+keywords: [tbd]
+image: https://github.com/farlowdw.png
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Introduction
+
+A neat trick to count the characters in a string of unique characters is to use a 26-bit bitmask to indicate which lower case Latin characters are inside the string.
+
+```python
+mask = 0
+for c in word:
+  mask |= (1 << (ord(c) - ord('a')))
+```
+
+To determine if two strings have common characters, perform `&` on the two bitmasks. If the result is non-zero (i.e., `mask_a & mask_b > 0`) then the two strings have common characters.
