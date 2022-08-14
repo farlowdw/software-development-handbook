@@ -29,7 +29,7 @@ const config = {
   tagline: 'Software engineering handbooks are cool',
   url: 'https://dwf.netlify.app',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
