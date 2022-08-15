@@ -255,6 +255,30 @@ const sidebars = {
       items: [
         {
           type: 'category',
+          label: 'Python',
+          link: {
+            type: 'doc',
+            id: 'reference/python/index'
+          },
+          items: [
+            {
+              type: 'category',
+              label: 'Deep Dive',
+              link: {
+                type: 'doc',
+                id: 'reference/python/deep-dive/index'
+              },
+              items: [
+                'reference/python/deep-dive/functional-programming',
+                'reference/python/deep-dive/iteration-and-generators',
+                'reference/python/deep-dive/hash-maps',
+                'reference/python/deep-dive/object-oriented-programming',
+              ]
+            },
+          ]
+        },
+        {
+          type: 'category',
           label: 'CSS',
           link: {
             type: 'doc',
