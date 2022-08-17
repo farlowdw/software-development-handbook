@@ -191,16 +191,6 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
-          {
-            to: '/docs/course-notes/development-and-engineering/jsnad/jsnad-course-notes',
-            label: 'JSNAD',
-            position: 'left'
-          },
-          {
-            to: '/docs/course-notes/development-and-engineering/jsnsd/jsnsd-course-notes',
-            label: 'JSNSD',
-            position: 'left'
-          },
         ],
       },
       footer: {
