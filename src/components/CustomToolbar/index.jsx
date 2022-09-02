@@ -6,9 +6,10 @@ import {
 } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { lightTheme, darkTheme } from '../../mui-theme';
 import { useColorMode } from '@docusaurus/theme-common';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+const muiDarkTheme = createTheme({ palette: { mode: 'dark' } });
+const muiLightTheme = createTheme({ palette: { mode: 'light' } });
 
 function CustomToolbar() {
 	return (
@@ -18,19 +19,19 @@ function CustomToolbar() {
 	);
 }
 
-export default function ExportCustomToolbar() {
+export default function ExportCustomToolbar () {
 	const { data, loading } = useDemoData({
 		dataSet: 'Commodity',
 		rowLength: 4,
 		maxColumns: 6,
 	});
 
-	const { colorMode } = useColorMode();
-	const themeToUse = colorMode === 'dark' ? darkTheme : lightTheme;
-	const theme = createTheme(themeToUse);
+  const { colorMode } = useColorMode();
+  const muiThemeToUse = colorMode === 'dark' ? muiDarkTheme : muiLightTheme;
+  const muiTheme = createTheme(muiThemeToUse);
 
-	return (
-		<ThemeProvider theme={theme}>
+  return (
+    <ThemeProvider theme={muiTheme}>
 			<div style={{ height: 300, width: '100%' }}>
 				<DataGrid
 					{...data}
@@ -40,6 +41,6 @@ export default function ExportCustomToolbar() {
 					}}
 				/>
 			</div>
-		</ThemeProvider>
-	);
+    </ThemeProvider>
+  );
 }
