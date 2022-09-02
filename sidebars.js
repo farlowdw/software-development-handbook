@@ -176,6 +176,7 @@ const sidebars = {
       items: [
         'learning-resources/general-list',
         'learning-resources/curated-list',
+        'learning-resources/neetcode',
       ]
     },
     {
@@ -197,6 +198,7 @@ const sidebars = {
             id: 'reference/python/index'
           },
           items: [
+            'reference/python/language-observations',
             {
               type: 'category',
               label: 'Deep Dive',
@@ -241,7 +243,8 @@ const sidebars = {
           ]
         },
       ]
-    }
+    },
+    'reference-list'
   ],
   // But you can create a sidebar manually
   /*
