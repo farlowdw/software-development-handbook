@@ -177,14 +177,24 @@ const config = {
             activeBaseRegex: `/docs/`,
           },
           {
+            href: 'https://dwflc.netlify.app/',
+            label: 'LeetCode',
+            position: 'left',
+          },
+          {
+            href: 'https://dwf-books.netlify.app/',
+            label: 'Book/Course Notes',
+            position: 'left',
+          },
+          {
             to: '/blog',
             label: 'Blog',
-            position: 'left'
+            position: 'right'
           },
           {
             to: '/blog/archive',
             label: 'Blog Archive',
-            position: 'left'
+            position: 'right'
           },
           {
             href: 'https://github.com/facebook/docusaurus',

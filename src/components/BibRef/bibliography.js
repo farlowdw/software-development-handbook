@@ -13,7 +13,13 @@ const bibItems = {
     },
   ],
   onlineMaterials: [
-
+    {
+      id: 'fangprepSubstack',
+      title: 'Fangprep - Big Tech Interview Prep',
+      author: 'Daniel Habib',
+      time: '',
+      link: 'https://fangprep.substack.com/archive?sort=top',
+    },
   ],
 }
 

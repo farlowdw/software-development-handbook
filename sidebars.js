@@ -162,6 +162,14 @@ const sidebars = {
         id: 'templates/index'
       },
       items: [
+        {
+          type: 'category',
+          label: 'Interview',
+          collapsed: true,
+          items: [
+            'templates/interview/algorithm-grading-rubric'
+          ]
+        },
         'templates/binary-search'
       ]
     },
