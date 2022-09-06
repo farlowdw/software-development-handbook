@@ -177,7 +177,7 @@ const config = {
             activeBaseRegex: `/docs/`,
           },
           {
-            href: 'https://dwflc.netlify.app/',
+            href: 'https://dwflc.netlify.app/docs/intro',
             label: 'LeetCode',
             position: 'left',
           },

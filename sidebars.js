@@ -164,13 +164,20 @@ const sidebars = {
       items: [
         {
           type: 'category',
+          label: 'Problem-solving',
+          collapsed: true,
+          items: [
+            'templates/problem-solving/binary-search'
+          ]
+        },
+        {
+          type: 'category',
           label: 'Interview',
           collapsed: true,
           items: [
             'templates/interview/algorithm-grading-rubric'
           ]
         },
-        'templates/binary-search'
       ]
     },
     {
