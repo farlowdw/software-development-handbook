@@ -174,7 +174,6 @@ const config = {
             to: '/docs/intro',
             label: 'Handbook',
             position: 'left',
-            activeBaseRegex: `/docs/`,
           },
           {
             href: 'https://dwflc.netlify.app/docs/intro',
@@ -182,8 +181,13 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://dwf-books.netlify.app/',
-            label: 'Books/Courses/Guides/Snippets',
+            href: 'https://dwf-books.netlify.app/docs/intro',
+            label: 'BCGS Notes',
+            position: 'left',
+          },
+          {
+            href: 'https://dwf-books.netlify.app/docs/reference/python/',
+            label: 'Python Reference',
             position: 'left',
           },
           {
