@@ -183,7 +183,7 @@ const config = {
           },
           {
             href: 'https://dwf-books.netlify.app/',
-            label: 'Book/Course Notes',
+            label: 'Books/Courses/Guides/Snippets',
             position: 'left',
           },
           {

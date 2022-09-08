@@ -60,7 +60,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Sorting and Searching',
-          collapsed: false,
+          collapsed: true,
           link: {
             type: 'doc',
             id: 'algorithms/sorting-and-searching/index'
@@ -72,7 +72,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Named Algorithms',
-          collapsed: false,
+          collapsed: true,
           link: {
             type: 'doc',
             id: 'algorithms/named-algorithms/index'
@@ -178,6 +178,14 @@ const sidebars = {
             'templates/interview/algorithm-grading-rubric'
           ]
         },
+        {
+          type: 'category',
+          label: 'Learning',
+          collapsed: true,
+          items: [
+            'templates/learning/feynman-technique'
+          ]
+        },
       ]
     },
     {
@@ -192,71 +200,6 @@ const sidebars = {
         'learning-resources/general-list',
         'learning-resources/curated-list',
         'learning-resources/neetcode',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Reference',
-      collapsed: false,
-      link: {
-        type: 'generated-index',
-        title: 'Reference Resources',
-        description: 'Something kind of wonderful.',
-        keywords: ['reference']
-      },
-      items: [
-        {
-          type: 'category',
-          label: 'Python',
-          link: {
-            type: 'doc',
-            id: 'reference/python/index'
-          },
-          items: [
-            'reference/python/language-observations',
-            {
-              type: 'category',
-              label: 'Deep Dive',
-              link: {
-                type: 'doc',
-                id: 'reference/python/deep-dive/index'
-              },
-              items: [
-                'reference/python/deep-dive/functional-programming',
-                'reference/python/deep-dive/iteration-and-generators',
-                'reference/python/deep-dive/hash-maps',
-                'reference/python/deep-dive/object-oriented-programming',
-              ]
-            },
-          ]
-        },
-        {
-          type: 'category',
-          label: 'CSS',
-          link: {
-            type: 'doc',
-            id: 'reference/css/index'
-          },
-          items: [
-            'reference/css/css-diner',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Docusaurus',
-          collapsed: false,
-          link: {
-            type: 'doc',
-            id: 'reference/docusaurus/index'
-          },
-          items: [
-            'reference/docusaurus/documentation-notes',
-            'reference/docusaurus/cheatsheet',
-            'reference/docusaurus/features',
-            'reference/docusaurus/katex',
-            'reference/docusaurus/templates',
-          ]
-        },
       ]
     },
     'reference-list'
