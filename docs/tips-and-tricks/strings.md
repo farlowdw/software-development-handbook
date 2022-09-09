@@ -1,10 +1,10 @@
 ---
-title: String of Unique Characters
+title: Tips and Tricks for Strings
 hide_title: false
-sidebar_label: String of unique characters
-description: Article on string of unique characters
+sidebar_label: Strings
+description: Tips and tricks for dealing with strings of data
 draft: false
-tags: [Unique Characters]
+tags: [Tips and Tricks]
 keywords: [tbd]
 image: https://github.com/farlowdw.png
 hide_table_of_contents: false
@@ -16,6 +16,27 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Introduction
+
+## Common operations
+
+### Sort a string alphabetically
+
+<Tabs>
+<TabItem value='python' label='Python'>
+
+```python
+def sort_string(a)
+    return ''.join(sorted(a))
+```
+
+
+
+</TabItem>
+</Tabs>
+
+## Miscellaneous
+
+### Count the characters in a string of unique characters
 
 A neat trick to count the characters in a string of unique characters is to use a 26-bit bitmask to indicate which lower case Latin characters are inside the string.
 

@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 | Problem | Difficulty | Solution | Completed | Note |
 | :-- | :-- | :-- | :-- |
-| [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | Easy | [Video](https://www.youtube.com/watch?v=3OamzN90kPg&ab_channel=NeetCode) |  |  |
+| [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | Easy | [Video](https://www.youtube.com/watch?v=3OamzN90kPg&ab_channel=NeetCode) | &#9989; |  |
 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | Easy | [Video](https://www.youtube.com/watch?v=9UtInBqnCgA&ab_channel=NeetCode) |  |  |
 | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | [Video](https://www.youtube.com/watch?v=KLlXCFG5TnA&ab_channel=NeetCode) |  |  |
 | [Group Anagrams](https://leetcode.com/problems/group-anagrams/) | Medium | [Video](https://www.youtube.com/watch?v=vzdNOK2oB2E&ab_channel=NeetCode) |  |  |

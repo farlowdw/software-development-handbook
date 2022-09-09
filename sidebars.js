@@ -139,18 +139,7 @@ const sidebars = {
         id: 'tips-and-tricks/index'
       },
       items: [
-        {
-          type: 'category',
-          label: 'Strings',
-          collapsed: true,
-          link: {
-            type: 'doc',
-            id: 'tips-and-tricks/strings/index'
-          },
-          items: [
-            'tips-and-tricks/strings/string-of-unique-characters'
-          ]
-        },
+        'tips-and-tricks/strings'
       ]
     },
     {
