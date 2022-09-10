@@ -191,7 +191,8 @@ const sidebars = {
         'learning-resources/neetcode',
       ]
     },
-    'reference-list'
+    'definitions',
+    'reference-list',
   ],
   // But you can create a sidebar manually
   /*
