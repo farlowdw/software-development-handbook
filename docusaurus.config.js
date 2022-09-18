@@ -186,6 +186,11 @@ const config = {
             position: 'left',
           },
           {
+            href: 'https://manim.netlify.app/docs/intro',
+            label: 'Manim',
+            position: 'left',
+          },
+          {
             href: 'https://dwf-books.netlify.app/docs/reference/python/',
             label: 'Python Reference',
             position: 'left',

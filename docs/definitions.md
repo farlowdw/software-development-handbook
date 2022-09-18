@@ -100,6 +100,9 @@ Correctness may be formally verified by means of a proof (e.g., induction, contr
 ## P
 
 
+### Path (graph theory)
+
+> A **path** is a trail in which all vertices (and therefore also all edges) are distinct.
 
 ## Q
 
@@ -116,6 +119,10 @@ Correctness may be formally verified by means of a proof (e.g., induction, contr
 ## T
 
 
+### Trail (graph theory)
+
+> A **trail** is a walk in which all edges are distinct.
+
 
 ## U
 
@@ -127,6 +134,11 @@ Correctness may be formally verified by means of a proof (e.g., induction, contr
 
 ## W
 
+### Walk (graph theory)
+
+> A **walk** is a finite or infinite sequence of edges which joins a sequence of vertices.
+
+Let $G=(V,E,\phi)$ be a graph. A finite walk is a sequence of edges $(e_1,e_2,\ldots,e_{n-1})$ for which there is a sequence of vertices $(v_1,v_2,\ldots,v_{n-1}, v_n)$ such that $\phi(e_i)=\{v_i,v_{i+1}\}$ for $i=1,2,\ldots,n-1$. $(v_1,v_2,\ldots,v_n)$ is the *vertex sequence* of the walk. The walk is *closed* if $v_1=v_n$ and it is *open* otherwise. An infinite walk is a sequence of edges of the same type described here, but with no first or last vertex, and a semi-infinite walk (or ray) has a first vertex but no last vertex.
 
 
 ## X
