@@ -113,6 +113,7 @@ const sidebars = {
         id: 'topics/index'
       },
       items: [
+        'topics/big-o',
         'topics/math',
         'topics/matrices',
         'topics/intervals',
@@ -189,10 +190,12 @@ const sidebars = {
         'learning-resources/general-list',
         'learning-resources/curated-list',
         'learning-resources/neetcode',
+        'learning-resources/leetcode-problems-by-category',
       ]
     },
     'definitions',
     'reference-list',
+    'faq',
   ],
   // But you can create a sidebar manually
   /*

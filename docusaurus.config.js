@@ -11,17 +11,7 @@ const katex = require('rehype-katex');
 const mermaid = require('mdx-mermaid');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
-const macros = {
-  "\\x": "x+1",
-  "\\perfVeryGood": "\\colorbox{darkgreen}{$#1(#2)$}",
-  "\\perfGood": "\\colorbox{darkolivegreen}{$#1(#2)$}",
-  "\\perfAverage": "\\colorbox{b3a800}{$#1(#2)$}",
-  "\\perfBad": "\\colorbox{b36200}{$#1(#2)$}",
-  "\\perfVeryBad": "\\colorbox{darkred}{$#1(#2)$}",
-  "\\perfCustom": "\\colorbox{#3}{$#1(#2)$}",
-  "\\perfNeutral": "\\colorbox{gray}{$#1(#2)$}",
-};
+const katexMacros = require('./katex-macros');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -67,7 +57,7 @@ const config = {
           rehypePlugins: [[katex, {
             throwOnError: true,
             globalGroup: true,
-            macros
+            macros: katexMacros
           }]],
           showLastUpdateTime: true
         },
@@ -81,7 +71,7 @@ const config = {
           rehypePlugins: [[katex, {
             throwOnError: true,
             globalGroup: true,
-            macros
+            macros: katexMacros
           }]],
           blogTitle: 'Blog title coming soon',
           blogDescription: 'Description coming soon',
@@ -98,7 +88,7 @@ const config = {
           rehypePlugins: [[katex, {
             throwOnError: true,
             globalGroup: true,
-            macros
+            macros: katexMacros
           }]],
         },
       }),

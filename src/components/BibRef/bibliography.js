@@ -11,6 +11,13 @@ const bibItems = {
       time: "2020",
       link: "https://www.amazon.com/Algorithm-Design-Manual-Computer-Science/dp/3030542556",
     },
+    {
+      id: "DK1994",
+      title: "Concrete Mathematics",
+      author: "Donald Knuth, Ronald Graham, and Oren Patashnik",
+      time: "1994",
+      link: "https://www.amazon.com/Concrete-Mathematics-Foundation-Computer-Science/dp/0201558025",
+    },
   ],
   onlineMaterials: [
     {

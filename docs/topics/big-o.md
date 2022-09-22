@@ -1,10 +1,11 @@
 ---
-title: Patterns Overview
+title: Big-O
 hide_title: false
-description: Patterns overview
+sidebar_label: Big-O
+description: Article on Big-O
 draft: false
-tags: [Patterns]
-keywords: [patterns]
+tags: [Big-O]
+keywords: [Big-O]
 image: https://github.com/farlowdw.png
 hide_table_of_contents: false
 toc_min_heading_level: 2
@@ -16,4 +17,4 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-tbd
+something
