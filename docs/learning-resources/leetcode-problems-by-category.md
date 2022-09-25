@@ -101,7 +101,7 @@ If a problem's input is an array comprised of numeric elements and you find your
 
 ## S
 
-### Sliding window
+## Sliding window
 
 If a problem has explicit constraints such as
 
@@ -116,16 +116,16 @@ and/or asks for
 
 then **think about a sliding window**. Note that not all problems with these characteristics should be solved with a sliding window, and not all sliding window problems have these characteristics. These characteristics should only be used as a general guideline.
 
-#### Clever endpoint trick
+### Clever endpoint trick
 
 - <LC id='713' type='long' ></LC>
 - <LC id='2348' type='long' ></LC>
 
-#### Fixed-width
+### Fixed-width
 
 - <LC id='643' type='long' ></LC>
 
-#### Variable-width
+### Variable-width
 
 - <LC id='1004' type='long' ></LC>
 
@@ -159,5 +159,134 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 ## Z
 
+---
 
+## SQL
 
+:::note Useful Reference
+
+- <LC id='180' type='long' ></LC>: Contains a detailed tutorial on gaps and islands problems and how to effectively use <code>ROW_NUMBER()</code> to identify where gaps occur.
+- <LC id='185' type='long' ></LC>: Contains a detailed tutorial on correlated subqueries.
+
+:::
+
+### Beginner problems
+
+- <LC id='175' type='long' >Can you join two tables effectively?</LC> 
+- <LC id='182' type='long' >Can you effectively use GROUP BY to group records and then use HAVING to apply aggregate filtering?</LC> 
+- <LC id='511' type='long' >Can you effectively use GROUP BY along with an aggregate function such as MIN()?</LC> 
+- <LC id='577' type='long' >Can you use a LEFT JOIN effectively?</LC> 
+- <LC id='580' type='long' >Can you use a LEFT JOIN effectively?</LC> 
+- <LC id='584' type='long' >Can you effectively construct WHERE clauses and deal with NULL values?</LC> 
+
+### Correlated subquery
+
+- <LC id='176' type='long' ></LC> 
+- <LC id='178' type='long' ></LC> 
+- <LC id='185' type='long' ></LC> 
+- <LC id='570' type='long' ></LC> 
+- <LC id='579' type='long' ></LC> 
+- <LC id='585' type='long' ></LC> 
+
+### Dates and timestamps
+
+- <LC id='197' type='long' >DATE_ADD() and DATE_SUB() in MySQL or adding an interval in Postgres</LC> 
+
+### DELETE
+
+- <LC id='196' type='long' ></LC> 
+
+### EXISTS and NOT EXISTS
+
+- <LC id='183' type='long' ></LC> 
+- <LC id='262' type='long' ></LC> 
+- <LC id='585' type='long' ></LC> 
+
+### Gaps and islands
+
+- <LC id='180' type='long' ></LC> 
+
+### IN and NOT IN
+
+- <LC id='183' type='long' ></LC> 
+- <LC id='184' type='long' ></LC> 
+
+### Indicator variables
+
+- <LC id='262' type='long' ></LC> 
+- <LC id='578' type='long' ></LC> 
+
+### Joins
+
+#### Cross-joins
+
+- <LC id='196' type='long' ></LC> 
+- <LC id='579' type='long' ></LC> 
+
+#### LEFT JOIN
+
+- <LC id='175' type='long' ></LC> 
+- <LC id='183' type='long' ></LC> 
+
+#### Non-equi-joins
+
+- <LC id='178' type='long' ></LC> 
+- <LC id='196' type='long' ></LC> 
+- <LC id='197' type='long' ></LC> 
+- <LC id='569' type='long' ></LC> 
+
+#### Self-joins
+
+- <LC id='181' type='long' ></LC> 
+- <LC id='196' type='long' ></LC> 
+- <LC id='197' type='long' ></LC> 
+
+### Median
+
+- <LC id='569' type='long' ></LC> 
+- <LC id='571' type='long' ></LC> 
+
+### NOT EXISTS (see EXISTS)
+
+### NOT IN (see IN)
+
+### NULL values and effective management
+
+- <LC id='176' type='long' ></LC> 
+- <LC id='584' type='long' ></LC> 
+
+### Recursive CTEs
+
+- <LC id='571' type='long' ></LC> 
+- <LC id='579' type='long' ></LC> 
+
+### Stored procedures
+
+- <LC id='177' type='long' ></LC> 
+
+### Window functions 
+
+#### DENSE_RANK()
+
+- <LC id='178' type='long' ></LC> 
+- <LC id='184' type='long' ></LC> 
+- <LC id='185' type='long' ></LC> 
+
+#### PERCENTILE_CONT()
+
+- <LC id='571' type='long' ></LC> 
+
+#### RANK()
+
+- <LC id='512' type='long' ></LC> 
+
+#### ROW_NUMBER()
+
+- <LC id='180' type='long' ></LC> 
+- <LC id='569' type='long' ></LC> 
+- <LC id='571' type='long' ></LC> 
+
+#### SUM()
+
+- <LC id='534' type='long' ></LC> 
+- <LC id='579' type='long' ></LC> 

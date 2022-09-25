@@ -18,6 +18,13 @@ const bibItems = {
       time: "1994",
       link: "https://www.amazon.com/Concrete-Mathematics-Foundation-Computer-Science/dp/0201558025",
     },
+    {
+      id: "AB2020",
+      title: "Learning SQL, 3rd Edition",
+      author: "Alan Beaulieu",
+      time: "2020",
+      link: "https://www.amazon.com/Learning-SQL-Generate-Manipulate-Retrieve/dp/1492057614",
+    },
   ],
   onlineMaterials: [
     {
