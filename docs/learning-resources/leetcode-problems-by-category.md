@@ -170,6 +170,63 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 :::
 
+### Summer 2021
+
+#### Best problems
+
+- <LC id='586' type='long' >Try to account for ties by using RANK_OVER()</LC> 
+- <LC id='601' type='long' ></LC> 
+- <LC id='608' type='long' ></LC> 
+- <LC id='615' type='long' ></LC> 
+- <LC id='618' type='long' ></LC> 
+- <LC id='1045' type='long' ></LC> 
+- <LC id='1126' type='long' >Sometimes you can do powerful things with window function arithmetic.</LC> 
+- <LC id='1127' type='long' >CTEs can be agents of clarity.</LC> 
+- <LC id='1159' type='long' ></LC> 
+- <LC id='1179' type='long' ></LC> 
+- <LC id='1212' type='long' ></LC> 
+- <LC id='1225' type='long' ></LC> 
+- <LC id='1321' type='long' ></LC> 
+- <LC id='1341' type='long' >If you have used a GROUP BY clause, then you can use aggregates in the ORDER BY clause of a window function.</LC> 
+- <LC id='1369' type='long' ></LC> 
+- <LC id='1384' type='long' ></LC> 
+- <LC id='1454' type='long' ></LC> 
+- <LC id='1468' type='long' >Provides a great opportunity to see how window functions can be used with CASE statements.</LC> 
+- <LC id='1596' type='long' >Window function with ORDER BY COUNT()</LC> 
+
+#### Good problems
+
+- <LC id='607' type='long' ></LC> 
+- <LC id='626' type='long' ></LC> 
+- <LC id='1141' type='long' ></LC>
+- <LC id='1193' type='long' ></LC>  
+- <LC id='1205' type='long' ></LC> 
+- <LC id='1285' type='long' ></LC> 
+- <LC id='1501' type='long' ></LC> 
+
+#### Revisit
+
+- <LC id='607' type='long' ></LC> 
+- <LC id='627' type='long' ></LC> 
+- <LC id='1045' type='long' ></LC> 
+- <LC id='1050' type='long' ></LC> 
+- <LC id='1076' type='long' ></LC> 
+- <LC id='1083' type='long' ></LC> 
+- <LC id='1084' type='long' ></LC> 
+- <LC id='1098' type='long' ></LC> 
+- <LC id='1127' type='long' ></LC> 
+- <LC id='1179' type='long' ></LC> 
+- <LC id='1205' type='long' ></LC> 
+- <LC id='1212' type='long' ></LC> 
+- <LC id='1225' type='long' ></LC> 
+- <LC id='1241' type='long' ></LC> 
+- <LC id='1280' type='long' ></LC> 
+- <LC id='1336' type='long' ></LC>
+- <LC id='1364' type='long' ></LC>  
+- <LC id='1384' type='long' ></LC> 
+- <LC id='1501' type='long' ></LC> 
+- <LC id='1511' type='long' ></LC> 
+
 ### Beginner problems
 
 - <LC id='175' type='long' >Can you join two tables effectively?</LC> 
@@ -178,6 +235,24 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='577' type='long' >Can you use a LEFT JOIN effectively?</LC> 
 - <LC id='580' type='long' >Can you use a LEFT JOIN effectively?</LC> 
 - <LC id='584' type='long' >Can you effectively construct WHERE clauses and deal with NULL values?</LC> 
+- <LC id='595' type='long' >Can you handle a WHERE clause with an OR component?</LC> 
+- <LC id='620' type='long' >Can you use the MOD() function effectively?</LC> 
+- <LC id='1068' type='long' >Can you use an INNER JOIN effectively?</LC> 
+- <LC id='1069' type='long' >Can you effectively GROUP BY and ORDER in order to use an aggregate function like SUM()?</LC> 
+- <LC id='1075' type='long' >Can you effectively use an INNER JOIN along with GROUP BY and something like ROUND(AVG( ...)) in the SELECT statement?</LC> 
+- <LC id='1113' type='long' >Can you use COUNT(DISTINCT ...) effectively?</LC> 
+- <LC id='1148' type='long' >Can you use SELECT DISTINCT?</LC> 
+- <LC id='1294' type='long' >Can you easily work with aggregates after grouping records?</LC> 
+- <LC id='1327' type='long' >Can you read a problem statement carefully?</LC> 
+- <LC id='1350' type='long' >Can you use a subquery (in the WHERE clause in this case)?</LC> 
+- <LC id='1378' type='long' >Can you execute the most basic of queries involving LEFT JOIN?</LC> 
+- <LC id='1407' type='long' >Can you handle NULL values effectively?</LC> 
+- <LC id='1587' type='long' >Can you succeed in a basic application of SUM(), GROUP BY, and HAVING?</LC> 
+
+### CASE statements 
+
+- <LC id='608' type='long' ></LC> 
+- <LC id='626' type='long' ></LC> 
 
 ### Correlated subquery
 
@@ -191,30 +266,55 @@ then **think about a sliding window**. Note that not all problems with these cha
 ### Dates and timestamps
 
 - <LC id='197' type='long' >DATE_ADD() and DATE_SUB() in MySQL or adding an interval in Postgres</LC> 
+- <LC id='1084' type='long' ></LC> 
+- <LC id='1193' type='long' ></LC> 
+- <LC id='1384' type='long' ></LC> 
+- <LC id='1454' type='long' ></LC> 
+- <LC id='1543' type='long' ></LC> 
 
 ### DELETE
 
 - <LC id='196' type='long' ></LC> 
+
+### DISTINCT
+
+- <LC id='596' type='long' >Solution with HAVING(COUNT(DISTINCT ...)) may be of use.</LC> 
+- <LC id='1149' type='long' ></LC> 
 
 ### EXISTS and NOT EXISTS
 
 - <LC id='183' type='long' ></LC> 
 - <LC id='262' type='long' ></LC> 
 - <LC id='585' type='long' ></LC> 
+- <LC id='608' type='long' ></LC> 
+- <LC id='1098' type='long' ></LC> 
+- <LC id='1264' type='long' ></LC> 
 
 ### Gaps and islands
 
 - <LC id='180' type='long' ></LC> 
+- <LC id='601' type='long' ></LC> 
+- <LC id='603' type='long' ></LC> 
+- <LC id='1225' type='long' ></LC> 
+- <LC id='1285' type='long' ></LC> 
+- <LC id='1454' type='long' >This one concerns dates.</LC> 
 
 ### IN and NOT IN
 
 - <LC id='183' type='long' ></LC> 
 - <LC id='184' type='long' ></LC> 
+- <LC id='607' type='long' ></LC> 
+- <LC id='608' type='long' ></LC> 
+- <LC id='1098' type='long' ></LC> 
+- <LC id='1264' type='long' ></LC> 
 
 ### Indicator variables
 
 - <LC id='262' type='long' ></LC> 
 - <LC id='578' type='long' ></LC> 
+- <LC id='1174' type='long' ></LC> 
+- <LC id='1322' type='long' ></LC> 
+- <LC id='1398' type='long' ></LC> 
 
 ### Joins
 
@@ -222,11 +322,16 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 - <LC id='196' type='long' ></LC> 
 - <LC id='579' type='long' ></LC> 
+- <LC id='612' type='long' ></LC> 
+- <LC id='613' type='long' ></LC> 
+- <LC id='1127' type='long' ></LC> 
+- <LC id='1280' type='long' ></LC> 
 
 #### LEFT JOIN
 
 - <LC id='175' type='long' ></LC> 
 - <LC id='183' type='long' ></LC> 
+- <LC id='1158' type='long' ></LC> 
 
 #### Non-equi-joins
 
@@ -234,12 +339,24 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='196' type='long' ></LC> 
 - <LC id='197' type='long' ></LC> 
 - <LC id='569' type='long' ></LC> 
+- <LC id='1097' type='long' ></LC> 
+- <LC id='1212' type='long' ></LC> 
+- <LC id='1251' type='long' ></LC> 
+- <LC id='1384' type='long' ></LC> 
+- <LC id='1555' type='long' ></LC> 
+
+#### RIGHT JOIN
+
+- <LC id='1159' type='long' ></LC> 
 
 #### Self-joins
 
 - <LC id='181' type='long' ></LC> 
 - <LC id='196' type='long' ></LC> 
 - <LC id='197' type='long' ></LC> 
+- <LC id='1241' type='long' ></LC> 
+- <LC id='1251' type='long' ></LC> 
+- <LC id='1364' type='long' ></LC> 
 
 ### Median
 
@@ -254,23 +371,86 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 - <LC id='176' type='long' ></LC> 
 - <LC id='584' type='long' ></LC> 
+- <LC id='608' type='long' ></LC> 
+- <LC id='1098' type='long' ></LC> 
+
+### Pivoting
+
+#### Result set to multiple rows
+
+- <LC id='618' type='long' ></LC> 
+- <LC id='1179' type='long' ></LC> 
 
 ### Recursive CTEs
 
 - <LC id='571' type='long' ></LC> 
 - <LC id='579' type='long' ></LC> 
+- <LC id='1270' type='long' ></LC> 
+- <LC id='1336' type='long' ></LC> 
+- <LC id='1384' type='long' ></LC> 
+
+### Regular expressions
+
+- <LC id='1517' type='long' ></LC> 
+- <LC id='1527' type='long' ></LC> 
 
 ### Stored procedures
 
 - <LC id='177' type='long' ></LC> 
 
+### UNION and UNION ALL
+
+- <LC id='602' type='long' ></LC> 
+- <LC id='1435' type='long' ></LC> 
+
+### UPDATE
+
+- <LC id='627' type='long' ></LC> 
+
 ### Window functions 
+
+#### Named windows
+
+- <LC id='1084' type='long' ></LC> 
+- <LC id='1321' type='long' ></LC> 
+- <LC id='1341' type='long' ></LC> 
+- <LC id='1369' type='long' ></LC> 
+- <LC id='1468' type='long' ></LC> 
+
+#### AVG()
+
+- <LC id='615' type='long' ></LC> 
+- <LC id='1126' type='long' ></LC> 
+- <LC id='1321' type='long' ></LC> 
+
+#### COUNT()
+
+- <LC id='601' type='long' ></LC> 
+- <LC id='603' type='long' ></LC> 
+- <LC id='1050' type='long' ></LC> 
+- <LC id='1303' type='long' ></LC> 
+- <LC id='1341' type='long' ></LC> 
+- <LC id='1369' type='long' ></LC> 
 
 #### DENSE_RANK()
 
 - <LC id='178' type='long' ></LC> 
 - <LC id='184' type='long' ></LC> 
 - <LC id='185' type='long' ></LC> 
+- <LC id='1341' type='long' ></LC> 
+
+#### MAX()
+
+- <LC id='1084' type='long' ></LC> 
+- <LC id='1126' type='long' ></LC> 
+- <LC id='1412' type='long' ></LC> 
+- <LC id='1468' type='long' ></LC> 
+- <LC id='1596' type='long' ></LC> 
+
+#### MIN()
+
+- <LC id='1084' type='long' ></LC> 
+- <LC id='1321' type='long' ></LC> 
 
 #### PERCENTILE_CONT()
 
@@ -279,14 +459,42 @@ then **think about a sliding window**. Note that not all problems with these cha
 #### RANK()
 
 - <LC id='512' type='long' ></LC> 
+- <LC id='586' type='long' ></LC> 
+- <LC id='602' type='long' ></LC> 
+- <LC id='1070' type='long' ></LC> 
+- <LC id='1076' type='long' ></LC> 
+- <LC id='1077' type='long' ></LC> 
+- <LC id='1082' type='long' ></LC> 
+- <LC id='1112' type='long' ></LC> 
+- <LC id='1164' type='long' ></LC> 
+- <LC id='1174' type='long' ></LC> 
+- <LC id='1194' type='long' ></LC> 
+- <LC id='1341' type='long' ></LC> 
+- <LC id='1355' type='long' ></LC> 
+- <LC id='1369' type='long' ></LC> 
+- <LC id='1549' type='long' ></LC> 
+- <LC id='1596' type='long' ></LC> 
 
 #### ROW_NUMBER()
 
 - <LC id='180' type='long' ></LC> 
 - <LC id='569' type='long' ></LC> 
 - <LC id='571' type='long' ></LC> 
+- <LC id='601' type='long' ></LC> 
+- <LC id='603' type='long' ></LC> 
+- <LC id='618' type='long' ></LC> 
+- <LC id='1285' type='long' ></LC> 
+- <LC id='1454' type='long' ></LC> 
+- <LC id='1532' type='long' ></LC> 
 
 #### SUM()
 
 - <LC id='534' type='long' ></LC> 
 - <LC id='579' type='long' ></LC> 
+- <LC id='1204' type='long' ></LC> 
+- <LC id='1308' type='long' ></LC> 
+- <LC id='1321' type='long' ></LC> 
+
+#### With GROUP BY (ORDER BY aggregate)
+
+- <LC id='1341' type='long' ></LC> 
