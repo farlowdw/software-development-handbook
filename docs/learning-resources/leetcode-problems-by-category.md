@@ -193,6 +193,8 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1454' type='long' ></LC> 
 - <LC id='1468' type='long' >Provides a great opportunity to see how window functions can be used with CASE statements.</LC> 
 - <LC id='1596' type='long' >Window function with ORDER BY COUNT()</LC> 
+- <LC id='1613' type='long' >Perfect problem where a basic use of WITH RECURSIVE helps a great deal.</LC> 
+- <LC id='1811' type='long' ></LC> 
 
 #### Good problems
 
@@ -203,6 +205,9 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1205' type='long' ></LC> 
 - <LC id='1285' type='long' ></LC> 
 - <LC id='1501' type='long' ></LC> 
+- <LC id='1699' type='long' ></LC> 
+- <LC id='1709' type='long' ></LC> 
+- <LC id='1747' type='long' ></LC> 
 
 #### Revisit
 
@@ -226,6 +231,10 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1384' type='long' ></LC> 
 - <LC id='1501' type='long' ></LC> 
 - <LC id='1511' type='long' ></LC> 
+- <LC id='1699' type='long' ></LC> 
+- <LC id='1709' type='long' ></LC> 
+- <LC id='1783' type='long' ></LC> 
+- <LC id='1811' type='long' ></LC> 
 
 ### Beginner problems
 
@@ -248,6 +257,10 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1378' type='long' >Can you execute the most basic of queries involving LEFT JOIN?</LC> 
 - <LC id='1407' type='long' >Can you handle NULL values effectively?</LC> 
 - <LC id='1587' type='long' >Can you succeed in a basic application of SUM(), GROUP BY, and HAVING?</LC> 
+- <LC id='1683' type='long' >Can you use the LENGTH() function in any capacity?</LC> 
+- <LC id='1693' type='long' >Can you use GROUP BY with COUNT(DISTINCT ...)?</LC> 
+- <LC id='1757' type='long' >Can you form the most basic of WHERE clauses?</LC> 
+- <LC id='1821' type='long' >Can you execute simple queries with GROUP BY, HAVING, and SUM()?</LC> 
 
 ### CASE statements 
 
@@ -289,6 +302,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='608' type='long' ></LC> 
 - <LC id='1098' type='long' ></LC> 
 - <LC id='1264' type='long' ></LC> 
+- <LC id='1892' type='long' ></LC> 
 
 ### Gaps and islands
 
@@ -307,6 +321,8 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='608' type='long' ></LC> 
 - <LC id='1098' type='long' ></LC> 
 - <LC id='1264' type='long' ></LC> 
+- <LC id='1607' type='long' ></LC> 
+- <LC id='1613' type='long' ></LC> 
 
 ### Indicator variables
 
@@ -315,6 +331,8 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1174' type='long' ></LC> 
 - <LC id='1322' type='long' ></LC> 
 - <LC id='1398' type='long' ></LC> 
+- <LC id='1811' type='long' ></LC> 
+- <LC id='1907' type='long' ></LC> 
 
 ### Joins
 
@@ -326,6 +344,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='613' type='long' ></LC> 
 - <LC id='1127' type='long' ></LC> 
 - <LC id='1280' type='long' ></LC> 
+- <LC id='1892' type='long' ></LC> 
 
 #### LEFT JOIN
 
@@ -344,6 +363,9 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1251' type='long' ></LC> 
 - <LC id='1384' type='long' ></LC> 
 - <LC id='1555' type='long' ></LC> 
+- <LC id='1623' type='long' ></LC> 
+- <LC id='1747' type='long' ></LC> 
+- <LC id='1811' type='long' ></LC> 
 
 #### RIGHT JOIN
 
@@ -357,6 +379,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1241' type='long' ></LC> 
 - <LC id='1251' type='long' ></LC> 
 - <LC id='1364' type='long' ></LC> 
+- <LC id='1747' type='long' ></LC> 
 
 ### Median
 
@@ -380,6 +403,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 - <LC id='618' type='long' ></LC> 
 - <LC id='1179' type='long' ></LC> 
+- <LC id='1777' type='long' ></LC> 
 
 ### Recursive CTEs
 
@@ -388,6 +412,11 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1270' type='long' ></LC> 
 - <LC id='1336' type='long' ></LC> 
 - <LC id='1384' type='long' ></LC> 
+- <LC id='1613' type='long' ></LC> 
+- <LC id='1635' type='long' ></LC> 
+- <LC id='1645' type='long' ></LC> 
+- <LC id='1651' type='long' ></LC> 
+- <LC id='1767' type='long' ></LC> 
 
 ### Regular expressions
 
@@ -439,6 +468,15 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='185' type='long' ></LC> 
 - <LC id='1341' type='long' ></LC> 
 
+#### LAG()
+
+- <LC id='1709' type='long' ></LC> 
+
+#### LEAD()
+
+- <LC id='1709' type='long' ></LC> 
+- <LC id='1811' type='long' ></LC> 
+
 #### MAX()
 
 - <LC id='1084' type='long' ></LC> 
@@ -446,6 +484,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1412' type='long' ></LC> 
 - <LC id='1468' type='long' ></LC> 
 - <LC id='1596' type='long' ></LC> 
+- <LC id='1867' type='long' ></LC> 
 
 #### MIN()
 
@@ -474,6 +513,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1369' type='long' ></LC> 
 - <LC id='1549' type='long' ></LC> 
 - <LC id='1596' type='long' ></LC> 
+- <LC id='1831' type='long' ></LC> 
 
 #### ROW_NUMBER()
 
