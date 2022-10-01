@@ -22,11 +22,8 @@ const sidebars = {
       type: 'category',
       label: 'Data Structures',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'data-structures/index'
-      },
       items: [
+        'data-structures/introduction',
         'data-structures/array',
         'data-structures/bloom-filter',
         'data-structures/graph',
@@ -40,6 +37,7 @@ const sidebars = {
         'data-structures/string',
         'data-structures/tree',
         'data-structures/trie',
+        'data-structures/sandbox',
       ]
     },
     {
@@ -152,6 +150,7 @@ const sidebars = {
         id: 'templates/index'
       },
       items: [
+        'templates/mental-models',
         {
           type: 'category',
           label: 'Problem-solving',
@@ -190,6 +189,7 @@ const sidebars = {
         'learning-resources/general-list',
         'learning-resources/curated-list',
         'learning-resources/neetcode',
+        'learning-resources/real-python',
         'learning-resources/leetcode-problems-by-category',
       ]
     },

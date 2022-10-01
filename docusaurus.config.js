@@ -159,6 +159,7 @@ const config = {
           alt: 'Software Engineering Handbook Logo',
           src: 'img/logo.svg',
         },
+        hideOnScroll: true,
         items: [
           {
             to: '/docs/intro',

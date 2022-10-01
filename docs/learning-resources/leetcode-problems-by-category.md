@@ -101,7 +101,7 @@ If a problem's input is an array comprised of numeric elements and you find your
 
 ## S
 
-## Sliding window
+### Sliding window
 
 If a problem has explicit constraints such as
 
@@ -116,25 +116,31 @@ and/or asks for
 
 then **think about a sliding window**. Note that not all problems with these characteristics should be solved with a sliding window, and not all sliding window problems have these characteristics. These characteristics should only be used as a general guideline.
 
-### Clever endpoint trick
+#### Clever endpoint trick
 
 - <LC id='713' type='long' ></LC>
 - <LC id='2348' type='long' ></LC>
 
-### Fixed-width
+#### Fixed-width
 
 - <LC id='643' type='long' ></LC>
 
-### Variable-width
+#### Variable-width
 
 - <LC id='1004' type='long' ></LC>
+
+### Stacks
+
+- <LC id='20' type='long' ></LC> 
+- <LC id='682' type='long' ></LC> 
+- <LC id='155' type='long' >If it seems like what is being asked for is basically an impossibility, then the solution almost certainly involves some "trick" to make what is being requested possible.</LC> &#8617;
 
 ## T
 
 ### Two pointers
 
-#### Basic applications
-
+- <LC id='26' type='long' ></LC> 
+- <LC id='27' type='long' ></LC> 
 - <LC id='344' type='long' ></LC> 
 
 ## U
