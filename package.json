@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.1.0",
+    "@giscus/react": "^2.2.0",
     "netlify-cli": "^10.7.1"
   },
   "browserslist": {
