@@ -56,7 +56,7 @@ export default function DocItemLayout({ children }) {
             <DocItemFooter />
           </article>
           <DocItemPaginator />
-           <hr />
+          <hr />
           <br></br>
           <Giscus
             id="comments"
