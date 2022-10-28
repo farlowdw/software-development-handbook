@@ -112,6 +112,15 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
       Read <ArrowRight className='arrow' />
     </DocsLink>
   </div>
+  <div className='card'>
+    <h4>Light/Dark Modes with Material UI and Docusaurus</h4>
+    <p>
+      This blog post details how to synchronize the default light and dark mode palettes used in Material UI with the light or dark mode being used on a Docusaurus site.
+    </p>
+    <DocsLink to='/blog/2022/10/28/docusaurus-mui-light-dark'>
+      Read <ArrowRight className='arrow' />
+    </DocsLink>
+  </div>
 </div>
 <br />
 
