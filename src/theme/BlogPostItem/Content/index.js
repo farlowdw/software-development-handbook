@@ -17,7 +17,7 @@ export default function BlogPostItemContent({ children, className }) {
   const { colorMode } = useColorMode();
   const location = useLocation();
   const forbiddenGiscusPaths = [
-    '/blog/demonstration-article'
+    '/blog/mdx-blog-post'
   ];
   const giscus = (
     <React.Fragment>
