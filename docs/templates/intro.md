@@ -1,7 +1,8 @@
 ---
-title: Learning Resources Overview
-hide_title: false
-description: Learning resources overview
+title: Templates Overview
+hide_title: true
+sidebar_label: Introduction
+description: descForHead
 draft: false
 tags: [Overview]
 keywords: [overview]
@@ -13,7 +14,8 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import BibRef from '@site/src/components/BibRef';
 
-## Introduction
+## Overview
 
-tbd
+something

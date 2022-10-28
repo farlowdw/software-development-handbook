@@ -44,7 +44,16 @@ export default function DocItemLayout({ children }) {
   const { colorMode } = useColorMode();
   const location = useLocation();
   const forbiddenGiscusPaths = [
-    '/docs/templates/problem-solving/binary-search'
+    '/docs/intro',
+    '/docs/data-structures/intro',
+    '/docs/algorithms/intro',
+    '/docs/patterns/intro',
+    '/docs/topics/intro',
+    '/docs/system-design/intro',
+    '/docs/tips-and-tricks/intro',
+    '/docs/templates/intro',
+    '/docs/learning-resources/intro',
+    '/docs/reference-list',
   ];
   const giscus = (
     <React.Fragment>

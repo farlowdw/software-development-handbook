@@ -23,7 +23,7 @@ const sidebars = {
       label: 'Data Structures',
       collapsed: true,
       items: [
-        'data-structures/introduction',
+        'data-structures/intro',
         'data-structures/array',
         'data-structures/bloom-filter',
         'data-structures/graph',
@@ -44,11 +44,8 @@ const sidebars = {
       type: 'category',
       label: 'Algorithms',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'algorithms/index'
-      },
       items: [
+        'algorithms/intro',
         'algorithms/bit-manipulation',
         'algorithms/depth-first-search',
         'algorithms/breadth-first-search',
@@ -85,11 +82,8 @@ const sidebars = {
       type: 'category',
       label: 'Patterns',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'patterns/index'
-      },
       items: [
+        'patterns/intro',
         'patterns/index-has-a-hash-key',
         'patterns/precomputation',
         'patterns/sliding-window',
@@ -106,11 +100,8 @@ const sidebars = {
       type: 'category',
       label: 'Topics',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'topics/index'
-      },
       items: [
+        'topics/intro',
         'topics/big-o',
         'topics/math',
         'topics/matrices',
@@ -121,11 +112,8 @@ const sidebars = {
       type: 'category',
       label: 'System Design',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'system-design/index'
-      },
       items: [
+        'system-design/intro',
         'system-design/interview-questions'
       ]
     },
@@ -133,11 +121,8 @@ const sidebars = {
       type: 'category',
       label: 'Tips and Tricks',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'tips-and-tricks/index'
-      },
       items: [
+        'tips-and-tricks/intro',
         'tips-and-tricks/strings'
       ]
     },
@@ -145,11 +130,8 @@ const sidebars = {
       type: 'category',
       label: 'Templates',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'templates/index'
-      },
       items: [
+        'templates/intro',
         'templates/mental-models',
         {
           type: 'category',
@@ -181,11 +163,8 @@ const sidebars = {
       type: 'category',
       label: 'Learning Resources',
       collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'learning-resources/index'
-      },
       items: [
+        'learning-resources/intro',
         'learning-resources/general-list',
         'learning-resources/curated-list',
         'learning-resources/neetcode',

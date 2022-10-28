@@ -15,8 +15,8 @@ const katexMacros = require('./katex-macros');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Handbook',
-  tagline: 'Software engineering handbooks are cool',
+  title: 'Software Engineering Handbook',
+  tagline: 'Musings of a software-related nature by Daniel Farlow',
   url: 'https://dwf.netlify.app',
   baseUrl: '/',
   onBrokenLinks: 'warn',
@@ -197,7 +197,7 @@ const config = {
             position: 'right'
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/farlowdw/software-development-handbook',
             label: 'GitHub',
             position: 'right',
           },
@@ -207,46 +207,114 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Handbook',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Data Structures',
+                to: '/docs/data-structures/intro',
+              },
+              {
+                label: 'Algorithms',
+                to: '/docs/algorithms/intro',
+              },
+              // {
+              //   label: 'Patterns',
+              //   to: '/docs/patterns/intro',
+              // },
+              // {
+              //   label: 'Topics',
+              //   to: '/docs/topics/intro',
+              // },
+              {
+                label: 'System Design',
+                to: '/docs/system-design/intro',
+              },
+              // {
+              //   label: 'Tips and Tricks',
+              //   to: '/docs/tips-and-tricks/intro',
+              // },
+              {
+                label: 'Templates',
+                to: '/docs/templates/intro',
+              },
+              {
+                label: 'Learning Resources',
+                to: '/docs/learning-resources/intro',
+              },
+              // {
+              //   label: 'Definitions',
+              //   to: '/docs/definitions',
+              // },
+              // {
+              //   label: 'Reference List',
+              //   to: '/docs/reference-list',
+              // },
+              {
+                label: 'FAQ',
+                to: '/docs/faq',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Blog',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Comments with Giscus',
+                to: '/blog/2022/10/27/giscus-comments',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Material UI Light and Dark Modes',
+                to: '/blog/2022/10/28/docusaurus-mui-light-dark',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Archive',
+                to: '/blog/archive',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'External',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Python Language Reference',
+                href: 'https://dwf-books.netlify.app/docs/reference/python/',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Docusaurus Input-Output',
+                href: 'https://dwf-books.netlify.app/docs/reference/docusaurus/templates',
+              },
+              {
+                label: 'KaTeX',
+                href: 'https://dwf-books.netlify.app/docs/reference/docusaurus/katex',
+              },
+              {
+                label: 'MySQL',
+                href: 'https://dwf-books.netlify.app/docs/reference/sql/mysql',
+              },
+              {
+                label: 'Postgres',
+                href: 'https://dwf-books.netlify.app/docs/reference/sql/postgresql',
+              },
+              {
+                label: 'PG Exercises',
+                href: 'https://dwf-books.netlify.app/docs/reference/sql/pg-exercises',
+              },
+              {
+                label: 'Algorithm Design Manual',
+                href: 'https://dwf-books.netlify.app/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design',
+              },
+              {
+                label: 'Interview Cake',
+                href: 'https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking',
+              },
+              {
+                label: 'MIT Missing Semester',
+                href: 'https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/mit-missing-semester/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} DWF, Inc.`,
       },
       zoom: {
         selector: '.markdown :not(em) > img',
