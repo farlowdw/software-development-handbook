@@ -1,21 +1,24 @@
 import React from 'react';
 import clsx from 'clsx';
-import {blogPostContainerID} from '@docusaurus/utils-common';
-import {useBlogPost} from '@docusaurus/theme-common/internal';
+import { blogPostContainerID } from '@docusaurus/utils-common';
+import { useBlogPost } from '@docusaurus/theme-common/internal';
 import MDXContent from '@theme/MDXContent';
 
 // added after swizzling
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
-//
+import { useLocation } from '@docusaurus/router';
+// 
 
-export default function BlogPostItemContent({children, className}) {
-  const {isBlogPostPage} = useBlogPost();
+export default function BlogPostItemContent({ children, className }) {
+  const { isBlogPostPage } = useBlogPost();
 
   // added after swizzling
   const { colorMode } = useColorMode();
-  //
-
+  const location = useLocation();
+  const forbiddenGiscusPaths = [
+    '/blog/demonstration-article'
+  ];
   const giscus = (
     <React.Fragment>
       <hr />
@@ -36,6 +39,7 @@ export default function BlogPostItemContent({children, className}) {
       />
     </React.Fragment>
   )
+  // 
 
   return (
     <div
@@ -45,8 +49,8 @@ export default function BlogPostItemContent({children, className}) {
       itemProp="articleBody">
       <MDXContent>
         {children}
-        {/* hr, br, and Giscus below added after swizzling */}
-        {isBlogPostPage && giscus}
+        {/* added after swizzling */}
+        {isBlogPostPage && !forbiddenGiscusPaths.includes(location.pathname) && giscus}
       </MDXContent>
     </div>
   );

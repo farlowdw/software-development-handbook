@@ -15,6 +15,7 @@ import styles from './styles.module.css';
 // added after swizzling
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
+import { useLocation } from '@docusaurus/router';
 //
 
 /**
@@ -41,6 +42,30 @@ export default function DocItemLayout({ children }) {
 
   // added after swizzling
   const { colorMode } = useColorMode();
+  const location = useLocation();
+  const forbiddenGiscusPaths = [
+    '/docs/templates/problem-solving/binary-search'
+  ];
+  const giscus = (
+    <React.Fragment>
+      <hr />
+      <br></br>
+      <Giscus
+        id="comments"
+        repo="farlowdw/software-development-handbook"
+        repoId="R_kgDOHmzzBQ"
+        category="Announcements"
+        categoryId="DIC_kwDOHmzzBc4CSLOr"
+        mapping="pathname"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="top"
+        theme={colorMode}
+        lang="en"
+        loading="lazy"
+      />
+    </React.Fragment>
+  )
   //
 
   return (
@@ -56,22 +81,8 @@ export default function DocItemLayout({ children }) {
             <DocItemFooter />
           </article>
           <DocItemPaginator />
-          <hr />
-          <br></br>
-          <Giscus
-            id="comments"
-            repo="farlowdw/software-development-handbook"
-            repoId="R_kgDOHmzzBQ"
-            category="Announcements"
-            categoryId="DIC_kwDOHmzzBc4CSLOr"
-            mapping="pathname"
-            reactionsEnabled="1"
-            emitMetadata="0"
-            inputPosition="top"
-            theme={colorMode}
-            lang="en"
-            loading="lazy"
-          />
+          {/* added after swizzling */}
+          {!forbiddenGiscusPaths.includes(location.pathname) && giscus}
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
