@@ -41,7 +41,7 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>
       Check out time and space complexity overviews for various data structures and array sorting algorithms.
     </p>
-    <DocsLink to='/docs/definitions'>
+    <DocsLink to='/docs/data-structures/intro'>
       See Data Structures Overview <ArrowRight className='arrow' />
     </DocsLink>
   </div>
@@ -50,6 +50,13 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>Get a more detailed look at the sliding window pattern, a pattern that frequently comes up in coding interview problems.</p>
     <DocsLink to='/docs/patterns/sliding-window'>
       See Sliding Window <ArrowRight className='arrow' />
+    </DocsLink>
+  </div>
+  <div className='card'>
+    <h4>Window Functions (SQL)</h4>
+    <p>An in-depth guide to SQL window/analytic functions. This is not only a guide but also a useful reference to keep handy (e.g., syntax guidance, basic examples, etc.).</p>
+    <DocsLink to='/docs/topics/sql/window-functions'>
+      See Window Functions <ArrowRight className='arrow' />
     </DocsLink>
   </div>
   <div className='card'>

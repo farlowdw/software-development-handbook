@@ -56,24 +56,18 @@ const sidebars = {
           type: 'category',
           label: 'Sorting and Searching',
           collapsed: true,
-          link: {
-            type: 'doc',
-            id: 'algorithms/sorting-and-searching/index'
-          },
           items: [
-            'algorithms/sorting-and-searching/bucket-sort'
+            'algorithms/sorting-and-searching/intro',
+            'algorithms/sorting-and-searching/bucket-sort',
           ]
         },
         {
           type: 'category',
           label: 'Named Algorithms',
           collapsed: true,
-          link: {
-            type: 'doc',
-            id: 'algorithms/named-algorithms/index'
-          },
           items: [
-            'algorithms/named-algorithms/dijkstra'
+            'algorithms/named-algorithms/intro',
+            'algorithms/named-algorithms/dijkstra',
           ]
         },
       ]
@@ -106,6 +100,17 @@ const sidebars = {
         'topics/math',
         'topics/matrices',
         'topics/intervals',
+        {
+          type: 'category',
+          label: 'SQL',
+          collapsed: true,
+          items: [
+            'topics/sql/formatting-guidelines',
+            'topics/sql/query-execution-order',
+            'topics/sql/window-functions',
+            'topics/sql/ctes',
+          ]
+        }
       ]
     },
     {

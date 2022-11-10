@@ -73,12 +73,12 @@ const config = {
             globalGroup: true,
             macros: katexMacros
           }]],
-          blogTitle: 'Blog title coming soon',
-          blogDescription: 'Description coming soon',
+          blogTitle: 'Muse(um)',
+          blogDescription: `Semi-structured musings along with all the concomitant ums`,
           postsPerPage: 'ALL',
           // blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 0,
-          sortPosts: 'ascending',
+          sortPosts: 'descending',
           // showLastUpdateTime: true
         },
         theme: {
@@ -167,34 +167,24 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://dwflc.netlify.app/docs/intro',
-            label: 'LeetCode',
-            position: 'left',
-          },
-          {
-            href: 'https://dwf-books.netlify.app/docs/intro',
-            label: 'BCGS Notes',
-            position: 'left',
-          },
-          {
-            href: 'https://manim.netlify.app/docs/intro',
-            label: 'Manim',
-            position: 'left',
-          },
-          {
-            href: 'https://dwf-books.netlify.app/docs/reference/python/',
-            label: 'Python Reference',
-            position: 'left',
-          },
-          {
             to: '/blog',
             label: 'Blog',
-            position: 'right'
+            position: 'left'
           },
           {
             to: '/blog/archive',
             label: 'Blog Archive',
-            position: 'right'
+            position: 'left'
+          },
+          {
+            href: 'https://dwf-books.netlify.app/docs/intro',
+            label: 'BCGS Notes',
+            position: 'right',
+          },
+          {
+            href: 'https://dwf-books.netlify.app/docs/reference/python/',
+            label: 'Python Reference',
+            position: 'right',
           },
           {
             href: 'https://github.com/farlowdw/software-development-handbook',
@@ -273,6 +263,27 @@ const config = {
             ],
           },
           {
+            title: 'SQL',
+            items: [
+              {
+                label: 'Formatting Guidelines',
+                to: '/docs/topics/sql/formatting-guidelines',
+              },
+              {
+                label: 'Query Execution Order',
+                to: '/docs/topics/sql/query-execution-order',
+              },
+              {
+                label: 'Window Functions',
+                to: '/docs/topics/sql/window-functions',
+              },
+              {
+                label: 'Common Table Expressions (CTEs)',
+                to: '/docs/topics/sql/ctes',
+              },
+            ],
+          },
+          {
             title: 'External',
             items: [
               {
@@ -311,10 +322,18 @@ const config = {
                 label: 'MIT Missing Semester',
                 href: 'https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/mit-missing-semester/',
               },
+              {
+                label: 'Manim',
+                href: 'https://manim.netlify.app/docs/intro'
+              },
+              {
+                href: 'https://dwflc.netlify.app/docs/intro',
+                label: 'LeetCode Work (Protected)',
+              },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} DWF, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} DWF.DEV`,
       },
       zoom: {
         selector: '.markdown :not(em) > img',

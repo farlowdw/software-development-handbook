@@ -1,6 +1,7 @@
 ---
 title: Sorting and Searching Overview
 hide_title: false
+sidebar_label: Introduction
 description: Overview of sorting and searching algorithms worth knowing
 draft: false
 tags: [Sorting and Searching, Sorting, Searching]
@@ -13,7 +14,8 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ComingSoon from '@site/src/components/ComingSoon'
 
 ## Introduction
 
-hey
+<ComingSoon />

@@ -54,6 +54,8 @@ export default function DocItemLayout({ children }) {
     '/docs/templates/intro',
     '/docs/learning-resources/intro',
     '/docs/reference-list',
+    '/docs/algorithms/sorting-and-searching/intro',
+    '/docs/algorithms/named-algorithms/intro',
   ];
   const giscus = (
     <React.Fragment>

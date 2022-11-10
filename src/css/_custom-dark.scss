@@ -169,6 +169,14 @@ html[data-theme='dark'] {
 			fill: var(--ifm-alert-border-color);
 			stroke: var(--ifm-alert-border-color);
 		}
+
+    code[class^='codeBlockLines_'] {
+      background-color: var(--color-gray-78);
+    }
+
+    [class^='codeLineNumber_'] {
+      background-color: var(--color-gray-78) !important;
+    }
 	}
 
 	div[class^='admonitionHeading_'] {

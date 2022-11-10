@@ -14,5 +14,6 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ComingSoon from '@site/src/components/ComingSoon'
 
-tbd
+<ComingSoon />
