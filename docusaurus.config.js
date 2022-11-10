@@ -17,7 +17,7 @@ const katexMacros = require('./katex-macros');
 const config = {
   title: 'Software Engineering Handbook',
   tagline: 'Musings of a software-related nature by Daniel Farlow',
-  url: 'https://dwf.netlify.app',
+  url: 'https://dwf.dev',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
