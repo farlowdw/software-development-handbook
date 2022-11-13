@@ -303,6 +303,24 @@ tbd
 
 ## N
 
+### Namecheap
+
+#### Setting up private email with custom domain on Netlify
+
+- [Gmail Fetcher setup for Namecheap Private Email](https://www.namecheap.com/support/knowledgebase/article.aspx/9188/2175/gmail-fetcher-setup-for-namecheap-private-email/)
+- [How can I set up MX records required for mail service?](https://www.namecheap.com/support/knowledgebase/article.aspx/322/2237/how-can-i-set-up-mx-records-required-for-mail-service/)
+- [Private Email](https://privateemail.com/)
+- [How to Add DKIM Record in Namecheap: Namecheap DKIM Setup Guide](https://dmarcly.com/blog/how-to-add-dkim-record-in-namecheap-namecheap-dkim-setup-guide)
+- [How to set up a DKIM record for Private Email](https://www.namecheap.com/support/knowledgebase/article.aspx/10383/2176/how-to-set-up-a-dkim-record-for-private-email/)
+- [How do I add TXT/SPF/DKIM/DMARC records for my domain?](https://www.namecheap.com/support/knowledgebase/article.aspx/317/2237/how-do-i-add-txtspfdkimdmarc-records-for-my-domain/)
+- `Namecheap -> Dashboard -> Domain List`: *To be able to activate your Private Email subscription to receive mail and create mailboxes, you must first set up these important DNS records from the table below.* (Something like what appears below -- these details need to be added to Netlify if you are using Netlify DNS.)
+
+  | Hostname | Record type | Priority | Value |
+  | :-- | :-- | :-- | :-- |
+  | `@` | `MX` | `10` | `mx1.privateemail.com` |
+  | `@` | `MX` | `10` | `mx2.privateemail.com` |
+  | `@` | `TXT` |  | `v=spf1 include:spf.privateemail.com ~all` |
+
 ### Newsletters
 
 - [Serverless Status](https://serverless.email/issues)

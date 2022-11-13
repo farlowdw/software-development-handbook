@@ -43,6 +43,96 @@ Correctness may be formally verified by means of a proof (e.g., induction, contr
 
 ## B
 
+### Big Oh {#big-oh}
+
+> **Controlled chaos:** $O$ notation significantly simplifies calculations because it allows us to be sloppy &#8212; but in a satisfactorily controlled way. <BibRef id='DK2012' pages='p. 34'></BibRef>
+
+> **Need for $\Omega$ and $\Theta$:** As noted in <BibRef id='KR2002' pages='p. 140'></BibRef>, Big-$O$ notation is used extensively to describe the growth of functions, but it has limitations. In particular, when $f(x)$ is $O(g(x))$, we have an upper bound, in terms of $g(x)$, for the size of $f(x)$ for large values of $x$. However, big-$O$ notation does not provide a lower bound for the size of $f(x)$ for large $x$. For this, we use **big-Omega** notation. When we want to give both an upper and a lower bound on the size of the function $f(x)$, relative to a reference function $g(x)$, we use **big-Theta notation**. Both big-Omega and big-Theta notation were introduced by Donald Knuth in the 1970s. His motivation for introducing these notations was the common misuse of big-$O$ notation when both an upper and a lower bound on the size of a function are needed.
+
+The definitions that follow may be found in <BibRef id='KR2002' pages='p. 132, 140, 141'>The exposition in Rosen's book is also quite nice, especially in conjunction with all of the exercises. Highly recommend.</BibRef>.
+
+#### Worst case (big-O) {#big-oh-worst-case}
+
+Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $O(g(x))$ if there are constants $C$ and $k$ such that 
+
+$$
+|f(x)|\leq C|g(x)|
+$$
+
+whenever $x>k$. This reads as, "$f(x)$ is big-oh of $g(x)$," and is sometimes represented as $f(x)=O(g(x))$ even though usage of `=` is more colloquial than anything.
+
+<details><summary> Example illustrating definition</summary>
+
+**Problem:** Show that $f(x)=x^2+2x+1$ is $O(x^2)$.
+
+**Solution:** We observe that we can readily estimate the size of $f(x)$ when $x>1$ because $x<x^2$ and $1<x^2$ when $x>1$. It follows that
+
+$$
+0\leq x^2+2x+1\leq x^2+2x+x^2=4x^2
+$$
+
+whenever $x>1$. Consequently, we can take $C=4$ and $k=1$ as witnesses to show that $f(x)$ is $O(x^2)$. That is, $f(x)=x^2+2x+1<4x^2$ whenever $x>1$.
+(Note that it is not necessary to use absolute values here because all functions in the equalities are positive when $x$ is positive.)
+
+Alternatively, we can estimate the size of $f(x)$ when $x>2$. When $x>2$, we have $2x\leq x^2$ and $1\leq x^2$. Consequently, if $x>2$, we have
+
+$$
+0\leq x^2+2x+1\leq x^2+x^2+x^2=3x^2
+$$
+
+It follows that $C=3$ and $k=2$ are also witnesses to the relation $f(x)$ is $O(x^2)$.
+
+Observe that in the relationship $f(x)$ is $O(x^2)$, $x^2$ can be replaced by any function with larger values than $x^2$. For example, $f(x)$ is $O(x^3)$, $f(x)$ is $O(x^2+2x+7)$, and so on. 
+
+It is also true that $x^2$ is $O(x^2+2x+1)$, because $x^2<x^2+2x+1$ whenever $x>1$. This means that $C=1$ and $k=1$ are witnesses to the relationship $x^2$ is $O(x^2+2x+1)$. See <BibRef id='KR2002' pages='p. 133'></BibRef> for more details.
+
+</details>
+
+:::caution Abuse of Notation
+
+As noted in <BibRef id='DK2012' pages='p. 32'>Knuth actually credits this to de Bruijn</BibRef>, mathematicians customarily use the `=` sign as they use the word "is" in English: Aristotle is a man, but a man isn't necessarily Aristotle. Hence, in discussions of big oh, it is worth noting that the equality sign is not symmetric with respect to such notations; we have $n+1=O(n)$ and $n+2=O(n)$ but not $1=2$, nor can we say that $O(n)=n+2$.
+
+:::
+
+The definition above may be expressed more formally in the language of quantifiers as follows:
+
+$$
+(\exists C>0)(\exists k>0)(\forall x\in\R)(x > k \implies |f(x)|\leq C|g(x)|)
+$$
+
+:::info Witnesses
+
+The constants $C$ and $k$ in the definition of big-$O$ notation above are called **witnesses** to the relationship "$f(x)$ is $O(g(x))$". 
+To establish that $f(x)$ is $O(g(x))$ we need only one pair of witnesses to this relationship.
+That is, to show that $f(x)$ is $O(g(x))$, we need find only *one* pair of constants $C$ and $k$, the witnesses, such that $|f(x)|\leq C|g(x)|$ whenever $x>k$.
+
+Note that when there is one pair of witnesses to the relationship $f(x)$ is $O(g(x))$, there are *infinitely many* pairs of witnesses. To see this, note that if $C$ and $k$ are one pair of witnesses, then any pair $C'$ and $k'$, where $C < C'$ and $k < k'$, is also a pair of witnesses, since $|f(x)|\leq C|g(x)|\leq C'|g(x)|$ whenever $x>k'>k$.
+
+A useful approach for finding a pair of witnesses is to first select a value of $k$ for which the size of $|f(x)|$ can be readily estimated when $x > k$ and to see whether we can use the estimate to find a value of $C$ for which $|f(x)| < C|g(x)|$ for $x>k$.
+
+:::
+
+#### Best case (big-Ω) {#big-oh-best-case}
+
+Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Omega(g(x))$ if there are positive constants $C$ and $k$ such that
+
+$$
+|f(x)|\geq C|g(x)|
+$$
+
+whenever $x>k$. This reads as, "$f(x)$ is big-Omega of $g(x)$," and is sometimes represented as $f(x)=\Omega(g(x))$. This definition may be expressed more formally in the language of quantifiers as follows:
+
+$$
+(\exists C>0)(\exists k>0)(\forall x\in\R)(x > k \implies |f(x)|\geq C|g(x)|)
+$$
+
+#### Average case (big-Θ) {#big-oh-average-case}
+
+Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Theta(g(x))$ if $f(x)$ is $O(g(x))$ and $f(x)$ is $\Omega(g(x))$. This reads as, "$f(x)$ is big-Theta of $g(x)$," and is sometimes represented as $f(x)=\Theta(g(x))$. We also say that $f(x)$ is of *order* $g(x)$. This definition, in light of the previous definitions for big-$O$ and big-$\Omega$, may be expressed more formally in the language of quantifiers as follows:
+
+$$
+(\exists C_1,C_2\in\R^+)(\exists k_1,k_2\in\R^+)(\forall x\in\R)(x > \max\{k_1,k_2\} \implies \underbrace{\overbrace{|f(x)|\leq C_1|g(x)|}^{f(x)=O(g(x))}\land \overbrace{|f(x)|\geq C_2|g(x)|}^{f(x)=\Omega(g(x))}}_{f(x)=\Theta(g(x))})
+$$
 
 
 ## C

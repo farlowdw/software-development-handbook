@@ -56,6 +56,29 @@ const bibItems = {
       link: 'https://fangprep.substack.com/archive?sort=top',
     },
   ],
+  math: [
+    {
+      id: 'KR2002',
+      title: `Discrete Mathematics and Its Applications (5th Ed.)`,
+      author: 'Kenneth R. Rosen',
+      time: '2002',
+      link: 'https://www.amazon.com/gp/product/0072424346',
+    },
+    {
+      id: 'DK2012',
+      title: `Companion to the Papers of Donald Knuth`,
+      author: 'Donald E. Knuth',
+      time: '2012',
+      link: 'https://www.amazon.com/Companion-Papers-Donald-Knuth-Lecture/dp/157586634X',
+    },
+    {
+      id: 'DK1994',
+      title: `Concrete Mathematics: A Foundation for Computer Science`,
+      author: 'Donald E. Knuth, Ronald L. Graham, Oren Patashnik',
+      time: '2012',
+      link: 'https://www.amazon.com/gp/product/0201558025',
+    },
+  ]
 }
 
 export default bibItems;

@@ -29,9 +29,23 @@ const config = {
   projectName: 'software-engineering-handbook', // Usually your repo name.
 
   customFields: {
-    things: {
-      something: 'Whaaaa'
-    }
+    forbiddenGiscusDocPaths: [
+      '/docs/intro',
+      '/docs/data-structures/intro',
+      '/docs/algorithms/intro',
+      '/docs/patterns/intro',
+      '/docs/topics/intro',
+      '/docs/system-design/intro',
+      '/docs/tips-and-tricks/intro',
+      '/docs/templates/intro',
+      '/docs/learning-resources/intro',
+      '/docs/reference-list',
+      '/docs/algorithms/sorting-and-searching/intro',
+      '/docs/algorithms/named-algorithms/intro',
+    ],
+    forbiddenGiscusBlogPaths: [
+      '/blog/mdx-blog-post'
+    ],
   },
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -133,6 +147,7 @@ const config = {
     ],
     'docusaurus-plugin-sass',
     require.resolve("docusaurus-plugin-image-zoom"),
+    'my-loaders'
   ],
 
   themeConfig:

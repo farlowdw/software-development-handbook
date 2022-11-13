@@ -13,6 +13,7 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import styles from './styles.module.css';
 
 // added after swizzling
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
 import { useLocation } from '@docusaurus/router';
@@ -41,22 +42,10 @@ export default function DocItemLayout({ children }) {
   const docTOC = useDocTOC();
 
   // added after swizzling
+  const {siteConfig} = useDocusaurusContext();
+  const {forbiddenGiscusDocPaths} = siteConfig.customFields;
   const { colorMode } = useColorMode();
   const location = useLocation();
-  const forbiddenGiscusPaths = [
-    '/docs/intro',
-    '/docs/data-structures/intro',
-    '/docs/algorithms/intro',
-    '/docs/patterns/intro',
-    '/docs/topics/intro',
-    '/docs/system-design/intro',
-    '/docs/tips-and-tricks/intro',
-    '/docs/templates/intro',
-    '/docs/learning-resources/intro',
-    '/docs/reference-list',
-    '/docs/algorithms/sorting-and-searching/intro',
-    '/docs/algorithms/named-algorithms/intro',
-  ];
   const giscus = (
     <React.Fragment>
       <hr />
@@ -93,7 +82,7 @@ export default function DocItemLayout({ children }) {
           </article>
           <DocItemPaginator />
           {/* added after swizzling */}
-          {!forbiddenGiscusPaths.includes(location.pathname) && giscus}
+          {!forbiddenGiscusDocPaths.includes(location.pathname) && giscus}
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}

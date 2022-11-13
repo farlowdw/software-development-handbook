@@ -5,6 +5,7 @@ import { useBlogPost } from '@docusaurus/theme-common/internal';
 import MDXContent from '@theme/MDXContent';
 
 // added after swizzling
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
 import { useLocation } from '@docusaurus/router';
@@ -14,11 +15,10 @@ export default function BlogPostItemContent({ children, className }) {
   const { isBlogPostPage } = useBlogPost();
 
   // added after swizzling
+  const {siteConfig} = useDocusaurusContext();
+  const {forbiddenGiscusBlogPaths} = siteConfig.customFields;
   const { colorMode } = useColorMode();
   const location = useLocation();
-  const forbiddenGiscusPaths = [
-    '/blog/mdx-blog-post'
-  ];
   const giscus = (
     <React.Fragment>
       <hr />
@@ -50,7 +50,7 @@ export default function BlogPostItemContent({ children, className }) {
       <MDXContent>
         {children}
         {/* added after swizzling */}
-        {isBlogPostPage && !forbiddenGiscusPaths.includes(location.pathname) && giscus}
+        {isBlogPostPage && !forbiddenGiscusBlogPaths.includes(location.pathname) && giscus}
       </MDXContent>
     </div>
   );

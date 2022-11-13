@@ -518,7 +518,33 @@ export function someFunction() {
 }
 ```
 
-This means we can use `location.pathname` to programmatically determine whether or not a giscus comments section should be made available for specific doc pages or blog entries based on the paths for those entries. The tabs below indicate how we can build upon our previous work to achieve this (line changes are highlighted):
+This means we can use `location.pathname` to programmatically determine whether or not a giscus comments section should be made available for specific doc pages or blog entries based on the paths for those entries. 
+
+But where should such paths be specified? Here are two sensible options:
+
+1. **Directly within swizzled component:** The paths could be specified within each swizzled component directly; for example, doc paths for which we do not want giscus comment sections could be specified in `/src/theme/DocItem/Layout/index.js` directly.
+2. **Within Docusaurus config (preferred):** The first option may seem like a good choice at first, but it quickly becomes problematic if we ever want to revert back to the current `DocItem` or `BlogPostItem` being maintained by the Docusaurus team and *re*-swizzle them to use giscus comment sections. The code shown in previous sections of this article would not be problematic to add back to freshly swizzled components, but adding all of the paths back might be cumbersome depending on how many were added in the first place.
+
+  A convenient solution is to make use of the [`useDocusaurusContext`](https://docusaurus.io/docs/docusaurus-core#useDocusaurusContext) hook, which gives us access to the `siteConfig` object from [`docusaurus.config.js`](https://docusaurus.io/docs/api/docusaurus-config). How does this help? As [the docs note](https://docusaurus.io/docs/api/docusaurus-config#customfields):
+
+  > Docusaurus guards `docusaurus.config.js` from unknown fields. To add a custom field, define it on `customFields`.
+
+  Hence, we can add a `customFields` property to our exported config object in `docusaurus.config.js`, which will then be accessible as a property on the `siteConfig` object, which is made available by means of the `useDocusaurusContext` hook.
+
+  The takeaway is that we can add our paths to the `customFields` object, which will then not only be accessible globally but also, most importantly, within whatever components we want to swizzle:
+
+  ```js
+  customFields: {
+    forbiddenGiscusDocPaths: [
+      '/docs/tutorials/intro'
+    ],
+    forbiddenGiscusBlogPaths: [
+      '/blog/2022/10/27/giscus-comments'
+    ],
+  }
+  ```
+
+The tabs below indicate how we can build upon our previous work to achieve this (line changes are highlighted):
 
 <Tabs>
 <TabItem value='js-docs' label='Doc pages'>
@@ -539,8 +565,10 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import styles from './styles.module.css';
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
-// highlight-next-line
+// highlight-start
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+// highlight-end
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
  */
@@ -565,9 +593,8 @@ export default function DocItemLayout({ children }) {
   const { colorMode } = useColorMode();
   // highlight-start
   const location = useLocation();
-  const forbiddenGiscusPaths = [
-    '/docs/tutorials/intro'
-  ];
+  const {siteConfig} = useDocusaurusContext();
+  const {forbiddenGiscusDocPaths} = siteConfig.customFields;
   // highlight-end
   const giscus = (
     <React.Fragment>
@@ -603,7 +630,7 @@ export default function DocItemLayout({ children }) {
           </article>
           <DocItemPaginator />
           // highlight-next-line
-          {!forbiddenGiscusPaths.includes(location.pathname) && giscus}
+          {!forbiddenGiscusDocPaths.includes(location.pathname) && giscus}
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
@@ -618,7 +645,7 @@ The changes above mean that all doc pages will have a giscus comments section *e
 /docs/tutorials/intro
 ```
 
-To prevent comments for other paths, simply add these paths to the `forbiddenGiscusPaths` array.
+To prevent comments for other paths, simply add these paths to the `forbiddenGiscusDocPaths` array.
 
 </TabItem>
 <TabItem value='js-blog' label='Blog entries'>
@@ -631,16 +658,17 @@ import {useBlogPost} from '@docusaurus/theme-common/internal';
 import MDXContent from '@theme/MDXContent';
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
-// highlight-next-line
+// highlight-start
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+// highlight-end
 export default function BlogPostItemContent({children, className}) {
   const {isBlogPostPage} = useBlogPost();
   const { colorMode } = useColorMode();
   // highlight-start
+  const {siteConfig} = useDocusaurusContext();
+  const {forbiddenGiscusBlogPaths} = siteConfig.customFields;
   const location = useLocation();
-  const forbiddenGiscusPaths = [
-    '/blog/2022/10/27/giscus-comments'
-  ];
   // highlight-end
   const giscus = (
     <React.Fragment>
@@ -671,20 +699,20 @@ export default function BlogPostItemContent({children, className}) {
       <MDXContent>
         {children}
         // highlight-next-line
-        {isBlogPostPage && !forbiddenGiscusPaths.includes(location.pathname) && giscus}
+        {isBlogPostPage && !forbiddenGiscusBlogPaths.includes(location.pathname) && giscus}
       </MDXContent>
     </div>
   );
 }
 ```
 
-The changes above mean that all blog entries will have a giscus comments section *except* this blog entry because it is accessed via the following path:
+The changes above mean that all blog entries will have a giscus comments section *except* this blog entry because it is accessed via the following path (note: this is just for illustrative reasons; the comments have not been disabled for this post for obvious reasons):
 
 ```
 /blog/2022/10/27/giscus-comments
 ```
 
-To prevent comments for other paths, simply add these paths to the `forbiddenGiscusPaths` array.
+To prevent comments for other paths, simply add these paths to the `forbiddenGiscusBlogPaths` array.
 
 </TabItem>
 </Tabs>
