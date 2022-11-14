@@ -139,6 +139,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 ### Two pointers
 
+- <LC id='392' type='long' >Sometimes a pointer can be used for more than just a pointer (e.g., a pointer that also keeps track of a desirable length).</LC> 
 - <LC id='26' type='long' ></LC> 
 - <LC id='27' type='long' ></LC> 
 - <LC id='344' type='long' ></LC> 

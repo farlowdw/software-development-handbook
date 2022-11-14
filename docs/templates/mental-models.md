@@ -95,112 +95,7 @@ What's really nice about this template is that, for most binary search problems,
 
 ## M
 
-### Math
 
-#### Logarithms
-
-- $y=\log_a x$ means $a^y=x$
-- $\log_a a^x = x$
-- $a^{\log_a x}=x$
-- $\log_a 1=0$
-- $\log_a a=1$
-- $\log x=\log_{10}x$
-- $\ln x=\log_e x$
-- $\log_a xy=\log_a x+\log_a y$
-- $\log_a\Bigl(\dfrac{x}{y}\Bigr)=\log_a x-\log_a y$
-- $\log_a x^b = b\log_a x$
-- $\log_b x=\dfrac{\log_a x}{\log_a b}$
-
-#### Modular arithmetic
-
-
-
-#### Sequences and series
-
-##### Arithmetic
-
-###### Arithmetic sequence
-
-An *arithmetic sequence* is a sequence of the form
-
-$$
-a, a+d, a+2d, a+3d, a+4d,\ldots
-$$
-
-The number $a$ is the first term, and $d$ is the common difference of the sequence. The $n$th term of an arithmetic sequence is given by
-
-$$
-a_n = a + (n-1)d
-$$
-
-###### Partial sums of an arithmetic sequence
-
-For the arithmetic sequence $a_n = a + (n-1)d$, the $n$th partial sum
-
-$$
-S_n=a+(a+d)+(a+2d)+(a+3d)+\cdots+[a+(n-1)d]
-$$
-
-is given by either of the following formulas:
-
-1. $S_n = \frac{n}{2}[2a+(n-1)d]$
-2. $S_n = n[(a+a_n)/2]$
-
-##### Geometric
-
-###### Geometric sequence
-
-A geometric sequence is a sequence of the form 
-
-$$
-a, ar, ar^2, ar^3, ar^4, \ldots
-$$
-
-The number $a$ is the first term, and $r$ is the common ratio of the sequence. The $n$th term of a geometric sequence is given by
-
-$$
-a_n=ar^{n-1}
-$$
-
-###### Partial sums of a geometric sequence
-
-For the geometric sequence $a_n=ar^{n-1}$, the $n$th partial sum
-
-$$
-S_n=a+ar+ar^2+ar^3+ar^4+\cdots+ar^{n-1}\qquad(r\neq 1)
-$$
-
-is given by
-
-$$
-S_n=a\frac{1-r^n}{1-r}
-$$
-
-###### Sum of an infinite geometric series 
-
-If $|r|<1$, then the infinite geometric series
-
-$$
-a+ar+ar^2+ar^3+ar^4+\cdots+ar^{n-1}+\cdots
-$$
-
-has the sum
-
-$$
-S=\frac{a}{1-r}
-$$
-
-#### Sums
-
-##### Powers of integers
-
-- $\displaystyle\sum_{k=1}^n 1=n$
-
-- $\displaystyle\sum_{k=1}^n k=\frac{n(n+1)}{2}$
-
-- $\displaystyle\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}$
-
-- $\displaystyle\sum_{k=1}^n k^3=\frac{n^2(n+1)^2}{4}$
 
 ## N
 
@@ -316,14 +211,16 @@ function fn(arr):
       3. Both left++ and right--
 ```
 
+This method will have a linear time complexity of $O(n)$, where `n = arr.length`, so long as the work done inside the `while` loop is $O(1)$.
+
 #### Two iterables as input (start points at beginning)
 
 The following manner of implementing the two pointers technique is notably applicable when the problem has two iterables as input (e.g., two arrays).
 
 1. Create two pointers, one for each iterable. Each pointer should start at the first index.
 2. Use a `while` loop until one of the pointers reaches the end of its iterable.
-3. At each iteration of the loop, move the pointers forwards. This means incrementing either one of the pointers or both of the pointers. Deciding which pointers to move will depend on the problem being solved.
-4. Because our `while` loop will stop when one of the pointers reaches the end, the other pointer will not be at the end when the loop finishes. Sometimes, we need to iterate through all elements - if this is the case, then you will need to write extra code here to make sure both iterables are exhausted.
+3. At each iteration of the loop, move at least one pointer. This means incrementing either one of the pointers or both of the pointers. Deciding which pointers to move will depend on the problem we are trying to solve.
+4. Because our `while` loop will stop when one of the pointers reaches the end, the other pointer will not be at the end when the loop finishes. Sometimes, we need to iterate through all elements &#8212; if this is the case, then you will need to write extra code here to make sure both iterables are exhausted.
 
 ```a title="Pseudocode"
 function fn(arr1, arr2):
@@ -344,6 +241,8 @@ function fn(arr1, arr2):
     Do some logic here depending on the problem
     j++
 ```
+
+This method will have a linear time complexity of $O(n+m)$, where `n = arr1.length` and `m = arr2.length`, so long as the work done inside the `while` loop is $O(1)$.
 
 ## U
 
