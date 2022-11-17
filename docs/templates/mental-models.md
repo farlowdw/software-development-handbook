@@ -17,9 +17,10 @@ import TabItem from '@theme/TabItem';
 import TOCInline from '@theme/TOCInline';
 import LC from '@site/src/components/LC';
 import BibRef from '@site/src/components/BibRef';
+import Asterisk from '@site/src/components/Asterisk';
+import {FootnoteRef} from 'react-a11y-footnotes';
 
 ## A
-
 
 
 ## B
@@ -165,7 +166,7 @@ function fn(arr, k):
 
 #### Variable-width
 
-The idea behind the sliding window technique is to efficiently find the "best" window that fits some constraint. Usually, the problem description will define what makes a window "better" (shorter length, larger sum, etc.) and the constraint. Imagine that a problem wanted *the length of the longest subarray with a sum less than or equal to `k`* for an array with positive numbers. In this case, the constraint is `sum(window) <= k`, and the longer the window, the better it is. The general algorithm behind sliding window is:
+The idea behind the sliding window technique is to efficiently find the "best" window that fits some constraint. Usually, the problem description will define what makes a window "better" (e.g., shorter length, larger sum, etc.) and the constraint. Imagine that a problem wanted *the length of the longest subarray with a sum less than or equal to `k`* for an array with positive numbers. In this case, the constraint is `sum(window) <= k`, and the longer the window, the better it is. The general algorithm behind sliding window is as follows:
 
 1. **Define window boundaries:** Define pointers `left` and `right` that bound the left- and right-hand sides of the current window, respectively, where both pointers usually start at `0`.
 2. **Add elements to window by moving right pointer:** Iterate over the source array with the `right` bound to "add" elements to the window.

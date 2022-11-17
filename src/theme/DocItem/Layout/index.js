@@ -17,6 +17,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
 import { useLocation } from '@docusaurus/router';
+import { Footnotes } from 'react-a11y-footnotes';
 //
 
 /**
@@ -42,8 +43,8 @@ export default function DocItemLayout({ children }) {
   const docTOC = useDocTOC();
 
   // added after swizzling
-  const {siteConfig} = useDocusaurusContext();
-  const {forbiddenGiscusDocPaths} = siteConfig.customFields;
+  const { siteConfig } = useDocusaurusContext();
+  const { forbiddenGiscusDocPaths } = siteConfig.customFields;
   const { colorMode } = useColorMode();
   const location = useLocation();
   const giscus = (
@@ -78,6 +79,7 @@ export default function DocItemLayout({ children }) {
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
+            <Footnotes />
             <DocItemFooter />
           </article>
           <DocItemPaginator />

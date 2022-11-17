@@ -781,3 +781,63 @@ figcaption {
 	visibility: hidden;
 	pointer-events: none;
 }
+
+
+/* begin react-a11y-footnotes styling */
+////////////////////////////////////////
+[data-a11y-footnotes-footer] {
+  margin-top: 2em;
+  font-size: 80%;
+}
+
+/**
+ * Initialiazing a `footnotes` counter on the wrapper
+ */
+body {
+  counter-reset: footnotes;
+}
+
+/**
+ * Inline footnotes references
+ * 1. Increment the counter at each new reference
+ * 2. Reset link styles to make it appear like regular text
+ */
+[data-a11y-footnotes-ref] {
+  counter-increment: footnotes; /* 1 */
+  text-decoration: none; /* 2 */
+  color: inherit; /* 2 */
+  cursor: default; /* 2 */
+  outline: none; /* 2 */
+}
+
+/**
+ * Actual numbered references
+ * 1. Display the current state of the counter (e.g. `[1]`)
+ * 2. Align text as superscript
+ * 3. Make the number smaller (since it's superscript)
+ * 4. Slightly offset the number from the text
+ * 5. Reset link styles on the number to show it's usable
+ */
+[data-a11y-footnotes-ref]::after {
+  content: "[" counter(footnotes) "]"; /* 1 */
+  vertical-align: super; /* 2 */
+  font-size: 0.65em; /* 3 */
+  margin-left: 2px; /* 4 */
+  color: var(--ifm-link-color); /* 5 */
+  text-decoration: underline; /* 5 */
+  cursor: pointer; /* 5 */
+}
+
+/**
+ * Resetting the default focused styles on the number
+ */
+[data-a11y-footnotes-ref]:focus::after {
+  outline: thin dotted;
+  outline-offset: 2px;
+}
+
+[data-a11y-footnotes-back-link] {
+  font-size: 80%;
+}
+////////////////////////////////////////
+/* end react-a11y-footnotes styling */

@@ -204,7 +204,7 @@ plugins: [
 
 #### Specify plugin as a project dependency and install
 
-Now that the plugin has been created and specified for use within your Docusaurus project, it is now time to specify the plugin as a project dependency. Update the `package.json` file at your project root with `my-loaders` specified as a dependency 
+Now that the plugin has been created and specified for use within your Docusaurus project, it is now time to specify the plugin as a project dependency. Update the `package.json` file at your project root with `my-loaders` specified as a dependency:
 
 ```json title="/package.json"
 {

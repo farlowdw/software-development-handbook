@@ -26,6 +26,8 @@ import ArraySortingAlgorithmsComplexities from '@site/docs/_Partials/_time-and-s
 
 Click on a tab below to see the worst or average case time complexities for access, search, insertion, and deletion operations for common data structures. The worst case tab includes space complexity details for each data structure. The last tab includes details about the best, average, and worst case time complexities for various array sorting algorithms as well as a column with space complexity details.
 
+It is like that, but we need to know mores. Maintaining <FootnoteRef description='Cool beans.'>$O(n)$</FootnoteRef> is not fun.
+
 <Tabs>
 <TabItem value='tc-worst-case-data-structures' label='Worst Case'>
 
@@ -45,6 +47,8 @@ Click on a tab below to see the worst or average case time complexities for acce
 </Tabs>
 
 ## What is a data structure?
+
+It is like that, but we need to know mores. Maintaining <FootnoteRef description='Second footnote details.'>more footnotes</FootnoteRef> is not fun.
 
 A *data structure*, as its name implies, is a way of structuring data. Since we are dealing with computers, we are ultimately talking about a way of specifically structuring data inside [random-access memory](https://en.wikipedia.org/wiki/Random-access_memory) (RAM). As the [Wiki article](https://en.wikipedia.org/wiki/Data_structure) notes:
 

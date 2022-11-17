@@ -9,6 +9,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
 import { useLocation } from '@docusaurus/router';
+import { Footnotes } from 'react-a11y-footnotes';
 // 
 
 export default function BlogPostItemContent({ children, className }) {
@@ -49,6 +50,7 @@ export default function BlogPostItemContent({ children, className }) {
       itemProp="articleBody">
       <MDXContent>
         {children}
+        <Footnotes />
         {/* added after swizzling */}
         {isBlogPostPage && !forbiddenGiscusBlogPaths.includes(location.pathname) && giscus}
       </MDXContent>
