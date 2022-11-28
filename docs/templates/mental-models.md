@@ -170,7 +170,7 @@ The idea behind the sliding window technique is to efficiently find the "best" w
 
 1. **Define window boundaries:** Define pointers `left` and `right` that bound the left- and right-hand sides of the current window, respectively, where both pointers usually start at `0`.
 2. **Add elements to window by moving right pointer:** Iterate over the source array with the `right` bound to "add" elements to the window.
-3. **Remove elements from window by checking constraint and moving left pointer:** Whenever the constraint is broken,  "remove" elements from the window by incrementing the `left` bound until the constraint is satisfied again.
+3. **Remove elements from window by checking constraint and moving left pointer:** Whenever the constraint is broken,  "remove" elements from the window by incrementing the `left` bound until the constraint is satisfied again.<Asterisk cursor='help' symbol='[*]' >The condition that the left boundary be *strictly* less than the *right* boundary may sometimes be relaxed depending on the problem (i.e., sometimes it is reasonable for the condition to be *less than or equal to* as opposed to just *less than*). The pseudocode is simply a rough outline of the procedural process for variable-width sliding window algorithms.</Asterisk> 
 
 ```a title="Pseudocode"
 function fn(arr):

@@ -86,8 +86,10 @@ Difference arrays are not super common but are important to know as it is very d
 
 ### Prefix sum
 
-If a problem's input is an array comprised of numeric elements and you find yourself needing to calculate multiple subarray sums, then consider building a prefix sum. But be mindful that a prefix sum costs $O(n)$ space to build--if the prefix sum is used in a "sliding" manner, then be on the lookout for space optimization possibilities by using a running sum and deducting that from the total sum for each iteration.
+If a problem's input is an array comprised of numeric elements and you find yourself needing to calculate multiple subarray sums, then consider building a prefix sum. But be mindful that a prefix sum costs $O(n)$ space to build &#8212; if the prefix sum is used in a "sliding" manner, then be on the lookout for space optimization possibilities by using a running sum and deducting that from the total sum for each iteration.
 
+- <LC id='1413' type='long' ></LC> 
+- <LC id='1480' type='long' ></LC> 
 - <LC id='2256' type='long' ></LC> 
 - <LC id='2270' type='long' ></LC> 
 

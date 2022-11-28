@@ -7,7 +7,7 @@ import problemsJSON from './problems';
  * @param {number} id The id by which to reference the LeetCode problem (i.e., the problem number)
  * @param {string} type The reference type for how the problem should be listed (short with just the number or long with number and title)
  */
-export default function LC({
+export default function BibRef({
 	// problem number
 	id,
 	// reference type (short style such as "[LC 1]" or long style such as "[LC 1. Two Sum]")

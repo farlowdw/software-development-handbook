@@ -13,6 +13,10 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const katexMacros = require('./katex-macros');
 
+const bcgsBaseURL = `https://books.dwf.dev`;
+const manimBaseURL = `https://manim.dwf.dev`;
+const leetcodeBaseURL = `https://lc.dwf.dev`;
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Software Engineering Handbook',
@@ -192,17 +196,17 @@ const config = {
             position: 'left'
           },
           {
-            href: 'https://dwf-books.netlify.app/docs/intro',
+            href: `${bcgsBaseURL}/docs/intro`,
             label: 'BCGS Notes',
             position: 'right',
           },
           {
-            href: 'https://dwf-books.netlify.app/docs/reference/python/',
+            href: `${bcgsBaseURL}/docs/reference/python/`,
             label: 'Python Reference',
             position: 'right',
           },
           {
-            href: 'https://github.com/farlowdw/software-development-handbook',
+            href: `https://github.com/farlowdw/software-development-handbook`,
             label: 'GitHub',
             position: 'right',
           },
@@ -303,46 +307,50 @@ const config = {
             items: [
               {
                 label: 'Python Language Reference',
-                href: 'https://dwf-books.netlify.app/docs/reference/python/',
+                href: `${bcgsBaseURL}/docs/reference/python/`,
+              },
+              {
+                label: 'CSS Diner',
+                href: `${bcgsBaseURL}/docs/reference/css/css-diner`,
               },
               {
                 label: 'Docusaurus Input-Output',
-                href: 'https://dwf-books.netlify.app/docs/reference/docusaurus/templates',
+                href: `${bcgsBaseURL}/docs/reference/docusaurus/templates`,
               },
               {
                 label: 'KaTeX',
-                href: 'https://dwf-books.netlify.app/docs/reference/docusaurus/katex',
+                href: `${bcgsBaseURL}/docs/reference/docusaurus/katex`,
               },
               {
                 label: 'MySQL',
-                href: 'https://dwf-books.netlify.app/docs/reference/sql/mysql',
+                href: `${bcgsBaseURL}/docs/reference/sql/mysql`,
               },
               {
                 label: 'Postgres',
-                href: 'https://dwf-books.netlify.app/docs/reference/sql/postgresql',
+                href: `${bcgsBaseURL}/docs/reference/sql/postgresql`,
               },
               {
                 label: 'PG Exercises',
-                href: 'https://dwf-books.netlify.app/docs/reference/sql/pg-exercises',
+                href: `${bcgsBaseURL}/docs/reference/sql/pg-exercises`,
               },
               {
                 label: 'Algorithm Design Manual',
-                href: 'https://dwf-books.netlify.app/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design',
+                href: `${bcgsBaseURL}/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design`,
               },
               {
                 label: 'Interview Cake',
-                href: 'https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking',
+                href: `${bcgsBaseURL}/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking`,
               },
               {
                 label: 'MIT Missing Semester',
-                href: 'https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/mit-missing-semester/',
+                href: `${bcgsBaseURL}/docs/course-notes/development-and-engineering/mit-missing-semester/`,
               },
               {
                 label: 'Manim',
-                href: 'https://manim.netlify.app/docs/intro'
+                href: `${manimBaseURL}/docs/intro`,
               },
               {
-                href: 'https://dwflc.netlify.app/docs/intro',
+                href: `${leetcodeBaseURL}/docs/intro`,
                 label: 'LeetCode Work (Protected)',
               },
             ],
