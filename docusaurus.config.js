@@ -184,11 +184,19 @@ const config = {
             to: '/docs/intro',
             label: 'Handbook',
             position: 'left',
+            activeBaseRegex: `/docs/(?!tags)`,
+          },
+          {
+            to: '/docs/tags',
+            label: 'Tags',
+            position: 'left',
+            activeBaseRegex: `/docs/tags`,
           },
           {
             to: '/blog',
             label: 'Blog',
-            position: 'left'
+            position: 'left',
+            activeBaseRegex: `/blog(?!/archive|/tags)`,
           },
           {
             to: '/blog/archive',
@@ -196,14 +204,9 @@ const config = {
             position: 'left'
           },
           {
-            href: `${bcgsBaseURL}/docs/intro`,
-            label: 'BCGS Notes',
-            position: 'right',
-          },
-          {
-            href: `${bcgsBaseURL}/docs/reference/python/`,
-            label: 'Python Reference',
-            position: 'right',
+            to: '/blog/tags',
+            label: 'Blog Tags',
+            position: 'left'
           },
           {
             href: `https://github.com/farlowdw/software-development-handbook`,
