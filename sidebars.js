@@ -169,12 +169,20 @@ const sidebars = {
       label: 'Learning Resources',
       collapsed: true,
       items: [
-        'learning-resources/intro',
         'learning-resources/general-list',
         'learning-resources/curated-list',
         'learning-resources/neetcode',
         'learning-resources/real-python',
         'learning-resources/leetcode-problems-by-category',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Snippets',
+      collapsed: true,
+      items: [
+        'snippets/bash',
+        'snippets/express-js',
       ]
     },
     'definitions',

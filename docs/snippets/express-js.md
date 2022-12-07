@@ -1,0 +1,1128 @@
+---
+title: Express.js Snippets
+hide_title: false
+sidebar_label: Express.js
+description: A collection of snippets to use with Express.js
+draft: false
+tags: [express]
+keywords: [express]
+image: https://github.com/farlowdw.png
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import TOCInline from '@theme/TOCInline';
+
+## Templates concerning usage of express-generator
+
+### app.js after using the express generator WITH a view
+
+Run the following from the command line:
+
+```bash
+npx express-generator --view=ejs sample-express-scaffold
+```
+
+- Run `npm i` to install all dependencies and a subsequent `npm i helmet`. 
+- Create the file `app-level-middleware.js` in the root folder of your project:
+
+```javascript
+// app-level-middleware.js
+const createError = require('http-errors');
+
+const appLevelMiddleware = {
+  /**
+   * Catch 404 and forward to error handler
+   * 
+   * Example:
+   * 
+   *      // Use at the application level
+   *      app.use(catchAndForward404);
+   */
+  catchAndForward404: (req, res, next) => {
+    next(createError(404));
+  },
+  /**
+   * Catch error, set locals (only providing error in development environment), and render error page/view
+   * 
+   * Example:
+   * 
+   *      // Use at the application level
+   *      app.use(genericErrorHandler);
+   */
+  genericErrorHandler: (err, req, res, next) => {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  }
+}
+
+module.exports = appLevelMiddleware;
+```
+
+- Replace `app.js` with the following:
+
+```javascript
+// app.js
+// IF YOU USE A VIEW ENGINE WITH STYLESHEET SUPPORT, THEN MAKE SURE TO KEEP CSS CONFIGURATION CODE FROM ORIGINAL app.js
+/********** NATIVE NODE MODULES **********/
+const path = require('path');
+
+/********** THIRD-PARTY NODE MODULES **********/
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+/********** INTERNAL MODULES **********/
+const appLevelMiddleware = require('./app-level-middleware');
+
+/********** ROUTING LOGIC AND MIDDLEWARE **********/
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+/********** CREATE THE APP AND USE APPLICATION-LEVEL MIDDLEWARE **********/
+const app = express();
+app.set('views', [
+  path.join(__dirname, 'views')
+]);
+app.set('view engine', 'ejs');
+app.use(helmet());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+/********** USE ROUTING MIDDLEWARE **********/
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+/********** ERROR HANDLING MIDDLEWARE TO USE LAST (i.e., directly before exporting the app) **********/
+app.use(appLevelMiddleware.catchAndForward404);
+app.use(appLevelMiddleware.genericErrorHandler);
+
+module.exports = app;
+```
+
+### app.js after using the express generator WITHOUT a view
+
+Run the following from the command line:
+
+```bash
+npx express-generator --no-view sample-express-scaffold
+```
+
+- Run `npm i` to install all dependencies and a subsequent `npm i helmet`. 
+- Replace `app.js` with the following:
+
+```javascript
+// app.js
+/********** NATIVE NODE MODULES **********/
+const path = require('path');
+
+/********** THIRD-PARTY NODE MODULES **********/
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+/********** ROUTING LOGIC AND MIDDLEWARE **********/
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+/********** CREATE THE APP AND USE APPLICATION-LEVEL MIDDLEWARE **********/
+const app = express();
+app.use(helmet());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+/********** USE ROUTING MIDDLEWARE **********/
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+module.exports = app;
+```
+
+## Application templates for general usage
+
+### env
+
+```
+PORT=3000
+YOUR_ENVIRONMENT_VARIABLE=variableValue
+```
+
+### .gitignore
+
+```
+# Custom ignore declarations
+config
+config.js
+
+# Document dump from this recommended Node.ignore file: 
+# https://github.com/github/gitignore/blob/master/Node.gitignore
+# The above ignores node_modules as well as .env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs generated by jscoverage/JSCover
+lib-cov
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+```
+
+### App scaffold with CSS-only support
+
+```javascript
+
+///////////////////////////////////////////////////////////////////////////
+
+// app.js (for app scaffold where only CSS support is specified; note that the default view engine will be jade)
+//========== NATIVE NODE MODULES ==========
+const path = require('path');
+
+//========== THIRD-PARTY NODE MODULES ==========
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+////////////////////////////////////////////////////////////
+/////           REQUIRE CSS DEPENDENCIES HERE          /////
+////////////////////////////////////////////////////////////
+
+//========== INTERNAL MODULES ==========
+const appConfig = require('./config');
+const errorHandlingMiddleware = require('./error-handling-middleware');
+const myBaseMiddlewares = require('./middlewares');
+
+//========== ROUTING LOGIC AND MIDDLEWARE ==========
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+//========== CREATE THE APP AND USE APPLICATION-LEVEL MIDDLEWARE ==========
+const app = express();
+
+app.set('views', [
+  path.join(__dirname, 'views')
+]);
+app.set('view engine', 'jade');
+
+////////////////////////////////////////////////////////////
+/////     DOUBLE CHECK VIEW ENGINE SPECIFICS ABOVE     /////
+////////////////////////////////////////////////////////////
+
+app.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next() }); // for in-development use only (no caching)
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+////////////////////////////////////////////////////////////
+/////             USE CSS MIDDLEWARE HERE              /////
+////////////////////////////////////////////////////////////
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+//========== USE ROUTING MIDDLEWARE ==========
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+//========== ERROR HANDLING MIDDLEWARE TO USE LAST (i.e., directly before exporting the app) ==========
+app.use(errorHandlingMiddleware.catchAndForward404);
+app.use(errorHandlingMiddleware.genericErrorHandler);
+
+module.exports = app;
+```
+
+### App scaffold with no view engine template
+
+```javascript
+
+///////////////////////////////////////////////////////////////////////////
+
+// app.js (for app scaffold where neither view engine nor CSS support are specified)
+//========== NATIVE NODE MODULES ==========
+const path = require('path');
+
+//========== THIRD-PARTY NODE MODULES ==========
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+//========== INTERNAL MODULES ==========
+const appConfig = require('./config');
+const myBaseMiddlewares = require('./middlewares');
+
+//========== ROUTING LOGIC AND MIDDLEWARE ==========
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+//========== CREATE THE APP AND USE APPLICATION-LEVEL MIDDLEWARE ==========
+const app = express();
+app.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next() }); // for in-development use only (no caching)
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//========== USE ROUTING MIDDLEWARE ==========
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+module.exports = app;
+```
+
+### App scaffold with view engine and CSS template
+
+```javascript
+
+///////////////////////////////////////////////////////////////////////////
+
+// app.js (for app scaffold where view engine and CSS support are specified)
+//========== NATIVE NODE MODULES ==========
+const path = require('path');
+
+//========== THIRD-PARTY NODE MODULES ==========
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+////////////////////////////////////////////////////////////
+/////           REQUIRE CSS DEPENDENCIES HERE          /////
+////////////////////////////////////////////////////////////
+
+//========== INTERNAL MODULES ==========
+const appConfig = require('./config');
+const errorHandlingMiddleware = require('./error-handling-middleware');
+const myBaseMiddlewares = require('./middlewares');
+
+//========== ROUTING LOGIC AND MIDDLEWARE ==========
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+//========== CREATE THE APP AND USE APPLICATION-LEVEL MIDDLEWARE ==========
+const app = express();
+
+app.set('views', [
+  path.join(__dirname, 'views')
+]);
+app.set('view engine', 'ejs');
+
+////////////////////////////////////////////////////////////
+/////     DOUBLE CHECK VIEW ENGINE SPECIFICS ABOVE     /////
+////////////////////////////////////////////////////////////
+
+app.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next() }); // for in-development use only (no caching)
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+////////////////////////////////////////////////////////////
+/////             USE CSS MIDDLEWARE HERE              /////
+////////////////////////////////////////////////////////////
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+//========== USE ROUTING MIDDLEWARE ==========
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+//========== ERROR HANDLING MIDDLEWARE TO USE LAST (i.e., directly before exporting the app) ==========
+app.use(errorHandlingMiddleware.catchAndForward404);
+app.use(errorHandlingMiddleware.genericErrorHandler);
+
+module.exports = app;
+```
+
+### App scaffold where only a view engine is specified
+
+```javascript
+
+///////////////////////////////////////////////////////////////////////////
+
+// app.js (for app scaffold where only a view engine is specified; that is, there is no built-in css support)
+//========== NATIVE NODE MODULES ==========
+const path = require('path');
+
+//========== THIRD-PARTY NODE MODULES ==========
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+//========== INTERNAL MODULES ==========
+const appConfig = require('./config');
+const errorHandlingMiddleware = require('./error-handling-middleware');
+const myBaseMiddlewares = require('./middlewares');
+
+//========== ROUTING LOGIC AND MIDDLEWARE ==========
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+//========== CREATE THE APP AND USE APPLICATION-LEVEL MIDDLEWARE ==========
+const app = express();
+
+app.set('views', [
+  path.join(__dirname, 'views')
+]);
+app.set('view engine', 'ejs');
+
+////////////////////////////////////////////////////////////
+/////     DOUBLE CHECK VIEW ENGINE SPECIFICS ABOVE     /////
+////////////////////////////////////////////////////////////
+
+app.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next() }); // for in-development use only (no caching)
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+//========== USE ROUTING MIDDLEWARE ==========
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+//========== ERROR HANDLING MIDDLEWARE TO USE LAST (i.e., directly before exporting the app) ==========
+app.use(errorHandlingMiddleware.catchAndForward404);
+app.use(errorHandlingMiddleware.genericErrorHandler);
+
+module.exports = app;
+```
+
+## Middlewares and routes
+
+### Custom middleware
+
+```javascript
+const baseMiddleware = {
+  /**
+   * middlewareDescription
+   * 
+   * Example:
+   * 
+   *      // exampleUsage
+   */
+  baseMiddlewareExample: (req, res, next) => {
+    console.log(`baseMiddlewareExample just ran!`);
+    next();
+  }
+}
+
+module.exports = baseMiddleware;
+```
+
+### Error-handling middleware
+
+```javascript
+const createError = require('http-errors');
+
+const errorHandlingMiddleware = {
+  /**
+   * Catch 404 and forward to error handler
+   * 
+   * Example:
+   * 
+   *      // Use at the application level
+   *      app.use(catchAndForward404);
+   */
+  catchAndForward404: (req, res, next) => {
+    next(createError(404));
+  },
+  /**
+   * Catch error, set locals (only providing error in development environment), and render error page/view
+   * 
+   * Example:
+   * 
+   *      // Use at the application level
+   *      app.use(genericErrorHandler);
+   */
+  genericErrorHandler: (err, req, res, next) => {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  }
+}
+
+module.exports = errorHandlingMiddleware;
+```
+
+### Index route template
+
+```javascript
+const indexMiddleware = {
+  /**
+   * Sample middleware function to use on specific routes related to the index endpoint: '/'
+   * 
+   * Example:
+   * 
+   *      // exampleUsage
+   *      router.get('/', indexMiddlewareExample, (req, res, next) => { // ... })
+   */
+  indexMiddlewareExample: (req, res, next) => {
+    console.log(`indexMiddlewareExample just ran!`);
+    next();
+  }
+}
+
+module.exports = indexMiddleware;
+```
+
+### Index route with no view template
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const { indexMiddlewareExample } = require('./index-middleware');
+
+/* GET home page. */
+router.get('/', indexMiddlewareExample, (req, res, next) => {
+  res.json({ msg: `Welcome to Express` });
+});
+
+module.exports = router;
+```
+
+### Index route with view template
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const { indexMiddlewareExample } = require('./index-middleware');
+
+/* GET home page. */
+router.get('/', indexMiddlewareExample, (req, res, next) => {
+  res.render('index', { title: 'Express' });
+});
+
+module.exports = router;
+```
+
+### Users route middleware
+
+```javascript
+const usersMiddleware = {
+  /**
+   * Sample middleware function to use on specific routes related to the users endpoint: '/users'
+   * 
+   * Example:
+   * 
+   *      // exampleUsage
+   *      router.get('/', usersMiddlewareExample, (req, res, next) => { // ... })
+   */
+  usersMiddlewareExample: (req, res, next) => {
+    console.log(`usersMiddlewareExample just ran!`);
+    next();
+  }
+}
+
+module.exports = usersMiddleware;
+```
+
+### Users route template
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const { usersMiddlewareExample } = require('./users-middleware');
+
+/* GET users listing. */
+router.get('/', usersMiddlewareExample, (req, res, next) => {
+  res.send('respond with a resource');
+});
+
+module.exports = router;
+```
+
+## Application templates to use with Passport authentication
+
+### env template
+
+```
+GITHUB_CLIENT_ID=yourGitHubClientID
+GITHUB_CLIENT_SECRET=yourGitHubClientSecret
+# change the callback url below as appropriate
+GITHUB_CALLBACK_URL=http://localhost:3000/auth/github/callback
+
+FACEBOOK_CLIENT_ID=yourFacebookClientID
+FACEBOOK_CLIENT_SECRET=yourFacebookClientSecret
+# change the callback url below as appropriate
+FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback
+
+AMAZON_CLIENT_ID=yourAmazonClientID
+AMAZON_CLIENT_SECRET=yourAmazonClientSecret
+# change the callback url below as appropriate
+AMAZON_CALLBACK_URL=http://localhost:3000/auth/amazon/callback
+
+GOOGLE_CLIENT_ID=yourGoogleClientID
+GOOGLE_CLIENT_SECRET=yourGoogleClientSecret
+# change the callback url below as appropriate
+GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
+
+LINKEDIN_CLIENT_ID=yourLinkedInClientID
+LINKEDIN_CLIENT_SECRET=yourLinkedInClientSecret
+# change the callback url below as appropriate
+LINKEDIN_CALLBACK_URL=http://localhost:3000/auth/linkedin/callback
+
+TWITTER_CONSUMER_KEY=yourTwitterConsumerKey
+TWITTER_CONSUMER_SECRET=yourTwitterConsumerSecret
+# change the callback url below as appropriate
+TWITTER_CALLBACK_URL=http://localhost:3000/auth/twitter/callback
+TWITTER_BEARER_TOKEN=yourTwitterBearerToken
+
+PORT=3000
+YOUR_ENVIRONMENT_VARIABLE=variableValue
+```
+
+### App scaffold with passport authentication strategies
+
+```javascript
+
+///////////////////////////////////////////////////////////////////////////
+
+// app.js (for app scaffold where the priority is setting up passport authentication strategies)
+//========== NATIVE NODE MODULES ==========
+const path = require('path');
+
+//========== THIRD-PARTY NODE MODULES ==========
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const passport = require('passport');
+
+//========== INTERNAL MODULES ==========
+const appConfig = require('./config');
+const errorHandlingMiddleware = require('./error-handling-middleware');
+const myBaseMiddlewares = require('./middlewares');
+
+//========== ROUTING LOGIC AND MIDDLEWARE ==========
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
+const authRouter = require('./routes/auth');
+const autheduserRouter = require('./routes/autheduser');
+
+//========== CREATE THE APP AND USE APPLICATION-LEVEL MIDDLEWARE ==========
+const app = express();
+
+app.set('views', [
+  path.join(__dirname, 'views')
+]);
+app.set('view engine', 'ejs');
+
+app.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next() }); // for in-development use only (no caching)
+app.use(helmet({ contentSecurityPolicy: false }));
+
+//=============== PASSPORT CONFIGURATION ===============
+// install desired dependencies: 
+// npm i passport-amazon passport-facebook passport-github passport-google-oauth20 passport-linkedin-oauth2 passport-twitter 
+
+// use sessions to persist logins
+app.use(session({
+  secret: 'Express is nifty',
+  resave: false,
+  saveUninitialized: true
+}))
+
+// require the needed passport strategy middleware
+const { 
+  gitHubPassportMiddleware, 
+  facebookPassportMiddleware,
+  amazonPassportMiddleware,
+  googlePassportMiddleware,
+  linkedinPassportMiddleware,
+  twitterPassportMiddleware
+} = require('./middlewares/passport');
+
+// initialize passport and enable persistent login sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
+// use the needed passport strategy middleware
+gitHubPassportMiddleware();
+facebookPassportMiddleware();
+amazonPassportMiddleware();
+googlePassportMiddleware();
+linkedinPassportMiddleware();
+twitterPassportMiddleware();
+
+// support login sessions by serializing and deserializing the user
+passport.serializeUser((user, cb) => cb(null, user));
+passport.deserializeUser((user, cb) => cb(null, user));
+//=======================================================
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//========== USE ROUTING MIDDLEWARE ==========
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+app.use('/auth', authRouter);
+app.use('/autheduser', autheduserRouter);
+
+//========== ERROR HANDLING MIDDLEWARE TO USE LAST (i.e., directly before exporting the app) ==========
+app.use(errorHandlingMiddleware.catchAndForward404);
+app.use(errorHandlingMiddleware.genericErrorHandler);
+
+module.exports = app;
+```
+
+### Passport config
+
+```javascript
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
+const passportConfig = {
+  github: {
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK_URL
+  },
+  facebook: {
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    profileFields: ['id', 'displayName', 'photos', 'email']
+  },
+  amazon: {
+    clientID: process.env.AMAZON_CLIENT_ID,
+    clientSecret: process.env.AMAZON_CLIENT_SECRET,
+    callbackURL: process.env.AMAZON_CALLBACK_URL
+  },
+  google: {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
+  },
+  linkedin: {
+    clientID: process.env.LINKEDIN_CLIENT_ID,
+    clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+    callbackURL: process.env.LINKEDIN_CALLBACK_URL
+  },
+  twitter: {
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    callbackURL: process.env.TWITTER_CALLBACK_URL
+  }
+}
+
+module.exports = passportConfig;
+```
+
+### Passport middlewares
+
+```javascript
+const passport = require('passport');
+const GitHubStrategy = require('passport-github').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const AmazonStrategy = require('passport-amazon').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
+
+const { 
+  github: githubPassportConfig, 
+  facebook: facebookPassportConfig,
+  amazon: amazonPassportConfig,
+  google: googlePassportConfig,
+  linkedin: linkedinPassportConfig,
+  twitter: twitterPassportConfig
+} = require('../config/passport');
+
+const passportMiddleware = {
+  /**
+   * Makes possible the GitHub authentication strategy
+   * 
+   * Example:
+   * 
+   *      // example usage in app.js
+   *      const { gitHubPassportMiddleware } = require('./middlewares/passport');
+   *      gitHubPassportMiddleware()
+   */
+  gitHubPassportMiddleware: () => passport.use(
+    new GitHubStrategy(githubPassportConfig, (accessToken, refreshToken, profile, cb) => {
+      console.log(profile);
+      return cb(null, profile);
+    })),
+  facebookPassportMiddleware: () => passport.use(
+    new FacebookStrategy(facebookPassportConfig, (accessToken, refreshToken, profile, cb) => {
+      console.log(profile);
+      return cb(null, profile);
+    })),
+  amazonPassportMiddleware: () => passport.use(
+    new AmazonStrategy(amazonPassportConfig, (accessToken, refreshToken, profile, cb) => {
+      console.log(profile);
+      return cb(null, profile);
+    })),
+  googlePassportMiddleware: () => passport.use(
+    new GoogleStrategy(googlePassportConfig, (accessToken, refreshToken, profile, cb) => {
+      console.log(profile);
+      return cb(null, profile);
+    })),
+  linkedinPassportMiddleware: () => passport.use(
+    new LinkedInStrategy(linkedinPassportConfig, (accessToken, refreshToken, profile, cb) => {
+      console.log(profile);
+      return cb(null, profile);
+    })),
+  twitterPassportMiddleware: () => passport.use(
+    new TwitterStrategy(twitterPassportConfig, (token, tokenSecret, profile, cb) => {
+      console.log(profile);
+      return cb(null, profile);
+    }))
+}
+
+module.exports = passportMiddleware;
+```
+
+### Auth routes
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+
+router.get('/github/callback', passport.authenticate('github', {
+  successRedirect: '/autheduser',
+  failureRedirect: '/'
+}))
+
+router.get('/facebook/callback', passport.authenticate('facebook', {
+  successRedirect: '/autheduser',
+  failureRedirect: '/'
+}))
+
+router.get('/amazon/callback', passport.authenticate('amazon', {
+  successRedirect: '/autheduser',
+  failureRedirect: '/'
+}))
+
+router.get('/google/callback', passport.authenticate('google', {
+  successRedirect: '/autheduser',
+  failureRedirect: '/'
+}))
+
+router.get('/linkedin/callback', passport.authenticate('linkedin', {
+  successRedirect: '/autheduser',
+  failureRedirect: '/'
+}))
+
+router.get('/twitter/callback', passport.authenticate('twitter', {
+  successRedirect: '/autheduser',
+  failureRedirect: '/'
+}))
+
+
+module.exports = router;
+```
+
+### Authed user routes
+
+```javascript
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res, next) => {
+  res.json(req.user);
+})
+
+module.exports = router;
+```
+
+### Index routes
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const { indexMiddlewareExample } = require('./index-middleware');
+
+/* GET home page. */
+router.get('/', indexMiddlewareExample, (req, res, next) => {
+  console.log(`req.user object appears below:`);
+  console.log(req.user);
+  const userInfo = req.user;
+  if (userInfo) {
+    let { displayName, provider } = req.user;
+    provider === 'linkedin' 
+      ? provider = 'LinkedIn' 
+      : provider === "github"
+        ? provider = 'GitHub'
+        : provider = provider[0].toUpperCase() + provider.slice(1)
+    res.locals.greeting = `Welcome back, ${displayName}! You are now logged in with ${provider}.`
+  }
+  res.render('index', { userInfo });
+});
+
+module.exports = router;
+```
+
+### Login routes
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+
+router.get('/github', passport.authenticate('github'), (req, res, next) => {
+  res.json({ msg: 'what up github! '})
+})
+
+router.get('/facebook', passport.authenticate('facebook'), (req, res, next) => {
+  res.json({ msg: 'what up facebook! '})
+})
+
+router.get('/amazon', passport.authenticate('amazon', { scope: ['profile'] }), (req, res, next) => {
+  res.json({ msg: 'what up amazon! '})
+})
+
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res, next) => {
+  res.json({ msg: 'what up google! '})
+})
+
+router.get('/linkedin', passport.authenticate('linkedin', { scope: ['r_emailaddress', 'r_liteprofile'] }), (req, res, next) => {
+  res.json({ msg: 'what up linkedin! '})
+})
+
+router.get('/twitter', passport.authenticate('twitter'), (req, res, next) => {
+  res.json({ msg: 'what up twitter! '})
+})
+
+module.exports = router;
+```
+
+### Logout routes
+
+```javascript
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res, next) => {
+  req.logout();
+  res.redirect('/');
+})
+
+module.exports = router;
+```
+
+### Views head 
+
+```html 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Metamorphous|Swanky+and+Moo+Moo" rel="stylesheet">
+<link rel="stylesheet" href="/stylesheets/style.css">
+```
+
+### Views index 
+
+```html 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> PassportJS Demo </title>
+  <% include head %>
+</head>
+
+<body>
+
+  <% include navbar %>
+  
+  <% if (userInfo) { %>
+    <%= greeting %> 
+  <% } else { %>
+    <p>Consider logging in with one of the providers listed above to personalize your experience.</p>
+  <% } %>
+   
+
+</body>
+
+</html>
+```
+
+### Views navbar
+
+```html 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">PassportJS Demo</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/login/google">Google</a></li>
+      <li><a href="/login/twitter">Twitter</a></li>
+      <li><a href="/login/amazon">Amazon</a></li>
+      <li><a href="/login/linkedin">LinkedIn</a></li>
+      <li><a href="/login/github">GitHub</a></li>
+      <li><a href="/login/facebook">Facebook</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout">LOGOUT</a></li>
+    </ul>
+  </div>
+</nav>
+```
+
+## Miscellaneous templates
+
+### Configuration template
+
+```javascript
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
+const appConfig = {
+  // use custom values and values from process.env
+  listeningPort: process.env.PORT,
+  someAppConfiguration: process.env.YOUR_ENVIRONMENT_VARIABLE
+}
+
+module.exports = appConfig;
+```

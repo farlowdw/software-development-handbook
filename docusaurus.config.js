@@ -13,7 +13,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const katexMacros = require('./katex-macros');
 
-const bcgsBaseURL = `https://books.dwf.dev`;
+const bcgBaseURL = `https://bcg.dwf.dev`;
 const manimBaseURL = `https://manim.dwf.dev`;
 const leetcodeBaseURL = `https://lc.dwf.dev`;
 
@@ -310,43 +310,43 @@ const config = {
             items: [
               {
                 label: 'Python Language Reference',
-                href: `${bcgsBaseURL}/docs/reference/python/`,
+                href: `${bcgBaseURL}/docs/reference/python/introduction`,
               },
               {
                 label: 'CSS Diner',
-                href: `${bcgsBaseURL}/docs/reference/css/css-diner`,
+                href: `${bcgBaseURL}/docs/reference/css/css-diner`,
               },
               {
                 label: 'Docusaurus Input-Output',
-                href: `${bcgsBaseURL}/docs/reference/docusaurus/templates`,
+                href: `${bcgBaseURL}/docs/reference/docusaurus/templates`,
               },
               {
                 label: 'KaTeX',
-                href: `${bcgsBaseURL}/docs/reference/docusaurus/katex`,
+                href: `${bcgBaseURL}/docs/reference/docusaurus/katex`,
               },
               {
                 label: 'MySQL',
-                href: `${bcgsBaseURL}/docs/reference/sql/mysql`,
+                href: `${bcgBaseURL}/docs/reference/sql/mysql`,
               },
               {
                 label: 'Postgres',
-                href: `${bcgsBaseURL}/docs/reference/sql/postgresql`,
+                href: `${bcgBaseURL}/docs/reference/sql/postgresql`,
               },
               {
                 label: 'PG Exercises',
-                href: `${bcgsBaseURL}/docs/reference/sql/pg-exercises`,
+                href: `${bcgBaseURL}/docs/reference/sql/pg-exercises`,
               },
               {
                 label: 'Algorithm Design Manual',
-                href: `${bcgsBaseURL}/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design`,
+                href: `${bcgBaseURL}/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design`,
               },
               {
                 label: 'Interview Cake',
-                href: `${bcgsBaseURL}/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking`,
+                href: `${bcgBaseURL}/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking`,
               },
               {
                 label: 'MIT Missing Semester',
-                href: `${bcgsBaseURL}/docs/course-notes/development-and-engineering/mit-missing-semester/`,
+                href: `${bcgBaseURL}/docs/course-notes/development-and-engineering/mit-missing-semester/`,
               },
               {
                 label: 'Manim',
