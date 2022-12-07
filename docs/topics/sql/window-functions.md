@@ -22,7 +22,7 @@ import BibRef from '@site/src/components/BibRef';
 
 Unless otherwise noted, all code examples were run using version `8.0.30` of MySQL. Intentionally, nearly all window function features outlined on this page also apply to window function usage in other SQL dialects (e.g., Postgres, SQL Server, etc.).
 
-[MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html) as well as the [MySQL tutorial site](https://www.mysqltutorial.org/mysql-window-functions/) have been heavily used and referenced (implicitly or explicitly).
+[MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html) as well as the [MySQL tutorial site](https://www.mysqltutorial.org/mysql-window-functions/) have been heavily used and referenced (implicitly or explicitly) throughout this page.
 
 :::
 
