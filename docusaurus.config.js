@@ -346,7 +346,7 @@ const config = {
               },
               {
                 label: 'MIT Missing Semester',
-                href: `${bcgBaseURL}/docs/course-notes/development-and-engineering/mit-missing-semester/`,
+                href: `${bcgBaseURL}/docs/course-notes/computer-science/mit-missing-semester/introduction`,
               },
               {
                 label: 'Manim',
