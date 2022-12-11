@@ -185,6 +185,7 @@ const sidebars = {
         'snippets/express-js',
       ]
     },
+    'development-resources',
     'definitions',
     'reference-list',
     'faq',

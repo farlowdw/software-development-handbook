@@ -13,7 +13,8 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const katexMacros = require('./katex-macros');
 
-const bcgBaseURL = `https://bcg.dwf.dev`;
+const booksBaseURL = `https://books.dwf.dev`;
+const coursesBaseURL = `https://courses.dwf.dev`;
 const manimBaseURL = `https://manim.dwf.dev`;
 const leetcodeBaseURL = `https://lc.dwf.dev`;
 
@@ -272,11 +273,11 @@ const config = {
             items: [
               {
                 label: 'Comments with Giscus',
-                to: '/blog/2022/10/27/giscus-comments',
+                to: '/blog/2022/10/27/2022/giscus-comments',
               },
               {
                 label: 'Material UI Light and Dark Modes',
-                to: '/blog/2022/10/28/docusaurus-mui-light-dark',
+                to: '/blog/2022/10/28/2022/docusaurus-mui-light-dark',
               },
               {
                 label: 'Archive',
@@ -310,43 +311,43 @@ const config = {
             items: [
               {
                 label: 'Python Language Reference',
-                href: `${bcgBaseURL}/docs/reference/python/introduction`,
+                href: `${coursesBaseURL}/docs/reference/python/introduction`,
               },
               {
                 label: 'CSS Diner',
-                href: `${bcgBaseURL}/docs/reference/css/css-diner`,
+                href: `${coursesBaseURL}/docs/reference/css/css-diner`,
               },
               {
                 label: 'Docusaurus Input-Output',
-                href: `${bcgBaseURL}/docs/reference/docusaurus/templates`,
+                href: `${coursesBaseURL}/docs/reference/docusaurus/templates`,
               },
               {
                 label: 'KaTeX',
-                href: `${bcgBaseURL}/docs/reference/docusaurus/katex`,
+                href: `${coursesBaseURL}/docs/reference/docusaurus/katex`,
               },
               {
                 label: 'MySQL',
-                href: `${bcgBaseURL}/docs/reference/sql/mysql`,
+                href: `${coursesBaseURL}/docs/reference/sql/mysql`,
               },
               {
                 label: 'Postgres',
-                href: `${bcgBaseURL}/docs/reference/sql/postgresql`,
+                href: `${coursesBaseURL}/docs/reference/sql/postgresql`,
               },
               {
                 label: 'PG Exercises',
-                href: `${bcgBaseURL}/docs/reference/sql/pg-exercises`,
+                href: `${coursesBaseURL}/docs/reference/sql/pg-exercises`,
               },
               {
                 label: 'Algorithm Design Manual',
-                href: `${bcgBaseURL}/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design`,
+                href: `${booksBaseURL}/docs/algorithm-design-manual/book-notes/introduction-to-algorithm-design`,
               },
               {
                 label: 'Interview Cake',
-                href: `${bcgBaseURL}/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking`,
+                href: `${coursesBaseURL}/docs/interview-cake/algorithmic-thinking`,
               },
               {
                 label: 'MIT Missing Semester',
-                href: `${bcgBaseURL}/docs/course-notes/computer-science/mit-missing-semester/introduction`,
+                href: `${coursesBaseURL}/docs/mit-missing-semester/introduction`,
               },
               {
                 label: 'Manim',

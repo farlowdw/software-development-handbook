@@ -121,6 +121,13 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 <details><summary> Notable posts</summary>
 
+**Immediate interest**
+
+- [The fish shell is awesome](https://jvns.ca/blog/2017/04/23/the-fish-shell-is-awesome/)
+- [entr: rerun your build when files change](https://jvns.ca/blog/2020/06/28/entr/)
+- [A little bit of plain Javascript can do a lot](https://jvns.ca/blog/2020/06/19/a-little-bit-of-plain-javascript-can-do-a-lot/)
+- [sqlite-utils: a nice way to import data into SQLite for analysis](https://jvns.ca/blog/2022/05/12/sqlite-utils--a-nice-way-to-import-data-into-sqlite/): Useful for taking any CSV file(s) and dumping them into a SQLite database for querying purposes. [CLI reference](https://sqlite-utils.datasette.io/en/stable/cli-reference.html#convert) can be helpful, specifically the part about [inserting data](https://sqlite-utils.datasette.io/en/stable/cli-reference.html#insert) and making field conversions. The [sqlite-utils GitHub repo](https://github.com/simonw/sqlite-utils) and the [csvs-to-sqlite GitHub repo](https://github.com/simonw/csvs-to-sqlite) might be useful for future exploration as well.
+- [Things that used to be hard and are now easy](https://jvns.ca/blog/2022/02/20/things-that-used-to-be-hard-and-are-now-easy/)
 - [SQL queries don't start with SELECT](https://jvns.ca/blog/2019/10/03/sql-queries-don-t-start-with-select/)
 
 </details>
