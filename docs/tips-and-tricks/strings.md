@@ -29,7 +29,12 @@ def sort_string(a)
     return ''.join(sorted(a))
 ```
 
+</TabItem>
+<TabItem value='javascript' label='JavaScript'>
 
+```js
+// tbd
+```
 
 </TabItem>
 </Tabs>
