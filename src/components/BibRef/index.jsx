@@ -17,6 +17,7 @@ export default function BibRef({
 	id,
 	pages = null,
 	children = '',
+  refSymbol = '',
 	listAll = false,
 }) {
 	const { colorMode } = useColorMode();
@@ -60,7 +61,14 @@ export default function BibRef({
 
 	// add a 1-based numerical index to all sorted bibliographic items
 	// which will determine the numerical reference of the item under consideration
-	const formattedMaterials = allMaterials.map((item, i) => {
+  let hiddenMaterials = allMaterials.filter(item => !!item?.hidden);
+	hiddenMaterials = hiddenMaterials.map((item, i) => {
+		const indexedItem = { ...item, index: i + 1 };
+		return indexedItem;
+	});
+
+  let formattedMaterials = allMaterials.filter(item => !item?.hidden);
+	formattedMaterials = formattedMaterials.map((item, i) => {
 		const indexedItem = { ...item, index: i + 1 };
 		return indexedItem;
 	});
@@ -68,7 +76,8 @@ export default function BibRef({
 	// if the listAll flag is set to true, then produce the entire bibliography;
 	// otherwise, render a single in-text citation with a tooltip detailing the information
 	if (listAll) {
-		const itemsToList = formattedMaterials.map(
+    
+    const itemsToList = formattedMaterials.map(
 			({ title, author, time, link, index }) => {
 				return (
 					<React.Fragment key={index}>
@@ -90,7 +99,7 @@ export default function BibRef({
 
 		return <div>{itemsToList}</div>;
 	} else {
-		let referencedItem = formattedMaterials.filter(
+		let referencedItem = [ ...formattedMaterials, ...hiddenMaterials ].filter(
 			(item) => item.id == requestID
 		);
 
@@ -98,7 +107,7 @@ export default function BibRef({
 			return <span style={{ backgroundColor: 'red' }}>ITEM NOT FOUND</span>;
 		} else {
 			referencedItem = referencedItem[0];
-			const { title, author, time, link, index } = referencedItem;
+			const { title, author, time, link, index, hidden } = referencedItem;
 			return (
 				<Tooltip
 					title={
@@ -134,7 +143,7 @@ export default function BibRef({
 							},
 						},
 					}}>
-					<a href={'/docs/reference-list#' + index}>[{index}]</a>
+					{hidden ? (<a href={link || '#'} target="_blank">[{refSymbol || String.fromCharCode('0x2217')}]</a>) : (<a href={'/docs/reference/citations#' + index}>[{index}]</a>)}
 				</Tooltip>
 			);
 		}

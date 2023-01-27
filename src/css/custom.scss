@@ -264,7 +264,7 @@
 .theme-doc-sidebar-container {
 	background-color: var(--color-gray-4);
 	button[class*='collapseSidebarButton_'],
-	div[class*='collapsedDocSidebar_'] {
+	div[class*='expandButton_'] {
 		svg {
 			display: none;
 		}
@@ -277,7 +277,7 @@
 			margin-top: 0.25rem;
 		}
 	}
-	div[class*='collapsedDocSidebar_'] {
+	div[class*='expandButton_'] {
 		&::before {
 			transform: rotate(180deg);
 		}

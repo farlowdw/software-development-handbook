@@ -313,6 +313,13 @@ $$
 
 ## T
 
+### Time-sharing (computing)
+
+> [Time-sharing](https://en.wikipedia.org/wiki/Time-sharing) is the ability for multiple users to share access to a single computer’s resources.
+
+An [Ars Technica](https://arstechnica.com/gadgets/2019/08/unix-at-50-it-starts-with-a-mainframe-a-gator-and-three-dedicated-researchers/) article on the history of Linux also mentions time-sharing: "Thus [due to costs associated with operating and owning the GE 645], there was widespread interest in time sharing, which allowed multiple researchers to run programs on the mainframe at the same time, getting results immediately on their remote terminals. With time sharing, the programs weren’t printed off on punch cards, they were written and stored on the mainframe. In theory, researchers could write, edit, and run their programs on the fly and without leaving their offices. Multics was conceived with that goal in mind. It kicked off in 1964 and had an initial delivery deadline of 1967."
+
+
 
 ### Trail (graph theory)
 
