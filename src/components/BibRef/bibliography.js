@@ -78,6 +78,13 @@ const bibItems = {
       time: '2012',
       link: 'https://www.amazon.com/gp/product/0201558025',
     },
+    {
+      id: 'HE1990',
+      title: `An Introduction to the History of Mathematics`,
+      author: 'Howard Eves',
+      time: '1990',
+      link: 'https://www.amazon.com/gp/product/0030295580',
+    },
   ]
 }
 
