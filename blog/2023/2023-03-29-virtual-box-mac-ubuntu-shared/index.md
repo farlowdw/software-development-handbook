@@ -18,7 +18,7 @@ This post describes how to set up a virtual machine, specifically the AMD server
 
 <!--truncate-->
 
-As with many other software installation/set-up guides, *this works for me*, and you may very well need to change some implementation details to get everything to work for you on your machine; specifically, everywhere you see `danielfarlow` below you need to change that to be [your username](https://stackoverflow.com/a/19306837/5209533) on your Mac, which you can obtain by running `whoami` or `echo "$USER"` in bash).
+As with many other software installation/set-up guides, *this works for me*, and you may very well need to change some implementation details to get everything to work for you on your machine; specifically, everywhere `danielfarlow` appears below needs to be changed to [your username](https://stackoverflow.com/a/19306837/5209533) on your Mac (i.e., the host machine), which you can obtain by running `whoami` or `echo "$USER"` in bash &#8212; the same goes for `dwf` on the guest machine (this will all make sense as you go through this post).
 
 For reference, I am using a MacBook Pro (2018) with the following specs:
 
@@ -40,7 +40,13 @@ You should now be all set to use VirtualBox. Well, almost.
 
 ### Clean up preseed script
 
-If you immediately proceed to trying to download the Ubuntu server and set it up as a virtual machine via VirtualBox, then the installation will result in an error, namely a preseed script failing to execute. This is discussed on various VirtualBox forum threads, namely [here](https://forums.virtualbox.org/viewtopic.php?f=8&t=86798[[BR) and [here](https://www.virtualbox.org/ticket/18411). Fortunately, there's somewhat of an "easy" fix.
+:::tip Installing desktop version instead of server version?
+
+If you are installing the Ubuntu *desktop* version (as opposed to the server version), then you can ignore the guidance concerning the preseed script since the preseed script only executes if you are installing the server version.
+
+:::
+
+If you immediately proceed to trying to download the Ubuntu server and set it up as a virtual machine via VirtualBox, then the installation will result in an error. A "preseed script" will fail to execute. This is discussed on various VirtualBox forum threads, namely [here](https://forums.virtualbox.org/viewtopic.php?f=8&t=86798[[BR) and [here](https://www.virtualbox.org/ticket/18411). Fortunately, there's somewhat of an "easy" fix.
 
 Navigate to the `UnattendedTemplates` directory installed on your system via VirtualBox and list out the directory contents:
 
@@ -70,7 +76,7 @@ total 312
 -rw-r-xr-x@ 1 root  admin   7344 Jan 11 10:42 win_postinstall.cmd*
 ```
 
-The highlighted line above shows the file containing preseed script details we will need to update (i.e., `ubuntu_preseed.cfg`). The VirtualBox forum links above make it clear what the issue is in this file (offending line highlighted in red below):
+The highlighted line above shows the file (i.e., `ubuntu_preseed.cfg`) containing preseed script details we will need to update. The VirtualBox forum threads linked above make it clear what the issue is in this file (offending line highlighted in red below):
 
 ```a title="/Applications/VirtualBox.app/Contents/MacOS/UnattendedTemplates/ubuntu_preseed.cfg"
 ...
@@ -84,13 +90,15 @@ d-i preseed/late_command string cp /cdrom/vboxpostinstall.sh /target/root/vboxpo
 
 The line
 
-```
+```a
+#highlight-error-next-line
 && /bin/bash /root/vboxpostinstall.sh --preseed-late-command
 ```
 
 needs to be changed to
 
-```
+```a
+#highlight-success-next-line
 && /bin/sh /target/root/vboxpostinstall.sh --need-target-bash --preseed-late-command
 ```
 
@@ -109,16 +117,16 @@ d-i preseed/late_command string cp /cdrom/vboxpostinstall.sh /target/root/vboxpo
 But to make this change you'll need to edit `ubuntu_preseed.cfg`, which is currently not possible due to file ownership issues (see the output from `ls -l` above). An easy fix is to change file ownership by means of `chown`, make the single-line update, and then optionally change ownership back:
 
 ```bash title="/Applications/VirtualBox.app/Contents/MacOS/UnattendedTemplates"
-sudo chown danielfarlow:staff ubuntu_preseed.cfg
+$ sudo chown danielfarlow:staff ubuntu_preseed.cfg
 ```
 
-Then use your favorite editor (e.g., `vim`, `nano`, VSCode, etc.) to make the single-line change described above. Save the file and optional change ownership back to its original state:
+Now use your favorite editor (e.g., `vim`, `nano`, VSCode, etc.) to make the single-line change described above. Save the file and (optionally) change ownership back to its original state:
 
 ```bash title="/Applications/VirtualBox.app/Contents/MacOS/UnattendedTemplates"
-sudo chown root:admin ubuntu_preseed.cfg
+$ sudo chown root:admin ubuntu_preseed.cfg
 ```
 
-:::tip Issues editing ubuntu_preseed.cfg
+:::tip Issues editing `ubuntu_preseed.cfg`
 
 If you are having issues editing the `ubuntu_preseed.cfg` file, then go old school and simply copy the file to your desktop, edit it there, and then drag the file back into the `UnattendedTemplates` directory and confirm that it should replace the current file.
 
@@ -136,7 +144,7 @@ First things first: make sure you download the right ISO file! I downloaded the 
 
 #### Specify machine name and operating system
 
-Specify the name you want to give your virtual machine, the folder where its contents should be stored, and the ISO image (downloaded above) will be used to install the guest operating system (i.e., Linux):
+Specify the name you want to give your virtual machine, the folder where its contents should be stored, and the ISO image (downloaded above) that will be used to install the guest operating system (i.e., Linux):
 
 - Name: `dwf-vm-ubuntu-18-04-2`
 - Folder: `/Users/danielfarlow/VirtualBox VMs`
@@ -188,7 +196,7 @@ You should now be able to see a summary of what all you are about to set up for 
   <img width='800px' src={require('./vm-6.png').default} />
 </div>
 
-Click the "Finish" button. It may take a little while for the setup to complete. At some point you may see `Running preseed...`, and you will be glad you fixed the `ubuntu_preseed.cfg` file as previously described. Once the set up is finished, you should see a screen like the following:
+Click the "Finish" button. It may take a little while for the setup to complete. At some point you may see `Running preseed...`, and you will be glad you fixed the `ubuntu_preseed.cfg` file as previously described (otherwise `Running preseed...` will error out). Once the set up is finished, you should see a screen like the following:
 
 <div align='center' class='centeredImageDiv'>
   <img width='700px' src={require('./vm-7.png').default} />
@@ -208,21 +216,21 @@ Congrats! Now your virtual machine is up and running.
 
 Assuming you've followed all the steps above concerning installing the Ubuntu server on your virtual machine and you are logged in, try a simple command:
 
-```
+```bash
 $ echo Hi
 Hi
 ```
 
 Cool. That worked. Now try running the same command but with `sudo`:
 
-```
+```bash
 $ sudo echo Hi
 dwf is not in the sudoers file. This incident will be report.
 ```
 
-That sounds ominous. We can follow [this post](https://unix.stackexchange.com/a/258865/127936) to add our user to the sudoers file:
+[That sounds ominous.](https://xkcd.com/838/) We can follow [this post](https://unix.stackexchange.com/a/258865/127936) to add our user to the sudoers file:
 
-```
+```bash
 $ su root
 $ apt-get install sudo -y
 $ adduser dwf sudo
@@ -234,13 +242,13 @@ Close the terminal emulator to shutdown your system completely for the changes t
 
 :::tip Rebooting once you are in the sudo group
 
-The command `sudo shutdown -r now` may be used to shutdown and reboot, but you cannot use this command until your user has been added to the sudo group.
+The command `sudo shutdown -r now` may be used in the future to shutdown and reboot, but you cannot use this command yet because your user has not been added to the sudo group (shutting down the system and rebooting will fix this).
 
 :::
 
 Now start up your machine and log in. You should now be able to run commands with `sudo`:
 
-```
+```bash
 $ sudo echo Hi
 Hi
 ```
@@ -249,16 +257,16 @@ Keep your machine up and running for the next step below.
 
 #### Install an OpenSSH server
 
-We want to instal an OpenSSH server to make it possible to ssh into our guest from our host. We can use [this guide](https://www.makeuseof.com/how-to-ssh-into-virtualbox-ubuntu/) to help us in this process. First install the server (confirm that you want to allocate the requested space for this installation):
+We want to install an OpenSSH server to make it possible to ssh into our guest from our host. We can use [this guide](https://www.makeuseof.com/how-to-ssh-into-virtualbox-ubuntu/) to help us in this process. First install the server (confirm that you want to allocate the requested space for this installation):
 
-```
-sudo apt install openssh-server
+```bash
+$ sudo apt install openssh-server
 ```
 
 You can check the status of the server as follows:
 
-```
-sudo systemctl status ssh
+```bash
+$ sudo systemctl status ssh
 ```
 
 You should see something like the following:
@@ -279,8 +287,8 @@ We will set up port forwarding below.
 
 Start by [finding your Linux IP address](https://www.makeuseof.com/linux-find-ip-address/):
 
-```
-ip -4 addr
+```bash
+$ ip -4 addr
 ```
 
 You should see something like the following:
@@ -289,7 +297,7 @@ You should see something like the following:
   <img width='700px' src={require('./vm-10.png').default} />
 </div>
 
-With this information, we can set up port forwarding effectively. In VirtualBox, click the Settings cog for the machine we are currently running. Then navigate as follows:
+With this information, we can set up port forwarding effectively. In VirtualBox, click the Settings cog for the machine we are currently running. Then navigate menu selections as follows:
 
 ```
 Network -> Advanced -> Port Forwarding
@@ -301,11 +309,11 @@ Click to add a new port forwarding rule, and specify the appropriate values:
 | :-- | :-- | :-: | :-- | :-: | :-- |
 | `SSH port forwarding` | `TCP` | `127.0.0.1` | `2222` | `10.0.2.15` | `22` |
 
-Then click "OK" to exit the port forwarding rules, and then click "OK" again in the Network menu for the changes to be saved. Power off the machine.
+Then click "OK" to exit the port forwarding rules menu, and then click "OK" again in the Network menu for the changes to be saved. Power off the machine.
 
 #### Test the ssh setup
 
-All of the changes made above should now be in effect. Start up the machine again but this time as a headless start (i.e., *without* a terminal emulator):
+All of the changes made above should now be in effect. Start up the machine again but this time as a *headless* start (i.e., *without* a terminal emulator):
 
 <div align='center' class='centeredImageDiv'>
   <img width='700px' src={require('./vm-11.png').default} />
@@ -319,8 +327,8 @@ You should be able to see in VirtualBox's "Preview" that the machine is starting
 
 Now we can finally test our ability to ssh into our virtual machine:
 
-```
-ssh -p 2222 dwf@127.0.0.1
+```bash
+$ ssh -p 2222 dwf@127.0.0.1
 ```
 
 You will likely see a message along the following lines:
@@ -334,15 +342,25 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
 Specify yes. You should then be logged in and able to list out all the contents in your `/home/dwf` directory:
 
-<div align='center' class='centeredImageDiv'>
-  <img width='600px' src={require('./vm-13.png').default} />
-</div>
+```
+dwf@dwf-vm-ubuntu-18-04-2:~$ ls -al
+total 32
+drwxr-xr-x 5 dwf  dwf  4096 Mar 29 22:04 .
+drwxr-xr-x 3 root root 4096 Mar 29 19:03 ..
+-rw------- 1 dwf  dwf   425 Mar 29 22:04 .bash_history
+-rw-r--r-- 1 dwf  dwf   220 Mar 29 19:03 .bash_logout
+-rw-r--r-- 1 dwf  dwf  3771 Mar 29 19:03 .bashrc
+drwx------ 2 dwf  dwf  4096 Mar 29 20:50 .cache
+drwx------ 3 dwf  dwf  4096 Mar 29 20:50 .gnupg
+-rw-r--r-- 1 dwf  dwf   807 Mar 29 19:03 .profile
+-rw-r--r-- 1 dwf  dwf     0 Mar 29 21:05 .sudo_as_admin_successful
+```
 
 Power off your machine.
 
 :::caution Potential gotcha
 
-If you are like me, then maybe you made a misstep somewhere along the way. If you are having an issue sshing into your server, then you could have a "known hosts" issue. Check the file `/Users/danielfarlow/.ssh/known_hosts` on your host. You may need to remove recently added information if it causes conflicts.
+If you are like me, then maybe you made a misstep somewhere along the way. If you are having an issue sshing into your server, then you could have a "known hosts" issue (among other things). Check the file `/Users/danielfarlow/.ssh/known_hosts` on your host. You may need to remove recently added contents due to previously failed attempts.
 :::
 
 ## Creating a shared folder between host and guest
@@ -353,13 +371,13 @@ Suppose you want to be able to "share" files between host and guest (e.g., you w
 
 Start by creating a `shared` folder on your host wherever your virtual machine is located. In my case:
 
-```
-mkdir "/Users/danielfarlow/VirtualBox VMs/dwf-vm-ubuntu-18-04-2/shared"
+```bash
+$ mkdir "/Users/danielfarlow/VirtualBox VMs/dwf-vm-ubuntu-18-04-2/shared"
 ```
 
 ### Link shared folder via VirtualBox
 
-Start up your virtual machine normally (i.e., not in headless mode). Click the Settings cog for your virtual machine that should now be running. Navigate to the "Shared Folders" menu option, specify the folder path (either directly or by using your system finder), the folder name (i.e., `shared`), and then leave the mount point and read-only options blank, but check "Auto-mount" and "Make Permanent":
+Start up your virtual machine normally (i.e., not in headless mode). Click the Settings cog for your virtual machine that should now be running. Navigate to the "Shared Folders" menu option, specify the folder path (either directly or by using your system file finder), the folder name (i.e., `shared`), and then leave the mount point and read-only options blank, but check "Auto-mount" and "Make Permanent":
 
 <div align='center' class='centeredImageDiv'>
   <img width='600px' src={require('./vm-14.png').default} />
@@ -371,8 +389,8 @@ With the VM started, running, and the [guest terminal emulator in focus](https:/
 
 Within the virtual machine terminal emulator, use the following command to mount the CD:
 
-```
-sudo mount -t iso9660 /dev/cdrom /media/cdrom
+```bash
+$ sudo mount -t iso9660 /dev/cdrom /media/cdrom
 ```
 
 You may see a message like
@@ -383,54 +401,54 @@ mount: /media/cdrom: WARNING: device write-protected, mounted read-only
 
 That's to be expected. Now install dependencies for VirtualBox guest additions:
 
-```
-sudo apt-get update
-sudo apt-get install -y build-essential linux-headers-`uname -r`
+```bash
+$ sudo apt-get update
+$ sudo apt-get install -y build-essential linux-headers-`uname -r`
 ```
 
 Note that the second command above needs to be run *as is*. Do not modify it in any way. Now run the installation script for the guest additions (wait until the installation completes):
 
-```
-sudo /media/cdrom/./VBoxLinuxAdditions.run
+```bash
+$ sudo /media/cdrom/./VBoxLinuxAdditions.run
 ```
 
 Once the process above has completed, shut down and reboot the virtual machine:
 
-```
-sudo shutdown -r now
+```bash
+$ sudo shutdown -r now
 ```
 
 ### Configuring the shared folder on the guest
 
 Create a `shared_folder` directory in your virtual machine's home (the name [needs to be different](https://askubuntu.com/a/1356405/958617) from the `shared` folder previously created on the host):
 
-```
-mkdir ~/shared_folder
+```bash
+$ mkdir ~/shared_folder
 ```
 
 [Add user access](https://askubuntu.com/a/161883/958617) to shared folder:
 
-```
-sudo usermod -aG vboxsf $USER
+```bash
+$ sudo usermod -aG vboxsf $USER
 ```
 
-Shutdown and reboot virtual machine for change to take effect:
+Shutdown and reboot virtual machine for the change to take effect:
 
-```
-sudo shutdown -r now
+```bash
+$ sudo shutdown -r now
 ```
 
 Now mount the `shared` folder from the host to the guest `~/shared_folder` directory:
 
-```
-sudo mount -t vboxsf shared ~/shared_folder
+```bash
+$ sudo mount -t vboxsf shared ~/shared_folder
 ```
 
 The host folder should now be accessible inside the virtual machine:
 
-```
-cd ~/shared_folder
-sudo touch cool.txt
+```bash
+$ cd ~/shared_folder
+$ sudo touch cool.txt
 ```
 
 You should now see `cool.txt` in both the `shared_folder` on the virtual machine as well as the `shared` folder on the host.
@@ -441,8 +459,8 @@ The directory mount made above is temporary and it will disappear on next reboot
 
 Edit the `fstab` file in the `/etc` directory:
 
-```
-sudo nano /etc/fstab
+```bash
+$ sudo nano /etc/fstab
 ```
 
 Add the following line to `fstab` (separated by *tabs*). Make sure to replace `<username>` with your username:
@@ -459,8 +477,8 @@ The file should look something like the following:
 
 Save the file (`^X -> Y -> Enter`). Now edit the `modules` file:
 
-```
-sudo nano /etc/modules
+```bash
+$ sudo nano /etc/modules
 ```
 
 Add the following line to `/etc/modules`:
@@ -471,8 +489,52 @@ vboxsf
 
 Save the file. Shut down and reboot the machine:
 
-```
-sudo shutdown -r now
+```bash
+$ sudo shutdown -r now
 ```
 
 You should now be all set (hopefully).
+
+## VirtualBox CLI (managing VMs from the terminal)
+
+[`VBoxManage`](https://www.virtualbox.org/manual/ch08.html) is the command line interface (CLI) to VirtualBox. The CLI makes it possible for you to easily manage your machines (e.g., start, power off, reboot, etc.) from the command line. Some of the more useful CLI options are covered below, but you can run `VBoxManage help` for a comprehensive listing of its capabilities.
+
+### Listing machines and their current state
+
+As [this post](https://askubuntu.com/a/805794/958617) notes, you can list your available virtual machines by means of the following command:
+
+```bash
+$ VBoxManage list vms
+```
+
+As [this post](https://superuser.com/a/1217565/1039386) notes, the command above can be repurposed to give a potentially more useful output than it would normally:
+
+```bash
+$ VBoxManage list vms --long | grep -e "Name:" -e "State:" | grep -v -e "Host path:"
+Name:                        dwf-vm-ubuntu-18-04-2
+State:                       running (since 2023-03-30T22:56:51.844000000)
+```
+
+This may help you determine whether or not you need to start or stop your machine (among other actions).
+
+### Starting the machine
+
+You can start your machine in headless mode as follows:
+
+```bash
+$ VBoxManage startvm "dwf-vm-ubuntu-18-04-2" --type headless
+```
+
+Or if you want the GUI present:
+
+```bash
+$ VBoxManage startvm "dwf-vm-ubuntu-18-04-2" --type gui
+```
+
+### Stopping the machine
+
+You can power off your machine as follows:
+
+```bash
+$ VBoxManage controlvm "dwf-vm-ubuntu-18-04-2" poweroff
+```
