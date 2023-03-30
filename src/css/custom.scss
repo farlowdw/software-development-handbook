@@ -709,6 +709,16 @@ div[class*='codeBlockTitle_'] {
 }
 /* End code block error line styling */
 
+/* Begin code block success line styling */
+.code-block-success-line {
+	background-color: #00ff0020;
+	display: block;
+	margin: 0 calc(-1 * var(--ifm-pre-padding));
+	padding: 0 var(--ifm-pre-padding);
+	border-left: 3px solid #00ff0080;
+}
+/* End code block success line styling */
+
 /* Video content container */
 
 .unleash-video-container {
@@ -847,6 +857,11 @@ body {
 
 .centeredImageDiv {
   margin-bottom: 1em;
+}
+
+[class^='details_'].dwfDetails {
+  --docusaurus-details-decoration-color: violet !important;
+  border: 1px solid violet !important;
 }
 
 ////////////////////////////////////////

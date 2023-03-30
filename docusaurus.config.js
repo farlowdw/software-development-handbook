@@ -385,6 +385,12 @@ const config = {
           {
             className: 'code-block-error-line',
             line: 'highlight-error-next-line',
+            block: { start: 'highlight-error-start', end: 'highlight-error-end' },
+          },
+          {
+            className: 'code-block-success-line',
+            line: 'highlight-success-next-line',
+            block: { start: 'highlight-success-start', end: 'highlight-success-end' },
           },
         ],
         additionalLanguages: [
