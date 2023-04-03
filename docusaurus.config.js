@@ -21,7 +21,7 @@ const leetcodeBaseURL = `https://lc.dwf.dev`;
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Software Engineering Handbook',
-  tagline: 'Musings of a software-related nature by Daniel Farlow',
+  tagline: 'What one fool can do, other fools can do also',
   url: 'https://dwf.dev',
   baseUrl: '/',
   onBrokenLinks: 'warn',

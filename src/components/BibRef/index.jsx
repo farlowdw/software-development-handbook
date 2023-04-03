@@ -143,7 +143,7 @@ export default function BibRef({
 							},
 						},
 					}}>
-					{hidden ? (<a href={link || '#'} target="_blank">[{refSymbol || String.fromCharCode('0x2217')}]</a>) : (<a href={'/docs/reference/citations#' + index}>[{index}]</a>)}
+					{hidden ? (<a href={link || '#'} target="_blank">[{refSymbol || String.fromCharCode('0x2217')}]</a>) : (<a href={'/docs/reference-list#' + index}>[{index}]</a>)}
 				</Tooltip>
 			);
 		}
