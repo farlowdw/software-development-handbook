@@ -186,8 +186,6 @@ As noted on [the homepage for giscus](https://giscus.app/):
 
 Since doc pages and blog entries will be unique by path name, our chosen mapping for giscus will be `pathname`. 
 
-We are going to configure giscus so that the mapping used 
-
 ### Giscus installation and configuration {#giscus-install}
 
 Follow the steps outlined below to install and configure giscus to your liking.

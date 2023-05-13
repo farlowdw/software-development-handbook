@@ -864,5 +864,10 @@ body {
   border: 1px solid violet !important;
 }
 
+[class^='details_'].gptDetails {
+  --docusaurus-details-decoration-color: #00B050 !important;
+  border: 1px solid #00B050 !important;
+}
+
 ////////////////////////////////////////
 /* end one-off custome use case styles */

@@ -52,6 +52,9 @@ Difference arrays are not super common but are important to know as it is very d
 
 ## H
 
+### Hash table 
+
+- <LC id='1' type='long' >What is the classic data structure used to implement time-space tradeoffs? Hash tables. The average search time complexity for hash tables is O(1). Use this to your advantage in this problem to conduct what will essentially be a linear search (instead of quadratic) for the complement of the current term.</LC> 
 
 
 ## I
