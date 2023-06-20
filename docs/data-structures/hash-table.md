@@ -1,7 +1,7 @@
 ---
 title: Hash Table
 hide_title: false
-sidebar_label: Hash Table
+sidebar_label: Hash table
 description: Overview of hash table data structure.
 draft: false
 tags: [Hash Table]

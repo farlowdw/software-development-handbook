@@ -1,7 +1,7 @@
 ---
 title: Linked List
 hide_title: false
-sidebar_label: Linked List
+sidebar_label: Linked list
 description: Overview of linked list structure.
 draft: false
 last_update: 

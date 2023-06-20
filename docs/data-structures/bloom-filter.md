@@ -1,5 +1,5 @@
 ---
-title: Bloom Filter
+title: Bloom filter
 hide_title: false
 sidebar_label: Bloom Filter
 description: Overview of bloom filter data structure.

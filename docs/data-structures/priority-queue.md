@@ -1,5 +1,5 @@
 ---
-title: Priority Queue
+title: Priority queue
 hide_title: false
 sidebar_label: Priority Queue
 description: Overview of priority queue data structure.

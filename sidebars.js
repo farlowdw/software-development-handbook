@@ -137,6 +137,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'templates/intro',
+        'templates/bare-bones',
         'templates/mental-models',
         {
           type: 'category',

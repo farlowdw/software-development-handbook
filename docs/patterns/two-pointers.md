@@ -14,8 +14,10 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ComingSoon from '@site/src/components/ComingSoon'
+import LC from '@site/src/components/LC';
 
 ## Introduction
 
-<ComingSoon />
+## LeetCode problems
+
+- <LC id='392' type='long' >Sometimes a single pointer can contain more than a single piece of information.</LC> 

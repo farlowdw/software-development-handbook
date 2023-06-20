@@ -1,5 +1,5 @@
 ---
-title: LRU Cache
+title: LRU cache
 hide_title: false
 sidebar_label: LRU Cache
 description: Overview of LRU cache data structure.
