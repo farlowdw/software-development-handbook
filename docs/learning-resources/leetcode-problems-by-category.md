@@ -362,7 +362,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 #### LEFT JOIN
 
-- <LC id='175' type='long' ></LC> 
+- <LC id='175' type='long' >This is the very first SQL problem that LeetCode has. The only test here is to determine whether or not you understand how joins work, specifically LEFT JOINs.</LC> 
 - <LC id='183' type='long' ></LC> 
 - <LC id='1158' type='long' ></LC> 
 
@@ -406,7 +406,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 ### NULL values and effective management
 
-- <LC id='176' type='long' ></LC> 
+- <LC id='176' type='long' >What makes this problem hard is figuring out how to effectively return a null value instead of what would normally be an empty result set. Hint: most aggregate functions return null values. COUNT(), however, returns 0.</LC> 
 - <LC id='584' type='long' ></LC> 
 - <LC id='608' type='long' ></LC> 
 - <LC id='1098' type='long' ></LC> 
@@ -439,7 +439,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 ### Stored procedures
 
-- <LC id='177' type='long' ></LC> 
+- <LC id='177' type='long' >This is a good problem in large part because it requires you to know how to create a <em>function</em> or <em>procedure</em> in a database environment. Each database environment will have its own syntax.</LC> 
 
 ### UNION and UNION ALL
 
@@ -477,7 +477,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 #### DENSE_RANK()
 
-- <LC id='178' type='long' ></LC> 
+- <LC id='178' type='long' >This problem could not be more perfect for an application of <code>DENSE_RANK()</code>. From the problem statement: "After a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no holes between ranks." It is now trivial to make something like this happen via <code>DENSE_RANK()</code>. For a bigger challenge, try coming up with a different approach such as a correlated subquery or a non-equi-join that is also a self-join.</LC> 
 - <LC id='184' type='long' ></LC> 
 - <LC id='185' type='long' ></LC> 
 - <LC id='1341' type='long' ></LC> 

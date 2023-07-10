@@ -173,6 +173,7 @@ const sidebars = {
         'learning-resources/general-list',
         'learning-resources/curated-list',
         'learning-resources/neetcode',
+        'learning-resources/tech-interview-handbook',
         'learning-resources/real-python',
         'learning-resources/leetcode-problems-by-category',
       ]
