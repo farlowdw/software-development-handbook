@@ -19,11 +19,32 @@ import LC from '@site/src/components/LC';
 
 :::info Attribution
 
-The online [Tech Interview Handbook](https://www.techinterviewhandbook.org/) by Yangshun Tay (ex-Meta Staff Engineer) is the primary source for what all appears below. My goal has been to distill the information provided in an easy-to-digest manner and to provide links where they did not previously exist. Below is my attempt.
+The online [Tech Interview Handbook](https://www.techinterviewhandbook.org/) by Yangshun Tay (ex-Meta Staff Engineer) is the primary source for what all appears below. My goal has been to distill the information provided into an easy-to-digest manner and to provide links where they did not previously exist. Below is my attempt.
 
 :::
 
-Here's an abbreviated table of contents of what all appears below:
+<details open><summary> The good stuff (an abbreviated and biased table of contents)</summary>
+
+- [Arrays](#dsa-array) and [strings](#dsa-string)
+- [Hashing](#dsa-hash-table)
+- [Linked lists](#dsa-linked-list)
+- [Stacks](#dsa-stack) and [queues](#dsa-queue)
+- [Trees](#dsa-tree) and [graphs](#dsa-graph)
+- [Heaps](#dsa-heap)
+- [Binary search](#dsa-binary)
+- [Dynamic programming](#dsa-dp)
+- Nothing about greedy algorithms or backtracking (not yet anyway), but some additional items that may be of use:
+  + [Recursion](#dsa-recursion)
+  + [Sorting and searching](#dsa-sorting-and-searching)
+  + [Matrix](#dsa-matrix)
+  + [Interval](#dsa-interval)
+  + [Trie](#dsa-trie)
+  + [Math](#dsa-math)
+  + [Geometry](#dsa-geometry)
+
+</details>
+
+Here's a comprehensive, albeit abbreviated, table of contents of what all appears below:
 
 <TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={3} />
 
@@ -37,16 +58,15 @@ This guide will provide a quick overview of the top tips on how to prepare for a
 
 How to prepare for your software engineering interview:
 
-1. Maximize your chances of being shortlisted
-2. Find out the interview format
-3. Pick a programming language
-4. Sharpen your Computer Science fundamentals for interviews
-5. Practice for the coding interview
-6. Prepare for the system design interview (for mid/senior levels)
-7. Prepare for the behavioral interview
-8. Negotiating the offer package
+1. [Maximize your chances of being shortlisted](#maximize-chance-shortlist)
+2. [Find out the interview format](#discover-interview-format)
+3. [Pick a programming language](#pick-your-programming-lang)
+4. [Practice for the coding interview](#study-and-practice-for-coding-int)
+5. [Prepare for the system design interview (for mid/senior levels)](#prepare-for-the-sd-int)
+6. [Prepare for the behavioral interview](#prepare-for-behav-int)
+7. [Negotiate the offer package](#negotiate-your-comp)
 
-### Maximize your chances of being shortlisted
+### Maximize your chances of being shortlisted {#maximize-chance-shortlist}
 
 Do you still have trouble getting shortlisted at some or all of the top tech companies? Your resume could be the issue.
 
@@ -56,7 +76,7 @@ Unfortunately, even the most qualified candidates I know personally don't know h
 
 If you want to learn how to write a good software engineer resume, I've written a [step-by-step guide here on software engineering resume preparation](#resume) for companies like Google, Facebook, Amazon, Netflix, Apple, with examples for your reference as well.
 
-### Find out the interview format
+### Find out the interview format {#discover-interview-format}
 
 You may encounter various interview formats in your software engineer interviews (from early to late stage):
 
@@ -113,7 +133,7 @@ For onsite interviews at smaller (non-public) companies, most will allow (and pr
 
 If the company provides lunch, you might also have a lunch session with an employee where you can find out more about the company culture.
 
-### Pick a programming language
+### Pick a programming language {#pick-your-programming-lang}
 
 With your resume done, the next step of your software engineering interview journey is a simple one and won't take long &#8212; decide on a programming language. Unless you're interviewing for a specialist position like mobile or front end where there are domain-specific languages, you should be free to use any language you want for the algorithmic coding interviews.
 
@@ -121,7 +141,7 @@ Most of the time, you'd already have one in mind &#8212; pick the one you use th
 
 Read more on programming languages for coding interviews: [Picking a programming language](#picking-language).
 
-### Study and practice for coding interviews
+### Study and practice for coding interviews {#study-and-practice-for-coding-int}
 
 The next and most important step is to practice solving algorithm questions in your chosen programming language. While *Cracking the Coding Interview* is a great resource, I prefer learning by actually solving problems.
 
@@ -167,7 +187,7 @@ Coding right in front of your interviewer can be a nerve-wracking experience esp
 
 Moreover, if you were to do well on your mock interviews, you will be able to unlock the "jobs page" which allows you to book interviews directly with top companies like Uber, Lyft, Quora, Asana and more. I've used interviewing.io both as an interviewer and an interviewee and found the experience to be excellent.
 
-### Prepare for the system design interview
+### Prepare for the system design interview {#prepare-for-the-sd-int}
 
 If you are a mid or senior-level candidate, you may expect system design questions as part of your technical interview. They aren't covered adequately by LeetCode and good resources are still harder to come by.
 
@@ -182,7 +202,7 @@ Some of the best system design interview preparation resources include:
 
 [Check out other Systems Design preparation guides and resources here.](#system-design)
 
-### Prepare for the behavioral interview
+### Prepare for the behavioral interview {#prepare-for-behav-int}
 
 Every top tech company has at least one round of behavioral interviews for software engineers. Typically, behavioral interviews for software engineers include: Sharing about details of previous experiences on resume, providing examples of past situations and behavior that demonstrate certain behavioral attributes (e.g., conflict management, data driven, etc.), sharing of ambitions and career plans.
 
@@ -208,7 +228,7 @@ Practice the most common behavioral questions for software engineers. Refer to t
 
 For more tips on behavioral interview preparation, refer to my [full behavioral interview preparation guide here](#behavioral-step-by-step).
 
-### Negotiate your compensation
+### Negotiate your compensation {#negotiate-your-comp}
 
 Finally, the last thing you absolutely need to prepare for before your interview is salary negotiation for software engineers. At any point during the interview process, conversation about salary may crop up. We also have in-depth guides about [negotiation strategies](#salary-negotiation-guide) and [software engineer compensation](#understanding-compensation).
 
