@@ -328,7 +328,7 @@ frame_start, frame_end: {
   RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
   ```
 
-- **Frame validity:** As noted in the cautionary box below, frame clauses only appply to aggregate functions used as window functions and the `FIRST_VALUE()`, `LAST_VALUE()`, and `NTH_VALUE()` non-aggregate window functions. In MySQL, frame clauses can still be provided for other window functions, but they will be ignored (instead of throwing an error).
+- **Frame validity:** As noted in the cautionary box below, frame clauses only apply to aggregate functions used as window functions and the `FIRST_VALUE()`, `LAST_VALUE()`, and `NTH_VALUE()` non-aggregate window functions. In MySQL, frame clauses can still be provided for other window functions, but they will be ignored (instead of throwing an error).
 - **Frame units (`ROWS` vs `RANGE`):** Be mindful when choosing the frame units for the frame clause of a window specification:
   + `ROWS`: Choosing `ROWS` will mean the frame is defined by beginning and ending row *positions*, where offsets (i.e., `PRECEDING` and `FOLLOWING`) are differences in row *numbers* from the current row number (i.e., all rows are essentially numbered in a frame that uses `ROWS` as its units, where each *numbered row* is considered to be its own entity). 
   + `RANGE`: Choosing `RANGE` will mean the frame is defined by rows within a *value range*, where offsets (i.e., `PRECEDING` and `FOLLOWING`) are differences in row *values* from the current row value (i.e., all rows are essentially grouped by value in a frame that uses `RANGE` as its units, where each *group of rows by value* is considered to be its own entity).
