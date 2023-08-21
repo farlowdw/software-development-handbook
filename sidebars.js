@@ -79,6 +79,7 @@ const sidebars = {
       items: [
         'patterns/intro',
         'patterns/index-has-a-hash-key',
+        'patterns/monotonic-stack',
         'patterns/precomputation',
         'patterns/sliding-window',
         'patterns/sorting-the-array',
@@ -176,6 +177,7 @@ const sidebars = {
         'learning-resources/tech-interview-handbook',
         'learning-resources/real-python',
         'learning-resources/leetcode-problems-by-category',
+        'learning-resources/sandbox',
       ]
     },
     {

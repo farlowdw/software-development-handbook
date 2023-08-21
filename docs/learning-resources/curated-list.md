@@ -16,9 +16,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import ComingSoon from '@site/src/components/ComingSoon'
 
+<ComingSoon val="Resources will be populated as discovered." />
+
 ## A
 
-<ComingSoon val="Resources will be populated as discovered." />
+### Algorithms and data structures
+
+- [Big O Cheatsheet](https://www.bigocheatsheet.com/): Well-known resource that discusses big-O in terms of time- and space-complexities for various data structures and algorithms.
+- [`binarytree`](https://binarytree.readthedocs.io/en/main/overview.html): Useful package for Python users when studying trees.
 
 ## B
 
