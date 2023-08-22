@@ -115,7 +115,7 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>
       This blog post details how to enable comment sections on doc pages and blog entries on sites powered by Docusaurus (like this one) using giscus.
     </p>
-    <DocsLink to='/blog/2022/10/27/giscus-comments'>
+    <DocsLink to='/blog/2022/10/27/2022/giscus-comments'>
       Read <ArrowRight className='arrow' />
     </DocsLink>
   </div>
