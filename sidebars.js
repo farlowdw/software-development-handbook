@@ -178,6 +178,14 @@ const sidebars = {
         'learning-resources/real-python',
         'learning-resources/leetcode-problems-by-category',
         'learning-resources/sandbox',
+        {
+          type: 'category',
+          label: 'Python',
+          collapsed: true,
+          items:[
+            'learning-resources/python/binarytree',
+          ]
+        },
       ]
     },
     {

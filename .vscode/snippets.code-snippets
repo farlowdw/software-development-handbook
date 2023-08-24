@@ -208,4 +208,26 @@
     ],
     "description": "Facilitates creation of problems in ADM"
   },
+  "Input-Output tabs": {
+    "prefix": "io-tabs",
+    "body": [
+      "<Tabs>",
+      "<TabItem value='input' label='Input'>",
+      "",
+      "```python title='Input'",
+      "$1",
+      "```",
+      "",
+      "</TabItem>",
+      "<TabItem value='output' label='Output'>",
+      "",
+      "```a title='Output'",
+      "$0",
+      "```",
+      "",
+      "</TabItem>",
+      "</Tabs>",
+    ],
+    "description": "Creates tabs for input and output"
+  },
 }
