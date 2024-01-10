@@ -43,7 +43,7 @@ Hence, [more generalized graph traversal](https://en.wikipedia.org/wiki/Graph_tr
 
 #### Traversals
 
-As noted in the [Wikipedia article on tree traversal](https://en.wikipedia.org/wiki/Tree_traversal) (the notes below make heavy use of this article from coneptual points to pseudocode renderings):
+As noted in the [Wikipedia article on tree traversal](https://en.wikipedia.org/wiki/Tree_traversal) (the notes below make heavy use of this article from conceptual points to pseudocode renderings):
 
 > In computer science, tree traversal (also known as tree search and walking the tree) is a form of [graph traversal](https://en.wikipedia.org/wiki/Graph_traversal) and refers to the process of visiting (e.g., retrieving, updating, or deleting) each node in a tree data structure, exactly once. Such traversals are classified by the order in which the nodes are visited.
 
@@ -1267,9 +1267,6 @@ Here's the process you will follow in order to accomplish this:
 - **Step 5 (move to sequel recommendation or return to books previously set aside):** Always attempt to move on to a sequel recommendation (right child) after having read a book (once the node has been visited). If there is no such sequel recommendation, then move back to the most recent book you've set aside but have not yet read (pop from the stack). Continue.
 - **Step 6 (repeat until all books are read):** Repeat the steps above until you have finished all books in the series.
 
-</TabItem>
-</Tabs>
-
 We can annotate the previously provided Python code to illustrate the steps above (the highlighted line simply serves to show where the logic would be included to process the current node):
 
 ```python
@@ -1323,6 +1320,9 @@ But technically any other ordering would work so long as `7` was the root and th
 1
 ```
 
+</TabItem>
+</Tabs>
+
 #### Questions
 
 tbd 
@@ -1366,7 +1366,7 @@ A W B C T S X H N P M E
 <Tabs>
 <TabItem value='pseudocode' label='Pseudocode'>
 
-```a
+```a title="Without isolated levels"
 procedure levelorder(node)
     queue ← empty queue
     queue.enqueue(node)
@@ -1378,6 +1378,32 @@ procedure levelorder(node)
         if node.right ≠ null
             queue.enqueue(node.right)
 ```
+
+The pseudocode above ([from Wikipedia](https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search_2)) is the standard BFS implementation for a binary tree traversal, where we only care about visiting all nodes, level by level, left to right. But it's fairly common to encounter algorithm problems that demand you do something (i.e., perform some logic) on a level by level basis; that is, you effectively need to isolate the nodes by level. The pseudocode above does not do this, but we can easily fix this ourselves:
+
+```a title="Isolated levels"
+procedure levelorder(node)
+    queue ← empty queue
+    queue.enqueue(node)
+    while not queue.isEmpty()
+        // retrieve number of nodes on current level
+        numNodesThisLevel ← queue.length
+
+        // perform logic for current level
+        for each node in level do
+          node ← queue.dequeue()
+
+          // perform logic on current node
+          visit(node)
+
+          // enqueue nodes on next level (left to right)
+          if node.left ≠ null
+              queue.enqueue(node.left)
+          if node.right ≠ null
+              queue.enqueue(node.right)
+```
+
+The Python code snippets in the other tabs reflect this approach since it is the most likely approach needed in the context of solving interview problems.
 
 </TabItem>
 <TabItem value='pyLR' label='Python (L->R)'>
@@ -1392,12 +1418,14 @@ def levelorder_LR(node):
     queue = deque()
     queue.append(node)
     while queue:
-        node = queue.popleft()
-        print(node.val)
-        if node.left:
-            queue.append(node.left)
-        if node.right:
-            queue.append(node.right)
+        num_nodes_this_level = len(queue)
+        for _ in range(num_nodes_this_level):
+            node = queue.popleft()
+            print(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
     
 root = bin_tree.levelorder[0]
 levelorder_LR(root)     # A B W X S T C E M P N H
@@ -1416,12 +1444,14 @@ def levelorder_RL(node):
     queue = deque()
     queue.append(node)
     while queue:
-        node = queue.popleft()
-        print(node.val)
-        if node.right:
-            queue.append(node.right)
-        if node.left:
-            queue.append(node.left)
+        num_nodes_this_level = len(queue)
+        for _ in range(num_nodes_this_level):
+            node = queue.popleft()
+            print(node.val)
+            if node.right:
+                queue.append(node.right)
+            if node.left:
+                queue.append(node.left)
     
 root = bin_tree.levelorder[0]
 levelorder_RL(root)     # A W B C T S X H N P M E

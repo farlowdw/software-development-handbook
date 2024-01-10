@@ -835,7 +835,8 @@ import TOCInline from '@theme/TOCInline';
 ### File Manipulation
 
 | Course | Description |
-| :-- | :-- || [Editing Excel Spreadsheets in Python With openpyxl](https://realpython.com/courses/editing-excel-python-openpyxl/) | In this course, you'll learn how to handle spreadsheets in Python using the openpyxl package. You'll learn how to manipulate Excel spreadsheets, extract information from spreadsheets, create simple or more complex spreadsheets, including adding styles, charts, and so on. |
+| :-- | :-- |
+| [Editing Excel Spreadsheets in Python With openpyxl](https://realpython.com/courses/editing-excel-python-openpyxl/) | In this course, you'll learn how to handle spreadsheets in Python using the openpyxl package. You'll learn how to manipulate Excel spreadsheets, extract information from spreadsheets, create simple or more complex spreadsheets, including adding styles, charts, and so on. |
 | [Practical Recipes for Working With Files in Python](https://realpython.com/courses/practical-recipes-files/) | In this course, you'll learn how you can work with files in Python by using built-in modules to perform practical tasks that involve groups of files, like renaming them, moving them around, archiving them, and getting their metadata. |
 | [How to Work With a PDF in Python](https://realpython.com/courses/pdf-python/) | In this step-by-step course, you'll learn how to work with a PDF in Python. You'll see how to extract metadata from preexisting PDFs. You'll also learn how to merge, split, watermark, and rotate pages in PDFs using Python and PyPDF2. |
 | [Reading and Writing Files in Python](https://realpython.com/courses/reading-and-writing-files-python/) | In this course, you'll learn about reading and writing files in Python. You'll cover everything from what a file is made up of to which libraries can help you along that way. You'll also take a look at some basic scenarios of file usage as well as some advanced techniques. |
