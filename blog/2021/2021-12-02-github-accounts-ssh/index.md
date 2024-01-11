@@ -18,7 +18,8 @@ This post details how to go about using more than one GitHub account with SSH.
 
 <!--truncate-->
 
-<details><summary> <strong>Quick reference (if you've done this before)</strong></summary>
+<details>
+<summary> <strong>Quick reference (if you've done this before)</strong></summary>
 
 Example GitHub email and username used for the process outlined below, respectively (this guide assumes you are using Bash as your shell): 
 
@@ -180,7 +181,8 @@ The quick process outlined above is shown below in more detail:
 
 ## Pre-Work
 
-<details><summary> <strong>Set up global git config file (i.e., <code>~/.gitconfig</code>)</strong></summary>
+<details>
+<summary> <strong>Set up global git config file (i.e., <code>~/.gitconfig</code>)</strong></summary>
 
 Make sure you have a `.gitconfig` file in your Home directory: `cd ~ && ls -1a`. If you do not see `.gitconfig` in the listed contents, then simply create one by executing the following: `touch .gitconfig`. The goal is to configure some settings for git *globally* and then be able to apply settings *locally*. 
 
@@ -235,7 +237,8 @@ The next note details how to make sure GitHub recognizes what you want (i.e., au
 
 </details>
 
-<details><summary> <strong>Configure the user or author of a specific git repository (i.e., override what is in <code>~/.gitconfig</code>)</strong></summary>
+<details>
+<summary> <strong>Configure the user or author of a specific git repository (i.e., override what is in <code>~/.gitconfig</code>)</strong></summary>
 
 As observed in the previous note, `[user]` details that appear in the `~/.gitconfig` file will apply to *every* git repository by default, unless specified otherwise. How do you specify otherwise? Every git repository has a `config` file that is *local to that git repository* and may be inspected by looking at `.git/config` (i.e., initializing a git repo within a directory results in a `.git` folder being added to that directory and the `config` file is located within the `.git` folder). 
 
@@ -279,7 +282,8 @@ As a commentor notes, you can *check* what your current settings are without loo
 
 </details>
 
-<details><summary> <strong>Remove git credentials from keychain</strong></summary>
+<details>
+<summary> <strong>Remove git credentials from keychain</strong></summary>
 
 As [this answer](https://stackoverflow.com/a/24130956/5209533) on Stack Overflow notes, how you installed git may result in the install caching your git credentials in your keychain. You can start by removing this potential source of issues.
 
@@ -293,7 +297,8 @@ Given the above, and as we will see later, simply run `ssh-add -D` to delete all
 
 </details>
 
-<details><summary> <strong>Make sure you have an <code>.ssh</code> folder to store your SSH keys in</strong></summary>
+<details>
+<summary> <strong>Make sure you have an <code>.ssh</code> folder to store your SSH keys in</strong></summary>
 
 Make sure you have an `.ssh` folder in your home directory (`~`) in which to store your keys; for example, try `cd ~/.ssh`. If this fails, then you likely do not have an `.ssh` folder yet and that is fine. As [this answer](https://superuser.com/a/635270/1039386) notes, if you have never generated any SSH keys, or you have not used SSH yet, then the `.ssh` folder does not *need* to exist. Since the goal now is to use SSH with GitHub, we will need this folder to exist. Run the following if you do not have an `.ssh` folder: `mkdir -p ~/.ssh`.
 
@@ -301,7 +306,8 @@ Make sure you have an `.ssh` folder in your home directory (`~`) in which to sto
 
 </details>
 
-<details><summary> <strong>Make sure you have a <code>config</code> file in your <code>.ssh</code> folder</strong></summary>
+<details>
+<summary> <strong>Make sure you have a <code>config</code> file in your <code>.ssh</code> folder</strong></summary>
 
 Assuming you have an `.ssh` folder, navigate to it and see if you have a `config` file present: `cd ~/.ssh && ls -al`. If no `config` file appears, then you will need to create it: `touch ~/.ssh/config`. 
 
@@ -313,7 +319,8 @@ We will return to the `config` file before long to configure how we want SSH to 
 
 ## Instructions
 
-<details><summary> <strong>Set up first GitHub accounts</strong></summary>
+<details>
+<summary> <strong>Set up first GitHub accounts</strong></summary>
 
 Set up your GitHub accounts. For this write-up, the following was used for the first account:
 
@@ -329,7 +336,8 @@ And the following was used for the second account (make sure to verify your emai
 
 </details>
 
-<details><summary> <strong>Generate SSH keys and add them to the ssh-agent for both accounts</strong></summary>
+<details>
+<summary> <strong>Generate SSH keys and add them to the ssh-agent for both accounts</strong></summary>
 
 **NOTE:** Be sure to first read the note above about configuring the user or author of a specific git repository. That note explains why `git config user.email` is used in some of the instructions that appear below.
 
@@ -459,7 +467,8 @@ git push -u origin master
 
 ## Follow Up
 
-<details><summary> <strong>Ensuring you can still push to old repositories you had synced between git and GitHub</strong></summary>
+<details>
+<summary> <strong>Ensuring you can still push to old repositories you had synced between git and GitHub</strong></summary>
 
 It's easy to forget the importance of, or be completely unaware of, the `.git/config` file in all repositories where you have previously set up git and remotely synced it with one of your repositories on GitHub. To make sure you can still push to such repositories, make sure you inspect your `.git/config` file and compare it with your `config` file in your `.ssh` folder. 
 
@@ -504,7 +513,8 @@ Whatever the case, you need to make sure you are effectively syncing your remote
 
 </details>
 
-<details><summary> <strong>Being consistent and careful when you use SSH to sync your GitHub repo with your local git repo</strong></summary>
+<details>
+<summary> <strong>Being consistent and careful when you use SSH to sync your GitHub repo with your local git repo</strong></summary>
 
 As noted previously, when creating a repository on GitHub, the quick setup offers you an SSH option: 
 
@@ -552,7 +562,8 @@ Then we should be able to push now. With all of the above said, it is worth ment
 
 </details>
 
-<details><summary> <strong>Setting a "default" GitHub user</strong></summary>
+<details>
+<summary> <strong>Setting a "default" GitHub user</strong></summary>
 
 In many ways, [this answer](https://stackoverflow.com/a/9348040/5209533) on Stack Overflow details all that is necessary, but we will repurpose the answer to mesh well with the examples we have used so far. As the linked to answer notes, the crucial part in setting up a sort of "default" GitHub user is to use a different ssh psuedo-host for each account with `github.com` being assigned to what we want to consider the "default" GitHub account. 
 
@@ -680,7 +691,8 @@ As the model answer concludes, you can specify different emails and other user d
 
 </details>
 
-<details><summary> <strong>My current <code>~/.ssh/config</code> file</strong></summary>
+<details>
+<summary> <strong>My current <code>~/.ssh/config</code> file</strong></summary>
 
 As of right now, I have the following in my `~/.ssh/config` file:
 

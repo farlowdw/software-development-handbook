@@ -1,16 +1,12 @@
-// Note: type annotations allow type checking and IDEs autocompletion
+// @ts-check
+// `@type` JSDoc annotations allow editor autocompletion and type checking
+// (when paired with `@ts-check`).
+// There are various equivalent ways to declare your Docusaurus config.
+// See: https://docusaurus.io/docs/api/docusaurus-config
 
-require('dotenv').config()
-
-const { LicenseInfo } = require('@mui/x-license-pro');
-const licenseKey = process.env.MUI_LICENSE_KEY;
-// LicenseInfo.setLicenseKey(licenseKey);
-
-const math = require('remark-math');
-const katex = require('rehype-katex');
-const mermaid = require('mdx-mermaid');
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+import {themes as prismThemes} from 'prism-react-renderer';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 const katexMacros = require('./katex-macros');
 
 const booksBaseURL = `https://books.dwf.dev`;
@@ -22,16 +18,11 @@ const leetcodeBaseURL = `https://lc.dwf.dev`;
 const config = {
   title: 'Software Engineering Handbook',
   tagline: 'What one fool can do, other fools can do also',
+  favicon: 'img/favicon.ico',
   url: 'https://dwf.dev',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'farlowdw', // Usually your GitHub org/user name.
-  projectName: 'software-engineering-handbook', // Usually your repo name.
 
   customFields: {
     forbiddenGiscusDocPaths: [
@@ -53,9 +44,6 @@ const config = {
     ],
   },
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -66,28 +54,25 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/farlowdw/software-development-handbook/tree/master/',
-          remarkPlugins: [math, mermaid],
-          rehypePlugins: [[katex, {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [[rehypeKatex, {
             throwOnError: true,
             globalGroup: true,
             macros: katexMacros
           }]],
-          showLastUpdateTime: true
         },
+
         blog: {
           showReadingTime: false,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/farlowdw/software-development-handbook/tree/master/',
-          remarkPlugins: [math, mermaid],
-          rehypePlugins: [[katex, {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [[rehypeKatex, {
             throwOnError: true,
             globalGroup: true,
             macros: katexMacros
@@ -95,26 +80,28 @@ const config = {
           blogTitle: 'Muse(um)',
           blogDescription: `Semi-structured musings along with all the concomitant ums`,
           postsPerPage: 'ALL',
-          // blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 0,
           sortPosts: 'descending',
-          // showLastUpdateTime: true
         },
+
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
+
         pages: {
-          rehypePlugins: [[katex, {
+          rehypePlugins: [[rehypeKatex, {
             throwOnError: true,
             globalGroup: true,
             macros: katexMacros
           }]],
         },
+
       }),
     ],
   ],
 
   stylesheets: [
+    // KaTeX
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       type: 'text/css',
@@ -122,16 +109,21 @@ const config = {
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
+    // Pseudocode (ref: https://www.npmjs.com/package/pseudocode)
     {
-      href: "https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css"
-    }
+      href: 'https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css',
+      type: 'text/css',
+      crossorigin: 'anonymous',
+    },
   ],
 
   scripts: [
+    // KaTeX
     {
-      src: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js",
+      src: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js",
       async: true,
     },
+    // Pseudocode (ref: https://www.npmjs.com/package/pseudocode)
     {
       src: "https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js",
       async: true,
@@ -152,7 +144,7 @@ const config = {
     ],
     'docusaurus-plugin-sass',
     require.resolve("docusaurus-plugin-image-zoom"),
-    'my-loaders'
+    'my-loaders',
   ],
 
   themeConfig:
@@ -373,10 +365,9 @@ const config = {
         }
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
         magicComments: [
-          // Remember to extend the default highlight class name as well!
           {
             className: 'theme-code-block-highlighted-line',
             line: 'highlight-next-line',
@@ -407,7 +398,6 @@ const config = {
           "csharp",
           "css",
           "csv",
-          "django",
           "docker",
           "editorconfig",
           "ejs",
@@ -477,4 +467,4 @@ const config = {
     }),
 };
 
-module.exports = config;
+export default config;

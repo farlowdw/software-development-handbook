@@ -19,12 +19,14 @@ This post details how to modify your Docusaurus site's webpack configuration.
 
 The TLDR presented below is meant as a quick-reference.
 
-<details open><summary> TLDR</summary>
+<details open>
+<summary> TLDR</summary>
 
 1. **Create plugins folder:** Create a `plugins` folder at your project root.
 2. **Create a plugin:** Create a plugin (e.g., `my-loaders`) inside the `plugins` folder with `index.js` and `package.json` files:
 
-  <details open><summary> <code>index.js</code> and <code>package.json</code> file contents</summary>
+  <details open>
+  <summary> <code>index.js</code> and <code>package.json</code> file contents</summary>
 
   As noted in [the Docusaurus docs](https://docusaurus.io/docs/api/plugin-methods/lifecycle-apis#configureWebpack) for `configureWebpack()`, the return object highlighted below gets merged into the final webpack config.
 

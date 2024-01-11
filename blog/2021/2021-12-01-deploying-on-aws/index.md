@@ -18,7 +18,8 @@ This post details how to go about deployment on an AWS EC2 instance.
 
 <!--truncate-->
 
-<details><summary> Authorship note</summary>
+<details>
+<summary> Authorship note</summary>
 
 The core of this document was originally written by [Margaret ONeill](https://github.com/MAOneill) and shared internally at [DigitalCrafts](https://www.digitalcrafts.com/) as a Google doc (see the [original version](https://docs.google.com/document/d/1R740WN3I0WJk5EW5ObDMe6U13ggU_UCq9gOqHuVu9gw/edit#)). What follows is largely a rewrite of that document using markdown in order to make needed modifications easier (e.g., use of issues and pull requests on GitHub), future changes faster to implement, etc. Additional pictures, descriptions, and explanations have also been added.
 
@@ -28,7 +29,8 @@ If you see something that needs fixing or something else that would be useful to
 
 </details>
 
-<details><summary> Note about terminal examples</summary>
+<details>
+<summary> Note about terminal examples</summary>
 
 Code samples intended to be run from terminal/Bash on your local machine are prefixed with `#BASH`:
 
@@ -48,7 +50,8 @@ ubuntu@ip-xxx-xx-xx-xx:~$ command-to-execute-in-ec2-terminal
 
 </details>
 
-<details><summary> Note about the new EC2 console </summary>
+<details>
+<summary> Note about the new EC2 console </summary>
 
 As noted recently [on Reddit](https://www.reddit.com/r/aws/comments/dzitek/were_rolling_out_the_new_ec2_console_launch/) (November 21, 2019), AWS recently rolled out a new EC2 console. If you use this new console, then what you encounter and what you see in this guide will likely be somewhat different (only superficially). To ensure you see what is present in this guide (in terms of screenshots and the like), simply toggle the "New EC2 Experience" option in the top left corner of your console:
 
@@ -149,7 +152,8 @@ Then, as the first step in launching your instance, choose an Amazon Machine Ima
   <img height="500" src="https://user-images.githubusercontent.com/52146855/69108031-6c0a7c80-0a41-11ea-9a1c-039e309f645c.png" />
 </div>
 
-<details><summary> What is an Amazon Machine Image (AMI)? (click to expand)</summary>
+<details>
+<summary> What is an Amazon Machine Image (AMI)? (click to expand)</summary>
 
 From Amazon:
 > An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch your instance. You can select an AMI provided by AWS, our user community, or the AWS Marketplace; or you can select one of your own AMIs.
@@ -158,7 +162,8 @@ From Amazon:
 
 </details>
 
-<details><summary> Note about Ubuntu releases</summary>
+<details>
+<summary> Note about Ubuntu releases</summary>
 
 Ubuntu is a Linux operating system (mainly used for desktop or server installations) that releases a new version in April of every even-numbered year; hence, as of the time of this writing, the next release should be April 2020. Select the most current version of Ubuntu (free tier eligible) when you complete this step (i.e., launching an EC2 instance).
 
@@ -172,7 +177,8 @@ Select the "Free tier eligible" hardware choice or *instance type* (this will sp
   <img width='800' src='https://user-images.githubusercontent.com/52146855/69108770-b12fae00-0a43-11ea-8f64-16978c1cc19b.png' />
 </div>
 
-<details><summary> What is an Amazon EC2 instance type?</summary>
+<details>
+<summary> What is an Amazon EC2 instance type?</summary>
 
 From Amazon: 
 >Amazon EC2 provides a wide selection of instance types optimized to fit different use cases. Instances are virtual servers that can run applications. They have varying combinations of CPU, memory, storage, and networking capacity, and give you the flexibility to choose the appropriate mix of resources for your applications. [Learn more](https://aws.amazon.com/ec2/instance-types/) about instance types and how they can meet your computing needs.
@@ -200,7 +206,8 @@ No other configuration is necessary. Your security group configuration should no
   <img width="700" src='https://user-images.githubusercontent.com/52146855/69109427-ba217f00-0a45-11ea-8669-f27cf6679907.png' />
 </div>
 
-<details><summary> What is a security group?</summary>
+<details>
+<summary> What is a security group?</summary>
 
 From Amazon: 
 >A security group is a set of firewall rules that control the traffic for your instance. On this page, you can add rules to allow specific traffic to reach your instance. For example, if you want to set up a web server and allow Internet traffic to reach your instance, add rules that allow unrestricted access to the HTTP and HTTPS ports. You can create a new security group or select from an existing one below. [Learn more](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html?icmpid=docs_ec2_console) about Amazon EC2 security groups.
@@ -267,7 +274,8 @@ Now navigate to your `.ssh` folder, and change the permissions on your file:
 chmod 400 ~/.ssh/[yourFileName].pem
 ```
 
-<details><summary> What does <code>chmod 400</code> actually accomplish?</summary>
+<details>
+<summary> What does <code>chmod 400</code> actually accomplish?</summary>
 
 The [chmod calculator](https://chmodcommand.com/chmod-400/) explains this well: `chmod 400 (chmod a+rwx,u-wx,g-rwx,o-rwx)` sets permissions so that, (U)ser / owner can read, can't write and can't execute. (G)roup can't read, can't write and can't execute. (O)thers can't read, can't write and can't execute.
 
@@ -304,7 +312,8 @@ nano ~/.bash_profile
 code ~/.bash_profile
 ```
 
-<details><summary> Note about Catalina update and Z Shell (zsh)</summary>
+<details>
+<summary> Note about Catalina update and Z Shell (zsh)</summary>
 
 With the new Mac update (fall 2019) to Catalina, the default terminal is Z Shell. If you are using Z Shell, then you will need to edit `~/.zshrc` or `~/.zprofile`.
 
@@ -355,7 +364,8 @@ From your EC2 terminal, execute the following:
 ubuntu@ip-172-31-20-54:~$ sudo apt update && sudo apt upgrade -y
 ```
 
-<details><summary> Note about <code>apt</code></summary>
+<details>
+<summary> Note about <code>apt</code></summary>
 
 `apt` is like brew/homebrew; that is, `apt` is a package manner on Linux that will install packages for you, and it runs on Ubuntu.
 
@@ -480,7 +490,8 @@ ubuntu@ip-172-31-20-54: git clone git@github.com:daniel-farlow/aws-demo-project.
 ubuntu@ip-172-31-20-54:~$ ls    # should respond with the git repo you cloned ("aws-demo-project" in this case)
 ```
 
-<details><summary> Note about potential "authenticity of host" 'github.com (ip)' error after executing command above</summary>
+<details>
+<summary> Note about potential "authenticity of host" 'github.com (ip)' error after executing command above</summary>
 
 When you execute the `git clone git@github.com:daniel-farlow/aws-demo-project.git` command in your EC2 terminal, you may be prompted with something like the following:
 
@@ -666,7 +677,8 @@ Copy the IP address of your EC2 instance by doing the following:
 
 Now visit the domain provider site where you purchased your domain name. Each site is different, but you will want to manage your Domain Name Server (DNS) and create DNS records. We will create instances of the "A record." 
 
-<details><summary> what is a DNS "A record"?</summary>
+<details>
+<summary> what is a DNS "A record"?</summary>
 
 As noted by [NS1](https://ns1.com/resources/dns-records-explained): 
 
@@ -815,7 +827,8 @@ Visit the Certbot site and [select Nginx and Ubuntu 18.04 LTS (bionic)](https://
 
 We will now follow the steps provided by Certbot to obtain our certificate (execute each command *one by one*; that is, do not copy and paste all of the commands and try to execute them all at once).
 
-<details><summary> see the step-by-step instructions we follow below as they appear on the Certbot website</summary>
+<details>
+<summary> see the step-by-step instructions we follow below as they appear on the Certbot website</summary>
 
 <div align='center'>
   <img src='https://user-images.githubusercontent.com/52146855/69301954-f0960000-0be5-11ea-8435-78b861ffc78e.png' />

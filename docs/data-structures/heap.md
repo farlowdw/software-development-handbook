@@ -151,7 +151,8 @@ Using an array to store a complete binary tree is very efficient. Since there ar
 
 **But how do we traverse the tree when it's an array?** How do we go from a node to its left and right children? With a bit of clever indexing! See if you can come up with the formulas for a node's left child, right child, and parent. Then, check your answer:
 
-<details><summary> Answer</summary>
+<details>
+<summary> Answer</summary>
 
 Looking at a few nodes, it's easy enough to derive the general formulas.
 
@@ -237,14 +238,14 @@ So, we'll move $n/2$ nodes on the bottom level 0 times. The $n/4$ nodes one leve
 
 Adding this all up, we've got
 
-\[
+$$
 0\cdot\frac{n}{2}+1\cdot\frac{n}{4}+2\cdot\frac{n}{8}+3\cdot\frac{n}{16}+\cdots
-\]
+$$
 
 Alternatively, this can be expressed as a summation:
 
-\[
+$$
 n\cdot\sum\frac{i}{2^{i+1}}  
-\]
+$$
 
 The sum is a geometric series that converges to $1/2$. Then, multiplying by $n$, we have $n/2$. That's $O(n)$.

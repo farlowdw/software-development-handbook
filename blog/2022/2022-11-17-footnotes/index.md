@@ -52,7 +52,8 @@ Default styling for the package can be [overriden and customized using CSS](http
 
 The example below shows how the anchors above are targeted on the [CodeSandbox demo](https://codesandbox.io/s/react-a11y-footnotes-f9lpdy).
 
-<details><summary> CodeSandbox styling example</summary>
+<details>
+<summary> CodeSandbox styling example</summary>
 
 ```css
 * {

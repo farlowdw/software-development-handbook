@@ -3907,7 +3907,7 @@ Some helpful utility snippets:
 | Technique | Code |
 | :-- | :-- |
 | Test `k`th bit is set | `num & (1 << k) != 0`. |
-| Set `k`th bit | <code>num &#124;= (1 << k)</code> |
+| Set `k`th bit | `num \|= (1 << k)` |
 | Turn off `k`th bit | `num &= ~(1 << k)`. |
 | Toggle the `k`th bit | `num ^= (1 << k)`. |
 | Multiply by $2^k$ | `num << k` |

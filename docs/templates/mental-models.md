@@ -19,7 +19,6 @@ import TOCInline from '@theme/TOCInline';
 import LC from '@site/src/components/LC';
 import BibRef from '@site/src/components/BibRef';
 import Asterisk from '@site/src/components/Asterisk';
-import {FootnoteRef} from 'react-a11y-footnotes';
 
 ## A
 

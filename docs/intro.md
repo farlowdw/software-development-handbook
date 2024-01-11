@@ -42,64 +42,48 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>
       Check out time and space complexity overviews for various data structures and array sorting algorithms.
     </p>
-    <DocsLink to='/docs/data-structures/intro'>
-      See Data Structures Overview <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/data-structures/intro'>See Data Structures Overview <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Sliding Window</h4>
     <p>Get a more detailed look at the sliding window pattern, a pattern that frequently comes up in coding interview problems.</p>
-    <DocsLink to='/docs/patterns/sliding-window'>
-      See Sliding Window <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/patterns/sliding-window'>See Sliding Window <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Window Functions (SQL)</h4>
     <p>An in-depth guide to SQL window/analytic functions. This is not only a guide but also a useful reference to keep handy (e.g., syntax guidance, basic examples, etc.).</p>
-    <DocsLink to='/docs/topics/sql/window-functions'>
-      See Window Functions <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/topics/sql/window-functions'>See Window Functions <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Binary Search Template</h4>
     <p>Binary search may be easy to understand conceptually, but implementation can sometimes be a mess. This template tidies things up considerably.</p>
-    <DocsLink to='/docs/templates/problem-solving/binary-search'>
-      See Binary Search Template <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/templates/problem-solving/binary-search'>See Binary Search Template <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Feynman Technique</h4>
     <p>Tired of not being able to learn things quickly? Give the Feynman Technique a try next time.</p>
-    <DocsLink to='/docs/templates/learning/feynman-technique'>
-      See Feynman Technique <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/templates/learning/feynman-technique'>See Feynman Technique <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>LeetCode Problems by Category</h4>
     <p>
       Tagged problems on LeetCode can only be so helpful. Additional contextual details can help, especially if these details are personalized.
     </p>
-    <DocsLink to='/docs/learning-resources/leetcode-problems-by-category'>
-      See LeetCode Problems by Category <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/learning-resources/leetcode-problems-by-category'>See LeetCode Problems by Category <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Math Reference</h4>
     <p>
       The topic of "math" is impossibly large on its own. This reference helps corral some mathematical facts that may be of use in everyday engineering.
     </p>
-    <DocsLink to='/docs/topics/math'>
-      See Math Reference <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/topics/math'>See Math Reference <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Definitions</h4>
     <p>
       A cumulative list of definitions can be quite useful, especially when you are in need of a dust-up or review.
     </p>
-    <DocsLink to='/docs/definitions'>
-      See Definitions <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/docs/definitions'>See Definitions <ArrowRight className='arrow' /></DocsLink>
   </div>
 </div>
 <br />
@@ -116,18 +100,14 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>
       This blog post details how to enable comment sections on doc pages and blog entries on sites powered by Docusaurus (like this one) using giscus.
     </p>
-    <DocsLink to='/blog/2022/10/27/2022/giscus-comments'>
-      Read <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/blog/2022/10/27/2022/giscus-comments'>Read <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Light/Dark Modes with Material UI and Docusaurus</h4>
     <p>
       This blog post details how to synchronize the default light and dark mode palettes used in Material UI with the light or dark mode being used on a Docusaurus site.
     </p>
-    <DocsLink to='/blog/2022/10/28/docusaurus-mui-light-dark'>
-      Read <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='/blog/2022/10/28/docusaurus-mui-light-dark'>Read <ArrowRight className='arrow' /></DocsLink>
   </div>
 </div>
 <br />
@@ -144,80 +124,62 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>
       Various referential notes about the Python language.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/python/'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/reference/python/'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Docusaurus Input-Output Examples</h4>
     <p>
       Collection of input-output examples for use with sites powered by Docusaurus.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/docusaurus/templates'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/reference/docusaurus/templates'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>KaTeX Reference</h4>
     <p>
       Basically the KaTeX documentation site (but everything is ensured to work with Docusaurus).
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/docusaurus/katex'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/reference/docusaurus/katex'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>MySQL Reference</h4>
     <p>
       Easy-to-use references to many MySQL functions (e.g., string functions, date functions, etc.).
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/mysql'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/mysql'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Postgres Reference</h4>
     <p>
       Easy-to-use references to many Postgres functions (e.g., string functions, date functions, etc.).
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/postgresql'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/postgresql'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>PG Exercises Reference</h4>
     <p>
       Comprehensive reference for the <a href="https://pgexercises.com/" target="_blank">Postgres Exercises</a> tutorial.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/pg-exercises'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/pg-exercises'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Algorithm Design Manual (Book Notes)</h4>
     <p>
       Book notes to accompany Steven Skiena's <em>Algorithm Design Manual</em>.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Interview Cake (Notes)</h4>
     <p>
       Notes to accompany the Interview Cake curriculum.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>MIT Missing Semester (Notes)</h4>
     <p>
       Notes to accompany the MIT's Missing Semester curriculum.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/mit-missing-semester/'>
-      Visit <ArrowRight className='arrow' />
-    </DocsLink>
+    <DocsLink to='https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/mit-missing-semester/'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
 </div>

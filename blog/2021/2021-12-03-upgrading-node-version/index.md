@@ -38,9 +38,9 @@ nvm install lts/* --reinstall-packages-from=node
 
 This will install the appropriate version and reinstall all packages from the currently used Node version (you can run both commands to make sure you have the most recent version as well as the LTS). This saves you from manually handling the specific versions. Once this process finishes, you should be able to run `nvm list` to list the versions of Node available to you:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width='300px' src='https://user-images.githubusercontent.com/73953353/188996004-d652cd38-247d-4cbc-82b4-d7afa8b3f7ce.png' />
-</p>
+</div>
 
 The `->     v14.15.0` part indicates version 14.15.0 of Node is being used (for the current shell session) and that it is the default (so version 14.15.0 of Node will be used for new shell sessions as well). If you want to switch over to a different version of Node, then use something like `nvm use 15.0.1`. You will see something like `Now using node v15.0.1 (npm v6.14.8)`, and you can check this by running `nvm list` again and you'll see `->     v15.0.1` where before you saw `->     v14.15.0`. 
 

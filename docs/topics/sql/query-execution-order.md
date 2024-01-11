@@ -19,7 +19,8 @@ import TabItem from '@theme/TabItem';
 import LC from '@site/src/components/LC';
 import BibRef from '@site/src/components/BibRef';
 
-<details open><summary> TLDR</summary>
+<details open>
+<summary> TLDR</summary>
 
 The logical processing order of the `SELECT` statement is generally as follows:
 

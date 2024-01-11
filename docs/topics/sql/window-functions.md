@@ -146,7 +146,8 @@ WINDOW window_name AS (window_spec)
     [, window_name AS (window_spec)] ...
 ```
 
-<details open><summary> TLDR </summary>
+<details open>
+<summary> TLDR </summary>
 
 `window_name` refers to the name of a window defined by a `WINDOW` clause elsewhere in the query. If `window_name` appears by itself within the `OVER` clause, then `window_name` completely defines the window. If, however, partitioning, ordering, or framing clauses are also present, then these clauses will modify how the named window is to be interpreted.
 
@@ -315,7 +316,8 @@ frame_start, frame_end: {
 }
 ```
 
-<details open><summary> TLDR</summary>
+<details open>
+<summary> TLDR</summary>
 
 - **Frame definition:** A *frame* is a subset of the current partition and the `frame_clause` specifies how to define the subset. The frame clause has many subclauses of its own (see below for more details).
 - **Default window frame:** If a window frame is not explicitly specified, then a default window frame definition is used. What definition is used by default generally depends on whether or not `ORDER BY` is specified in the window specification. If `ORDER BY` is *not* specified, then the query simply treats all rows as the window frame for each row, which is equivalent to the following frame definition:
@@ -630,7 +632,8 @@ As seen above, the `revenue_consolidation` table contains revenue data for two s
 
 Now that we have some understanding of the sample data set, let's consider how using `ROWS` and `RANGE` can impact result sets for data we may want to report on. For example, suppose we want to calculate the cumulative revenue sum for every shop. Let's do this first with `ROWS` and then with `RANGE` and observe the differences in behavior.
 
-<details open><summary> <code>ROWS</code></summary>
+<details open>
+<summary> <code>ROWS</code></summary>
 
 The `ROWS` units of a frame clause means a window frame will be defined as the number of rows preceding and/or following the current row.
 
@@ -723,7 +726,8 @@ And so on until we reach the end of the table. The far-right tab above provides 
 
 </details>
 
-<details open><summary> <code>RANGE</code></summary>
+<details open>
+<summary> <code>RANGE</code></summary>
 
 The `RANGE` units of a frame clause means a window frame will be defined by the number of rows preceding and/or following the current row plus all other rows that have the same value.
 

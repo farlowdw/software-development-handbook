@@ -68,9 +68,9 @@ Work through the configuration options on the <a href="https://giscus.app/" targ
         // highlight-next-line
         src="https://giscus.app/client.js"
         data-repo="farlowdw/software-development-handbook"
-        data-repo-id="R_kgDOHmzzBQ"
+        data-repo-id="R_kgDOXmzzBQ"
         data-category="Announcements"
-        data-category-id="DIC_kwDOHmzzBc4CSLOr"
+        data-category-id="DIC_kRDOHmzzBc4CSLOr"
         data-mapping="pathname"
         data-strict="0"
         data-reactions-enabled="1"

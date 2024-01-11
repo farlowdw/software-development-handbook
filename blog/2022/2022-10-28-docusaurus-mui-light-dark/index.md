@@ -23,7 +23,8 @@ This post details how to synchronize Material UI's light and dark palettes with 
 
 <!--truncate-->
 
-<details open><summary> TLDR</summary>
+<details open>
+<summary> TLDR</summary>
 
 To get MUI to play nicely with Docusaurus when it comes to light and dark modes, paste the following code after your normal `import` statements for a React component within which you plan to utilize MUI functionality:
 
@@ -281,7 +282,8 @@ The palette's default values may be found using MUI's [theme explorer](https://m
 
 The takeaway from the excerpts above? We are only interested in using the default palettes for light and dark mode. Only the highlighted lines of code above are of any interest to us for the very simple solution. If you want to get fancy with your palettes, ostensibly to make MUI's light and dark modes match those of your Docusaurus site, then you may be in for a bit of work. MUI's default light and dark palettes are included below for reference in case you want to really customize things.
 
-<details><summary> Light and dark palettes for Material UI (default values)</summary>
+<details>
+<summary> Light and dark palettes for Material UI (default values)</summary>
 
 Visit [MUI's default theme page](https://mui.com/material-ui/customization/default-theme/?expand-path=$.palette) and run the following in the console (assuming you are using Chrome):
 
