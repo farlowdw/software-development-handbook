@@ -202,6 +202,11 @@ const config = {
             position: 'left'
           },
           {
+            to: '/about',
+            label: 'About',
+            position: 'right'
+          },
+          {
             href: `https://github.com/farlowdw/software-development-handbook`,
             label: 'GitHub',
             position: 'right',
@@ -222,22 +227,22 @@ const config = {
                 label: 'Algorithms',
                 to: '/docs/algorithms/intro',
               },
-              // {
-              //   label: 'Patterns',
-              //   to: '/docs/patterns/intro',
-              // },
-              // {
-              //   label: 'Topics',
-              //   to: '/docs/topics/intro',
-              // },
+              {
+                label: 'Patterns',
+                to: '/docs/patterns/intro',
+              },
+              {
+                label: 'Topics',
+                to: '/docs/topics/intro',
+              },
               {
                 label: 'System Design',
                 to: '/docs/system-design/intro',
               },
-              // {
-              //   label: 'Tips and Tricks',
-              //   to: '/docs/tips-and-tricks/intro',
-              // },
+              {
+                label: 'Tips and Tricks',
+                to: '/docs/tips-and-tricks/intro',
+              },
               {
                 label: 'Templates',
                 to: '/docs/templates/intro',
@@ -246,14 +251,14 @@ const config = {
                 label: 'Learning Resources',
                 to: '/docs/learning-resources/intro',
               },
-              // {
-              //   label: 'Definitions',
-              //   to: '/docs/definitions',
-              // },
-              // {
-              //   label: 'Reference List',
-              //   to: '/docs/reference-list',
-              // },
+              {
+                label: 'Definitions',
+                to: '/docs/definitions',
+              },
+              {
+                label: 'Reference List',
+                to: '/docs/reference-list',
+              },
               {
                 label: 'FAQ',
                 to: '/docs/faq',
