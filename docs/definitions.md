@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Definitions
 description: Comprehensive list of definitions.
 draft: false
-tags: [Definitions]
-keywords: [tbd]
-image: https://github.com/farlowdw.png
+tags: 
+  - Definitions
+keywords: 
+  - definitions
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -71,7 +72,8 @@ $$
 
 whenever $x>k$. This reads as, "$f(x)$ is big-oh of $g(x)$," and is sometimes represented as $f(x)=O(g(x))$ even though usage of `=` is more colloquial than anything.
 
-<details><summary> Example illustrating definition</summary>
+<details>
+<summary> Example illustrating definition</summary>
 
 **Problem:** Show that $f(x)=x^2+2x+1$ is $O(x^2)$.
 

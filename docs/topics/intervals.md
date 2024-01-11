@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Intervals
 description: Article on intervals
 draft: false
-tags: [Intervals]
-keywords: [intervals]
-image: https://github.com/farlowdw.png
+tags: 
+  - Intervals
+keywords: 
+  - intervals
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

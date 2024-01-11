@@ -2,14 +2,13 @@
 title: Data Structures Overview
 hide_title: false
 sidebar_label: Introduction
-description: descForHead
+description: Overview of various data structures
 draft: false
-last_update: 
-  date: '2022-07-04'
-  author: farlow
-tags: [tbd]
-keywords: [tbd]
-image: https://github.com/farlowdw.png
+tags: 
+  - Overview
+  - Data Structures
+keywords: 
+  - data structures
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -18,15 +17,13 @@ toc_max_heading_level: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import WorstCaseComplexities from '@site/docs/_Partials/_time-and-space-complexities/_all-worst-case.mdx'
-import AverageCaseComplexities from '@site/docs/_Partials/_time-and-space-complexities/_all-average-case.mdx'
-import ArraySortingAlgorithmsComplexities from '@site/docs/_Partials/_time-and-space-complexities/_all-array-sorting-algorithms.mdx'
+import WorstCaseComplexities from '@site/docs/_Partials/_time-and-space-complexities/_all-worst-case.md'
+import AverageCaseComplexities from '@site/docs/_Partials/_time-and-space-complexities/_all-average-case.md'
+import ArraySortingAlgorithmsComplexities from '@site/docs/_Partials/_time-and-space-complexities/_all-array-sorting-algorithms.md'
 
 ## Time and Space Complexity Overviews
 
 Click on a tab below to see the worst or average case time complexities for access, search, insertion, and deletion operations for common data structures. The worst case tab includes space complexity details for each data structure. The last tab includes details about the best, average, and worst case time complexities for various array sorting algorithms as well as a column with space complexity details.
-
-It is like that, but we need to know mores. Maintaining <FootnoteRef description='Cool beans.'>$O(n)$</FootnoteRef> is not fun.
 
 <Tabs>
 <TabItem value='tc-worst-case-data-structures' label='Worst Case'>
@@ -47,8 +44,6 @@ It is like that, but we need to know mores. Maintaining <FootnoteRef description
 </Tabs>
 
 ## What is a data structure?
-
-It is like that, but we need to know mores. Maintaining <FootnoteRef description='Second footnote details.'>more footnotes</FootnoteRef> is not fun.
 
 A *data structure*, as its name implies, is a way of structuring data. Since we are dealing with computers, we are ultimately talking about a way of specifically structuring data inside [random-access memory](https://en.wikipedia.org/wiki/Random-access_memory) (RAM). As the [Wiki article](https://en.wikipedia.org/wiki/Data_structure) notes:
 

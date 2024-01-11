@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Common table expressions (CTEs)
 description: Article on common table expressions
 draft: false
-tags: [SQL, CTEs]
-keywords: [common table expressions]
-image: https://github.com/farlowdw.png
+tags: 
+  - SQL
+  - CTEs
+keywords: 
+  - common table expressions
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -160,7 +162,8 @@ WITH RECURSIVE cte_name AS(
 ) CTE_primary_query;
 ```
 
-<details><summary> Detailed verbal description of each component above</summary>
+<details>
+<summary> Detailed verbal description of each component above</summary>
 
 - `WITH RECURSIVE cte_name AS (...)`: The `RECURSIVE` keyword in `WITH RECURSIVE` tells our database that the CTE we are building is not like the normal CTE(s) that can be built using only the `WITH` keyword &#8212; our CTE will be built in an *iterative* fashion instead. `cte_name` is the label or name we are assigning to the CTE built in the iterative process (this name is typically *used* or referred to in `CTE_auxiliary_query_2` and `CTE_primary_query`). The `AS` keyword simply denotes how `cte_name` is to be built throughout the iterative process (i.e., the `...` part inside the parentheses).
 - `CTE_auxiliary_query_1`: Evaluate the non-recursive term. When `UNION` is used, duplicate rows will be discarded; when `UNION ALL` is used, duplicate rows will be kept. Include all remaining rows in the result of the recursive query (i.e., `cte_name` being the result of the recursive query), and *also* place them in a temporary *working table*. This working table is what will be used or referred to in `CTE_auxiliary_query_2` (i.e., the so-called "recursive term") to really kick off the iterative process.
@@ -566,7 +569,8 @@ The result set:
 
 The following LeetCode problems provide instances where the `WITH RECURSIVE` construct can be utilized. This list is *not* exhaustive. Right click a widget title to visit the actual problem and try your hand or simply click the widget title to see a possible solution.
 
-<details><summary> <LC id='571' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='571' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE nums_full_list AS (
@@ -604,7 +608,8 @@ FROM
 
 </details>
 
-<details><summary> <LC id='579' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='579' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE months_range AS (
@@ -656,7 +661,8 @@ ORDER BY
 
 </details>
 
-<details><summary> <LC id='1270' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1270' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE boss_chain AS (
@@ -682,7 +688,8 @@ FROM
 
 </details>
 
-<details><summary> <LC id='1336' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1336' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE trans_counts AS (
@@ -716,7 +723,8 @@ ORDER BY
 
 </details>
 
-<details><summary> <LC id='1384' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1384' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE min_max_dates AS (
@@ -756,7 +764,8 @@ ORDER BY
 
 </details>
 
-<details><summary> <LC id='1613' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1613' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE possible_id_values AS (
@@ -776,7 +785,8 @@ ORDER BY
 
 </details>
 
-<details><summary> <LC id='1635' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1635' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE months AS (
@@ -810,7 +820,8 @@ ORDER BY
 
 </details>
 
-<details><summary> <LC id='1645' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1645' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE months AS (
@@ -856,7 +867,8 @@ ORDER BY
 
 </details>
 
-<details><summary> <LC id='1651' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1651' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE months AS (
@@ -900,7 +912,8 @@ LIMIT 10;
 
 </details>
 
-<details><summary> <LC id='1767' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1767' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE subtask_listing AS (
@@ -928,7 +941,8 @@ WHERE
 
 </details>
 
-<details><summary> <LC id='1843' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='1843' type='long' ></LC> </summary>
 
 ```sql
 WITH RECURSIVE activity_months AS (

@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: NeetCode 150
 description: 150 LeetCode articles with video solutions
 draft: false
-tags: [Learning Resources]
-keywords: [learning]
-image: https://github.com/farlowdw.png
+tags: 
+  - NeetCode
+  - Learning Resources
+keywords: 
+  - learning
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -14,9 +16,6 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-<!-- &#9989; Check -->
-<!-- &#10060; Cross -->
 
 ## Arrays & Hashing
 

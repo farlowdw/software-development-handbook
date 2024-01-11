@@ -4,9 +4,12 @@ hide_title: false
 sidebar_label: Algorithm Grading Rubric
 description: Article on a grading rubric for algorithms
 draft: false
-tags: [tbd]
-keywords: [tbd]
-image: https://github.com/farlowdw.png
+tags: 
+  - Interview
+  - Algorithm Grading Rubric
+keywords: 
+  - interview
+  - grading rubric
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

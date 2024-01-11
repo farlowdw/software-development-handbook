@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Strings
 description: Tips and tricks for dealing with strings of data
 draft: false
-tags: [Tips and Tricks]
-keywords: [tbd]
-image: https://github.com/farlowdw.png
+tags: 
+  - Tips and Tricks
+  - Strings
+keywords: 
+  - strings
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

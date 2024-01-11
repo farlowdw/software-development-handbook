@@ -23,7 +23,8 @@ The online [Tech Interview Handbook](https://www.techinterviewhandbook.org/) by 
 
 :::
 
-<details open><summary> The good stuff (an abbreviated and biased table of contents)</summary>
+<details open>
+<summary> The good stuff (an abbreviated and biased table of contents)</summary>
 
 - [Arrays](#dsa-array) and [strings](#dsa-string)
 - [Hashing](#dsa-hash-table)
@@ -453,7 +454,8 @@ President of hacker society
 
 Include at least 2 projects you have contributed to, outlining your key contributions. Always try to link your project name to GitHub or somewhere the hiring manager can view your project.
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 [`facebook/docusaurus`](https://github.com/facebook/docusaurus)
 
@@ -562,7 +564,8 @@ The ATS also allows recruiters to see all the roles you have applied to at their
   <img width='450px' src={require('@site/static/img/learning-resources/tih/resume-overview.png').default} />
 </div>
 
-<details open><summary> Checklist in text form</summary>
+<details open>
+<summary> Checklist in text form</summary>
 
 ```a title="Resume preparation checklist"
 # Step 1: Set up an ATS-friendly format
@@ -1182,7 +1185,8 @@ Ever wondered why coding interviews are traditionally done on whiteboards and vi
 
 This technique is especially useful if the input involves trees, graphs, matrices, linked lists.
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 How would you [return all elements of a matrix in spiral order](https://leetcode.com/problems/spiral-matrix/)? Drawing out the matrix and the steps your iterator needs to take in each direction will help tremendously in allowing you to see the pattern.
 
@@ -1194,7 +1198,8 @@ Solving the problem by hand is about solving the problem without writing any cod
 
 What some people don't realize is that sometimes a working solution is simply a code version of the manual approach. If you can come up with a concrete set of rules around the approach that works for every example, you can write the code for it. While you might not arrive at the most efficient solution by doing this, it's a start which will give you some credit.
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 How do you [validate if a tree is a valid Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) without writing any code? You first check if the left subtree contains only values less than the root, then check that the right subtree contains only values bigger than the root, then repeat for each node. This process seems feasible. Now you just have to turn this process into code.
 
@@ -1210,7 +1215,8 @@ If the problem is large, start with a high-level function and break it down into
 
 Doing so also makes it clear to the interviewer that you have an approach, even if you don't manage to finish coding all of the smaller functions.
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 The [Group Anagrams](https://leetcode.com/problems/group-anagrams/) problem can be broken down into two parts &#8212; hashing a string, grouping the strings together. Each part can be solved separately with independent implementation details. You could start off with this code:
 
@@ -1291,7 +1297,8 @@ With the correct BTTC determined, you now know the time complexity of the optima
 
 A naive/brute force solution often executes the same operation over and over again. When the code is doing an expensive operation that has been done before, take a moment to step back and consider if you can reuse results from previous computations. Dynamic programming (DP) is the most obvious type of questions you can entirely leverage past computations. There are non-DP questions that can leverage this technique too, although not as straightforward and might require a preprocessing step.
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 The [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) question is a good example of a problem which contains overlapping/repeated work. To get the value for an index, you need to multiply the values at all other positions. Doing this for every value in the array would take O(n2) time. However, see that:
 
@@ -1308,7 +1315,8 @@ Choice of data structures is key to coding interviews. It can help you to reach 
 
 Is lookup time slowing your algorithm down? In general, most lookup operations should be O(1) with the help of a hash table. If the lookup operation in your solution is the bottleneck to your solution's time complexity, more often than not, you can use a hash table to optimize the lookup.
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 The [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) question can be solved in a naive manner by calculating the distance of each point, sorting them and then taking the $K$ smallest values. This takes $O(n\log n)$ time because of the sorting. However, by using a Heap data structure, the time complexity can be reduced to $O(n\log k)$ as adding/removing from the heap only takes $O(\log k)$ time when the size of the heap is capped at $K$ elements. Changing the data structure made a whole ton of difference to the efficiency of the algorithm!
 
@@ -1399,7 +1407,8 @@ A possible way which works (but you should never use outside of coding interview
 
 Note that in Software Engineering, mutating input data is generally frowned upon and makes your code harder to read and maintain, so changing data in-place is mostly something you should do only in coding interviews.
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 The [Dutch National Flag](https://leetcode.com/problems/sort-colors/) problem could be easily solved with $O(n)$ time and $O(n)$ space by creating a new array and filling it up with the respective values in a sorted fashion. As an added challenge and space optimization, the interviewer will usually ask for an $O(n)$ time and $O(1)$ space solution which involves sorting the input array in-place.
 
@@ -1411,7 +1420,8 @@ An example of using the original array as a hash table is the [First Missing Pos
 
 Data structures again!? Yes, data structures again! Data structures are so fundamental to coding interviews and mastery of it makes or breaks your interview performance. Are you using the best data structure possible for the problem?
 
-<details open><summary> Example</summary>
+<details open>
+<summary> Example</summary>
 
 You're given a list of strings and want to find how many of these strings start with a certain prefix. What's an efficient way to store the strings so that you can compute your answer quickly? A [Trie](https://leetcode.com/problems/implement-trie-prefix-tree/) is a tree-like data structure that is very efficient for storing strings and also allows you to quickly compute how many strings start with a prefix.
 
@@ -1562,7 +1572,8 @@ Testing signals:
   <img width='500px' src={require('@site/static/img/learning-resources/tih/coding-interview-evaluation-criteria.png').default} />
 </div>
 
-<details open><summary> Coding interview evaluation criteria in text form</summary>
+<details open>
+<summary> Coding interview evaluation criteria in text form</summary>
 
 | CRITERIA | STRONG HIRE | HIRE | NO HIRE | STRONG NO HIRE |
 | :-- | :-- | :-- | :-- | :-- |
@@ -1652,7 +1663,8 @@ The [STAR](https://en.wikipedia.org/wiki/Situation,_task,_action,_result) format
 - **Action:** What did you do? The interviewer will be looking for information on what you did, why you did it, and what the alternatives were.
 - **Results:** What was the outcome of your actions? What did you achieve through your actions and what did you learn? What steps did you take to improve after the experience?
 
-<details open><summary> Example of how to apply STAR to a behavioral interview question</summary>
+<details open>
+<summary> Example of how to apply STAR to a behavioral interview question</summary>
 
 Here's an example of how the STAR format can be used to answer the question: "Tell me about a time in which you had a conflict and needed to influence somebody else".
 
@@ -2189,7 +2201,8 @@ Bonuses are usually paid on a semi-annual basis and are typically dependent on a
 - **Individual performance:** This is a multiplier of how well an employee performed in that time period (e.g., meeting expectations results in a `100%` multiplier and exceeding expectations results in a `>100%` multiplier). Companies like Facebook and Apple reward their top performers handsomely, and the multiplier can go up to `300%` for the extremely high-performing employees.
 - **Company performance:** How well the company is doing. This multiplier will be the same for all employees.
 
-<details open><summary> Examples</summary>
+<details open>
+<summary> Examples</summary>
 
 Bob is a Software Engineer fresh out of college. His base salary is $100,000, is a fresh grad (seniority multiplier: 10%), crushed expectations for the half (individual performance multiplier: 200%) and his company did pretty well (company performance multiplier: 120%). For that half, his bonus will be as follows:
 

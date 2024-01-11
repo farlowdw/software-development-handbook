@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Introduction
 description: Docs introduction
 draft: false
-tags: [Introduction]
-keywords: [introduction]
-image: https://github.com/farlowdw.png
+tags: 
+  - Introduction
+keywords: 
+  - introduction
 hide_table_of_contents: true
 toc_min_heading_level: 2
 toc_max_heading_level: 5

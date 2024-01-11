@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Tree
 description: Overview of tree data structure.
 draft: false
-tags: [Tree]
-keywords: [tree]
-image: https://github.com/farlowdw.png
+tags: 
+  - Tree
+keywords: 
+  - tree
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -19,17 +20,17 @@ import TabItem from '@theme/TabItem';
 
 Good for storing hierarchies. Each node can have "child" nodes. A tree organizes values hierarchically.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="400px" src={require('@site/static/img/dsa/quick-ref/tree-f2.png').default} />
-</p>
+</div>
 
 Each entry in the tree is called a node, and every node links to zero or more child nodes. If you flip the picture upside down, it kind of looks like a tree. That's where the name comes from!
 
 ## Visual description
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="400px" src={require('@site/static/img/dsa/quick-ref/tree.png').default} />
-</p>
+</div>
 
 ## Example uses
 
@@ -43,23 +44,23 @@ Each entry in the tree is called a node, and every node links to zero or more ch
  
 Leaf nodes are nodes that are on the bottom of the tree (more formally: nodes that have no children). Each node in a tree has a **depth**: the number of links from the root to the node. A tree's **height** is the number of links from its root to the furthest leaf. (That's the same as the maximum node depth.)
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="375px" src={require('@site/static/img/dsa/quick-ref/tree-f3.png').default} />
-</p>
+</div>
 
 ### Tree Traversals
 
 **Breadth First Search (BFS):** In a BFS, you first explore all the nodes one step away, then all the nodes two steps away, etc.. Breadth-first search is like throwing a stone in the center of a pond. The nodes you explore "ripple out" from the starting point. Here's a sample tree, with the nodes labeled in the order they'd be visited in a BFS.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/tree-f4.png').default} />
-</p>
+</div>
 
 **Depth First Search (DFS):** In a DFS, you go as deep as possible down one path before backing up and trying a different one. Depth-first search is like walking through a corn maze. You explore one path, hit a dead end, and go back and try a different one. Here's a how a DFS would traverse the same example tree:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/tree-f5.png').default} />
-</p>
+</div>
 
 **Comparing BFS and DFS:** 
 
@@ -73,9 +74,9 @@ You can also use BFS and DFS on graphs.
 
 Visit the current node, then walk the left subtree, and finally walk the right subtree.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/tree-f6.png').default} />
-</p>
+</div>
 
 A pre-order traversal usually visits nodes in the same order as a DFS.
 
@@ -83,9 +84,9 @@ A pre-order traversal usually visits nodes in the same order as a DFS.
 
 Walk the left subtree first, then visit the current node, and finally walk the right subtree.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/tree-f7.png').default} />
-</p>
+</div>
 
 Of all three traversal methods, this one is probably the most common. When walking a binary search tree, an in order traversal visits the nodes in sorted, ascending order.
 
@@ -93,9 +94,9 @@ Of all three traversal methods, this one is probably the most common. When walki
 
 Walk the left subtree, then the right subtree, and finally visit the current node.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/tree-f8.png').default} />
-</p>
+</div>
 
 This one's kind of rare ... but it shows up in some parsing algorithms, like [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation).
 
@@ -103,33 +104,33 @@ This one's kind of rare ... but it shows up in some parsing algorithms, like [Re
 
 A **binary tree** is a tree where every node has at most two children.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="375px" src={require('@site/static/img/dsa/quick-ref/tree-f9.png').default} />
-</p>
+</div>
 
 #### Full binary trees
 
 A **full binary tree** is a binary tree where every node has exactly 0 or 2 children.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="175px" src={require('@site/static/img/dsa/quick-ref/tree-f10.png').default} />
-</p>
+</div>
 
 #### Perfect binary trees
 
 A perfect binary tree doesn't have room for any more nodes—-unless we increase the tree's height.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/tree-f11.png').default} />
-</p>
+</div>
 
 #### Complete binary trees
 
 A **complete binary tree** is like a perfect binary tree missing a few nodes in the last level. Nodes are filled in from left to right.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="350px" src={require('@site/static/img/dsa/quick-ref/tree-f12.png').default} />
-</p>
+</div>
 
 Complete trees are the basis for heaps and priority queues.
 
@@ -137,9 +138,9 @@ Complete trees are the basis for heaps and priority queues.
 
 A **balanced binary tree** is a tree whose height is small relative to the number of nodes it has. By small, we usually mean the height is $O(\lg n)$, where $n$ is the number of nodes. Conceptually, a *balanced* tree "looks full," without any missing chunks or branches that end much earlier than other branches.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="450px" src={require('@site/static/img/dsa/quick-ref/tree-f13.png').default} />
-</p>
+</div>
 
 There are few different definitions of balanced depending on the context. One of the most common definition is that a tree is balanced if: 
 
@@ -186,16 +187,16 @@ That's the relationship between a perfect binary tree's height and the number of
 
 Checking if a binary tree is a binary *search* tree is a favorite question from interviews.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="400px" src={require('@site/static/img/dsa/quick-ref/binary-search-tree-f2.png').default} />
-</p>
+</div>
 
 
 **Visual description:**
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="400px" src={require('@site/static/img/dsa/quick-ref/binary-search-tree.png').default} />
-</p>
+</div>
 
 **Strengths:**
 
@@ -231,8 +232,8 @@ Checking if a binary tree is a binary *search* tree is a favorite question from 
 
 Two binary search trees can store the same values in different ways:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/binary-search-tree-f3.png').default} />
-</p>
+</div>
 
 Some trees (like AVL trees or Red-Black trees) rearrange nodes as they're inserted to ensure the tree is always balanced. With these, the worst case complexity for searching, inserting, or deleting is always $O(\lg n)$, not $O(n)$.

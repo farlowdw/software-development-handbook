@@ -4,19 +4,17 @@ hide_title: false
 sidebar_label: String
 description: Overview of string data structure.
 draft: false
-last_update: 
-  date: '2022-07-22'
-  author: farlow
-tags: [String]
-keywords: [string]
-image: https://github.com/farlowdw.png
+tags: 
+  - String
+keywords: 
+  - string
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import SingleStringTC from '@site/docs/_Partials/_time-and-space-complexities/_string-single-string.mdx'
-import DoubleStringTC from '@site/docs/_Partials/_time-and-space-complexities/_string-double-string.mdx'
+import SingleStringTC from '@site/docs/_Partials/_time-and-space-complexities/_string-single-string.md'
+import DoubleStringTC from '@site/docs/_Partials/_time-and-space-complexities/_string-double-string.md'
 
 ## Introduction
 

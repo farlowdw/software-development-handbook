@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Window functions
 description: Article on window functions
 draft: false
-tags: [SQL, Window Functions]
-keywords: [window functions]
-image: https://github.com/farlowdw.png
+tags: 
+  - SQL
+  - Window Functions
+keywords: 
+  - window functions
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -565,7 +567,8 @@ Most of the content in the following examples come from [learnsql.com](https://l
 
 :::
 
-<details><summary> Example 0 (description-based)</summary>
+<details>
+<summary> Example 0 (description-based)</summary>
 
 The choice of frame units (i.e., `ROWS` or `RANGE`) for a window function frame specification clause limits the rows considered by a window function within a partition in different ways:
 
@@ -816,7 +819,8 @@ for when we encounter the `period` of `2021/06` of the `Shop 1` partition. This 
 
 </details>
 
-<details><summary> Example 1 (problem-based with extended discussion)</summary>
+<details>
+<summary> Example 1 (problem-based with extended discussion)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1074,7 +1078,8 @@ For completeness, it is worth noting that using `ROWS` always leads to the expec
 
 </details>
 
-<details><summary> Example 2 (ROWS, number of orders up to current order)</summary>
+<details>
+<summary> Example 2 (ROWS, number of orders up to current order)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1218,7 +1223,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 3 (ROWS, quantity of remaining items)</summary>
+<details>
+<summary> Example 3 (ROWS, quantity of remaining items)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1382,7 +1388,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 4 (ROWS, count of products introduced up to a point)</summary>
+<details>
+<summary> Example 4 (ROWS, count of products introduced up to a point)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1461,7 +1468,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 5 (ROWS, moving average)</summary>
+<details>
+<summary> Example 5 (ROWS, moving average)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1555,7 +1563,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 6 (RANGE, daily average)</summary>
+<details>
+<summary> Example 6 (RANGE, daily average)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1706,7 +1715,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 7 (RANGE, number of stock changes for a day)</summary>
+<details>
+<summary> Example 7 (RANGE, number of stock changes for a day)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1809,7 +1819,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 8 (RANGE, total quantity change for a product by date)</summary>
+<details>
+<summary> Example 8 (RANGE, total quantity change for a product by date)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -1928,7 +1939,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 9 (RANGE, number of stock changes for all products up through a date)</summary>
+<details>
+<summary> Example 9 (RANGE, number of stock changes for all products up through a date)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -2045,7 +2057,8 @@ VALUES
 
 </details>
 
-<details><summary> Example 10 (RANGE, total sum of order prices for same day or later)</summary>
+<details>
+<summary> Example 10 (RANGE, total sum of order prices for same day or later)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -2904,7 +2917,8 @@ The descriptions below, where the `prc_` prefix stands for *partition row count*
   + `prc_total`: How many rows are there in the entire partition?
   + `cume_dist` (calculated value): `prc_frame / prc_total`
 
-<details><summary> Note about <code>prc_frame</code></summary>
+<details>
+<summary> Note about <code>prc_frame</code></summary>
 
 In this example, `prc_frame` values are calculated as follows (as shown in the result sets that follow this note widget):
 
@@ -3237,7 +3251,8 @@ The table below shows how the `percent_rank` value is computed for each `row`.
 
 This is one of the more complicated window functions. Not just because of *how* calculations are made but also because it takes some work to interpret what the calculations actually *mean*. The basic example above attempts to address both of these concerns, but additional examples (i.e., this "extended discussion") can go a long way in answering unresolved questions.
 
-<details><summary> Example 1 (basic example with only <code>percent_rank</code>)</summary>
+<details>
+<summary> Example 1 (basic example with only <code>percent_rank</code>)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>
@@ -3292,7 +3307,8 @@ See [working data set](#working-data-set) section for schema.
 
 </details>
 
-<details><summary> Example 2 (basic example fleshed out)</summary>
+<details>
+<summary> Example 2 (basic example fleshed out)</summary>
 
 <Tabs>
 <TabItem value='problem' label='Problem'>

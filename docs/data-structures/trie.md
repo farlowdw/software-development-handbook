@@ -4,16 +4,14 @@ hide_title: false
 sidebar_label: Trie
 description: Overview of trie data structure.
 draft: false
-tags: [Trie]
-keywords: [trie]
-image: https://github.com/farlowdw.png
+tags: 
+  - Trie
+keywords: 
+  - trie
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Description
 
@@ -21,17 +19,17 @@ import TabItem from '@theme/TabItem';
 
 Stores a set of strings in a big tree of characters. Good for lookups by prefix. *Sometimes* saves space. A trie is a special tree that can compactly store strings. Here's a trie that stores "David", "Maria", and "Mario":
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="150px" src={require('@site/static/img/dsa/quick-ref/trie-f2.png').default} />
-</p>
+</div>
 
 Notice that we only store "Mari" *once*, even though it appears in two strings: "Maria" and "Mario".
 
 **Visual description:**
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/trie.png').default} />
-</p>
+</div>
 
 **Strengths:**
 
@@ -57,15 +55,15 @@ Notice that we only store "Mari" *once*, even though it appears in two strings: 
 
 What happens if we have two words and one is a prefix of the other? For instance, say we had a trie with "Maria" and "Mariana". Here's what that trie would look like.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="50px" src={require('@site/static/img/dsa/quick-ref/trie-f3.png').default} />
-</p>
+</div>
 
 That's confusing ... it looks like we only have one word ("Mariana") even though we inserted two. To avoid this, most tries append a special character to every word as a "flag" for the end of the word. Let's use `"."` as our "end of word" marker. Here's what our trie looks like now.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="150px" src={require('@site/static/img/dsa/quick-ref/trie-f4.png').default} />
-</p>
+</div>
 
 Now we can see that "Maria" is an actual item in our trie, not just a prefix for "Mariana".
 
@@ -94,9 +92,9 @@ A **radix tree** is like a trie, but it **saves space** by combining nodes toget
 
 Here's what a radix tree with "Maria", "Mariana", and "David" looks like.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="200px" src={require('@site/static/img/dsa/quick-ref/trie-f5.png').default} />
-</p>
+</div>
 
 Notice how it has way fewer nodes and links than the trie version we looked at above.
 

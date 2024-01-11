@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Bloom Filter
 description: Overview of bloom filter data structure.
 draft: false
-tags: [Bloom Filter]
-keywords: [bloom filter]
-image: https://github.com/farlowdw.png
+tags: 
+  - Bloom Filter
+keywords: 
+  - bloom filter
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -24,9 +25,9 @@ A constant-space bitmap that lets you quickly check whether or not an item is in
 
 **Visual description:**
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="400px" src={require('@site/static/img/dsa/quick-ref/bloom-filter.png').default} />
-</p>
+</div>
 
 **Strengths:**
 
@@ -50,9 +51,9 @@ A constant-space bitmap that lets you quickly check whether or not an item is in
 
 Under the hood, a bloom filter is just a bitmap. Initially, all the bits are set to 0.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/bloom-filter-f2.png').default} />
-</p>
+</div>
 
 Fixed size is crucial here. Remember, bloom filters require $O(1)$ space.
 
@@ -64,15 +65,15 @@ Let's add some cake flavors to our bloom filter, starting with "chocolate." To d
 2. Mod the result by the length of our bitmap
 3. Set that bit to 1
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/bloom-filter-f3.png').default} />
-</p>
+</div>
 
 Same thing for adding "vanilla" and "red velvet":
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="350px" src={require('@site/static/img/dsa/quick-ref/bloom-filter-f4.png').default} />
-</p>
+</div>
 
 ### Lookups
 
@@ -82,9 +83,9 @@ To check if a word is in our bloom filter we:
 2. Mod the result
 3. Check if the corresponding bit is 0 or 1
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/bloom-filter-f5.png').default} />
-</p>
+</div>
 
 If the bit is 0, then that word **definitely isn't** in our set. If it were, we would have set that bit to 1.
 
@@ -92,13 +93,13 @@ But if the bit is 1, then that word **might be** in our set. But it could be a *
 
 In our example, checking for "vanilla" gives us a true positive—-we *did* put that in our bloom filter earlier. But checking for "carrot" gives us a false positive—we set that bit to 1 for "red velvet".
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/bloom-filter-f6.png').default} />
-</p>
+</div>
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/bloom-filter-f7.png').default} />
-</p>
+</div>
 
 This false positive isn't a bug; it's a tradeoff we've made to keep checks fast. Bloom filters are only appropriate when it's feasible to handle false positives.
 

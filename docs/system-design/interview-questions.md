@@ -4,9 +4,12 @@ hide_title: false
 sidebar_label: Interview questions
 description: Article on interview questions in system design
 draft: false
-tags: [System Design, Interview Questions]
-keywords: [interview, questions]
-image: https://github.com/farlowdw.png
+tags: 
+  - System Design
+  - Interview Questions
+keywords: 
+  - interview
+  - questions
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Query execution order
 description: Article on query execution order
 draft: false
-tags: [SQL, Query Execution Order]
-keywords: [query execution order]
-image: https://github.com/farlowdw.png
+tags: 
+  - SQL
+  - Query Execution Order
+keywords: 
+  - query execution order
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -87,7 +89,8 @@ The listing above is how you should *think* about a `SELECT` query, but this is 
 
 If we were to hop over to the [Postgres docs](https://www.postgresql.org/docs/current/sql-select.html), then we might be a little overwhelmed by what's provided for the "synopsis" of the `SELECT` statement (reproduced below).
 
-<details><summary> <code>SELECT</code> statement synopsis (Postgres)</summary>
+<details>
+<summary> <code>SELECT</code> statement synopsis (Postgres)</summary>
 
 ```sql
 [ WITH [ RECURSIVE ] with_query [, ...] ]

@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Binary search
 description: Article on binary search template
 draft: false
-tags: [Binary Search, Template]
-keywords: [template]
-image: https://github.com/farlowdw.png
+tags: 
+  - Binary Search
+  - Template
+keywords: 
+  - template
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

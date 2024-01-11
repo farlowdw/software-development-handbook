@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: General
 description: General learning resources
 draft: false
-tags: [Learning Resources]
-keywords: [learning]
-image: https://github.com/farlowdw.png
+tags: 
+  - Learning Resources
+keywords: 
+  - learning
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -516,8 +517,3 @@ tbd
 ## Z
 
 tbd
-
-
-
-
-

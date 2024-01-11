@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Bare bones
 description: Article on bare bones templates
 draft: false
-tags: [Templates]
-keywords: [template]
-image: https://github.com/farlowdw.png
+tags: 
+  - Templates
+keywords: 
+  - template
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -22,7 +23,8 @@ This page is meant for bare bones templates in approaching different problems.
 
 ## Prefix sum
 
-<details><summary> Remarks</summary>
+<details>
+<summary> Remarks</summary>
 
 A [prefix sum](https://en.wikipedia.org/wiki/Prefix_sum) is a technique that can be used with numeric arrays (i.e., arrays whose elements are numbers such as floats or integers). The idea is to create an array `prefix` where `prefix[i]` is the sum of all elements up to the index `i` (**inclusive**). For example, given `nums = [5, 2, 1, 6, 3, 8]`, we would have `prefix = [5, 7, 8, 14, 17, 25]`.
 
@@ -51,9 +53,11 @@ for i in [1, len(nums) - 1]:
     prefix.append(nums[i] + prefix[prefix.length - 1])
 ```
 
-<details><summary> LeetCode problem examples</summary>
+<details>
+<summary> LeetCode problem examples</summary>
 
-<details><summary> <LC id='2270' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='2270' type='long' ></LC> </summary>
 
 ```python
 class Solution:
@@ -97,7 +101,8 @@ class Solution:
 
 ### Variable window size
 
-<details><summary> Remarks</summary>
+<details>
+<summary> Remarks</summary>
 
 The general algorithm behind the sliding window pattern (variable width) is as follows:
 
@@ -135,9 +140,11 @@ function fn(arr):
     return ans
 ```
 
-<details><summary> LeetCode problem examples</summary>
+<details>
+<summary> LeetCode problem examples</summary>
 
-<details><summary> <LC id='713' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='713' type='long' ></LC> </summary>
 
 ```python
 class Solution:
@@ -169,7 +176,8 @@ Note that this solution only works because the product for subarrays increases a
 
 #### Method 1 (build window outside main loop)
 
-<details><summary> Remarks</summary>
+<details>
+<summary> Remarks</summary>
 
 - **Window size greater than array size (possibility):** There is a chance that the window size `k` is greater than the array size `arr.length` &#8212; if not properly accounted for, this could easily lead to index out of range errors (it's not accounted for in the pseudocode below). It is often not a bad idea to have a check for this before proceeding with the window creation operation.
 - **Clarity:** Method 1 appears to be somewhat cleaner than Method 2 despite having another `for` loop. The construction of the window and initialization of `ans` is unambiguous and easy to understand in Method 1. We start by building the window, we set the initial answer, and then we move the window while iterative updating the answer. It's easier to keep things clear and straight with this approach.
@@ -193,9 +201,11 @@ function fn(arr, k):
     return ans
 ```
 
-<details><summary> LeetCode problem examples</summary>
+<details>
+<summary> LeetCode problem examples</summary>
 
-<details><summary> <LC id='643' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='643' type='long' ></LC> </summary>
 
 ```python
 class Solution:
@@ -219,7 +229,8 @@ class Solution:
 
 #### Method 2 (build window within main loop)
 
-<details><summary> Remarks</summary>
+<details>
+<summary> Remarks</summary>
 
 - **Window size greater than array size (possibility):** There is a chance that the window size `k` is greater than the array size `arr.length` &#8212; if not properly accounted for, this could easily lead to index out of range errors (it's not accounted for in the pseudocode below). It is often not a bad idea to have a check for this before proceeding with the window creation operation.
 - **Initialization of `ans`:** Sometimes it can be a little unclear as to how best to initialize the `ans` variable. For example, in <LC id='643' type='' ></LC> we are looking for a "maximum average subarray" which means initializing `ans` to, say, `0` does not make sense because the maximum average could be negative depending on what elements are present in the array. It makes more sense in this problem to have `ans = float('-inf')` as the initialization even though it does not feel all that natural.
@@ -242,9 +253,11 @@ function fn(arr, k):
                // if the problem is asking for a maximum value and curr is tracking that.
 ```
 
-<details><summary> LeetCode problem examples</summary>
+<details>
+<summary> LeetCode problem examples</summary>
 
-<details><summary> <LC id='643' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='643' type='long' ></LC> </summary>
 
 ```python
 class Solution:
@@ -269,7 +282,8 @@ class Solution:
 
 ### Extremes to middle
 
-<details><summary> Remarks</summary>
+<details>
+<summary> Remarks</summary>
 
 The strength of this technique is that we will never have more than $O(n)$ iterations for the `while` loop because the pointers start $n$ units away from each other and move at least one step closer on every iteration. Therefore, if we can keep the work inside each iteration at $O(1)$, then this technique will result in a linear runtime, which is usually the best possible runtime.
 
@@ -288,9 +302,11 @@ function fn(arr):
       3. Both left++ and right--
 ```
 
-<details><summary> LeetCode problem examples</summary>
+<details>
+<summary> LeetCode problem examples</summary>
 
-<details><summary> <LC id='344' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='344' type='long' ></LC> </summary>
 
 ```python
 class Solution:
@@ -311,7 +327,8 @@ class Solution:
 
 </details>
 
-<details><summary> <LC id='977' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='977' type='long' ></LC> </summary>
 
 ```python
 class Solution:
@@ -337,7 +354,8 @@ class Solution:
 
 </details>
 
-<details><summary> <LC id='11' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='11' type='long' ></LC> </summary>
 
 ```python
 class Solution:
@@ -366,7 +384,8 @@ class Solution:
 
 ### Two iterables
 
-<details><summary> Remarks</summary>
+<details>
+<summary> Remarks</summary>
 
 The following method is applicable when the problem has two iterables in the input (e.g., two arrays).
 
@@ -400,9 +419,11 @@ function fn(arr1, arr2):
     j++
 ```
 
-<details><summary> LeetCode problem examples</summary>
+<details>
+<summary> LeetCode problem examples</summary>
 
-<details><summary> <LC id='392' type='long' ></LC> </summary>
+<details>
+<summary> <LC id='392' type='long' ></LC> </summary>
 
 ```python
 class Solution:

@@ -1,20 +1,4 @@
 {
-  // Place your software-development-handbook workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-  // Placeholders with the same ids are connected.
-  // Example:
-  // "Print to console": {
-  // 	"scope": "javascript,typescript",
-  // 	"prefix": "log",
-  // 	"body": [
-  // 		"console.log('$1');",
-  // 		"$2"
-  // 	],
-  // 	"description": "Log output to console"
-  // }
   "Boilerplate blog front-matter": {
     "prefix": "blog-front-matter",
     "body": [
@@ -34,7 +18,7 @@
       "",
       "$0"
     ],
-    "description": "Provides sensible default front matter options for blog posts"
+    "description": "Provides sensible default front matter options for a blog post"
   },
   "Boilerplate docs frontmatter": {
     "prefix": "docs-front-matter",
@@ -68,7 +52,7 @@
       "",
       "$0"
     ],
-    "description": "Log output to console"
+    "description": "Boilerplate for truncating parts of a blog post"
   },
   "Import complexity table": {
     "prefix": "import-complexity-table",
@@ -77,22 +61,6 @@
       "<${2:ComplexityTable} />$0",
     ],
     "description": "Streamlines process for importing complexity tables"
-  },
-  "Image boilerplate (basic)": {
-    "prefix": "image-basic",
-    "body": [
-      "<img $0 src={require('@site/static/${1:folderOrFile}').default}/>",
-    ],
-    "description": "Allows for easy insertion of images."
-  },
-  "Image boilerplate (centered)": {
-    "prefix": "image-centered",
-    "body": [
-      "<p align='center'>",
-      "\t<img width='$0' src={require('@site/static/${1:folderOrFile}').default} />",
-      "</p>"
-    ],
-    "description": "Allows for easy insertion of centered images."
   },
   "Tabs boilerplate (with import statements)": {
     "prefix": "tabs-with-import-statements",
@@ -113,14 +81,7 @@
       "</TabItem>",
       "</Tabs>",
     ],
-    "description": "Allows for easy insertion of centered images."
-  },
-  "Perf best (dark green)": {
-    "prefix": "perf-darkgreen",
-    "body": [
-      "$$\\colorbox{darkgreen}{$$O(1)$}$$"
-    ],
-    "description": "Facilitates creation of color box with big-O details"
+    "description": "Allows for easy use of tabs along with import statement"
   },
   "Time complexity table boilerplate": {
     "prefix": "tc-table",
@@ -135,31 +96,8 @@
     ],
     "description": "Facilitates creation of time complexity tables"
   },
-  "Tabs for snapshot overviews": {
-    "prefix": "tabs-dsa-snapshot-overview",
-    "body": [
-      "<Tabs>",
-      "<TabItem value='tc-worst' label='TC - Worst'>",
-      "",
-      "tbd$0",
-      "",
-      "</TabItem>",
-      "<TabItem value='tc-average' label='TC - Average'>",
-      "",
-      "tbd",
-      "",
-      "</TabItem>",
-      "<TabItem value='summary' label='Quick Summary'>",
-      "",
-      "tbd",
-      "",
-      "</TabItem>",
-      "</Tabs>"
-    ],
-    "description": "Facilitates creation of snapshot overview tabs for different data structures"
-  },
-  "Questions/Answer tabs for JSNAD": {
-    "prefix": "jsnad-qa",
+  "Questions/Answer tabs for quiz": {
+    "prefix": "qa",
     "body": [
       "#### ${1:qNum}",
       "",
@@ -181,9 +119,9 @@
       "</TabItem>",
       "</Tabs>"
     ],
-    "description": "Facilitates creation of Q&A for JSNAD quizzes"
+    "description": "Facilitates creation of tabs for a quiz"
   },
-  "Question, Solution, Hints block for Algorithm Design Manual (ADM)": {
+  "Question, Solution, Hints block": {
     "prefix": "adm-problem",
     "body": [
       "<Tabs>",
@@ -206,28 +144,6 @@
       "",
       "---"
     ],
-    "description": "Facilitates creation of problems in ADM"
-  },
-  "Input-Output tabs": {
-    "prefix": "io-tabs",
-    "body": [
-      "<Tabs>",
-      "<TabItem value='input' label='Input'>",
-      "",
-      "```python title='Input'",
-      "$1",
-      "```",
-      "",
-      "</TabItem>",
-      "<TabItem value='output' label='Output'>",
-      "",
-      "```a title='Output'",
-      "$0",
-      "```",
-      "",
-      "</TabItem>",
-      "</Tabs>",
-    ],
-    "description": "Creates tabs for input and output"
+    "description": "Facilitates creation of problems, solutions, and hints for various sources"
   },
 }

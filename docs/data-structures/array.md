@@ -4,12 +4,10 @@ hide_title: false
 sidebar_label: Array
 description: Overview of array data structure.
 draft: false
-last_update: 
-  date: '2022-07-22'
-  author: farlow
-tags: [Array]
-keywords: [array]
-image: https://github.com/farlowdw.png
+tags: 
+  - Array
+keywords: 
+  - array
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -18,28 +16,10 @@ toc_max_heading_level: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import ArrayStaticTC from '@site/docs/_Partials/_time-and-space-complexities/_array-static.mdx';
-import ArrayDynamicTC from '@site/docs/_Partials/_time-and-space-complexities/_array-dynamic.mdx';
+import ArrayStaticTC from '@site/docs/_Partials/_time-and-space-complexities/_array-static.md';
+import ArrayDynamicTC from '@site/docs/_Partials/_time-and-space-complexities/_array-dynamic.md';
 
 ## Snapshot Overview
-
-<Tabs>
-<TabItem value='tc-worst' label='TC - Worst'>
-
-tbd
-
-</TabItem>
-<TabItem value='tc-average' label='TC - Average'>
-
-tbd
-
-</TabItem>
-<TabItem value='summary' label='Quick Summary'>
-
-tbd
-
-</TabItem>
-</Tabs>
 
 ## Static Array
 

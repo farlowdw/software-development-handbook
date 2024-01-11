@@ -4,16 +4,14 @@ hide_title: false
 sidebar_label: Priority Queue
 description: Overview of priority queue data structure.
 draft: false
-tags: [Priority Queue]
-keywords: [priority queue]
-image: https://github.com/farlowdw.png
+tags: 
+  - Priority Queue
+keywords: 
+  - priority queue
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Description
 
@@ -28,9 +26,9 @@ Picture a big list of bugs for an engineering team to tackle. You want to keep t
 
 **Visual description:**
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="100px" src={require('@site/static/img/dsa/quick-ref/priority-queue.png').default} />
-</p>
+</div>
 
 **Strengths:**
 
@@ -64,9 +62,9 @@ Picture a big list of bugs for an engineering team to tackle. You want to keep t
 
 Priority queues are often implemented using binary heaps. Notice how the highest priority is right at the top of the heap, ready to be grabbed in $O(1)$ time.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/priority-queue-f2.png').default} />
-</p>
+</div>
 
 - To **enqueue** an item, add it to the heap using the priority as the key (time: $O(\lg n)$).
 - To **peek** at the highest priority item, look at the item at the top (time: $O(1)$).

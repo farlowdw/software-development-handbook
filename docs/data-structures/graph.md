@@ -4,30 +4,28 @@ hide_title: false
 sidebar_label: Graph
 description: Overview of graph data structure.
 draft: false
-tags: [Graph]
-keywords: [graph]
-image: https://github.com/farlowdw.png
+tags: 
+  - Graph
+keywords: 
+  - graph
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 ## Description
 
 Good for storing networks, geography, social relationships, etc. A graph organizes items in an interconnected network. Each item is a node (or vertex). Nodes are connected by edges:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="100px" src={require('@site/static/img/dsa/quick-ref/graph-f2.png').default} />
-</p>
+</div>
 
 **Visual description:**
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="100px" src={require('@site/static/img/dsa/quick-ref/graph.png').default} />
-</p>
+</div>
 
 **Strengths:**
 
@@ -41,35 +39,35 @@ Good for storing networks, geography, social relationships, etc. A graph organiz
 
 **Directed or undirected:** In **directed** graphs, edges point from the node at one end to the node at the other end. In **undirected** graphs, the edges simply connect the nodes at each end.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/graph-f3.png').default} />
-</p>
+</div>
 
 **Cyclic or acyclic:** A graph is **cyclic** if it has a cycle—-an unbroken series of nodes with no repeating nodes or edges that connects back to itself. Graphs without cycles are **acyclic**.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/graph-f4.png').default} />
-</p>
+</div>
 
 **Weighted or unweighted:** If a graph is **weighted**, each edge has a "weight." The weight could, for example, represent the distance between two locations, or the cost or time it takes to travel between the locations.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="200px" src={require('@site/static/img/dsa/quick-ref/graph-f5.png').default} />
-</p>
+</div>
 
 **Legal coloring:** A **graph coloring** is when you assign colors to each node in a graph. A **legal coloring** means no adjacent nodes have the same color:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/graph-f6.png').default} />
-</p>
+</div>
 
 ### Representations
 
 There are a few different ways to store graphs. Let's take this graph as an example:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="200px" src={require('@site/static/img/dsa/quick-ref/graph-f7.png').default} />
-</p>
+</div>
 
 #### Edge list
 

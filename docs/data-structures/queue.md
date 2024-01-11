@@ -4,18 +4,16 @@ hide_title: false
 sidebar_label: Queue
 description: Overview of queue data structure.
 draft: false
-last_update: 
-  date: '2022-07-22'
-  author: farlow
-tags: [Queue]
-keywords: [queue]
-image: https://github.com/farlowdw.png
+tags: 
+  - Queue
+keywords: 
+  - queue
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import QueueTC from '@site/docs/_Partials/_time-and-space-complexities/_queue.mdx'
+import QueueTC from '@site/docs/_Partials/_time-and-space-complexities/_queue.md'
 
 ## Introduction
 

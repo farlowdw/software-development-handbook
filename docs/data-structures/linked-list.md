@@ -4,18 +4,16 @@ hide_title: false
 sidebar_label: Linked list
 description: Overview of linked list structure.
 draft: false
-last_update: 
-  date: '2022-07-22'
-  author: farlow
-tags: [Linked List]
-keywords: [linked list]
-image: https://github.com/farlowdw.png
+tags: 
+  - Linked List
+keywords: 
+  - linked list
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import LinkedListTC from '@site/docs/_Partials/_time-and-space-complexities/_linked-list.mdx'
+import LinkedListTC from '@site/docs/_Partials/_time-and-space-complexities/_linked-list.md'
 
 ## Introduction
 

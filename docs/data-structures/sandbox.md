@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Sandbox
 description: Sandbox for different data structure and algorithms notes/ideas
 draft: false
-tags: [Sandbox]
-keywords: [learning]
-image: https://github.com/farlowdw.png
+tags: 
+  - Sandbox
+keywords: 
+  - learning
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -285,7 +286,8 @@ A linked list problem may become more approachable if viewed largely as an exerc
 
 For example, the problem of reversing a linked list effectively amounts to mutating each node's `next` property in the linked list. See the problem description and detailed solution below for practical details about what all this means. Or expand the widget immediately below for an explicit illustration of what all this looks like in terms of reversing the linked list `1 -> 2 -> 3 -> None` in terms of memory addresses.
 
-<details><summary> Reversing <code>1 -> 2 -> 3 -> None</code> with attention towards memory addresses</summary>
+<details>
+<summary> Reversing <code>1 -> 2 -> 3 -> None</code> with attention towards memory addresses</summary>
 
 ```python title="Input"
 class ListNode:

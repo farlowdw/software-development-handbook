@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: FAQ
 description: Article on FAQ
 draft: false
-tags: [FAQ]
-keywords: [FAQ]
-image: https://github.com/farlowdw.png
+tags: 
+  - FAQ
+keywords: 
+  - FAQ
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

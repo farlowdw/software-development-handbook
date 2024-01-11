@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Heap
 description: Overview of heap data structure.
 draft: false
-tags: [Heap]
-keywords: [heap]
-image: https://github.com/farlowdw.png
+tags: 
+  - Heap
+keywords: 
+  - heap
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -23,9 +24,9 @@ A binary tree where the smallest value is always at the top. Use it to implement
 
 **Visual description:**
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="100px" src={require('@site/static/img/dsa/quick-ref/heap.png').default} />
-</p>
+</div>
 
 **Strengths:**
 
@@ -60,45 +61,45 @@ Heaps are implemented as complete binary trees. In a complete binary tree:
 
 As we'll see, this allows us to efficiently store our heap as an array. In a heap, **every node is smaller than its children**.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="350px" src={require('@site/static/img/dsa/quick-ref/heap-f3.png').default} />
-</p>
+</div>
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f4.png').default} />
-</p>
+</div>
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f5.png').default} />
-</p>
+</div>
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f6.png').default} />
-</p>
+</div>
 
 ### Inserting a new item
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f7.png').default} />
-</p>
+</div>
 
 1\. Add the item to the bottom of the tree.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f8.png').default} />
-</p>
+</div>
 
 2\. Compare the item with its parent. If the new item is smaller, swap the two.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f9.png').default} />
-</p>
+</div>
 
 3\. Continue comparing and swapping, allowing the new item to "bubble up" until the it's larger than its parent.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f10.png').default} />
-</p>
+</div>
 
 Because our heap is built on a complete binary tree, we know it's also *balanced*. Which means the height of the tree is $\lg n$. So we'll do at most $\lg n$ of these swaps, giving us a total time cost of $O(\lg n)$.
 
@@ -106,35 +107,35 @@ Because our heap is built on a complete binary tree, we know it's also *balanced
 
 Easy—it's right there at the top:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f11.png').default} />
-</p>
+</div>
 
 Now, we have to shuffle some things around to make this a valid heap again.
 
 1\. Take the bottom level's right-most item and move it to the top, to fill in the hole.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f12.png').default} />
-</p>
+</div>
 
 2\. Compare the item with its children.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f13.png').default} />
-</p>
+</div>
 
 If it's larger than either child, swap the item with the *smaller* of the two children.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f14.png').default} />
-</p>
+</div>
 
 3\. Continue comparing and swapping, allowing the item to "bubble down" until it's smaller than its children.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f15.png').default} />
-</p>
+</div>
 
 As with inserting (above), we'll do at most $\lg n$ of these swaps, giving us a total time cost of $O(\lg n)$.
 
@@ -142,9 +143,9 @@ As with inserting (above), we'll do at most $\lg n$ of these swaps, giving us a 
 
 Complete trees and heaps are often stored as arrays, one node after the other, like this:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f15a.png').default} />
-</p>
+</div>
 
 Using an array to store a complete binary tree is very efficient. Since there are no gaps in complete trees, there are no unused slots in the array. And, inserting a new item in the bottom right part of the tree just means appending to the array.
 
@@ -168,59 +169,59 @@ Don't bother memorizing these ... just work through a few examples and you'll be
 
 Say we want to make a heap out of the items in an array. We could create a new empty heap and add in the items from the array one at a time. If the array has nn elements, then this takes $O(n\lg n)$. It turns out that there's a **more efficient** way to transform an array into a heap. We'll take our input array and treat it like the nodes in a complete binary tree, just like we did above:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/heap-f15a.png').default} />
-</p>
+</div>
 
 To transform the tree into a valid heap, we'll compare each node to its children and move nodes around so that parent nodes are always smaller than their children. This causes larger nodes to move lower in the tree, "bubbling down" to allow smaller values to reach the top. Look familiar? This is the same bubbling down we were doing to remove items from the heap! We'll work from the leaf-nodes at the bottom upwards. To start off, let's look at the leaves. The leaf nodes don't have any children, so they don't need to move down at all. Great.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f16.png').default} />
-</p>
+</div>
 
 Let's look at the nodes in the next level:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f17.png').default} />
-</p>
+</div>
 
 We'll start with the left node (3) and its children:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f18.png').default} />
-</p>
+</div>
 
 Since 3 is smaller than both 7 and 9, it's already in the right spot.
 
 But, looking at the right node (2) and its children, since 1 is smaller than 2, we'll swap them.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f19.png').default} />
-</p>
+</div>
 
 Notice how we've got two small valid min-heaps. We're getting close!
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f20.png').default} />
-</p>
+</div>
 
 Moving up, we've got an 8 at the root.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f21.png').default} />
-</p>
+</div>
 
 Since 8 is larger than 1, 8 bubbles down, swapping places with the smaller child: 1.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f22.png').default} />
-</p>
+</div>
 
 Then, we need to compare 8 to its two children—2 and 4. Since 8 is bigger than both of them, we swap with the smaller child, which is 2.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="275px" src={require('@site/static/img/dsa/quick-ref/heap-f23.png').default} />
-</p>
+</div>
 
 At this point, we've transformed the input tree into a valid min heap. Nice!
 
@@ -228,9 +229,9 @@ At this point, we've transformed the input tree into a valid min heap. Nice!
 
 What's the time complexity of heapify'ing an array? It's tempting to say it's $O(n\lg n)$. After all, we have to examine all nn nodes, and a node might bubble down $O(\lg n)$ levels. That's an overestimate of the amount of work though. All of the leaf nodes at the bottom of the tree won't have to move down at all. And the parents of those nodes will only move down once. In fact, there's only one node that might move down $O(\lg n)$ times: the root node. Since binary heaps are based on complete binary trees, there will be $n/2$ nodes in the bottom level, $n/4$ nodes in the second-to-last level, etc. Each time we go up a level we cut the number of nodes in half.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="375px" src={require('@site/static/img/dsa/quick-ref/heap-f24.png').default} />
-</p>
+</div>
 
 So, we'll move $n/2$ nodes on the bottom level 0 times. The $n/4$ nodes one level up move at most 1 time. Then, $n/8$ nodes move at most 2 times. And so on, until we get to the root node, which moves $\lg n$ times.
 

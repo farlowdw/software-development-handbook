@@ -4,15 +4,16 @@ hide_title: false
 sidebar_label: Hash table
 description: Overview of hash table data structure.
 draft: false
-tags: [Hash Table]
-keywords: [hash table]
-image: https://github.com/farlowdw.png
+tags: 
+  - Hash Table
+keywords: 
+  - hash table
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import HashTableTC from '@site/docs/_Partials/_time-and-space-complexities/_hash-table.mdx';
+import HashTableTC from '@site/docs/_Partials/_time-and-space-complexities/_hash-table.md';
 import LC from '@site/src/components/LC';
 
 ## Introduction
@@ -47,7 +48,8 @@ In interviews, we typically only care about the *average case* as it concerns ha
 
 ## ChatGPT
 
-<details className='gptDetails'><summary> What is the time complexity for accessing items from a hash table? </summary>
+<details className='gptDetails'>
+<summary> What is the time complexity for accessing items from a hash table? </summary>
 
 The time complexity for accessing items from a hash table is generally O(1), or constant time, for both average and best-case scenarios. This is because hash tables use a hashing function to map keys directly to their corresponding values in the underlying array, which allows for fast access.
 

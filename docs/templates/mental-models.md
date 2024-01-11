@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Mental models
 description: Templates that express mental models for different problem-solving techniques, approaches, etc.
 draft: false
-tags: [Template]
-keywords: [learning]
-image: https://github.com/farlowdw.png
+tags: 
+  - Mental Models
+keywords: 
+  - learning
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

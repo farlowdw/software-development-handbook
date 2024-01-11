@@ -2,11 +2,13 @@
 title: Tips and Tricks Overview
 hide_title: true
 sidebar_label: Introduction
-description: descForHead
+description: Introduction to tips and tricks
 draft: false
-tags: [Overview]
-keywords: [overview]
-image: https://github.com/farlowdw.png
+tags: 
+  - Tips and Tricks
+keywords: 
+  - tips
+  - tricks
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

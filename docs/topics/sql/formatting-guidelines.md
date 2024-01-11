@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Formatting guidelines
 description: Article on SQL query formatting guidelines
 draft: false
-tags: [SQL, Formatting]
-keywords: [SQL Query Formatting Guidelines]
-image: https://github.com/farlowdw.png
+tags: 
+  - SQL
+  - Formatting
+keywords: 
+  - SQL Query Formatting Guidelines
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

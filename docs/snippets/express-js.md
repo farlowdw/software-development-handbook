@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Express.js
 description: A collection of snippets to use with Express.js
 draft: false
-tags: [express]
-keywords: [express]
-image: https://github.com/farlowdw.png
+tags: 
+  - Express
+keywords: 
+  - express
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

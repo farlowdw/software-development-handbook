@@ -4,16 +4,14 @@ hide_title: false
 sidebar_label: LRU Cache
 description: Overview of LRU cache data structure.
 draft: false
-tags: [LRU Cache]
-keywords: [LRU cache]
-image: https://github.com/farlowdw.png
+tags: 
+  - LRU Cache
+keywords: 
+  - LRU cache
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Description
 
@@ -21,9 +19,9 @@ Lets you quickly identify which item hasn't been used for the longest amount of 
 
 **Visual description:**
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="100px" src={require('@site/static/img/dsa/quick-ref/lru-cache.png').default} />
-</p>
+</div>
 
 **Strengths:**
 
@@ -52,39 +50,39 @@ Here's the cache catch: caches are small. You can't fit everything in a cache, s
 
 Here's one idea: if the cache has room for, say, $n$ elements, then store the $n$ elements accessed most recently. To make this concrete, say we have these four recipes on disk:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="350px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f2.png').default} />
-</p>
+</div>
 
 Let's say our cache can only store up to three recipes (that's comically small, but it'll make this example easier to understand). Let's walk through what the cache might look like over time. First, a user requests the chocolate cake recipe. We'll read it from a disk, and save it to the cache before returning it it the user.
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f3.png').default} />
-</p>
+</div>
 
 Next, someone requests the vanilla cake recipe:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f4.png').default} />
-</p>
+</div>
 
 Notice that the chocolate cake recipe got bumped down a level in the cache--it's not the most recently used anymore. Next comes a request for the strawberry cake recipe:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f5.png').default} />
-</p>
+</div>
 
 And one for chocolate:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f6.png').default} />
-</p>
+</div>
 
 We had that one in the cache already, so we were able to skip the disk read. We also bumped it back up to the most recently used spot, bumping everything else down a spot. Next comes a request for the pound cake recipe:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f7.png').default} />
-</p>
+</div>
 
 Since our cache could only hold three recipes, we had to kick something out to make room. We got rid of ("evicted") the vanilla cake recipe, since it had been used least recently of all the recipes in the cache. This is called a "Least-Recently Used (LRU)" eviction strategy. There are lots of strategies that we could have used to choose which recipe to get rid of. We're focusing on LRU since it's a common one that comes up in coding interviews. An LRU cache is an efficient cache data structure that can be used to figure out what we should evict when the cache is full. The goal is to always have the least-recently used item accessible in $O(1)$ time.
 
@@ -92,15 +90,15 @@ Since our cache could only hold three recipes, we had to kick something out to m
 
 An LRU cache is built by combining two data structures: a doubly linked list and an object. We'll set up our linked list with the most-recently used item at the head of the list and the least-recently used item at the tail:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="125px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f8.png').default} />
-</p>
+</div>
 
 This lets us access the LRU element in $O(1)$ time by looking at the tail of the list. What about accessing a specific item in the cache (for example, the chocolate cake recipe)? In general, finding an item in a linked list is $O(n)$ time, since we need to walk the whole list. But the whole point of a cache is to get quick lookups. How could we speed that up? We'll add in an object that maps items to linked list nodes:
 
-<p align='center'>
+<div align='center' className='centeredImageDiv'>
   <img width="300px" src={require('@site/static/img/dsa/quick-ref/lru-cache-f9.png').default} />
-</p>
+</div>
 
 That lets us find an element in our cache's linked list in $O(1)$ time, instead of $O(n)$.
 

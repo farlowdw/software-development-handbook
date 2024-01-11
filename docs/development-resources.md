@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Development resources
 description: List of various resources to aid in development
 draft: false
-tags: [Big List]
-keywords: [resources]
-image: https://github.com/farlowdw.png
+tags: 
+  - Big List
+  - Development Resources
+keywords: 
+  - resources
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

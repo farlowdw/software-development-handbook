@@ -4,9 +4,11 @@ hide_title: false
 sidebar_label: Sandbox
 description: Sandbox for learning algorithms
 draft: false
-tags: [Sandbox]
-keywords: [sandbox, algorithms]
-image: https://github.com/farlowdw.png
+tags: 
+  - Sandbox
+keywords: 
+  - sandbox
+  - algorithms
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6
@@ -18,7 +20,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import LC from '@site/src/components/LC';
 import Asterisk from '@site/src/components/Asterisk';
-import BinaryTreeExample from '../_Partials/tree-traversal-binary-example.md';
+import BinaryTreeExample from '@site/docs/_Partials/_sandbox/tree-traversal-binary-example.md';
 
 ## Data structures
 
@@ -88,7 +90,8 @@ It is worth noting that the left-to-right pre-order traversal is effectively the
 
 Learning about trees can become overly cumbersome if you are specifying all of the nodes yourself. For example, the binary tree in the tip above (and the one we will see throughout the subsections below) may be set up in Python without any package support as follows:
 
-<details><summary> See the setup</summary>
+<details>
+<summary> See the setup</summary>
 
 ```python
 class TreeNode:
@@ -669,7 +672,8 @@ Essentially, the `if` block above ensures you explore a chamber's right tunnel i
 
 The procedure outlined above is rather sophisticated and complex in its logic &#8212; it is probably easiest to understand if we actually work through a concrete example such as the one provided below (writing out the process may seem tedious, and it is, but it's worth following the first time around to provide some sort of intuition for things).
 
-<details><summary> Concrete example using a familiar binary tree</summary>
+<details>
+<summary> Concrete example using a familiar binary tree</summary>
 
 We have used the following binary tree in a number of previous examples:
 
@@ -1218,7 +1222,8 @@ procedure iterativeInorder(node)
 
 Imagine you're reading a book series. Specifically, let's suppose you're reading the Jack Ryan series of novels by Tom Clancy. You've heard a lot about this series and know several books have film adaptations. You'd like to check it out. The first book you check out, *Debt of Honor*, seems to probably end with Jack Ryan becoming the President of the United States. That can't be right. Surely there's a lot more to Jack Ryan's story that led up to that point. You'd really like to read the whole book series *in order*, specifically by chronological order of events as opposed to publication date.
 
-<details><summary> Jack Ryan novels by chronological order of events</summary>
+<details>
+<summary> Jack Ryan novels by chronological order of events</summary>
 
 :::note 
 

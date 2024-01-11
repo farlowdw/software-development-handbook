@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Bash
 description: Snippets for working with the bash shell
 draft: false
-tags: [Cheatsheet]
-keywords: [cheatsheet]
-image: https://github.com/farlowdw.png
+tags: 
+  - Cheatsheet
+keywords: 
+  - cheatsheet
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

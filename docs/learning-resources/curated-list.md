@@ -4,9 +4,12 @@ hide_title: false
 sidebar_label: Curated
 description: A list of curated learning resources
 draft: false
-tags: [Curated, Learning Resources]
-keywords: [resources, curated]
-image: https://github.com/farlowdw.png
+tags: 
+  - Curated
+  - Learning Resources
+keywords: 
+  - resources
+  - curated
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -14,9 +17,6 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ComingSoon from '@site/src/components/ComingSoon'
-
-<ComingSoon val="Resources will be populated as discovered." />
 
 ## A
 
@@ -33,7 +33,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://stackingthebricks.com/articles/).
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [The fine art of "Flintstoning"](https://stackingthebricks.com/the-fine-art-of-flintstoning/)
 
@@ -43,7 +44,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://waxy.org/). Writer with a creative, illustrative, technical flair. 
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Invasive Diffusion: How one unwilling illustrator found herself turned into an AI model](https://waxy.org/2022/11/invasive-diffusion-how-one-unwilling-illustrator-found-herself-turned-into-an-ai-model/)
 
@@ -53,7 +55,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://wingolog.org/). Writer with an emphasis on free software and open-source projects.
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [fibs, lies, and benchmarks](https://wingolog.org/archives/2019/06/26/fibs-lies-and-benchmarks)
 
@@ -63,7 +66,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://www.elidedbranches.com/). Engineer, CTO, member of the Apache ZooKeeper community. Author of [The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change](https://www.amazon.com/Managers-Path-Leaders-Navigating-Growth-ebook/dp/B06XP3GJ7F).
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [An incomplete list of skills senior engineers need, beyond coding](https://www.elidedbranches.com/2021/06/an-incomplete-list-of-skills-senior.html)
 
@@ -73,7 +77,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://chelseatroy.com/). Staff Engineer at Mozilla.
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [How I do (and don’t) prepare a talk for a tech conference](https://chelseatroy.com/2022/08/03/how-i-do-and-dont-prepare-a-talk-for-a-technical-conference/)
 
@@ -84,7 +89,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://css-tricks.com/). CSS site useful for a very wide array of things.
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Centering in CSS: A Complete Guide](https://css-tricks.com/centering-css-complete-guide/)
 
@@ -94,7 +100,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://danluu.com/). Programming blog posts (more technical).
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Files are hard](https://danluu.com/file-consistency/)
 
@@ -104,7 +111,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Personal page](https://mickens.seas.harvard.edu/wisdom-james-mickens). Researcher in the Distributed Systems group at Microsoft’s Redmond lab. 
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [The Night Watch](https://scholar.harvard.edu/files/mickens/files/thenightwatch.pdf)
 
@@ -114,7 +122,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://blog.jfo.click/). 
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Hott reloading](https://blog.jfo.click/hott-reloading/)
 
@@ -124,7 +133,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://jvns.ca/). Author of the [Wizard Zines](https://wizardzines.com/). Her blog has every post she's ever written, organized by category.
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 **Immediate interest**
 
@@ -141,7 +151,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://kamalmarhubi.com/blog/).
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Segfaults are our friends and teachers](https://kamalmarhubi.com/blog/2016/04/25/segfaults-are-our-friends-and-teachers/)
 
@@ -151,7 +162,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://larahogan.me/blog/). Author, public speaker, and coach for managers and leaders across the tech industry.
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [What does sponsorship look like?](https://larahogan.me/blog/what-sponsorship-looks-like/)
 
@@ -161,7 +173,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://bellmar.medium.com/). Author of Kill It with Fire Manage Aging Computer Systems (and Future Proof Modern Ones)
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [All the best engineering advice I stole from non-technical people](https://bellmar.medium.com/all-the-best-engineering-advice-i-stole-from-non-technical-people-eb7f90ca2f5f)
 
@@ -171,7 +184,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://blog.plover.com/). Amateur mathematician.
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Software horror show: SAP Concur](https://blog.plover.com/prog/crap-warning-signs-2.html)
 
@@ -181,7 +195,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://meowni.ca/blog/). 
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Doing the work](https://meowni.ca/posts/doing-the-work/)
 
@@ -191,7 +206,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://blog.nelhage.com/). 
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Computers can be understood](https://blog.nelhage.com/post/computers-can-be-understood/)
 
@@ -201,7 +217,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://rachelbythebay.com/).
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [A mystery with memory leaks and a magic number](https://rachelbythebay.com/w/2016/02/21/malloc/)
 
@@ -211,7 +228,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://robertheaton.com/).
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [How does a TCP Reset Attack work?](https://robertheaton.com/2020/04/27/how-does-a-tcp-reset-attack-work/)
 - [Programming Feedback for Advanced Beginners (archive)](https://advancedbeginners.substack.com/archive)
@@ -222,7 +240,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://dev.to/captainsafia). 
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Getting into git init](https://dev.to/captainsafia/getting-into-git-init-42nk)
 
@@ -232,7 +251,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://vicki.substack.com/). 
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Google Drive is production](https://vicki.substack.com/p/google-drive-is-production)
 
@@ -242,7 +262,8 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 [Blog](https://lethain.com/).
 
-<details><summary> Notable posts</summary>
+<details>
+<summary> Notable posts</summary>
 
 - [Model, document, and share](https://lethain.com/model-document-share/)
 

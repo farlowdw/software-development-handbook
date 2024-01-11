@@ -4,9 +4,10 @@ hide_title: false
 sidebar_label: Two pointers
 description: Article on two pointers
 draft: false
-tags: [Two Pointers]
-keywords: [two pointers]
-image: https://github.com/farlowdw.png
+tags: 
+  - Two Pointers
+keywords: 
+  - two pointers
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5

@@ -4,20 +4,23 @@ hide_title: false
 sidebar_label: binarytree (Python package)
 description: Explorations of the binarytree package for Python
 draft: false
-tags: [Interview Crash Course, Sandbox]
-keywords: [interview, crash course, sandbox]
-image: https://github.com/farlowdw.png
+tags: 
+  - Python
+  - binarytree
+  - Interview Crash Course
+  - Sandbox
+keywords: 
+  - interview
+  - crash course
+  - sandbox
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import TOCInline from '@theme/TOCInline';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
 import LC from '@site/src/components/LC';
-import Asterisk from '@site/src/components/Asterisk';
 
 :::info Source Code 
 
