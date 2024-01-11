@@ -2125,8 +2125,6 @@ Here, I present questions to ask at the end of your software engineer interviews
 - What resources does the company have for new hires to study its product and processes? Are there specifications, requirements, documentation?
 - What would I work on if I joined this team and who would I work most closely with?
 
-<InDocAd />
-
 #### Culture and welfare questions 
 
 - **What is the most frustrating part about working here?**

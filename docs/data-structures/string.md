@@ -49,7 +49,7 @@ Below we assume the other string is of length $m$.
 
 ### Clarifications
 
-- Ask about input character set and case sensitivity. Usually the characters are limited to lowercase Latin characters, for example \mytt{a} to \mytt{z}.
+- Ask about input character set and case sensitivity. Usually the characters are limited to lowercase Latin characters, for example `a` to `z`.
 
 ### Mistakes
 

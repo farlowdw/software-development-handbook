@@ -161,9 +161,9 @@ In perfect binary trees there's a cool mathematical relationship between the num
 
 Let's call the total number of nodes in the tree $n$, and the height of the tree $h$. We could solve for $n$ by adding up the number of nodes on each level in the tree:
 
-\[
+$$
 n=2^0+2^1+2^2+\cdots+2^{h-2}+2^{h-1}=2^h-1.  
-\]
+$$
 
 Solving for $h$ in terms of $n$, we get
 
