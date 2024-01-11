@@ -7,10 +7,9 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 const ResumeViewer = () => {
-  const { colorMode } = useColorMode();
+	const { colorMode } = useColorMode();
 	const defaultLayoutPluginInstance = defaultLayoutPlugin();
 	return (
-		<div style={{ height: '100vh', width: '100vw' }}>
 			<Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js">
 				<Viewer
 					fileUrl={
@@ -20,7 +19,6 @@ const ResumeViewer = () => {
 					theme={colorMode == 'dark' ? 'dark' : 'light'}
 				/>
 			</Worker>
-		</div>
 	);
 };
 
