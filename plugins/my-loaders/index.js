@@ -11,6 +11,10 @@ module.exports = function (context, options) {
                 fullySpecified: false
               }
             },
+            {
+              test: /pdfjs-dist/,
+              use: loaders.null(),
+            },
           ],
         },
       };
