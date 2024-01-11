@@ -2,6 +2,8 @@ module.exports = function (context, options) {
   return {
     name: 'my-loaders',
     configureWebpack(config, isServer) {
+      config.resolve.alias.canvas = false
+      config.resolve.alias.encoding = false
       return {
         module: {
           rules: [
@@ -10,10 +12,6 @@ module.exports = function (context, options) {
               resolve: {
                 fullySpecified: false
               }
-            },
-            {
-              test: /pdfjs-dist/,
-              use: loaders.null(),
             },
           ],
         },
