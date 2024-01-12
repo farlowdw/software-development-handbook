@@ -10,6 +10,7 @@ const ResumeViewer = () => {
 	const { colorMode } = useColorMode();
 	const defaultLayoutPluginInstance = defaultLayoutPlugin();
 	return (
+		<div style={{ height: '100vh', width: '100vw' }}>
 			<Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js">
 				<Viewer
 					fileUrl={
@@ -17,8 +18,10 @@ const ResumeViewer = () => {
 					}
 					plugins={[defaultLayoutPluginInstance]}
 					theme={colorMode == 'dark' ? 'dark' : 'light'}
+          defaultScale={1.75}
 				/>
 			</Worker>
+		</div>
 	);
 };
 
