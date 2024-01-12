@@ -1,16 +1,18 @@
 import React from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
-import { Worker, Viewer } from '@react-pdf-viewer/core';
+import { Worker, Viewer, SpecialZoomLevel } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import { useMediaQuery } from '@mui/material';
 
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 const ResumeViewer = () => {
+	const isSmallScreen = useMediaQuery('(max-width:1050px)');
 	const { colorMode } = useColorMode();
 	const defaultLayoutPluginInstance = defaultLayoutPlugin();
 	return (
-		<div style={{ height: '100vh', width: '100vw' }}>
+		<div style={{ height: '100%', width: '100%' }}>
 			<Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js">
 				<Viewer
 					fileUrl={
@@ -18,7 +20,7 @@ const ResumeViewer = () => {
 					}
 					plugins={[defaultLayoutPluginInstance]}
 					theme={colorMode == 'dark' ? 'dark' : 'light'}
-          defaultScale={1.75}
+					defaultScale={isSmallScreen ? SpecialZoomLevel.PageWidth : 1.75}
 				/>
 			</Worker>
 		</div>
