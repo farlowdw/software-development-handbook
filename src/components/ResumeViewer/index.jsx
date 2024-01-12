@@ -12,18 +12,27 @@ const ResumeViewer = () => {
 	const { colorMode } = useColorMode();
 	const defaultLayoutPluginInstance = defaultLayoutPlugin();
 	return (
-		<div style={{ height: '100%', width: '100%' }}>
-			<Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js">
-				<Viewer
-					fileUrl={
-						require('@site/static/docs/Daniel_Farlow_resume.pdf').default
-					}
-					plugins={[defaultLayoutPluginInstance]}
-					theme={colorMode == 'dark' ? 'dark' : 'light'}
-					defaultScale={isSmallScreen ? SpecialZoomLevel.PageWidth : 1.75}
-				/>
-			</Worker>
-		</div>
+		<>
+			<style>
+				{`@media print {
+            .rpv-print__body-printing #__docusaurus {
+              display: none;
+            }
+        }`}
+			</style>
+			<div style={{ height: '100%', width: '100%' }}>
+				<Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js">
+					<Viewer
+						fileUrl={
+							require('@site/static/docs/Daniel_Farlow_resume.pdf').default
+						}
+						plugins={[defaultLayoutPluginInstance]}
+						theme={colorMode == 'dark' ? 'dark' : 'light'}
+						defaultScale={isSmallScreen ? SpecialZoomLevel.PageWidth : 1.75}
+					/>
+				</Worker>
+			</div>
+		</>
 	);
 };
 
