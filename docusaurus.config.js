@@ -249,7 +249,7 @@ const config = {
               },
               {
                 label: 'Learning Resources',
-                to: '/docs/learning-resources/intro',
+                to: '/docs/learning-resources/curated-list',
               },
               {
                 label: 'Definitions',
@@ -345,14 +345,6 @@ const config = {
               {
                 label: 'MIT Missing Semester',
                 href: `${coursesBaseURL}/docs/mit-missing-semester/introduction`,
-              },
-              {
-                label: 'Manim',
-                href: `${manimBaseURL}/docs/intro`,
-              },
-              {
-                href: `${leetcodeBaseURL}/docs/intro`,
-                label: 'LeetCode Work (Protected)',
               },
             ],
           },

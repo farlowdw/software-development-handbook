@@ -108,6 +108,17 @@ import ComingSoon from '@site/src/components/ComingSoon'
 
 </details>
 
+#### David Eppstein
+
+[Blog](https://11011110.github.io/blog/about/). Personal blog from a professor of computer science at University of California, Irvine. 
+
+<details>
+<summary> Notable posts</summary>
+
+- [Stack-based graph traversal ≠ depth first search](https://11011110.github.io/blog/2013/12/17/stack-based-graph-traversal.html): Goes into detail about how modifying the standard version of the BFS algorithm on generalized graphs by replacing the queue with a stack does *not* result in a true DFS. The [Wiki article on DFS](https://en.wikipedia.org/wiki/Depth-first_search#Pseudocode), specifically the pseudocode section, provides David's comments in a different manner.
+
+</details>
+
 #### James Mickens
 
 [Personal page](https://mickens.seas.harvard.edu/wisdom-james-mickens). Researcher in the Distributed Systems group at Microsoft’s Redmond lab. 

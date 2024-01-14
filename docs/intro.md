@@ -107,7 +107,7 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>
       This blog post details how to synchronize the default light and dark mode palettes used in Material UI with the light or dark mode being used on a Docusaurus site.
     </p>
-    <DocsLink to='/blog/2022/10/28/docusaurus-mui-light-dark'>Read <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='/blog/2022/10/28/2022/docusaurus-mui-light-dark'>Read <ArrowRight className='arrow' /></DocsLink>
   </div>
 </div>
 <br />
@@ -120,66 +120,52 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <h3>External Resources</h3>
   </div>
   <div className='card'>
-    <h4>Python Language Reference</h4>
-    <p>
-      Various referential notes about the Python language.
-    </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/python/'>Visit <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
     <h4>Docusaurus Input-Output Examples</h4>
     <p>
       Collection of input-output examples for use with sites powered by Docusaurus.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/docusaurus/templates'>Visit <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='https://courses.dwf.dev/docs/reference/docusaurus/templates'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>KaTeX Reference</h4>
     <p>
       Basically the KaTeX documentation site (but everything is ensured to work with Docusaurus).
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/docusaurus/katex'>Visit <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='https://courses.dwf.dev/docs/reference/docusaurus/katex'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>MySQL Reference</h4>
     <p>
       Easy-to-use references to many MySQL functions (e.g., string functions, date functions, etc.).
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/mysql'>Visit <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='https://courses.dwf.dev/docs/reference/sql/mysql'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Postgres Reference</h4>
     <p>
       Easy-to-use references to many Postgres functions (e.g., string functions, date functions, etc.).
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/postgresql'>Visit <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='https://courses.dwf.dev/docs/reference/sql/postgresql'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>PG Exercises Reference</h4>
     <p>
-      Comprehensive reference for the <a href="https://pgexercises.com/" target="_blank">Postgres Exercises</a> tutorial.
+      Comprehensive reference for the popular online Postgres Exercises tutorial.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/reference/sql/pg-exercises'>Visit <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='https://courses.dwf.dev/docs/reference/sql/pg-exercises'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Algorithm Design Manual (Book Notes)</h4>
     <p>
       Book notes to accompany Steven Skiena's <em>Algorithm Design Manual</em>.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/books/algorithm-design-manual/book-notes/introduction-to-algorithm-design'>Visit <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
-    <h4>Interview Cake (Notes)</h4>
-    <p>
-      Notes to accompany the Interview Cake curriculum.
-    </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/interview-cake/algorithmic-thinking'>Visit <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='https://cs.dwf.dev/docs/dsa/algorithm-design-manual/introduction-to-algorithm-design-old'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>MIT Missing Semester (Notes)</h4>
     <p>
       Notes to accompany the MIT's Missing Semester curriculum.
     </p>
-    <DocsLink to='https://dwf-books.netlify.app/docs/course-notes/development-and-engineering/mit-missing-semester/'>Visit <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='https://cs.dwf.dev/docs/supplemental-resources/courses/mit-missing-semester/introduction'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
 </div>
