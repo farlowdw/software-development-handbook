@@ -15,10 +15,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import TOCInline from '@theme/TOCInline';
 import LC from '@site/src/components/LC';
-
-<TOCInline toc={toc} />
 
 ## Array
 
