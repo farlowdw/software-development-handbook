@@ -4,7 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
-import styles from './index.module.css';
+import styles from './index.module.scss';
 import Button from '@mui/material/Button';
 
 const features = [
@@ -45,7 +45,7 @@ function Home() {
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.getStarted} >
             <Button variant="contained" color="inherit">
-              <Link to={useBaseUrl('docs/intro')}>
+              <Link className={styles.checkItOut} to={useBaseUrl('docs/intro')}>
                 <span style={{ fontFamily: 'IBM Plex Sans' }}>Check it out</span>
               </Link>
             </Button>
