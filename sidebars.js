@@ -159,6 +159,7 @@ const sidebars = {
         'learning-resources/neetcode',
         'learning-resources/tech-interview-handbook',
         'learning-resources/leetcode-problems-by-category',
+        'learning-resources/lc-tagged-problems',
         'learning-resources/sandbox',
         {
           type: 'category',
