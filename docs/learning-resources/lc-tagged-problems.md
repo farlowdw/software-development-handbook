@@ -2,7 +2,7 @@
 title: Tagged LeetCode Problems
 hide_title: false
 sidebar_label: LeetCode problems by tag
-description: A listing of tagged LeetCode
+description: LeetCode problems listed by problem category
 draft: false
 tags: 
   - LeetCode
