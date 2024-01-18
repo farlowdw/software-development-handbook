@@ -5,6 +5,13 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'DS2011',
+      title: `A Transition to Advanced Mathematics (7th Ed.)`,
+      author: 'Douglas Smith, Maurice Eggen, and Richard St. Andre',
+      time: '2011',
+      link: 'https://www.amazon.com/dp/0495562025',
+    },
+    {
       id: "SK2020",
       title: "Algorithm Design Manual",
       author: "Steven Skiena",

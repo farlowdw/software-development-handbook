@@ -41,6 +41,7 @@
     "react-helmet": "^6.1.0",
     "react-pdf-viewer": "^0.1.0",
     "react-player": "^2.13.0",
+    "react-swipeable-views": "^0.14.0",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
     "sass": "^1.69.3"
@@ -52,6 +53,9 @@
   "overrides": {
     "docusaurus-plugin-image-zoom": {
       "@docusaurus/theme-classic": "^3.0.1"
+    },
+    "react-swipeable-views": {
+      "react": "^18.2.0"
     }
   },
   "browserslist": {

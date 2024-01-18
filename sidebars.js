@@ -1,12 +1,13 @@
 const sidebars = {
   docs: [
     'intro',
+    'big-o',
     {
       type: 'category',
       label: 'Data Structures',
       collapsed: true,
       items: [
-        'data-structures/intro',
+        'data-structures/introduction',
         'data-structures/array',
         'data-structures/bloom-filter',
         'data-structures/graph',
@@ -16,11 +17,11 @@ const sidebars = {
         'data-structures/lru-cache',
         'data-structures/priority-queue',
         'data-structures/queue',
+        'data-structures/set',
         'data-structures/stack',
         'data-structures/string',
         'data-structures/tree',
         'data-structures/trie',
-        'data-structures/sandbox',
       ]
     },
     {
@@ -28,20 +29,18 @@ const sidebars = {
       label: 'Algorithms',
       collapsed: true,
       items: [
-        'algorithms/intro',
-        'algorithms/bit-manipulation',
+        'algorithms/introduction',
         'algorithms/depth-first-search',
         'algorithms/breadth-first-search',
         'algorithms/dynamic-programming',
-        'algorithms/recursion',
         'algorithms/topological-sorting',
         {
           type: 'category',
-          label: 'Sorting and Searching',
+          label: 'Sorting',
           collapsed: true,
           items: [
-            'algorithms/sorting-and-searching/intro',
-            'algorithms/sorting-and-searching/bucket-sort',
+            'algorithms/sorting/introduction',
+            'algorithms/sorting/bucket-sort',
           ]
         },
         {
@@ -49,7 +48,7 @@ const sidebars = {
           label: 'Named Algorithms',
           collapsed: true,
           items: [
-            'algorithms/named-algorithms/intro',
+            'algorithms/named-algorithms/introduction',
             'algorithms/named-algorithms/dijkstra',
           ]
         },
@@ -57,44 +56,25 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Patterns',
+      label: 'Patterns, techniques, and themes',
       collapsed: true,
       items: [
-        'patterns/intro',
-        'patterns/index-has-a-hash-key',
-        'patterns/monotonic-stack',
-        'patterns/precomputation',
-        'patterns/sliding-window',
-        'patterns/sorting-the-array',
-        'patterns/traverse-from-right',
-        'patterns/traverse-multiple-times',
-        'patterns/two-pointers',
-        'patterns/counting-characters',
-        'patterns/anagram',
-        'patterns/palindrome',
+        'patterns-techniques-themes/introduction',
+        'patterns-techniques-themes/bit-manipulation',
+        'patterns-techniques-themes/recursion',
+        'patterns-techniques-themes/sliding-window',
+        'patterns-techniques-themes/two-pointers',
       ]
     },
     {
       type: 'category',
-      label: 'Topics',
+      label: 'SQL',
       collapsed: true,
       items: [
-        'topics/intro',
-        'topics/big-o',
-        'topics/math',
-        'topics/matrices',
-        'topics/intervals',
-        {
-          type: 'category',
-          label: 'SQL',
-          collapsed: true,
-          items: [
-            'topics/sql/formatting-guidelines',
-            'topics/sql/query-execution-order',
-            'topics/sql/window-functions',
-            'topics/sql/ctes',
-          ]
-        }
+        'sql/formatting-guidelines',
+        'sql/query-execution-order',
+        'sql/window-functions',
+        'sql/ctes',
       ]
     },
     {
@@ -102,8 +82,16 @@ const sidebars = {
       label: 'System Design',
       collapsed: true,
       items: [
-        'system-design/intro',
+        'system-design/introduction',
         'system-design/interview-questions'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Math',
+      collapsed: true,
+      items: [
+        'math/recurrence-relations',
       ]
     },
     {
@@ -111,7 +99,6 @@ const sidebars = {
       label: 'Tips and Tricks',
       collapsed: true,
       items: [
-        'tips-and-tricks/intro',
         'tips-and-tricks/strings'
       ]
     },
@@ -120,33 +107,9 @@ const sidebars = {
       label: 'Templates',
       collapsed: true,
       items: [
-        'templates/intro',
-        'templates/bare-bones',
-        'templates/mental-models',
-        {
-          type: 'category',
-          label: 'Problem-solving',
-          collapsed: true,
-          items: [
-            'templates/problem-solving/binary-search'
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Interview',
-          collapsed: true,
-          items: [
-            'templates/interview/algorithm-grading-rubric'
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Learning',
-          collapsed: true,
-          items: [
-            'templates/learning/feynman-technique'
-          ]
-        },
+        'templates/data-structures-algorithms',
+        'templates/algorithm-grading-rubric',
+        'templates/feynman-technique',
       ]
     },
     {

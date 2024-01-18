@@ -17,8 +17,6 @@ toc_max_heading_level: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Introduction
-
 ## Common operations
 
 ### Sort a string alphabetically
@@ -32,13 +30,6 @@ def sort_string(a)
 ```
 
 </TabItem>
-<TabItem value='javascript' label='JavaScript'>
-
-```js
-// tbd
-```
-
-</TabItem>
 </Tabs>
 
 ## Miscellaneous
@@ -47,10 +38,18 @@ def sort_string(a)
 
 A neat trick to count the characters in a string of unique characters is to use a 26-bit bitmask to indicate which lower case Latin characters are inside the string.
 
+<Tabs>
+<TabItem value='python' label='Python'>
+
 ```python
 mask = 0
 for c in word:
   mask |= (1 << (ord(c) - ord('a')))
 ```
+
+</TabItem>
+</Tabs>
+
+
 
 To determine if two strings have common characters, perform `&` on the two bitmasks. If the result is non-zero (i.e., `mask_a & mask_b > 0`) then the two strings have common characters.

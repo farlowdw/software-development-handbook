@@ -198,6 +198,10 @@ The [basecs](https://medium.com/basecs) blog is on Medium with the following tag
 
 tbd
 
+### Code challenges
+
+- [Coding Challenges](https://codingchallenges.fyi/challenges/intro): Weekly coding challenges aimed at helping software engineers level up their skills through deliberate practice.
+
 ## D
 
 ### DNS

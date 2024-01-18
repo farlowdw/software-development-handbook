@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import LC from '@site/src/components/LC';
 import Asterisk from '@site/src/components/Asterisk';
-import BinaryTreeExample from '@site/docs/_Partials/_sandbox/tree-traversal-binary-example.md';
+import BinaryTreeExample from '@site/docs/_Partials/sandbox/tree-traversal-binary-example.md';
 
 ## Data structures
 

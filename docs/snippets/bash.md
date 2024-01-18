@@ -21,7 +21,7 @@ import TOCInline from '@theme/TOCInline';
 
 ### Lowercase all filenames
 
-As [this post](https://stackoverflow.com/a/7787159/5209533), all filenames can be made to be lowercase by running the following within the specified directory:
+As [this post](https://stackoverflow.com/a/7787159/5209533) notes, all filenames can be made to be lowercase by running the following within the specified directory:
 
 ```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
