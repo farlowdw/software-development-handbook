@@ -42,48 +42,24 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <p>
       Check out time and space complexity overviews for various data structures and array sorting algorithms.
     </p>
-    <DocsLink to='/docs/data-structures/intro'>See Data Structures Overview <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
-    <h4>Sliding Window</h4>
-    <p>Get a more detailed look at the sliding window pattern, a pattern that frequently comes up in coding interview problems.</p>
-    <DocsLink to='/docs/patterns/sliding-window'>See Sliding Window <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='/docs/data-structures/introduction'>See Data Structures Overview <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Window Functions (SQL)</h4>
     <p>An in-depth guide to SQL window/analytic functions. This is not only a guide but also a useful reference to keep handy (e.g., syntax guidance, basic examples, etc.).</p>
-    <DocsLink to='/docs/topics/sql/window-functions'>See Window Functions <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
-    <h4>Binary Search Template</h4>
-    <p>Binary search may be easy to understand conceptually, but implementation can sometimes be a mess. This template tidies things up considerably.</p>
-    <DocsLink to='/docs/templates/problem-solving/binary-search'>See Binary Search Template <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='/docs/sql/window-functions'>See Window Functions <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Feynman Technique</h4>
     <p>Tired of not being able to learn things quickly? Give the Feynman Technique a try next time.</p>
-    <DocsLink to='/docs/templates/learning/feynman-technique'>See Feynman Technique <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='/docs/templates/feynman-technique'>See Feynman Technique <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
-    <h4>LeetCode Problems by Category</h4>
+    <h4>Definitions, theorems, and results</h4>
     <p>
-      Tagged problems on LeetCode can only be so helpful. Additional contextual details can help, especially if these details are personalized.
+      A cumulative list of definitions, theorems, and results can be quite useful, especially when you are in need of a dust-up or review.
     </p>
-    <DocsLink to='/docs/learning-resources/leetcode-problems-by-category'>See LeetCode Problems by Category <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
-    <h4>Math Reference</h4>
-    <p>
-      The topic of "math" is impossibly large on its own. This reference helps corral some mathematical facts that may be of use in everyday engineering.
-    </p>
-    <DocsLink to='/docs/topics/math'>See Math Reference <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
-    <h4>Definitions</h4>
-    <p>
-      A cumulative list of definitions can be quite useful, especially when you are in need of a dust-up or review.
-    </p>
-    <DocsLink to='/docs/definitions'>See Definitions <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='/docs/definitions-theorems-results'>See Definitions <ArrowRight className='arrow' /></DocsLink>
   </div>
 </div>
 <br />

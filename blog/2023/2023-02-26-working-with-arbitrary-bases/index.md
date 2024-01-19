@@ -2,9 +2,16 @@
 title: Working with arbitrary bases
 draft: false
 description: This post details how to work with arbitrary bases in a positional numeral system (e.g., decimal, binary, etc.).
-tags: [Math, Bases, Binary, Decimal]
-keywords: [math, numeral system]
-authors: [farlow]
+tags: 
+  - Math
+  - Bases
+  - Binary
+  - Decimal
+keywords: 
+  - math
+  - numeral system
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

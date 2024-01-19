@@ -27,17 +27,14 @@ const config = {
   customFields: {
     forbiddenGiscusDocPaths: [
       '/docs/intro',
-      '/docs/data-structures/intro',
-      '/docs/algorithms/intro',
-      '/docs/patterns/intro',
-      '/docs/topics/intro',
-      '/docs/system-design/intro',
-      '/docs/tips-and-tricks/intro',
-      '/docs/templates/intro',
-      '/docs/learning-resources/intro',
+      '/docs/sandbox',
+      '/docs/data-structures/introduction',
+      '/docs/algorithms/introduction',
+      '/docs/patterns-techniques-themes/introduction',
+      '/docs/system-design/introduction',
       '/docs/reference-list',
-      '/docs/algorithms/sorting-and-searching/intro',
-      '/docs/algorithms/named-algorithms/intro',
+      '/docs/algorithms/sorting/introduction',
+      '/docs/algorithms/named-algorithms/introduction',
     ],
     forbiddenGiscusBlogPaths: [
       '/blog/mdx-blog-post'

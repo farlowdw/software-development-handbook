@@ -2,9 +2,19 @@
 title: Installing a virtual machine on a Mac using VirtualBox (with shared folders)
 draft: false
 description: This post describes how to set up a virtual machine, specifically the AMD server version of Ubuntu 18.04.2, using VirtualBox on a Mac.
-tags: [Virtual Machine, VirtualBox, Ubuntu, Ubuntu 18.04.2, Linux, MacOS]
-keywords: [virtual machine, ubuntu, linux]
-authors: [farlow]
+tags: 
+  - Virtual Machine
+  - VirtualBox
+  - Ubuntu
+  - Ubuntu 18.04.2
+  - Linux
+  - MacOS
+keywords: 
+  - virtual machine
+  - ubuntu
+  - linux
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

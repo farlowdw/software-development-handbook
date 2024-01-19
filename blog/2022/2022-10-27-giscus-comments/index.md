@@ -2,9 +2,16 @@
 title: How to add a comments section to doc pages and blog entries using giscus
 draft: false
 description: This post details how to outfit your Docusaurus site's doc pages and blog posts with a comments section using giscus.
-tags: [Giscus, Comments, Guide]
-keywords: [giscus, comments, guide]
-authors: [farlow]
+tags: 
+  - Giscus
+  - Comments
+  - Guide
+keywords: 
+  - giscus
+  - comments
+  - guide
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

@@ -1,0 +1,1 @@
+A **walk** is a finite or infinite sequence of edges which joins a sequence of vertices.

@@ -117,21 +117,12 @@ const sidebars = {
       label: 'Learning Resources',
       collapsed: true,
       items: [
+        'learning-resources/blogs',
         'learning-resources/general-list',
-        'learning-resources/curated-list',
-        'learning-resources/neetcode',
         'learning-resources/tech-interview-handbook',
-        'learning-resources/leetcode-problems-by-category',
+        'learning-resources/neetcode',
+        'learning-resources/lc-sql-problems',
         'learning-resources/lc-tagged-problems',
-        'learning-resources/sandbox',
-        {
-          type: 'category',
-          label: 'Python',
-          collapsed: true,
-          items:[
-            'learning-resources/python/binarytree',
-          ]
-        },
       ]
     },
     {
@@ -144,9 +135,8 @@ const sidebars = {
       ]
     },
     'development-resources',
-    'definitions',
+    'definitions-theorems-results',
     'reference-list',
-    'faq',
   ],
 };
 

@@ -1,11 +1,12 @@
 ---
-title: LeetCode Problems by Category
+title: LeetCode SQL Problems by Problem Domain
 hide_title: false
-sidebar_label: LeetCode Problems by category
-description: LeetCode problems by category
+sidebar_label: LeetCode SQL problems by problem domain
+description: LeetCode SQL problems by problem domain
 draft: false
 tags:
   - LeetCode
+  - SQL
   - Learning Resources
 keywords: 
   - learning
@@ -18,166 +19,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import LC from '@site/src/components/LC';
 
-## A
-
-
-
-## B
-
-
-
-## C
-
-
-
-## D
-
-### Difference array
-
-Difference arrays are not super common but are important to know as it is very difficult to derive on the spot in an interview. This method can be used when the input is a 2D array, where `input[i]` is in the format `[left, right, value]`, or some equivalent form. The story behind the problem will usually be something along the lines of "between `left` and `right` there is `value` of something". Let's look at an example.
-
-- <LC id='1094' type='long' ></LC> 
-
-
-## E
-
-
-
-## F
-
-
-
-## G
-
-
-
-## H
-
-### Hash table 
-
-- <LC id='1' type='long' >What is the classic data structure used to implement time-space tradeoffs? Hash tables. The average search time complexity for hash tables is O(1). Use this to your advantage in this problem to conduct what will essentially be a linear search (instead of quadratic) for the complement of the current term.</LC> 
-
-
-## I
-
-
-
-## J
-
-
-
-## K
-
-
-
-## L
-
-
-
-## M
-
-
-
-## N
-
-
-
-## O
-
-
-
-## P
-
-### Prefix sum
-
-If a problem's input is an array comprised of numeric elements and you find yourself needing to calculate multiple subarray sums, then consider building a prefix sum. But be mindful that a prefix sum costs $O(n)$ space to build &#8212; if the prefix sum is used in a "sliding" manner, then be on the lookout for space optimization possibilities by using a running sum and deducting that from the total sum for each iteration.
-
-- <LC id='1413' type='long' ></LC> 
-- <LC id='1480' type='long' ></LC> 
-- <LC id='2256' type='long' ></LC> 
-- <LC id='2270' type='long' ></LC> 
-
-## Q
-
-
-
-## R
-
-
-
-## S
-
-### Sliding window
-
-If a problem has explicit constraints such as
-
-- sum greater than or less than `k`
-- limits on what is contained (such as *maximum of `k` unique elements* or *no duplicates allowed*)
-
-and/or asks for
-
-- minimum or maximum length
-- minimum or maximum sum
-- number of subarrays/substrings
-
-then **think about a sliding window**. Note that not all problems with these characteristics should be solved with a sliding window, and not all sliding window problems have these characteristics. These characteristics should only be used as a general guideline.
-
-#### Clever endpoint trick
-
-- <LC id='713' type='long' ></LC>
-- <LC id='2348' type='long' ></LC>
-
-#### Fixed-width
-
-- <LC id='643' type='long' ></LC>
-
-#### Variable-width
-
-- <LC id='1004' type='long' ></LC>
-
-### Stacks
-
-- <LC id='20' type='long' ></LC> 
-- <LC id='682' type='long' ></LC> 
-- <LC id='155' type='long' >If it seems like what is being asked for is basically an impossibility, then the solution almost certainly involves some "trick" to make what is being requested possible.</LC> &#8617;
-
-## T
-
-### Two pointers
-
-- <LC id='392' type='long' ></LC> 
-- <LC id='344' type='long' ></LC> 
-- <LC id='11' type='long' ></LC> 
-- <LC id='977' type='long' ></LC> 
-- <LC id='26' type='long' ></LC> 
-- <LC id='27' type='long' ></LC> 
-
-## U
-
-
-
-## V
-
-
-
-## W
-
-
-
-## X
-
-
-
-## Y
-
-
-
-## Z
-
----
-
-## SQL
-
 :::note Useful Reference
 
 - <LC id='180' type='long' ></LC>: Contains a detailed tutorial on gaps and islands problems and how to effectively use <code>ROW_NUMBER()</code> to identify where gaps occur.
@@ -185,9 +26,9 @@ then **think about a sliding window**. Note that not all problems with these cha
 
 :::
 
-### Summer 2021
+## Summer 2021
 
-#### Best problems
+### Best problems
 
 - <LC id='586' type='long' >Try to account for ties by using RANK_OVER()</LC> 
 - <LC id='601' type='long' ></LC> 
@@ -211,7 +52,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1613' type='long' >Perfect problem where a basic use of WITH RECURSIVE helps a great deal.</LC> 
 - <LC id='1811' type='long' ></LC> 
 
-#### Good problems
+### Good problems
 
 - <LC id='607' type='long' ></LC> 
 - <LC id='626' type='long' ></LC> 
@@ -224,7 +65,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1709' type='long' ></LC> 
 - <LC id='1747' type='long' ></LC> 
 
-#### Revisit
+### Revisit
 
 - <LC id='607' type='long' ></LC> 
 - <LC id='627' type='long' ></LC> 
@@ -251,7 +92,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1783' type='long' ></LC> 
 - <LC id='1811' type='long' ></LC> 
 
-### Beginner problems
+## Beginner problems
 
 - <LC id='175' type='long' >Can you join two tables effectively?</LC> 
 - <LC id='182' type='long' >Can you effectively use GROUP BY to group records and then use HAVING to apply aggregate filtering?</LC> 
@@ -277,12 +118,12 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1757' type='long' >Can you form the most basic of WHERE clauses?</LC> 
 - <LC id='1821' type='long' >Can you execute simple queries with GROUP BY, HAVING, and SUM()?</LC> 
 
-### CASE statements 
+## CASE statements 
 
 - <LC id='608' type='long' ></LC> 
 - <LC id='626' type='long' ></LC> 
 
-### Correlated subquery
+## Correlated subquery
 
 - <LC id='176' type='long' ></LC> 
 - <LC id='178' type='long' ></LC> 
@@ -291,7 +132,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='579' type='long' ></LC> 
 - <LC id='585' type='long' ></LC> 
 
-### Dates and timestamps
+## Dates and timestamps
 
 - <LC id='197' type='long' >DATE_ADD() and DATE_SUB() in MySQL or adding an interval in Postgres</LC> 
 - <LC id='1084' type='long' ></LC> 
@@ -300,16 +141,16 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1454' type='long' ></LC> 
 - <LC id='1543' type='long' ></LC> 
 
-### DELETE
+## DELETE
 
 - <LC id='196' type='long' ></LC> 
 
-### DISTINCT
+## DISTINCT
 
 - <LC id='596' type='long' >Solution with HAVING(COUNT(DISTINCT ...)) may be of use.</LC> 
 - <LC id='1149' type='long' ></LC> 
 
-### EXISTS and NOT EXISTS
+## EXISTS and NOT EXISTS
 
 - <LC id='183' type='long' ></LC> 
 - <LC id='262' type='long' ></LC> 
@@ -319,7 +160,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1264' type='long' ></LC> 
 - <LC id='1892' type='long' ></LC> 
 
-### Gaps and islands
+## Gaps and islands
 
 - <LC id='180' type='long' ></LC> 
 - <LC id='601' type='long' ></LC> 
@@ -328,7 +169,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1285' type='long' ></LC> 
 - <LC id='1454' type='long' >This one concerns dates.</LC> 
 
-### IN and NOT IN
+## IN and NOT IN
 
 - <LC id='183' type='long' ></LC> 
 - <LC id='184' type='long' ></LC> 
@@ -339,7 +180,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1607' type='long' ></LC> 
 - <LC id='1613' type='long' ></LC> 
 
-### Indicator variables
+## Indicator variables
 
 - <LC id='262' type='long' ></LC> 
 - <LC id='578' type='long' ></LC> 
@@ -349,9 +190,9 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1811' type='long' ></LC> 
 - <LC id='1907' type='long' ></LC> 
 
-### Joins
+## Joins
 
-#### Cross-joins
+### Cross-joins
 
 - <LC id='196' type='long' ></LC> 
 - <LC id='579' type='long' ></LC> 
@@ -361,13 +202,13 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1280' type='long' ></LC> 
 - <LC id='1892' type='long' ></LC> 
 
-#### LEFT JOIN
+### LEFT JOIN
 
 - <LC id='175' type='long' >This is the very first SQL problem that LeetCode has. The only test here is to determine whether or not you understand how joins work, specifically LEFT JOINs.</LC> 
 - <LC id='183' type='long' ></LC> 
 - <LC id='1158' type='long' ></LC> 
 
-#### Non-equi-joins
+### Non-equi-joins
 
 - <LC id='178' type='long' ></LC> 
 - <LC id='196' type='long' ></LC> 
@@ -382,11 +223,11 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1747' type='long' ></LC> 
 - <LC id='1811' type='long' ></LC> 
 
-#### RIGHT JOIN
+### RIGHT JOIN
 
 - <LC id='1159' type='long' ></LC> 
 
-#### Self-joins
+### Self-joins
 
 - <LC id='181' type='long' ></LC> 
 - <LC id='196' type='long' ></LC> 
@@ -396,31 +237,31 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1364' type='long' ></LC> 
 - <LC id='1747' type='long' ></LC> 
 
-### Median
+## Median
 
 - <LC id='569' type='long' ></LC> 
 - <LC id='571' type='long' ></LC> 
 
-### NOT EXISTS (see EXISTS)
+## NOT EXISTS (see EXISTS)
 
-### NOT IN (see IN)
+## NOT IN (see IN)
 
-### NULL values and effective management
+## NULL values and effective management
 
 - <LC id='176' type='long' >What makes this problem hard is figuring out how to effectively return a null value instead of what would normally be an empty result set. Hint: most aggregate functions return null values. COUNT(), however, returns 0.</LC> 
 - <LC id='584' type='long' ></LC> 
 - <LC id='608' type='long' ></LC> 
 - <LC id='1098' type='long' ></LC> 
 
-### Pivoting
+## Pivoting
 
-#### Result set to multiple rows
+### Result set to multiple rows
 
 - <LC id='618' type='long' ></LC> 
 - <LC id='1179' type='long' ></LC> 
 - <LC id='1777' type='long' ></LC> 
 
-### Recursive CTEs
+## Recursive CTEs
 
 - <LC id='571' type='long' ></LC> 
 - <LC id='579' type='long' ></LC> 
@@ -433,27 +274,27 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1651' type='long' ></LC> 
 - <LC id='1767' type='long' ></LC> 
 
-### Regular expressions
+## Regular expressions
 
 - <LC id='1517' type='long' ></LC> 
 - <LC id='1527' type='long' ></LC> 
 
-### Stored procedures
+## Stored procedures
 
 - <LC id='177' type='long' >This is a good problem in large part because it requires you to know how to create a <em>function</em> or <em>procedure</em> in a database environment. Each database environment will have its own syntax.</LC> 
 
-### UNION and UNION ALL
+## UNION and UNION ALL
 
 - <LC id='602' type='long' ></LC> 
 - <LC id='1435' type='long' ></LC> 
 
-### UPDATE
+## UPDATE
 
 - <LC id='627' type='long' ></LC> 
 
-### Window functions 
+## Window functions 
 
-#### Named windows
+### Named windows
 
 - <LC id='1084' type='long' ></LC> 
 - <LC id='1321' type='long' ></LC> 
@@ -461,13 +302,13 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1369' type='long' ></LC> 
 - <LC id='1468' type='long' ></LC> 
 
-#### AVG()
+### AVG()
 
 - <LC id='615' type='long' ></LC> 
 - <LC id='1126' type='long' ></LC> 
 - <LC id='1321' type='long' ></LC> 
 
-#### COUNT()
+### COUNT()
 
 - <LC id='601' type='long' ></LC> 
 - <LC id='603' type='long' ></LC> 
@@ -476,23 +317,23 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1341' type='long' ></LC> 
 - <LC id='1369' type='long' ></LC> 
 
-#### DENSE_RANK()
+### DENSE_RANK()
 
 - <LC id='178' type='long' >This problem could not be more perfect for an application of <code>DENSE_RANK()</code>. From the problem statement: "After a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no holes between ranks." It is now trivial to make something like this happen via <code>DENSE_RANK()</code>. For a bigger challenge, try coming up with a different approach such as a correlated subquery or a non-equi-join that is also a self-join.</LC> 
 - <LC id='184' type='long' ></LC> 
 - <LC id='185' type='long' ></LC> 
 - <LC id='1341' type='long' ></LC> 
 
-#### LAG()
+### LAG()
 
 - <LC id='1709' type='long' ></LC> 
 
-#### LEAD()
+### LEAD()
 
 - <LC id='1709' type='long' ></LC> 
 - <LC id='1811' type='long' ></LC> 
 
-#### MAX()
+### MAX()
 
 - <LC id='1084' type='long' ></LC> 
 - <LC id='1126' type='long' ></LC> 
@@ -501,16 +342,16 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1596' type='long' ></LC> 
 - <LC id='1867' type='long' ></LC> 
 
-#### MIN()
+### MIN()
 
 - <LC id='1084' type='long' ></LC> 
 - <LC id='1321' type='long' ></LC> 
 
-#### PERCENTILE_CONT()
+### PERCENTILE_CONT()
 
 - <LC id='571' type='long' ></LC> 
 
-#### RANK()
+### RANK()
 
 - <LC id='512' type='long' ></LC> 
 - <LC id='586' type='long' ></LC> 
@@ -530,7 +371,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1596' type='long' ></LC> 
 - <LC id='1831' type='long' ></LC> 
 
-#### ROW_NUMBER()
+### ROW_NUMBER()
 
 - <LC id='180' type='long' ></LC> 
 - <LC id='569' type='long' ></LC> 
@@ -542,7 +383,7 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1454' type='long' ></LC> 
 - <LC id='1532' type='long' ></LC> 
 
-#### SUM()
+### SUM()
 
 - <LC id='534' type='long' ></LC> 
 - <LC id='579' type='long' ></LC> 
@@ -550,6 +391,6 @@ then **think about a sliding window**. Note that not all problems with these cha
 - <LC id='1308' type='long' ></LC> 
 - <LC id='1321' type='long' ></LC> 
 
-#### With GROUP BY (ORDER BY aggregate)
+### With GROUP BY (ORDER BY aggregate)
 
 - <LC id='1341' type='long' ></LC> 

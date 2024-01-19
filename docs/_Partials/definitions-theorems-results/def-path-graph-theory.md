@@ -1,0 +1,1 @@
+A **path** is a trail in which all vertices (and therefore also all edges) are distinct.

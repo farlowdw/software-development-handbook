@@ -1,0 +1,1 @@
+A **trail** is a walk in which all edges are distinct.

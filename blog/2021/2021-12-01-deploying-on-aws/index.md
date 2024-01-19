@@ -2,9 +2,13 @@
 title: AWS Deployment Guide
 draft: false
 description: Details about how to deploy on AWS
-tags: [Guide, AWS]
-keywords: [AWS]
-authors: [farlow]
+tags: 
+  - Guide
+  - AWS
+keywords: 
+  - AWS
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

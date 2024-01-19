@@ -2,9 +2,17 @@
 title: Upgrading/installing Node version using nvm
 draft: false
 description: Details about how to upgrade/install Node using nvm
-tags: [Guide, Node.js, NVM, Installation Guide, Upgrade Guide]
-keywords: [nvm, node.js]
-authors: [farlow]
+tags: 
+  - Guide
+  - Node.js
+  - NVM
+  - Installation Guide
+  - Upgrade Guide
+keywords: 
+  - nvm
+  - node.js
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

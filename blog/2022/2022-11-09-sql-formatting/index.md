@@ -2,9 +2,16 @@
 title: Automated SQL query formatting via the clipboard (Mac)
 draft: false
 description: This post details how to automate SQL query formatting via the clipboard on a Mac.
-tags: [SQL, Formatting, Workflow Improvement]
-keywords: [sql, formatting, workflow]
-authors: [farlow]
+tags: 
+  - SQL
+  - Formatting
+  - Workflow Improvement
+keywords: 
+  - sql
+  - formatting
+  - workflow
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

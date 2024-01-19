@@ -1,0 +1,1 @@
+[Time-sharing](https://en.wikipedia.org/wiki/Time-sharing) is the ability for multiple users to share access to a single computer’s resources.

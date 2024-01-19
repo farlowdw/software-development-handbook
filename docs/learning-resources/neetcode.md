@@ -1,8 +1,8 @@
 ---
-title: NeetCode 150
+title: NeetCode 450
 hide_title: false
-sidebar_label: NeetCode 150
-description: 150 LeetCode articles with video solutions
+sidebar_label: NeetCode 450
+description: 450 LeetCode articles with video solutions
 draft: false
 tags: 
   - NeetCode
@@ -19,241 +19,507 @@ import TabItem from '@theme/TabItem';
 
 ## Arrays & Hashing
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | Easy | [Video](https://www.youtube.com/watch?v=3OamzN90kPg&ab_channel=NeetCode) | &#9989; |  |
-| [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | Easy | [Video](https://www.youtube.com/watch?v=9UtInBqnCgA&ab_channel=NeetCode) |  |  |
-| [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | [Video](https://www.youtube.com/watch?v=KLlXCFG5TnA&ab_channel=NeetCode) |  |  |
-| [Group Anagrams](https://leetcode.com/problems/group-anagrams/) | Medium | [Video](https://www.youtube.com/watch?v=vzdNOK2oB2E&ab_channel=NeetCode) |  |  |
-| [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) | Medium | [Video](https://www.youtube.com/watch?v=YPTqKIgVk-k&ab_channel=NeetCode) |  |  |
-| [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | Medium | [Video](https://www.youtube.com/watch?v=bNvIQI2wAjk&ab_channel=NeetCode) |  |  |
-| [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) | Medium | [Video](https://www.youtube.com/watch?v=TjFXEUCMqI8&ab_channel=NeetCode) |  |  |
-| [Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/) | Medium | [Video](https://www.youtube.com/watch?v=B1k_sxOSgv8&ab_channel=NeetCode) |  |  |
-| [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) | Medium | [Video](https://www.youtube.com/watch?v=P6RZZMu_maU&ab_channel=NeetCode) |  |  |
+- [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) (Easy)
+- [Valid Anagram](https://leetcode.com/problems/valid-anagram/) (Easy)
+- [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/) (Easy)
+- [Replace Elements With Greatest Element On Right Side](https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/) (Easy)
+- [Is Subsequence](https://leetcode.com/problems/is-subsequence/) (Easy)
+- [Length of Last Word](https://leetcode.com/problems/length-of-last-word/) (Easy)
+- [Two Sum](https://leetcode.com/problems/two-sum/) (Easy)
+- [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/) (Easy)
+- [Group Anagrams](https://leetcode.com/problems/group-anagrams/) (Medium)
+- [Pascals Triangle](https://leetcode.com/problems/pascals-triangle/) (Easy)
+- [Remove Element](https://leetcode.com/problems/remove-element/) (Easy)
+- [Unique Email Addresses](https://leetcode.com/problems/unique-email-addresses/) (Easy)
+- [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/) (Easy)
+- [Can Place Flowers](https://leetcode.com/problems/can-place-flowers/) (Easy)
+- [Majority Element](https://leetcode.com/problems/majority-element/) (Easy)
+- [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) (Easy)
+- [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) (Easy)
+- [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) (Easy)
+- [Find All Numbers Disappeared in An Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/) (Easy)
+- [Maximum Number of Balloons](https://leetcode.com/problems/maximum-number-of-balloons/) (Easy)
+- [Word Pattern](https://leetcode.com/problems/word-pattern/) (Easy)
+- [Design HashSet](https://leetcode.com/problems/design-hashset/) (Easy)
+- [Design HashMap](https://leetcode.com/problems/design-hashmap/) (Easy)
+- [Sort an Array](https://leetcode.com/problems/sort-an-array/) (Medium)
+- [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) (Medium)
+- [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) (Medium)
+- [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) (Medium)
+- [Encode and Decode Strings   ](https://leetcode.com/problems/encode-and-decode-strings/) (Medium)
+- [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) (Medium)
+- [Sort Colors](https://leetcode.com/problems/sort-colors/) (Medium)
+- [Encode and Decode TinyURL](https://leetcode.com/problems/encode-and-decode-tinyurl/) (Medium)
+- [Brick Wall](https://leetcode.com/problems/brick-wall/) (Medium)
+- [Best Time to Buy And Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) (Medium)
+- [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) (Medium)
+- [Unique Length 3 Palindromic Subsequences](https://leetcode.com/problems/unique-length-3-palindromic-subsequences/) (Medium)
+- [Minimum Number of Swaps to Make The String Balanced](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/) (Medium)
+- [Number of Pairs of Interchangeable Rectangles](https://leetcode.com/problems/number-of-pairs-of-interchangeable-rectangles/) (Medium)
+- [Maximum Product of The Length of Two Palindromic Subsequences](https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/) (Medium)
+- [Grid Game](https://leetcode.com/problems/grid-game/) (Medium)
+- [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/) (Medium)
+- [Find The Index of The First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/) (Easy)
+- [Wiggle Sort   ](https://leetcode.com/problems/wiggle-sort/) (Medium)
+- [Largest Number](https://leetcode.com/problems/largest-number/) (Medium)
+- [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/) (Medium)
+- [Push Dominoes](https://leetcode.com/problems/push-dominoes/) (Medium)
+- [Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/) (Medium)
+- [Insert Delete Get Random O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/) (Medium)
+- [Check if a String Contains all Binary Codes of Size K](https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) (Medium)
+- [Range Sum Query 2D Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/) (Medium)
+- [Non Decreasing Array](https://leetcode.com/problems/non-decreasing-array/) (Medium)
+- [First Missing Positive](https://leetcode.com/problems/first-missing-positive/) (Hard)
+- [Sign of An Array](https://leetcode.com/problems/sign-of-the-product-of-an-array/) (Easy)
+- [Find the Difference of Two Arrays](https://leetcode.com/problems/find-the-difference-of-two-arrays/) (Easy)
+- [Design Parking System](https://leetcode.com/problems/design-parking-system/) (Easy)
+- [Number of Zero-Filled Subarrays](https://leetcode.com/problems/number-of-zero-filled-subarrays/) (Medium)
+- [Optimal Partition of String](https://leetcode.com/problems/optimal-partition-of-string/) (Medium)
+- [Design Underground System](https://leetcode.com/problems/design-underground-system/) (Medium)
+- [Minimum Penalty for a Shop](https://leetcode.com/problems/minimum-penalty-for-a-shop/) (Medium)
+- [Text Justification](https://leetcode.com/problems/text-justification/) (Hard)
+- [Naming a Company](https://leetcode.com/problems/naming-a-company/) (Hard)
 
 ## Two Pointers
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) | Easy | [Video](https://www.youtube.com/watch?v=jJXJ16kPFWg&ab_channel=NeetCode) |  |  |
-| [Two Sum II](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | Medium | [Video](https://www.youtube.com/watch?v=cQ1Oz4ckceM&ab_channel=NeetCode) |  |  |
-| [3Sum](https://leetcode.com/problems/3sum/) | Medium | [Video](https://www.youtube.com/watch?v=jzZsG8n2R9A&ab_channel=NeetCode) |  |  |
-| [Container with Most Water](https://leetcode.com/problems/container-with-most-water/) | Medium | [Video](https://www.youtube.com/watch?v=UuiTKBwPgAo&ab_channel=NeetCode) |  |  |
-| [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) | Hard | [Video](https://www.youtube.com/watch?v=ZI2z5pq0TqA&ab_channel=NeetCode) |  |  |
-
+- [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) (Easy)
+- [Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/) (Easy)
+- [Minimum Difference Between Highest And Lowest of K Scores](https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/) (Easy)
+- [Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/) (Easy)
+- [Reverse String](https://leetcode.com/problems/reverse-string/) (Easy)
+- [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/) (Easy)
+- [Move Zeroes](https://leetcode.com/problems/move-zeroes/) (Easy)
+- [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) (Easy)
+- [Remove Duplicates From Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) (Medium)
+- [Two Sum II Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) (Medium)
+- [3Sum](https://leetcode.com/problems/3sum/) (Medium)
+- [4Sum](https://leetcode.com/problems/4sum/) (Medium)
+- [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) (Medium)
+- [Number of Subsequences That Satisfy The Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/) (Medium)
+- [Rotate Array](https://leetcode.com/problems/rotate-array/) (Medium)
+- [Array With Elements Not Equal to Average of Neighbors](https://leetcode.com/problems/array-with-elements-not-equal-to-average-of-neighbors/) (Medium)
+- [Boats to Save People](https://leetcode.com/problems/boats-to-save-people/) (Medium)
+- [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) (Hard)
 
 ## Sliding Window
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Best Time to Buy & Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | Easy | [Video](https://www.youtube.com/watch?v=1pkOgXD63yU&ab_channel=NeetCode) |  |  |
-| [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium | [Video](https://www.youtube.com/watch?v=wiGpQwVHdE0&ab_channel=NeetCode) |  |  |
-| [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/) | Medium | [Video](https://www.youtube.com/watch?v=gqXU1UyA8pk&ab_channel=NeetCode) |  |  |
-| [Permutation in String](https://leetcode.com/problems/permutation-in-string/) | Medium | [Video](https://www.youtube.com/watch?v=UbyhOgBN834&ab_channel=NeetCode) |  |  |
-| [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) | Hard | [Video](https://www.youtube.com/watch?v=jSto0O4AJbM&ab_channel=NeetCode) |  |  |
-| [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) | Hard | [Video](https://www.youtube.com/watch?v=DfljaUwZsOk&ab_channel=NeetCode) |  |  |
+- [Best Time to Buy And Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) (Easy)
+- [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/) (Easy)
+- [Number of Sub Arrays of Size K and Avg Greater than or Equal to Threshold](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/) (Medium)
+- [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) (Medium)
+- [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/) (Medium)
+- [Permutation In String](https://leetcode.com/problems/permutation-in-string/) (Medium)
+- [Frequency of The Most Frequent Element](https://leetcode.com/problems/frequency-of-the-most-frequent-element/) (Medium)
+- [Fruits into Basket](https://leetcode.com/problems/fruit-into-baskets/) (Medium)
+- [Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/) (Medium)
+- [Minimum Number of Flips to Make The Binary String Alternating](https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/) (Medium)
+- [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) (Medium)
+- [Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/) (Medium)
+- [Minimum Operations to Reduce X to Zero](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) (Medium)
+- [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) (Hard)
+- [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) (Hard)
 
 ## Stack
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | Easy | [Video](https://www.youtube.com/watch?v=WTzjTskDFMg&ab_channel=NeetCode) |  |  |
-| [Min Stack](https://leetcode.com/problems/min-stack/) | Medium | [Video](https://www.youtube.com/watch?v=qkLl7nAwDPo&ab_channel=NeetCode) |  |  |
-| [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) | Medium | [Video](https://www.youtube.com/watch?v=iu0082c4HDE&ab_channel=NeetCode) |  |  |
-| [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | Medium | [Video](https://www.youtube.com/watch?v=s9fokUqJ76A&ab_channel=NeetCode) |  |  |
-| [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | Medium | [Video](https://www.youtube.com/watch?v=cTBiBSnjO3c&ab_channel=NeetCode) |  |  |
-| [Car Fleet](https://leetcode.com/problems/car-fleet/) | Medium | [Video](https://www.youtube.com/watch?v=Pr6T-3yB9RM&ab_channel=NeetCode) |  |  |
-| [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) | Hard | [Video](https://www.youtube.com/watch?v=zx5Sw9130L0&ab_channel=NeetCode) |  |  |
+- [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) (Easy)
+- [Baseball Game](https://leetcode.com/problems/baseball-game/) (Easy)
+- [Implement Stack Using Queues](https://leetcode.com/problems/implement-stack-using-queues/) (Easy)
+- [Min Stack](https://leetcode.com/problems/min-stack/) (Medium)
+- [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) (Medium)
+- [Removing Stars From a String](https://leetcode.com/problems/removing-stars-from-a-string/) (Medium)
+- [Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/) (Medium)
+- [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) (Medium)
+- [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/) (Medium)
+- [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) (Medium)
+- [Online Stock Span](https://leetcode.com/problems/online-stock-span/) (Medium)
+- [Car Fleet](https://leetcode.com/problems/car-fleet/) (Medium)
+- [Simplify Path](https://leetcode.com/problems/simplify-path/) (Medium)
+- [Decode String](https://leetcode.com/problems/decode-string/) (Medium)
+- [Remove K Digits](https://leetcode.com/problems/remove-k-digits/) (Medium)
+- [Remove All Adjacent Duplicates In String II](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/) (Medium)
+- [132 Pattern](https://leetcode.com/problems/132-pattern/) (Medium)
+- [Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/) (Hard)
+- [Largest Rectangle In Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) (Hard)
 
 ## Binary Search
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Binary Search](https://leetcode.com/problems/binary-search/) | Easy | [Video](https://www.youtube.com/watch?v=s4DPM8ct1pI&ab_channel=NeetCode) |  |  |
-| [Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/) | Medium | [Video](https://www.youtube.com/watch?v=Ber2pi2C0j0&ab_channel=NeetCode) |  |  |
-| [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) | Medium | [Video](https://www.youtube.com/watch?v=U2SozAs9RzA&ab_channel=NeetCode) |  |  |
-| [Search Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | Medium | [Video](https://www.youtube.com/watch?v=U8XENwh8Oy8&ab_channel=NeetCode) |  |  |
-| [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) | Medium | [Video](https://www.youtube.com/watch?v=nIVW4P8b1VA&ab_channel=NeetCode) |  |  |
-| [Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/) | Medium | [Video](https://www.youtube.com/watch?v=fu2cD_6E8Hw&ab_channel=NeetCode) |  |  |
-| [Find Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | Hard | [Video](https://www.youtube.com/watch?v=q6IEA26hvXc&ab_channel=NeetCode) |  |  |
+- [Binary Search](https://leetcode.com/problems/binary-search/) (Easy)
+- [Search Insert Position](https://leetcode.com/problems/search-insert-position/) (Easy)
+- [Guess Number Higher Or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/) (Easy)
+- [Arranging Coins](https://leetcode.com/problems/arranging-coins/) (Easy)
+- [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/) (Easy)
+- [Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/) (Easy)
+- [Sqrt(x)](https://leetcode.com/problems/sqrtx/) (Easy)
+- [Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/) (Medium)
+- [Capacity to Ship Packages](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/) (Medium)
+- [Find Peak Element](https://leetcode.com/problems/find-peak-element/) (Medium)
+- [Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/) (Medium)
+- [Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/) (Medium)
+- [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) (Medium)
+- [Minimize the Maximum Difference of Pairs](https://leetcode.com/problems/minimize-the-maximum-difference-of-pairs/) (Medium)
+- [Find Minimum In Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) (Medium)
+- [Search In Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) (Medium)
+- [Search In Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/) (Medium)
+- [Time Based Key Value Store](https://leetcode.com/problems/time-based-key-value-store/) (Medium)
+- [Find First And Last Position of Element In Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) (Medium)
+- [Maximum Number of Removable Characters](https://leetcode.com/problems/maximum-number-of-removable-characters/) (Medium)
+- [Populating Next Right Pointers In Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/) (Medium)
+- [Search Suggestions System](https://leetcode.com/problems/search-suggestions-system/) (Medium)
+- [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) (Hard)
+- [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) (Hard)
 
 ## Linked List
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) | Easy | [Video](https://www.youtube.com/watch?v=G0_I-ZF0S38&ab_channel=NeetCode) |  |  |
-| [Merge Two Linked Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | Easy | [Video](https://www.youtube.com/watch?v=XIdigk956u0&ab_channel=NeetCode) |  |  |
-| [Reorder List](https://leetcode.com/problems/reorder-list/) | Medium | [Video](https://www.youtube.com/watch?v=S5bfdUTrKLM&ab_channel=NeetCode) |  |  |
-| [Remove Nth Node from End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) | Medium | [Video](https://www.youtube.com/watch?v=XVuQxVej6y8&ab_channel=NeetCode) |  |  |
-| [Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/) | Medium | [Video](https://www.youtube.com/watch?v=5Y2EiZST97Y&ab_channel=NeetCode) |  |  |
-| [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | Medium | [Video](https://www.youtube.com/watch?v=wgFPrzTjm7s&ab_channel=NeetCode) |  |  |
-| [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) | Easy | [Video](https://www.youtube.com/watch?v=gBTe7lFR3vc&ab_channel=NeetCode) |  |  |
-| [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/) | Medium | [Video](https://www.youtube.com/watch?v=wjYnzkAhcNk&ab_channel=NeetCode) |  |  |
-| [LRU Cache](https://leetcode.com/problems/lru-cache/) | Medium | [Video](https://www.youtube.com/watch?v=7ABFKPK2hD4&ab_channel=NeetCode) |  |  |
-| [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) | Hard | [Video](https://www.youtube.com/watch?v=q5a5OiGbT6Q&ab_channel=NeetCode) |  |  |
-| [Reverse Nodes in K-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) | Hard | [Video](https://www.youtube.com/watch?v=1UOPsfP85V4&ab_channel=NeetCode) |  |  |
+- [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) (Easy)
+- [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) (Easy)
+- [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) (Easy)
+- [Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/) (Easy)
+- [Remove Duplicates From Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/) (Easy)
+- [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) (Easy)
+- [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/) (Easy)
+- [Reorder List](https://leetcode.com/problems/reorder-list/) (Medium)
+- [Maximum Twin Sum Of A Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) (Medium)
+- [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) (Medium)
+- [Swapping Nodes in a Linked List](https://leetcode.com/problems/swapping-nodes-in-a-linked-list/) (Medium)
+- [LFU Cache](https://leetcode.com/problems/lfu-cache/) (Hard)
+- [Copy List With Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/) (Medium)
+- [Design Linked List](https://leetcode.com/problems/design-linked-list/) (Medium)
+- [Design Browser History](https://leetcode.com/problems/design-browser-history/) (Medium)
+- [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) (Medium)
+- [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) (Easy)
+- [Find The Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/) (Medium)
+- [Swap Nodes In Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/) (Medium)
+- [Sort List](https://leetcode.com/problems/sort-list/) (Medium)
+- [Partition List](https://leetcode.com/problems/partition-list/) (Medium)
+- [Rotate List](https://leetcode.com/problems/rotate-list/) (Medium)
+- [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/) (Medium)
+- [Design Circular Queue](https://leetcode.com/problems/design-circular-queue/) (Medium)
+- [Insertion Sort List](https://leetcode.com/problems/insertion-sort-list/) (Medium)
+- [Split Linked List in Parts](https://leetcode.com/problems/split-linked-list-in-parts/) (Medium)
+- [LRU Cache](https://leetcode.com/problems/lru-cache/) (Medium)
+- [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) (Hard)
+- [Reverse Nodes In K Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) (Hard)
 
 ## Trees
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/) | Easy | [Video](https://www.youtube.com/watch?v=OnSn2XEQ4MY&ab_channel=NeetCode) |  |  |
-| [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) | Easy | [Video](https://www.youtube.com/watch?v=hTM3phVI6YQ&ab_channel=NeetCode) |  |  |
-| [Diameter of a Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) | Easy | [Video](https://www.youtube.com/watch?v=bkxqA8Rfv04&ab_channel=NeetCode) |  |  |
-| [Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/) | Easy | [Video](https://www.youtube.com/watch?v=QfJsau0ItOY&ab_channel=NeetCode) |  |  |
-| [Same Tree](https://leetcode.com/problems/same-tree/) | Easy | [Video](https://www.youtube.com/watch?v=vRbbcKXCxOw&ab_channel=NeetCode) |  |  |
-| [Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/) | Easy | [Video](https://www.youtube.com/watch?v=E36O5SWp-LE&ab_channel=NeetCode) |  |  |
-| [Lowest Common Ancestor of a BST](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) | Easy | [Video](https://www.youtube.com/watch?v=gs2LMfuOR9k&ab_channel=NeetCode) |  |  |
-| [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) | Medium | [Video](https://www.youtube.com/watch?v=6ZnyEApgFYg&ab_channel=NeetCode) |  |  |
-| [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) | Medium | [Video](https://www.youtube.com/watch?v=d4zLyf32e3I&ab_channel=NeetCode) |  |  |
-| [Count Good Nodes in a Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree/) | Medium | [Video](https://www.youtube.com/watch?v=7cp5imvDzl4&ab_channel=NeetCode) |  |  |
-| [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) | Medium | [Video](https://www.youtube.com/watch?v=s6ATEkipzow&ab_channel=NeetCode) |  |  |
-| [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/) | Medium | [Video](https://www.youtube.com/watch?v=5LUXSvjmGCw&ab_channel=NeetCode) |  |  |
-| [Construct Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | Medium | [Video](https://www.youtube.com/watch?v=ihj4IQGZ2zc&ab_channel=NeetCode) |  |  |
-| [Binary Tree Max Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) | Hard | [Video](https://www.youtube.com/watch?v=Hr5cWUld4vU&ab_channel=NeetCode) |  |  |
-| [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) | Hard | [Video](https://www.youtube.com/watch?v=u4JAi2JJhI8&ab_channel=NeetCode) |  |  |
+- [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/) (Easy)
+- [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/) (Easy)
+- [Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/) (Easy)
+- [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/) (Easy)
+- [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) (Easy)
+- [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) (Easy)
+- [Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/) (Easy)
+- [Same Tree](https://leetcode.com/problems/same-tree/) (Easy)
+- [Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/) (Easy)
+- [Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/) (Easy)
+- [Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/) (Easy)
+- [Path Sum](https://leetcode.com/problems/path-sum/) (Easy)
+- [Construct String From Binary Tree](https://leetcode.com/problems/construct-string-from-binary-tree/) (Easy)
+- [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) (Medium)
+- [Insert into a Binary Search Tree](https://leetcode.com/problems/insert-into-a-binary-search-tree/) (Medium)
+- [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/) (Medium)
+- [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) (Medium)
+- [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) (Medium)
+- [Minimum Distance between BST Nodes](https://leetcode.com/problems/minimum-distance-between-bst-nodes/) (Easy)
+- [Symmetric Tree](https://leetcode.com/problems/symmetric-tree/) (Easy)
+- [Minimum Time to Collect All Apples in a Tree](https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/) (Medium)
+- [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) (Medium)
+- [Construct Quad Tree](https://leetcode.com/problems/construct-quad-tree/) (Medium)
+- [Find Duplicate Subtrees](https://leetcode.com/problems/find-duplicate-subtrees/) (Medium)
+- [Check Completeness of a Binary Tree](https://leetcode.com/problems/check-completeness-of-a-binary-tree/) (Medium)
+- [Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) (Medium)
+- [Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/) (Medium)
+- [Time Needed to Inform All Employees](https://leetcode.com/problems/time-needed-to-inform-all-employees/) (Medium)
+- [Count Good Nodes In Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree/) (Medium)
+- [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) (Medium)
+- [Kth Smallest Element In a Bst](https://leetcode.com/problems/kth-smallest-element-in-a-bst/) (Medium)
+- [Construct Binary Tree From Preorder And Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) (Medium)
+- [Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/) (Medium)
+- [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/) (Medium)
+- [Sum Root to Leaf Numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers/) (Medium)
+- [House Robber III](https://leetcode.com/problems/house-robber-iii/) (Medium)
+- [Flip Equivalent Binary Trees](https://leetcode.com/problems/flip-equivalent-binary-trees/) (Medium)
+- [Operations On Tree](https://leetcode.com/problems/operations-on-tree/) (Medium)
+- [All Possible Full Binary Trees](https://leetcode.com/problems/all-possible-full-binary-trees/) (Medium)
+- [Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value/) (Medium)
+- [Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/) (Medium)
+- [Binary Search Tree Iterator](https://leetcode.com/problems/binary-search-tree-iterator/) (Medium)
+- [Convert Bst to Greater Tree](https://leetcode.com/problems/convert-bst-to-greater-tree/) (Medium)
+- [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) (Hard)
+- [Serialize And Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) (Hard)
 
 ## Tries
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Implement Trie](https://leetcode.com/problems/implement-trie-prefix-tree/) | Medium | [Video](https://www.youtube.com/watch?v=oobqoCJlHA0&ab_channel=NeetCode) |  |  |
-| [Design Add and Search Word Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) | Medium | [Video](https://www.youtube.com/watch?v=BTf05gs_8iU&ab_channel=NeetCode) |  |  |
-| [Word Search II](https://leetcode.com/problems/word-search-ii/) | Hard | [Video](https://www.youtube.com/watch?v=asbcE9mZz_U&ab_channel=NeetCode) |  |  |
+- [Implement Trie Prefix Tree](https://leetcode.com/problems/implement-trie-prefix-tree/) (Medium)
+- [Design Add And Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) (Medium)
+- [Extra Characters in a String](https://leetcode.com/problems/extra-characters-in-a-string/) (Medium)
+- [Word Search II](https://leetcode.com/problems/word-search-ii/) (Hard)
 
 ## Heap / Priority Queue
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) | Easy | [Video](https://www.youtube.com/watch?v=hOjcdrqMoQ8&ab_channel=NeetCode) |  |  |
-| [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) | Easy | [Video](https://www.youtube.com/watch?v=B-QCq79-Vfw&ab_channel=NeetCode) |  |  |
-| [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) | Medium | [Video](https://www.youtube.com/watch?v=rI2EBUEMfTk&ab_channel=NeetCode) |  |  |
-| [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) | Medium | [Video](https://www.youtube.com/watch?v=XEmy13g1Qxc&ab_channel=NeetCode) |  |  |
-| [Task Scheduler](https://leetcode.com/problems/task-scheduler/) | Medium | [Video](https://www.youtube.com/watch?v=s8p8ukTyA2I&ab_channel=NeetCode) |  |  |
-| [Design Twitter](https://leetcode.com/problems/design-twitter/) | Medium | [Video](https://www.youtube.com/watch?v=pNichitDD2E&ab_channel=NeetCode) |  |  |
-| [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) | Hard | [Video](https://www.youtube.com/watch?v=itmhHWaHupI&ab_channel=NeetCode) |  |  |
+- [Kth Largest Element In a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) (Easy)
+- [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) (Easy)
+- [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) (Medium)
+- [Kth Largest Element In An Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) (Medium)
+- [Task Scheduler](https://leetcode.com/problems/task-scheduler/) (Medium)
+- [Design Twitter](https://leetcode.com/problems/design-twitter/) (Medium)
+- [Minimize Deviation in Array](https://leetcode.com/problems/minimize-deviation-in-array/) (Hard)
+- [Maximum Subsequence Score](https://leetcode.com/problems/maximum-subsequence-score/) (Medium)
+- [Single Threaded Cpu](https://leetcode.com/problems/single-threaded-cpu/) (Medium)
+- [Seat Reservation Manager](https://leetcode.com/problems/seat-reservation-manager/) (Medium)
+- [Process Tasks Using Servers](https://leetcode.com/problems/process-tasks-using-servers/) (Medium)
+- [Find The Kth Largest Integer In The Array](https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/) (Medium)
+- [Reorganize String](https://leetcode.com/problems/reorganize-string/) (Medium)
+- [Longest Happy String](https://leetcode.com/problems/longest-happy-string/) (Medium)
+- [Car Pooling](https://leetcode.com/problems/car-pooling/) (Medium)
+- [Find Median From Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) (Hard)
+- [Maximum Performance of a Team](https://leetcode.com/problems/maximum-performance-of-a-team/) (Hard)
+- [IPO](https://leetcode.com/problems/ipo/) (Hard)
 
 ## Backtracking
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Subsets](https://leetcode.com/problems/subsets/) | Medium | [Video](https://www.youtube.com/watch?v=REOH22Xwdkk&ab_channel=NeetCode) |  |  |
-| [Combination Sum](https://leetcode.com/problems/combination-sum/) | Medium | [Video](https://www.youtube.com/watch?v=GBKI9VSKdGg&ab_channel=NeetCode) |  |  |
-| [Permutations](https://leetcode.com/problems/permutations/) | Medium | [Video](https://www.youtube.com/watch?v=s7AvT7cGdSo&ab_channel=NeetCode) |  |  |
-| [Subsets II](https://leetcode.com/problems/subsets-ii/) | Medium | [Video](https://www.youtube.com/watch?v=Vn2v6ajA7U0&ab_channel=NeetCode) |  |  |
-| [Combination Sum lI](https://leetcode.com/problems/combination-sum-ii/) | Medium | [Video](https://www.youtube.com/watch?v=rSA3t6BDDwg&ab_channel=NeetCode) |  |  |
-| [Word Search](https://leetcode.com/problems/word-search/) | Medium | [Video](https://www.youtube.com/watch?v=pfiQ_PS1g8E&ab_channel=NeetCode) |  |  |
-| [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/) | Medium | [Video](https://www.youtube.com/watch?v=3jvWodd7ht0&ab_channel=NeetCode) |  |  |
-| [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) | Medium | [Video](https://www.youtube.com/watch?v=0snEunUacZY&ab_channel=NeetCode) |  |  |
-| [N-Queens](https://leetcode.com/problems/n-queens/) | Hard | [Video](https://www.youtube.com/watch?v=Ph95IHmRp5M&ab_channel=NeetCode) |  |  |
+- [Subsets](https://leetcode.com/problems/subsets/) (Medium)
+- [Combination Sum](https://leetcode.com/problems/combination-sum/) (Medium)
+- [Combinations](https://leetcode.com/problems/combinations/) (Medium)
+- [Permutations](https://leetcode.com/problems/permutations/) (Medium)
+- [Subsets II](https://leetcode.com/problems/subsets-ii/) (Medium)
+- [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) (Medium)
+- [Permutations II](https://leetcode.com/problems/permutations-ii/) (Medium)
+- [Word Search](https://leetcode.com/problems/word-search/) (Medium)
+- [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/) (Medium)
+- [Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/) (Medium)
+- [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) (Medium)
+- [Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/) (Medium)
+- [Splitting a String Into Descending Consecutive Values](https://leetcode.com/problems/splitting-a-string-into-descending-consecutive-values/) (Medium)
+- [Find Unique Binary String](https://leetcode.com/problems/find-unique-binary-string/) (Medium)
+- [Maximum Length of a Concatenated String With Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/) (Medium)
+- [Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/) (Medium)
+- [N Queens](https://leetcode.com/problems/n-queens/) (Hard)
+- [N Queens II](https://leetcode.com/problems/n-queens-ii/) (Hard)
 
 ## Graphs
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Number of Islands](https://leetcode.com/problems/number-of-islands/) | Medium | [Video](https://www.youtube.com/watch?v=pV2kpPD66nE&ab_channel=NeetCode) |  |  |
-| [Clone Graph](https://leetcode.com/problems/clone-graph/) | Medium | [Video](https://www.youtube.com/watch?v=mQeF6bN8hMk&ab_channel=NeetCode) |  |  |
-| [Max Area of Island](https://leetcode.com/problems/max-area-of-island/) | Medium | [Video](https://www.youtube.com/watch?v=iJGr1OtmH0c&ab_channel=NeetCode) |  |  |
-| [Pacific Atlantic Waterflow](https://leetcode.com/problems/pacific-atlantic-water-flow/) | Medium | [Video](https://www.youtube.com/watch?v=s-VkcjHqkGI&ab_channel=NeetCode) |  |  |
-| [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/) | Medium | [Video](https://www.youtube.com/watch?v=9z2BunfoZ5Y&ab_channel=NeetCode) |  |  |
-| [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) | Medium | [Video](https://www.youtube.com/watch?v=y704fEOx0s0&ab_channel=NeetCode) |  |  |
-| [Walls and Gates](https://leetcode.com/problems/walls-and-gates/) | Medium | [Video](https://www.youtube.com/watch?v=e69C6xhiSQE&ab_channel=NeetCode) |  |  |
-| [Course Schedule](https://leetcode.com/problems/course-schedule/) | Medium | [Video](https://www.youtube.com/watch?v=EgI5nU9etnU&ab_channel=NeetCode) |  |  |
-| [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) | Medium | [Video](https://www.youtube.com/watch?v=Akt3glAwyfY&ab_channel=NeetCode) |  |  |
-| [Redundant Connection](https://leetcode.com/problems/redundant-connection/) | Medium | [Video](https://www.youtube.com/watch?v=FXWRE67PLL0&ab_channel=NeetCode) |  |  |
-| [Number of Connected Components in Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) | Medium | [Video](https://www.youtube.com/watch?v=8f1XPm4WOUc&ab_channel=NeetCode) |  |  |
-| [Graph Valid Tree](https://leetcode.com/problems/graph-valid-tree/) | Medium | [Video](https://www.youtube.com/watch?v=bXsUuownnoQ&ab_channel=NeetCode) |  |  |
-| [Word Ladder](https://leetcode.com/problems/word-ladder/) | Hard | [Video](https://www.youtube.com/watch?v=h9iTnkgv05E&ab_channel=NeetCode) |  |  |
+- [Island Perimeter](https://leetcode.com/problems/island-perimeter/) (Easy)
+- [Verifying An Alien Dictionary](https://leetcode.com/problems/verifying-an-alien-dictionary/) (Easy)
+- [Number of Islands](https://leetcode.com/problems/number-of-islands/) (Medium)
+- [Clone Graph](https://leetcode.com/problems/clone-graph/) (Medium)
+- [Max Area of Island](https://leetcode.com/problems/max-area-of-island/) (Medium)
+- [Count Sub Islands](https://leetcode.com/problems/count-sub-islands/) (Medium)
+- [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/) (Medium)
+- [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/) (Medium)
+- [Reorder Routes to Make All Paths Lead to The City Zero](https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/) (Medium)
+- [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) (Medium)
+- [Walls And Gates   ](https://leetcode.com/problems/walls-and-gates/) (Medium)
+- [Snakes And Ladders](https://leetcode.com/problems/snakes-and-ladders/) (Medium)
+- [Open The Lock](https://leetcode.com/problems/open-the-lock/) (Medium)
+- [Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/) (Medium)
+- [Course Schedule](https://leetcode.com/problems/course-schedule/) (Medium)
+- [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) (Medium)
+- [Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/) (Medium)
+- [Check if Move Is Legal](https://leetcode.com/problems/check-if-move-is-legal/) (Medium)
+- [Shortest Bridge](https://leetcode.com/problems/shortest-bridge/) (Medium)
+- [Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/) (Medium)
+- [Redundant Connection](https://leetcode.com/problems/redundant-connection/) (Medium)
+- [Number of Connected Components In An Undirected Graph   ](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) (Medium)
+- [Graph Valid Tree   ](https://leetcode.com/problems/graph-valid-tree/) (Medium)
+- [Accounts Merge](https://leetcode.com/problems/accounts-merge/) (Medium)
+- [Find Closest Node to Given Two Nodes](https://leetcode.com/problems/find-closest-node-to-given-two-nodes/) (Medium)
+- [As Far from Land as Possible](https://leetcode.com/problems/as-far-from-land-as-possible/) (Medium)
+- [Shortest Path with Alternating Colors](https://leetcode.com/problems/shortest-path-with-alternating-colors/) (Medium)
+- [Minimum Fuel Cost to Report to the Capital](https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/) (Medium)
+- [Minimum Score of a Path Between Two Cities](https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/) (Medium)
+- [Number of Closed Islands](https://leetcode.com/problems/number-of-closed-islands/) (Medium)
+- [Number of Enclaves](https://leetcode.com/problems/number-of-enclaves/) (Medium)
+- [Minimum Number of Vertices to Reach all Nodes](https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/) (Medium)
+- [Is Graph Bipartite?](https://leetcode.com/problems/is-graph-bipartite/) (Medium)
+- [Evaluate Division](https://leetcode.com/problems/evaluate-division/) (Medium)
+- [Detonate the Maximum Bombs](https://leetcode.com/problems/detonate-the-maximum-bombs/) (Medium)
+- [Largest Color Value in a Directed Graph](https://leetcode.com/problems/largest-color-value-in-a-directed-graph/) (Hard)
+- [Minimum Number of Days to Eat N Oranges](https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/) (Hard)
+- [Word Ladder](https://leetcode.com/problems/word-ladder/) (Hard)
 
 ## Advanced Graphs
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Reconstruct Itinerary](https://leetcode.com/problems/reconstruct-itinerary/) | Hard | [Video](https://www.youtube.com/watch?v=ZyB_gQ8vqGA&ab_channel=NeetCode) |  |  |
-| [Min Cost to Connect all Points](https://leetcode.com/problems/min-cost-to-connect-all-points/) | Medium | [Video](https://www.youtube.com/watch?v=f7JOBJIC-NA&ab_channel=NeetCode) |  |  |
-| [Network Delay Time](https://leetcode.com/problems/network-delay-time/) | Medium | [Video](https://www.youtube.com/watch?v=EaphyqKU4PQ&ab_channel=NeetCode) |  |  |
-| [Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water/) | Hard | [Video](https://www.youtube.com/watch?v=amvrKlMLuGY&ab_channel=NeetCode) |  |  |
-| [Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) | Hard | [Video](https://www.youtube.com/watch?v=6kTZYvNNyps&ab_channel=NeetCode) |  |  |
-| [Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) | Medium | [Video](https://www.youtube.com/watch?v=5eIK3zUdYmE&ab_channel=NeetCode) |  |  |
+- [Path with Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort/) (Medium)
+- [Reconstruct Itinerary](https://leetcode.com/problems/reconstruct-itinerary/) (Hard)
+- [Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/) (Medium)
+- [Network Delay Time](https://leetcode.com/problems/network-delay-time/) (Medium)
+- [Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/) (Medium)
+- [Swim In Rising Water](https://leetcode.com/problems/swim-in-rising-water/) (Hard)
+- [Alien Dictionary   ](https://leetcode.com/problems/alien-dictionary/) (Hard)
+- [Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) (Medium)
+- [Number of Good Paths](https://leetcode.com/problems/number-of-good-paths/) (Hard)
+- [Remove Max Number of Edges to Keep Graph Fully Traversable](https://leetcode.com/problems/remove-max-number-of-edges-to-keep-graph-fully-traversable/) (Hard)
+- [Find Critical and Pseudo Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/) (Hard)
 
 ## 1-D Dynamic Programming
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) | Easy | [Video](https://www.youtube.com/watch?v=Y0lT9Fck7qI&ab_channel=NeetCode) |  |  |
-| [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) | Easy | [Video](https://www.youtube.com/watch?v=ktmzAZWkEZ0&ab_channel=NeetCode) |  |  |
-| [House Robber](https://leetcode.com/problems/house-robber/) | Medium | [Video](https://www.youtube.com/watch?v=73r3KWiEvyk&ab_channel=NeetCode) |  |  |
-| [House Robber II](https://leetcode.com/problems/house-robber-ii/) | Medium | [Video](https://www.youtube.com/watch?v=rWAJCfYYOvM&ab_channel=NeetCode) |  |  |
-| [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | Medium | [Video](https://www.youtube.com/watch?v=XYQecbcd6_c&ab_channel=NeetCode) |  |  |
-| [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/) | Medium | [Video](https://www.youtube.com/watch?v=4RACzI5-du8&ab_channel=NeetCode) |  |  |
-| [Decode Ways](https://leetcode.com/problems/decode-ways/) | Medium | [Video](https://www.youtube.com/watch?v=6aEyTjOwlJU&ab_channel=NeetCode) |  |  |
-| [Coin Change](https://leetcode.com/problems/coin-change/) | Medium | [Video](https://www.youtube.com/watch?v=H9bfqozjoqs&ab_channel=NeetCode) |  |  |
-| [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/) | Medium | [Video](https://www.youtube.com/watch?v=lXVy6YWFcRM&ab_channel=NeetCode) |  |  |
-| [Word Break](https://leetcode.com/problems/word-break/) | Medium | [Video](https://www.youtube.com/watch?v=Sx9NNgInc3A&ab_channel=NeetCode) |  |  |
-| [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) | Medium | [Video](https://www.youtube.com/watch?v=cjWnW0hdF1Y&ab_channel=NeetCode) |  |  |
-| [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) | Medium | [Video](https://www.youtube.com/watch?v=IsvocB5BJhw&ab_channel=NeetCode) |  |  |
+- [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) (Easy)
+- [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) (Easy)
+- [House Robber](https://leetcode.com/problems/house-robber/) (Medium)
+- [House Robber II](https://leetcode.com/problems/house-robber-ii/) (Medium)
+- [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) (Medium)
+- [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/) (Medium)
+- [Decode Ways](https://leetcode.com/problems/decode-ways/) (Medium)
+- [Coin Change](https://leetcode.com/problems/coin-change/) (Medium)
+- [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/) (Medium)
+- [Word Break](https://leetcode.com/problems/word-break/) (Medium)
+- [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) (Medium)
+- [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) (Medium)
+- [Triangle](https://leetcode.com/problems/triangle/) (Medium)
+- [Delete And Earn](https://leetcode.com/problems/delete-and-earn/) (Medium)
+- [Paint House](https://leetcode.com/problems/paint-house/) (Medium)
+- [Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/) (Medium)
+- [Perfect Squares](https://leetcode.com/problems/perfect-squares/) (Medium)
+- [Check if There is a Valid Partition For The Array](https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/) (Medium)
+- [Maximum Subarray Min Product](https://leetcode.com/problems/maximum-subarray-min-product/) (Medium)
+- [Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets/) (Medium)
+- [Integer Break](https://leetcode.com/problems/integer-break/) (Medium)
+- [Number of Longest Increasing Subsequence](https://leetcode.com/problems/number-of-longest-increasing-subsequence/) (Medium)
+- [Stickers to Spell Word](https://leetcode.com/problems/stickers-to-spell-word/) (Hard)
+- [N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/) (Easy)
+- [Uncrossed Lines](https://leetcode.com/problems/uncrossed-lines/) (Medium)
+- [Solving Questions With Brainpower](https://leetcode.com/problems/solving-questions-with-brainpower/) (Medium)
+- [Count Ways to Build Good Strings](https://leetcode.com/problems/count-ways-to-build-good-strings/) (Medium)
+- [New 21 Game](https://leetcode.com/problems/new-21-game/) (Medium)
+- [Best Team with no Conflicts](https://leetcode.com/problems/best-team-with-no-conflicts/) (Medium)
+- [Stone Game III](https://leetcode.com/problems/stone-game-iii/) (Hard)
+- [Concatenated Words](https://leetcode.com/problems/concatenated-words/) (Hard)
+- [Maximize Score after N Operations](https://leetcode.com/problems/maximize-score-after-n-operations/) (Hard)
+- [Find the Longest Valid Obstacle Course at Each Position](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/) (Hard)
+- [Count all Valid Pickup and Delivery Options](https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/) (Hard)
 
 ## 2-D Dynamic Programming
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Unique Paths](https://leetcode.com/problems/unique-paths/) | Medium | [Video](https://www.youtube.com/watch?v=IlEsdxuD4lY&ab_channel=NeetCode) |  |  |
-| [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) | Medium | [Video](https://www.youtube.com/watch?v=Ua0GhsJSlWM&ab_channel=NeetCode) |  |  |
-| [Best Time to Buy/Sell Stock With Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | Medium | [Video](https://www.youtube.com/watch?v=I7j0F7AHpb8&ab_channel=NeetCode) |  |  |
-| [Coin Change II](https://leetcode.com/problems/coin-change-2/) | Medium | [Video](https://www.youtube.com/watch?v=Mjy4hd2xgrs&ab_channel=NeetCode) |  |  |
-| [Target Sum](https://leetcode.com/problems/target-sum/) | Medium | [Video](https://www.youtube.com/watch?v=g0npyaQtAQM&ab_channel=NeetCode) |  |  |
-| [Interleaving String](https://leetcode.com/problems/interleaving-string/) | Medium | [Video](https://www.youtube.com/watch?v=3Rw3p9LrgvE&ab_channel=NeetCode) |  |  |
-| [Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) | Hard | [Video](https://www.youtube.com/watch?v=wCc_nd-GiEc&ab_channel=NeetCode) |  |  |
-| [Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/) | Hard | [Video](https://www.youtube.com/watch?v=-RDzMJ33nx8&ab_channel=NeetCode) |  |  |
-| [Edit Distance](https://leetcode.com/problems/edit-distance/) | Hard | [Video](https://www.youtube.com/watch?v=XYi2-LPrwm4&ab_channel=NeetCode) |  |  |
-| [Burst Balloons](https://leetcode.com/problems/burst-balloons/) | Hard | [Video](https://www.youtube.com/watch?v=VFskby7lUbw&ab_channel=NeetCode) |  |  |
-| [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/) | Hard | [Video](https://www.youtube.com/watch?v=HAA8mgxlov8&ab_channel=NeetCode) |  |  |
+- [Unique Paths](https://leetcode.com/problems/unique-paths/) (Medium)
+- [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/) (Medium)
+- [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) (Medium)
+- [Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/) (Medium)
+- [Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/) (Medium)
+- [Best Time to Buy And Sell Stock With Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) (Medium)
+- [Coin Change II](https://leetcode.com/problems/coin-change-ii/) (Medium)
+- [Target Sum](https://leetcode.com/problems/target-sum/) (Medium)
+- [Interleaving String](https://leetcode.com/problems/interleaving-string/) (Medium)
+- [Stone Game](https://leetcode.com/problems/stone-game/) (Medium)
+- [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/) (Medium)
+- [Longest Increasing Path In a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) (Hard)
+- [Maximal Square](https://leetcode.com/problems/maximal-square/) (Medium)
+- [Ones and Zeroes](https://leetcode.com/problems/ones-and-zeroes/) (Medium)
+- [Maximum Alternating Subsequence Sum](https://leetcode.com/problems/maximum-alternating-subsequence-sum/) (Medium)
+- [Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/) (Hard)
+- [Edit Distance](https://leetcode.com/problems/edit-distance/) (Medium)
+- [Count Vowels Permutation](https://leetcode.com/problems/count-vowels-permutation/) (Hard)
+- [Burst Balloons](https://leetcode.com/problems/burst-balloons/) (Hard)
+- [Number of Ways to Rearrange Sticks With K Sticks Visible](https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/) (Hard)
+- [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/) (Hard)
+- [Stone Game II](https://leetcode.com/problems/stone-game-ii/) (Medium)
+- [Flip String to Monotone Increasing](https://leetcode.com/problems/flip-string-to-monotone-increasing/) (Medium)
+- [Maximum Value of K Coins from Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/) (Hard)
+- [Number of Music Playlists](https://leetcode.com/problems/number-of-music-playlists/) (Hard)
+- [Number of Ways to Form a Target String Given a Dictionary](https://leetcode.com/problems/number-of-ways-to-form-a-target-string-given-a-dictionary/) (Hard)
+- [Profitable Schemes](https://leetcode.com/problems/profitable-schemes/) (Hard)
+- [Minimum Cost to Cut a Stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/) (Hard)
 
 ## Greedy
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) | Medium | [Video](https://www.youtube.com/watch?v=5WZl3MMT0Eg&ab_channel=NeetCode) |  |  |
-| [Jump Game](https://leetcode.com/problems/jump-game/) | Medium | [Video](https://www.youtube.com/watch?v=Yan0cv2cLy8&ab_channel=NeetCode) |  |  |
-| [Jump Game Il](https://leetcode.com/problems/jump-game-ii/) | Medium | [Video](https://www.youtube.com/watch?v=dJ7sWiOoK7g&ab_channel=NeetCode) |  |  |
-| [Gas Station](https://leetcode.com/problems/gas-station/) | Medium | [Video](https://www.youtube.com/watch?v=lJwbPZGo05A&ab_channel=NeetCode) |  |  |
-| [Hand of Straights](https://leetcode.com/problems/hand-of-straights/) | Medium | [Video](https://www.youtube.com/watch?v=amnrMCVd2YI&ab_channel=NeetCode) |  |  |
-| [Merge Triplets to Form Target Triplet](https://leetcode.com/problems/merge-triplets-to-form-target-triplet/) | Medium | [Video](https://www.youtube.com/watch?v=kShkQLQZ9K4&ab_channel=NeetCode) |  |  |
-| [Partition Labels](https://leetcode.com/problems/partition-labels/) | Medium | [Video](https://www.youtube.com/watch?v=B7m8UmZE-vw&ab_channel=NeetCode) |  |  |
-| [Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | Medium | [Video](https://www.youtube.com/watch?v=QhPdNS143Qg&ab_channel=NeetCode) |  |  |
+- [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) (Medium)
+- [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray/) (Medium)
+- [Longest Turbulent Array](https://leetcode.com/problems/longest-turbulent-subarray/) (Medium)
+- [Jump Game](https://leetcode.com/problems/jump-game/) (Medium)
+- [Jump Game II](https://leetcode.com/problems/jump-game-ii/) (Medium)
+- [Jump Game VII](https://leetcode.com/problems/jump-game-vii/) (Medium)
+- [Gas Station](https://leetcode.com/problems/gas-station/) (Medium)
+- [Hand of Straights](https://leetcode.com/problems/hand-of-straights/) (Medium)
+- [Minimize Maximum of Array](https://leetcode.com/problems/minimize-maximum-of-array/) (Medium)
+- [Dota2 Senate](https://leetcode.com/problems/dota2-senate/) (Medium)
+- [Maximum Points You Can Obtain From Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/) (Medium)
+- [Merge Triplets to Form Target Triplet](https://leetcode.com/problems/merge-triplets-to-form-target-triplet/) (Medium)
+- [Partition Labels](https://leetcode.com/problems/partition-labels/) (Medium)
+- [Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) (Medium)
+- [Eliminate Maximum Number of Monsters](https://leetcode.com/problems/eliminate-maximum-number-of-monsters/) (Medium)
+- [Two City Scheduling](https://leetcode.com/problems/two-city-scheduling/) (Medium)
+- [Maximum Length of Pair Chain](https://leetcode.com/problems/maximum-length-of-pair-chain/) (Medium)
+- [Minimum Deletions to Make Character Frequencies Unique](https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/) (Medium)
+- [Candy](https://leetcode.com/problems/candy/) (Medium)
 
 ## Intervals
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Insert Interval](https://leetcode.com/problems/insert-interval/) | Medium | [Video](https://www.youtube.com/watch?v=A8NUOmlwOlM&ab_channel=NeetCode) |  |  |
-| [Merge Intervals](https://leetcode.com/problems/merge-intervals/) | Medium | [Video](https://www.youtube.com/watch?v=44H3cEC2fFM&ab_channel=NeetCode) |  |  |
-| [Non-Overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) | Medium | [Video](https://www.youtube.com/watch?v=nONCGxWoUfM&ab_channel=NeetCode) |  |  |
-| [Meeting Rooms](https://leetcode.com/problems/meeting-rooms/) | Easy | [Video](https://www.youtube.com/watch?v=PaJxqZVPhbg&ab_channel=NeetCode) |  |  |
-| [Meeting Rooms](https://leetcode.com/problems/meeting-rooms-ii/) | Medium | [Video](https://www.youtube.com/watch?v=FdzJmTCVyJU&ab_channel=NeetCode) |  |  |
-| [Minimum Interval to Include Each Query](https://leetcode.com/problems/minimum-interval-to-include-each-query/) | Hard | [Video](https://www.youtube.com/watch?v=5hQ5WWW5awQ&ab_channel=NeetCode) |  |  |
+- [Insert Interval](https://leetcode.com/problems/insert-interval/) (Medium)
+- [Merge Intervals](https://leetcode.com/problems/merge-intervals/) (Medium)
+- [Non Overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) (Medium)
+- [Meeting Rooms   ](https://leetcode.com/problems/meeting-rooms/) (Easy)
+- [Meeting Rooms II   ](https://leetcode.com/problems/meeting-rooms-ii/) (Medium)
+- [Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/) (Medium)
+- [Minimum Interval to Include Each Query](https://leetcode.com/problems/minimum-interval-to-include-each-query/) (Hard)
+- [Data Stream as Disjoint Intervals](https://leetcode.com/problems/data-stream-as-disjoint-intervals/) (Hard)
 
 ## Math & Geometry
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Rotate Image](https://leetcode.com/problems/rotate-image/) | Medium | [Video](https://www.youtube.com/watch?v=fMSJSS7eO1w&ab_channel=NeetCode) |  |  |
-| [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) | Medium | [Video](https://www.youtube.com/watch?v=BJnMZNwUk1M&ab_channel=NeetCode) |  |  |
-| [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/) | Medium | [Video](https://www.youtube.com/watch?v=T41rL0L3Pnw&ab_channel=NeetCode) |  |  |
-| [Happy Number](https://leetcode.com/problems/happy-number/) | Easy | [Video](https://www.youtube.com/watch?v=ljz85bxOYJ0&ab_channel=NeetCode) |  |  |
-| [Plus One](https://leetcode.com/problems/plus-one/) | Easy | [Video](https://www.youtube.com/watch?v=jIaA8boiG1s&ab_channel=NeetCode) |  |  |
-| [Pow(x, n)](https://leetcode.com/problems/powx-n/) | Medium | [Video](https://www.youtube.com/watch?v=g9YQyYi4IQQ&ab_channel=NeetCode) |  |  |
-| [Multiply Strings](https://leetcode.com/problems/multiply-strings/) | Medium | [Video](https://www.youtube.com/watch?v=1vZswirL8Y8&ab_channel=NeetCode) |  |  |
-| [Detect Squares](https://leetcode.com/problems/detect-squares/) | Medium | [Video](https://www.youtube.com/watch?v=bahebearrDc&ab_channel=NeetCode) |  |  |
+- [Excel Sheet Column Title](https://leetcode.com/problems/excel-sheet-column-title/) (Easy)
+- [Greatest Common Divisor of Strings](https://leetcode.com/problems/greatest-common-divisor-of-strings/) (Easy)
+- [Count Odd Numbers in an Interval Range](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/) (Easy)
+- [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/) (Easy)
+- [Maximum Points on a Line](https://leetcode.com/problems/max-points-on-a-line/) (Hard)
+- [Rotate Image](https://leetcode.com/problems/rotate-image/) (Medium)
+- [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) (Medium)
+- [Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/) (Medium)
+- [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/) (Medium)
+- [Happy Number](https://leetcode.com/problems/happy-number/) (Easy)
+- [Plus One](https://leetcode.com/problems/plus-one/) (Easy)
+- [Palindrome Number](https://leetcode.com/problems/palindrome-number/) (Easy)
+- [Ugly Number](https://leetcode.com/problems/ugly-number/) (Easy)
+- [Shift 2D Grid](https://leetcode.com/problems/shift-2d-grid/) (Easy)
+- [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) (Easy)
+- [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) (Medium)
+- [Pow(x, n)](https://leetcode.com/problems/powx-n/) (Medium)
+- [Multiply Strings](https://leetcode.com/problems/multiply-strings/) (Medium)
+- [Detect Squares](https://leetcode.com/problems/detect-squares/) (Medium)
+- [Robot Bounded In Circle](https://leetcode.com/problems/robot-bounded-in-circle/) (Medium)
+- [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/) (Medium)
+- [Find Missing Observations](https://leetcode.com/problems/find-missing-observations/) (Medium)
 
 ## Bit Manipulation
 
-| Problem | Difficulty | Solution | Completed | Note |
-| :-- | :-- | :-- | :-- |
-| [Single Number](https://leetcode.com/problems/single-number/) | Easy | [Video](https://www.youtube.com/watch?v=qMPX1AOa83k&ab_channel=NeetCode) |  |  |
-| [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) | Easy | [Video](https://www.youtube.com/watch?v=5Km3utixwZs&ab_channel=NeetCode) |  |  |
-| [Counting Bits](https://leetcode.com/problems/counting-bits/) | Easy | [Video](https://www.youtube.com/watch?v=RyBM56RIWrM&ab_channel=NeetCode) |  |  |
-| [Reverse Bits](https://leetcode.com/problems/reverse-bits/) | Easy | [Video](https://www.youtube.com/watch?v=UcoN6UjAI64&ab_channel=NeetCode) |  |  |
-| [Missing Number](https://leetcode.com/problems/missing-number/) | Easy | [Video](https://www.youtube.com/watch?v=WnPLSRLSANE&ab_channel=NeetCode) |  |  |
-| [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/) | Medium | [Video](https://www.youtube.com/watch?v=gVUrDV4tZfY&ab_channel=NeetCode) |  |  |
-| [Reverse Integer](https://leetcode.com/problems/reverse-integer/) | Medium | [Video](https://www.youtube.com/watch?v=HAgLH58IgJQ&ab_channel=NeetCode) |  |  |
+- [Single Number](https://leetcode.com/problems/single-number/) (Easy)
+- [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) (Easy)
+- [Counting Bits](https://leetcode.com/problems/counting-bits/) (Easy)
+- [Reverse Bits](https://leetcode.com/problems/reverse-bits/) (Easy)
+- [Missing Number](https://leetcode.com/problems/missing-number/) (Easy)
+- [Shuffle the Array](https://leetcode.com/problems/shuffle-the-array/) (Easy)
+- [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/) (Easy)
+- [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/) (Medium)
+- [Reverse Integer](https://leetcode.com/problems/reverse-integer/) (Medium)
+- [Add Binary](https://leetcode.com/problems/add-binary/) (Easy)
+
+## JavaScript
+
+- [Create Hello World Function](https://leetcode.com/problems/create-hello-world-function/) (Easy)
+- [Counter](https://leetcode.com/problems/counter/) (Easy)
+- [Counter II](https://leetcode.com/problems/counter-ii/) (Easy)
+- [Apply Transform over each Element in Array](https://leetcode.com/problems/apply-transform-over-each-element-in-array/) (Easy)
+- [Filter Elements from Array](https://leetcode.com/problems/filter-elements-from-array/) (Easy)
+- [Array Reduce Transformation](https://leetcode.com/problems/array-reduce-transformation/) (Easy)
+- [Function Composition](https://leetcode.com/problems/function-composition/) (Easy)
+- [Allow One Function Call](https://leetcode.com/problems/allow-one-function-call/) (Easy)
+- [Memoize](https://leetcode.com/problems/memoize/) (Medium)
+- [Curry](https://leetcode.com/problems/curry/) (Medium)
+- [Sleep](https://leetcode.com/problems/sleep/) (Easy)
+- [Promise Time Limit](https://leetcode.com/problems/promise-time-limit/) (Easy)
+- [Promise Pool](https://leetcode.com/problems/promise-pool/) (Medium)
+- [Cache With Time Limit](https://leetcode.com/problems/cache-with-time-limit/) (Medium)
+- [Debounce](https://leetcode.com/problems/debounce/) (Medium)
+- [Throttle](https://leetcode.com/problems/throttle/) (Medium)
+- [JSON Deep Equal](https://leetcode.com/problems/json-deep-equal/) (Medium)
+- [Convert Object to JSON String](https://leetcode.com/problems/convert-object-to-json-string/) (Medium)
+- [Array of Objects to Matrix](https://leetcode.com/problems/array-of-objects-to-matrix/) (Medium)
+- [Difference Between Two Objects](https://leetcode.com/problems/differences-between-two-objects/) (Medium)
+- [Chunk Array](https://leetcode.com/problems/chunk-array/) (Easy)
+- [Flatten Deeply Nested Array](https://leetcode.com/problems/flatten-deeply-nested-array/) (Medium)
+- [Array Prototype Last](https://leetcode.com/problems/array-prototype-last/) (Easy)
+- [Group By](https://leetcode.com/problems/group-by/) (Medium)
+- [Check if Object Instance of Class](https://leetcode.com/problems/check-if-object-instance-of-class/) (Medium)
+- [Call Function with Custom Context](https://leetcode.com/problems/call-function-with-custom-context/) (Medium)
+- [Event Emitter](https://leetcode.com/problems/event-emitter/) (Medium)
+- [Array Wrapper](https://leetcode.com/problems/array-wrapper/) (Easy)
+- [Generate Fibonacci Sequence](https://leetcode.com/problems/generate-fibonacci-sequence/) (Easy)
+- [Nested Array Generator](https://leetcode.com/problems/nested-array-generator/) (Medium)

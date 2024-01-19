@@ -2,9 +2,18 @@
 title: Synchronizing light and dark modes when using Material UI with Docusaurus
 draft: false
 description: This post details how to synchronize Material UI's light and dark palettes with Docusaurus's light and dark modes, respectively.
-tags: [Light/Dark Mode, Theming, Material UI]
-keywords: [material ui, theming, light mode, dark mode, docusaurus]
-authors: [farlow]
+tags: 
+  - Light/Dark Mode
+  - Theming
+  - Material UI
+keywords: 
+  - material ui
+  - theming
+  - light mode
+  - dark mode
+  - docusaurus
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

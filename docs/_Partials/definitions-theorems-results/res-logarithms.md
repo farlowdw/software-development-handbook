@@ -1,0 +1,11 @@
+- $y=\log_a x$ means $a^y=x$
+- $\log_a a^x = x$
+- $a^{\log_a x}=x$
+- $\log_a 1=0$
+- $\log_a a=1$
+- $\log x=\log_{10}x$
+- $\ln x=\log_e x$
+- $\log_a xy=\log_a x+\log_a y$
+- $\log_a\Bigl(\dfrac{x}{y}\Bigr)=\log_a x-\log_a y$
+- $\log_a x^b = b\log_a x$
+- $\log_b x=\dfrac{\log_a x}{\log_a b}$

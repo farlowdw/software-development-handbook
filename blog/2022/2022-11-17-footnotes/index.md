@@ -2,9 +2,19 @@
 title: How to add a footnotes section to doc pages and blog entries
 draft: false
 description: This post details how to outfit your Docusaurus site's doc pages and blog posts with a footnotes section.
-tags: [Footnotes, Docusaurus, Configuration, Swizzling]
-keywords: [footnotes, guide, docusaurus, configuration, swizzling]
-authors: [farlow]
+tags: 
+  - Footnotes
+  - Docusaurus
+  - Configuration
+  - Swizzling
+keywords: 
+  - footnotes
+  - guide
+  - docusaurus
+  - configuration
+  - swizzling
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

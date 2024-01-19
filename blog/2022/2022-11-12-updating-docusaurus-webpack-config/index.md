@@ -2,9 +2,21 @@
 title: How to update your Docusaurus site's webpack config
 draft: false
 description: This post details how to modify your Docusaurus site's webpack configuration.
-tags: [Giscus, Comments, Webpack, Docusaurus, Configuration]
-keywords: [giscus, comments, guide, webpack, docusaurus, configuration]
-authors: [farlow]
+tags: 
+  - Giscus
+  - Comments
+  - Webpack
+  - Docusaurus
+  - Configuration
+keywords: 
+  - giscus
+  - comments
+  - guide
+  - webpack
+  - docusaurus
+  - configuration
+authors: 
+  - farlow
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 6

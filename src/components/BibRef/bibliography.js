@@ -5,6 +5,13 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'TC2022',
+      title: 'Introduction to Algorithms - CLRS (4th Ed.)',
+      author: 'Thomas Cormen, Charles Leiserson, Ronald Rivest, Clifford Stein',
+      time: '2022',
+      link: 'https://www.amazon.com/gp/product/026204630X',
+    },
+    {
       id: 'DS2011',
       title: `A Transition to Advanced Mathematics (7th Ed.)`,
       author: 'Douglas Smith, Maurice Eggen, and Richard St. Andre',

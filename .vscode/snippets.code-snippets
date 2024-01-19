@@ -146,4 +146,13 @@
     ],
     "description": "Facilitates creation of problems, solutions, and hints for various sources"
   },
+  "Developer resource table template": {
+    "prefix": "dr",
+    "body": [
+      "| Resource | Description |",
+      "| :-- | :-- |",
+      "| [$2]($1) | $0 |",
+    ],
+    "description": "Facilitates creation of developer resource tables"
+  },
 }
