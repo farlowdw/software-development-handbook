@@ -218,47 +218,51 @@ const config = {
             items: [
               {
                 label: 'Data Structures',
-                to: '/docs/data-structures/intro',
+                to: '/docs/data-structures/introduction',
               },
               {
                 label: 'Algorithms',
-                to: '/docs/algorithms/intro',
+                to: '/docs/algorithms/introduction',
               },
               {
-                label: 'Patterns',
-                to: '/docs/patterns/intro',
+                label: 'Patterns, techniques, and themes',
+                to: '/docs/patterns-techniques-themes/introduction',
               },
               {
-                label: 'Topics',
-                to: '/docs/topics/intro',
+                label: 'SQL',
+                to: '/docs/sql/formatting-guidelines',
               },
               {
                 label: 'System Design',
-                to: '/docs/system-design/intro',
+                to: '/docs/system-design/introduction',
+              },
+              {
+                label: 'Math',
+                to: '/docs/math/introduction',
               },
               {
                 label: 'Tips and Tricks',
-                to: '/docs/tips-and-tricks/intro',
+                to: '/docs/tips-and-tricks/introduction',
               },
               {
                 label: 'Templates',
-                to: '/docs/templates/intro',
+                to: '/docs/templates/data-structures-algorithms',
               },
               {
                 label: 'Learning Resources',
-                to: '/docs/learning-resources/curated-list',
+                to: '/docs/learning-resources/general',
               },
               {
-                label: 'Definitions',
-                to: '/docs/definitions',
+                label: 'Development Resources',
+                to: '/docs/development-resources',
+              },
+              {
+                label: 'Definitions, theorems, and results',
+                to: '/docs/definitions-theorems-results',
               },
               {
                 label: 'Reference List',
                 to: '/docs/reference-list',
-              },
-              {
-                label: 'FAQ',
-                to: '/docs/faq',
               },
             ],
           },
@@ -284,19 +288,19 @@ const config = {
             items: [
               {
                 label: 'Formatting Guidelines',
-                to: '/docs/topics/sql/formatting-guidelines',
+                to: '/docs/sql/formatting-guidelines',
               },
               {
                 label: 'Query Execution Order',
-                to: '/docs/topics/sql/query-execution-order',
+                to: '/docs/sql/query-execution-order',
               },
               {
                 label: 'Window Functions',
-                to: '/docs/topics/sql/window-functions',
+                to: '/docs/sql/window-functions',
               },
               {
                 label: 'Common Table Expressions (CTEs)',
-                to: '/docs/topics/sql/ctes',
+                to: '/docs/sql/ctes',
               },
             ],
           },
