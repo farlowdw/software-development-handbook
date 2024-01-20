@@ -28,7 +28,7 @@ const ResponsiveAboutAvatar = () => {
         </Typography>
         <Typography>
            <p>
-            Documentation posts (i.e., <DocsLink to="/docs/intro">"the handbook"</DocsLink>) will often concern matters of general interest (e.g., <DocsLink to="/docs/topics/sql/window-functions" target="_blank">using window functions in SQL</DocsLink>) while <DocsLink to="/blog/archive">blog posts</DocsLink> will largely concern various problems I've run into that required me to engineer a solution (e.g., <DocsLink to="/blog/2023/03/29/2023/virtual-box-mac-ubuntu-shared" target="_blank">how to install a VM on a Mac with shared folders using VirtualBox</DocsLink>). This site is a work in progress and there are many more posts I hope to make in the very near future.
+            Documentation posts (i.e., <DocsLink to="/docs/intro">"the handbook"</DocsLink>) will often concern matters of general interest (e.g., <DocsLink to="/docs/sql/window-functions" target="_blank">using window functions in SQL</DocsLink>) while <DocsLink to="/blog/archive">blog posts</DocsLink> will largely concern various problems I've run into that required me to engineer a solution (e.g., <DocsLink to="/blog/2023/03/29/2023/virtual-box-mac-ubuntu-shared" target="_blank">how to install a VM on a Mac with shared folders using VirtualBox</DocsLink>). This site is a work in progress and there are many more posts I hope to make in the very near future.
            </p>
         </Typography>
 			</Box>
