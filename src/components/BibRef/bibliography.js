@@ -5,6 +5,13 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'DM2018',
+      title: `Handbook of Data Structures and Applications (2nd Ed.)`,
+      author: 'Dinesh P. Mehta and Sartaj Sahni',
+      time: '2018',
+      link: 'https://www.amazon.com/Handbook-Structures-Applications-Computer-Information/dp/149870185X',
+    },
+    {
       id: 'TC2022',
       title: 'Introduction to Algorithms - CLRS (4th Ed.)',
       author: 'Thomas Cormen, Charles Leiserson, Ronald Rivest, Clifford Stein',
