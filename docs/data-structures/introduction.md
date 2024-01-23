@@ -56,7 +56,14 @@ A *data structure*, as its name implies, is a way of structuring data. Since we 
 
 ## Abstract data types (ADTs)
 
-The [Wiki page](https://en.wikipedia.org/wiki/Abstract_data_type#Common_ADTs) for ADTs lists the following as some of the most common:
+The [Wiki page](https://en.wikipedia.org/wiki/Abstract_data_type#Common_ADTs) for ADTs lists a number of common ADTs, remarked on more below in a tabular format, that have proven to be useful across a great variety of applications. It's important to note the ADT list provided is not at all exhaustive, and among the ADTs listed, each one may be defined in different, non-equivalent ways. 
+
+Consider the Queue ADT. A queue is a *list* that implements a first-in-first-out (FIFO) policy on insertions and deletions; that is, the most important behaviors anyone might expect of a queue is that it's a list where elements can only be added to the end of the list and can only be removed from the front of the list. The "Add" operation might be called any number of things from one language to the next (e.g., `add`, `enqueue`, `enter`, `append`, etc.), and the same is true for the "Remove" operation (e.g., `remove`, `popleft`, `dequeue`, `leave`, etc.). But the most important thing is that by "Queue" we mean some interface that allows us to interact with a list-like object where the first element added will also be the first element removed.
+
+If we want to *implement* the Queue ADT, then we will encounter many more variations in both choice and design:
+
+- Will our Queue ADT only allow for an "Add" and "Remove" interface or should we add additional operations to be able to check whether or not the queue is empty (e.g., `isEmpty`), calculate how many elements are in the queue at any given time (e.g., `size`), provide access to the values of the elements at the end or the beginning of the queue without altering the queue's value (e.g., `peekleft` or `peekright`, respectively)?
+- What data structure will we use to *implement* the Queue ADT? An array? A linked list? There are many choices, some better-suited than others (e.g., arrays incur an $O(n)$ time cost when removing elements at the front whereas for linked lists the cost is $O(1)$).
 
 :::info Finding the source code for Python's built-in functions and types
 

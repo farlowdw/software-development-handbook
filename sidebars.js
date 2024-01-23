@@ -119,6 +119,7 @@ const sidebars = {
       items: [
         'learning-resources/blogs',
         'learning-resources/general-list',
+        'learning-resources/professor-pages',
         'learning-resources/tech-interview-handbook',
         'learning-resources/neetcode',
         'learning-resources/lc-sql-problems',
