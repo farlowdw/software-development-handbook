@@ -238,11 +238,11 @@ const config = {
               },
               {
                 label: 'Math',
-                to: '/docs/math/introduction',
+                to: '/docs/math/recurrence-relations',
               },
               {
                 label: 'Tips and Tricks',
-                to: '/docs/tips-and-tricks/introduction',
+                to: '/docs/tips-and-tricks/strings',
               },
               {
                 label: 'Templates',
@@ -250,7 +250,7 @@ const config = {
               },
               {
                 label: 'Learning Resources',
-                to: '/docs/learning-resources/general',
+                to: '/docs/learning-resources/general-list',
               },
               {
                 label: 'Development Resources',
