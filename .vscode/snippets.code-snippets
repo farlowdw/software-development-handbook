@@ -155,4 +155,47 @@
     ],
     "description": "Facilitates creation of developer resource tables"
   },
+  "Problem stem import with component": {
+    "prefix": "lcps",
+    "body": [
+      "import LC$1PS from '@site/docs/_Partials/problem-stems/lc$1.md';$0",
+      "<LC$1PS />",
+    ],
+    "description": "Boilerplate for adding a problem stem"
+  },
+  "LC Template Solution": {
+    "prefix": "lctempsol",
+    "body": [
+      "<details>",
+      "<summary> <LC id='$1' type='long' ></LC> </summary>",
+      "",
+      "$0import LC$1TSol from '@site/docs/_Partials/template-solutions/${2:category}/lc-$1.md';",
+      "import LC$1PS from '@site/docs/_Partials/problem-stems/lc$1.md';",
+      "",
+      "<LC$1PS />",
+      "",
+      "---",
+      "",
+      "<LC$1TSol />",
+      "",
+      "</details>",
+    ],
+    "description": "Solution boilerplate for creating a template solution"
+  },
+  "Template Solution (non-LC)": {
+    "prefix": "lctempsol-nonlc",
+    "body": [
+      "<details>",
+      "<summary> ${4:problemTitle} </summary>",
+      "",
+      "import Sol$1NoLC from '@site/docs/_Partials/template-solutions/${2:nolc-category}/q$3.md';",
+      "",
+      "$0",
+      "",
+      "<Sol$1NoLC />",
+      "",
+      "</details>",
+    ],
+    "description": "Solution boilerplate for creating a non-LC template solution"
+  },
 }

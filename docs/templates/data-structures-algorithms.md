@@ -21,79 +21,173 @@ import LC from '@site/src/components/LC';
 import ImageCarousel from '@site/src/components/ImageCarousel';
 import BibRef from '@site/src/components/BibRef';
 
-<!-- templates -->
-import TraverseAndAccumulateTreeTemplate from '@site/docs/_Partials/templates/trees-traverse-and-accumulate.md';
-import InductionTreeTemplate from '@site/docs/_Partials/templates/trees-induction.md';
-import InductionTACCombinedTreeTemplate from '@site/docs/_Partials/templates/trees-combine-induction-and-tac.md';
-import InductionTACCombinedTreeTemplateLong from '@site/docs/_Partials/templates/trees-combine-induction-and-tac-long.md';
+<!-- TEMPLATES -->
+<!-- trees -->
+import TraverseAndAccumulateTreeTemplate from '@site/docs/_Partials/templates/trees/trees-traverse-and-accumulate.md';
+import InductionTreeTemplate from '@site/docs/_Partials/templates/trees/trees-induction.md';
+import InductionTACCombinedTreeTemplate from '@site/docs/_Partials/templates/trees/trees-combine-induction-and-tac.md';
+import InductionTACCombinedTreeTemplateLong from '@site/docs/_Partials/templates/trees/trees-combine-induction-and-tac-long.md';
 
-<!-- template snippets -->
-import PreorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/preorder-iterative-analogy.md';
-import PostorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/postorder-iterative-analogy.md';
-import InorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/inorder-iterative-analogy.md';
-import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-snippets/combining-induction-and-tac-templates.md';
+<!-- TEMPLATE SNIPPETS -->
+<!-- trees -->
+import PreorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/trees/preorder-iterative-analogy.md';
+import PostorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/trees/postorder-iterative-analogy.md';
+import InorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/trees/inorder-iterative-analogy.md';
+import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-snippets/trees/combining-induction-and-tac-templates.md';
 
-<!-- NON-LeetCode problem solutions -->
-import Sol1NoLC from '@site/docs/_Partials/template-solutions/nolc-trees-induction-num-leaves.md';
-import Sol2NoLC from '@site/docs/_Partials/template-solutions/nolc-trees-induction-has-value.md';
-import Sol3NoLC from '@site/docs/_Partials/template-solutions/nolc-trees-induction-tree-size.md';
-import Sol4NoLC from '@site/docs/_Partials/template-solutions/nolc-trees-induction-max-tree-val.md';
-import Sol5NoLC from '@site/docs/_Partials/template-solutions/nolc-trees-tac-max-tree-diff.md';
-import Sol6NoLC from '@site/docs/_Partials/template-solutions/nolc-trees-tac-tree-mode.md';
-import Sol7NoLC from '@site/docs/_Partials/template-solutions/nolc-trees-tac-node-height.md';
-import Sol8NoLC from '@site/docs/_Partials/template-solutions/nolc-longest-vertical-unival-path.md';
+<!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
+import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/q1.md';
+import Sol2NoLC from '@site/docs/_Partials/template-solutions/trees/q2.md';
+import Sol3NoLC from '@site/docs/_Partials/template-solutions/trees/q3.md';
+import Sol4NoLC from '@site/docs/_Partials/template-solutions/trees/q4.md';
+import Sol5NoLC from '@site/docs/_Partials/template-solutions/trees/q5.md';
+import Sol6NoLC from '@site/docs/_Partials/template-solutions/trees/q6.md';
+import Sol7NoLC from '@site/docs/_Partials/template-solutions/trees/q7.md';
+import Sol8NoLC from '@site/docs/_Partials/template-solutions/trees/q8.md';
+import Sol9NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q1.md';
+import Sol10NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q2.md';
+import Sol11NoLC from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/q1.md';
 
-<!-- BINARY SEARCH -->
-import LC704TSol from '@site/docs/_Partials/template-solutions/lc704-binary-search.md';
-import LC74TSol from '@site/docs/_Partials/template-solutions/lc74-binary-search.md';
-import LC2300TSol from '@site/docs/_Partials/template-solutions/lc2300-binary-search.md';
+<!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
+<!-- 1 - 99 -->
+import LC15TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-15.md';
+import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-26.md';
+import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
+import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-74.md';
+import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
+import LC94TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-94.md';
+import LC94TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-94.md';
 
-<!-- MATRICES -->
-import LC74TSol2 from '@site/docs/_Partials/template-solutions/lc74-matrices.md';
+<!-- 100 - 199 -->
+import LC104TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-104.md';
+import LC125TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-125.md';
+import LC144TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-144.md';
+import LC144TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-144.md';
+import LC145TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-145.md';
+import LC145TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-145.md';
+import LC167TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-167.md';
 
-<!-- HEAPS -->
-import LC1845TSol from '@site/docs/_Partials/template-solutions/lc1845-heaps.md';
+<!-- 200 - 299 -->
+import LC226TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-226.md';
+import LC283TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-283.md';
 
-<!-- TREES -->
-<!-- induction -->
-import LC104TSol from '@site/docs/_Partials/template-solutions/lc104-trees-induction.md';
-import LC965TSol from '@site/docs/_Partials/template-solutions/lc965-trees-induction.md';
-import LC94TSol from '@site/docs/_Partials/template-solutions/lc94-trees-induction.md';
-import LC144TSol from '@site/docs/_Partials/template-solutions/lc144-trees-induction.md';
-import LC145TSol from '@site/docs/_Partials/template-solutions/lc145-trees-induction.md';
-import LC226TSol from '@site/docs/_Partials/template-solutions/lc226-trees-induction.md';
+<!-- 300 - 399 -->
+import LC344TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-344.md';
+import LC349TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-349.md';
+import LC350TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-350.md';
+import LC392TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-392.md';
 
-<!-- traverse-and-accumulate -->
-import LC94TSol2 from '@site/docs/_Partials/template-solutions/lc94-trees-tac.md';
-import LC144TSol2 from '@site/docs/_Partials/template-solutions/lc144-trees-tac.md';
-import LC145TSol2 from '@site/docs/_Partials/template-solutions/lc145-trees-tac.md';
-import LC543TSol from '@site/docs/_Partials/template-solutions/lc543-trees-tac.md';
-import LC563TSol from '@site/docs/_Partials/template-solutions/lc563-trees-tac.md';
+<!-- 400 - 499 -->
+<!-- 500 - 599 -->
+import LC543TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-543.md';
+import LC563TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-563.md';
+import LC557TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-557.md';
 
-<!-- GRAPHS -->
-<!-- depth first search -->
-<!-- breadth first search -->
+<!-- 600 - 699 -->
+<!-- 700 - 799 -->
+import LC704TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-704.md';
+import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc-746.md';
 
-<!-- DYNAMIC PROGRAMMING -->
-<!-- memoization (top-down) -->
-import LC746TSol from '@site/docs/_Partials/template-solutions/lc746-dp-memo.md';
+<!-- 800 - 899 -->
+<!-- 900 - 999 -->
+import LC905TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-905.md';
+import LC965TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-965.md';
+import LC977TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-977.md';
+import LC986TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-986.md';
 
-<!-- tabulation (bottom-up) -->
+<!-- 1000 - 1099 -->
+<!-- 1100 - 1199 -->
+<!-- 1200 - 1299 -->
+<!-- 1300 - 1399 -->
+<!-- 1400 - 1499 -->
+<!-- 1500 - 1599 -->
+<!-- 1600 - 1699 -->
+<!-- 1700 - 1799 -->
+<!-- 1800 - 1899 -->
+import LC1845TSol from '@site/docs/_Partials/template-solutions/heaps/lc-1845.md';
+
+<!-- 1900 - 1999 -->
+<!-- 2000 - 2099 -->
+<!-- 2100 - 2199 -->
+<!-- 2200 - 2299 -->
+<!-- 2300 - 2399 -->
+import LC2300TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-2300.md';
+
+<!-- 2400 - 2499 -->
+<!-- 2500 - 2599 -->
+<!-- 2600 - 2699 -->
+<!-- 2700 - 2799 -->
+<!-- 2800 - 2899 -->
+<!-- 2900 - 2999 -->
+
 
 <!-- PROBLEM STEMS -->
+<!-- 1 - 99 -->
+import LC15PS from '@site/docs/_Partials/problem-stems/lc15.md';
+import LC26PS from '@site/docs/_Partials/problem-stems/lc26.md';
+import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
 import LC94PS from '@site/docs/_Partials/problem-stems/lc94.md';
+
+<!-- 100 - 199 -->
 import LC104PS from '@site/docs/_Partials/problem-stems/lc104.md';
+import LC125PS from '@site/docs/_Partials/problem-stems/lc125.md';
 import LC144PS from '@site/docs/_Partials/problem-stems/lc144.md';
 import LC145PS from '@site/docs/_Partials/problem-stems/lc145.md';
+import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
+
+<!-- 200 - 299 -->
 import LC226PS from '@site/docs/_Partials/problem-stems/lc226.md';
+import LC283PS from '@site/docs/_Partials/problem-stems/lc283.md';
+
+<!-- 300 - 399 -->
+import LC344PS from '@site/docs/_Partials/problem-stems/lc344.md';
+import LC349PS from '@site/docs/_Partials/problem-stems/lc349.md';
+import LC350PS from '@site/docs/_Partials/problem-stems/lc350.md';
+import LC392PS from '@site/docs/_Partials/problem-stems/lc392.md';
+
+<!-- 400 - 499 -->
+<!-- 500 - 599 -->
 import LC543PS from '@site/docs/_Partials/problem-stems/lc543.md';
+import LC557PS from '@site/docs/_Partials/problem-stems/lc557.md';
 import LC563PS from '@site/docs/_Partials/problem-stems/lc563.md';
+
+<!-- 600 - 699 -->
+<!-- 700 - 799 -->
 import LC704PS from '@site/docs/_Partials/problem-stems/lc704.md';
 import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
+
+<!-- 800 - 899 -->
+<!-- 900 - 999 -->
+import LC905PS from '@site/docs/_Partials/problem-stems/lc905.md';
 import LC965PS from '@site/docs/_Partials/problem-stems/lc965.md';
+import LC977PS from '@site/docs/_Partials/problem-stems/lc977.md';
+import LC986PS from '@site/docs/_Partials/problem-stems/lc986.md';
+
+<!-- 1000 - 1099 -->
+<!-- 1100 - 1199 -->
+<!-- 1200 - 1299 -->
+<!-- 1300 - 1399 -->
+<!-- 1400 - 1499 -->
+<!-- 1500 - 1599 -->
+<!-- 1600 - 1699 -->
+<!-- 1700 - 1799 -->
+<!-- 1800 - 1899 -->
 import LC1845PS from '@site/docs/_Partials/problem-stems/lc1845.md';
+
+<!-- 1900 - 1999 -->
+<!-- 2000 - 2099 -->
+<!-- 2100 - 2199 -->
+<!-- 2200 - 2299 -->
+<!-- 2300 - 2399 -->
 import LC2300PS from '@site/docs/_Partials/problem-stems/lc2300.md';
+
+<!-- 2400 - 2499 -->
+<!-- 2500 - 2599 -->
+<!-- 2600 - 2699 -->
+<!-- 2700 - 2799 -->
+<!-- 2800 - 2899 -->
+<!-- 2900 - 2999 -->
 
 ## Contents
 
@@ -1900,165 +1994,261 @@ The induction and traverse-and-accumulate templates can be mixed together with p
 
 ## Two pointers
 
-### One input (opposite ends)
+### Opposite ends
 
 <details>
 <summary> Remarks</summary>
 
-The strength of this technique is that we will never have more than $O(n)$ iterations for the `while` loop because the pointers start $n$ units away from each other and move at least one step closer on every iteration. Therefore, if we can keep the work inside each iteration at $O(1)$, then this technique will result in a linear runtime, which is usually the best possible runtime.
+The idea behind the "opposite ends" two pointer template is to move from the *extremes* (i.e., *beginning* and *end*) toward each other. Binary search is a class example of this template in action.
+
+The template guarantees an $O(n)$ run time because only $n$ iterations of the `while` loop may occur &#8212; the `left` and `right` pointers begin $n$ units away from each other and move *at least one step closer* to each other on every iteration. If the work inside each iteration is kept to $O(1)$, then the result will be an $O(n)$ run time.
 
 </details>
 
-```a title="Pseudocode (two pointers, extremes to middle)"
-function fn(arr):
-  left = 0
-  right = arr.length - 1
-
-  while left < right:
-    Do some logic here depending on the problem
-    Do some more logic here to decide on one of the following:
-      1. left++
-      2. right--
-      3. Both left++ and right--
+```python
+def fn(arr):
+    left = 0
+    right = len(arr) - 1
+    
+    while left < right:
+        # choose one of the following depending on the problem:
+        # left += 1
+        # right -= 1
+        # increment left AND decrement right: left += 1 AND right -= 1
 ```
 
 <details>
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='344' type='long' ></LC> </summary>
+<summary> Determine if a string is a palindrome (not on LeetCode)</summary>
 
-```python
-class Solution:
-    def reverseString(self, s: List[str]) -> None:
-        """
-        Do not return anything, modify s in-place instead.
-        """
-        left = 0
-        right = len(s)-1
-        
-        while left < right:
-            s[left], s[right] = s[right], s[left]
-            left += 1
-            right -= 1
-            
-        return s
-```
+<Sol9NoLC />
 
 </details>
 
 <details>
-<summary> <LC id='977' type='long' ></LC> </summary>
+<summary> Determine if pair of integers sums to target in sorted array of unique integers</summary>
 
-```python
-class Solution:
-    def sortedSquares(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        ans = [0] * n
-        end_p = n-1
-        left = 0
-        right = n-1
-        
-        while left <= right:
-            left_num, right_num = nums[left], nums[right]
-            if abs(left_num) > abs(right_num):
-                ans[end_p] = left_num ** 2
-                left += 1
-            else:
-                ans[end_p] = right_num ** 2
-                right -=1
-            end_p -= 1
-        
-        return ans
-```
+<Sol10NoLC />
 
 </details>
 
 <details>
-<summary> <LC id='11' type='long' ></LC> </summary>
+<summary> <LC id='977' type='long' ></LC></summary>
 
-```python
-class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        max_area = 0
-        left = 0
-        right = len(height)-1
-        
-        while left < right:
-            container_width = right - left
-            container_height = min(height[left], height[right])
-            curr_area = container_height * container_width
-            max_area = max(curr_area, max_area)
-            
-            if height[left] < height[right]:
-                left += 1
-            else:
-                right -= 1
-        
-        return max_area
-```
+<LC977PS />
+
+---
+
+<LC977TSol />
+
+</details>
+
+<details>
+<summary> <LC id='344' type='long' ></LC></summary>
+
+<LC344PS />
+
+---
+
+<LC344TSol />
+
+</details>
+
+<details>
+<summary> <LC id='125' type='long' ></LC> </summary>
+
+<LC125PS />
+
+---
+
+<LC125TSol />
+
+</details>
+
+<details>
+<summary> <LC id='905' type='long' ></LC> </summary>
+
+<LC905PS />
+
+---
+
+<LC905TSol />
+
+</details>
+
+<details>
+<summary> <LC id='167' type='long' ></LC> </summary>
+
+<LC167PS />
+
+---
+
+<LC167TSol />
+
+</details>
+
+<details>
+<summary> <LC id='15' type='long' ></LC> </summary>
+
+<LC15PS />
+
+---
+
+<LC15TSol />
+
+</details>
+
+<details>
+<summary> <LC id='557' type='long' ></LC> </summary>
+
+<LC557PS />
+
+---
+
+<LC557TSol />
 
 </details>
 
 </details>
 
-### Two inputs (exhaust both)
+### Exhaust inputs
 
 <details>
 <summary> Remarks</summary>
 
-The following method is applicable when the problem has two iterables in the input (e.g., two arrays).
+Sometimes a problem provides two or more iterables as input. In such cases, specifically with two iterables (e.g., arrays), we can move pointers along both inputs simultaneously until all elements have been checked or *exhausted*.
 
-1. Create two pointers, one for each iterable. Each pointer should start at the first index.
-2. Use a `while` loop until one of the pointers reaches the end of its iterable.
-3. At each iteration of the loop, move at least one pointer. This means incrementing either one of the pointers or both of the pointers. Deciding which pointers to move will depend on the problem we are trying to solve.
-4. Because our `while` loop will stop when one of the pointers reaches the end, the other pointer will not be at the end when the loop finishes. Sometimes, we need to iterate through all elements &#8212; if this is the case, then you will need to write extra code here to make sure both iterables are exhausted.
-
-This method will have a linear time complexity of $O(n+m)$, where `n = arr1.length` and `m = arr2.length` if the work inside the `while` loop is $O(1)$.
+The idea is to have logic that uses *both* inputs (or more in some cases) in some fashion until one of them has been exhausted. Then logic is passed on so the other input is similarly exhausted.
 
 </details>
 
-```a title="Pseudocode (two pointers, two iterables)"
-function fn(arr1, arr2):
-  i = j = 0
-
-  while i < arr1.length AND j < arr2.length:
-    Do some logic here depending on the problem
-    Do some more logic here to decide on one of the following:
-      1. i++
-      2. j++
-      3. Both i++ and j++
-
-  // make sure both iterables are exhausted
-  while i < arr1.length:
-    Do some logic here depending on the problem
-    i++
-
-  while j < arr2.length:
-    Do some logic here depending on the problem
-    j++
+```python
+def fn(arr1, arr2):
+    i = j = 0
+    
+    while i < len(arr1) and j < len(arr2):
+        # choose one of the following depending on the problem:
+        # i += 1
+        # j += 1
+        # increment i AND j: i+= 1 and j += 1
+        
+    while i < len(arr1):
+        i += 1
+        
+    while j < len(arr2):
+        j += 1
 ```
 
 <details>
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='392' type='long' ></LC> </summary>
+<summary> Merge two sorted arrays into another sorted array</summary>
+
+<Sol11NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='392' type='long' ></LC></summary>
+
+<LC392PS />
+
+---
+
+<LC392TSol />
+
+</details>
+
+<details>
+<summary> <LC id='350' type='long' ></LC> </summary>
+
+<LC350PS />
+
+---
+
+<LC350TSol />
+
+</details>
+
+<details>
+<summary> <LC id='349' type='long' ></LC> </summary>
+
+<LC349PS />
+
+---
+
+<LC349TSol />
+
+</details>
+
+<details>
+<summary> <LC id='986' type='long' ></LC> </summary>
+
+<LC986PS />
+
+---
+
+<LC986TSol />
+
+</details>
+
+</details>
+
+### Fast and slow
+
+<details>
+<summary> Remarks</summary>
+
+The "fast and slow" template provided below is *not* for problems involving linked lists but for other commonly encountered problems where the iterable given is an array, string (array of characters), etc. The idea is that the fast pointer steadily advances while the slow pointer is only advanced in a piecemeal fashion (often after some sort of condition is met).
+
+</details>
 
 ```python
-class Solution:
-    def isSubsequence(self, s: str, t: str) -> bool:
-        LEFT_BOUND, RIGHT_BOUND = len(s), len(t)
-
-        p_left = p_right = 0
-        while p_left < LEFT_BOUND and p_right < RIGHT_BOUND:
-            # move both pointers or just the right pointer
-            if s[p_left] == t[p_right]:
-                p_left += 1
-            p_right += 1
-
-        return p_left == LEFT_BOUND
+def fn(arr):
+    slow = fast = 0
+    while fast < len(arr):
+        if CONDITION:
+            slow += 1
+        fast += 1
+    return slow
 ```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='26' type='long' ></LC> </summary>
+
+<LC26PS />
+
+---
+
+<LC26TSol />
+
+</details>
+
+<details>
+<summary> <LC id='27' type='long' ></LC> </summary>
+
+<LC27PS />
+
+---
+
+<LC27TSol />
+
+</details>
+
+<details>
+<summary> <LC id='283' type='long' ></LC> </summary>
+
+<LC283PS />
+
+---
+
+<LC283TSol />
 
 </details>
 
