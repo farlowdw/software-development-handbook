@@ -91,6 +91,7 @@ import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc
 <!-- 800 - 899 -->
 <!-- 900 - 999 -->
 import LC905TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-905.md';
+import LC917TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-917.md';
 import LC965TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-965.md';
 import LC977TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-977.md';
 import LC986TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-986.md';
@@ -108,6 +109,8 @@ import LC1845TSol from '@site/docs/_Partials/template-solutions/heaps/lc-1845.md
 
 <!-- 1900 - 1999 -->
 <!-- 2000 - 2099 -->
+import LC2000TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-2000.md';
+
 <!-- 2100 - 2199 -->
 <!-- 2200 - 2299 -->
 <!-- 2300 - 2399 -->
@@ -115,6 +118,8 @@ import LC2300TSol from '@site/docs/_Partials/template-solutions/binary-search/lc
 
 <!-- 2400 - 2499 -->
 <!-- 2500 - 2599 -->
+import LC2540TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-2540.md';
+
 <!-- 2600 - 2699 -->
 <!-- 2700 - 2799 -->
 <!-- 2800 - 2899 -->
@@ -160,6 +165,7 @@ import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
 <!-- 800 - 899 -->
 <!-- 900 - 999 -->
 import LC905PS from '@site/docs/_Partials/problem-stems/lc905.md';
+import LC917PS from '@site/docs/_Partials/problem-stems/lc917.md';
 import LC965PS from '@site/docs/_Partials/problem-stems/lc965.md';
 import LC977PS from '@site/docs/_Partials/problem-stems/lc977.md';
 import LC986PS from '@site/docs/_Partials/problem-stems/lc986.md';
@@ -177,6 +183,8 @@ import LC1845PS from '@site/docs/_Partials/problem-stems/lc1845.md';
 
 <!-- 1900 - 1999 -->
 <!-- 2000 - 2099 -->
+import LC2000PS from '@site/docs/_Partials/problem-stems/lc2000.md';
+
 <!-- 2100 - 2199 -->
 <!-- 2200 - 2299 -->
 <!-- 2300 - 2399 -->
@@ -184,6 +192,8 @@ import LC2300PS from '@site/docs/_Partials/problem-stems/lc2300.md';
 
 <!-- 2400 - 2499 -->
 <!-- 2500 - 2599 -->
+import LC2540PS from '@site/docs/_Partials/problem-stems/lc2540.md';
+
 <!-- 2600 - 2699 -->
 <!-- 2700 - 2799 -->
 <!-- 2800 - 2899 -->
@@ -2111,6 +2121,28 @@ def fn(arr):
 
 </details>
 
+<details>
+<summary> <LC id='917' type='long' ></LC> </summary>
+
+<LC917PS />
+
+---
+
+<LC917TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2000' type='long' ></LC> </summary>
+
+<LC2000PS />
+
+---
+
+<LC2000TSol />
+
+</details>
+
 </details>
 
 ### Exhaust inputs
@@ -2192,6 +2224,17 @@ def fn(arr1, arr2):
 ---
 
 <LC986TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2540' type='long' ></LC> </summary>
+
+<LC2540PS />
+
+---
+
+<LC2540TSol />
 
 </details>
 
