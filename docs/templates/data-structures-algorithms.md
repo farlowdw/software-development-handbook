@@ -55,6 +55,7 @@ import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-
 import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
 import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-74.md';
 import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
+import LC75TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-75.md';
 import LC94TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-94.md';
 import LC94TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-94.md';
 
@@ -91,6 +92,7 @@ import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc
 <!-- 800 - 899 -->
 <!-- 900 - 999 -->
 import LC905TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-905.md';
+import LC912TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-912.md';
 import LC917TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-917.md';
 import LC965TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-965.md';
 import LC977TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-977.md';
@@ -132,6 +134,7 @@ import LC15PS from '@site/docs/_Partials/problem-stems/lc15.md';
 import LC26PS from '@site/docs/_Partials/problem-stems/lc26.md';
 import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
+import LC75PS from '@site/docs/_Partials/problem-stems/lc75.md';
 import LC94PS from '@site/docs/_Partials/problem-stems/lc94.md';
 
 <!-- 100 - 199 -->
@@ -165,6 +168,7 @@ import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
 <!-- 800 - 899 -->
 <!-- 900 - 999 -->
 import LC905PS from '@site/docs/_Partials/problem-stems/lc905.md';
+import LC912PS from '@site/docs/_Partials/problem-stems/lc912.md';
 import LC917PS from '@site/docs/_Partials/problem-stems/lc917.md';
 import LC965PS from '@site/docs/_Partials/problem-stems/lc965.md';
 import LC977PS from '@site/docs/_Partials/problem-stems/lc977.md';
@@ -2078,7 +2082,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='905' type='long' ></LC> </summary>
+<summary> <LC id='905' type='long' ></LC> (&starf;)</summary>
 
 <LC905PS />
 
@@ -2140,6 +2144,28 @@ def fn(arr):
 ---
 
 <LC2000TSol />
+
+</details>
+
+<details>
+<summary> <LC id='75' type='long' ></LC> (&starf;)</summary>
+
+<LC75PS />
+
+---
+
+<LC75TSol />
+
+</details>
+
+<details>
+<summary> <LC id='912' type='long' ></LC> (&starf;)</summary>
+
+<LC912PS />
+
+---
+
+<LC912TSol />
 
 </details>
 

@@ -5,6 +5,20 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'AL2011_Puzzles',
+      title: `Algorithmic Puzzles`,
+      author: 'Anany Levitin',
+      time: '2011',
+      link: 'https://www.amazon.com/gp/product/0199740445',
+    },
+    {
+      id: 'AL2011',
+      title: `Introduction to the Design and Analysis of Algorithms (3rd Ed.)`,
+      author: 'Anany Levitin',
+      time: '2011',
+      link: 'https://www.amazon.com/Introduction-Design-Analysis-Algorithms-3rd/dp/0132316811/ref=sr_1_1',
+    },
+    {
       id: 'DM2018',
       title: `Handbook of Data Structures and Applications (2nd Ed.)`,
       author: 'Dinesh P. Mehta and Sartaj Sahni',

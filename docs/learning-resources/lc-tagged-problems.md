@@ -1595,6 +1595,10 @@ import LC from '@site/src/components/LC';
 - <LC id='3043' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
 - <LC id='3045' type='long' ></LC>
+- <LC id='3046' type='long' ></LC>
+- <LC id='3047' type='long' ></LC>
+- <LC id='3048' type='long' ></LC>
+- <LC id='3049' type='long' ></LC>
 
 ## Backtracking
 
@@ -1996,6 +2000,8 @@ import LC from '@site/src/components/LC';
 - <LC id='3006' type='long' ></LC>
 - <LC id='3007' type='long' ></LC>
 - <LC id='3008' type='long' ></LC>
+- <LC id='3048' type='long' ></LC>
+- <LC id='3049' type='long' ></LC>
 
 ## Binary Search Tree
 
@@ -2877,6 +2883,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3035' type='long' ></LC>
 - <LC id='3039' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
+- <LC id='3046' type='long' ></LC>
 
 ## Counting Sort
 
@@ -4064,6 +4071,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2719' type='long' ></LC>
 - <LC id='2741' type='long' ></LC>
 - <LC id='2742' type='long' ></LC>
+- <LC id='2745' type='long' ></LC>
 - <LC id='2746' type='long' ></LC>
 - <LC id='2750' type='long' ></LC>
 - <LC id='2767' type='long' ></LC>
@@ -4264,6 +4272,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3009' type='long' ></LC>
 - <LC id='3025' type='long' ></LC>
 - <LC id='3027' type='long' ></LC>
+- <LC id='3047' type='long' ></LC>
 
 ## Graph
 
@@ -4755,6 +4764,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3016' type='long' ></LC>
 - <LC id='3022' type='long' ></LC>
 - <LC id='3035' type='long' ></LC>
+- <LC id='3049' type='long' ></LC>
 
 ## Hash Function
 
@@ -5355,6 +5365,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3039' type='long' ></LC>
 - <LC id='3043' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
+- <LC id='3046' type='long' ></LC>
 
 ## Heap (Priority Queue)
 
@@ -6122,6 +6133,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3027' type='long' ></LC>
 - <LC id='3032' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
+- <LC id='3047' type='long' ></LC>
 
 ## Matrix
 
@@ -7825,6 +7837,7 @@ import LC from '@site/src/components/LC';
 - <LC id='71' type='long' ></LC>
 - <LC id='72' type='long' ></LC>
 - <LC id='76' type='long' ></LC>
+- <LC id='79' type='long' ></LC>
 - <LC id='87' type='long' ></LC>
 - <LC id='91' type='long' ></LC>
 - <LC id='93' type='long' ></LC>
