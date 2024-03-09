@@ -74,6 +74,7 @@ import LC145TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-145
 import LC167TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-167.md';
 
 <!-- 200 - 299 -->
+import LC209TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-209.md';
 import LC226TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-226.md';
 import LC283TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-283.md';
 
@@ -112,8 +113,12 @@ import LC1004TSol from '@site/docs/_Partials/template-solutions/sliding-window/v
 
 <!-- 1100 - 1199 -->
 <!-- 1200 - 1299 -->
+import LC1208TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-1208.md';
+
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
+import LC1456TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-1456.md';
+
 <!-- 1500 - 1599 -->
 <!-- 1600 - 1699 -->
 <!-- 1700 - 1799 -->
@@ -156,6 +161,7 @@ import LC145PS from '@site/docs/_Partials/problem-stems/lc145.md';
 import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
 
 <!-- 200 - 299 -->
+import LC209PS from '@site/docs/_Partials/problem-stems/lc209.md';
 import LC226PS from '@site/docs/_Partials/problem-stems/lc226.md';
 import LC283PS from '@site/docs/_Partials/problem-stems/lc283.md';
 
@@ -193,8 +199,12 @@ import LC1004PS from '@site/docs/_Partials/problem-stems/lc1004.md';
 
 <!-- 1100 - 1199 -->
 <!-- 1200 - 1299 -->
+import LC1208PS from '@site/docs/_Partials/problem-stems/lc1208.md';
+
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
+import LC1456PS from '@site/docs/_Partials/problem-stems/lc1456.md';
+
 <!-- 1500 - 1599 -->
 <!-- 1600 - 1699 -->
 <!-- 1700 - 1799 -->
@@ -912,6 +922,28 @@ def fn(arr):
 
 </details>
 
+<details>
+<summary> <LC id='209' type='long' ></LC> (&check;) </summary>
+
+<LC209PS />
+
+---
+
+<LC209TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1208' type='long' ></LC> (&check;) </summary>
+
+<LC1208PS />
+
+---
+
+<LC1208TSol />
+
+</details>
+
 </details>
 
 ### Fixed window size
@@ -987,6 +1019,17 @@ def fn(arr, k):
 ---
 
 <LC643TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1456' type='long' ></LC> (&check;) </summary>
+
+<LC1456PS />
+
+---
+
+<LC1456TSol />
 
 </details>
 
