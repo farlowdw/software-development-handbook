@@ -108,6 +108,8 @@ import LC977TSol from '@site/docs/_Partials/template-solutions/two-pointers/oppo
 import LC986TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-986.md';
 
 <!-- 1000 - 1099 -->
+import LC1004TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-1004.md';
+
 <!-- 1100 - 1199 -->
 <!-- 1200 - 1299 -->
 <!-- 1300 - 1399 -->
@@ -187,6 +189,8 @@ import LC977PS from '@site/docs/_Partials/problem-stems/lc977.md';
 import LC986PS from '@site/docs/_Partials/problem-stems/lc986.md';
 
 <!-- 1000 - 1099 -->
+import LC1004PS from '@site/docs/_Partials/problem-stems/lc1004.md';
+
 <!-- 1100 - 1199 -->
 <!-- 1200 - 1299 -->
 <!-- 1300 - 1399 -->
@@ -894,6 +898,17 @@ def fn(arr):
 ---
 
 <LC713TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1004' type='long' ></LC> </summary>
+
+<LC1004PS />
+
+---
+
+<LC1004TSol />
 
 </details>
 
