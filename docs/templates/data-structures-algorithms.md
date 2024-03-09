@@ -902,7 +902,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='1004' type='long' ></LC> </summary>
+<summary> <LC id='1004' type='long' ></LC> (&check;) <MyStar /></summary>
 
 <LC1004PS />
 
