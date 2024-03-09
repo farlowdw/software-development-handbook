@@ -20,6 +20,7 @@ import CodeBlock from '@theme/CodeBlock';
 import LC from '@site/src/components/LC';
 import ImageCarousel from '@site/src/components/ImageCarousel';
 import BibRef from '@site/src/components/BibRef';
+import MyStar from '@site/src/components/MyStar';
 
 <!-- TEMPLATES -->
 <!-- trees -->
@@ -47,6 +48,10 @@ import Sol8NoLC from '@site/docs/_Partials/template-solutions/trees/q8.md';
 import Sol9NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q1.md';
 import Sol10NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q2.md';
 import Sol11NoLC from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/q1.md';
+import Sol12NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/q1.md';
+import Sol13NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/q2.md';
+import Sol14NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/q1.md';
+import Sol15NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/q1.md';
 
 <!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
 <!-- 1 - 99 -->
@@ -85,8 +90,12 @@ import LC563TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-563.
 import LC557TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-557.md';
 
 <!-- 600 - 699 -->
+import LC643TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-643.md';
+import LC643TSol2 from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/lc-643.md';
+
 <!-- 700 - 799 -->
 import LC704TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-704.md';
+import LC713TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-713.md';
 import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc-746.md';
 
 <!-- 800 - 899 -->
@@ -161,8 +170,11 @@ import LC557PS from '@site/docs/_Partials/problem-stems/lc557.md';
 import LC563PS from '@site/docs/_Partials/problem-stems/lc563.md';
 
 <!-- 600 - 699 -->
+import LC643PS from '@site/docs/_Partials/problem-stems/lc643.md';
+
 <!-- 700 - 799 -->
 import LC704PS from '@site/docs/_Partials/problem-stems/lc704.md';
+import LC713PS from '@site/docs/_Partials/problem-stems/lc713.md';
 import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
 
 <!-- 800 - 899 -->
@@ -204,6 +216,16 @@ import LC2540PS from '@site/docs/_Partials/problem-stems/lc2540.md';
 <!-- 2900 - 2999 -->
 
 ## Contents
+
+:::info Exercise symbol legend
+
+| Symbol | Designation |
+| :-: | :-- |
+| &check; | This is a problem from [LeetCode's interview crash course.](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/) |
+| &malt; | This is a problem stemming from work done through [Interviewing IO](https://interviewing.io/learn). |
+| &starf; | A right-aligned &starf; (one or more) indicates my own personal designation as to the problem's relevance, importance, priority in review, etc. |
+
+:::
 
 <TOCInline 
   toc={[ ... toc.filter(({level, value}, _, arr) => ( level == 2 || level == 3) && !value.startsWith('Contents')) ]}
@@ -804,29 +826,46 @@ Note the usage of the non-strict inequality `left <= right` in the `while` loop 
 
 </details>
 
-```a title="Pseudocode (variable-width sliding window)"
-function fn(arr):
-    // initialize left boundary, window, and answer variables
+<details>
+<summary> Template with comments</summary>
+
+```python
+def fn(arr):
+    # initialize left boundary, window, and answer variables
     left = curr = ans = 0
 
-    // initialize right boundary
-    for right in [0, arr.length - 1]:
+    # initialize right boundary
+    for right in range(len(arr)):
 
-        // logic for adding element arr[right] to window
+        # logic for adding element arr[right] to window
         curr += nums[right]
 
-        // resize window if invalid
-        while left <= right AND condition from problem not met (e.g., curr > k):
+        # resize window if window condition/constraint is invalid
+        while left <= right and WINDOW_CONDITION_BROKEN # (e.g., curr > k):
             
-            // logic to remove element from window
+            # logic to remove element from window
             curr -= nums[left]
             
-            // shift window
-            left++
+            # shift window
+            left += 1
 
-        // logic to update answer
+        # logic to update answer
         ans = max(ans, right - left + 1)
     
+    return ans
+```
+
+</details>
+
+```python
+def fn(arr):
+    left = curr = ans = 0
+    for right in range(len(arr)):
+        curr += nums[right]
+        while left <= right and WINDOW_CONDITION_BROKEN # (e.g., curr > k):
+            curr -= nums[left]
+            left += 1
+        ans = max(ans, right - left + 1)
     return ans
 ```
 
@@ -834,29 +873,27 @@ function fn(arr):
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='713' type='long' ></LC> </summary>
+<summary> Longest subarray of positive integer array with sum not greater than <code>k</code> (&check;)</summary>
 
-```python
-class Solution:
-    def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
-        left = ans = 0
-        curr = 1
-        for right in range(len(nums)):
-            curr *= nums[right]
-            while left <= right and curr >= k:
-                curr //= nums[left]
-                left += 1
-            
-            ans += right - left + 1
-        
-        return ans
-```
+<Sol12NoLC />
 
-:::caution
+</details>
 
-Note that this solution only works because the product for subarrays increases as the subarray gets bigger. Additionally, this makes use of the insight/trick that the total number of subarrays contributed by any window equals the length of the window.
+<details>
+<summary> Longest substring of <code>1</code>'s given binary string and one possible <code>0</code> flip (&check;)</summary>
 
-:::
+<Sol13NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='713' type='long' ></LC> (&check;) <MyStar /></summary>
+
+<LC713PS />
+
+---
+
+<LC713TSol />
 
 </details>
 
@@ -874,19 +911,45 @@ Note that this solution only works because the product for subarrays increases a
 
 </details>
 
-```a title="Fixed sliding window (window constructed outside main loop)"
-function fn(arr, k):
-    curr = some data type to track the window
+<details>
+<summary> Template with commented code</summary>
 
-    // build the first window
-    for i in [0, k - 1]:
-        Do something with curr or other variables to build first window
+```python
+def fn(arr, k):
+    # some data to keep track of with the window (e.g., sum of elements)
+    curr = 0
 
-    ans = answer variable, might be equal to curr here depending on the problem
-    for i in [k, arr.length - 1]:
-        Add arr[i] to window
-        Remove arr[i - k] from window
-        Update ans
+    # build the first window (of size k)
+    for i in range(k):
+        # do something with curr or other variables to build first window
+        curr += arr[i]
+
+    # initialize answer variable (might be equal to curr here depending on the problem)
+    ans = curr
+    for i in range(k, len(arr)):
+        # add arr[i] to window
+        curr += arr[i]
+        # remove arr[i - k] from window
+        curr -= arr[i - k]
+        # update ans
+        ans = max(ans, curr)
+
+    return ans
+```
+
+</details>
+
+```python
+def fn(arr, k):
+    curr = 0
+    for i in range(k):
+        curr += arr[i]
+
+    ans = curr
+    for i in range(k, len(arr)):
+        curr += arr[i]
+        curr -= arr[i - k]
+        ans = max(ans, curr)
 
     return ans
 ```
@@ -895,23 +958,20 @@ function fn(arr, k):
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='643' type='long' ></LC> </summary>
+<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
 
-```python
-class Solution:
-    def findMaxAverage(self, nums: List[int], k: int) -> float:
-        curr = 0
-        for i in range(k):
-            curr += nums[i]
-            
-        ans = curr / k
-        
-        for i in range(k, len(nums)):
-            curr += nums[i] - nums[i-k]
-            ans = max(ans, curr / k)
-            
-        return ans
-```
+<Sol14NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
+
+<LC643PS />
+
+---
+
+<LC643TSol />
 
 </details>
 
@@ -928,41 +988,64 @@ class Solution:
 
 </details>
 
-```a title="Fixed sliding window (window constructed inside main loop)"
-function fn(arr, k):
-    curr = some data type to track the window
-    ans = answer variable
+<details>
+<summary> Template with code comments</summary>
+
+```python
+def fn(arr, k):
+    # some data to keep track of with the window (e.g., sum of elements)
+    curr = 0
+
+    # initialize answer variable (initial value depends on problem)
+    ans = float('-inf')
     for i in range(len(arr)):
         if i >= k:
-            Update ans
-            Remove arr[i - k] from window
-        Add arr[i] to window
+            # update ans
+            ans = max(curr, ans)
+            # remove arr[i - k] from window
+            curr -= arr[i - k]
+        
+        # add arr[i] to window
+        curr += arr[i]
 
-    Update ans    
-    return ans // Alternatively, you could do something like return max(ans, curr) 
-               // if the problem is asking for a maximum value and curr is tracking that.
+    # update ans
+    ans = max(ans, curr)
+    return ans
+```
+
+</details>
+
+```python
+def fn(arr, k):
+    curr = 0
+    ans = float('-inf')
+    for i in range(len(arr)):
+        if i >= k:
+            ans = max(curr, ans)
+            curr -= arr[i - k]
+        curr += arr[i]
+    ans = max(ans, curr)
+    return ans
 ```
 
 <details>
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='643' type='long' ></LC> </summary>
+<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
 
-```python
-class Solution:
-    def findMaxAverage(self, nums: List[int], k: int) -> float:
-        curr = 0
-        ans = float('-inf')
-        for i in range(len(nums)):
-            if i >= k:
-                ans = max(ans, curr / k)
-                curr -= nums[i-k]
-            curr += nums[i]
-            
-        ans = max(ans, curr / k)
-        return ans
-```
+<Sol15NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
+
+<LC643PS />
+
+---
+
+<LC643TSol2 />
 
 </details>
 
@@ -2035,32 +2118,21 @@ def fn(arr):
 <summary> Examples</summary>
 
 <details>
-<summary> Determine if a string is a palindrome (not on LeetCode)</summary>
+<summary> Determine if a string is a palindrome (&check;)</summary>
 
 <Sol9NoLC />
 
 </details>
 
 <details>
-<summary> Determine if pair of integers sums to target in sorted array of unique integers</summary>
+<summary> Determine if pair of integers sums to target in sorted array of unique integers (&check;)</summary>
 
 <Sol10NoLC />
 
 </details>
 
 <details>
-<summary> <LC id='977' type='long' ></LC></summary>
-
-<LC977PS />
-
----
-
-<LC977TSol />
-
-</details>
-
-<details>
-<summary> <LC id='344' type='long' ></LC></summary>
+<summary> <LC id='344' type='long' ></LC> (&check;, &malt;)</summary>
 
 <LC344PS />
 
@@ -2071,7 +2143,18 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='125' type='long' ></LC> </summary>
+<summary> <LC id='977' type='long' ></LC> (&check;)</summary>
+
+<LC977PS />
+
+---
+
+<LC977TSol />
+
+</details>
+
+<details>
+<summary> <LC id='125' type='long' ></LC> (&malt;)</summary>
 
 <LC125PS />
 
@@ -2082,7 +2165,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='905' type='long' ></LC> (&starf;)</summary>
+<summary> <LC id='905' type='long' ></LC> (&malt;) <MyStar stars={2} /> </summary>
 
 <LC905PS />
 
@@ -2093,7 +2176,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='167' type='long' ></LC> </summary>
+<summary> <LC id='167' type='long' ></LC> (&malt;)</summary>
 
 <LC167PS />
 
@@ -2104,7 +2187,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='15' type='long' ></LC> </summary>
+<summary> <LC id='15' type='long' ></LC> (&malt;)</summary>
 
 <LC15PS />
 
@@ -2115,7 +2198,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='557' type='long' ></LC> </summary>
+<summary> <LC id='557' type='long' ></LC> (&check;)</summary>
 
 <LC557PS />
 
@@ -2126,7 +2209,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='917' type='long' ></LC> </summary>
+<summary> <LC id='917' type='long' ></LC> (&check;)</summary>
 
 <LC917PS />
 
@@ -2137,7 +2220,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='2000' type='long' ></LC> </summary>
+<summary> <LC id='2000' type='long' ></LC> (&check;)</summary>
 
 <LC2000PS />
 
@@ -2148,7 +2231,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='75' type='long' ></LC> (&starf;)</summary>
+<summary> <LC id='75' type='long' ></LC> (&malt;) <MyStar stars={2} /></summary>
 
 <LC75PS />
 
@@ -2159,7 +2242,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='912' type='long' ></LC> (&starf;)</summary>
+<summary> <LC id='912' type='long' ></LC> (&malt;) <MyStar stars={2} /></summary>
 
 <LC912PS />
 
@@ -2203,14 +2286,14 @@ def fn(arr1, arr2):
 <summary> Examples</summary>
 
 <details>
-<summary> Merge two sorted arrays into another sorted array</summary>
+<summary> Merge two sorted arrays into another sorted array (&check;)</summary>
 
 <Sol11NoLC />
 
 </details>
 
 <details>
-<summary> <LC id='392' type='long' ></LC></summary>
+<summary> <LC id='392' type='long' ></LC> (&check;)</summary>
 
 <LC392PS />
 
@@ -2221,7 +2304,7 @@ def fn(arr1, arr2):
 </details>
 
 <details>
-<summary> <LC id='350' type='long' ></LC> </summary>
+<summary> <LC id='350' type='long' ></LC> (&malt;)</summary>
 
 <LC350PS />
 
@@ -2232,7 +2315,7 @@ def fn(arr1, arr2):
 </details>
 
 <details>
-<summary> <LC id='349' type='long' ></LC> </summary>
+<summary> <LC id='349' type='long' ></LC> (&malt;)</summary>
 
 <LC349PS />
 
@@ -2243,7 +2326,7 @@ def fn(arr1, arr2):
 </details>
 
 <details>
-<summary> <LC id='986' type='long' ></LC> </summary>
+<summary> <LC id='986' type='long' ></LC> (&malt;)</summary>
 
 <LC986PS />
 
@@ -2254,7 +2337,7 @@ def fn(arr1, arr2):
 </details>
 
 <details>
-<summary> <LC id='2540' type='long' ></LC> </summary>
+<summary> <LC id='2540' type='long' ></LC> (&check;)</summary>
 
 <LC2540PS />
 
@@ -2289,7 +2372,7 @@ def fn(arr):
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='26' type='long' ></LC> </summary>
+<summary> <LC id='26' type='long' ></LC> (&malt;)</summary>
 
 <LC26PS />
 
@@ -2300,7 +2383,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='27' type='long' ></LC> </summary>
+<summary> <LC id='27' type='long' ></LC> (&malt;)</summary>
 
 <LC27PS />
 
@@ -2311,7 +2394,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='283' type='long' ></LC> </summary>
+<summary> <LC id='283' type='long' ></LC> (&check;, &malt;)</summary>
 
 <LC283PS />
 
