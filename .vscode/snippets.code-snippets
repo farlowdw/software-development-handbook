@@ -167,7 +167,7 @@
     "prefix": "lctempsol",
     "body": [
       "<details>",
-      "<summary> <LC id='$1' type='long' ></LC> </summary>",
+      "<summary> <LC id='$1' type='long' ></LC> (&check;) </summary>",
       "",
       "$0import LC$1TSol from '@site/docs/_Partials/template-solutions/${2:category}/lc-$1.md';",
       "import LC$1PS from '@site/docs/_Partials/problem-stems/lc$1.md';",
@@ -186,7 +186,7 @@
     "prefix": "lctempsol-nonlc",
     "body": [
       "<details>",
-      "<summary> ${4:problemTitle} </summary>",
+      "<summary> ${4:problemTitle} (&check;) </summary>",
       "",
       "import Sol$1NoLC from '@site/docs/_Partials/template-solutions/${2:nolc-category}/q$3.md';",
       "",

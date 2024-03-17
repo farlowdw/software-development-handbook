@@ -52,9 +52,11 @@ import Sol12NoLC from '@site/docs/_Partials/template-solutions/sliding-window/va
 import Sol13NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/q2.md';
 import Sol14NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/q1.md';
 import Sol15NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/q1.md';
+import Sol16NoLC from '@site/docs/_Partials/template-solutions/misc/prefix-sum/q1.md';
 
 <!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
 <!-- 1 - 99 -->
+import LC1TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1.md';
 import LC15TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-15.md';
 import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-26.md';
 import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
@@ -75,10 +77,13 @@ import LC167TSol from '@site/docs/_Partials/template-solutions/two-pointers/oppo
 
 <!-- 200 - 299 -->
 import LC209TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-209.md';
+import LC217TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-217.md';
 import LC226TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-226.md';
+import LC268TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-268.md';
 import LC283TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-283.md';
 
 <!-- 300 - 399 -->
+import LC303TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-303.md';
 import LC344TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-344.md';
 import LC349TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-349.md';
 import LC350TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-350.md';
@@ -97,6 +102,7 @@ import LC643TSol2 from '@site/docs/_Partials/template-solutions/sliding-window/f
 <!-- 700 - 799 -->
 import LC704TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-704.md';
 import LC713TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-713.md';
+import LC724TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-724.md';
 import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc-746.md';
 
 <!-- 800 - 899 -->
@@ -117,22 +123,34 @@ import LC1208TSol from '@site/docs/_Partials/template-solutions/sliding-window/v
 
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
+import LC1413TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1413.md';
+import LC1426TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1426.md';
+import LC1436TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1436.md';
 import LC1456TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-1456.md';
+import LC1480TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1480.md';
+import LC1496TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1496.md';
 
 <!-- 1500 - 1599 -->
 <!-- 1600 - 1699 -->
 <!-- 1700 - 1799 -->
+import LC1732TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1732.md';
+
 <!-- 1800 - 1899 -->
+import LC1832TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1832.md';
 import LC1845TSol from '@site/docs/_Partials/template-solutions/heaps/lc-1845.md';
 
 <!-- 1900 - 1999 -->
 <!-- 2000 - 2099 -->
 import LC2000TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-2000.md';
+import LC2090TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-2090.md';
 
 <!-- 2100 - 2199 -->
 <!-- 2200 - 2299 -->
+import LC2270TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-2270.md';
+
 <!-- 2300 - 2399 -->
 import LC2300TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-2300.md';
+import LC2351TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-2351.md';
 
 <!-- 2400 - 2499 -->
 <!-- 2500 - 2599 -->
@@ -146,6 +164,7 @@ import LC2540TSol from '@site/docs/_Partials/template-solutions/two-pointers/exh
 
 <!-- PROBLEM STEMS -->
 <!-- 1 - 99 -->
+import LC1PS from '@site/docs/_Partials/problem-stems/lc1.md';
 import LC15PS from '@site/docs/_Partials/problem-stems/lc15.md';
 import LC26PS from '@site/docs/_Partials/problem-stems/lc26.md';
 import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
@@ -162,10 +181,13 @@ import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
 
 <!-- 200 - 299 -->
 import LC209PS from '@site/docs/_Partials/problem-stems/lc209.md';
+import LC217PS from '@site/docs/_Partials/problem-stems/lc217.md';
 import LC226PS from '@site/docs/_Partials/problem-stems/lc226.md';
+import LC268PS from '@site/docs/_Partials/problem-stems/lc268.md';
 import LC283PS from '@site/docs/_Partials/problem-stems/lc283.md';
 
 <!-- 300 - 399 -->
+import LC303PS from '@site/docs/_Partials/problem-stems/lc303.md';
 import LC344PS from '@site/docs/_Partials/problem-stems/lc344.md';
 import LC349PS from '@site/docs/_Partials/problem-stems/lc349.md';
 import LC350PS from '@site/docs/_Partials/problem-stems/lc350.md';
@@ -183,6 +205,7 @@ import LC643PS from '@site/docs/_Partials/problem-stems/lc643.md';
 <!-- 700 - 799 -->
 import LC704PS from '@site/docs/_Partials/problem-stems/lc704.md';
 import LC713PS from '@site/docs/_Partials/problem-stems/lc713.md';
+import LC724PS from '@site/docs/_Partials/problem-stems/lc724.md';
 import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
 
 <!-- 800 - 899 -->
@@ -203,22 +226,34 @@ import LC1208PS from '@site/docs/_Partials/problem-stems/lc1208.md';
 
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
+import LC1413PS from '@site/docs/_Partials/problem-stems/lc1413.md';
+import LC1426PS from '@site/docs/_Partials/problem-stems/lc1426.md';
+import LC1436PS from '@site/docs/_Partials/problem-stems/lc1436.md';
 import LC1456PS from '@site/docs/_Partials/problem-stems/lc1456.md';
+import LC1480PS from '@site/docs/_Partials/problem-stems/lc1480.md';
+import LC1496PS from '@site/docs/_Partials/problem-stems/lc1496.md';
 
 <!-- 1500 - 1599 -->
 <!-- 1600 - 1699 -->
 <!-- 1700 - 1799 -->
+import LC1732PS from '@site/docs/_Partials/problem-stems/lc1732.md';
+
 <!-- 1800 - 1899 -->
+import LC1832PS from '@site/docs/_Partials/problem-stems/lc1832.md';
 import LC1845PS from '@site/docs/_Partials/problem-stems/lc1845.md';
 
 <!-- 1900 - 1999 -->
 <!-- 2000 - 2099 -->
 import LC2000PS from '@site/docs/_Partials/problem-stems/lc2000.md';
+import LC2090PS from '@site/docs/_Partials/problem-stems/lc2090.md';
 
 <!-- 2100 - 2199 -->
 <!-- 2200 - 2299 -->
+import LC2270PS from '@site/docs/_Partials/problem-stems/lc2270.md';
+
 <!-- 2300 - 2399 -->
 import LC2300PS from '@site/docs/_Partials/problem-stems/lc2300.md';
+import LC2351PS from '@site/docs/_Partials/problem-stems/lc2351.md';
 
 <!-- 2400 - 2499 -->
 <!-- 2500 - 2599 -->
@@ -2488,6 +2523,142 @@ TBD
 
 ### Dijkstra's algorithm
 
+### Hashing (and sets)
+
+#### Checking for existence
+
+<details>
+<summary> Remarks</summary>
+
+This is where hash maps (and sets) really shine. Checking whether or not an element exists in a hash table is an $O(1)$ operation. Checking for existence in an array, however, is an $O(n)$ operation. This means a number of algorithms can often be improved from $O(n^2)$ to $O(n)$ by using a hash map instead of an array to check for existence.
+
+</details>
+
+```python
+lookup = {}
+if key in lookup:   # existence check is O(1) for hash maps
+    # ...
+```
+
+```python
+seen = set()
+if el in seen:      # existence check is O(1) for sets
+      # ...
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='1' type='long' ></LC> (&check;) </summary>
+
+<LC1PS />
+
+---
+
+<LC1TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2351' type='long' ></LC> (&check;) </summary>
+
+<LC2351PS />
+
+---
+
+<LC2351TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1832' type='long' ></LC> (&check;) </summary>
+
+<LC1832PS />
+
+---
+
+<LC1832TSol />
+
+</details>
+
+<details>
+<summary> <LC id='268' type='long' ></LC> (&check;) </summary>
+
+<LC268PS />
+
+---
+
+<LC268TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1426' type='long' ></LC> (&check;) </summary>
+
+<LC1426PS />
+
+---
+
+<LC1426TSol />
+
+</details>
+
+<details>
+<summary> <LC id='217' type='long' ></LC> (&check;) </summary>
+
+<LC217PS />
+
+---
+
+<LC217TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1436' type='long' ></LC> (&check;) </summary>
+
+<LC1436PS />
+
+---
+
+<LC1436TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1496' type='long' ></LC> (&check;) </summary>
+
+<LC1496PS />
+
+---
+
+<LC1496TSol />
+
+</details>
+
+</details>
+
+#### Counting
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+TBD
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
 ### Monotonic increasing stack
 
 <details>
@@ -2513,72 +2684,147 @@ TBD
 <details>
 <summary> Remarks</summary>
 
-A [prefix sum](https://en.wikipedia.org/wiki/Prefix_sum) is a technique that can be used with numeric arrays (i.e., arrays whose elements are numbers such as floats or integers). The idea is to create an array `prefix` where `prefix[i]` is the sum of all elements up to the index `i` (**inclusive**). For example, given `nums = [5, 2, 1, 6, 3, 8]`, we would have `prefix = [5, 7, 8, 14, 17, 25]`.
+A [prefix sum](https://en.wikipedia.org/wiki/Prefix_sum), in its conventional sense (i.e., a "sum"), is effectively a *running total* of the input sequence. For example, the input sequence `1, 2, 3, 4, 5, 6, ...` has `1, 3, 6, 10, 15, 21` as its prefix sum. This idea can be very useful when dealing with problems where finding sums of subarrays happens frequently. The idea is to perform an $O(n)$ pre-processing operation at the beginning that allows summation queries to be answered in $O(1)$ time (i.e., as opposed to each summation query taking $O(n)$ time). Building the prefix sum can take $O(n)$ or $O(1)$ space depending on whether or not the input array itself is transformed or "mutated" into a prefix sum.
 
-Prefix sums allow us to find the sum of any subarray in $O(1)$. If we want the sum of the subarray from `i` to `j` (**inclusive**), then the answer is `prefix[j] - prefix[i - 1]`, or `prefix[j] - prefix[i] + nums[i]` if you don't want to deal with the out of bounds case when `i = 0` (i.e., when you need a subarray sum where the subarray has as its left endpoint the left endpoint of the parent array).
-
-A prefix sum is a great tool whenever a problem involves sums of a subarray. It only costs $O(n)$ to build but allows all future subarray queries to be $O(1)$, so it can usually improve an algorithm's time complexity by a factor of $O(n)$, where $n$ is the length of the array.
-
-Here is a simple implementation of building a prefix sum array in Python, as outlined in the block of pseudocode below:
+The $O(n)$ non-mutation approach occurs most frequently:
 
 ```python
-def create_prefix_array(self, nums):
-    prefix_array = [nums[0]]
-    for i in range(1,len(nums)):
-        prefix_array.append(nums[i] + prefix_array[-1])
+def prefix_sum(nums):
+    prefix = [nums[0]]
+    for i in range(1, len(nums)):
+        prefix.append(nums[i] + prefix[-1])
         
-    return prefix_array
+    return prefix
 ```
+
+Its $O(1)$ mutation variant is arguably simpler to implement:
+
+```python
+def prefix_sum_inplace(nums):
+    for i in range(1, len(nums)):
+        nums[i] = nums[i] + nums[i - 1]
+```
+
+In practice, we often need to find the sum of a subarray between indices `i` and `j`, where `i < j`. If `prefix` is our prefix sum, and `nums` is the input sequence, then such a sum may be found by computing the following:
+
+```python
+prefix[j] - prefix[i] + nums[i]
+```
+
+Sometimes people will use `prefix[j] - prefix[i - 1]` instead of `prefix[j] - prefix[i] + nums[i]`, and that is fine except for the boundary case where `i = 0`. It's often safest to explicitly handle the inclusive nature of prefix sums as done above.
+
+Another approach is to initialize the prefix array as `[0, nums[0]]`, which means the sum of the subarray between `i` and `j` is no longer `prefix[j] - prefix[i - 1]` but `prefix[j + 1] - prefix[i]`, which thus eliminates the left endpoint boundary issue. There's also no right endpoint boundary issue because if `j` is the rightmost endpoint, then `j + 1` is simply the right endpoint of the prefix sum array (because it's been extended by a single element, the prepended `0`).
+
+Regardless, the approach `prefix[j] - prefix[i] + nums[i]` is still probably the *clearest*.
 
 </details>
 
-```a title="Pseudocode (building a prefix sum)"
-Given: nums, an array with numeric values
+<details>
+<summary> Prefix sums that are not "sums"</summary>
 
-prefix = [nums[0]]
-for i in [1, len(nums) - 1]:
-    prefix.append(nums[i] + prefix[prefix.length - 1])
+As noted in [the wiki article](https://en.wikipedia.org/wiki/Prefix_sum), a prefix sum requires only a binary associative operator. The operator does not have to be `+`, the addition operation. The operator could just as well be `x`, the multiplication operator.
+
+</details>
+
+```python
+def prefix_sum(nums):
+    prefix = [nums[0]]
+    for i in range(1, len(nums)):
+        prefix.append(nums[i] + prefix[-1])
+        
+    return prefix
 ```
 
 <details>
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='2270' type='long' ></LC> </summary>
+<summary> Boolean results of queries (see problem statement below) (&check;) </summary>
 
-```python
-class Solution:
-    def waysToSplitArray(self, nums: List[int]) -> int:
-        prefix = [nums[0]]
-        for i in range(1, len(nums)):
-            prefix.append(nums[i] + prefix[-1])
+> **Problem:** Given an integer array `nums`, an array `queries` where `queries[i] = [x, y]` and an integer `limit`, return a boolean array that represents the answer to each query. A query is `true` if the sum of the subarray from `x` to `y` is less than `limit`, or `false` otherwise.
+>
+> For example, given `nums = [1, 6, 3, 2, 7, 2]`, `queries = [[0, 3], [2, 5], [2, 4]]`, and `limit = 13`, the answer is `[true, false, true]`. For each query, the subarray sums are `[12, 14, 12]`.
 
-        ans = 0
-        for i in range(len(nums) - 1):
-            left_part = prefix[i]
-            right_part = prefix[-1] - prefix[i]
-            if left_part >= right_part:
-                ans += 1
+---
 
-        return ans
-```
+<Sol16NoLC />
 
-Or use the *idea* of a prefix sum but exploit the problem constraints to only use $O(1)$ space:
+</details>
 
-```python
-class Solution:
-    def waysToSplitArray(self, nums: List[int]) -> int:
-        ans = left_part = 0
-        total = sum(nums)
+<details>
+<summary> <LC id='2270' type='long' ></LC> (&check;) </summary>
 
-        for i in range(len(nums) - 1):
-            left_part += nums[i]
-            right_part = total - left_part
-            if left_part >= right_part:
-                ans += 1
+<LC2270PS />
 
-        return ans
-```
+---
+
+<LC2270TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1480' type='long' ></LC> (&check;) </summary>
+
+<LC1480PS />
+
+---
+
+<LC1480TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1413' type='long' ></LC> (&check;) <MyStar /> </summary>
+
+<LC1413PS />
+
+---
+
+<LC1413TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2090' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC2090PS />
+
+---
+
+<LC2090TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1732' type='long' ></LC> (&check;) </summary>
+
+<LC1732PS />
+
+---
+
+<LC1732TSol />
+
+</details>
+
+<details>
+<summary> <LC id='724' type='long' ></LC> (&check;) </summary>
+
+<LC724PS />
+
+---
+
+<LC724TSol />
+
+</details>
+
+<details>
+<summary> <LC id='303' type='long' ></LC> (&check;) </summary>
+
+<LC303PS />
+
+---
+
+<LC303TSol />
 
 </details>
 
