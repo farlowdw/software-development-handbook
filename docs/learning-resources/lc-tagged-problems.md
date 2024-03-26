@@ -624,6 +624,7 @@ import LC from '@site/src/components/LC';
 - <LC id='1267' type='long' ></LC>
 - <LC id='1268' type='long' ></LC>
 - <LC id='1272' type='long' ></LC>
+- <LC id='1273' type='long' ></LC>
 - <LC id='1274' type='long' ></LC>
 - <LC id='1275' type='long' ></LC>
 - <LC id='1277' type='long' ></LC>
@@ -1599,6 +1600,24 @@ import LC from '@site/src/components/LC';
 - <LC id='3047' type='long' ></LC>
 - <LC id='3048' type='long' ></LC>
 - <LC id='3049' type='long' ></LC>
+- <LC id='3065' type='long' ></LC>
+- <LC id='3066' type='long' ></LC>
+- <LC id='3067' type='long' ></LC>
+- <LC id='3068' type='long' ></LC>
+- <LC id='3069' type='long' ></LC>
+- <LC id='3070' type='long' ></LC>
+- <LC id='3071' type='long' ></LC>
+- <LC id='3072' type='long' ></LC>
+- <LC id='3073' type='long' ></LC>
+- <LC id='3074' type='long' ></LC>
+- <LC id='3075' type='long' ></LC>
+- <LC id='3076' type='long' ></LC>
+- <LC id='3077' type='long' ></LC>
+- <LC id='3078' type='long' ></LC>
+- <LC id='3079' type='long' ></LC>
+- <LC id='3080' type='long' ></LC>
+- <LC id='3082' type='long' ></LC>
+- <LC id='3086' type='long' ></LC>
 
 ## Backtracking
 
@@ -1735,7 +1754,6 @@ import LC from '@site/src/components/LC';
 - <LC id='2426' type='long' ></LC>
 - <LC id='2519' type='long' ></LC>
 - <LC id='2552' type='long' ></LC>
-- <LC id='2617' type='long' ></LC>
 - <LC id='2659' type='long' ></LC>
 - <LC id='2736' type='long' ></LC>
 - <LC id='2907' type='long' ></LC>
@@ -1744,6 +1762,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2926' type='long' ></LC>
 - <LC id='2940' type='long' ></LC>
 - <LC id='3009' type='long' ></LC>
+- <LC id='3072' type='long' ></LC>
 
 ## Binary Search
 
@@ -1970,7 +1989,6 @@ import LC from '@site/src/components/LC';
 - <LC id='2602' type='long' ></LC>
 - <LC id='2604' type='long' ></LC>
 - <LC id='2616' type='long' ></LC>
-- <LC id='2617' type='long' ></LC>
 - <LC id='2659' type='long' ></LC>
 - <LC id='2702' type='long' ></LC>
 - <LC id='2713' type='long' ></LC>
@@ -2289,6 +2307,7 @@ import LC from '@site/src/components/LC';
 - <LC id='995' type='long' ></LC>
 - <LC id='996' type='long' ></LC>
 - <LC id='1009' type='long' ></LC>
+- <LC id='1018' type='long' ></LC>
 - <LC id='1066' type='long' ></LC>
 - <LC id='1125' type='long' ></LC>
 - <LC id='1177' type='long' ></LC>
@@ -2417,6 +2436,8 @@ import LC from '@site/src/components/LC';
 - <LC id='3007' type='long' ></LC>
 - <LC id='3011' type='long' ></LC>
 - <LC id='3022' type='long' ></LC>
+- <LC id='3064' type='long' ></LC>
+- <LC id='3068' type='long' ></LC>
 
 ## Bitmask
 
@@ -2700,6 +2721,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2596' type='long' ></LC>
 - <LC id='2608' type='long' ></LC>
 - <LC id='2612' type='long' ></LC>
+- <LC id='2617' type='long' ></LC>
 - <LC id='2641' type='long' ></LC>
 - <LC id='2658' type='long' ></LC>
 - <LC id='2685' type='long' ></LC>
@@ -2884,6 +2906,11 @@ import LC from '@site/src/components/LC';
 - <LC id='3039' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
 - <LC id='3046' type='long' ></LC>
+- <LC id='3063' type='long' ></LC>
+- <LC id='3071' type='long' ></LC>
+- <LC id='3081' type='long' ></LC>
+- <LC id='3084' type='long' ></LC>
+- <LC id='3085' type='long' ></LC>
 
 ## Counting Sort
 
@@ -3165,6 +3192,18 @@ import LC from '@site/src/components/LC';
 - <LC id='2993' type='long' ></LC>
 - <LC id='2994' type='long' ></LC>
 - <LC id='2995' type='long' ></LC>
+- <LC id='3050' type='long' ></LC>
+- <LC id='3051' type='long' ></LC>
+- <LC id='3052' type='long' ></LC>
+- <LC id='3053' type='long' ></LC>
+- <LC id='3054' type='long' ></LC>
+- <LC id='3055' type='long' ></LC>
+- <LC id='3056' type='long' ></LC>
+- <LC id='3057' type='long' ></LC>
+- <LC id='3058' type='long' ></LC>
+- <LC id='3059' type='long' ></LC>
+- <LC id='3060' type='long' ></LC>
+- <LC id='3061' type='long' ></LC>
 
 ## Depth-First Search
 
@@ -3454,6 +3493,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2925' type='long' ></LC>
 - <LC id='2973' type='long' ></LC>
 - <LC id='3004' type='long' ></LC>
+- <LC id='3067' type='long' ></LC>
 
 ## Design
 
@@ -4123,6 +4163,9 @@ import LC from '@site/src/components/LC';
 - <LC id='3032' type='long' ></LC>
 - <LC id='3040' type='long' ></LC>
 - <LC id='3041' type='long' ></LC>
+- <LC id='3068' type='long' ></LC>
+- <LC id='3077' type='long' ></LC>
+- <LC id='3082' type='long' ></LC>
 
 ## Enumeration
 
@@ -4765,6 +4808,12 @@ import LC from '@site/src/components/LC';
 - <LC id='3022' type='long' ></LC>
 - <LC id='3035' type='long' ></LC>
 - <LC id='3049' type='long' ></LC>
+- <LC id='3068' type='long' ></LC>
+- <LC id='3074' type='long' ></LC>
+- <LC id='3075' type='long' ></LC>
+- <LC id='3081' type='long' ></LC>
+- <LC id='3085' type='long' ></LC>
+- <LC id='3086' type='long' ></LC>
 
 ## Hash Function
 
@@ -4962,6 +5011,7 @@ import LC from '@site/src/components/LC';
 - <LC id='823' type='long' ></LC>
 - <LC id='828' type='long' ></LC>
 - <LC id='839' type='long' ></LC>
+- <LC id='840' type='long' ></LC>
 - <LC id='846' type='long' ></LC>
 - <LC id='859' type='long' ></LC>
 - <LC id='865' type='long' ></LC>
@@ -5366,6 +5416,14 @@ import LC from '@site/src/components/LC';
 - <LC id='3043' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
 - <LC id='3046' type='long' ></LC>
+- <LC id='3063' type='long' ></LC>
+- <LC id='3071' type='long' ></LC>
+- <LC id='3076' type='long' ></LC>
+- <LC id='3078' type='long' ></LC>
+- <LC id='3080' type='long' ></LC>
+- <LC id='3081' type='long' ></LC>
+- <LC id='3083' type='long' ></LC>
+- <LC id='3085' type='long' ></LC>
 
 ## Heap (Priority Queue)
 
@@ -5512,6 +5570,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2593' type='long' ></LC>
 - <LC id='2599' type='long' ></LC>
 - <LC id='2611' type='long' ></LC>
+- <LC id='2617' type='long' ></LC>
 - <LC id='2642' type='long' ></LC>
 - <LC id='2662' type='long' ></LC>
 - <LC id='2679' type='long' ></LC>
@@ -5528,6 +5587,10 @@ import LC from '@site/src/components/LC';
 - <LC id='2973' type='long' ></LC>
 - <LC id='2974' type='long' ></LC>
 - <LC id='3013' type='long' ></LC>
+- <LC id='3049' type='long' ></LC>
+- <LC id='3066' type='long' ></LC>
+- <LC id='3080' type='long' ></LC>
+- <LC id='3081' type='long' ></LC>
 
 ## Interactive
 
@@ -5551,6 +5614,8 @@ import LC from '@site/src/components/LC';
 - <LC id='1810' type='long' ></LC>
 - <LC id='2728' type='long' ></LC>
 - <LC id='2782' type='long' ></LC>
+- <LC id='2936' type='long' ></LC>
+- <LC id='3064' type='long' ></LC>
 
 ## Iterator
 
@@ -5646,6 +5711,8 @@ import LC from '@site/src/components/LC';
 - <LC id='2674' type='long' ></LC>
 - <LC id='2807' type='long' ></LC>
 - <LC id='2816' type='long' ></LC>
+- <LC id='3062' type='long' ></LC>
+- <LC id='3063' type='long' ></LC>
 
 ## Math
 
@@ -6134,6 +6201,8 @@ import LC from '@site/src/components/LC';
 - <LC id='3032' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
 - <LC id='3047' type='long' ></LC>
+- <LC id='3079' type='long' ></LC>
+- <LC id='3084' type='long' ></LC>
 
 ## Matrix
 
@@ -6293,7 +6362,6 @@ import LC from '@site/src/components/LC';
 - <LC id='2022' type='long' ></LC>
 - <LC id='2033' type='long' ></LC>
 - <LC id='2061' type='long' ></LC>
-- <LC id='2087' type='long' ></LC>
 - <LC id='2088' type='long' ></LC>
 - <LC id='2123' type='long' ></LC>
 - <LC id='2125' type='long' ></LC>
@@ -6331,6 +6399,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2577' type='long' ></LC>
 - <LC id='2596' type='long' ></LC>
 - <LC id='2614' type='long' ></LC>
+- <LC id='2617' type='long' ></LC>
 - <LC id='2639' type='long' ></LC>
 - <LC id='2643' type='long' ></LC>
 - <LC id='2658' type='long' ></LC>
@@ -6353,6 +6422,9 @@ import LC from '@site/src/components/LC';
 - <LC id='3030' type='long' ></LC>
 - <LC id='3033' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
+- <LC id='3070' type='long' ></LC>
+- <LC id='3071' type='long' ></LC>
+- <LC id='3078' type='long' ></LC>
 
 ## Memoization
 
@@ -6485,6 +6557,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2355' type='long' ></LC>
 - <LC id='2454' type='long' ></LC>
 - <LC id='2487' type='long' ></LC>
+- <LC id='2617' type='long' ></LC>
 - <LC id='2736' type='long' ></LC>
 - <LC id='2818' type='long' ></LC>
 - <LC id='2832' type='long' ></LC>
@@ -6604,6 +6677,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2762' type='long' ></LC>
 - <LC id='2763' type='long' ></LC>
 - <LC id='2817' type='long' ></LC>
+- <LC id='3073' type='long' ></LC>
 
 ## Prefix Sum
 
@@ -6757,6 +6831,9 @@ import LC from '@site/src/components/LC';
 - <LC id='3017' type='long' ></LC>
 - <LC id='3026' type='long' ></LC>
 - <LC id='3028' type='long' ></LC>
+- <LC id='3070' type='long' ></LC>
+- <LC id='3077' type='long' ></LC>
+- <LC id='3086' type='long' ></LC>
 
 ## Probability and Statistics
 
@@ -6970,7 +7047,6 @@ import LC from '@site/src/components/LC';
 - <LC id='2426' type='long' ></LC>
 - <LC id='2519' type='long' ></LC>
 - <LC id='2569' type='long' ></LC>
-- <LC id='2617' type='long' ></LC>
 - <LC id='2659' type='long' ></LC>
 - <LC id='2736' type='long' ></LC>
 - <LC id='2907' type='long' ></LC>
@@ -6978,6 +7054,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2921' type='long' ></LC>
 - <LC id='2926' type='long' ></LC>
 - <LC id='2940' type='long' ></LC>
+- <LC id='3072' type='long' ></LC>
 
 ## Shell
 
@@ -7159,6 +7236,10 @@ import LC from '@site/src/components/LC';
 - <LC id='2974' type='long' ></LC>
 - <LC id='3028' type='long' ></LC>
 - <LC id='3038' type='long' ></LC>
+- <LC id='3066' type='long' ></LC>
+- <LC id='3069' type='long' ></LC>
+- <LC id='3072' type='long' ></LC>
+- <LC id='3080' type='long' ></LC>
 
 ## Sliding Window
 
@@ -7273,6 +7354,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3013' type='long' ></LC>
 - <LC id='3023' type='long' ></LC>
 - <LC id='3037' type='long' ></LC>
+- <LC id='3086' type='long' ></LC>
 
 ## Sorting
 
@@ -7655,6 +7737,12 @@ import LC from '@site/src/components/LC';
 - <LC id='3035' type='long' ></LC>
 - <LC id='3039' type='long' ></LC>
 - <LC id='3041' type='long' ></LC>
+- <LC id='3068' type='long' ></LC>
+- <LC id='3074' type='long' ></LC>
+- <LC id='3075' type='long' ></LC>
+- <LC id='3080' type='long' ></LC>
+- <LC id='3081' type='long' ></LC>
+- <LC id='3085' type='long' ></LC>
 
 ## Stack
 
@@ -8453,7 +8541,6 @@ import LC from '@site/src/components/LC';
 - <LC id='2864' type='long' ></LC>
 - <LC id='2868' type='long' ></LC>
 - <LC id='2896' type='long' ></LC>
-- <LC id='2899' type='long' ></LC>
 - <LC id='2900' type='long' ></LC>
 - <LC id='2901' type='long' ></LC>
 - <LC id='2904' type='long' ></LC>
@@ -8487,6 +8574,12 @@ import LC from '@site/src/components/LC';
 - <LC id='3042' type='long' ></LC>
 - <LC id='3043' type='long' ></LC>
 - <LC id='3045' type='long' ></LC>
+- <LC id='3076' type='long' ></LC>
+- <LC id='3078' type='long' ></LC>
+- <LC id='3081' type='long' ></LC>
+- <LC id='3083' type='long' ></LC>
+- <LC id='3084' type='long' ></LC>
+- <LC id='3085' type='long' ></LC>
 
 ## String Matching
 
@@ -8798,6 +8891,8 @@ import LC from '@site/src/components/LC';
 - <LC id='2925' type='long' ></LC>
 - <LC id='2973' type='long' ></LC>
 - <LC id='3004' type='long' ></LC>
+- <LC id='3067' type='long' ></LC>
+- <LC id='3068' type='long' ></LC>
 
 ## Trie
 
@@ -8852,6 +8947,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3042' type='long' ></LC>
 - <LC id='3043' type='long' ></LC>
 - <LC id='3045' type='long' ></LC>
+- <LC id='3076' type='long' ></LC>
 
 ## Two Pointers
 

@@ -36,6 +36,9 @@ import PostorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/tr
 import InorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/trees/inorder-iterative-analogy.md';
 import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-snippets/trees/combining-induction-and-tac-templates.md';
 
+<!-- TEMPLATE REMARKS -->
+import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
+
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/q1.md';
 import Sol2NoLC from '@site/docs/_Partials/template-solutions/trees/q2.md';
@@ -53,13 +56,16 @@ import Sol13NoLC from '@site/docs/_Partials/template-solutions/sliding-window/va
 import Sol14NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/q1.md';
 import Sol15NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/q1.md';
 import Sol16NoLC from '@site/docs/_Partials/template-solutions/misc/prefix-sum/q1.md';
+import Sol17NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/counting/q1.md';
 
 <!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
 <!-- 1 - 99 -->
 import LC1TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1.md';
+import LC3TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3.md';
 import LC15TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-15.md';
 import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-26.md';
 import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
+import LC49TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-49.md';
 import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-74.md';
 import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
 import LC75TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-75.md';
@@ -76,24 +82,29 @@ import LC145TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-145
 import LC167TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-167.md';
 
 <!-- 200 - 299 -->
+import LC205TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-205.md';
 import LC209TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-209.md';
 import LC217TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-217.md';
 import LC226TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-226.md';
 import LC268TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-268.md';
 import LC283TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-283.md';
+import LC290TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-290.md';
 
 <!-- 300 - 399 -->
 import LC303TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-303.md';
 import LC344TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-344.md';
 import LC349TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-349.md';
 import LC350TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-350.md';
+import LC383TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-383.md';
 import LC392TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-392.md';
 
 <!-- 400 - 499 -->
 <!-- 500 - 599 -->
+import LC525TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-525.md';
 import LC543TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-543.md';
-import LC563TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-563.md';
 import LC557TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-557.md';
+import LC560TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-560.md';
+import LC563TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-563.md';
 
 <!-- 600 - 699 -->
 import LC643TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-643.md';
@@ -104,6 +115,8 @@ import LC704TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-
 import LC713TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-713.md';
 import LC724TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-724.md';
 import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc-746.md';
+import LC771TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-771.md';
+import LC791TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-791.md';
 
 <!-- 800 - 899 -->
 <!-- 900 - 999 -->
@@ -118,8 +131,12 @@ import LC986TSol from '@site/docs/_Partials/template-solutions/two-pointers/exha
 import LC1004TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-1004.md';
 
 <!-- 1100 - 1199 -->
+import LC1133TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-1133.md';
+import LC1189TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-1189.md';
+
 <!-- 1200 - 1299 -->
 import LC1208TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-1208.md';
+import LC1248TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-1248.md';
 
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
@@ -132,6 +149,8 @@ import LC1496TSol from '@site/docs/_Partials/template-solutions/misc/hashing/exi
 
 <!-- 1500 - 1599 -->
 <!-- 1600 - 1699 -->
+import LC1657TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1657.md';
+
 <!-- 1700 - 1799 -->
 import LC1732TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1732.md';
 
@@ -140,17 +159,24 @@ import LC1832TSol from '@site/docs/_Partials/template-solutions/misc/hashing/exi
 import LC1845TSol from '@site/docs/_Partials/template-solutions/heaps/lc-1845.md';
 
 <!-- 1900 - 1999 -->
+import LC1941TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-1941.md';
+
 <!-- 2000 - 2099 -->
 import LC2000TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-2000.md';
 import LC2090TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-2090.md';
 
 <!-- 2100 - 2199 -->
 <!-- 2200 - 2299 -->
+import LC2225TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2225.md';
+import LC2248TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2248.md';
+import LC2260TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2260.md';
 import LC2270TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-2270.md';
 
 <!-- 2300 - 2399 -->
 import LC2300TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-2300.md';
+import LC2342TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2342.md';
 import LC2351TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-2351.md';
+import LC2352TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-2352.md';
 
 <!-- 2400 - 2499 -->
 <!-- 2500 - 2599 -->
@@ -160,14 +186,18 @@ import LC2540TSol from '@site/docs/_Partials/template-solutions/two-pointers/exh
 <!-- 2700 - 2799 -->
 <!-- 2800 - 2899 -->
 <!-- 2900 - 2999 -->
+<!-- 3000 - 3099 -->
+import LC3090TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3090.md';
 
 
 <!-- PROBLEM STEMS -->
 <!-- 1 - 99 -->
 import LC1PS from '@site/docs/_Partials/problem-stems/lc1.md';
+import LC3PS from '@site/docs/_Partials/problem-stems/lc3.md';
 import LC15PS from '@site/docs/_Partials/problem-stems/lc15.md';
 import LC26PS from '@site/docs/_Partials/problem-stems/lc26.md';
 import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
+import LC49PS from '@site/docs/_Partials/problem-stems/lc49.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
 import LC75PS from '@site/docs/_Partials/problem-stems/lc75.md';
 import LC94PS from '@site/docs/_Partials/problem-stems/lc94.md';
@@ -180,23 +210,28 @@ import LC145PS from '@site/docs/_Partials/problem-stems/lc145.md';
 import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
 
 <!-- 200 - 299 -->
+import LC205PS from '@site/docs/_Partials/problem-stems/lc205.md';
 import LC209PS from '@site/docs/_Partials/problem-stems/lc209.md';
 import LC217PS from '@site/docs/_Partials/problem-stems/lc217.md';
 import LC226PS from '@site/docs/_Partials/problem-stems/lc226.md';
 import LC268PS from '@site/docs/_Partials/problem-stems/lc268.md';
 import LC283PS from '@site/docs/_Partials/problem-stems/lc283.md';
+import LC290PS from '@site/docs/_Partials/problem-stems/lc290.md';
 
 <!-- 300 - 399 -->
 import LC303PS from '@site/docs/_Partials/problem-stems/lc303.md';
 import LC344PS from '@site/docs/_Partials/problem-stems/lc344.md';
 import LC349PS from '@site/docs/_Partials/problem-stems/lc349.md';
 import LC350PS from '@site/docs/_Partials/problem-stems/lc350.md';
+import LC383PS from '@site/docs/_Partials/problem-stems/lc383.md';
 import LC392PS from '@site/docs/_Partials/problem-stems/lc392.md';
 
 <!-- 400 - 499 -->
 <!-- 500 - 599 -->
+import LC525PS from '@site/docs/_Partials/problem-stems/lc525.md';
 import LC543PS from '@site/docs/_Partials/problem-stems/lc543.md';
 import LC557PS from '@site/docs/_Partials/problem-stems/lc557.md';
+import LC560PS from '@site/docs/_Partials/problem-stems/lc560.md';
 import LC563PS from '@site/docs/_Partials/problem-stems/lc563.md';
 
 <!-- 600 - 699 -->
@@ -207,6 +242,8 @@ import LC704PS from '@site/docs/_Partials/problem-stems/lc704.md';
 import LC713PS from '@site/docs/_Partials/problem-stems/lc713.md';
 import LC724PS from '@site/docs/_Partials/problem-stems/lc724.md';
 import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
+import LC771PS from '@site/docs/_Partials/problem-stems/lc771.md';
+import LC791PS from '@site/docs/_Partials/problem-stems/lc791.md';
 
 <!-- 800 - 899 -->
 <!-- 900 - 999 -->
@@ -221,8 +258,12 @@ import LC986PS from '@site/docs/_Partials/problem-stems/lc986.md';
 import LC1004PS from '@site/docs/_Partials/problem-stems/lc1004.md';
 
 <!-- 1100 - 1199 -->
+import LC1133PS from '@site/docs/_Partials/problem-stems/lc1133.md';
+import LC1189PS from '@site/docs/_Partials/problem-stems/lc1189.md';
+
 <!-- 1200 - 1299 -->
 import LC1208PS from '@site/docs/_Partials/problem-stems/lc1208.md';
+import LC1248PS from '@site/docs/_Partials/problem-stems/lc1248.md';
 
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
@@ -235,6 +276,8 @@ import LC1496PS from '@site/docs/_Partials/problem-stems/lc1496.md';
 
 <!-- 1500 - 1599 -->
 <!-- 1600 - 1699 -->
+import LC1657PS from '@site/docs/_Partials/problem-stems/lc1657.md';
+
 <!-- 1700 - 1799 -->
 import LC1732PS from '@site/docs/_Partials/problem-stems/lc1732.md';
 
@@ -243,17 +286,24 @@ import LC1832PS from '@site/docs/_Partials/problem-stems/lc1832.md';
 import LC1845PS from '@site/docs/_Partials/problem-stems/lc1845.md';
 
 <!-- 1900 - 1999 -->
+import LC1941PS from '@site/docs/_Partials/problem-stems/lc1941.md';
+
 <!-- 2000 - 2099 -->
 import LC2000PS from '@site/docs/_Partials/problem-stems/lc2000.md';
 import LC2090PS from '@site/docs/_Partials/problem-stems/lc2090.md';
 
 <!-- 2100 - 2199 -->
 <!-- 2200 - 2299 -->
+import LC2225PS from '@site/docs/_Partials/problem-stems/lc2225.md';
+import LC2248PS from '@site/docs/_Partials/problem-stems/lc2248.md';
+import LC2260PS from '@site/docs/_Partials/problem-stems/lc2260.md';
 import LC2270PS from '@site/docs/_Partials/problem-stems/lc2270.md';
 
 <!-- 2300 - 2399 -->
 import LC2300PS from '@site/docs/_Partials/problem-stems/lc2300.md';
+import LC2342PS from '@site/docs/_Partials/problem-stems/lc2342.md';
 import LC2351PS from '@site/docs/_Partials/problem-stems/lc2351.md';
+import LC2352PS from '@site/docs/_Partials/problem-stems/lc2352.md';
 
 <!-- 2400 - 2499 -->
 <!-- 2500 - 2599 -->
@@ -263,6 +313,8 @@ import LC2540PS from '@site/docs/_Partials/problem-stems/lc2540.md';
 <!-- 2700 - 2799 -->
 <!-- 2800 - 2899 -->
 <!-- 2900 - 2999 -->
+<!-- 3000 - 3099 -->
+import LC3090PS from '@site/docs/_Partials/problem-stems/lc3090.md';
 
 ## Contents
 
@@ -976,6 +1028,28 @@ def fn(arr):
 ---
 
 <LC1208TSol />
+
+</details>
+
+<details>
+<summary> <LC id='3090' type='long' ></LC> <MyStar stars={2} /> </summary>
+
+<LC3090PS />
+
+---
+
+<LC3090TSol />
+
+</details>
+
+<details>
+<summary> <LC id='3' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC3PS />
+
+---
+
+<LC3TSol />
 
 </details>
 
@@ -2637,6 +2711,83 @@ if el in seen:      # existence check is O(1) for sets
 
 </details>
 
+<details>
+<summary> <LC id='49' type='long' ></LC> (&check;) </summary>
+
+<LC49PS />
+
+---
+
+<LC49TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2352' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC2352PS />
+
+---
+
+<LC2352TSol />
+
+</details>
+
+<details>
+<summary> <LC id='383' type='long' ></LC> (&check;) </summary>
+
+<LC383PS />
+
+---
+
+<LC383TSol />
+
+</details>
+
+<details>
+<summary> <LC id='205' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC205PS />
+
+---
+
+<LC205TSol />
+
+</details>
+
+<details>
+<summary> <LC id='290' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC290PS />
+
+---
+
+<LC290TSol />
+
+</details>
+
+<details>
+<summary> <LC id='791' type='long' ></LC> (&check;) </summary>
+
+<LC791PS />
+
+---
+
+<LC791TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1657' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC1657PS />
+
+---
+
+<LC1657TSol />
+
+</details>
+
 </details>
 
 #### Counting
@@ -2644,7 +2795,59 @@ if el in seen:      # existence check is O(1) for sets
 <details>
 <summary> Remarks</summary>
 
-TBD
+Counting is a very common pattern with hash maps, where "counting" generally refers to tracking the frequency of different elements.
+
+In sliding window problems, a frequent constraint is limiting the amount of a certain element in the window. For example, maybe we're trying to find the longest substring with at most `k` `0`s. In such problems, simply using an integer variable `curr` is enough to handle the constraint because we are only focused on a single element, namely `0`. The template for variable width sliding window problems naturally suggests the use of `curr` for such situations:
+
+```python
+def fn(arr):
+    left = curr = ans = 0
+    for right in range(len(arr)):
+        curr += nums[right]
+        while left <= right and WINDOW_CONDITION_BROKEN # (e.g., curr > k):
+            curr -= nums[left]
+            left += 1
+        ans = max(ans, right - left + 1)
+    return ans
+```
+
+Using a hash map allows us to solve problems where the constraint involves *multiple* elements. For example, we would likely no longer use an *integer* variable `curr` but a hash map variable `lookup`, `counts`, or something similarly named, where *multiple integer variables* can be used to track constraints on multiple elements (i.e., the hashable, often required to be immutable, "keys" of the hashmap effectively serve as variables where their integer values convey something about the constraint being monitored).
+
+</details>
+
+<details>
+<summary> <code>defaultdict</code> in Python </summary>
+
+The key feature of [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) is that it provides a default value for the key that does not exist. The type of this default value, usually provided in the form of a function like `int` (default value `0`) or `list` (default value `[]`) or `set` (default value `{}`), is specified when the `defaultdict` is instantiated.
+
+This means something as simple as tracking the character frequencies in the string `"hello world"` is simplified (because we do not have to check for the key's existence first). With `defaultdict`:
+
+```python
+from collections import defaultdict
+
+s = "hello world"
+frequency = defaultdict(int)
+
+for char in s:
+    frequency[char] += 1
+
+print(frequency)
+```
+
+Without `defaultdict`:
+
+```python
+s = "hello world"
+frequency = {}
+
+for char in s:
+    if char in frequency:
+        frequency[char] += 1
+    else:
+        frequency[char] = 1
+
+print(frequency)
+```
 
 </details>
 
@@ -2655,7 +2858,169 @@ TBD
 <details>
 <summary> Examples</summary>
 
-TBD
+<details>
+<summary> Longest substring of string <code>s</code> that contains at most <code>k</code> distinct characters (&check;) <MyStar /> </summary>
+
+<Sol17NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='2248' type='long' ></LC> (&check;) </summary>
+
+<LC2248PS />
+
+---
+
+<LC2248TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1941' type='long' ></LC> (&check;) </summary>
+
+<LC1941PS />
+
+---
+
+<LC1941TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2225' type='long' ></LC> (&check;) </summary>
+
+<LC2225PS />
+
+---
+
+<LC2225TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1189' type='long' ></LC> (&check;) </summary>
+
+<LC1189PS />
+
+---
+
+<LC1189TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1133' type='long' ></LC> (&check;) </summary>
+
+<LC1133PS />
+
+---
+
+<LC1133TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2260' type='long' ></LC> (&check;) </summary>
+
+<LC2260PS />
+
+---
+
+<LC2260TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2342' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC2342PS />
+
+---
+
+<LC2342TSol />
+
+</details>
+
+<details>
+<summary> <LC id='771' type='long' ></LC> (&check;) </summary>
+
+<LC771PS />
+
+---
+
+<LC771TSol />
+
+</details>
+
+</details>
+
+#### Rolling prefix and referential prefixes ("exact" number of subarrays)
+
+<details>
+<summary> Remarks</summary>
+
+<HashingPrefixesTemplateRemark />
+
+</details>
+
+```python
+def fn(nums, k):
+    lookup = defaultdict(int)   # initialize referential prefix lookup
+    lookup[0] = 1               # handle "empty prefix" reference
+    curr = 0                    # initialize cumulative or "rolling" prefix
+    ans = 0
+    
+    for i in range(len(nums)):
+        num = nums[i]
+        if CONDITION:
+            curr += num         # update curr in a problem-specific way
+                                # (updates will usually be conditional)
+            
+        ans += lookup[curr - k] # update answer based on inputs and lookup
+                                # (updates usually depend on a complementary relationship
+                                # between curr and other inputs or conditions)
+        
+        lookup[curr] += 1       # update lookup based on curr in a problem-specific way
+            
+    return ans
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='560' type='long' ></LC> (&check;) </summary>
+
+<LC560PS />
+
+---
+
+<LC560TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1248' type='long' ></LC> (&check;) </summary>
+
+<LC1248PS />
+
+---
+
+<LC1248TSol />
+
+</details>
+
+<details>
+<summary> <LC id='525' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC525PS />
+
+---
+
+<LC525TSol />
+
+</details>
 
 </details>
 
