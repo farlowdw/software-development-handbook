@@ -38,6 +38,7 @@ import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-sni
 
 <!-- TEMPLATE REMARKS -->
 import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
+import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/linked-list-node-comparisons.md';
 
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/q1.md';
@@ -57,6 +58,8 @@ import Sol14NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fi
 import Sol15NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/q1.md';
 import Sol16NoLC from '@site/docs/_Partials/template-solutions/misc/prefix-sum/q1.md';
 import Sol17NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/counting/q1.md';
+import Sol18NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/q1.md';
+import Sol19NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/q2.md';
 
 <!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
 <!-- 1 - 99 -->
@@ -69,12 +72,15 @@ import LC49TSol from '@site/docs/_Partials/template-solutions/misc/hashing/exist
 import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-74.md';
 import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
 import LC75TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-75.md';
+import LC83TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-83.md';
 import LC94TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-94.md';
 import LC94TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-94.md';
 
 <!-- 100 - 199 -->
 import LC104TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-104.md';
 import LC125TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-125.md';
+import LC141TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-141.md';
+import LC142TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-142.md';
 import LC144TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-144.md';
 import LC144TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-144.md';
 import LC145TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-145.md';
@@ -119,6 +125,8 @@ import LC771TSol from '@site/docs/_Partials/template-solutions/misc/hashing/coun
 import LC791TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-791.md';
 
 <!-- 800 - 899 -->
+import LC876TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-876.md';
+
 <!-- 900 - 999 -->
 import LC905TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-905.md';
 import LC912TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-912.md';
@@ -200,11 +208,14 @@ import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
 import LC49PS from '@site/docs/_Partials/problem-stems/lc49.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
 import LC75PS from '@site/docs/_Partials/problem-stems/lc75.md';
+import LC83PS from '@site/docs/_Partials/problem-stems/lc83.md';
 import LC94PS from '@site/docs/_Partials/problem-stems/lc94.md';
 
 <!-- 100 - 199 -->
 import LC104PS from '@site/docs/_Partials/problem-stems/lc104.md';
 import LC125PS from '@site/docs/_Partials/problem-stems/lc125.md';
+import LC141PS from '@site/docs/_Partials/problem-stems/lc141.md';
+import LC142PS from '@site/docs/_Partials/problem-stems/lc142.md';
 import LC144PS from '@site/docs/_Partials/problem-stems/lc144.md';
 import LC145PS from '@site/docs/_Partials/problem-stems/lc145.md';
 import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
@@ -246,6 +257,8 @@ import LC771PS from '@site/docs/_Partials/problem-stems/lc771.md';
 import LC791PS from '@site/docs/_Partials/problem-stems/lc791.md';
 
 <!-- 800 - 899 -->
+import LC876PS from '@site/docs/_Partials/problem-stems/lc876.md';
+
 <!-- 900 - 999 -->
 import LC905PS from '@site/docs/_Partials/problem-stems/lc905.md';
 import LC912PS from '@site/docs/_Partials/problem-stems/lc912.md';
@@ -834,23 +847,98 @@ for num in arr:
 
 ## Linked lists
 
+<details>
+<summary> A note about comparing nodes</summary>
+
+<LinkedListNodeComparisons />
+
+</details>
+
 ### Fast and slow pointer
 
 <details>
 <summary> Remarks</summary>
 
-TBD
+The "fast and slow" pointer technique is a *two pointer* technique with its own special use cases when it comes to linked lists. Specifically, the idea is that the pointers do not move side by side &#8212; they could move at different "speeds" during iteration, begin iteration from different locations, etc. Whatever the abstract difference is, the important point is that they do not move side by side in unison.
+
+There are many two pointer variations when it comes to arrays and strings, but the fast and slow pointer technique for linked lists usually presents itself as, "move the slow pointer one node per iteration, and move the fast node two nodes per iteration."
 
 </details>
 
 ```python
-TBD
+def fn(head):
+    slow = head
+    fast = head
+    ans = 0
+    
+    while fast and fast.next:
+        # some logic
+        slow = slow.next
+        fast = fast.next.next
+        
+    return ans
 ```
 
 <details>
 <summary> Examples</summary>
 
-TBD
+<details>
+<summary> Return the middle node of a linked list with an odd number of nodes (&check;) </summary>
+
+<Sol18NoLC />
+
+</details>
+
+<details>
+<summary> Return the kth node from the end provided that it exists (&check;) </summary>
+
+<Sol19NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='141' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC141PS />
+
+---
+
+<LC141TSol />
+
+</details>
+
+<details>
+<summary> <LC id='142' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC142PS />
+
+---
+
+<LC142TSol />
+
+</details>
+
+<details>
+<summary> <LC id='876' type='long' ></LC> (&check;) </summary>
+
+<LC876PS />
+
+---
+
+<LC876TSol />
+
+</details>
+
+<details>
+<summary> <LC id='83' type='long' ></LC> (&check;) </summary>
+
+<LC83PS />
+
+---
+
+<LC83TSol />
+
+</details>
 
 </details>
 
