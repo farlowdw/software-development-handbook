@@ -1,3 +1,7 @@
+**TLDR:** The default comparison is made by determining whether or not the two nodes point to the same object in memory; that is, `node1 == node2` effectively equates to `id(node1) == id(node2)` by default in Python.
+
+---
+
 If `node1` and `node2` are both nodes from a linked list, then what does `node1 == node2` actually test? How is the returned boolean computed? The following snippet is illustrative:
 
 ```python

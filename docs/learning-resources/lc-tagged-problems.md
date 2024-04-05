@@ -158,6 +158,7 @@ import LC from '@site/src/components/LC';
 - <LC id='315' type='long' ></LC>
 - <LC id='317' type='long' ></LC>
 - <LC id='318' type='long' ></LC>
+- <LC id='321' type='long' ></LC>
 - <LC id='322' type='long' ></LC>
 - <LC id='324' type='long' ></LC>
 - <LC id='325' type='long' ></LC>
@@ -1618,6 +1619,8 @@ import LC from '@site/src/components/LC';
 - <LC id='3080' type='long' ></LC>
 - <LC id='3082' type='long' ></LC>
 - <LC id='3086' type='long' ></LC>
+- <LC id='3092' type='long' ></LC>
+- <LC id='3093' type='long' ></LC>
 
 ## Backtracking
 
@@ -3204,6 +3207,8 @@ import LC from '@site/src/components/LC';
 - <LC id='3059' type='long' ></LC>
 - <LC id='3060' type='long' ></LC>
 - <LC id='3061' type='long' ></LC>
+- <LC id='3087' type='long' ></LC>
+- <LC id='3089' type='long' ></LC>
 
 ## Depth-First Search
 
@@ -4243,6 +4248,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3025' type='long' ></LC>
 - <LC id='3027' type='long' ></LC>
 - <LC id='3044' type='long' ></LC>
+- <LC id='3091' type='long' ></LC>
 
 ## Eulerian Circuit
 
@@ -4814,6 +4820,8 @@ import LC from '@site/src/components/LC';
 - <LC id='3081' type='long' ></LC>
 - <LC id='3085' type='long' ></LC>
 - <LC id='3086' type='long' ></LC>
+- <LC id='3088' type='long' ></LC>
+- <LC id='3091' type='long' ></LC>
 
 ## Hash Function
 
@@ -5424,6 +5432,8 @@ import LC from '@site/src/components/LC';
 - <LC id='3081' type='long' ></LC>
 - <LC id='3083' type='long' ></LC>
 - <LC id='3085' type='long' ></LC>
+- <LC id='3090' type='long' ></LC>
+- <LC id='3092' type='long' ></LC>
 
 ## Heap (Priority Queue)
 
@@ -5591,6 +5601,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3066' type='long' ></LC>
 - <LC id='3080' type='long' ></LC>
 - <LC id='3081' type='long' ></LC>
+- <LC id='3092' type='long' ></LC>
 
 ## Interactive
 
@@ -6203,6 +6214,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3047' type='long' ></LC>
 - <LC id='3079' type='long' ></LC>
 - <LC id='3084' type='long' ></LC>
+- <LC id='3091' type='long' ></LC>
 
 ## Matrix
 
@@ -6571,6 +6583,7 @@ import LC from '@site/src/components/LC';
 - <LC id='204' type='long' ></LC>
 - <LC id='258' type='long' ></LC>
 - <LC id='858' type='long' ></LC>
+- <LC id='866' type='long' ></LC>
 - <LC id='914' type='long' ></LC>
 - <LC id='952' type='long' ></LC>
 - <LC id='1201' type='long' ></LC>
@@ -6678,6 +6691,7 @@ import LC from '@site/src/components/LC';
 - <LC id='2763' type='long' ></LC>
 - <LC id='2817' type='long' ></LC>
 - <LC id='3073' type='long' ></LC>
+- <LC id='3092' type='long' ></LC>
 
 ## Prefix Sum
 
@@ -7355,6 +7369,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3023' type='long' ></LC>
 - <LC id='3037' type='long' ></LC>
 - <LC id='3086' type='long' ></LC>
+- <LC id='3090' type='long' ></LC>
 
 ## Sorting
 
@@ -7743,6 +7758,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3080' type='long' ></LC>
 - <LC id='3081' type='long' ></LC>
 - <LC id='3085' type='long' ></LC>
+- <LC id='3088' type='long' ></LC>
 
 ## Stack
 
@@ -8580,6 +8596,9 @@ import LC from '@site/src/components/LC';
 - <LC id='3083' type='long' ></LC>
 - <LC id='3084' type='long' ></LC>
 - <LC id='3085' type='long' ></LC>
+- <LC id='3088' type='long' ></LC>
+- <LC id='3090' type='long' ></LC>
+- <LC id='3093' type='long' ></LC>
 
 ## String Matching
 
@@ -8948,6 +8967,7 @@ import LC from '@site/src/components/LC';
 - <LC id='3043' type='long' ></LC>
 - <LC id='3045' type='long' ></LC>
 - <LC id='3076' type='long' ></LC>
+- <LC id='3093' type='long' ></LC>
 
 ## Two Pointers
 
@@ -8992,6 +9012,7 @@ import LC from '@site/src/components/LC';
 - <LC id='283' type='long' ></LC>
 - <LC id='287' type='long' ></LC>
 - <LC id='295' type='long' ></LC>
+- <LC id='321' type='long' ></LC>
 - <LC id='344' type='long' ></LC>
 - <LC id='345' type='long' ></LC>
 - <LC id='349' type='long' ></LC>

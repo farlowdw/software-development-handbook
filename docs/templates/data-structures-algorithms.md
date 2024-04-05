@@ -39,6 +39,9 @@ import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-sni
 <!-- TEMPLATE REMARKS -->
 import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
 import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/linked-list-node-comparisons.md';
+import LinkedListPointerManipulation from '@site/docs/_Partials/template-remarks/linked-list-pointer-manipulation.md';
+import LinkedListSentinelNodes from '@site/docs/_Partials/template-remarks/linked-list-sentinel-nodes.md';
+import LinkedListVisualizeSinglyLinkedList from '@site/docs/_Partials/template-remarks/linked-list-visualize-singly-linked-list.md';
 
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/q1.md';
@@ -66,6 +69,7 @@ import Sol19NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast
 import LC1TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1.md';
 import LC3TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3.md';
 import LC15TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-15.md';
+import LC24TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-24.md';
 import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-26.md';
 import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
 import LC49TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-49.md';
@@ -73,6 +77,7 @@ import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-7
 import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
 import LC75TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-75.md';
 import LC83TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-83.md';
+import LC92TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-92.md';
 import LC94TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-94.md';
 import LC94TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-94.md';
 
@@ -89,6 +94,7 @@ import LC167TSol from '@site/docs/_Partials/template-solutions/two-pointers/oppo
 
 <!-- 200 - 299 -->
 import LC205TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-205.md';
+import LC206TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-206.md';
 import LC209TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-209.md';
 import LC217TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-217.md';
 import LC226TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-226.md';
@@ -174,6 +180,8 @@ import LC2000TSol from '@site/docs/_Partials/template-solutions/two-pointers/opp
 import LC2090TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-2090.md';
 
 <!-- 2100 - 2199 -->
+import LC2130TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-2130.md';
+
 <!-- 2200 - 2299 -->
 import LC2225TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2225.md';
 import LC2248TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2248.md';
@@ -203,12 +211,14 @@ import LC3090TSol from '@site/docs/_Partials/template-solutions/sliding-window/v
 import LC1PS from '@site/docs/_Partials/problem-stems/lc1.md';
 import LC3PS from '@site/docs/_Partials/problem-stems/lc3.md';
 import LC15PS from '@site/docs/_Partials/problem-stems/lc15.md';
+import LC24PS from '@site/docs/_Partials/problem-stems/lc24.md';
 import LC26PS from '@site/docs/_Partials/problem-stems/lc26.md';
 import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
 import LC49PS from '@site/docs/_Partials/problem-stems/lc49.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
 import LC75PS from '@site/docs/_Partials/problem-stems/lc75.md';
 import LC83PS from '@site/docs/_Partials/problem-stems/lc83.md';
+import LC92PS from '@site/docs/_Partials/problem-stems/lc92.md';
 import LC94PS from '@site/docs/_Partials/problem-stems/lc94.md';
 
 <!-- 100 - 199 -->
@@ -222,6 +232,7 @@ import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
 
 <!-- 200 - 299 -->
 import LC205PS from '@site/docs/_Partials/problem-stems/lc205.md';
+import LC206PS from '@site/docs/_Partials/problem-stems/lc206.md';
 import LC209PS from '@site/docs/_Partials/problem-stems/lc209.md';
 import LC217PS from '@site/docs/_Partials/problem-stems/lc217.md';
 import LC226PS from '@site/docs/_Partials/problem-stems/lc226.md';
@@ -306,6 +317,8 @@ import LC2000PS from '@site/docs/_Partials/problem-stems/lc2000.md';
 import LC2090PS from '@site/docs/_Partials/problem-stems/lc2090.md';
 
 <!-- 2100 - 2199 -->
+import LC2130PS from '@site/docs/_Partials/problem-stems/lc2130.md';
+
 <!-- 2200 - 2299 -->
 import LC2225PS from '@site/docs/_Partials/problem-stems/lc2225.md';
 import LC2248PS from '@site/docs/_Partials/problem-stems/lc2248.md';
@@ -848,13 +861,34 @@ for num in arr:
 ## Linked lists
 
 <details>
-<summary> A note about comparing nodes</summary>
+<summary> What does it mean for two linked list nodes to be "equal"?</summary>
 
 <LinkedListNodeComparisons />
 
 </details>
 
-### Fast and slow pointer
+<details>
+<summary> What are sentinel nodes and how can they be useful for solving linked list problems?</summary>
+
+<LinkedListSentinelNodes />
+
+</details>
+
+<details>
+<summary> Pointer manipulation and memory indexes</summary>
+
+<LinkedListPointerManipulation />
+
+</details>
+
+<details>
+<summary> Visualizing singly linked lists and debugging your code locally</summary>
+
+<LinkedListVisualizeSinglyLinkedList />
+
+</details>
+
+### Fast and slow pointers
 
 <details>
 <summary> Remarks</summary>
@@ -947,12 +981,151 @@ def fn(head):
 <details>
 <summary> Remarks</summary>
 
-TBD
+The template below is the simplest way of reversing a portion of a linked list from a given `node` (potentially the entire list if given the `head` of a linked list). One important observation is that the reversed portion is effectively severed from the rest of the list.
+
+For example:
+
+```python
+ex = [1,2,3,4,5,6]        # integer array
+head = arr_to_ll(ex)      # convert integer array to linked list
+print(fn(head.next.next)) # start reversal from node 3
+                          # outcome: 6 -> 5 -> 4 -> 3 -> None
+```
+
+Suppose the outcome above is *not* desirable and instead we wanted the reversal to be incorporated into the original list: `1 -> 2 -> 6 -> 5 -> 4 -> 3 -> None`. We clearly need to preserve the node previous to the node where the reversal starts (i.e., the `2` node is a sort of "connecting" node that needs to be preserved). Solving this problem is outside the scope of this template; however, the subsequent template for reversing `k` nodes of a linked list does solve this problem.
 
 </details>
 
 ```python
-TBD
+def fn(node):
+    prev = None
+    curr = node
+    while curr:
+        next_node = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_node
+    return prev
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='206' type='long' ></LC> (&check;) </summary>
+
+<LC206PS />
+
+---
+
+<LC206TSol />
+
+</details>
+
+<details>
+<summary> <LC id='24' type='long' ></LC> (&check;) </summary>
+
+<LC24PS />
+
+---
+
+<LC24TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2130' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC2130PS />
+
+---
+
+<LC2130TSol />
+
+</details>
+
+<details>
+<summary> <LC id='92' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC92PS />
+
+---
+
+<LC92TSol />
+
+</details>
+
+</details>
+
+### Reversing k nodes of a linked list in-place
+
+<details>
+<summary> What is the purpose of this template?</summary>
+
+The purpose of the template, of course, is to reverse `k` nodes of a linked list in-place. But, [as this post notes](https://leetcode.com/problems/reverse-nodes-in-even-length-groups/discuss/3832053/Clean-python-solution-simple-beats-100-explanation) (the post that originally motivated this template), the template below *does not* break off the section to be reversed (this is what happens with the conventional reversal, as detailed in the previous template).
+
+The template below leaves the start node of the section linked to the rest of the list and moves the remaining nodes one by one to the front. This results in the `k`-length section (starting at the start node) being reversed, the original start node being the end node of the reversed section, and the original start node being connected to the rest of the list instead of being severed or pointing to `None`. The next remark provides some intuition as to how this actually works.
+
+</details>
+
+<details open>
+<summary> What is the intuition behind how this template works?</summary>
+
+The core idea is actually somewhat simple: given a `prev` node that precedes the start node for the `k`-length section to be reversed, we effectively move the `k - 1` nodes that *follow* the start so that they now come *before* the start node. One at a time. Suppose we want the section `3 -> 4 -> 5 -> 6` to be reversed in the following list (spaces added to emphasize section being reversed):
+
+```
+1 -> 2 ->   3 -> 4 -> 5 -> 6   -> 7 -> 8 -> 9 -> None
+```
+
+The desired outcome would then be the following list:
+
+```
+1 -> 2 ->   6 -> 5 -> 4 -> 3   -> 7 -> 8 -> 9 -> None
+```
+
+Above, we see that `k = 4`, `prev` is node `2`, and node `3` is the start of the section to be reversed. Our template stipulates that nodes `4`, `5`, `6`, which originally follow node `3`, will now be moved to come before node `3`. One at a time:
+
+```a
+1 -> 2 ->   3 -> 4 -> 5 -> 6   -> 7 -> 8 -> 9 -> None   # start
+1 -> 2 ->   4 -> 3 -> 5 -> 6   -> 7 -> 8 -> 9 -> None   # after iteration 1
+1 -> 2 ->   5 -> 4 -> 3 -> 6   -> 7 -> 8 -> 9 -> None   # after iteration 2
+1 -> 2 ->   6 -> 5 -> 4 -> 3   -> 7 -> 8 -> 9 -> None   # after iteration 3
+```
+
+Hence, `k - 1` iterations are needed to reverse the `k`-length section in-place, and we conclude by returning the end node for the reversed section, node `3` in this case. Here's a more colorful illustration of what things look like for each iteration:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='800px' src={require('@site/static/img/templates/linked-lists/f4.png').default} />
+</div>
+
+And now in more detail:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='800px' src={require('@site/static/img/templates/linked-lists/f5.png').default} />
+</div>
+
+Further details to come.
+
+</details>
+
+```python
+def reverse_k_nodes(prev, k):
+    if not prev.next or k < 2:
+        return prev.next
+    
+    rev_start = prev.next
+    next_node = rev_start.next
+    rev_end = rev_start
+    
+    count = 1 
+    while count <= k - 1 and next_node:
+        rev_start.next = next_node.next
+        next_node.next = prev.next
+        prev.next = next_node
+        next_node = rev_start.next
+        count += 1
+        
+    return rev_end
 ```
 
 <details>
