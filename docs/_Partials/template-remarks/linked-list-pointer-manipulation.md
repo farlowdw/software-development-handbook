@@ -47,13 +47,13 @@ print(id(ptr))      # 4423470576
 
 Objects are mutable in Python. When we make the assignment `ptr = head`, we are effectively making `ptr` point to the same memory address as `head`. The assignment more or less looks like the following:
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='650px' src={require('@site/static/img/templates/linked-lists/f2.png').default} />
 </div>
 
 Subsequently, when we assign `head` to `head.next`, we are making `head` point to the same memory address as `head.next`:
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='650px' src={require('@site/static/img/templates/linked-lists/f3.png').default} />
 </div>
 

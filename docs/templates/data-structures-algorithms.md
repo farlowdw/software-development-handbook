@@ -1106,6 +1106,7 @@ And now in more detail:
 
 Further details to come.
 
+
 </details>
 
 ```python
@@ -1502,7 +1503,7 @@ E   M       P   N   H      | Level-order  (L -> R): A B W X S T C E M P N H
 1. Draw an arrow as a path around the nodes of the binary tree diagram, closely following its outline. The direction of the arrow depends on whether you are traversing the tree left-to-right or right-to-left.
 2. Draw a line or tick mark on one of the sides or the bottom of each node in the tree. Where you draw the mark depends on which traversal you are attempting to perform, as shown in the diagram below:
 
-  <div align='center' class='centeredImageDiv'>
+  <div align='center' className='centeredImageDiv'>
     <img width='450px' src={require('@site/static/img/templates/tree-traversal/tick-trick-setup.png').default} />
   </div>
 
@@ -1618,56 +1619,56 @@ The code in the sections below will rely on `binarytree` for the sake of simplic
 <Tabs>
 <TabItem value='pre-order-lr' label='Pre-order (L->R)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/preorder-l-r.png').default} />
 </div>
 
 </TabItem>
 <TabItem value='pre-order-rl' label='Pre-order (R->L)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/preorder-r-l.png').default} />
 </div>
 
 </TabItem>
 <TabItem value='post-order-lr' label='Post-order (L->R)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/postorder-l-r.png').default} />
 </div>
 
 </TabItem>
 <TabItem value='post-order-rl' label='Post-order (R->L)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/postorder-r-l.png').default} />
 </div>
 
 </TabItem>
 <TabItem value='in-order-lr' label='In-order (L->R)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/inorder-l-r.png').default} />
 </div>
 
 </TabItem>
 <TabItem value='in-order-rl' label='In-order (R->L)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/inorder-r-l.png').default} />
 </div>
 
 </TabItem>
 <TabItem value='level-order-lr' label='Level-order (L->R)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/levelorder-l-r.png').default} />
 </div>
 
 </TabItem>
 <TabItem value='level-order-rl' label='Level-order (R->L)'>
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='750px' src={require('@site/static/img/templates/tree-traversal/levelorder-r-l.png').default} />
 </div>
 
