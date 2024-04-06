@@ -70,6 +70,7 @@ import LC1TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existe
 import LC3TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3.md';
 import LC15TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-15.md';
 import LC24TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-24.md';
+import LC24TSol2 from '@site/docs/_Partials/template-solutions/linked-lists/swap-nodes/lc-24.md';
 import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-26.md';
 import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
 import LC49TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-49.md';
@@ -917,7 +918,7 @@ def fn(head):
 <summary> Examples</summary>
 
 <details>
-<summary> Return the middle node of a linked list with an odd number of nodes (&check;) </summary>
+<summary> Return the middle node value of a linked list with an odd number of nodes (&check;) </summary>
 
 <Sol18NoLC />
 
@@ -964,7 +965,7 @@ def fn(head):
 </details>
 
 <details>
-<summary> <LC id='83' type='long' ></LC> (&check;) </summary>
+<summary> <LC id='83' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
 
 <LC83PS />
 
@@ -976,7 +977,7 @@ def fn(head):
 
 </details>
 
-### Reversing a linked list
+### Reverse a linked list
 
 <details>
 <summary> Remarks</summary>
@@ -1057,7 +1058,7 @@ def fn(node):
 
 </details>
 
-### Reversing k nodes of a linked list in-place
+### Reverse k nodes of a linked list in-place
 
 <details>
 <summary> What is the purpose of this template?</summary>
@@ -1068,8 +1069,8 @@ The template below leaves the start node of the section linked to the rest of th
 
 </details>
 
-<details open>
-<summary> What is the intuition behind how this template works?</summary>
+<details>
+<summary> What is the intuition behind how and why this template works?</summary>
 
 The core idea is actually somewhat simple: given a `prev` node that precedes the start node for the `k`-length section to be reversed, we effectively move the `k - 1` nodes that *follow* the start so that they now come *before* the start node. One at a time. Suppose we want the section `3 -> 4 -> 5 -> 6` to be reversed in the following list (spaces added to emphasize section being reversed):
 
@@ -1098,14 +1099,18 @@ Hence, `k - 1` iterations are needed to reverse the `k`-length section in-place,
   <img width='800px' src={require('@site/static/img/templates/linked-lists/f4.png').default} />
 </div>
 
-And now in more detail:
+The top part of the image shows the initial list and which four nodes need to be reversed, where the red numbering `1`, `2`, and `3` indicates where the nodes end up after that many iterations have taken place. The actual node coloring scheme:
+
+- Red `2`: This fixed node denotes the node preceding where the reversal starts.
+- Magenta `3`: This fixed coloring denotes the node where the reversal starts (and also the node returned at the end).
+- Orange nodes: The orange node is always the "next node" to be moved to the front (i.e., `next_node` in the template).
+- White nodes: This coloring indicates the nodes that have already been processed. The last iteration shows how the node where the reversal started concludes with its proper positioning at the end of the reversed segment.
+
+The image above, particularly the top part of the image with the initial list and the arrow indicators which show how each node moves for each iteration, provides an *intuition* for how and why the template works. The following image shows the mechanics in more detail:
 
 <div align='center' className='centeredImageDiv'>
   <img width='800px' src={require('@site/static/img/templates/linked-lists/f5.png').default} />
 </div>
-
-Further details to come.
-
 
 </details>
 
@@ -1133,6 +1138,68 @@ def reverse_k_nodes(prev, k):
 <summary> Examples</summary>
 
 TBD
+
+</details>
+
+### Swap two nodes
+
+<details>
+<summary> Remarks</summary>
+
+**TLDR:** Don't overthink what seems like the tricky edge case of swapping adjacent nodes. The lengthy initial condition simply ensures we don't try to swap nodes that don't exist or identical nodes in memory.
+
+---
+
+Let `left` and `right` be the nodes we want to swap. We will need the nodes prior to `left` and `right` to facilitate the node swapping. Let these nodes be `prev_left` and `prev_right`, respectively. Most node swaps will look something like the following:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='800px' src={require('@site/static/img/templates/linked-lists/f6.png').default} />
+</div>
+
+That is, as the figure suggests, we will first make the assignment `prev_left.next = right` and then `prev_right.next = left`. Now we need `right.next` to point to what `left.next` was pointing to, and we need `left.next` to point to what `right.next` was pointing to. We can do this without a temporary variable in Python: `right.next, left.next = left.next, right.next`. 
+
+Great! But what about the seemingly tricky case when nodes are adjacent? The really cool thing is that the template handles this case seamlessly. For the example figure above, consider what would happen if we tried swapping nodes `4` and `5`:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='800px' src={require('@site/static/img/templates/linked-lists/f7.png').default} />
+</div>
+
+The assignment `prev_left.next = right` behaves as expected, but the assignment `prev_right.next = left` seems like it could cause some issues because we have effectively created a self-cycle. But the beautiful thing is how this is exploited to restore the list in the next set of assignments:
+
+```python
+right.next, left.next = left.next, right.next
+```
+
+When nodes `left` and `right` are adjacent, we want `right.next` to point to `left`. The assignment `right.next = left.next` accomplishes exactly this because the self-cycle means `left.next` actually points to itself (i.e., `left`). The subsequent assignment `left.next = right.next` effectively removes the self-cycle and restores the list, resulting in the adjacent `left` and `right` nodes being swapped, as desired.
+
+</details>
+
+```python
+def swap_nodes(prev_left, prev_right):
+    if not prev_left or not prev_right \
+        or not prev_left.next or not prev_right.next \
+            or prev_left.next == prev_right.next:
+        return
+    
+    left = prev_left.next
+    right = prev_right.next
+    prev_left.next, prev_right.next = right, left
+    right.next, left.next = left.next, right.next
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='24' type='long' ></LC> (&check;) </summary>
+
+<LC24PS />
+
+---
+
+<LC24TSol2 />
+
+</details>
 
 </details>
 
