@@ -217,6 +217,8 @@ import LC2540TSol from '@site/docs/_Partials/template-solutions/two-pointers/exh
 <!-- 3000 - 3099 -->
 import LC3090TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3090.md';
 
+<!-- 3100 - 3199 -->
+import LC3105TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3105.md';
 
 <!-- PROBLEM STEMS -->
 <!-- 1 - 99 -->
@@ -363,6 +365,9 @@ import LC2540PS from '@site/docs/_Partials/problem-stems/lc2540.md';
 <!-- 2900 - 2999 -->
 <!-- 3000 - 3099 -->
 import LC3090PS from '@site/docs/_Partials/problem-stems/lc3090.md';
+
+<!-- 3100 - 3199 -->
+import LC3105PS from '@site/docs/_Partials/problem-stems/lc3105.md';
 
 ## Contents
 
@@ -1526,6 +1531,17 @@ def fn(arr):
 ---
 
 <LC3TSol />
+
+</details>
+
+<details>
+<summary> <LC id='3105' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC3105PS />
+
+---
+
+<LC3105TSol />
 
 </details>
 
