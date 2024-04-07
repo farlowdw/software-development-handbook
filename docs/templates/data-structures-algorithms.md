@@ -69,16 +69,19 @@ import Sol19NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast
 import LC1TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1.md';
 import LC3TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3.md';
 import LC15TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-15.md';
+import LC19TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-19.md';
 import LC24TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-24.md';
 import LC24TSol2 from '@site/docs/_Partials/template-solutions/linked-lists/swap-nodes/lc-24.md';
+import LC25TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse-k-nodes/lc-25.md';
 import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-26.md';
 import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
 import LC49TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-49.md';
 import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-74.md';
 import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
 import LC75TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-75.md';
+import LC82TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-82.md';
 import LC83TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-83.md';
-import LC92TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-92.md';
+import LC92TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse-k-nodes/lc-92.md';
 import LC94TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-94.md';
 import LC94TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-94.md';
 
@@ -94,17 +97,20 @@ import LC145TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-145
 import LC167TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-167.md';
 
 <!-- 200 - 299 -->
+import LC203TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-203.md';
 import LC205TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-205.md';
 import LC206TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-206.md';
 import LC209TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-209.md';
 import LC217TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-217.md';
 import LC226TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-226.md';
+import LC234TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-234.md';
 import LC268TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-268.md';
 import LC283TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-283.md';
 import LC290TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-290.md';
 
 <!-- 300 - 399 -->
 import LC303TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-303.md';
+import LC328TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-328.md';
 import LC344TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-344.md';
 import LC349TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-349.md';
 import LC350TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-350.md';
@@ -152,6 +158,7 @@ import LC1189TSol from '@site/docs/_Partials/template-solutions/misc/hashing/cou
 <!-- 1200 - 1299 -->
 import LC1208TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-1208.md';
 import LC1248TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-1248.md';
+import LC1290TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-1290.md';
 
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
@@ -167,6 +174,8 @@ import LC1496TSol from '@site/docs/_Partials/template-solutions/misc/hashing/exi
 import LC1657TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1657.md';
 
 <!-- 1700 - 1799 -->
+import LC1721TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-1721.md';
+import LC1721TSol2 from '@site/docs/_Partials/template-solutions/linked-lists/swap-nodes/lc-1721.md';
 import LC1732TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1732.md';
 
 <!-- 1800 - 1899 -->
@@ -178,7 +187,9 @@ import LC1941TSol from '@site/docs/_Partials/template-solutions/misc/hashing/cou
 
 <!-- 2000 - 2099 -->
 import LC2000TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-2000.md';
+import LC2074TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse-k-nodes/lc-2074.md';
 import LC2090TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-2090.md';
+import LC2095TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-2095.md';
 
 <!-- 2100 - 2199 -->
 import LC2130TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-2130.md';
@@ -212,12 +223,15 @@ import LC3090TSol from '@site/docs/_Partials/template-solutions/sliding-window/v
 import LC1PS from '@site/docs/_Partials/problem-stems/lc1.md';
 import LC3PS from '@site/docs/_Partials/problem-stems/lc3.md';
 import LC15PS from '@site/docs/_Partials/problem-stems/lc15.md';
+import LC19PS from '@site/docs/_Partials/problem-stems/lc19.md';
 import LC24PS from '@site/docs/_Partials/problem-stems/lc24.md';
+import LC25PS from '@site/docs/_Partials/problem-stems/lc25.md';
 import LC26PS from '@site/docs/_Partials/problem-stems/lc26.md';
 import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
 import LC49PS from '@site/docs/_Partials/problem-stems/lc49.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
 import LC75PS from '@site/docs/_Partials/problem-stems/lc75.md';
+import LC82PS from '@site/docs/_Partials/problem-stems/lc82.md';
 import LC83PS from '@site/docs/_Partials/problem-stems/lc83.md';
 import LC92PS from '@site/docs/_Partials/problem-stems/lc92.md';
 import LC94PS from '@site/docs/_Partials/problem-stems/lc94.md';
@@ -232,17 +246,20 @@ import LC145PS from '@site/docs/_Partials/problem-stems/lc145.md';
 import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
 
 <!-- 200 - 299 -->
+import LC203PS from '@site/docs/_Partials/problem-stems/lc203.md';
 import LC205PS from '@site/docs/_Partials/problem-stems/lc205.md';
 import LC206PS from '@site/docs/_Partials/problem-stems/lc206.md';
 import LC209PS from '@site/docs/_Partials/problem-stems/lc209.md';
 import LC217PS from '@site/docs/_Partials/problem-stems/lc217.md';
 import LC226PS from '@site/docs/_Partials/problem-stems/lc226.md';
+import LC234PS from '@site/docs/_Partials/problem-stems/lc234.md';
 import LC268PS from '@site/docs/_Partials/problem-stems/lc268.md';
 import LC283PS from '@site/docs/_Partials/problem-stems/lc283.md';
 import LC290PS from '@site/docs/_Partials/problem-stems/lc290.md';
 
 <!-- 300 - 399 -->
 import LC303PS from '@site/docs/_Partials/problem-stems/lc303.md';
+import LC328PS from '@site/docs/_Partials/problem-stems/lc328.md';
 import LC344PS from '@site/docs/_Partials/problem-stems/lc344.md';
 import LC349PS from '@site/docs/_Partials/problem-stems/lc349.md';
 import LC350PS from '@site/docs/_Partials/problem-stems/lc350.md';
@@ -289,6 +306,7 @@ import LC1189PS from '@site/docs/_Partials/problem-stems/lc1189.md';
 <!-- 1200 - 1299 -->
 import LC1208PS from '@site/docs/_Partials/problem-stems/lc1208.md';
 import LC1248PS from '@site/docs/_Partials/problem-stems/lc1248.md';
+import LC1290PS from '@site/docs/_Partials/problem-stems/lc1290.md';
 
 <!-- 1300 - 1399 -->
 <!-- 1400 - 1499 -->
@@ -304,6 +322,7 @@ import LC1496PS from '@site/docs/_Partials/problem-stems/lc1496.md';
 import LC1657PS from '@site/docs/_Partials/problem-stems/lc1657.md';
 
 <!-- 1700 - 1799 -->
+import LC1721PS from '@site/docs/_Partials/problem-stems/lc1721.md';
 import LC1732PS from '@site/docs/_Partials/problem-stems/lc1732.md';
 
 <!-- 1800 - 1899 -->
@@ -315,7 +334,9 @@ import LC1941PS from '@site/docs/_Partials/problem-stems/lc1941.md';
 
 <!-- 2000 - 2099 -->
 import LC2000PS from '@site/docs/_Partials/problem-stems/lc2000.md';
+import LC2074PS from '@site/docs/_Partials/problem-stems/lc2074.md';
 import LC2090PS from '@site/docs/_Partials/problem-stems/lc2090.md';
+import LC2095PS from '@site/docs/_Partials/problem-stems/lc2095.md';
 
 <!-- 2100 - 2199 -->
 import LC2130PS from '@site/docs/_Partials/problem-stems/lc2130.md';
@@ -975,6 +996,50 @@ def fn(head):
 
 </details>
 
+<details>
+<summary> <LC id='2095' type='long' ></LC> (&check;) </summary>
+
+<LC2095PS />
+
+---
+
+<LC2095TSol />
+
+</details>
+
+<details>
+<summary> <LC id='19' type='long' ></LC> (&check;) </summary>
+
+<LC19PS />
+
+---
+
+<LC19TSol />
+
+</details>
+
+<details>
+<summary> <LC id='82' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC82PS />
+
+---
+
+<LC82TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1721' type='long' ></LC> (&check;) </summary>
+
+<LC1721PS />
+
+---
+
+<LC1721TSol />
+
+</details>
+
 </details>
 
 ### Reverse a linked list
@@ -1046,13 +1111,13 @@ def fn(node):
 </details>
 
 <details>
-<summary> <LC id='92' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+<summary> <LC id='234' type='long' ></LC> (&check;) </summary>
 
-<LC92PS />
+<LC234PS />
 
 ---
 
-<LC92TSol />
+<LC234TSol />
 
 </details>
 
@@ -1137,7 +1202,38 @@ def reverse_k_nodes(prev, k):
 <details>
 <summary> Examples</summary>
 
-TBD
+<details>
+<summary> <LC id='92' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC92PS />
+
+---
+
+<LC92TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2074' type='long' ></LC> (&check;) <MyStar stars={3} /> </summary>
+
+<LC2074PS />
+
+---
+
+<LC2074TSol />
+
+</details>
+
+<details>
+<summary> <LC id='25' type='long' ></LC> (&check;) </summary>
+
+<LC25PS />
+
+---
+
+<LC25TSol />
+
+</details>
 
 </details>
 
@@ -1198,6 +1294,57 @@ def swap_nodes(prev_left, prev_right):
 ---
 
 <LC24TSol2 />
+
+</details>
+
+<details>
+<summary> <LC id='1721' type='long' ></LC> (&check;) </summary>
+
+<LC1721PS />
+
+---
+
+<LC1721TSol2 />
+
+</details>
+
+</details>
+
+### General
+
+<details>
+<summary> Problems</summary>
+
+<details>
+<summary> <LC id='203' type='long' ></LC> (&check;) </summary>
+
+<LC203PS />
+
+---
+
+<LC203TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1290' type='long' ></LC> (&check;) </summary>
+
+<LC1290PS />
+
+---
+
+<LC1290TSol />
+
+</details>
+
+<details>
+<summary> <LC id='328' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC328PS />
+
+---
+
+<LC328TSol />
 
 </details>
 
