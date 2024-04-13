@@ -381,6 +381,11 @@ const config = {
             line: 'highlight-success-next-line',
             block: { start: 'highlight-success-start', end: 'highlight-success-end' },
           },
+          {
+            className: 'code-block-warning-line',
+            line: 'highlight-warning-next-line',
+            block: { start: 'highlight-warning-start', end: 'highlight-warning-end' },
+          },
         ],
         additionalLanguages: [
           "apacheconf",

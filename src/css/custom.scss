@@ -719,6 +719,16 @@ div[class*='codeBlockTitle_'] {
 }
 /* End code block success line styling */
 
+/* Begin code block warning line styling */
+.code-block-warning-line {
+	background-color: #ffff0035;
+	display: block;
+	margin: 0 calc(-1 * var(--ifm-pre-padding));
+	padding: 0 var(--ifm-pre-padding);
+	border-left: 3px solid #ffff0080;
+}
+/* End code block warning line styling */
+
 /* Video content container */
 
 .unleash-video-container {

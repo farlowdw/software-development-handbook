@@ -32,13 +32,24 @@ import TOCInline from '@theme/TOCInline';
 import MonotonicQueues from '@site/src/components/DataGrids/MonotonicQueues';
 import MonotonicStacks from '@site/src/components/DataGrids/MonotonicStacks';
 
+import LC239PS from '@site/docs/_Partials/problem-stems/lc239.md';
 import LC739PS from '@site/docs/_Partials/problem-stems/lc739.md';
+
+Monotonic stacks and queues are not difficult because of what they *are* but because of *how* they are used to find solutions to various problems. This post explores monotonic stacks and queues by first exploring the *next greater height* problem without any framing whatsoever (i.e., there's no mention of explicitly using a monotonic data structure in any capacity). We then try to use one of the approaches developed for solving the next greater height problem to solve another problem: the *sliding window minimum*. But our previously developed approach is not quite enough. We need to make a small tweak that turns out to be quite insightful.
+
+The approaches developed for solving both problems are used to set the stage for explaining what monotonic stacks and queues actually are and why we way want to consider using them to solve certain kinds of problems. General code templates are provided for maintaining monotonically increasing/decreasing stacks and queues. If you are able to follow the solutions for the introductory problems (i.e., *next greater height* and *sliding window minimum*), then you will already know everything you need to know about monotonic stacks and queues before being explicitly told their definitions. 
+
+Finally, several LeetCode problems are provided where monotonic stacks and/or queues serve as natural tools in crafting optimal solutions (several problems are solved using the concepts fleshed out in this post).
+
+<!--truncate-->
+
+## Contents
 
 <TOCInline 
   toc={[ ... toc.filter(({level, value}, _, arr) => ( level == 2 || level == 3) && !value.startsWith('Contents')) ]}
 />
 
-## Next greater height example to set the stage
+## Next greater height
 
 Perhaps the best way to start our exploration of monotonic stacks/queues is with a problem with no framing (i.e., we'll worry about what monotonic stacks/queues actually are at a later point). [This video](https://www.youtube.com/watch?v=Dq_ObZwTY_Q) introduces monotonic stacks with the problem of finding the next greater height value (left to right) for a row of people lined up (or `-1` if a next greater height does not exist):
 
@@ -132,6 +143,7 @@ def next_greater_height_1(heights):
     ans = [None] * len(heights)
     for i in range(len(heights) - 1, -1, -1):
         curr_height = heights[i]
+
         # remove all height collection references less than or equal to the current height
         while height_collection and height_collection[-1] <= curr_height:
             height_collection.pop()
@@ -156,10 +168,16 @@ def next_greater_height_1(heights):
 The code above closely follows the process described previously; in fact, if we add a simple `print` statement at the end of each for loop iteration (i.e., after each person has been processed), then we can see this more clearly for ourselves:
 
 ```python
-print(f'Person: {i}; Height: {curr_height}; Next greater height: {ans[i]}; Height collection: {height_collection}; Answer so far: {ans}')
+print(
+    f'Person: {i}; '
+    f'Height: {curr_height}; '
+    f'Next greater height: {ans[i]}; '
+    f'Height collection: {height_collection}; '
+    f'Answer so far: {ans}'
+)
 ```
 
-The console output then confirms the work we did previously:
+The console output then confirms the work we did previously (horiztonal spacing adjustments added after printing):
 
 ```
 Person: 4;  Height: 13;  Next greater height: -1;  Height collection: [13];          Answer so far: [None, None, None, None, -1]
@@ -330,6 +348,7 @@ def next_greater_height_2(heights):
     
     for i in range(len(heights)):
         curr_height = heights[i]
+
         # remove all index values in our collection that correspond to
         # previously encountered heights less than the current height
         # (and then update the answer array to point to the curren height as
@@ -351,10 +370,16 @@ def next_greater_height_2(heights):
 The code above closely follows the process described previously; in fact, if we add a simple print statement at the end of each for loop iteration (i.e., after each person has been processed), then we can see this more clearly for ourselves:
 
 ```python
-print(f'Person: {i}; Height: {heights[i]}; Index collection: {index_collection}; Index-height correspondence: {[heights[i] for i in index_collection]}; Answer array: {ans}')
+print(
+    f'Person: {i}; '
+    f'Height: {heights[i]}; '
+    f'Index collection: {index_collection}; '
+    f'Index-height correspondence: {[heights[i] for i in index_collection]}; '
+    f'Answer array: {ans}'
+)
 ```
 
-The console output then confirms the work we did previously:
+The console output then confirms the work we did previously (horiztonal spacing adjustments added after printing):
 
 ```
 Person: 0;  Height: 12;  Index collection: [0];     Index-height correspondence: [12];      Answer array: [-1, -1, -1, -1, -1]
@@ -436,7 +461,7 @@ def next_greater_height_2(heights):
 </div>
 </div>
 
-### LC. 739 Daily Temperatures
+### LC 739. Daily Temperatures
 
 #### Problem statement
 
@@ -469,12 +494,957 @@ class Solution:
 
 Of course, the main challenge for this problem is to actually *identify* that our solution approach is relevant and then to implement it without issues. That's the real hard part.
 
+## Sliding window minimum
+
+Let's try one last problem before bothering ourselves with technical terms and concepts: the sliding window minimum problem.
+
+### Problem statement
+
+You are given an array of integers `nums`, there is a sliding window of size `k` which is moving from the very left of the array to the very right. You can only see the `k` numbers in the window. Each time the sliding window moves right by one position. Return an answer array that contains the minimum value for each sliding window of size `k`.
+
+For example, if the input array is `nums = [11, 13, -11, -13, 15, 13, 16, 17]` and `k = 3`, then the desired output or answer array would be `[-11, -13, -13, -13, 13, 13]`:
+
+<pre>
+Window&nbsp;position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min{'\n'}
+------------------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----{'\n'}
+[11&nbsp;&nbsp;13&nbsp;&nbsp;-11]&nbsp;-13&nbsp;&nbsp;15&nbsp;&nbsp;13&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-11</strong>{'\n'}
+&nbsp;11&nbsp;[13&nbsp;&nbsp;-11&nbsp;&nbsp;-13]&nbsp;15&nbsp;&nbsp;13&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;[-11&nbsp;&nbsp;-13&nbsp;&nbsp;15]&nbsp;13&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;&nbsp;-11&nbsp;[-13&nbsp;&nbsp;15&nbsp;&nbsp;13]&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;&nbsp;-11&nbsp;&nbsp;-13&nbsp;[15&nbsp;&nbsp;13&nbsp;&nbsp;16]&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;&nbsp;-11&nbsp;&nbsp;-13&nbsp;&nbsp;15&nbsp;[13&nbsp;&nbsp;16&nbsp;&nbsp;17]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>13</strong>{'\n'}
+</pre>
+
+### False start
+
+In the next greater height problem at the beginning of this post, we saw that it was an effective strategy to maintain a collection that we could use to reference previously encountered heights where the collection was comprised of either the heights themselves (approach 1) or indexes that we could use to obtain the heights themselves (approach 2). For both approaches, the collections we maintained effectively corresponded to heights that were non-increasing (i.e., decreasing or equivalent):
+
+- **Approach 1:** The height collections after processing people `4`, `3`, `2`, `1`, and `0` were as follows, respectively: 
+  + `[13]`
+  + `[14]`
+  + `[14, 12]`
+  + `[14, 12, 11]`
+  + `[14, 12]`
+- **Approach 2:** The index collections after processing people `0`, `1`, `2`, `3`, and `4` were as follows, respectively (height correspondence shown to the right):
+
+  $$
+  {\small
+  \begin{array}{lcl}
+  \texttt{[0]} &\longrightarrow & \texttt{[12]}\\
+  \texttt{[0, 1]} &\longrightarrow & \texttt{[12, 11]}\\
+  \texttt{[0, 2]} &\longrightarrow & \texttt{[12, 12]}\\
+  \texttt{[3]} &\longrightarrow & \texttt{[14]}\\
+  \texttt{[3, 4]} &\longrightarrow & \texttt{[14, 13]}
+  \end{array}}
+  $$
+
+As demonstrated above, the heights we could reference by means of these collections we were maintaining in both approaches were non-increasing (strictly decreasing in approach 1 and non-increasing in approach 2). Specifically, the heights in the collection progressed from largest to smallest and went from "oldest" to "newest"; that is, the leftmost height was encountered before any other heights that followed, and the "newest" height was always the current height we just encountered.
+
+The last part in the sentence above bears repeating because it indicates how we actually go about maintaining the collection: *the "newest" height was always the current height we just encountered*. If the collection of heights is decreasing and the current height is always the newest height in the collection, then this means we need to keep removing heights from the collection until the current height is the smallest one. Doing so ensures we maintain the "collection is decreasing" invariant. For example, if our height collection is `[18, 16, 14, 11, 8, 4]` and we encounter a new height of `13`, then we need to remove every element of the collection less than `13` before we add this "newest" current height: `[18, 16, 14, 13]`.
+
+How does all of this help for the current problem of finding the minimum value in each 3-element sliding window as we move from left to right? Since we're interested in the *minimum* value for each window and the rightmost value in the collections we maintained previously was always the smallest value, maybe this means we could dynamically maintain a "window collection" where we always picked off the rightmost value as the minimum? Let's try:
+
+- The first value is `11` with index `0`. Right now our collection is empty and the window is not yet of size `k = 3`. Hence, we add `0` to our collection and proceed: `[0]`.
+- The second value is `13` with index `1`. Our collection right now is `[0]` which corresponds to the value of `11`. Oops. We've already run into a problem: what do we do with index `1` that corresponds to value `13`? If we add it to the collection, then we'll actually need to *remove* what's currently in the collection to maintain the "collection is decreasing" invariant: `[1]` corresponds to `[13]`, which respects the invariant, but `[0, 1]` corresponds to `[11, 13]`, which violates the invariant. 
+
+  Simply removing index `0` from the collection is really not an option here. If the first three elements of the input array were, for example, `[11, 13, 12]`, then removing the ability to reference `11` means we've actually lost the ability to accurately determine the minimum value for the first three-element window.
+
+We need a different strategy. What if our collection referred to *increasing* values from left to right instead of *decreasing* values? Then the leftmost value would now be the smallest value (i.e., minimum) and we would not have to remove it whenever we encountered a larger value. Let's try again:
+
+- The first value is `11` with index `0`. Right now our collection is empty and the window is not yet of size `k = 3`. Hence, we add `0` to our collection and proceed: `[0]`.
+- The second value is `13` with index `1`. Our collection right now is `[0]` which corresponds to value `[11]`. Since `13` is greater than `11`, we can simply add its index to our collection and proceed: `[0, 1]`.
+- The third value is `-11` with index `2`. Our collection right now is `[0, 1]` which corresponds to values `[11, 13]`. But we want our collection to be *increasing*, where each newly added index corresponds to the greatest value referenced in the collection. To accomplish this for `-11`, we need to remove all indexes from our collection that correspond to values smaller than `-11`, namely all indexes in this case since both `11` and `13` are greater than `-11`. Our new collection becomes `[2]` which corresponds to value `[-11]`. Also, since we've now encountered the third value, we now have a 3-element window, and its minimum is the leftmost value referenced by our collection (i.e., `nums[2] = -11`).
+
+This strategy seems like it might work! Let's write things out in tabular form as we did with the previous approaches, where this time we'll have six columns (each row's column values will refer to the state of things *after* the current indexed value has been processed):
+
+- **Index:** This is the index of the value being processed.
+- **Value:** This is the value that corresponds to the row's index value.
+- **Index collection:** This is the *increasing* index collection (i.e., indexes correspond to values that increase from smaller to larger).
+- **Index-value correspondence:** Translation of indexes in the collection to their correspondent values (for ease of reference).
+- **Window indexes:** We're told that the window is of size `k = 3` and moves one unit from left to right. Hence, the sliding window indexes are `[0, 1, 2]` for the first window, `[1, 2, 3]` for the second window, and so on. This should be useful as a sanity check to ensure we don't include as a window minimum a value that is not actually in the window!
+- **Window minimum:** This is the minimum value for the current window of size `k = 3`.
+
+First recall our input: `nums = [11, 13, -11, -13, 15, 13, 16, 17], k = 3`. Now let's try to implement the strategy discussed above in tabular form:
+
+| Index | Value | Index collection | Index-value correspondence | Window indexes | Window minimum |
+| :-: | :-: | :-- | :-- | :-- | :-: |
+| `0` | `11` | `[0]` | `[11]` | `[0, x, x]` |  |
+| `1` | `13` | `[0, 1]` | `[11, 13]` | `[0, 1, x]` |  |
+| `2` | `-11` | `[2]` | `[-11]` | `[0, 1, 2]` | `-11` |
+| `3` | `-13` | `[3]` | `[-13]` | `[1, 2, 3]` | `-13` |
+| `4` | `15` | `[3, 4]` | `[-13, 15]` | `[2, 3, 4]` | `-13` |
+| `5` | `13` | `[3, 5]` | `[-13, 13]` | `[3, 4, 5]` | `-13` |
+| `6` | `16` | `[3, 5, 6]` | `[-13, 13, 16]` | `[4, 5, 6]` | `-13` |
+
+Oh no. The strategy seemed to be working great, but the last row above cannot be correct &#8212; the index of `3` in the index collection `[3, 5, 6]` is not valid when we encounter index `6` because the window of length `k = 3` with index `6` as its right endpoint has the following indexes: `[4, 5, 6]`.
+
+Is the strategy we were working on implementing above in tabular form completely doomed? Do we need to pursue a different strategy altogether? Or can we make a slight adjustment to fix everything?
+
+### Fixed start
+
+Fortunately, the exact issue of what went wrong in the last row above is easy to identify: the index collection we were maintaining has an index value that is invalid for the sliding window; that is, when our sliding window of length `k = 3` ends at index `6`, this means the sliding window extends across indexes `[4, 5, 6]`. The index `3` is thus invalid. What should we do? What if we just removed this invalid index from our collection? Would that work? If we removed *only* the invalid index, then our collection would become `[5, 6]`, which would correspond to values `[13, 16]`. Does this work?
+
+The sliding window that extends across indexes `[4, 5, 6]` has the following corresponding values: `[15, 13, 16]`; hence, the minimum value for this window is `13`, which occurs at index `5`. And this is now the leftmost value in our index collection since we removed only the invalid index! This isn't just a happy coincidence or chance. 
+
+Recall that for each new value we encounter, we ensure it is the largest value referred to in our index collection, where are our index collection represents corresponding values that *increase*. Furthermore, what's the largest size our index collection should ever possibly be? Answer: The size of the sliding window, `k`. Why? If the index collection were larger than the size of the sliding window itself, `k = 3` in this case, then our collection would *automatically* have an invalid index. So how do we ensure the index collection never exceeds a size of `k` and only ever has valid indexes? The manner in which the sliding window moves is a hint.
+
+Once the initial window size of `k` has been reached, every time the window shifts a single unit to the right, the window's previous leftmost index must be removed as a valid index from our index collection (if it is present); that is, if `i` is the index of the value we have currently processed to maintain our collection's increasing or decreasing invariant, and our sliding window is of size `k`, then the leftmost index that must be removed (if it is part of our collection) is `i - k`. For example, if `i = 7`, and `k = 3`, then the valid window indexes are `[5, 6, 7]`, and the leftmost index of the previous window which is no longer valid and would need to be removed from our collection (if it was present) would be `i - k = 7 - 3 = 4`.
+
+When can the scenario described above actually happen? This can happen when the index in need of removal corresponds to the minimum value for `k` windows of size `k`, and this is *exactly* what happened when we were progressing through the table above when we encountered our issue:
+
+- Indexes `[1, 2, 3]` corresponded to values `[13, -11, -13]`. Minimum: `-13` (index `3`).
+- Indexes `[2, 3, 4]` corresponded to values `[-11, -13, 15]`. Minimum: `-13` (index `3`).
+- Indexes `[3, 4, 5]` corresponded to values `[-13, 15, 13]`. Minimum: `-13` (index `3`).
+- Indexes `[4, 5, 6]` corresponded to values `[15, 13, 16]`. Minimum: `13`, not `-13` (index `5`, not `3`).
+
+  The value `nums[3] = -13` was the minimum value for `k = 3` windows. This index value is no longer valid for this window because it was the leftmost index of the previous window.
+
+How do we "just remove" the invalid index of `3` when our increasing index collection of `[3, 5, 6]` corresponds to values `[-13, 13, 16]` even though the sliding window only covers indexes `[4, 5, 6]` which correspond to values `[15, 13, 16]`? In *all* of the approaches thus far, we have *always* added/removed values to/from our collection in order to maintain the collection's increasing or decreasing invariant. We are still doing that in this approach we've been describing, but what's to stop us from *removing* invalid values in our collection *from the left* (when needed)? 
+
+Removing `3` from the left of `[3, 5, 6]` means we now have `[5, 6]` (correspondent values `[13, 16]`), which are valid window indexes for the window that extends across indexes `[4, 5, 6]`. Hence, removing an element *from the left* did not disturb the increasing invariant of our collection that we've been trying to maintain &#8212; we simply removed an invalid value. The reward is that the new leftmost index in our collection, `5`, corresponds to the minimum value of the current three-element window: `nums[5] = 13`.
+
+Let's try our tabular approach again, but this time we'll remove invalid indexes from the left of our collection if we encounter them *before* reporting a window minimum:
+
+| Index | Value | Index collection | Index-value correspondence |  Window indexes | Index to remove (if present) | Window minimum |
+| :-: | :-: | :-- | :-- | :-- | :-: | :-: |
+| `0` | `11` | `[0]` | `[11]` | `[0, x, x]` |  |  |
+| `1` | `13` | `[0, 1]` | `[11, 13]` | `[0, 1, x]` |  |  |
+| `2` | `-11` | `[2]` | `[-11]` | `[0, 1, 2]` |  | `-11` |
+| `3` | `-13` | `[3]` | `[-13]` | `[1, 2, 3]` | `3 - 3 = 0 != 3` | `-13` |
+| `4` | `15` | `[3, 4]` | `[-13, 15]` | `[2, 3, 4]` | `4 - 3 = 1 != 3` | `-13` |
+| `5` | `13` | `[3, 5]` | `[-13, 13]` | `[3, 4, 5]` | `5 - 3 = 2 != 3` | `-13` |
+| `6` | `16` | `[5, 6]` | `[13, 16]` | `[4, 5, 6]` | `6 - 3 = 3 == 3` (removed) | `13` |
+| `7` | `17` | `[5, 6, 7]` | `[13, 16, 17]` | `[5, 6, 7]` | `7 - 3 = 4 != 5` | `13` |
+
+If we collect the window minimums from the table above into an array, then we get `[-11, -13, -13, -13, 13, 13]`, as desired.
+
+### Code implementation
+
+Now for the code implementation of the process described above:
+
+```python
+def sliding_window_min_1(nums, k):
+    # highlight-warning-next-line
+    index_collection = []
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+
+        # remove all index values in our collection that correspond to
+        # previously encountered numbers greater than the current number
+        # (note that removals are made from the right)
+        while index_collection and nums[index_collection[-1]] > curr_num:
+            index_collection.pop()
+        
+        # add the index for the current number to the collection,
+        # which is guaranteed to correspond to a number greater than all
+        # other correspondent numbers in the index collection;
+        # importantly, the leftmost index of the collection corresponds 
+        # to the smallest number represented in the collection
+        # (note that additions are made to the right)
+        index_collection.append(i)
+        
+        # if the leftmost index in our collection corresponds 
+        # to the leftmost index of the previous window, 
+        # then remove this index in the collection _from the left_
+        if index_collection[0] == i - k:
+            # highlight-warning-next-line
+            index_collection.pop(0)
+        
+        # do not start adding window minimums to the answer array
+        # until our window has reached a size of k
+        if i >= k - 1:
+            ans.append(nums[index_collection[0]])
+            
+    return ans
+```
+
+The highlighted lines above are meant to serve as a warning of sorts. Why? The code above clearly provides the correct output and respects every detail of our process and strategy:
+
+```python
+print(sliding_window_min_1([11, 13, -11, -13, 15, 13, 16, 17], 3))
+# [-11, -13, -13, -13, 13, 13]
+```
+
+The reason why the lines are highlighted in warning colors above is because of the data structure we are using for our `index_collection`, namely a Python list or "dynamic array." Python lists are excellent if we're mostly adding or removing elements from the end (i.e., the right) because these operations are $O(1)$ on average. We're executing such operations whenever we move to a new index and add it to the `index_collection` &#8212; we remove all indexes from the right of the collection until the only remaining indexes correspond to values less than or equal to the current value. But what if we then discover that the leftmost index in our collection is the leftmost index of the previous window and is therefore an invalid index? We remove this index in our collection *from the left*. 
+
+Removing elements in arrays from the left on a regular basis is not performant because each removal is $O(n)$, where $n$ represents the number of elements in the array (all array elements need to be shifted in memory once the first element is deleted). It would be ideal if we could use a data structure that supported efficient additions/removals from the right *and* from the left. What we're looking for is the so-called double-ended queue or "deque" for short, and Python has just the thing in its `collections` module: [`collections.deque`](https://docs.python.org/3/library/collections.html#collections.deque):
+
+> `class collections.deque([iterable[, maxlen]])`: Returns a new deque object initialized left-to-right (using `append()`) with data from `iterable`. If `iterable` is not specified, the new deque is empty.
+>
+> Deques are a generalization of stacks and queues (the name is pronounced "deck" and is short for "double-ended queue"). Deques support thread-safe, memory efficient appends and pops from either side of the deque with approximately the same $O(1)$ performance in either direction.
+>
+> Though `list` objects support similar operations, they are optimized for fast fixed-length operations and incur $O(n)$ memory movement costs for `pop(0)` and `insert(0, v)` operations which change both the size and position of the underlying data representation.
+> 
+> [...]
+
+As [noted on Stack Overflow](https://stackoverflow.com/a/6257048/5209533) and [confirmed in CPython's source code](https://github.com/python/cpython/blob/8f4f77364750d0ceec47157e8920983e3f41651f/Modules/_collectionsmodule.c#L71), the `deque` in Python is implemented under the hood with a doubly-linked list. A [comment](https://stackoverflow.com/questions/4426663/how-do-i-remove-the-first-item-from-a-list#comment115406098_4426727) on a separate Stack Overflow thread summarizes the takeaway rather neatly:
+
+> In my case, the time went down from 1:31 min. with `pop(0)` to 200 - 250 ms by using `deque`.
+
+If we're going to be regularly adding and removing elements from the left and from the right, which is all we're actually doing with our `index_collection` in the solution above, then the data structure we should use is a double-ended queue. The code changes required, highlighted below, are minimal for the optimal solution:
+
+```python
+# import the deque from the collections module in Python's standard library
+# highlight-success-next-line
+from collections import deque
+
+def sliding_window_min_2(nums, k):
+    # initialize empty deque for O(1) additions/removals from both ends
+    # highlight-success-next-line
+    index_collection = deque()
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while index_collection and nums[index_collection[-1]] > curr_num:
+            index_collection.pop()
+        index_collection.append(i)
+
+        if index_collection[0] == i - k:
+            # remove elements from the left in O(1)
+            # highlight-success-next-line
+            index_collection.popleft()
+        
+        if i >= k - 1:
+            ans.append(nums[index_collection[0]])
+            
+    return ans
+```
+
+It's worth noting that we have not yet explicitly mentioned using stacks or queues in any of our problem-solving approaches (the lone exception being the optimal solution above that used a deque), much less "monotonic" stacks or queues. And that's because we haven't really needed to use that terminology &#8212; we used the *ideas* without knowing the names for these ideas. All of the terminology will soon be defined and made clear (once we wrap up this sliding window problem).
+
+### Code implementation confirms process description
+
+The code above closely follows the process described previously; unfortunately, in this case, adding a print statement after each for loop (i.e., after each index has been processed) is not as simple as it was in the previous problem. Nonetheless, if you want to modify the solution code to accomplish this, then you can.
+
+<details>
+<summary> Modified solution code to print tabular values for each iteration</summary>
+
+```python
+def sliding_window_min_2_print(nums, k):
+    index_collection = deque()
+    ans = []
+    
+    for i in range(len(nums)):
+        # highlight-start
+        removing_index = False
+        window_min_exists = False
+        # highlight-end
+        curr_num = nums[i]
+        while index_collection and nums[index_collection[-1]] > curr_num:
+            index_collection.pop()
+        index_collection.append(i)
+        
+        if index_collection[0] == i - k:
+            # highlight-start
+            removing_index = True
+            removed_index = index_collection.popleft()
+            # highlight-end
+            
+        if i >= k - 1:
+            # highlight-start
+            window_min_exists = True
+            window_min = nums[index_collection[0]]
+            # highlight-end
+            ans.append(nums[index_collection[0]])
+            
+        # highlight-start
+        print(
+            f'Index: {i}; '
+            f'Value: {nums[i]}; '
+            f'Index collection: {list(index_collection)}; '
+            f'Index-value correspondence: {[nums[idx] for idx in index_collection]}; '
+            f'Window indexes: {[0, "x", "x"] if i == 0 else [0, 1, "x"] if i == 1 else [ val + (i - k) for val in range(1, k + 1)]}; '
+            f'Index to remove (if present): {i} - {k} = {i - k} {"==" if removing_index else "!="} {removed_index if removing_index else index_collection[0]} {"(removed)" if removing_index else ""}; '
+            f'Window minimum: {window_min if window_min_exists else ""}'
+        )
+        # highlight-end
+            
+    return ans
+```
+
+</details>
+
+The console output then confirms the work we did previously (horizontal spacing adjustments added after printing):
+
+```
+Index: 0;  Value:  11;  Index collection: [0];        Index-value correspondence: [11];          Window indexes: [0, 'x', 'x'];   Index to remove (if present): 0 - 3 = -3 != 0;            Window minimum: 
+Index: 1;  Value:  13;  Index collection: [0, 1];     Index-value correspondence: [11, 13];      Window indexes: [0, 1, 'x'];     Index to remove (if present): 1 - 3 = -2 != 0;            Window minimum: 
+Index: 2;  Value: -11;  Index collection: [2];        Index-value correspondence: [-11];         Window indexes: [0, 1, 2];       Index to remove (if present): 2 - 3 = -1 != 2;            Window minimum: -11
+Index: 3;  Value: -13;  Index collection: [3];        Index-value correspondence: [-13];         Window indexes: [1, 2, 3];       Index to remove (if present): 3 - 3 = 0  != 3;            Window minimum: -13
+Index: 4;  Value:  15;  Index collection: [3, 4];     Index-value correspondence: [-13, 15];     Window indexes: [2, 3, 4];       Index to remove (if present): 4 - 3 = 1  != 3;            Window minimum: -13
+Index: 5;  Value:  13;  Index collection: [3, 5];     Index-value correspondence: [-13, 13];     Window indexes: [3, 4, 5];       Index to remove (if present): 5 - 3 = 2  != 3;            Window minimum: -13
+Index: 6;  Value:  16;  Index collection: [5, 6];     Index-value correspondence: [13, 16];      Window indexes: [4, 5, 6];       Index to remove (if present): 6 - 3 = 3  == 3 (removed);  Window minimum: 13
+Index: 7;  Value:  17;  Index collection: [5, 6, 7];  Index-value correspondence: [13, 16, 17];  Window indexes: [5, 6, 7];       Index to remove (if present): 7 - 3 = 4  != 5;            Window minimum: 13
+```
+
+### LC 239. Sliding Window Maximum
+
+#### Problem statement
+
+Let's now turn our attention to <LC id='239' type='long' ></LC> for some practice. Here's the problem statement for ease of reference:
+
+> <LC239PS />
+
+For example, if `nums = [1,3,-1,-3,5,3,6,7], k = 3` is given as input, then the desired output would be as follows: `[3,3,5,5,6,7]`. The following illustration can help us see this more clearly (just like we did for the sliding window minimum problem earlier):
+
+<pre>
+Window&nbsp;position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max{'\n'}
+---------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----{'\n'}
+[1&nbsp;&nbsp;3&nbsp;&nbsp;-1]&nbsp;-3&nbsp;&nbsp;5&nbsp;&nbsp;3&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>3</strong>{'\n'}
+&nbsp;1&nbsp;[3&nbsp;&nbsp;-1&nbsp;&nbsp;-3]&nbsp;5&nbsp;&nbsp;3&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>3</strong>{'\n'}
+&nbsp;1&nbsp;&nbsp;3&nbsp;[-1&nbsp;&nbsp;-3&nbsp;&nbsp;5]&nbsp;3&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>5</strong>{'\n'}
+&nbsp;1&nbsp;&nbsp;3&nbsp;&nbsp;-1&nbsp;[-3&nbsp;&nbsp;5&nbsp;&nbsp;3]&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>5</strong>{'\n'}
+&nbsp;1&nbsp;&nbsp;3&nbsp;&nbsp;-1&nbsp;&nbsp;-3&nbsp;[5&nbsp;&nbsp;3&nbsp;&nbsp;6]&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>6</strong>{'\n'}
+&nbsp;1&nbsp;&nbsp;3&nbsp;&nbsp;-1&nbsp;&nbsp;-3&nbsp;&nbsp;5&nbsp;[3&nbsp;&nbsp;6&nbsp;&nbsp;7]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>7</strong>{'\n'}
+</pre>
+
+#### Solution
+
+The problem above is virtually identical to the sliding window minimum problem we worked so hard to solve. In fact, the *only* difference is that now we're looking for the maximum of each window. This means the `index_collection` we maintain should be *decreasing* (so that the leftmost value will always be a maximum). The rest of the logic stays the exact same. Hence, the only thing we need to do is change the comparison in the while loop from `>` to `<`; that is, we need to change
+
+```python
+while index_collection and nums[index_collection[-1]] > curr_num:
+```
+
+to
+
+```python
+while index_collection and nums[index_collection[-1]] < curr_num:
+```
+
+Everything else stays as is:
+
+```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        index_collection = deque()
+        ans = []
+        
+        for i in range(len(nums)):
+            curr_num = nums[i]
+            while index_collection and nums[index_collection[-1]] < curr_num:
+                index_collection.pop()
+            index_collection.append(i)
+            
+            if index_collection[0] == i - k:
+                index_collection.popleft()
+                
+            if i >= k - 1:
+                ans.append(nums[index_collection[0]])
+                
+        return ans
+```
+
+Interestingly, we can actually get away with *not* using a deque (i.e., we just use a list instead and left removals cost more computationally than they might otherwise). The answer is still accepted by LeetCode even though it's notably slower than the solution using a deque. The test cases LeetCode uses are not public/visible, but presumably the reason the list-based solution is still acceptable is because *most* operations on `index_collection` are additions and removals *from the right*, where these list operations are still $O(1)$. Only on certain occasions do we need to remove an element from the left, which will be $O(k)$ instead of $O(1)$ since the largest size of the index collection we're maintaining is of size $k$. 
+
+We should note that the performance concern remarked on above (i.e., $O(k)$ left-removals instead of $O(1)$) pales in comparison to the most significant computational gains of crafting a solution that perform in $O(n)$ with a single pass instead of processing every single subarray on its own in a brute force fashion, which would be $O(n^2)$. That kind of solution would definitely *not* be accepted for this hard problem.
+
+<details>
+<summary> List-based solution to LC 239 that is less performant than deque-based solution but accepted nonetheless</summary>
+
+```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        index_collection = []
+        ans = []
+
+        for i in range(len(nums)):
+            curr_num = nums[i]
+            while index_collection and nums[index_collection[-1]] < curr_num:
+                index_collection.pop()
+            index_collection.append(i)
+
+            if index_collection[0] == i - k:
+                index_collection.pop(0)
+
+            if i >= k - 1:
+                ans.append(nums[index_collection[0]])
+
+        return ans
+```
+
+</details>
+
 ## Monotonic stacks and queues
 
-Current monotonic queue problems on LeetCode:
+### Definitions
+
+TBD
+
+### Templates
+
+The templates below are constructed in a way such that the *index values* are being added to the stack or (doubly-ended) queue as opposed to the values themselves. This is because index values are often needed since they supply additional information and make it possible to distinguish between values that might otherwise be considered identical. For example, if `nums = [1, 1]`, then `nums[0] == nums[1]` but `0 != 1`; that is, the *values* of `1` are identicial but their indexed positions are not.
+
+The foundation of all possible monotonic stack and queue templates is the same and hinges on two important pieces of information:
+
+1. **Will elements possibly need to be removed from the left of the index collection at some point?** If so, use a deque (otherwise use a simple stack). An element(s) is generally removed from the left of the deque *after* the deque's increasing/decreasing invariant has been maintained and the current element added to the right of the deque &#8212; usually some condition is violated that stipulates deque elements should be removed from the left (e.g., an invalid index for a sliding window is a common example). 
+
+    Maintaining the increasing/decreasing invariant for the collection (stack or deque) always uses stack-like operations: we remove from the right or top (i.e., "pop") every single value that would result in the invariant being violated once the current element is added to the right or top (i.e., "push"). In this sense, a monotonic "queue" is really a misnomer since the addition and removal of elements to maintain the invariant is always performed in LIFO fashion (last in first out); that is, the "push" and "pop" operations needed to maintain the deque invariant are fundamentally stack-like in nature. It's only if we need to *remove elements from the left* that the idea of a queue enters the picture, where a LIFO operation is needed (i.e., last in first out). Hence, we only ever really consider monotonic *stacks* or *deques* (doubly-ended queues).
+
+2. **How do the values referred to in your index collection need to progress from left to right?** Should the values be increasing or decreasing? Should duplicate values be allowed? The value comparison you use in the condition of the while loop determines what kind of invariant you will maintain for your index collection. 
+
+    The core part of maintaining the invariant for any index collection is the following:
+
+    ```python
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        # highlight-next-line
+        while index_collection and nums[index_collection[-1]] ??? curr_num:
+            index_collection.pop()
+        index_collection.append(i)
+    ```
+
+    Above, `???` refers to the value comparison used to maintain your index collection's invariant: 
+
+    | Comparison | Invariant | Explanation | Example usage |
+    | :-: | :-- | :-- | :-- |
+    | `<` | Decreasing collection (duplicates allowed) | The invariant for the index collection will be a *decreasing* collection where duplicate values *are* allowed. This means all indexes in the collection will correspond to values that are *less than* the current value (some of these values less than the current value may be the same since duplicate values are allowed). | Given an integer array `heights`, find each height's *next greater height*. |
+    | `<=` | Decreasing collection (duplicates *not* allowed) | The invariant for the index collection will be a *decreasing* collection where duplicate values are *not* allowed. This means all indexes in the collection will correspond to values that are *less than or equal to* the current value (none of the values referenced in the collection will be the same since duplicate values are not allowed). | Given an integer array `heights`, find each height's *next greater than or equal to height*. |
+    | `>` | Increasing collection (duplicates allowed) | The invariant for the index collection will be an *increasing* collection where duplicate values *are* allowed. This means all indexes in the collection will correspond to values that are *greater than* the current value (some of these values greater than the current value may be the same since duplicate values are allowed). | Given an integer array `heights`, find each height's *next smaller height*. |
+    | `>=` | Increasing collection (duplicates *not* allowed) | The invariant for the index collection will be an *increasing* collection where duplicate values are *not* allowed. This means all indexes in the collection will correspond to values that are *greater than or equal to* the current value (none of the values referenced in the collection will be the same since duplicate values are not allowed). | Given an integer array `heights`, find each height's *next less than or equal to height*. |
+
+    <details>
+    <summary> What happens if we use <code>==</code> or <code>!=</code> for value comparison when managing our collection? </summary>
+
+    :::caution
+
+    It's probably best to skip this for now unless you're fully comfortable with everything that has been previously discussed in this post. The brief considerations we're about to make are likely to cause confusion and will add little to no (maybe negative?) benefit. If you're not yet deterred, then it *might* possibly be useful to concretely *see* why using these comparisons adds little value to our analyses.
+
+    :::
+
+    <details>
+    <summary> Using the equality comparison: <code>==</code> </summary>
+
+    **TLDR:** The answer array is only ever updated (i.e., `ans[i] = curr_num`) when equivalent values are adjacent: if `nums[i] == nums[i+1]`, then the assignment `ans[i] = nums[i+1]` will be made. But this is the only scenario where updates are made (probably not a desirable nor useful effect).
+
+    ---
+
+    It's tempting to think we're asking, "What is the next value equal to the current value?" This is somewhat of a ridiculous question since *any* value will clearly be *its own* next equal value if this value is ever repeated (the question of whether or not the value is ever repeated is the *real* question here). If our code actually attempted to answer this question by only changing the comparison operator to `==`, then we would expect the following input-output result:
+
+    ```python
+    # Input
+    [14, 17, 13, 14, 14, 19, 12, 14, 18]
+
+    # Output
+    [14, -1, -1, 14, 14, -1, -1, -1, -1]
+    ```
+
+    Let's run the code and see what we get (we'll add a helpful print statement too for clarification):
+
+    ```python title="Input-Output"
+    def fn(nums):
+        collection = []
+        ans = [-1] * len(nums)
+        
+        for i in range(len(nums)):
+            curr_num = nums[i]
+            while collection and nums[collection[-1]] == curr_num:
+                prev_index = collection.pop()
+                ans[prev_index] = curr_num
+            collection.append(i)
+            print(
+                f'collection: {collection}; '
+                f'number correspondence: {[nums[idx] for idx in collection]}'
+            )
+            
+        return ans
+
+    nums = [14, 17, 13, 14, 14, 19, 12, 14, 18] # Input
+    fn(nums)                                    # Output: [-1, -1, -1, 14, -1, -1, -1, -1, -1]
+    ```
+
+    ```a title="Printed information"
+    Index: 0;  Value: 14  Index collection: [0]                       Collection values: [14];                              Answer array: [-1, -1, -1, -1, -1, -1, -1, -1, -1]
+    Index: 1;  Value: 17  Index collection: [0, 1]                    Collection values: [14, 17];                          Answer array: [-1, -1, -1, -1, -1, -1, -1, -1, -1]
+    Index: 2;  Value: 13  Index collection: [0, 1, 2]                 Collection values: [14, 17, 13];                      Answer array: [-1, -1, -1, -1, -1, -1, -1, -1, -1]
+    Index: 3;  Value: 14  Index collection: [0, 1, 2, 3]              Collection values: [14, 17, 13, 14];                  Answer array: [-1, -1, -1, -1, -1, -1, -1, -1, -1]
+    Index: 4;  Value: 14  Index collection: [0, 1, 2, 4]              Collection values: [14, 17, 13, 14];                  Answer array: [-1, -1, -1, 14, -1, -1, -1, -1, -1]
+    Index: 5;  Value: 19  Index collection: [0, 1, 2, 4, 5]           Collection values: [14, 17, 13, 14, 19];              Answer array: [-1, -1, -1, 14, -1, -1, -1, -1, -1]
+    Index: 6;  Value: 12  Index collection: [0, 1, 2, 4, 5, 6]        Collection values: [14, 17, 13, 14, 19, 12];          Answer array: [-1, -1, -1, 14, -1, -1, -1, -1, -1]
+    Index: 7;  Value: 14  Index collection: [0, 1, 2, 4, 5, 6, 7]     Collection values: [14, 17, 13, 14, 19, 12, 14];      Answer array: [-1, -1, -1, 14, -1, -1, -1, -1, -1]
+    Index: 8;  Value: 18  Index collection: [0, 1, 2, 4, 5, 6, 7, 8]  Collection values: [14, 17, 13, 14, 19, 12, 14, 18];  Answer array: [-1, -1, -1, 14, -1, -1, -1, -1, -1]
+    ```
+
+    What's going on here? Why is the answer array only updated once (after the value at index `4` is processed)? The answer isn't obvious at first and even [gave ChatGPT 4 quite a few issues](https://chat.openai.com/share/0102a716-2688-4ed0-adff-6173eb8e1acc) (you can ignore the first two messages in the ChatGPT thread). We can answer our own question by looking at the code more closely and determining what changing the comparison to `==` actually does. Here's the core part of the function:
+
+    ```python
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while collection and nums[collection[-1]] == curr_num:
+            prev_index = collection.pop()
+            ans[prev_index] = curr_num
+        collection.append(i)
+    ```
+
+    When exactly are values added to `collection`? Once all previous values that *equal* the current value have been removed. For example, if the current number is `x` and the collection before processing this number somehow corresponded to the numbers `[a, b, d, c, g, f, x, x, x]`, then the collection's number correspondence' *after* processing the current number would be `[a, b, d, c, g, f, x]`, where the three equivalent `x` values previously in the collection were removed (and their corresponding spots in the answer array updated). This explains the crucial logic in the function above, but we should note that the collection itself will *never* have adjacent indexes that represent equivalent values due to how the collection is being maintained; that is, to use the example above, we would never actually reach the state of `[a, b, d, c, g, f, x, x, x]`. We would first reach `[a, b, d, c, g, f, x]` and the collection would stay this way until we encountered a new value *not* equal to `x`. 
+
+    This may be easier to understand if we introduce an actual number array that models the situation above (the number above each value corresponds to that value's index):
+
+    ```a
+            0  1  2  3  4  5  6   7   8   9
+    nums = [1, 2, 4, 3, 7, 6, 24, 24, 24, 24]
+    ```
+
+    Eventually our collection of index values reaches the state `[0, 1, 2, 3, 4, 5, 6]`, where `nums[6] == 24`, and we know the next three values are all `24`; that is, `nums[6] == nums[7] == nums[8] == nums[9]`. How is collection maintained and how is our answer array updated?
+
+    - Collection: `[0, 1, 2, 3, 4, 5, 6]`. Current value (index `7`): `24`. We have `nums[6] == nums[7]`.
+      + Pop `6`
+      + Update answer array: `ans[6] = 24`
+      + Append `7` to the collection
+    - Collection: `[0, 1, 2, 3, 4, 5, 7]`. Current value (index `8`): `24`. We have `nums[7] == nums[8]`.
+      + Pop `7`
+      + Update answer array: `ans[7] = 24`
+      + Append `8` to the collection
+    - Collection: `[0, 1, 2, 3, 4, 5, 8]`. Current value (index `9`): `24`. We have `nums[8] == nums[9]`.
+      + Pop `8`
+      + Update answer array: `ans[8] = 24`
+      + Append `9` to the collection
+
+    This is where we'd stop because we just processed the last value in `nums` at index `9`. Since the answer array is not updated at all until index `6`, and is then updated in the manner above, our final answer array would be `[-1, -1, -1, -1, -1, 24, 24, 24, -1]`. If we execute the `fn` function above with `nums = [1, 2, 4, 3, 7, 6, 24, 24, 24, 24]` as the input, then this is exactly what we will get as the output.
+
+    For the sake of completeness, here's a way to answer the question we originally thought we might be asking (i.e., what is the next equal value or `-1` if no such value exists):
+
+    ```python
+    def fn(nums):
+        collection = set()
+        ans = [None] * len(nums)
+        for i in range(len(nums) - 1, -1, -1):
+            curr_num = nums[i]
+            if curr_num in collection:
+                ans[i] = curr_num
+            else:
+                ans[i] = -1
+                collection.add(curr_num)
+        return ans
+
+    nums =     [14, 17, 13, 14, 14, 19, 12, 14, 18]
+    fn(nums) # [14, -1, -1, 14, 14, -1, -1, -1, -1]
+    ```
+
+    </details>
+
+    <details>
+    <summary> Using the inequality comparison: <code>!=</code> </summary>
+
+    **TLDR:** The answer array is updated whenever unequal values are adjacent. If two or more adjacent values *are* equal, then the indexes that represent these values are all added to the index collection, and the answer array is not updated until an unequal value is found, at which point *all* previous equal adjacent values are assigned this current unequal value in the answer array.
+
+    Due to the last in first out nature of how values are being maintained in the index collection, the effect of changing the comparison operator to `!=` is that the answer array effectively tells us what each value's next *unequal* value will be (or `-1` if no such value exists). This isn't *entirely* worthless, but it is also probably not the most desired effect nor all that useful a result.
+
+    ---
+
+    If we change the comparison operator to `!=`, then it seems like we may be asking the following question: "What is the next value *not* equal to the current value?" And we'd be right (unlike before with `==`) even though the result is unlikely to be all that useful! If we change the comparison operator to `!=`, then we would expect our code to produce the following input-output result:
+
+    ```python
+    # Input
+    [14, 17, 13, 14, 14, 19, 12, 14, 18]
+
+    # Output
+    [17, 13, 14, 19, 19, 12, 14, 18, -1]
+    ```
+
+    Let's run the code and see what we get (we'll again add a helpful print statement for clarification):
+
+    ```python title="Input-Output"
+    def fn(nums):
+        collection = []
+        ans = [-1] * len(nums)
+        
+        for i in range(len(nums)):
+            curr_num = nums[i]
+            while collection and nums[collection[-1]] != curr_num:
+                prev_index = collection.pop()
+                ans[prev_index] = curr_num
+            collection.append(i)
+            print(
+                f'Index: {i}; ',
+                f'Value: {nums[i]}',
+                f'Index collection: {collection}',
+                f'Collection values: {[nums[idx] for idx in collection]}; ',
+                f'Answer array: {ans}'
+            )
+            
+        return ans
+
+    nums = [14, 17, 13, 14, 14, 19, 12, 14, 18] # Input
+    fn(nums)                                    # Output: [17, 13, 14, 19, 19, 12, 14, 18, -1]
+    ```
+
+    ```a title="Printed information"
+    Index: 0;  Value: 14  Index collection: [0]     Collection values: [14];      Answer array: [-1, -1, -1, -1, -1, -1, -1, -1, -1]
+    Index: 1;  Value: 17  Index collection: [1]     Collection values: [17];      Answer array: [17, -1, -1, -1, -1, -1, -1, -1, -1]
+    Index: 2;  Value: 13  Index collection: [2]     Collection values: [13];      Answer array: [17, 13, -1, -1, -1, -1, -1, -1, -1]
+    Index: 3;  Value: 14  Index collection: [3]     Collection values: [14];      Answer array: [17, 13, 14, -1, -1, -1, -1, -1, -1]
+    Index: 4;  Value: 14  Index collection: [3, 4]  Collection values: [14, 14];  Answer array: [17, 13, 14, -1, -1, -1, -1, -1, -1]
+    Index: 5;  Value: 19  Index collection: [5]     Collection values: [19];      Answer array: [17, 13, 14, 19, 19, -1, -1, -1, -1]
+    Index: 6;  Value: 12  Index collection: [6]     Collection values: [12];      Answer array: [17, 13, 14, 19, 19, 12, -1, -1, -1]
+    Index: 7;  Value: 14  Index collection: [7]     Collection values: [14];      Answer array: [17, 13, 14, 19, 19, 12, 14, -1, -1]
+    Index: 8;  Value: 18  Index collection: [8]     Collection values: [18];      Answer array: [17, 13, 14, 19, 19, 12, 14, 18, -1]
+    ```
+
+    This is nice because we're actually getting the expected behavior here! But why though? Let's take a closer look at the core part of the function where the comparison operator for maintaining our index collection is now `!=`:
+
+    ```python
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while collection and nums[collection[-1]] != curr_num:
+            prev_index = collection.pop()
+            ans[prev_index] = curr_num
+        collection.append(i)
+    ```
+
+    This effectively means the answer array gets updated every time we encounter a value not equal to the value represented at the top of the collection. But if the values *are* equal, as is the case above when the values of `14` are adjacent, then the answer array is *not* updated, and we wait until the next unequal value is encountered, at which point *all* previous adjacent values that are equivalent will be popped from the collection and assigned the current uneqal value in the answer array. This is actually the desired effect (even though it doesn't seem particularly useful).
+
+    </details>
+
+    </details>
+
+We are now ready for the monotonic stack and (doubly-ended queue) templates. Here's a preview before getting into the details:
+
+<div style={{ marginBottom: '1em', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gridTemplateRows: '1fr', gridRowGap: '5px', gridColumnGap: '5px' }}>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Monotonic (decreasing) stack"
+
+def fn(nums):
+    dec_stack = []
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while dec_stack and nums[dec_stack[-1]] < curr_num:
+            dec_stack.pop()
+        dec_stack.append(i)
+        
+
+
+
+    return ans
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Monotonic (decreasing) queue"
+from collections import deque
+def fn(nums):
+    dec_queue = deque()
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while dec_queue and nums[dec_queue[-1]] < curr_num:
+            dec_queue.pop()
+        dec_queue.append(i)
+        
+        if CONDITION:
+            dec_queue.popleft()
+        
+    return ans
+```
+
+</div>
+</div>
+
+
+#### Monotonic stack
+
+<details>
+<summary> Template with code comments </summary>
+
+```python
+def fn(nums):
+    # an appropriate stack label can help: inc_stack or dec_stack
+    # for "increasing" or "decreasing" stack, respectively;
+    # it may be helpful to include an inline comment beside the stack 
+    # declaration to communicate whether or not duplicates are allowed
+    dec_stack = [] # monotonic decreasing stack (duplicates allowed)
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        
+        # recall how the comparison operator determines the stack invariant:
+        # (<)  decreasing stack (duplicates allowed)
+        # (<=) decreasing stack (duplicates not allowed)
+        # (>)  increasing stack (duplicates allowed)
+        # (>=) increasing stack (duplicates not allowed)
+        while dec_stack and nums[dec_stack[-1]] < curr_num:
+            # this is where you will often relate the index values 
+            # to each other in some way and possibly update the answer array
+            dec_stack.pop()
+        
+        # append the index for the current number to the stack
+        # (the while loop above ensures this step does not violate the stack invariant)
+        dec_stack.append(i)
+        
+    return ans
+```
+
+</details>
+
+<details>
+<summary> "Next height" problems solved with code template</summary>
+
+All of the problems below use `heights = [14, 17, 13, 14, 14, 19, 12, 14, 18]` as the input. Each problem requests a height value in relation to the current height value &#8212; if such a value is not found, then `-1` should be reported.
+
+<details>
+<summary> Next height <em>greater than</em> current height</summary>
+
+```python
+def next_greater_height(heights):
+    dec_stack = [] # monotonically decreasing stack (duplicates allowed)
+    ans = [-1] * len(heights)
+    
+    for i in range(len(heights)):
+        curr_height = heights[i]
+        while dec_stack and heights[dec_stack[-1]] < curr_height:
+            prev_height_index = dec_stack.pop()
+            ans[prev_height_index] = curr_height
+        dec_stack.append(i)
+        
+    return ans
+```
+
+```python
+# Input
+[14, 17, 13, 14, 14, 19, 12, 14, 18]
+
+# Output
+[17, 19, 14, 19, 19, -1, 14, 18, -1]
+```
+
+</details>
+
+<details>
+<summary> Next height <em>greater than or equal to</em> current height</summary>
+
+```python
+def next_greater_than_or_equal_to_height(heights):
+    dec_stack = [] # monotonically decreasing stack (duplicates not allowed)
+    ans = [-1] * len(heights)
+    
+    for i in range(len(heights)):
+        curr_height = heights[i]
+        while dec_stack and heights[dec_stack[-1]] <= curr_height:
+            prev_height_index = dec_stack.pop()
+            ans[prev_height_index] = curr_height
+        dec_stack.append(i)
+        
+    return ans
+```
+
+```python
+# Input
+[14, 17, 13, 14, 14, 19, 12, 14, 18]
+
+# Output
+[17, 19, 14, 14, 19, -1, 14, 18, -1]
+```
+
+</details>
+
+<details>
+<summary> Next height <em>smaller than</em> current height</summary>
+
+```python
+def next_smaller_height(heights):
+    inc_stack = [] # monotonically increasing stack (duplicates allowed)
+    ans = [-1] * len(heights)
+    
+    for i in range(len(heights)):
+        curr_height = heights[i]
+        while inc_stack and heights[inc_stack[-1]] > curr_height:
+            prev_height_index = inc_stack.pop()
+            ans[prev_height_index] = curr_height
+        inc_stack.append(i)
+        
+    return ans        
+```
+
+```python
+# Input
+[14, 17, 13, 14, 14, 19, 12, 14, 18]
+
+# Output
+[13, 13, 12, 12, 12, 12, -1, -1, -1]
+```
+
+</details>
+
+<details>
+<summary> Next height <em>smaller than or equal to</em> current height</summary>
+
+```python
+def next_smaller_than_or_equal_to_height(heights):
+    inc_stack = [] # monotonically increasing stack (duplicates not allowed)
+    ans = [-1] * len(heights)
+    
+    for i in range(len(heights)):
+        curr_height = heights[i]
+        while inc_stack and heights[inc_stack[-1]] >= curr_height:
+            prev_height_index = inc_stack.pop()
+            ans[prev_height_index] = curr_height
+        inc_stack.append(i)
+        
+    return ans  
+```
+
+```python
+# Input
+[14, 17, 13, 14, 14, 19, 12, 14, 18]
+
+# Output
+[13, 13, 12, 14, 12, 12, -1, -1, -1]
+```
+
+</details>
+
+</details>
+
+```python
+def fn(nums):
+    dec_stack = []
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while dec_stack and nums[dec_stack[-1]] < curr_num:
+            dec_stack.pop()
+        dec_stack.append(i)
+        
+    return ans
+```
+
+#### Monotonic queue
+
+<details>
+<summary> Template with code comments </summary>
+
+```python
+from collections import deque
+def fn(nums):
+    # an appropriate deque label can help: inc_queue or dec_queue
+    # for "increasing" or "decreasing" queue, respectively;
+    # it may be helpful to include an inline comment beside the deque 
+    # declaration to communicate whether or not duplicates are allowed
+    dec_queue = deque() # monotonic decreasing deque (duplicates allowed)
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        
+        # recall how the comparison operator determines the deque invariant:
+        # (<)  decreasing deque (duplicates allowed)
+        # (<=) decreasing deque (duplicates not allowed)
+        # (>)  increasing deque (duplicates allowed)
+        # (>=) increasing deque (duplicates not allowed)
+        while dec_queue and nums[dec_queue[-1]] < curr_num:
+            # this is where you will often relate the index values 
+            # to each other in some way and possibly update the answer array
+            dec_queue.pop()
+            
+        # append the index for the current number to the deque
+        # (the while loop above ensures this step does not violate the deque invariant)
+        dec_queue.append(i)
+
+        # if some undesirable condition is met (e.g., leftmost deque value is an invalid index)
+        # then remove deque values from the left (doing so ensures the invariant is still maintained)
+        if CONDITION:
+            dec_queue.popleft()
+        
+    return ans
+```
+
+</details>
+
+<details>
+<summary> Sliding window minimum problem solved with code template</summary>
+
+Recall the problem statement:
+
+> You are given an array of integers `nums`, there is a sliding window of size `k` which is moving from the very left of the array to the very right. You can only see the `k` numbers in the window. Each time the sliding window moves right by one position. Return an answer array that contains the minimum value for each sliding window of size `k`. For example, if the input array is `nums = [11, 13, -11, -13, 15, 13, 16, 17]` and `k = 3`, then the desired output or answer array would be `[-11, -13, -13, -13, 13, 13]`.
+
+The following illustration shows why the example above has the input and output it does:
+
+<pre>
+Window&nbsp;position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min{'\n'}
+------------------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----{'\n'}
+[11&nbsp;&nbsp;13&nbsp;&nbsp;-11]&nbsp;-13&nbsp;&nbsp;15&nbsp;&nbsp;13&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-11</strong>{'\n'}
+&nbsp;11&nbsp;[13&nbsp;&nbsp;-11&nbsp;&nbsp;-13]&nbsp;15&nbsp;&nbsp;13&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;[-11&nbsp;&nbsp;-13&nbsp;&nbsp;15]&nbsp;13&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;&nbsp;-11&nbsp;[-13&nbsp;&nbsp;15&nbsp;&nbsp;13]&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>-13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;&nbsp;-11&nbsp;&nbsp;-13&nbsp;[15&nbsp;&nbsp;13&nbsp;&nbsp;16]&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>13</strong>{'\n'}
+&nbsp;11&nbsp;&nbsp;13&nbsp;&nbsp;-11&nbsp;&nbsp;-13&nbsp;&nbsp;15&nbsp;[13&nbsp;&nbsp;16&nbsp;&nbsp;17]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>13</strong>{'\n'}
+</pre>
+
+Now for the solution based on the template code:
+
+```python
+from collections import deque
+
+def sliding_window_min(nums, k):
+    inc_queue = deque() # monotonically increasing queue (duplicates allowed)
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while inc_queue and nums[inc_queue[-1]] > curr_num:
+            inc_queue.pop()
+        inc_queue.append(i)
+
+        # remove the leftmost deque element if it is the leftmost index of the previous window
+        # (i.e., it is not a valid index for the _current_ window)
+        if inc_queue[0] == i - k:
+            inc_queue.popleft()
+        
+        # only start adding to the answer array 
+        # once the window has grown to the required size
+        if i >= k - 1:
+            ans.append(nums[inc_queue[0]])
+            
+    return ans
+```
+
+</details>
+
+```python
+from collections import deque
+
+def fn(nums):
+    dec_queue = deque()
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while dec_queue and nums[dec_queue[-1]] < curr_num:
+            dec_queue.pop()
+        dec_queue.append(i)
+        
+        if CONDITION:
+            dec_queue.popleft
+        
+    return ans
+```
+
+## LeetCode practice problems
+
+There are many ways to practice solving problems where monotonic stacks or (doubly-ended) queues play a pivotal role in crafting an optimal solution. LeetCode itself is a treasure trove for these kinds of problems.
+
+### Monotonic stacks
+
+There are currently [57 problems](https://leetcode.com/tag/monotonic-stack/) on LeetCode tagged as being monotonic stack problems:
+
+<MonotonicStacks />
+
+### Monotonic queues
+
+There are currently [15 problems](https://leetcode.com/tag/monotonic-queue/) on LeetCode tagged as being monotonic queue problems:
 
 <MonotonicQueues />
 
-Current monotonic stack problems on LeetCode:
+## Solved practice problems
 
-<MonotonicStacks />
+TBD
