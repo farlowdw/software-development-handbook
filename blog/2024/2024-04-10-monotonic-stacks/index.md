@@ -49,6 +49,54 @@ Finally, several LeetCode problems are provided where monotonic stacks and/or qu
   toc={[ ... toc.filter(({level, value}, _, arr) => ( level == 2 || level == 3) && !value.startsWith('Contents')) ]}
 />
 
+<details>
+<summary> TLDR</summary>
+
+Stacks and queues are defined by their interfaces. [Monotonicity](https://en.wikipedia.org/wiki/Monotonic_function) is not. The following are all examples of monotonic stacks/queues, where the removal of values needed to maintain the monotonic invariant is illustrated in the context of adding `5` to each value collection:
+
+<div style={{ marginBottom: '1em', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gridTemplateRows: '1fr', gridRowGap: '5px', gridColumnGap: '5px' }}>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Decreasing"
+[12, 10, 9, 5, 3, 2, 1] # Before addition of 5
+[12, 10, 9, 5]          # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly decreasing"
+[12, 10, 10, 9, 5, 3, 1, 0] # Before addition of 5
+[12, 10, 10, 9, 5, 5]       # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Increasing"
+[0, 1, 3, 5, 6, 10, 11] # Before addition of 5
+[0, 1, 3, 5]            # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly increasing"
+[1, 2, 2, 3, 5, 7, 8, 10] # Before addition of 5
+[1, 2, 2, 3, 5, 5]        # After addition of 5
+```
+
+</div>
+</div>
+
+The removals above are stack-like in nature (popping and pushing from the right), which is why the term "monotonic queue" can be slightly misleading. If elements need to be removed from the left, then we use a *doubly-ended queue* or *deque*. Stack-like operations are performed on the right end to maintain the monotonic invariant while the queue-like operation of efficiently removing an element(s) from the left is performed, if needed.
+
+What can make monotonic stacks and deques challenging at first is not *what* they are (all possibilities are shown above) but *how* they are used in sophisticated ways to solve problems of varying complexity. This post thoroughly explores two introductory problems and various approaches to solving these problems without ever mentioning the words *monotonic*, *stack*, or *queue*/*doubly-ended queue*/*deque*. The *ideas* behind these structures are used though, where an emphasis is placed on trying to use these ideas as organically as possible (i.e., not getting mired in technical mumbo jumbo but exploring new ways of thinking). If you can make it through the "next greater height" and "sliding window minimum" introductory problems, then you will know what you need to know about monotonic stacks and queues.
+
+Several practice problems then await! Solved practice problems appear at the end of this post.
+
+</details>
+
 ## Next greater height
 
 Perhaps the best way to start our exploration of monotonic stacks/queues is with a problem with no framing (i.e., we'll worry about what monotonic stacks/queues actually are at a later point). [This video](https://www.youtube.com/watch?v=Dq_ObZwTY_Q) introduces monotonic stacks with the problem of finding the next greater height value (left to right) for a row of people lined up (or `-1` if a next greater height does not exist):
@@ -872,7 +920,255 @@ class Solution:
 
 ### Definitions
 
-TBD
+<details>
+<summary> Mathematical background (not necessary but possibly helpful)</summary>
+
+The [Wiki article](https://en.wikipedia.org/wiki/Monotonic_function) on monotonic functions is surprisingly helpful. The relevant portions have been reproduced below (with slight adjustments).
+
+A function $f$ defined on a subset of the real numbers with real values is said to be *monotonic* if and only if $f$ is either entirely non-increasing or entirely non-decreasing:
+
+<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '1em' }}>
+  <img src={require('./f2.png').default} alt="Image 1" style={{ width: '32%', height: 'auto' }} />
+  <img src={require('./f3.png').default} alt="Image 2" style={{ width: '32%', height: 'auto' }} />
+  <img src={require('./f4.png').default} alt="Image 3" style={{ width: '32%', height: 'auto' }} />
+</div>
+
+A function is said to be *monotonically increasing* (also *increasing* or *non-decreasing*) if for all $x$ and $y$ such that $x\leq y$ one has $f(x)\leq f(y)$, so $f$ preserves the order (Figure 1). Likewise, a function is said to be *monotonically decreasing* (also *decreasing* or *non-increasing*) if, whenever $x\leq y$, then $f(x)\geq f(y)$, so it *reverses* the order (Figure 2).
+
+If the order $\leq$ in the definition of monotonicity is replaced by the strict order $<$, one obtains a stronger requirement. A function with this property is said to be *strictly increasing* (also *increasing*). Again, by inverting the order symbol, one finds a corresponding concept called *strictly decreasing* (also *decreasing*). A function with either property is called *strictly monotone*. 
+
+To avoid ambiguity, the terms *weakly monotone*, *weakly increasing* and *weakly decreasing* are often used to refer to non-strict monotonicity.
+
+The terms "non-decreasing" and "non-increasing" should not be confused with the (much weaker) negative qualifications "not decreasing" and "not increasing". For example, the non-monotonic function shown in Figure 3 first falls, then rises, then falls again. It is therefore not decreasing and not increasing, but it is neither non-decreasing nor non-increasing.
+
+</details>
+
+Let's first provide a working [definition](https://www.dictionary.com/browse/monotonic) of the word *monotonic*:
+
+> *Mathematics.* (of a function or sequence) either consistently increasing in value and never decreasing, or consistently decreasing in value and never increasing:
+>
+> *A monotonic sequence can either converge or diverge, but it can never oscillate.*
+
+In the context of programming, we're generally concerned with a collection or "sequence" of values (as opposed to a function). Whether or not the sequence is deemed *monotonic* depends on how the values relate to each other in progression from left to right:
+
+- Decreasing (each value is less than all preceding values)
+- Weakly decreasing (each value is less than *or equal to* all preceding values)
+- Increasing (each value is greater than all preceding values)
+- Weakly increasing (each value is greater than *or equal to* all preceding values)
+
+Basic code examples are illustrative in clarifying these definitions:
+
+<div style={{ marginBottom: '1em', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gridTemplateRows: '1fr', gridRowGap: '5px', gridColumnGap: '5px' }}>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Decreasing"
+[14, 13, 12, 11, 8, 6]
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly decreasing"
+[14, 13, 13, 12, 12, 11, 8, 6]
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Increasing"
+[-13, 13, 16, 18, 21]
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly increasing"
+[-13, 13, 13, 16, 18, 18, 18, 21]
+```
+
+</div>
+</div>
+
+Important observations worth noting:
+
+- **Unique or duplicate values:** "Decreasing" and "Increasing" are both *strict* (all values are unique) whereas their "weak" variants are not (adjacent values may be equal which means duplicate values are permitted). 
+- **Alternate terminology for "weakly":** Sometimes the terms *non-decreasing* and *non-increasing* are used instead of *weakly increasing* and *weakly decreasing*, respectively. Unfortunately, while such terminology is *technically* accurate, it arguably obscures the important behavior being highlighted; that is, for a sequence like `[1, 2, 2, 3]`, calling it "non-decreasing" arguably obscures what we actually want to highlight, namely that the collection is increasing except when adjacent values can be equal. Saying the collection is "weakly increasing" seems to be a better choice of words.
+- **Minimum/maximum values:** If a sequence is decreasing or weakly decreasing, then the leftmost value represents the *maximum* value in the collection. Similarly, if a sequence is increasing or weakly increasing, then the leftmost value represents the *minimum* value in the collection.
+- **Monotonicity invariant:** The [definition](https://www.dictionary.com/browse/invariant) for *invariant* is what it sounds like:
+
+  > *Mathematics.* a quantity or expression that is constant throughout a certain range of conditions.
+
+  The idea of an [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)#Invariants_in_computer_science) in computer science is the same but slightly nuanced:
+
+  > In computer science, an invariant is a logical assertion that is always held to be true during a certain phase of execution of a computer program. For example, a loop invariant is a condition that is true at the beginning and the end of every iteration of a loop.
+
+  How is the idea of an invariant relevant to our work with monotonic stacks and queues? Imagine adding `3` to the weakly increasing monotonic stack `[0, 1, 1, 4]` without first removing any elements: `[0, 1, 1, 4, 3]`. The weakly increasing monotonic stack we had previously is now just a stack because its special property of monotonicity has been violated. "Maintaining" a monotonic stack or queue really means maintaining its *invariant*: monotonicity. The (weakly) increasing/decreasing stack or queue should *remain* (weakly) increasing/decreasing whenever elements are added or removed.
+
+- **Adding elements:** As noted above, special care must be taken when *adding* values to a monotonic stack or queue to ensure its monotonicity invariant remains intact. Specifically, adding value `x` means first *removing* all other values that would cause the invariant to be broken should `x` be added to the stack or queue in its current state &#8212; only then should `x` be added. Since the collection of values being maintained is a *stack* or *queue*, additions generally happen *from the right*. (If we are using a doubly-ended queue, then it is conceivable that we could add elements from the left, but this is usually not the case.)
+
+- **Removing elements:** Adding values generally happens from the right. Removal of values, which typically *precedes* the addition of new values, also generally happens from the right. Why? Because values that would otherwise break the invariant are effectively popped from the top/right before adding the new value to the top/right. Consider the following examples that illustrate what elements must be removed to keep the invariant intact in order to accommodate the addition of the value `5`:
+
+  <div style={{ marginBottom: '1em', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gridTemplateRows: '1fr', gridRowGap: '5px', gridColumnGap: '5px' }}>
+  <div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+  ```python title="Decreasing"
+  [12, 10, 9, 5, 3, 2, 1] # Before addition of 5
+  [12, 10, 9, 5]          # After addition of 5
+  ```
+
+  </div>
+  <div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+  ```python title="Weakly decreasing"
+  [12, 10, 10, 9, 5, 3, 1, 0] # Before addition of 5
+  [12, 10, 10, 9, 5, 5]       # After addition of 5
+  ```
+
+  </div>
+  <div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+  ```python title="Increasing"
+  [0, 1, 3, 5, 6, 10, 11] # Before addition of 5
+  [0, 1, 3, 5]            # After addition of 5
+  ```
+
+  </div>
+  <div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+  ```python title="Weakly increasing"
+  [1, 2, 2, 3, 5, 7, 8, 10] # Before addition of 5
+  [1, 2, 2, 3, 5, 5]        # After addition of 5
+  ```
+
+  </div>
+  </div>
+
+  It's clear *visually* from above that values are being removed from the right in order to accommodate the addition of the new value `5`.
+
+- **Removing elements from the left (when a queue-like operation is needed):** In some cases (e.g., sliding windows), we may want to remove an element in our collection *from the left*. As illustrated previously, our collection's invariant is maintained with stack-like operations, namely popping old values from the top before pushing a new value to the top. This means values in our collection progress left to right from "oldest" to "newest" in terms of the recency in which each value was added. 
+
+  For sliding window problems especially, window values are generally added as the right endpoint advances and removed as the left endpoint advances. Since the leftmost values in our collection are always the "oldest", it makes sense that in certain scenarios we might want to remove the leftmost value. For example, suppose we have the increasing collection `[2, 4, 6]` that represents the values of the following sliding window: `12, 4, [2, 4, 7, 6], 8, 10`. What happens to our collection once the left boundary of the window advances? It's clear that `2` is no longer a valid value, and we must remove it from our collection.
+
+  But stacks are not optimized for removing elements *from the left*. This is why doubly-ended queues (i.e., *deques*) are needed for some problems: the right end permits the stack-like push and pop operations for maintaining the (weakly) increasing/decreasing invariant while the left end permits the queue-like operation of popping elements from the left. Note that the invariant is always left intact when elements are removed.
+
+- **Next greater or smaller value:** See again the examples above for what elements must be removed in order to accommodate the addition of the `5` and what this *means* for each removed element's next greater or smaller value (first recall that elements in the collection progress left to right from "oldest" to "newest" in terms of the recency in which they were added to the collection):
+
+  | Monotonic invariant | Added `5`'s relation to removed elements | Explanation |
+  | :-- | :-- | :-- |
+  | Decreasing | Greater than or equal to | The original value collection `[12, 10, 9, 5, 3, 2, 1]` is transformed to `[12, 10, 9]` before the addition of `5`; hence, the following values are removed (in this order): `1`, `2`, `3`, `5`. Each value removed is less than or equal to the newly added value of `5`. This means that the removed values `1`, `2`, `3`, `5` all have `5` as their *next* "greater than or equal to" value. |
+  | Weakly decreasing | Greater than | The original value collection `[12, 10, 10, 9, 5, 3, 1, 0]` is transformed to `[12, 10, 10, 9, 5]` before the addition of `5`; hence, the following values are removed (in this order): `0`, `1`, `3`. Each value removed is less than the newly added value of `5`. This means that the removed values `0`, `1`, `3` all have `5` as their *next* "greater than" value. |
+  | Increasing | Less than or equal to | The original value collection `[0, 1, 3, 5, 6, 10, 11]` is transformed to `[0, 1, 3]` before the addition of `5`; hence, the following values are removed (in this order): `11`, `10`, `6`, `5`. Each value removed is greater than or equal to the newly added value of `5`. This means that the removed values `11`, `10`, `6`, `5` all have `5` as their *next* "less than or equal to" value. |
+  | Weakly decreasing | Less than | The original value collection `[1, 2, 2, 3, 5, 7, 8, 10]` is transformed to `[1, 2, 2, 3, 5]` before the addition of `5`; hence, the following values are removed (in this order): `10`, `8`, `7`. Each value removed is greater than the newly added value of `5`. This means that the removed values `10`, `8`, `7` all have `5` as their *next* "less than" value. |
+
+#### Monotonic stack
+
+A *monotonic stack* is a stack whose values demonstrate monotonicity in some capacity: decreasing, weakly decreasing, increasing, or weakly increasing. The following are all examples of monotonic stacks (with an illustration of how monotonicity is maintained when a new value, `5`, is added):
+
+<div style={{ marginBottom: '1em', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gridTemplateRows: '1fr', gridRowGap: '5px', gridColumnGap: '5px' }}>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Decreasing monotonic stack"
+[12, 10, 9, 5, 3, 2, 1] # Before addition of 5
+[12, 10, 9, 5]          # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly decreasing monotonic stack"
+[12, 10, 10, 9, 5, 3, 1, 0] # Before addition of 5
+[12, 10, 10, 9, 5, 5]       # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Increasing monotonic stack"
+[0, 1, 3, 5, 6, 10, 11] # Before addition of 5
+[0, 1, 3, 5]            # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly increasing monotonic stack"
+[1, 2, 2, 3, 5, 7, 8, 10] # Before addition of 5
+[1, 2, 2, 3, 5, 5]        # After addition of 5
+```
+
+</div>
+</div>
+
+What defines the stack, however, is its interface, namely pushing and popping values from the right.
+
+#### Monotonic queue
+
+A *monotonic queue* is a doubly-ended queue or *deque* whose values demonstrate monotonicity in some capacity: decreasing, weakly decreasing, increasing, or weakly increasing. The following are all examples of monotonic queues (with an illustration of how monotonicity is maintained when a new value, `5`, is added):
+
+<div style={{ marginBottom: '1em', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gridTemplateRows: '1fr', gridRowGap: '5px', gridColumnGap: '5px' }}>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Decreasing monotonic queue"
+[12, 10, 9, 5, 3, 2, 1] # Before addition of 5
+[12, 10, 9, 5]          # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly decreasing monotonic queue"
+[12, 10, 10, 9, 5, 3, 1, 0] # Before addition of 5
+[12, 10, 10, 9, 5, 5]       # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Increasing monotonic queue"
+[0, 1, 3, 5, 6, 10, 11] # Before addition of 5
+[0, 1, 3, 5]            # After addition of 5
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Weakly increasing monotonic queue"
+[1, 2, 2, 3, 5, 7, 8, 10] # Before addition of 5
+[1, 2, 2, 3, 5, 5]        # After addition of 5
+```
+
+</div>
+</div>
+
+What defines the queue, however, is its interface, namely pushing new elements to the right and popping old elements from the left. The illustrations above clearly show collections of values where all old values are popped *from the right*, not from the left. This means the popping and pushing of values illustrated above are fundamentally stack-like in nature. 
+
+This is why the label of "monotonic queue" is a misnomer &#8212; it's misleading in a way. We only claim to use a monotonic *queue* when removing elements from the left is necessary. In such cases, we use a *doubly-ended queue* or *deque* because the right end still needs the stack-like operations to maintain the invariant while the left end needs the queue-like operation of efficiently removing an element(s) from the left. Hence, it would be more accurate to call a *monotonic queue* a *monotonic deque*.
+
+### Use cases
+
+Monotonic stacks and queues can crop up in unexpected ways and in unexpected places, but the following are some conventional areas where these structures shine:
+
+- Efficiently adding or removing values to a sorted collection of values while maintaining the sorted order.
+- Efficiently accessing a value's next smaller or larger value.
+- Efficiently accessing the maximum or minimum value of a contiguous subarray or sliding window.
+
+A simple stack (or list in Python) is sufficient for the first two points above, but a deque is needed for the last point. In general, deques are needed in the following circumstances:
+
+- sliding window problems where efficient access to the maximum or minimum is important
+- there's a bidirectional nature to the problem where values need to be processed in the order they appear and removed when no longer relevant
+- older values need to be discarded as new values are processed
+- insertion of new values causes invalidation of previously stored values (the deque allows efficient insertion of new values from the right and efficient removal of invalidated values from the left)
+
+Monotonic deques can be used for more than just contiguous subarray or sliding window problems where access to the maximum or minimum is needed, but these are clearly situations where all of the points above apply and the use of a deque is warranted.
+
+Monotonic stacks can be used for everything else:
+
+- next greater value problems
+- largest area or volume problems
+- stock span problems
+- etc.
+
+A general safe rule of thumb to follow: start with a stack and only move to a deque if you realize you need to remove elements from the left for some reason.
 
 ### Templates
 
