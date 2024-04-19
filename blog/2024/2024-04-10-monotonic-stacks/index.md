@@ -32,8 +32,18 @@ import TOCInline from '@theme/TOCInline';
 import MonotonicQueues from '@site/src/components/DataGrids/MonotonicQueues';
 import MonotonicStacks from '@site/src/components/DataGrids/MonotonicStacks';
 
-import LC239PS from '@site/docs/_Partials/problem-stems/lc239.md';
 import LC739PS from '@site/docs/_Partials/problem-stems/lc739.md';
+import LC239PS from '@site/docs/_Partials/problem-stems/lc239.md';
+import LC1438PS from '@site/docs/_Partials/problem-stems/lc1438.md';
+import LC496PS from '@site/docs/_Partials/problem-stems/lc496.md';
+import LC503PS from '@site/docs/_Partials/problem-stems/lc503.md';
+
+import LC901PS from '@site/docs/_Partials/problem-stems/lc901.md';
+import LC1475PS from '@site/docs/_Partials/problem-stems/lc1475.md';
+import LC1063PS from '@site/docs/_Partials/problem-stems/lc1063.md';
+import LC1673PS from '@site/docs/_Partials/problem-stems/lc1673.md';
+import LC1944PS from '@site/docs/_Partials/problem-stems/lc1944.md';
+import LC2398PS from '@site/docs/_Partials/problem-stems/lc2398.md';
 
 Monotonic stacks and queues are not difficult because of what they *are* but because of *how* they are used to find solutions to various problems. This post explores monotonic stacks and queues by first exploring the *next greater height* problem without any framing whatsoever (i.e., there's no mention of explicitly using a monotonic data structure in any capacity). We then try to use one of the approaches developed for solving the next greater height problem to solve another problem: the *sliding window minimum*. But our previously developed approach is not quite enough. We need to make a small tweak that turns out to be quite insightful.
 
@@ -1144,31 +1154,605 @@ What defines the queue, however, is its interface, namely pushing new elements t
 
 This is why the label of "monotonic queue" is a misnomer &#8212; it's misleading in a way. We only claim to use a monotonic *queue* when removing elements from the left is necessary. In such cases, we use a *doubly-ended queue* or *deque* because the right end still needs the stack-like operations to maintain the invariant while the left end needs the queue-like operation of efficiently removing an element(s) from the left. Hence, it would be more accurate to call a *monotonic queue* a *monotonic deque*.
 
-### Use cases
+### Common use cases
 
 Monotonic stacks and queues can crop up in unexpected ways and in unexpected places, but the following are some conventional areas where these structures shine:
 
 - Efficiently adding or removing values to a sorted collection of values while maintaining the sorted order.
-- Efficiently accessing a value's next smaller or larger value.
+- Efficiently accessing a value's next larger/smaller (or equal) value.
+- Efficiently accessing a value's previous larger/smaller (or equal) value.
 - Efficiently accessing the maximum or minimum value of a contiguous subarray or sliding window.
 
-A simple stack (or list in Python) is sufficient for the first two points above, but a deque is needed for the last point. In general, deques are needed in the following circumstances:
+A simple stack (or list in Python) is sufficient for the first three points above, but a deque is needed for the last point. In general, deques are needed in the following circumstances:
 
 - sliding window problems where efficient access to the maximum or minimum is important
 - there's a bidirectional nature to the problem where values need to be processed in the order they appear and removed when no longer relevant
 - older values need to be discarded as new values are processed
 - insertion of new values causes invalidation of previously stored values (the deque allows efficient insertion of new values from the right and efficient removal of invalidated values from the left)
 
-Monotonic deques can be used for more than just contiguous subarray or sliding window problems where access to the maximum or minimum is needed, but these are clearly situations where all of the points above apply and the use of a deque is warranted.
+Monotonic deques can be used for more than just contiguous subarray or sliding window problems where access to the maximum or minimum is needed, but these are clearly situations where all of the points above apply and the use of a deque is warranted. Monotonic stacks can be used for everything else when removals from the left are not needed (e.g., next/previous larger/smaller (or equal) value, largest area or volume problems, stock span problems, etc.). A general safe rule of thumb to follow: start with a stack and only move to a deque if you realize you need to remove elements from the left for some reason.
 
-Monotonic stacks can be used for everything else:
+The next two sections are devoted to probably two of the most common use cases for monotonic stacks: given an array of values, identify each value's next/previous larger/smaller (or equal) value (or indicate with `-1` if it does not exist). The "next" and "previous" value problems can essentially be solved by means of two tempaltes (one for the "next" value problems and one for the "previous" value problems), where only the comparison operator used to maintain the stack (`?`) dictates what kinds of values we can expect:
 
-- next greater value problems
-- largest area or volume problems
-- stock span problems
-- etc.
+<div style={{ marginBottom: '1em', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gridTemplateRows: '1fr', gridRowGap: '5px', gridColumnGap: '5px' }}>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
 
-A general safe rule of thumb to follow: start with a stack and only move to a deque if you realize you need to remove elements from the left for some reason.
+```python title="Next value template"
+def fn_next(nums):
+    n = len(nums)
+    ans = [None] * n
+    stack = [] # monotonic stack
+    for i in range(n):
+        val_B = nums[i]
+        # the comparison operator (?) dictates what A's next value B represents
+        # (<)  next larger value (weakly decreasing stack)
+        # (<=) next larger or equal value (strictly decreasing stack)
+        # (>)  next smaller value (weakly increasing stack)
+        # (>=) next smaller or equal value (strictly increasing stack)
+        while stack and nums[stack[-1]] ? val_B:
+            idx_val_A = stack.pop()
+            ans[idx_val_A] = val_B
+        stack.append(i)
+    
+    # process elements that never had a "next" value that satisfied the criteria
+    while stack:
+        idx_val_A = stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+```
+
+</div>
+<div style={{ backgroundColor: 'var(--ifm-code-background)' }} >
+
+```python title="Previous value template"
+def fn_previous(nums):
+    n = len(nums)
+    ans = [None] * n
+    stack = [] # monotonic stack
+    for i in range(n):
+        val_A = nums[i]
+        # the comparison operator (?) dictates what A's previous value B represents
+        # (<=) previous larger (strictly decreasing)
+        # (<)  previous larger or equal value (weakly decreasing)
+        # (>=) previous smaller value (strictly increasing)
+        # (>)  previous smaller or equal value (weakly increasing)
+        while stack and nums[stack[-1]] ? val_A:
+            stack.pop()
+            
+        if stack:
+            idx_val_B = stack[-1]
+            val_B = nums[idx_val_B]
+            ans[i] = val_B
+        else:
+            ans[i] = -1
+        
+        stack.append(i)
+        
+    return ans
+```
+
+</div>
+</div>
+
+It's most important to become very familiar with the *structure* of each template above. Remembering which comparison operator correspond to which kind of monotonic stack being maintained, and thus what kind of criteria-satisfying value we're searching for, is much less important: this can easily be attained by providing yourself with a sample stack and asking yourself what you would need to do if you tried inserting a value into the stack (make it concrete by giving yourself a monotonic stack with a few elements and then trying to insert another element). Answering your own question in this way will tell you what kind of comparison needs to be made to find the values you're searching for, but none of this will help unless you know the *structure* for maintaining the stack.
+
+<details open>
+<summary> Memorization tip</summary>
+
+:::caution
+
+You are *not* encouraged to try to memorize things in the way outlined below, but if you're thoroughly familiar with the structure of the templates above and your while loop conditional is always written in the flavor
+
+```python
+while stack and nums[stack[-1]] ? curr_val:
+```
+
+where `nums[stack[-1]]` appears on the left of the comparison `nums[stack[-1]] ? curr_val`, then the table below shows an easy way to remember what kinds of values you can expect in your answer array.
+
+:::
+
+**NEXT value (flipped phonetic comparison operator):**
+
+| NEXT values obtained | Phonetic comparsion | Comparison operator for maintaining stack (flipped) |
+| :-- | :-: | :-: |
+| *Next larger* | `>` | `<` |
+| *Next larger or equal to* | `>=` | `<=` |
+| *Next smaller* | `<` | `>` |
+| *Next smaller or equal to* | `<=` | `>=` |
+
+**PREVIOUS value (negated phonetic comparison operator):**
+
+| PREVIOUS values obtained | Phonetic comparsion | Comparison operator for maintaining stack (negated) |
+| :-- | :-: | :-: |
+| *Previous larger* | `>` | `<=` |
+| *Previous larger or equal to* | `>=` | `<` |
+| *Previous smaller* | `<` | `>=` |
+| *Previous smaller or equal to* | `<=` | `>` |
+
+</details>
+
+### Common problem: Find a value's "next" larger/smaller (or equal) value {#next-value-problems}
+
+:::caution Monotonic stacks below contain index values
+
+Monotonic stacks will very often not contain the input array's values themselves but the indexes which point to these values. This makes it possible for us to not only get access to the array values themselves but also to positional information about where the array values reside. This can be confusing at first though if you are only used to seeing monotonic stacks that directly use array values.
+
+:::
+
+:::info Consult the template and/or tabular summary as reference points
+
+The [next value template](#next-value-template) and/or [next value "tabular summary"](#next-value-tabular-summary), which appear after the provided solutions/approaches to the questions posed in the bulleted list below, can be quite helpful to use as reference points while working through the various approaches.
+
+:::
+
+One of the most common use cases for a monotonic stack is to determine each value's "next" larger/smaller (or equal) value (i.e., the value that comes to the *right* of a given value that meets the desired criteria):
+
+- *Next larger* value: Given value `A`, what is the next value `B` such that `A < B`?
+- *Next larger or equal* value: Given value `A`, what is the next value `B` such that `A <= B`?
+- *Next smaller* value: Given value `A`, what is the next value `B` such that `A > B`?
+- *Next smaller or equal* value: Given value `A`, what is the next value `B` such that `A >= B`?
+
+Note that the value `B` referred to above will always be in reference to the *current value* being processed since we will be processing the values from left to right (the monotonic stack will always be comprised of *previous* elements we've encountered, oldest to newest, left to right, whose *next* value that meets the criteria is the current value we are considering). To illustrate this more clearly, each problem variation in the bulleted list above is solved below where the roles of "values `A` and `B`" have been explicitly designated in each solution (i.e., value `B` always refers to value `A`'s *next* value that meets the specified criteria).
+
+The following array of numbers will be used as input in each solution approach for the sake of clarity and consistency:
+
+```python
+nums = [14, 17, 13, 14, 14, 19, 12, 14, 18]
+```
+
+Values that ultimately end up having no *next* value that satisfies the specified criteria will report a "next value" of `-1` in the answer array to communicate this. The answer array, `ans`, is always initialized to the length of the input array and filled with `None` values. This is done to concretely show how every element is processed (i.e., as opposed to initializing the answer array with `-1` and then not processing values that never have a *next* value that satisfies the criteria).
+
+#### Next larger value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    dec_stack = [] # monotonic stack (weakly decreasing)
+    for i in range(n):
+        val_B = nums[i]
+        while dec_stack and nums[dec_stack[-1]] < val_B:
+            idx_val_A = dec_stack.pop()
+            ans[idx_val_A] = val_B
+        dec_stack.append(i)
+    
+    # process elements that never had a next larger value
+    while dec_stack:
+        idx_val_A = dec_stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [17, 19, 14, 19, 19, -1, 14, 18, -1]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_B`, is always the *next* value in relation to whatever values are in the stack (since the stack is comprised of values encountered before the current value); hence, for another value, `val_A`, to have `val_B` as its *next larger value*, the value `val_A` will need to be popped from the stack, and it will need to be smaller than (`<`) the current value, `val_B`.
+
+Maintaining a *weakly decreasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `5` to the following stack: `[8, 6, 5, 4, 4]`.
+
+- Is `4` less than `5`? Yes. Pop `4` from the stack, and note that `4`'s next larger value is `5`. Stack's new state: `[8, 6, 5, 4]`.
+- Is `4` less than `5`? Yes. Pop `4` from the stack, and note that `4`'s next larger value is `5`. Stack's new state: `[8, 6, 5]`.
+- Is `5` less than `5`? No. Push `5` to the stack. Stack's new state: `[8, 6, 5, 5]`. Continue to next element.
+
+This is how each "next larger value" is determined.
+
+</details>
+
+#### Next larger or equal value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    dec_stack = [] # monotonic stack (strictly decreasing)
+    for i in range(n):
+        val_B = nums[i]
+        while dec_stack and nums[dec_stack[-1]] <= val_B:
+            idx_val_A = dec_stack.pop()
+            ans[idx_val_A] = val_B
+        dec_stack.append(i)
+    
+    # process elements that never had a next larger or equal value
+    while dec_stack:
+        idx_val_A = dec_stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [17, 19, 14, 14, 19, -1, 14, 18, -1]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_B`, is always the *next* value in relation to whatever values are in the stack (since the stack is comprised of values encountered before the current value); hence, for another value, `val_A`, to have `val_B` as its *next larger or equal value*, the value `val_A` will need to be popped from the stack, and it will need to be smaller than or equal (`<=`) to the current value, `val_B`. 
+
+Maintaining a *strictly decreasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `5` to the following stack: `[8, 6, 5, 4]`.
+
+- Is `4` less than or equal to `5`? Yes. Pop `4` from the stack, and note that `4`'s next larger or equal value is `5`. Stack's new state: `[8, 6, 5]`.
+- Is `5` less than or equal to `5`? Yes. Pop `5` from the stack, and note that `5`'s next larger or equal value is `5`. Stack's new state: `[8, 6]`.
+- Is `6` less than or equal to `5`? No. Push `5` to the stack. Stack's new state: `[8, 6, 5]`. Continue to next element.
+
+This is how each "next larger or equal value" is determined.
+
+</details>
+
+#### Next smaller value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    inc_stack = [] # monotonic stack (weakly increasing)
+    for i in range(n):
+        val_B = nums[i]
+        while inc_stack and nums[inc_stack[-1]] > val_B:
+            idx_val_A = inc_stack.pop()
+            ans[idx_val_A] = val_B
+        inc_stack.append(i)
+    
+    # process elements that never had a next smaller value
+    while inc_stack:
+        idx_val_A = inc_stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [13, 13, 12, 12, 12, 12, -1, -1, -1]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_B`, is always the *next* value in relation to whatever values are in the stack (since the stack is comprised of values encountered before the current value); hence, for another value, `val_A`, to have `val_B` as its *next smaller value*, the value `val_A` will need to be popped from the stack, and it will need to be larger than (`>`) the current value, `val_B`.
+
+Maintaining a *weakly increasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `8` to the following stack: `[3, 4, 8, 9, 9]`.
+
+- Is `9` greater than `8`? Yes. Pop `9` from the stack, and note that `9`'s next smaller value is `8`. Stack's new state: `[3, 4, 8, 9]`.
+- Is `9` greater than `8`? Yes. Pop `9` from the stack, and note that `9`'s next smaller value is `8`. Stack's new state: `[3, 4, 8]`.
+- Is `8` less than `8`? No. Push `8` to the stack. Stack's new state: `[3, 4, 8, 8]`. Continue to next element.
+
+This is how each "next smaller value" is determined.
+
+</details>
+
+#### Next smaller or equal value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    inc_stack = [] # monotonic stack (strictly increasing)
+    for i in range(n):
+        val_B = nums[i]
+        while inc_stack and nums[inc_stack[-1]] >= val_B:
+            idx_val_A = inc_stack.pop()
+            ans[idx_val_A] = val_B
+        inc_stack.append(i)
+    
+    # process elements that never had a next smaller or equal value
+    while inc_stack:
+        idx_val_A = inc_stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [13, 13, 12, 14, 12, 12, -1, -1, -1]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_B`, is always the *next* value in relation to whatever values are in the stack (since the stack is comprised of values encountered before the current value); hence, for another value, `val_A`, to have `val_B` as its *next smaller or equal value*, the value `val_A` will need to be popped from the stack, and it will need to be larger than or equal (`>=`) to the current value, `val_B`.
+
+Maintaining a *strictly increasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `8` to the following stack: `[3, 4, 8, 9]`.
+
+- Is `9` greater than or equal to `8`? Yes. Pop `9` from the stack, and note that `9`'s next smaller or equal value is `8`. Stack's new state: `[3, 4, 8]`.
+- Is `8` greater than or equal to `8`? Yes. Pop `8` from the stack, and note that `8`'s next smaller or equal value is `8`. Stack's new state: `[3, 4]`.
+- Is `4` greater than or equal to `8`? No. Push `8` to the stack. Stack's new state: `[3, 4, 8]`. Continue to next element.
+
+This is how each "next smaller or equal value" is determined.
+
+</details>
+
+#### General template for "next value" problems {#next-value-template}
+
+All of the approaches above are *very* similar except largely the kind of monotonic stack used to find elements satisfying the specified criteria. The following is a generalized template that can be slightly tweaked to get the desired result (only the comparison operator `?` in the while loop's conditional, `nums[stack[-1]] ? val_B`, has to be changed):
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    stack = [] # monotonic stack
+    for i in range(n):
+        val_B = nums[i]
+        # the comparison operator (?) dictates what A's next value B represents
+        # (<)  next larger value (weakly decreasing stack)
+        # (<=) next larger or equal value (strictly decreasing stack)
+        # (>)  next smaller value (weakly increasing stack)
+        # (>=) next smaller or equal value (strictly increasing stack)
+        # highlight-next-line
+        while stack and nums[stack[-1]] ? val_B:
+            idx_val_A = stack.pop()
+            ans[idx_val_A] = val_B
+        stack.append(i)
+    
+    # process elements that never had a "next" value that satisfied the criteria
+    while stack:
+        idx_val_A = stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+```
+
+#### Tabular summary {#next-value-tabular-summary}
+
+The tabular summary below compactly describes the examples used to illustrate the approaches in each solution above.
+
+| NEXT criteria | comparison | monotonic stack type | example stack | current value | description |
+| :-- | :-: | :-- | :-- | :-: | :-- |
+| *next larger value* | `<` | weakly decreasing | <code style={{ whiteSpace: 'nowrap' }} >[8, 6, 5, 4, 4]</code> | `5` | The current value of `5` serves as the *next larger value* for both `4`'s on the stack, which are popped in order to make room for the `5`, resulting in the following new weakly decreasing monotonic stack: `[8, 6, 5, 5]`. |
+| *next larger or equal value* | `<=` | strictly decreasing | <code style={{ whiteSpace: 'nowrap' }} >[8, 6, 5, 4]</code> | `5` | The current value of `5` serves as the *next larger or equal value* for the `4` and `5` currently on the stack, which are popped in order to make room for the `5`, resulting in the following new strictly decreasing monotonic stack: `[8, 6, 5]`. |
+| *next smaller value* | `>` | weakly increasing | <code style={{ whiteSpace: 'nowrap' }} >[3, 4, 8, 9, 9]</code> | `8` | The current value of `8` serves as the *next smaller value* for both `9`'s on the stack, which are popped in order to make room for the `8`, resulting in the following new weakly increasing monotonic stack: `[3, 4, 8, 8]`. |
+| *next smaller or equal value* | `>=` | strictly increasing | <code style={{ whiteSpace: 'nowrap' }} >[3, 4, 8, 9]</code> | `8` | The current value of `8` serves as the *next smaller or equal value* for the `9` and `8` currently on the stack, which are popped in order to make room for the `8`, resulting in the following new strictly increasing monotonic stack: `[3, 4, 8]`. |
+
+### Common problem: Find a value's "previous" larger/smaller (or equal) value {#previous-value-problems}
+
+:::caution Monotonic stacks below contain index values
+
+Monotonic stacks will very often not contain the input array's values themselves but the indexes which point to these values. This makes it possible for us to not only get access to the array values themselves but also to positional information about where the array values reside. This can be confusing at first though if you are only used to seeing monotonic stacks that directly use array values.
+
+:::
+
+:::info Consult the template and/or tabular summary as reference points
+
+The [previous value template](#previous-value-template) and/or [previous value "tabular summary"](#previous-value-tabular-summary), which appear after the provided solutions/approaches to the questions posed in the bulleted list below, can be quite helpful to use as reference points while working through the various approaches.
+
+:::
+
+Another common use case for a monotonic stack (although not as common as the ones immediately above) is to determine each value's "previous" larger/smaller (or equal) value (i.e., the value that comes to the *left* of a given value that meets the desired criteria):
+
+- *Previous larger* value: Given value `A`, what is the previous value `B` such that `A < B`?
+- *Previous larger or equal* value: Given value `A`, what is the previous value `B` such that `A <= B`?
+- *Previous smaller* value: Given value `A`, what is the previous value `B` such that `A > B`?
+- *Previous smaller or equal* value: Given value `A`, what is the previous value `B` such that `A >= B`?
+
+Note that the value `A` referred to above will always be in reference to the *current value*. Its previous value, which satisfies some criteria, must be in the monotonic stack (since the monotonic stack is always comprised of *previous* elements we've encountered, oldest to newest, left to right). The idea is to keep popping elements from the monotonic stack that *do not* meet our desired criteria until either the stack is empty (no previous value meeting the criteria was found) or the last element in the stack *does* satisfy the criteria, in which case it will be value `A`'s *previous* value that meets the criteria. To illustrate this more clearly, each problem variation in the bulleted list above is solved below where the roles of "values `A` and `B`" have been explicitly designated in each solution (i.e., value `B` always refers to value `A`'s *previous* value that meets the specified criteria).
+
+The following array of numbers will be used as input in each solution approach for the sake of clarity and consistency:
+
+```python
+nums = [14, 17, 13, 14, 14, 19, 12, 14, 18]
+```
+
+Values that ultimately end up having no *previous* value that satisfies the specified criteria will report a "previous value" of `-1` in the answer array to communicate this. The answer array, `ans`, is always initialized to the length of the input array and filled with `None` values. This is done to concretely show how every element is processed (i.e., as opposed to initializing the answer array with `-1` and then not processing values that never have a *previous* value that satisfies the criteria).
+
+#### Previous larger value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    dec_stack = [] # monotonic stack (strictly decreasing)
+    for i in range(n):
+        val_A = nums[i]
+        while dec_stack and nums[dec_stack[-1]] <= val_A:
+            dec_stack.pop()
+        
+        if dec_stack:
+            idx_val_B = dec_stack[-1]
+            val_B = nums[idx_val_B]
+            ans[i] = val_B
+        else:
+            ans[i] = -1
+        
+        dec_stack.append(i)
+        
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [-1, -1, 17, 17, 17, -1, 19, 19, 19]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_A`, is always looking for its criteria-satisfying *previous* value *from the stack* (since the stack is comprised of values encountered *previously* to the current value). All previously encountered values that *do not* satisfy the specified criteria should be removed from the stack. There are two possibilities once such removals are made: either the stack is empty, in which case `val_A` has no criteria-satisfying previous value, or the stack is not empty, in which case the element on the top of the stack, `val_B`, is `val_A`'s previous value that satisfies the specified criteria.
+
+For this problem, if the current value, `val_A`, has a previous larger value, `val_B`, then `val_B` must reside in the stack. To access this value, we remove all elements from the stack that are smaller than or equal (`<=`) to `val_A`, ensuring the next value on top of the stack (if it exists) is larger than `val_A`, which is what we want. If the stack is empty after removing all values smaller than or equal to `val_A`, then there cannot be a previous value, `val_B`, such that `val_B > val_A`. If, however, the stack is not empty after removing all values smaller than or equal to `val_A`, then whatever element resides at the top of the stack is `val_B`, where `val_B > val_A`. 
+
+Maintaining a *strictly decreasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `5` to the following stack: `[8, 6, 5, 4]`.
+
+- Is `4` less than or equal to `5`? Yes. Pop `4` from the stack. Stack's new state: `[8, 6, 5]`.
+- Is `5` less than or equal to `5`? Yes. Pop `5` from the stack. Stack's new state: `[8, 6]`.
+- Is `6` less than or equal to `5`? No. Since the stack is not empty, `6` must be `5`'s previous larger value. Push `5` to the stack. Stack's new state: `[8, 6, 5]`. Continue to next element.
+
+This is how each "previous larger value" is determined.
+
+</details>
+
+#### Previous larger or equal value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    dec_stack = [] # monotonic stack (weakly decreasing)
+    for i in range(n):
+        val_A = nums[i]
+        while dec_stack and nums[dec_stack[-1]] < val_A:
+            dec_stack.pop()
+            
+        if dec_stack:
+            idx_val_B = dec_stack[-1]
+            val_B = nums[idx_val_B]
+            ans[i] = val_B
+        else:
+            ans[i] = -1
+        
+        dec_stack.append(i)
+        
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [-1, -1, 17, 17, 14, -1, 19, 19, 19]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_A`, is always looking for its criteria-satisfying *previous* value *from the stack* (since the stack is comprised of values encountered *previously* to the current value). All previously encountered values that *do not* satisfy the specified criteria should be removed from the stack. There are two possibilities once such removals are made: either the stack is empty, in which case `val_A` has no criteria-satisfying previous value, or the stack is not empty, in which case the element on the top of the stack, `val_B`, is `val_A`'s previous value that satisfies the specified criteria.
+
+For this problem, if the current value, `val_A`, has a previous larger or equal value, `val_B`, then `val_B` must reside in the stack. To access this value, we remove all elements from the stack that are smaller (`<`) than `val_A`, ensuring the next value on top of the stack (if it exists) is larger than or equal to `val_A`, which is what we want. If the stack is empty after removing all values smaller than `val_A`, then there cannot be a previous value, `val_B`, such that `val_B >= val_A`. If, however, the stack is not empty after removing all values smaller than or equal to `val_A`, then whatever element resides at the top of the stack is `val_B`, where `val_B >= val_A`. 
+
+Maintaining a *weakly decreasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `5` to the following stack: `[8, 6, 5, 4, 4]`.
+
+- Is `4` less than `5`? Yes. Pop `4` from the stack. Stack's new state: `[8, 6, 5, 4]`.
+- Is `4` less than `5`? Yes. Pop `4` from the stack. Stack's new state: `[8, 6, 5]`.
+- Is `5` less than `5`? No. Since the stack is not empty, `5` must be `5`'s previous larger or equal value. Push `5` to the stack. Stack's new state: `[8, 6, 5, 5]`. Continue to next element.
+
+This is how each "previous larger or equal value" is determined.
+
+</details>
+
+#### Previous smaller value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    inc_stack = [] # monotonic stack (strictly increasing)
+    for i in range(n):
+        val_A = nums[i]
+        while inc_stack and nums[inc_stack[-1]] >= val_A:
+            inc_stack.pop()
+            
+        if inc_stack:
+            idx_val_B = inc_stack[-1]
+            val_B = nums[idx_val_B]
+            ans[i] = val_B
+        else:
+            ans[i] = -1
+        
+        inc_stack.append(i)
+        
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [-1, 14, -1, 13, 13, 14, -1, 12, 14]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_A`, is always looking for its criteria-satisfying *previous* value *from the stack* (since the stack is comprised of values encountered *previously* to the current value). All previously encountered values that *do not* satisfy the specified criteria should be removed from the stack. There are two possibilities once such removals are made: either the stack is empty, in which case `val_A` has no criteria-satisfying previous value, or the stack is not empty, in which case the element on the top of the stack, `val_B`, is `val_A`'s previous value that satisfies the specified criteria.
+
+For this problem, if the current value, `val_A`, has a previous smaller value, `val_B`, then `val_B` must reside in the stack. To access this value, we remove all elements from the stack that are larger than or equal (`>=`) to `val_A`, ensuring the next value on top of the stack (if it exists) is smaller than `val_A`, which is what we want. If the stack is empty after removing all values larger than or equal to `val_A`, then there cannot be a previous value, `val_B`, such that `val_B < val_A`. If, however, the stack is not empty after removing all values larger than or equal to `val_A`, then whatever element resides at the top of the stack is `val_B`, where `val_B < val_A`. 
+
+Maintaining a *strictly increasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `5` to the following stack: `[4, 5, 6, 8]`.
+
+- Is `8` greater than or equal to `5`? Yes. Pop `8` from the stack. Stack's new state: `[4, 5, 6]`.
+- Is `6` greater than or equal to `5`? Yes. Pop `6` from the stack. Stack's new state: `[4, 5]`.
+- Is `5` greater than or equal to `5`? Yes. Pop `5` from the stack. Stack's new state: `[4]`.
+- Is `4` greater than or equal to `5`? No. Since the stack is not empty, `4` must be `5`'s previous smaller value. Push `5` to the stack. Stack's new state: `[4, 5]`. Continue to next element.
+
+This is how each "previous smaller value" is determined.
+
+</details>
+
+#### Previous smaller or equal value
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    inc_stack = [] # monotonic stack (weakly increasing)
+    for i in range(n):
+        val_A = nums[i]
+        while inc_stack and nums[inc_stack[-1]] > val_A:
+            inc_stack.pop()
+            
+        if inc_stack:
+            idx_val_B = inc_stack[-1]
+            val_B = nums[idx_val_B]
+            ans[i] = val_B
+        else:
+            ans[i] = -1
+        
+        inc_stack.append(i)
+        
+    return ans
+
+nums =            [14, 17, 13, 14, 14, 19, 12, 14, 18]
+print(fn(nums)) # [-1, 14, -1, 13, 14, 14, -1, 12, 14]
+```
+
+<details>
+<summary> Intuition</summary>
+
+The current value being processed, `val_A`, is always looking for its criteria-satisfying *previous* value *from the stack* (since the stack is comprised of values encountered *previously* to the current value). All previously encountered values that *do not* satisfy the specified criteria should be removed from the stack. There are two possibilities once such removals are made: either the stack is empty, in which case `val_A` has no criteria-satisfying previous value, or the stack is not empty, in which case the element on the top of the stack, `val_B`, is `val_A`'s previous value that satisfies the specified criteria.
+
+For this problem, if the current value, `val_A`, has a previous smaller or equal value, `val_B`, then `val_B` must reside in the stack. To access this value, we remove all elements from the stack that are larger (`>`) than `val_A`, ensuring the next value on top of the stack (if it exists) is smaller than or equal to `val_A`, which is what we want. If the stack is empty after removing all values larger than `val_A`, then there cannot be a previous value, `val_B`, such that `val_B <= val_A`. If, however, the stack is not empty after removing all values larger than `val_A`, then whatever element resides at the top of the stack is `val_B`, where `val_B <= val_A`. 
+
+Maintaining a *weakly increasing* monotonic stack is perfectly suited for solving this problem. To see why, consider what would need to happen if we tried adding `5` to the following stack: `[4, 5, 8, 8]`.
+
+- Is `8` greater than `5`? Yes. Pop `8` from the stack. Stack's new state: `[4, 5, 8]`.
+- Is `8` greater than `5`? Yes. Pop `8` from the stack. Stack's new state: `[4, 5]`.
+- Is `5` greater than `5`? No. Since the stack is not empty, `5` must be `5`'s previous smaller or equal value. Push `5` to the stack. Stack's new state: `[4, 5, 5]`. Continue to next element.
+
+This is how each "previous smaller or equal value" is determined.
+
+</details>
+
+#### General template for "previous value" problems {#previous-value-template}
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    stack = [] # monotonic stack
+    for i in range(n):
+        val_A = nums[i]
+        # the comparison operator (?) dictates what A's previous value B represents
+        # (<=) previous larger (strictly decreasing)
+        # (<)  previous larger or equal value (weakly decreasing)
+        # (>=) previous smaller value (strictly increasing)
+        # (>)  previous smaller or equal value (weakly increasing)
+        # highlight-next-line
+        while stack and nums[stack[-1]] ? val_A:
+            stack.pop()
+            
+        if stack:
+            idx_val_B = stack[-1]
+            val_B = nums[idx_val_B]
+            ans[i] = val_B
+        else:
+            ans[i] = -1
+        
+        stack.append(i)
+        
+    return ans
+```
+
+#### Tabular summary {#previous-value-tabular-summary}
+
+The tabular summary below compactly describes the examples used to illustrate the approaches in each solution above.
+
+| PREVIOUS criteria | comparison | monotonic stack type | example stack | current value | description |
+| :-- | :-: | :-- | :-- | :-: | :-- |
+| *previous larger value* | `<=` | strictly decreasing | <code style={{ whiteSpace: 'nowrap' }} >[8, 6, 5, 4]</code> | `5` | The previously encountered values of `4` and `5` are popped off the stack, respectively. Since the stack is now `[8, 6]`, this means the previous larger value for `5` is `6`, the element now on top of the stack (if the stack were empty after the removals, then `5` would have no previous larger value). We now add `5` to the stack and continue processing elements: `[8, 6, 5]`. |
+| *previous larger or equal value* | `<` | weakly decreasing | <code style={{ whiteSpace: 'nowrap' }} >[8, 6, 5, 4, 4]</code> | `5` | The previously encountered values of `4` and `4` are popped off the stack, respectively. Since the stack is now `[8, 6, 5]`, this means the previous larger value for `5` is `5`, the element now on top of the stack (if the stack were empty after the removals, then `5` would have no previous larger value). We now add `5` to the stack and continue processing elements: `[8, 6, 5, 5]`. |
+| *previous smaller value* | `>=` | strictly increasing | <code style={{ whiteSpace: 'nowrap' }} >[4, 5, 6, 8]</code> | `5` | The previously encountered values of `8`, `6`, and `5` are popped off the stack, respectively. Since the stack is now `[4]`, this means the previous smaller value for `5` is `4`, the element now on top of the stack (if the stack were empty after the removals, then `5` would have no previous smaller value). We now add `4` to the stack and continue processing elements: `[4, 5]`. |
+| *previous smaller or equal value* | `>` | weakly increasing | <code style={{ whiteSpace: 'nowrap' }} >[4, 5, 8, 8]</code> | `5` | The previously encountered values of `8` and `8` are popped off the stack, respectively. Since the stack is now `[4, 5]`, this means the previous smaller value for `5` is `4`, the element now on top of the stack (if the stack were empty after the removals, then `5` would have no previous smaller value). We now add `4` to the stack and continue processing elements: `[4, 5]`. |
+
 
 ### Templates
 
@@ -1743,4 +2327,612 @@ There are currently [15 problems](https://leetcode.com/tag/monotonic-queue/) on 
 
 ## Solved practice problems
 
-TBD
+<details>
+<summary> <LC id='739' type='long' ></LC> </summary>
+
+<LC739PS />
+
+---
+
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        ans = [None] * n
+        stack = []
+        
+        for i in range(n):
+            val_A = temperatures[i]
+            # try to find the next larger temperature, val_B,
+            # for the current temperature, val_A
+            while stack and temperatures[stack[-1]] < val_A:
+                idx_val_B = stack.pop()
+                ans[idx_val_B] = i - idx_val_B
+            stack.append(i)
+        
+        # remaining temperatures, val_A, have no next larger temperature, val_B
+        while stack:
+            idx_val_A = stack.pop()
+            ans[idx_val_A] = 0
+            
+        return ans
+```
+
+The approach above is almost a direct application of the [template for next value problems](#next-value-template), where we're trying to find the *next larger* value for each value we encounter. We use the difference in indexes to determine how many days there are to wait.
+
+</details>
+
+<details>
+<summary> <LC id='239' type='long' ></LC> </summary>
+
+<LC239PS />
+
+---
+
+```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        dec_queue = deque() # monotonic deque (weakly decreasing)
+        ans = []
+        for i in range(n):
+            curr_num = nums[i]
+            # maintain the weakly decreasing deque
+            while dec_queue and nums[dec_queue[-1]] < curr_num:
+                dec_queue.pop()
+            
+            # check to see if leftmost value of the deque
+            # is now actually an invalid index
+            if dec_queue and dec_queue[0] == i - k:
+                dec_queue.popleft()
+            
+            dec_queue.append(i)
+            
+            # only add window maximums to the answer array
+            # once the required length has been reached
+            if i >= k - 1:
+                ans.append(nums[dec_queue[0]])
+                
+        return ans
+```
+
+We're not trying to find a "next" or "previous" anything. We're trying to maintain a sliding window *maximum*. A monotonic deque that is *weakly decreasing* is the tool of choice here (weakly decreasing instead of strictly since the same window can have duplicated maxima) since access to the leftmost element will always be the maximum. Additionally, if sliding the window results in invalidating the leftmost index of the deque pointing to the maximum, then we can simply pop from the left.
+
+</details>
+
+<details>
+<summary> <LC id='1438' type='long' ></LC> </summary>
+
+<LC1438PS />
+
+---
+
+```python
+class Solution:
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        n = len(nums)
+        dec_queue = deque() # monotonic deque (weakly decreasing) for the maximums
+        inc_queue = deque() # monotonic deque (weakly increasing) for the minimums
+        left = ans = 0
+        
+        for right in range(n):
+            curr_num = nums[right]
+            
+            # maintain the deque invariants
+            while dec_queue and nums[dec_queue[-1]] < curr_num:
+                dec_queue.pop()
+            while inc_queue and nums[inc_queue[-1]] > curr_num:
+                inc_queue.pop()
+                
+            dec_queue.append(right)
+            inc_queue.append(right)
+                
+            # update sliding window to ensure the window is valid
+            while left <= right and nums[dec_queue[0]] - nums[inc_queue[0]] > limit:
+                # remove possibly invalidated indexes from the deques once the window has shifted
+                if dec_queue[0] == left:
+                    dec_queue.popleft()
+                if inc_queue[0] == left:
+                    inc_queue.popleft()
+                left += 1
+
+            # update the answer with the length of the current valid window
+            ans = max(ans, right - left + 1)
+        
+        return ans
+```
+
+We're not trying to find a "next" or "previous" anything. We need to somehow process all subarrays to find the longest one such that the absolute difference between any two elements in the subarray is less than or equal to `limit`. The absolute difference is biggest (and thus threatens to exceed `limit`) when we take the difference between the subarray's maximum and its minimum. Hence, we're essentially trying to maintain a subarray's maximum *and* minimum. The previous practice problem, <LC id='239' type='long' ></LC>, showed how to artfully handle maintaining a sliding window maximum. We employ similar logic here to maintain a sliding window maximum *and* minimum. Two deques are needed in order to do this effectively.
+
+</details>
+
+<details>
+<summary> <LC id='496' type='long' ></LC> </summary>
+
+<LC496PS />
+
+---
+
+```python
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        queries = {}
+        stack = []
+        
+        # determine "next greater" values in nums2
+        for i in range(len(nums2)):
+            val_B = nums2[i]
+            while stack and nums2[stack[-1]] < val_B:
+                idx_val_A = stack.pop()
+                val_A = nums2[idx_val_A]
+                queries[val_A] = val_B
+            stack.append(i)
+        
+        # remaining values have no next greater value (default to -1)
+        while stack:
+            idx_val_A = stack.pop()
+            val_A = nums2[idx_val_A]
+            queries[val_A] = -1
+            
+        # the queries hash map tells us the next greater value
+        # for each value queried from nums1
+        ans = [None] * len(nums1)
+        for i in range(len(nums1)):
+            ans[i] = queries[nums1[i]]
+            
+        return ans
+```
+
+The framing for this problem is somewhat odd at first. Nonetheless, once we can wrap our heads around what exactly is being asked, our approach is almost a direct application of the [template for next value problems](#next-value-template) (specifically next greater value, of course). The code above can be cleaned up a little by using `defaultdict` from the `collections` module and not adhering so closely to the syntax of the template:
+
+```python
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        queries = defaultdict(lambda: -1)
+        stack = []
+        
+        for i in range(len(nums2)):
+            val_B = nums2[i]
+            while stack and nums2[stack[-1]] < val_B:
+                idx_val_A = stack.pop()
+                val_A = nums2[idx_val_A]
+                queries[val_A] = val_B
+            stack.append(i)
+        
+        ans = [None] * len(nums1)
+        for i in range(len(nums1)):
+            ans[i] = queries[nums1[i]]
+            
+        return ans
+```
+
+</details>
+
+<details>
+<summary> <LC id='503' type='long' ></LC> </summary>
+
+<LC503PS />
+
+---
+
+```python
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        ans = [None] * n
+        stack = []
+        
+        for i in range(n * 2):
+            val_B = nums[i % n]
+            while stack and nums[stack[-1]] < val_B:
+                idx_val_A = stack.pop()
+                ans[idx_val_A] = val_B
+
+            # only add elements to the stack on the first full pass
+            if i < n:
+                stack.append(i)
+            else:
+                # otherwise the remaining values (if there are any)
+                # never had a next greater element; hence, we simply
+                # make another full pass to see if any element is greater
+                # than the current element in the stack and then pop the
+                # element from the stack if the answer is affirmative
+                if stack and nums[stack[-1]] < nums[i % n]:
+                    idx_val_A = stack.pop()
+                    ans[idx_val_A] = nums[i % n]
+        
+        # the remaining values in the stack are those that do not have a next
+        # greater element despite two full passes; we report -1 for these values
+        while stack:
+            idx_val_A = stack.pop()
+            ans[idx_val_A] = -1
+            
+        return ans
+```
+
+This problem is the same as <LC id='496' type='long' ></LC>, but there's a significant twist where now we're considering the array to be *circular*. This may sound wild at first, but the change in approach is actually quite simple: we can cycle back through the originaly array by iterating a total of `2 * n` times where `n = len(nums)`. To ensure we don't get an "index out of bounds" error, we use a standard trick, namely the modulus operator `%`: `i % n`. Hence, if `n = 10`, and `i = 10`, then we're really looking at the element at index `i = 0` since `10 % 10 == 0`. 
+
+The approach above is a slightly tweaked application of the [template for next value problems](#next-value-template).
+
+</details>
+
+<details>
+<summary> <LC id='901' type='long' ></LC></summary>
+
+<LC901PS />
+
+---
+
+<details>
+<summary> Approach 1 (conventional approach for finding previous larger value; recommended)</summary>
+
+```python
+class StockSpanner:
+    def __init__(self):
+        self.stack = []
+        self.idx = 0
+
+    def next(self, price: int) -> int:
+        val_A = price
+        while self.stack and self.stack[-1][0] <= price:
+            self.stack.pop()
+            
+        if self.stack:
+            idx_val_B = self.stack[-1][1]
+            val_B = self.stack[-1][0]
+            stock_span = self.idx - idx_val_B
+        else:
+            stock_span = self.idx + 1
+            
+        self.stack.append([val_A, self.idx])
+        self.idx += 1
+        
+        return stock_span
+```
+
+The approach above is almost a direct application of the [template for previous value problems](#previous-value-template), where we're finding the *previous larger* value. It's not necessary to use the `val_A`/`val_B` nomenclature in the solution above &#8212; it's simply done to show how similar an acceptable solution is to the bare bones previous value template.
+
+Why are we interested in finding the *previous larger* value for each new value we encounter? Because the stock span of the new/current value is effectively defined as the total number of previous less than or equal to values. Finding the previous *larger* value tells us where the current value's stock span begins.
+
+</details>
+
+<details>
+<summary> Approach 2 (more sophisticated approach by cleverly accumulating stock spans; instructional)</summary>
+
+```python
+class StockSpanner:
+    def __init__(self):
+        self.dec_stack = [] # monotonic stack (strictly decreasing)
+
+    def next(self, price: int) -> int:
+        curr_span = 1
+        while self.dec_stack and self.dec_stack[-1][0] <= price:
+            prev_span = self.dec_stack.pop()[1]
+            curr_span += prev_span
+        self.dec_stack.append([price, curr_span])
+        return curr_span
+```
+
+:::caution Additional complexity with minimal gains
+
+The solution approach below is characteristic of more advanced monotonic stack problems, where we cleverly manipulate elements on the stack itself, where the elements aren't just array values or even indexes of array values but *collections* of values, specifically 2-element arrays where the first element is the price itself and the second element is the price's stock span. In the previous approach, we used 2-element arrays as well, but we used what people *normally* use with monotonic stacks, namely the array values and the indexes of the array values. Encoding stock span values within the monotonic stack itself makes this a more sophisticated approach. There may be fewer lines of code in this more sophisticated approach, but it may not be worth the hassle to understand at first since there aren't any notable gains in performance.
+
+:::
+
+It turns out we can solve this problem in a slightly more nuanced way than what was outlined in the previous approach, specifically by how we modify and use elements on the stack. 
+
+What information do we *truly* need at each step in order for `next` to report the appropriate value for each newly added price quote? We need the *cumulative span* between
+
+1. the current price (included) and
+2. the most recent price *greater than* the current price (not included)
+
+Is it possible to maintain our stack in a way that supports this? Yes, if we allow ourselves to encode additional information in the stack:
+
+- The stack should store pairs of stock prices and their corresponding stock spans (as opposed to stock prices and their corresponding index values in the previous approach).
+- Each stack entry is a pair consisting of the stock price and the maximum number of consecutive days the price was the highest (i.e., the price's stock span).
+- When a new price is processed, *all* previous pairs for which the stock prices were less than or equal to the current price should be removed from the stack and their corresponding stock spans added to the *current* price's stock span. The current price and its new stock span should now be added to the stack.
+
+Removing the pairs in the way referenced above ensures invalid stock prices are not used in future stock span calculations; for example, if the current price is `1000`, then previous prices *less than* `1000` are no longer relevant and should be removed. If, however, a previous pair in our stack had a price *equal* to `1000`, then would removing such a pair cause an issue? No, because the *current* price and its new stock span will be added to the stack.
+
+Everything outlined above is easier to understand by means of a more robust example. Suppose the prices we'll encounter in sequence are the following: `[70, 100, 90, 83, 84, 73, 74, 75, 76, 61, 62, 90, 42]`. The block below shows how these prices would be processed using the ideas discussed above. The right side shows the `next` return value associated with each price (that price's stock span), where the span calculation always begins with `1` since the current price always contributes at least `1` to its stock span:
+
+```python
+# Stock prices processed so far                       # MONOTONIC STACK (strictly decreasing) ... price's stock span
+[70]                                                  # [[70, 1]] ... 1
+[70, 100]                                             # [[100, 2]] ... 1 + 1 
+[70, 100, 90]                                         # [[100, 2], [90, 1]] ... 1
+[70, 100, 90, 83]                                     # [[100, 2], [90, 1], [83, 1]] ... 1
+[70, 100, 90, 83, 84]                                 # [[100, 2], [90, 1], [84, 2]] ... 1 + 1
+[70, 100, 90, 83, 84, 73]                             # [[100, 2], [90, 1], [84, 2], [73, 1]] ... 1
+[70, 100, 90, 83, 84, 73, 74]                         # [[100, 2], [90, 1], [84, 2], [74, 2]] ... 1 + 1
+[70, 100, 90, 83, 84, 73, 74, 75]                     # [[100, 2], [90, 1], [84, 2], [75, 3]] ... 1 + 2
+[70, 100, 90, 83, 84, 73, 74, 75, 76]                 # [[100, 2], [90, 1], [84, 2], [76, 4]] ... 1 + 3
+[70, 100, 90, 83, 84, 73, 74, 75, 76, 61]             # [[100, 2], [90, 1], [84, 2], [76, 4], [61, 1]] ... 1
+[70, 100, 90, 83, 84, 73, 74, 75, 76, 61, 62]         # [[100, 2], [90, 1], [84, 2], [76, 4], [62, 2]] ... 1 + 1
+[70, 100, 90, 83, 84, 73, 74, 75, 76, 61, 62, 90]     # [[100, 2], [90, 10]] ... 1 + 2 + 4 + 2 + 1
+[70, 100, 90, 83, 84, 73, 74, 75, 76, 61, 62, 90, 42] # [[100, 2], [90, 10], [42, 1]] ... 1
+```
+
+The example above illustrates the mechanics behind how the stack is maintained in service of reporting each new price's stock span (i.e., the `next` function's return value). Observe how the reported stock span grows whenever an element gets popped from the stack. More important though is that *no information is lost* about previous stock prices when an element is popped from the stack since this information is effectively captured in each new element added to the stack. Specifically, each newly added element to the stack is a 2D-array whose first value is a stock price and its second value is the stock span of that stock price in relation to all previous stock prices.
+
+In the longer example presented above, what would the return value be for the `next` function if we tried adding each of the following values separately (i.e., standalone addition, not in sequence):
+
+- `41`: The stack starts as `[[100, 2], [90, 10], [42, 1]]`. 
+  + The current stock span starts as `1`.
+  + Since `42` is greater than `41`, we should not remove anything from the stack. We just add the pair for the current price and its stock span `[41, 1]`, to the stack: `[[100, 2], [90, 10], [42, 1], [41, 1]]`.
+  + Return `1`.
+- `42`: The stack starts as `[[100, 2], [90, 10], [42, 1]]`. 
+  + The current stock span starts as `1`.
+  + Since `42` is less than or equal to `42`, we pop the last element from the stack and add its stock span to the current price's stock span: `1 + 1 = 2`.
+  + Add the pair of current price and its stock span, `[42, 2]`, to the stack: `[[100, 2], [90, 10], [42, 2]]`.
+  + Return `2`.
+- `150`: The stack starts as `[[100, 2], [90, 10], [42, 1]]`.
+  + The current stock span starts as `1`.
+  + Since `42` is less than or equal to `150`, we pop `[42, 1]` from the stack and add its stock span to the current stock span: `1 + 1 = 2`.
+  + Since `90` is less than or equal to `150`, we pop `[90, 10]` from the stack and add its stock span to the current stock span: `2 + 10 = 12`.
+  + Since `100` is less than or equal to `150`, we pop `[100, 2]` from the stack and add its stock span to the current stock span: `12 + 2 = 14`.
+  + Add the pair of current price and its stock span, `[150, 14]`, to the stack: `[[150, 14]]`.
+  + Return `14`.
+
+</details>
+
+</details>
+
+<details>
+<summary> <LC id='1475' type='long' ></LC></summary>
+
+<LC1475PS />
+
+---
+
+```python
+class Solution:
+    def finalPrices(self, prices: List[int]) -> List[int]:
+        n = len(prices)
+        stack = []
+        
+        for i in range(n):
+            val_B = prices[i]
+            while stack and prices[stack[-1]] >= val_B:
+                idx_val_A = stack.pop()
+                prices[idx_val_A] -= val_B # val_B is discount since it is next less or equal value to val_A
+            stack.append(i)
+        
+        return prices
+```
+
+The approach above is almost a direct application of the [template for next value problems](#next-value-template), specifically the "next less or equal value" problem. For each price, we want to determine if we can obtain a discount, and a discount is only possible if a subsequent value is less than or equal to the current value, hence the approach outlined above.
+
+</details>
+
+
+
+
+
+
+
+
+<details>
+<summary> <LC id='1063' type='long' ></LC></summary>
+
+<LC1063PS />
+
+---
+
+```python
+class Solution:
+    def validSubarrays(self, nums: List[int]) -> int:
+        n = len(nums)
+        queries = [n] * n
+        stack = []
+        ans = 0
+        
+        for i in range(n):
+            val_B = nums[i]
+            while stack and nums[stack[-1]] > val_B:
+                idx_val_A = stack.pop()
+                queries[idx_val_A] = i
+            stack.append(i)
+        
+        # query the next smaller value for each index of nums
+        # the current index will be the included left endpoint 
+        # and the queried value will be the excluded right endpoint
+        # total number of subarrays contributed where the left endpoint
+        # is the minimum: right - left (since right is excluded)
+        for left in range(n):
+            right = queries[left]
+            ans += right - left # NOT "right - left + 1" because right is not included here
+        
+        return ans
+```
+
+The [template for next value problems](#next-value-template) is valuable here since we're effectively looking for each value's "next smaller" value. Why? Because *until* we've found the current value's next smaller value, the current value is the minimum value (there may be other equal minimum values that contribute to the subarray count).
+
+The deeper intuition for solving this problem strongly depends on understanding that if the window `[left, right]` and all its "sub-windows" satisfy some constraint for a subarray (i.e., leftmost element being minimal in this problem), then the *number* of valid subarrays is given by `right - left + 1`.
+
+<details>
+<summary> Brief explanation for number of valid subarrays being <code>right - left + 1</code></summary>
+
+If the subarray `[left, right]` and all its subarrays are valid, then how many such valid subarrays are there? This number is given by `right - left + 1`. Why? Because this number gives us the number of subarrays that *end* at index `right`:
+
+- `[left, right]`
+- `[left + 1, right]`
+- `[left, + 2, right]`
+- ...
+- `[right - 1, right]`
+- `[right, right]` (single element, `right`)
+
+The idea is that we can fix the right bound and then choose *any* value between `left` and `right`, inclusive, for the left bound such that the newly bounded subarray is valid. The total number of values to choose from is the length of the `[left, right]` subarray: `right - left + 1`.
+
+</details>
+
+</details>
+
+<details>
+<summary> <LC id='1673' type='long' ></LC></summary>
+
+<LC1673PS />
+
+---
+
+```python
+class Solution:
+    def mostCompetitive(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        stack = []
+        
+        for i in range(n):
+            curr_num = nums[i]
+            while stack and stack[-1] > curr_num and (n - i + len(stack) > k):
+                stack.pop()
+            
+            if len(stack) < k:
+                stack.append(nums[i])
+        
+        return stack
+```
+
+This is a really neat monotonic stack problem because the monotonic stack itself serves as part (or all) of the solution. The intuition is that the most competitive subsequence will be the one whose leftmost elements are as small as possible. An weakly increasing monotonic stack is *almost* all we need, but the main wrinkle for this problem is that the subsequence we return must be of length `k`. Hence, the goal effectively becomes the following: use a weakly increasing monotonic stack "as long as possible" (to ensure its leftmost elements are as small as possible) until we're *forced* to indiscriminately add elements in order to reach the required size of `k`.
+
+Providing code comments may help in order to see the logic outlined above more clearly:
+
+```python
+class Solution:
+    def mostCompetitive(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        stack = [] # monotonic stack (weakly increasing)
+        
+        for i in range(n):
+            curr_num = nums[i]
+            # number of elements remaining in nums (including curr_num): n - i
+            # current number of elements in stack: len(stack)
+            # goal: stack must ultimately have a total of k elements; hence,
+            #   only consider popping an element from the stack if there are enough remaining
+            #   elements in nums to ensure the final size of the stack is k
+            while stack and stack[-1] > curr_num and (n - i + len(stack) > k):
+                stack.pop()
+            
+            # the stack should never exceed k elements
+            if len(stack) < k:
+                stack.append(nums[i])
+        
+        return stack
+```
+
+</details>
+
+<details>
+<summary> <LC id='1944' type='long' ></LC> </summary>
+
+<LC1944PS />
+
+---
+
+```python
+class Solution:
+    def canSeePersonsCount(self, heights: List[int]) -> List[int]:
+        n = len(heights)
+        ans = [0] * n
+        stack = [] # monotonic stack (decreasing)
+        
+        for i in range(n):
+            curr_height = heights[i]
+            while stack and heights[stack[-1]] < curr_height:
+                idx_prev_smaller_height = stack.pop()
+                ans[idx_prev_smaller_height] += 1
+            
+            if stack:
+                ans[stack[-1]] += 1
+                
+            stack.append(i)
+            
+        return ans
+```
+
+The intuition for solving this problem is a bit harder to grok at first than some other monotonic stack problems. The picture LeetCode uses to illustrate its first example input of `heights = [10,6,8,5,11,9]` is actually quite helpful (which goes to show just how effective drawing things out can be sometimes!):
+
+<div align='center' className='centeredImageDiv'>
+  <img width='550px' src={require('./f5.png').default} />
+</div>
+
+The desired output for this input is `[3,1,2,1,1,0]`, and LeetCode gives the following explanation as to why: 
+
+- Person `0` can see person `1`, `2`, and `4`.
+- Person `1` can see person `2`.
+- Person `2` can see person `3` and `4`.
+- Person `3` can see person `4`.
+- Person `4` can see person `5`.
+- Person `5` can see no one since nobody is to the right of them.
+
+Arguably the hardest part of this problem is figuring out how to deal with shorter people who are hidden behind taller people. This can lead to mistakes if we're not careful. For example, the number of visible people to the right of the person of height `10` (at index `i = 0`) must end at height `11` (at index `i = 4`) since `10 < 11`, but the number of visible people is not `4 - 0 = 4` (the current person of height `10` would not be included in the count). The answer is actually `3` because the shorter person tucked behind the person of height `8` is not actually visible from the perspective of the person with height `10`.
+
+If we did try to use a monotonic stack to solve this problem, should our stack be increasing or decreasing? An increasing stack would mean we always have access to the person of minimum height and that doesn't seem to be to our advantage. What about a decreasing stack? We'd have access to the person of maximum height encountered so far, and that could possibly help. But how?
+
+A possible hint is to generally consider when it makes sense to no longer keep track of someone of a certain height (i.e., essentially when this height should be popped from the stack). When height `val_A` encounters its next greater height, `val_B`, it no longer makes sense to keep track of `val_A` because the person with this height definitely cannot see anymore people to the right. It sounds more and more likely that our tool of choice here should be a decreasing monotonic stack (because each newly encountered height is the "next" height for heights on the stack, which we should start popping if any of them are smaller than this newly encountered height). But how do we account for the issue highlighted above where shorter people can be hidden behind taller people?
+
+The answer reveals itself by working through the mechanics of maintaining a decreasing monotonic stack for the first example input: `heights = [10,6,8,5,11,9]`. We can initialize the corresponding answer array to be `0`-filled and of the same length: `[0,0,0,0,0,0]`. Let's look at what happens when we try to process each height from left to right:
+
+- Height `10`. This is the first height so the stack is currently empty. Push `10` to the stack (really its index) and move to the next element.
+- Height `6`. Stack state: `[10]`. Is `10 < 6`? No. We push `6` to the stack. Since `10` directly precedes the height of `6` in the stack, we add `1` to the answer slot for the person of height `10`: `ans = [1,0,0,0,0,0]`.
+- Height `8`. Stack state: `[10, 6]`. Is `6 < 8`? Yes. First add `1` to the answer slot for the person of height `6` (since the person of height `8` is visible to the right of person of height `6`): `ans = [1,1,0,0,0,0]`. Pop `6` from the stack. The stack is non-empty which means the person of height `10` can see the person of height `8`; hence, add `1` to the answer slot for the person of height `10`: `ans = [2,1,0,0,0,0]`. Now push `8` to the stack.
+- Height `5`. Stack state: `[10, 8]`. Is `8 < 5`? No. We push `5` to the stack and also add `1` to the answer slot for height `8`: `ans = [2,1,1,0,0,0]`.
+- Height `11`. Stack state: `[10, 8, 5].` 
+  + Is `5 < 11`? Yes. Add `1` to height `5`'s answer slot: `ans = [2,1,1,1,0,0]`. Pop `5` from the stack.
+  + Is `8 < 11`? Yes. Add `1` to height `8`'s answer slot: `ans = [2,1,2,1,0,0]`. Pop `8` from the stack.
+  + Is `10 < 11`? Yes. Add `1` to height `10`'s answer slot: `ans = [3,1,2,1,0,0]`. Pop `10` from the stack.
+  + The stack is now empty so no more comparisons can be made. Push `11` to the stack.
+- Height `9`. Stack state: `[11]`. Is `11 < 9`? No. We push `9` to the stack and add `1` to the answer slot for the person of height `11`: `ans = [3,1,2,1,1,0]`.
+
+There are no more heights to process so we return the answer array `[3,1,2,1,1,0]`, as desired.
+
+The *mechanics* of working through the example above suggest the provided solution. The strategy is basically to maintain a monotonic decreasing stack:
+
+- If element `height_A` is popped from the stack because `height_A < height_B`, then this means `height_A` can see `height_B` to its right. So add `1` to the answer slot for `height_A`. We make these comparisons and pop elements from the stack (while updating the answer array) until either the stack is empty or we've reached an element greater than `height_B`.
+- If the stack is empty, then simply push `height_B` to the stack and move on. If, however, the stack is non-empty after all the removals above, then the element at the top of the stack can see `height_B` so its answer slot should have `1` added to it. Then push `height_B` to the stack.
+
+The process above continues until we've exhausted all heights.
+
+</details>
+
+<details>
+<summary> <LC id='2398' type='long' ></LC> </summary>
+
+<LC2398PS />
+
+---
+
+```python
+class Solution:
+    def maximumRobots(self, chargeTimes: List[int], runningCosts: List[int], budget: int) -> int:
+        dec_queue = deque() # monotonic deque (weakly decreasing) for charge times
+        left = window_sum = ans = 0
+        
+        for right in range(len(chargeTimes)):
+            # maintain monotonic deque to ensure maximum charge time in window is quickly accessible
+            curr_charge = chargeTimes[right]
+            while dec_queue and chargeTimes[dec_queue[-1]] < curr_charge:
+                dec_queue.pop()
+            dec_queue.append(right)
+            
+            # maintain total running cost of sliding window
+            curr_running_cost = runningCosts[right]
+            window_sum += curr_running_cost
+            
+            while left <= right and dec_queue and chargeTimes[dec_queue[0]] + (right - left + 1) * window_sum > budget:
+                # adjust window_sum to reflect new sliding window's total running cost
+                window_sum -= runningCosts[left]
+                # remove leftmost queue element if index is no longer valid after shifting window
+                if dec_queue[0] == left:
+                    dec_queue.popleft()
+                left += 1
+            
+            ans = max(ans, right - left + 1)
+            
+        return ans
+```
+
+Arguably one of the hardest parts of this problem is fully understanding the problem statement itself. Specifically, the total cost formula `max(chargeTimes) + k * sum(runningCosts)` is somewhat confusing since realistically there's no need to multiply the sum of running costs by `k`; nonetheless, the problem statement dictates that the total cost formula stands as detailed above &#8212; we must use it in our solution.
+
+Since the robots being used as part of the solution ultimately must be *consecutive*, this is a hint that a sliding window may be relevant. Since we always need the maximum of the charge values for the robots being used, it seems like we will need to maintain a *sliding window maximum*, which is where a monotonic deque can shine. A weakly decreasing monotonic deque should be used since a sliding window's maximum may not be unique. The rest of the problem then simply becomes maintaining the monotonic deque effectively while sliding the window (and maintaining the window sum as well for the total running cost).
+
+</details>
