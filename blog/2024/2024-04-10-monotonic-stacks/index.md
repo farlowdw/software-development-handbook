@@ -44,6 +44,9 @@ import LC1063PS from '@site/docs/_Partials/problem-stems/lc1063.md';
 import LC1673PS from '@site/docs/_Partials/problem-stems/lc1673.md';
 import LC1944PS from '@site/docs/_Partials/problem-stems/lc1944.md';
 import LC2398PS from '@site/docs/_Partials/problem-stems/lc2398.md';
+import LC907PS from '@site/docs/_Partials/problem-stems/lc907.md';
+import LC2104PS from '@site/docs/_Partials/problem-stems/lc2104.md';
+
 
 Monotonic stacks and queues are not difficult because of what they *are* but because of *how* they are used to find solutions to various problems. This post explores monotonic stacks and queues by first exploring the *next greater height* problem without any framing whatsoever (i.e., there's no mention of explicitly using a monotonic data structure in any capacity). We then try to use one of the approaches developed for solving the next greater height problem to solve another problem: the *sliding window minimum*. But our previously developed approach is not quite enough. We need to make a small tweak that turns out to be quite insightful.
 
@@ -1154,7 +1157,7 @@ What defines the queue, however, is its interface, namely pushing new elements t
 
 This is why the label of "monotonic queue" is a misnomer &#8212; it's misleading in a way. We only claim to use a monotonic *queue* when removing elements from the left is necessary. In such cases, we use a *doubly-ended queue* or *deque* because the right end still needs the stack-like operations to maintain the invariant while the left end needs the queue-like operation of efficiently removing an element(s) from the left. Hence, it would be more accurate to call a *monotonic queue* a *monotonic deque*.
 
-### Common use cases
+### Common use cases (with general "previous value" and "next value" templates)
 
 Monotonic stacks and queues can crop up in unexpected ways and in unexpected places, but the following are some conventional areas where these structures shine:
 
@@ -2936,3 +2939,826 @@ Arguably one of the hardest parts of this problem is fully understanding the pro
 Since the robots being used as part of the solution ultimately must be *consecutive*, this is a hint that a sliding window may be relevant. Since we always need the maximum of the charge values for the robots being used, it seems like we will need to maintain a *sliding window maximum*, which is where a monotonic deque can shine. A weakly decreasing monotonic deque should be used since a sliding window's maximum may not be unique. The rest of the problem then simply becomes maintaining the monotonic deque effectively while sliding the window (and maintaining the window sum as well for the total running cost).
 
 </details>
+
+<details>
+<summary> <LC id='907' type='long' ></LC> (&check;) </summary>
+
+<LC907PS />
+
+---
+
+```python
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        n = len(arr)
+        stack = []
+        ans = 0
+        MOD = 10 ** 9 + 7
+        
+        for i in range(n + 1):
+            while stack and (i == n or arr[stack[-1]] >= arr[i]):
+                curr_min_idx = stack.pop()
+                curr_min = arr[curr_min_idx]
+                left_boundary = -1 if not stack else stack[-1]
+                right_boundary = i
+                num_subarrays = (curr_min_idx - left_boundary) * (right_boundary - curr_min_idx)
+                contribution = curr_min * num_subarrays
+                ans += contribution
+            stack.append(i)
+            
+        return ans % MOD
+```
+
+This is a *tough* problem and is comprehensively dissected in the [epilogue](#epilogue). The solution above is the optimized approach.
+
+</details>
+
+<details>
+<summary> <LC id='2104' type='long' ></LC> (&check;) </summary>
+
+<LC2104PS />
+
+---
+
+```python
+class Solution:
+    def subArrayRanges(self, nums: List[int]) -> int:
+        n = len(nums)
+        stack = []
+        total_subarray_minimum_sum = 0
+        total_subarray_maximum_sum = 0
+        
+        # calculate total contribution of subarray minimums
+        for i in range(n + 1):
+            while stack and (i == n or nums[stack[-1]] >= nums[i]): # note: either '>=' or '>' can be used
+                curr_min_idx = stack.pop()
+                curr_min = nums[curr_min_idx]
+                left_boundary = -1 if not stack else stack[-1]
+                right_boundary = i
+                num_subarrays = (curr_min_idx - left_boundary) * (right_boundary - curr_min_idx)
+                contribution = curr_min * num_subarrays
+                total_subarray_minimum_sum += contribution
+            stack.append(i)
+        
+        # reset the stack
+        stack = []
+        
+        # calculate total contribution of subarray maximums
+        for i in range(n + 1):
+            while stack and (i == n or nums[stack[-1]] <= nums[i]): # note: either '<=' or '<' can be used
+                curr_max_idx = stack.pop()
+                curr_max = nums[curr_max_idx]
+                left_boundary = -1 if not stack else stack[-1]
+                right_boundary = i
+                num_subarrays = (curr_max_idx - left_boundary) * (right_boundary - curr_max_idx)
+                contribution = curr_max * num_subarrays
+                total_subarray_maximum_sum += contribution
+            stack.append(i)
+            
+        return total_subarray_maximum_sum - total_subarray_minimum_sum
+```
+
+This is a *tough* problem. It becomes much easier to solve after fully understanding the performant way to solve the following very similar problem (which is comprehensively dissected in this post's [epilogue](#epilogue)): <LC id='907' type='long' ></LC>.
+
+</details>
+
+## Epilogue: Sum of subarray minimums and subarray ranges {#epilogue}
+
+Final boss battle! The following two problems, where the second one is effectively an extension of the first, can be solved using monotonic stacks:
+
+- <LC id='907' type='long' ></LC>
+- <LC id='2104' type='long' ></LC>
+
+The optimal solutions are a bit more sophisticated than some of the solutions we've explored so far in the practice problems. But that's okay. Let's cover some "prerequisite" content and then build out a solution to the first problem.
+
+### Prerequisites
+
+A few prerequisites will be helpful before crafting our solution to the first problem, <LC id='907' type='long' ></LC>. Each prerequisite is thoroughly explained, but a TLDR is provided for those who just want a quick summary.
+
+#### Counting subarrays {#prereq-counting-subarrays}
+
+<details>
+<summary> TLDR</summary>
+
+An $n$-element array has a total of $n(n+1)/2$ subarrays. If an array contains the value `X` and `sub_1 = [..., X]` is $m$ units long and `sub_2 = [X, ...]` is $n$ units long, then combining `sub_1` and `sub_2` at value `X` results in another subarray, `sub_3`, that is $m + n - 1$ units long. How many subarrays of `sub_3` include the value `X`? Answer: $mn$.
+
+</details>
+
+How many subarrays are there for an $n$-element array? There are $n(n+1)/2$. Why? Consider the following range of index values: `[left, right]` (i.e., `left == 0` and `right == n - 1`). How many subarrays end at `left`? A single one, the following one-element subarray (this is an index range): `[left, left]`. How many subarrays end at `[left + 1]`? We would have subarrays with index ranges `[left + 1, left + 1]` and `[left, left + 1]` (i.e., `2` such subarrays). In general:
+
+```
+index       subarrays ending at this index
+--------------------------------------------
+left        -> 1
+left + 1    -> 2
+left + 2    -> 3
+right - 1   -> n - 1
+right       -> n
+```
+
+That is, an $n$-element array has $1 + 2 + \cdots + (n-1) + n = n(n+1)/2$ subarrays. 
+
+How does the information above help in solving <LC id='907' type='long' ></LC>? By now considering an array with two adjacent subarrays where these subarrays share a single value:
+
+$$
+[a, b, c, \ldots, X, \ldots, y, z]
+$$
+
+Suppose the first subarray, $[c, \ldots, X]$, is $m$ units long, and the second subarray, $[X, \ldots, y, z]$, is $n$ units long. How many subarrays in total would there be for the combined array of length $m + n - 1$ (we subtract 1 because of the de-deuplicated $X$-value): $[c, \ldots, X, \ldots, y, z]$. From the formula above, we would have the following:
+
+$$
+\frac{(m + n - 1)[(m + n - 1) + 1]}{2} = \frac{(m + n)(m + n - 1)}{2}.
+$$
+
+But suppose we're only interested in subarrays containing $X$. How many such subarrays would there be? 
+
+- The subarray $[c, \ldots, X]$ is $m$ units long, which means $[c, \ldots, X]$ *without* $X$ would be $m-1$ units long. Hence, there would be $(m-1)[(m-1)+1]/2$ subarrays without $X$.
+- The subarray $[X, \ldots, y, z]$ is $n$ units long, which means $[X, \ldots, y, z]$ *without* $X$ would be $n-1$ units long. Hence, there would be $(n-1)[(n-1)+1]/2$ subarrays without $X$.
+
+Thus, the total number of subarrays in $[c, \ldots, X, \ldots, y, z]$ that must contain $X$ is as follows:
+
+$$
+\begin{align*}
+\mathrm{Total}
+&= \underbrace{\overbrace{\frac{(m + n)(m + n - 1)}{2}}^{\text{total number of subarrays}} - \overbrace{\frac{m(m-1)}{2}}^{\text{subarrays without ${\footnotesize X}$}} - \overbrace{\frac{n(n-1)}{2}}^{\text{subarrays without ${\footnotesize X}$}}}_{\text{subarrays with ${\footnotesize X}$ included}}\\[3em]
+&= \frac{m^2 + mn - m + mn + n^2 - n}{2} - \frac{m^2 - m}{2} - \frac{n^2 - n}{2} & \text{(distribute)}\\[1em]
+&= \frac{m^2 + mn - m + mn + n^2 - n - m^2 + m - n^2 + n}{2} & \text{(simplify)}\\[1em]
+&= \frac{2mn}{2} & \text{(simplify)}\\[1em]
+&= mn
+\end{align*}
+$$
+
+There's actually a much easier way of getting to this result: use the [fundamental principle of counting](https://en.wikipedia.org/wiki/Rule_of_product)! For $X$ to be included in *all* subarrays, our subarray must first *start* with a value in $[c, \ldots, X]$ and *end* with a value in $[X, \ldots, y, z]$ (the resultant subarray will necessarily include $X$). How many choices do we have so that our subarray starts with an element from the $m$-element subarray $[c, \ldots, X]$? We'd have $m$ choices. How many choices do we have so that our subarray ends with an element from the $n$-element subarray $[X, \ldots, y, z]$? We'd have $n$ choices. Thus, there are $m\times n = mn$ possibilities for subarrays where the first element is from $[c, \ldots, X]$ and the last element is from $[X, \ldots, y, z]$. This means there are $mn$ subarrays of $[c, \ldots, X, \ldots, y, z]$ that must include $X$.
+
+#### Excluding endpoints of subarrays {#prereq-excluding-endpoints}
+
+<details>
+<summary> TLDR</summary>
+
+If the open interval `(L, R)` is to fully represent an array, `nums`, with `n` elements, then `L` should be `-1` at a minimum and `R` should be `n` at a maximum. This ensures all index values of `nums`, namely `[0,1,...,n-2,n-1]`, fit within the open interval `(-1, n)`.
+
+</details>
+
+The [interval notations](https://en.wikipedia.org/wiki/Interval_(mathematics)#Definitions_and_terminology) $[a,b]$, $(a,b)$, $(a,b]$, and $[a, b)$ mean the following, respectively: $a$ and $b$ are both included, $a$ and $b$ are both excluded, $a$ is excluded but $b$ is included, and $a$ is included but $b$ is excluded.
+
+Suppose we're given an integer array `nums` that contains `n` unique values. Then `[0,1,...,n-2,n-1]` represents the possible indexes. Suppose we know a value `X` occurs in `nums`, and we'd like to know how many subarrays there are where `X` is the minimum value. Then one way of approaching this is to find the indexes of the first values that occur *before* and *after* `X`, say `L` and `R`, such that both of these values are less than `X`. For example, suppose `X = 3`, and we're given the array `[2,1,6,3,4,5,0]`. We can find appropriate values for `L` and `R` as follows (indexes are drawn above the array elements for clarification)
+
+```
+     L     X        R
+  0  1  2  3  4  5  6
+[ 2  1  6  3  4  5  0 ]
+```
+
+Then the subarray contained in `(L, R)` has `X = 3` as its minimum value: `(L, R) = [L + 1, R - 1] = [6, 3, 4, 5]`. *How many* subarrays of `[6, 3, 4, 5]` have `3` as their minimum value? We can methodically answer this question as follows:
+
+- How many subarrays are there in total for an array with four elements? There are $4(4+1)/2 = 10$ subarrays. How many of these contain the minimum value of 3? We're basically asking [the question we asked in the previous section](#prereq-counting-subarrays) where the subarray `[6, 3, 4, 5]` may be viewed as joining two subarrays at the common value of `3`: `[6, 3]` and `[3, 4, 5]`. How many subarrays are there where `3` must be included?
+- How many ways are there so our subarray including `3` *starts* with an element from `[6, 3]`? There are two elements so the answer is `2`.
+- How many ways are there so our subarray including `3` *ends* with an element from `[3, 4, 5]`? There are three elements so the answer is `3`.
+
+    Thus, there are `2 * 3 = 6` subarrays of `[6, 3, 4, 5]` where `3` is included. For the sake of completeness, the following are the `10 - 6 = 4` subarrays where `3` is *not* included: `[6], [4], [5], and [4, 5]`.
+
+Note that we could have obtained the values of `2` and `3` in the last two bullet points above by directly using the excluded endpoints, `L` and `R`, in relation to the index of the minimum value of interest, namely `3`, which occurs at index `3`. Let `i` denote the index of where value `X` occurs (i.e., `i = 3` for the example we've been considering). Then we have the following:
+
+- `i - L = 3 - 1 = 2`
+- `R - i = 6 - 3 = 3`
+
+That's great but what if `X` occurs at one of the endpoints? For example, what if `X` occured at `i = 0` or `i = 6` in the example above (i.e., `X = 2` or `X = 0`, respectively)? Then what should the values of `L` and `R` be? They should be `-1` and `len(nums) = 7`, respectively:
+
+```
+-1 
+ L  X  R
+    0  1  2  3  4  5  6
+  [ 2  1  6  3  4  5  0 ]
+
+
+-1                       7
+ L                    X  R
+    0  1  2  3  4  5  6
+  [ 2  1  6  3  4  5  0 ]
+```
+
+When `X = 2`, we would then have the following:
+
+- `i - L = 0 - (-1) = 1`
+- `R - i = 1 - 0 = 1`
+
+  We're basically asking how many subarrays of `[2]` there are where `2` is the minimum value. There `1 * 1 = 1` such subarrays because there is only one way our subarray can *start* with a value from `[2]` and only one way our subarray can *end* with a value from `[2]`.
+
+When `X = 0`, we would then have the following:
+
+- `i - L = 6 - (-1) = 7`
+- `R - i = 7 - 6 = 1`
+
+  We're basically asking how many subarrays of `[2, 1, 6, 3, 4, 5, 0]` there are where `0` is the minimum value. There `7 * 1 = 7` such subarrays because there are seven ways our subarray can *start* with a value from `[2, 1, 6, 3, 4, 5, 0]` and only one way our subarray can *end* with a value from `[0]`.
+
+The entire discussion above suggests we should let `L = -1` and/or `R = len(nums)` if either (or both) endpoint does not exist for a given value of interest `X`.
+
+#### Subarrays with non-unique minimums and maximums {#prereq-duplicated-extrema}
+
+<details>
+<summary> TLDR</summary>
+
+We must be careful when considering minimum and maximum values of subarrays where these values occur more than once. Specifically, the current value we consider to be a minimum or maximum, `curr_min_or_max`, should be as far left or as far right as possible to ensure subsequently encountered values that are equivalent to `curr_min_or_max` are handled appropriately (i.e., not overcounted). 
+
+</details>
+
+Given the input array `[2,1,6,3,4,5,0]`, how many subarrays have `3` as their minimum value? The previous section showed this number to be `6`. What if, however, we're given an input array with *non-unique* values? This complicates things. For example, consider the following array of values: `[3, 4, 4, 5, 4, 1]`. How many times does *each value* serve as the minimum for a subarray? Calculating this shouldn't be too difficult for the unique values of `3`, `5`, and `1` by using the technique described in the previous section. But the non-unique values of `4` present an issue. We need to make sure we do not *overcount* by counting more than once a subarray where `4` is the minimum value. What should we do? We need a strategy for somehow processing the non-unique values so that each contribution is distinctly its own. In the strategies presented below, we are always trying to find how many times the current value being processed (the one with `i` above it) should be considered the *minimum* of a subarray (the same concept applies for *maximum* values though).
+
+As our first consideration, suppose we didn't permit non-unique values to be part of the subarray contribution for which the current value is the minimum:
+
+```a title="STRICT (to left and to right)"
+    i                   |       i                |          i             |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  # highlight-error-next-line
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |
+```
+
+It's clear we've already run into an issue as soon as we reach the value at index `i = 2`: we entirely skipped the subarray `[4, 4]` where `4` is a minimum value. This is clearly not a viable strategy. What if we indiscriminately allowed duplicate values? Then our consideration would effectively be "non-strict both ways":
+
+```a title="NON-STRICT (to left and to right)"
+    i                   |       i                |          i             |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |
+# highlight-error-next-line
+                        |  [ 3 [4  4] 5  4  1 ]  |  [ 3 [4  4] 5  4  1 ]  |
+                        |  [ 3 [4  4  5] 4  1 ]  |
+                        |  [ 3 [4  4  5  4] 1 ]  |
+```
+
+This is also not a viable strategy because, as the highlighted line above demonstrates, we've counted the subarry `[4, 4]` *twice* as having the minimum value of `4`. What if instead of imposing strict or non-strict inclusion conditions in *both* directions (to left and to right), we tried imposing a strict condition in one direction and a non-strict condition in the other (i.e., non-strict to left and strict to right *or* strict to left and non-strict to right)? Let's see:
+
+```a title="NON-STRICT (to left) and STRICT (to right)"
+    i                   |       i                |          i             |             i          |                i       |                   i    |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |  [ 3  4  4 [5] 4  1 ]  |  [ 3  4  4  5 [4] 1 ]  |  [ 3  4  4  5  4 [1]]  |
+  [[3  4] 4  5  4  1 ]  |                        |  [ 3 [4  4] 5  4  1 ]  |                        |  [ 3  4  4 [5  4] 1 ]  |  [ 3  4  4  5 [4  1]]  |
+  [[3  4  4] 5  4  1 ]  |                        |  [ 3  4 [4  5] 4  1 ]  |                        |  [ 3  4 [4  5  4] 1 ]  |  [ 3  4  4 [5  4  1]]  |
+  [[3  4  4  5] 4  1 ]  |                        |  [ 3 [4  4  5] 4  1 ]  |                        |  [ 3 [4  4  5  4] 1 ]  |  [ 3  4 [4  5  4  1]]  |
+  [[3  4  4  5  4] 1 ]  |                        |                        |                        |                        |  [ 3 [4  4  5  4  1]]  |
+                        |                        |                        |                        |                        |  [[3  4  4  5  4  1]]  |
+```
+
+Were any subarrays overcounted? How many subarrays are there for an array with six elements? There are $6(6+1)/2 =21$ subarrays. How many subarrays are illustrated above? There are, pictured from left to right, $5 + 1 + 4 + 1 + 4 + 6 = 21$ subarrays, where each `i` value represents the index of the minimum value for each subarray in its designated block. 
+
+For the sake of completeness, let's also consider tabulating subarrays in a "strict to left and non-strict to right" fashion:
+
+```a title="STRICT (to left) and NON-STRICT (to right)"
+    i                   |       i                |          i             |             i          |                i       |                   i    |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |  [ 3  4  4 [5] 4  1 ]  |  [ 3  4  4  5 [4] 1 ]  |  [ 3  4  4  5  4 [1]]  |
+  [[3  4] 4  5  4  1 ]  |  [ 3 [4  4] 5  4  1 ]  |  [ 3  4 [4  5] 4  1 ]  |                        |  [ 3  4  4 [5  4] 1 ]  |  [ 3  4  4  5 [4  1]]  |
+  [[3  4  4] 5  4  1 ]  |  [ 3 [4  4  5] 4  1 ]  |  [ 3  4 [4  5  4] 1 ]  |                        |                        |  [ 3  4  4 [5  4  1]]  |
+  [[3  4  4  5] 4  1 ]  |  [ 3 [4  4  5  4] 1 ]  |                        |                        |                        |  [ 3  4 [4  5  4  1]]  |
+  [[3  4  4  5  4] 1 ]  |                        |                        |                        |                        |  [ 3 [4  4  5  4  1]]  |
+                        |                        |                        |                        |                        |  [[3  4  4  5  4  1]]  |
+```
+
+This also looks very promising. The number of subarrays, pictured left to right, are as follows: $5 + 4 + 3 + 1 + 2 + 6 = 21$. 
+
+How are the two viable approaches above qualitatively different from each other? They both seem to achieve the same outcome in different ways. If we look closely, we can see that *unique* minimum values (i.e., `3`, `5`, and `1` in `[3,4,4,5,4,1]`) are handled in *exactly* the same way. The difference simply lies in how we handle *non-unique* values (i.e., the `4` in the examples above). Both approaches count the correct number of subarrays, but they simply do so in different ways. The takeaway is that we should handle values in a strict way in one direction and a non-strict way in the other direction. Which ways we choose for strict/non-strict inclusion is immaterial and does not alter the overall desired result.
+
+### LC 907. Sum of Subarray Minimums (approach 1)
+
+We're finally ready to work on crafting a solution to <LC id='907' type='' ></LC>! Here's the problem statement:
+
+> <LC907PS />
+
+As noted in [the section immediately above](#prereq-duplicated-extrema), to effectively handle duplicate values, which this problem allows, we must consider strictness in one direction and non-strictness in the other direction. Furthermore, we can make the following observations from the last two examples in the section above:
+
+- **NON-STRICT (to left) and STRICT (to right):** Non-strict to the left means values to the left of the value being considered the minimum may be repeated; hence, the left boundary should be the minimum value's *previous smaller* value if it exists (or `-1` if it does not, as noted in [the section on endpoints](#prereq-excluding-endpoints)). Strict to the right means the right boundary should be the minimum value's *next smaller or equal* value if it exists (or `len(nums)` if it does not) because smaller or equal values may not be included in the subarray of the value we're considering to be the minimum.
+
+  Note that this suggests we can use the [previous value](#previous-value-template) and [next value](#next-value-template) templates to good effect here. Specifically, each minimum's left boundary may be found by using the `>=` comparison operator in the previous value template (this gives us each value's *previous smaller* value or `-1` if no such value exists). Each minimum's right boundary may be found by using the `>=` comparison operator in the next value template (this gives us each value's *next smaller or equal* value or `len(arr)` if no such value exists).
+
+  <details>
+  <summary> Solution 1 (non-strict to left and strict to right) </summary>
+
+  ```python
+  class Solution:
+      def sumSubarrayMins(self, arr: List[int]) -> int:
+          def previous_less(nums):
+              n = len(nums)
+              ans = [None] * n
+              stack = []
+              
+              for i in range(n):
+                  val_A = nums[i]
+                  while stack and nums[stack[-1]] >= val_A:
+                      stack.pop()
+                      
+                  if stack:
+                      ans[i] = stack[-1]
+                  else:
+                      ans[i] = -1
+                      
+                  stack.append(i)
+                      
+              return ans
+
+          def next_less_or_equal(nums):
+              n = len(nums)
+              ans = [None] * n
+              stack = []
+              
+              for i in range(n):
+                  val_B = nums[i]
+                  while stack and nums[stack[-1]] >= val_B:
+                      idx_val_A = stack.pop()
+                      ans[idx_val_A] = i
+                  stack.append(i)
+              
+              while stack:
+                  idx_val_A = stack.pop()
+                  ans[idx_val_A] = n
+                  
+              return ans
+          
+          # assemble the left and right boundaries for each value
+          left_boundaries = previous_less(arr)
+          right_boundaries = next_less_or_equal(arr)
+          
+          MOD = 10 ** 9 + 7
+          ans = 0
+          for i in range(len(arr)):
+              curr_min = arr[i]
+              left_boundary = left_boundaries[i]
+              right_boundary = right_boundaries[i]
+              num_subarrays = (i - left_boundary) * (right_boundary - i)
+              contribution = curr_min * num_subarrays
+              ans += contribution
+              
+          return ans % MOD
+  ```
+
+  </details>
+
+- **STRICT (to left) and NON-STRICT (to right):** Strict to the left means values to the left of the value being considered the minimum may not be repeated; hence, the left boundary should be the minimum value's *previous smaller or equal* value if it exists (or `-1` if it does not, as noted in [the section on endpoints](#prereq-excluding-endpoints)). Non-strict to the right means the right boundary should be the minimum value's *next smaller* value if it exists (or `len(nums)` if it does not).
+
+  Note that this suggests we can use the [previous value](#previous-value-template) and [next value](#next-value-template) templates to good effect here. Specifically, each minimum's left boundary may be found by using the `>` comparison operator in the previous value template (this gives us each value's *previous smaller or equal* value or `-1` if no such value exists). Each minimum's right boundary may be found by using the `>` comparison operator in the next value template (this gives us each value's *next smaller* value or `len(arr)` if no such value exists).
+
+  <details>
+  <summary> Solution 2 (strict to left and non-strict to right)</summary>
+
+  ```python
+  class Solution:
+      def sumSubarrayMins(self, arr: List[int]) -> int:
+          def previous_less_or_equal(nums):
+              n = len(nums)
+              ans = [None] * n
+              stack = []
+              
+              for i in range(n):
+                  val_A = nums[i]
+                  while stack and nums[stack[-1]] > val_A:
+                      stack.pop()
+                      
+                  if stack:
+                      ans[i] = stack[-1]
+                  else:
+                      ans[i] = -1
+                      
+                  stack.append(i)
+                      
+              return ans
+
+          def next_less(nums):
+              n = len(nums)
+              ans = [None] * n
+              stack = []
+              
+              for i in range(n):
+                  val_B = nums[i]
+                  while stack and nums[stack[-1]] > val_B:
+                      idx_val_A = stack.pop()
+                      ans[idx_val_A] = i
+                  stack.append(i)
+              
+              while stack:
+                  idx_val_A = stack.pop()
+                  ans[idx_val_A] = n
+                  
+              return ans
+
+          # assemble the left and right boundaries for each value
+          left_boundaries = previous_less_or_equal(arr)
+          right_boundaries = next_less(arr)
+          
+          MOD = 10 ** 9 + 7
+          ans = 0
+          for i in range(len(arr)):
+              curr_min = arr[i]
+              left_boundary = left_boundaries[i]
+              right_boundary = right_boundaries[i]
+              num_subarrays = (i - left_boundary) * (right_boundary - i)
+              contribution = curr_min * num_subarrays
+              ans += contribution
+              
+          return ans % MOD
+  ```
+
+  </details>
+
+Both solutions above are valid and completely follow from all the prerequisite work we did. Try submitting the solutions on LeetCode for yourself!
+
+### LC 907. Sum of Subarray Minimums (approach 2, beast mode)
+
+The approach outlined above for solving <LC id='907' type='' ></LC> is great in that it is *somewhat* intuitive (but only after doing a *lot* of work to get to that point). Nonetheless, it is possible to get even more creative and come up with a solution that requires only a *single* full pass. Our solution in the previous approach required three full passes: one to find the left boundaries, one to find the right boundaries, and then one to calculate what the contribution of each minimum value was to the overall answer. 
+
+But note how we used the *same* comparison operator in the previous and next value templates in the solution variations in our previous approach: we used `>=` for the "non-strict to left and strict to right" solution and `>` for the "strict to left and non-strict to right" solution. Comparisons using `>=` and `>` (and even those using `<=` and `<`) naturally divide elements in a "strict" and "non-strict" way. Perhaps there's a way to compress our logic a bit and come up with an "ultimately optimized" solution. To do this, let's first recall the ["next value" problem template](#next-value-template) in its entirety:
+
+<details open>
+<summary> Next value problem template</summary>
+
+```python showLineNumbers
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    stack = [] # monotonic stack
+    for i in range(n):
+        val_B = nums[i]
+        # the comparison operator (?) dictates what A's next value B represents
+        # (<)  next larger value (weakly decreasing stack)
+        # (<=) next larger or equal value (strictly decreasing stack)
+        # (>)  next smaller value (weakly increasing stack)
+        # (>=) next smaller or equal value (strictly increasing stack)
+        while stack and nums[stack[-1]] ? val_B:
+            idx_val_A = stack.pop()
+            ans[idx_val_A] = val_B
+        stack.append(i)
+    
+    # process elements that never had a "next" value that satisfied the criteria
+    while stack:
+        idx_val_A = stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+```
+
+</details>
+
+Can this template be used for more than just identifying a given value's "next larger/smaller (or equal)" value? Specifically, is there a way we can use it to count the number of subarrays for which each value serves as the minimum or maximum value (even when the min/max of a subarray may not be unique)? The manner in which we are maintaining the stack for each comparison operator suggests this may be possible (even though this is not at all obvious at first). Creativity and insight are needed. **The key lies in thinking about how each item popped from the top of the stack, `val_A`, relates to its *previous* and *next* values** (note: by `val_A` we mean `val_A = nums[idx_val_A]` since the stack holds index values):
+
+- The *next* value for `val_A` is `val_B`, the value referenced by the current for loop iteration (line `6`).
+- The *previous* value for `val_A` is `prev_A`, a value that does not appear in the template above. Why? Because the template made no use of this value previously (so it was not necessary). By `prev_A` we mean the new value at the top of the stack once `val_A` has been popped (after line `13`). If, however, the stack is *empty* after `val_A` has been popped, then this means `val_A` has no previous value that can be related to it in the way that previously encountered values lower in the stack could.
+
+Before analyzing how these relations work for each comparison operator, it's important to consider how values should be handled that have no "next value" that satisfies our criteria. In the template, lines `18`-`20` specify that a value of `-1` should be assigned to the answer array for such values; that is, `ans[i] == -1` would mean `nums[i]` had no next value that satisfied our criteria. But we do not have to use `-1`. We should use whatever value makes the most sense under the circumstances. Note that, under the current circumstances, we also need to consider how we should convey that `prev_A` does not exist for `val_A` when this is the case (i.e., when the stack is empty after popping `val_A` on line `13`). 
+
+What values make the most sense under the circumstances? The "circumstance" here is the context of working with open intervals such as `(L, R)`, where `L` and `R` refer to *excluded* left and right boundaries, respectively (where `L` and `R` are index values). Our [previous work](#prereq-excluding-endpoints) indicates we should let `L = -1` and `R = len(nums)` when no previous or next value is found that meets the specified criteria, respectively.
+
+Other key ideas that apply regardless of comparison operator being used (what each choice actually *entails* in terms of the behavior observed is, however, specific to the comparison operator being used):
+
+- Min/max value (`curr_min_max`): This will always be the value popped from the stack: `curr_min_max = nums[stack[-1]]`. Our goal is to answer the following question: "How many subarrays are there for which `curr_min_max` is the subarray's minimum or maximum?"
+- Left boundary (`left_boundary`): This will always be the value at the top of the stack *after* we've popped the value we're treating as the minimum or maximum (if the stack is non-empty); if, however, the stack is empty after popping what we're considering to be the minimum or maximum value, then `-1` will be assigned as the left boundary.
+- Right boundary (`right_boundary`): This will always be the index of the current for loop iteration (or `len(input_array)` if no constraint-specific "next value" is found).
+
+<details>
+<summary> Comparison operator: <code>&gt;=</code> (good for finding minimums, non-strict to left and strict to right) </summary>
+
+The `>=` comparison used in the condition `nums[stack[-1]] >= nums[i]` for the while loop implies the following:
+
+- `curr_min`: How many subarrays have `curr_min = nums[stack[-1]]` as their minimum value?
+- `left_boundary`: If the stack is empty, then `curr_min` has no previous smaller value and `-1` is the left boundary. If the stack is non-empty, then `stack[-1]` points to `curr_min`'s previous smaller value.
+- `right_boundary`: `i` is the right boundary and `nums[i]` is `curr_min`'s next smaller than or equal value (or `len(nums)` if no such next smaller or equal value exists).
+
+The information above translates as follows in terms of the boundary behavior we can expect of our subarrays:
+
+- `nums[left_boundary] < curr_min`, hence the half-open interval `(nums[left_boundary], ... , curr_min]` could include duplicate values of `curr_min`. Since `nums[left_boundary]` refers to `curr_min`'s previous smaller value (as opposed to previous smaller *or equal value*) there may be any number of other values equal to `curr_min` that appear before the `curr_min` we're considering, namely `curr_min = nums[stack[-1]]`. This means any of the other duplicate values would all lie to the left of our `curr_min`.
+- `curr_min >= nums[right_boundary]`, hence the half-open interval `[curr_min, ..., nums[right_boundary])` cannot include any duplicate values of `curr_min` because the right boundary is excluded.
+
+In regards to `curr_min = nums[stack[-1]]`, our minimum, we can effectively envision the subarrays that have this value as their minimum as being "non-strict to the left" (where other values equal to `curr_min` may be included) and "strict to the right" (where other values equal to `curr_min` may not be included). This demonstrates why we do not need to be worried about overcounting subarray minimum contributions when duplicate values of `curr_min` are included: we only ever consider subarrays that include the `curr_min` farthest to the right.
+
+The following example illustrates the mechanics for the input array `nums = [3, 4, 4, 5, 4, 1]`:
+
+```
+NON-STRICT TO LEFT, STRICT TO RIGHT:
+
+- Left boundary is SMALLER than curr_min (i.e., nums[L] < nums[i] or L == -1 if no such value exists)
+- Right boundary is SMALLER OR EQUAL to curr_min (i.e., nums[R] <= nums[i] or R == len(nums) if no such value exists)
+
+-1                                                                                                                           -1                    6
+ L  i              R    |    L  i  R             |    L     i     R       |          L  i  R       |    L           i  R    | L                 i  R |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |  [ 3  4  4 [5] 4  1 ]  |  [ 3  4  4  5 [4] 1 ]  |  [ 3  4  4  5  4 [1]]  |
+  [[3  4] 4  5  4  1 ]  |                        |  [ 3 [4  4] 5  4  1 ]  |                        |  [ 3  4  4 [5  4] 1 ]  |  [ 3  4  4  5 [4  1]]  |
+  [[3  4  4] 5  4  1 ]  |                        |  [ 3  4 [4  5] 4  1 ]  |                        |  [ 3  4 [4  5  4] 1 ]  |  [ 3  4  4 [5  4  1]]  |
+  [[3  4  4  5] 4  1 ]  |                        |  [ 3 [4  4  5] 4  1 ]  |                        |  [ 3 [4  4  5  4] 1 ]  |  [ 3  4 [4  5  4  1]]  |
+  [[3  4  4  5  4] 1 ]  |                        |                        |                        |                        |  [ 3 [4  4  5  4  1]]  |
+                        |                        |                        |                        |                        |  [[3  4  4  5  4  1]]  |
+
+subarray count = [(0 - (-1)) * (5 - 0)] + [(1 - 0) * (2 - 1)] + [(2 - 0) * (4 - 2)] + [(3 - 2) * (4 - 3)] + [(4 - 0) * (5 - 4)] + [(5 - (-1)) * (6 - 5)]
+               = 5 + 1 + 4 + 1 + 4 + 6 = 21
+
+subarray sum of maximums = (3 * 5) + (4 * 1) + (4 * 4) + (5 * 1) + (4 * 4) + (1 * 6)
+                         = 15 + 4 + 16 + 5 + 16 + 6
+                         = 62
+```
+
+</details>
+
+<details>
+<summary> Comparison operator: <code>&gt;</code> (good for finding minimums, strict to left and non-strict to right) </summary>
+
+The `>` comparison used in the condition `nums[stack[-1]] > nums[i]` for the while loop implies the following:
+
+- `curr_min`: How many subarrays have `curr_min = nums[stack[-1]]` as their minimum value?
+- `left_boundary`: If the stack is empty, then `curr_min` has no previous smaller or equal value and `-1` is the left boundary. If the stack is non-empty, then `stack[-1]` points to `curr_min`'s previous smaller or equal value.
+- `right_boundary`: `i` is the right boundary and `nums[i]` is `curr_min`'s next smaller value (or `len(nums)` if no such next smaller value exists).
+
+The information above translates as follows in terms of the boundary behavior we can expect of our subarrays:
+
+- `nums[left_boundary] <= curr_min`, where `nums[left_boundary]` is `curr_min`'s previous smaller or equal value. If `nums[left_boundary]` is *equal* to `curr_min`, then this means these values are adjacent in whatever subarrays we're considering for which `curr_min = nums[stack[-1]]` is the minimum value.
+- `curr_min > nums[right_boundary]`, which means duplicated values of `curr_min` may appear before `nums[right_boundary]`, but if these values appear, then note that they all lie to the right of the `curr_min` we're considering to be the minimum, namely `curr_min = nums[stack[-1]]`.
+
+In regards to `curr_min = nums[stack[-1]]`, our minimum, we can effectively envision the subarrays that have this value as their minimum as being "strict to the left" (where other values equal to `curr_min` may not be included) and "non-strict to the right" (where other values equal to `curr_min` may be included). This demonstrates why we do not need to be worried about overcounting subarray minimum contributions when duplicate values of `curr_min` are included: we only ever consider subarrays that include the `curr_min` farthest to the left.
+
+The following example illustrates the mechanics for the input array `nums = [3, 4, 4, 5, 4, 1]`:
+
+```
+STRICT TO LEFT, NON-STRICT TO RIGHT:
+
+- Left boundary is SMALLER OR EQUAL to curr_min (i.e., nums[L] <= nums[i] or L == -1 if no such value exists)
+- Right boundary is SMALLER than curr_min (i.e., nums[R] < nums[i] or R == len(nums))
+
+-1                                                                                                                           -1                    6
+ L  i              R    |    L  i           R    |       L  i        R    |          L  i  R       |             L  i  R    | L                 i  R |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |  [ 3  4  4 [5] 4  1 ]  |  [ 3  4  4  5 [4] 1 ]  |  [ 3  4  4  5  4 [1]]  |
+  [[3  4] 4  5  4  1 ]  |  [ 3 [4  4] 5  4  1 ]  |  [ 3  4 [4  5] 4  1 ]  |                        |  [ 3  4  4 [5  4] 1 ]  |  [ 3  4  4  5 [4  1]]  |
+  [[3  4  4] 5  4  1 ]  |  [ 3 [4  4  5] 4  1 ]  |  [ 3  4 [4  5  4] 1 ]  |                        |                        |  [ 3  4  4 [5  4  1]]  |
+  [[3  4  4  5] 4  1 ]  |  [ 3 [4  4  5  4] 1 ]  |                        |                        |                        |  [ 3  4 [4  5  4  1]]  |
+  [[3  4  4  5  4] 1 ]  |                        |                        |                        |                        |  [ 3 [4  4  5  4  1]]  |
+                        |                        |                        |                        |                        |  [[3  4  4  5  4  1]]  |
+
+subarray count = [(0 - (-1)) * (5 - 0)] + [(1 - 0) * (5 - 1)] + [(2 - 1) * (5 - 2)] + [(3 - 2) * (4 - 3)] + [(4 - 3) * (5 - 4)] + [(5 - (-1)) * (6 - (-1))]
+               = 5 + 4 + 3 + 1 + 2 + 6 = 21
+
+subarray sum of minimums = (3 * 5) + (4 * 4) + (4 * 3) + (5 * 1) + (4 * 2) + (1 * 6)
+                         = 15 + 16 + 12 + 5 + 8 + 6
+                         = 62
+```
+
+</details>
+
+<details>
+<summary> Comparison operator: <code>&lt;=</code> (good for finding maximums, non-strict to left and strict to right) </summary>
+
+The `<=` comparison used in the condition `nums[stack[-1]] <= nums[i]` for the while loop implies the following:
+
+- `curr_max`: How many subarrays have `curr_max = nums[stack[-1]]` as their maximum value?
+- `left_boundary`: If the stack is empty, then `curr_max` has no previous larger value and `-1` is the left boundary. If the stack is non-empty, then `stack[-1]` points to `curr_max`'s previous larger value.
+- `right_boundary`: `i` is the right boundary and `nums[i]` is `curr_max`'s next larger than or equal value (or `len(nums)` if no such next larger or equal value exists).
+
+The information above translates as follows in terms of the boundary behavior we can expect of our subarrays:
+
+- `nums[left_boundary] > curr_max`, hence the half-open interval `(nums[left_boundary], ... , curr_max]` could include duplicate values of `curr_max`. Since `nums[left_boundary]` refers to `curr_max`'s previous larger value (as opposed to previous larger *or equal value*) there may be any number of other values equal to `curr_max` that appear before the `curr_max` we're considering, namely `curr_max = nums[stack[-1]]`. This means any of the other duplicate values would all lie to the left of our `curr_max`.
+- `curr_max >= nums[right_boundary]`, hence the half-open interval `[curr_max, ..., nums[right_boundary])` cannot include any duplicate values of `curr_max` because the right boundary is excluded.
+
+In regards to `curr_max = nums[stack[-1]]`, our maximum, we can effectively envision the subarrays that have this value as their maximum as being "non-strict to the left" (where other values equal to `curr_max` may be included) and "strict to the right" (where other values equal to `curr_max` may not be included). This demonstrates why we do not need to be worried about overcounting subarray maximum contributions when duplicate values of `curr_max` are included: we only ever consider subarrays that include the `curr_max` farthest to the right.
+
+The following example illustrates the mechanics for the input array `nums = [3, 4, 4, 5, 4, 1]`:
+
+```
+NON-STRICT TO LEFT, STRICT TO RIGHT:
+
+- Left boundary is LARGER than curr_max (i.e., nums[L] > nums[i] or L == -1 if no such value exists)
+- Right boundary is LARGER OR EQUAL to curr_max (i.e., nums[R] >= nums[i] or R == len(nums) if no such value exists)
+
+-1                       -1                       -1                       -1                    6                        6                        6
+ L  i  R                | L     i  R             | L        i  R          | L           i        R |             L  i     R |                L  i  R |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |  [ 3  4  4 [5] 4  1 ]  |  [ 3  4  4  5 [4] 1 ]  |  [ 3  4  4  5  4 [1]]  |
+                        |  [[3  4] 4  5  4  1 ]  |  [ 3 [4  4] 5  4  1 ]  |  [ 3  4 [4  5] 4  1 ]  |  [ 3  4  4  5 [4  1]]  |                        |
+                        |                        |  [[3  4  4] 5  4  1 ]  |  [ 3 [4  4  5] 4  1 ]  |                        |                        |
+                        |                        |                        |  [[3  4  4  5] 4  1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4  4 [5  4  1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4  4 [5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4  4 [5  4  1]]  |                        |                        |
+                        |                        |                        |  [ 3  4 [4  5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [ 3 [4  4  5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [[3  4  4  5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4 [4  5  4  1]]  |                        |                        |
+                        |                        |                        |  [ 3 [4  4  5  4  1]]  |                        |                        |
+                        |                        |                        |  [[3  4  4  5  4  1]]  |                        |                        |
+
+subarray count = [(0 - (-1)) * (1 - 0)] + [(1 - (-1)) * (2 - 1)] + [(2 - (-1)) * (3 - 2)] + [(3 - (-1)) * (6 - 3)] + [(4 - 3) * (6 - 4)] + [(5 - 4) * (6 - 5)]
+               = 1 + 2 + 3 + 12 + 2 + 1 = 21
+
+subarray sum of maximums = (3 * 1) + (4 * 2) + (4 * 3) + (5 * 12) + (4 * 2) + (1 * 1)
+                         = 3 + 8 + 12 + 60 + 8 + 1
+                         = 92
+```
+
+</details>
+
+<details>
+<summary> Comparison operator: <code>&lt;</code> (good for finding maximums, strict to left and non-strict to right) </summary>
+
+The `<` comparison used in the condition `nums[stack[-1]] < nums[i]` for the while loop implies the following:
+
+- `curr_max`: How many subarrays have `curr_max = nums[stack[-1]]` as their maximum value?
+- `left_boundary`: If the stack is empty, then `curr_max` has no previous larger or equal value and `-1` is the left boundary. If the stack is non-empty, then `stack[-1]` points to `curr_min`'s previous larger or equal value.
+- `right_boundary`: `i` is the right boundary and `nums[i]` is `curr_max`'s next larger value (or `len(nums)` if no such next larger value exists).
+
+The information above translates as follows in terms of the boundary behavior we can expect of our subarrays:
+
+- `nums[left_boundary] >= curr_min`, where `nums[left_boundary]` is `curr_max`'s previous larger or equal value. If `nums[left_boundary]` is *equal* to `curr_max`, then this means these values are adjacent in whatever subarrays we're considering for which `curr_max = nums[stack[-1]]` is the maximum value.
+- `curr_max > nums[right_boundary]`, which means duplicated values of `curr_max` may appear before `nums[right_boundary]`, but if these values appear, then note that they all lie to the right of the `curr_max` we're considering to be the maximum, namely `curr_max = nums[stack[-1]]`.
+
+In regards to `curr_max = nums[stack[-1]]`, our maximum, we can effectively envision the subarrays that have this value as their maximum as being "strict to the left" (where other values equal to `curr_max` may not be included) and "non-strict to the right" (where other values equal to `curr_max` may be included). This demonstrates why we do not need to be worried about overcounting subarray maximum contributions when duplicate values of `curr_max` are included: we only ever consider subarrays that include the `curr_max` farthest to the left.
+
+The following example illustrates the mechanics for the input array `nums = [3, 4, 4, 5, 4, 1]`:
+
+```
+STRICT TO LEFT, NON-STRICT TO RIGHT
+
+- Left boundary is LARGER OR EQUAL to curr_max (i.e., nums[L] >= nums[i] or L == -1 if no such value exists)
+- Right boundary is LARGER than curr_max (i.e., nums[R] > nums[i] or R == len(nums) if no such value exists)
+
+-1                       -1                                                -1                    6                        6                        6
+ L  i  R                | L     i     R          |       L  i  R          | L           i        R |             L  i     R |                L  i  R |
+    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |    0  1  2  3  4  5    |
+  [[3] 4  4  5  4  1 ]  |  [ 3 [4] 4  5  4  1 ]  |  [ 3  4 [4] 5  4  1 ]  |  [ 3  4  4 [5] 4  1 ]  |  [ 3  4  4  5 [4] 1 ]  |  [ 3  4  4  5  4 [1]]  |
+                        |  [[3  4] 4  5  4  1 ]  |                        |  [ 3  4 [4  5] 4  1 ]  |  [ 3  4  4  5 [4  1]]  |                        |
+                        |  [ 3 [4  4] 5  4  1 ]  |                        |  [ 3 [4  4  5] 4  1 ]  |                        |                        |
+                        |  [[3  4  4] 5  4  1 ]  |                        |  [[3  4  4  5] 4  1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4  4 [5  4  1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4  4 [5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4  4 [5  4  1]]  |                        |                        |
+                        |                        |                        |  [ 3  4 [4  5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [ 3 [4  4  5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [[3  4  4  5  4] 1 ]  |                        |                        |
+                        |                        |                        |  [ 3  4 [4  5  4  1]]  |                        |                        |
+                        |                        |                        |  [ 3 [4  4  5  4  1]]  |                        |                        |
+                        |                        |                        |  [[3  4  4  5  4  1]]  |                        |                        |
+
+subarray count = [(0 - (-1)) * (1 - 0)] + [(1 - (-1)) * (3 - 1)] + [(2 - 1) * (3 - 2)] + [(3 - (-1)) * (6 - 3)] + [(4 - 3) * (6 - 4)] + [(5 - 4) * (6 - 5)]
+               = 1 + 4 + 1 + 12 + 2 + 1 = 21
+
+subarray sum of maximums = (3 * 1) + (4 * 4) + (4 * 1) + (5 * 12) + (4 * 2) + (1 * 1)
+                         = 3 + 16 + 4 + 60 + 8 + 1
+                         = 92
+```
+
+</details>
+
+Let's wire up a solution that uses the `>=` comparison operator (i.e., non-strict to left and strict to right) and iteratively improve on how we express this solution. If we use notation to reflect the language used in the discussions above, then the following would be an acceptable solution:
+
+```python title="Solution 1 (variables named to reflect narrative discussion)" showLineNumbers
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        n = len(arr)
+        stack = []
+        ans = 0
+        MOD = 10 ** 9 + 7
+        
+        for i in range(n):
+            val_B = arr[i]
+            while stack and arr[stack[-1]] >= val_B:
+                idx_val_A = stack.pop()
+                val_A = arr[idx_val_A]
+                prev_A = -1 if not stack else stack[-1]
+                ans += val_A * (idx_val_A - prev_A) * (i - idx_val_A)
+            stack.append(i)
+
+        # process all values that did not have a next smaller or equal value
+        while stack:
+            idx_val_A = stack.pop()
+            val_A = arr[idx_val_A]
+            prev_A = -1 if not stack else stack[-1]
+            ans += val_A * (idx_val_A - prev_A) * (n - idx_val_A)
+            
+        return ans % MOD
+```
+
+An easy way to improve on the solution above is to name the variables in a way more indicative of the roles they actually play in the solution. It may also be helpful to make explicit what the left and right boundaries are, how many subarrays are due to the current minimum, and the overall contribution of those subarrays to the running sum:
+
+```python title="Solution 2 (better variable names)" showLineNumbers
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        n = len(arr)
+        stack = []
+        ans = 0
+        MOD = 10 ** 9 + 7
+        
+        for i in range(n):
+            next_smaller_or_equal_val = arr[i]
+            while stack and arr[stack[-1]] >= next_smaller_or_equal_val:
+                curr_min_idx = stack.pop()
+                curr_min = arr[curr_min_idx]
+                left_boundary = -1 if not stack else stack[-1] # index of previous smaller value (or -1 if no such value exists)
+                right_boundary = i                             # index of next smaller or equal value
+                num_subarrays = (curr_min_idx - left_boundary) * (right_boundary - curr_min_idx)
+                contribution = curr_min * num_subarrays
+                ans += contribution
+            stack.append(i)
+
+        # process all values that did not have a next smaller or equal value
+        while stack:
+            curr_min_idx = stack.pop()
+            curr_min = arr[curr_min_idx]
+            left_boundary = -1 if not stack else stack[-1]  # index of previous smaller value (or -1 if no such value exists)
+            right_boundary = n                              # index of next smaller or equal value (n = len(arr) since no such value existed)
+            num_subarrays = (curr_min_idx - left_boundary) * (right_boundary - curr_min_idx)
+            contribution = curr_min * num_subarrays
+            ans += contribution
+            
+        return ans % MOD
+```
+
+The solution above seems to be a decent improvement as far as variable naming is concerned, but there seems to be a lot of *repeated* logic being used in lines `21`-`28` (this closely mirrors the logic being performed in lines `10`-`17`). Is there a way to clean this up effectively? The second while loop, on lines `21`-`28`, only runs when the stack still holds values for which we never found a "next smaller or equal" value. We can cleverly fold this logic into the core while loop on lines `10`-`17` if we allow ourselves *one* more for loop iteration (and we handle it effectively):
+
+```python title="Solution 3 (optimized non-strict to left and strict to right)" showLineNumbers
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        n = len(arr)
+        stack = []
+        ans = 0
+        MOD = 10 ** 9 + 7
+        
+        for i in range(n + 1):
+            while stack and (i == n or arr[stack[-1]] >= arr[i]):
+                curr_min_idx = stack.pop()
+                curr_min = arr[curr_min_idx]
+                left_boundary = -1 if not stack else stack[-1]    # previous smaller value is always stack[-1] or -1 if it does not exist
+                right_boundary = i                                # only equals n after first full pass and when stack is non-empty (values with no next less or equal value)
+                num_subarrays = (curr_min_idx - left_boundary) * (right_boundary - curr_min_idx)
+                contribution = curr_min * num_subarrays
+                ans += contribution
+            stack.append(i)
+            
+        return ans % MOD
+```
+
+Only cosmetic changes are needed if we want to provide the optimized strict to left and non-strict to right solution:
+
+```python title="Solution 4 (optimized strict to left and non-strict to right)" showLineNumbers
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        n = len(arr)
+        stack = []
+        ans = 0
+        MOD = 10 ** 9 + 7
+        
+        for i in range(n + 1):
+            # highlight-next-line
+            while stack and (i == n or arr[stack[-1]] > arr[i]):
+                curr_min_idx = stack.pop()
+                curr_min = arr[curr_min_idx]
+                # highlight-start
+                left_boundary = -1 if not stack else stack[-1]    # previous smaller or equal value is always stack[-1] or -1 if it does not exist
+                right_boundary = i                                # only equals n after first full pass and when stack is non-empty (values with no next less)
+                # highlight-end
+                num_subarrays = (curr_min_idx - left_boundary) * (right_boundary - curr_min_idx)
+                contribution = curr_min * num_subarrays
+                ans += contribution
+            stack.append(i)
+            
+        return ans % MOD
+```
+
+### LC 2104. Sum of Subarray Ranges
+
+Our previous work allows our solution(s) to <LC id='2104' type='' ></LC> to be short and sweet. First the problem statement:
+
+> <LC2104PS />
+
+Given any subarray, note that its *range* will be the difference between its *maximum* value and its *minimum* value. This problem is almost the same as <LC id='907' type='long' ></LC> except now we're trying to subtract all the minimum subarray value contributions from all the maximum subarray value contributions:
+
+```python
+class Solution:
+    def subArrayRanges(self, nums: List[int]) -> int:
+        n = len(nums)
+        stack = []
+        total_subarray_minimum_sum = 0
+        total_subarray_maximum_sum = 0
+        
+        # calculate total contribution of subarray minimums
+        for i in range(n + 1):
+            while stack and (i == n or nums[stack[-1]] >= nums[i]): # note: either '>=' or '>' can be used
+                curr_min_idx = stack.pop()
+                curr_min = nums[curr_min_idx]
+                left_boundary = -1 if not stack else stack[-1]
+                right_boundary = i
+                num_subarrays = (curr_min_idx - left_boundary) * (right_boundary - curr_min_idx)
+                contribution = curr_min * num_subarrays
+                total_subarray_minimum_sum += contribution
+            stack.append(i)
+        
+        # reset the stack
+        stack = []
+        
+        # calculate total contribution of subarray maximums
+        for i in range(n + 1):
+            while stack and (i == n or nums[stack[-1]] <= nums[i]): # note: either '<=' or '<' can be used
+                curr_max_idx = stack.pop()
+                curr_max = nums[curr_max_idx]
+                left_boundary = -1 if not stack else stack[-1]
+                right_boundary = i
+                num_subarrays = (curr_max_idx - left_boundary) * (right_boundary - curr_max_idx)
+                contribution = curr_max * num_subarrays
+                total_subarray_maximum_sum += contribution
+            stack.append(i)
+            
+        return total_subarray_maximum_sum - total_subarray_minimum_sum
+```
+
+This would have been a *much* more difficult problem to solve performantly without all of our previous work.
