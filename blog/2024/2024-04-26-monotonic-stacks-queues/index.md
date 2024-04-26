@@ -2941,7 +2941,7 @@ Since the robots being used as part of the solution ultimately must be *consecut
 </details>
 
 <details>
-<summary> <LC id='907' type='long' ></LC> (&check;) </summary>
+<summary> <LC id='907' type='long' ></LC> </summary>
 
 <LC907PS />
 
@@ -2974,7 +2974,7 @@ This is a *tough* problem and is comprehensively dissected in the [epilogue](#ep
 </details>
 
 <details>
-<summary> <LC id='2104' type='long' ></LC> (&check;) </summary>
+<summary> <LC id='2104' type='long' ></LC> </summary>
 
 <LC2104PS />
 

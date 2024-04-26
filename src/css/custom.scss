@@ -701,31 +701,64 @@ div[class*='codeBlockTitle_'] {
 
 /* Begin code block error line styling */
 .code-block-error-line {
-	background-color: #ff000020;
-	display: block;
-	margin: 0 calc(-1 * var(--ifm-pre-padding));
-	padding: 0 var(--ifm-pre-padding);
-	border-left: 3px solid #ff000080;
+  background-color: #ff000020;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  position: relative; // Set position relative for pseudo-element positioning
+
+  &::before {
+      content: ""; // Necessary for a pseudo-element
+      position: absolute; // Positioned absolutely relative to the parent
+      left: 0; // Align to the left
+      top: 0; // Align to the top
+      bottom: 0; // Extend to the bottom
+      width: 3px; // Width of the desired border
+      background: #ff000080; // Border color
+      pointer-events: none; // Ensures click events pass through
+  }
 }
 /* End code block error line styling */
 
 /* Begin code block success line styling */
 .code-block-success-line {
-	background-color: #00ff0020;
-	display: block;
-	margin: 0 calc(-1 * var(--ifm-pre-padding));
-	padding: 0 var(--ifm-pre-padding);
-	border-left: 3px solid #00ff0080;
+  background-color: #00ff0020;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  position: relative; // Set position relative for pseudo-element positioning
+
+  &::before {
+      content: ""; // Necessary for a pseudo-element
+      position: absolute; // Positioned absolutely relative to the parent
+      left: 0; // Align to the left
+      top: 0; // Align to the top
+      bottom: 0; // Extend to the bottom
+      width: 3px; // Width of the desired border
+      background: #00ff0080; // Border color
+      pointer-events: none; // Ensures click events pass through
+  }
 }
 /* End code block success line styling */
 
 /* Begin code block warning line styling */
 .code-block-warning-line {
-	background-color: #ffff0035;
-	display: block;
-	margin: 0 calc(-1 * var(--ifm-pre-padding));
-	padding: 0 var(--ifm-pre-padding);
-	border-left: 3px solid #ffff0080;
+  background-color: #ffff0035;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  position: relative; // Set position relative for pseudo-element positioning
+
+  &::before {
+      content: ""; // Necessary for a pseudo-element
+      position: absolute; // Positioned absolutely relative to the parent
+      left: 0; // Align to the left
+      top: 0; // Align to the top
+      bottom: 0; // Extend to the bottom
+      width: 3px; // Width of the desired border
+      background: #ffff0080; // Border color
+      pointer-events: none; // Ensures click events pass through
+  }
 }
 /* End code block warning line styling */
 
