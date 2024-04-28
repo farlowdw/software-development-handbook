@@ -377,7 +377,7 @@ print(
 )
 ```
 
-The console output then confirms the work we did previously (horiztonal spacing adjustments added after printing):
+The console output then confirms the work we did previously (horizontal spacing adjustments added after printing):
 
 ```
 Person: 4;  Height: 13;  Next greater height: -1;  Height collection: [13];          Answer so far: [None, None, None, None, -1]
@@ -589,7 +589,7 @@ print(
 )
 ```
 
-The console output then confirms the work we did previously (horiztonal spacing adjustments added after printing):
+The console output then confirms the work we did previously (horizontal spacing adjustments added after printing):
 
 ```
 Person: 0;  Height: 12;  Index collection: [0];     Index-height correspondence: [12];      Answer array: [-1, -1, -1, -1, -1]
