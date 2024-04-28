@@ -510,6 +510,14 @@ const rows = [
   },
   {
     problemNum: 55,
+    problem: 3113,
+    difficulty: "Hard",
+    acceptance: 28.0,
+    title: "Find the Number of Subarrays Where Boundary Elements Are Maximum",
+    link: "https://leetcode.com/problems/find-the-number-of-subarrays-where-boundary-elements-are-maximum",
+  },
+  {
+    problemNum: 56,
     problem: 2281,
     difficulty: "Hard",
     acceptance: 27.7,
@@ -517,7 +525,7 @@ const rows = [
     link: "https://leetcode.com/problems/sum-of-total-strength-of-wizards",
   },
   {
-    problemNum: 56,
+    problemNum: 57,
     problem: 2617,
     difficulty: "Hard",
     acceptance: 24.8,
@@ -525,13 +533,13 @@ const rows = [
     link: "https://leetcode.com/problems/minimum-number-of-visited-cells-in-a-grid",
   },
   {
-    problemNum: 57,
+    problemNum: 58,
     problem: 2945,
     difficulty: "Hard",
     acceptance: 15.1,
     title: "Find Maximum Non-decreasing Array Length",
     link: "https://leetcode.com/problems/find-maximum-non-decreasing-array-length",
-  }
+  },
 ];
 
 export default function MonotonicQueues() {
