@@ -44,8 +44,8 @@ import LinkedListSentinelNodes from '@site/docs/_Partials/template-remarks/linke
 import LinkedListVisualizeSinglyLinkedList from '@site/docs/_Partials/template-remarks/linked-list-visualize-singly-linked-list.md';
 
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
-import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/q1.md';
-import Sol2NoLC from '@site/docs/_Partials/template-solutions/trees/q2.md';
+import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q1.md';
+import Sol2NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q2.md';
 import Sol3NoLC from '@site/docs/_Partials/template-solutions/trees/q3.md';
 import Sol4NoLC from '@site/docs/_Partials/template-solutions/trees/q4.md';
 import Sol5NoLC from '@site/docs/_Partials/template-solutions/trees/q5.md';

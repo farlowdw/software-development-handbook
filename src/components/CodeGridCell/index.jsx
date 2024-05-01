@@ -5,15 +5,14 @@ export default function CodeGridCell({ children, styles={} }) {
   const { colorMode } = useColorMode();
   const codeBackgroundColor = colorMode == 'dark' ? 'var(--color-gray-86)' : 'var(--color-gray-4)';
 
-	let baseStyles = {
-		backgroundColor: codeBackgroundColor,
-    marginBottom: '1em'
-	};
+  let baseStyles = {
+    backgroundColor: codeBackgroundColor,
+    overflow: 'auto'
+  };
 
-	return (
-		<div
-			style={Object.assign(baseStyles, styles)}>
-			{children}
-		</div>
-	);
+  return (
+    <div style={Object.assign({}, baseStyles, styles)}>
+      {children}
+    </div>
+  );
 }

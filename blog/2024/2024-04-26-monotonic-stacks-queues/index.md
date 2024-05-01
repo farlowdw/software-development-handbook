@@ -487,7 +487,7 @@ And we're done! How can we get started on translating the process outlined above
 - **Updating the next greater height for previous heights based on the current height:** This is a more pressing issue. Specifically, the transition from "after the third iteration" to "after the fourth iteration" may raise some eyebrows depending on how we actually plan to do this with code:
 
   <CodeGrid>
-  <CodeGridCell styles={{ marginBottom: 0 }}>
+  <CodeGridCell>
 
   ```a title="After third iteration"
     12   11   12   14   13 
@@ -497,7 +497,7 @@ And we're done! How can we get started on translating the process outlined above
   ```
 
   </CodeGridCell>
-  <CodeGridCell styles={{ marginBottom: 0 }}>
+  <CodeGridCell>
 
   ```a title="After fourth iteration"
     12   11   12   14   13 
@@ -508,7 +508,6 @@ And we're done! How can we get started on translating the process outlined above
 
   </CodeGridCell>
   </CodeGrid>
-
 
   We need to execute this transition *efficiently* somehow. If we tried updating the answer boxes by iterating from left to right from each height without a next greater height to the current height, then that process would look like the following:
 
@@ -628,7 +627,7 @@ How is it possible to assemble this answer array? Do we have to significantly re
 That's it. That's all there is to do. The code modifications required, hightlighted below, are quite minor:
 
 <CodeGrid>
-<CodeGridCell styles={{marginBottom: 0}}>
+<CodeGridCell>
 
 ```python title="Approach 3 (spaces between people)"
 def next_greater_height_3(heights):
@@ -650,7 +649,7 @@ def next_greater_height_3(heights):
 ```
 
 </CodeGridCell>
-<CodeGridCell styles={{marginBottom: 0}}>
+<CodeGridCell>
 
 ```python title="Approach 2 (next greater height)"
 def next_greater_height_2(heights):
@@ -1137,14 +1136,14 @@ Basic code examples are illustrative in clarifying these definitions:
 ```
 
 </CodeGridCell>
-<CodeGridCell styles={{ marginBottom: 0 }}>
+<CodeGridCell>
 
 ```python title="Strictly increasing"
 [-13, 13, 16, 18, 21]
 ```
 
 </CodeGridCell>
-<CodeGridCell styles={{ marginBottom: 0 }}>
+<CodeGridCell>
 
 ```python title="Weakly increasing"
 [-13, 13, 13, 16, 18, 18, 18, 21]
@@ -1209,7 +1208,7 @@ There are several important observations worth noting that stem directly from th
   ```
 
   </CodeGridCell>
-  <CodeGridCell styles={{marginBottom:0}}>
+  <CodeGridCell>
 
   ```python title="Strictly increasing"
   [0, 1, 3, 5, 6, 10, 11] # Before addition of 5
@@ -1217,7 +1216,7 @@ There are several important observations worth noting that stem directly from th
   ```
 
   </CodeGridCell>
-  <CodeGridCell styles={{marginBottom:0}}>
+  <CodeGridCell>
 
   ```python title="Weakly increasing"
   [1, 2, 2, 3, 5, 7, 8, 10] # Before addition of 5
