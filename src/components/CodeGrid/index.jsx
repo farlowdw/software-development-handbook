@@ -4,7 +4,7 @@ export default function CodeGrid({ children, styles={} }) {
   let baseStyles = {
     width: '100%',
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(275px, 1fr))',
     gridAutoRows: '1fr',
     gridRowGap: '1em',
     gridColumnGap: '5px',
