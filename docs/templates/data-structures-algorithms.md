@@ -46,12 +46,12 @@ import LinkedListVisualizeSinglyLinkedList from '@site/docs/_Partials/template-r
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q1.md';
 import Sol2NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q2.md';
-import Sol3NoLC from '@site/docs/_Partials/template-solutions/trees/q3.md';
-import Sol4NoLC from '@site/docs/_Partials/template-solutions/trees/q4.md';
-import Sol5NoLC from '@site/docs/_Partials/template-solutions/trees/q5.md';
-import Sol6NoLC from '@site/docs/_Partials/template-solutions/trees/q6.md';
-import Sol7NoLC from '@site/docs/_Partials/template-solutions/trees/q7.md';
-import Sol8NoLC from '@site/docs/_Partials/template-solutions/trees/q8.md';
+import Sol3NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q3.md';
+import Sol4NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q4.md';
+import Sol5NoLC from '@site/docs/_Partials/template-solutions/trees/tac/q1.md';
+import Sol6NoLC from '@site/docs/_Partials/template-solutions/trees/tac/q2.md';
+import Sol8NoLC from '@site/docs/_Partials/template-solutions/trees/tac/q3.md';
+import Sol7NoLC from '@site/docs/_Partials/template-solutions/trees/combined/q1.md';
 import Sol9NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q1.md';
 import Sol10NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q2.md';
 import Sol11NoLC from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/q1.md';
@@ -89,6 +89,7 @@ import LC94TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-94.m
 
 <!-- 100 - 199 -->
 import LC104TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-104.md';
+import LC110TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-110.md';
 import LC125TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-125.md';
 import LC141TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-141.md';
 import LC142TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-142.md';
@@ -130,10 +131,10 @@ import LC496TSol from '@site/docs/_Partials/template-solutions/stacks-queues/mon
 <!-- 500 - 599 -->
 import LC503TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-503.md';
 import LC525TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-525.md';
-import LC543TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-543.md';
+import LC543TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-543.md';
 import LC557TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-557.md';
 import LC560TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-560.md';
-import LC563TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-563.md';
+import LC563TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-563.md';
 
 <!-- 600 - 699 -->
 import LC643TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-643.md';
@@ -274,6 +275,7 @@ import LC94PS from '@site/docs/_Partials/problem-stems/lc94.md';
 
 <!-- 100 - 199 -->
 import LC104PS from '@site/docs/_Partials/problem-stems/lc104.md';
+import LC110PS from '@site/docs/_Partials/problem-stems/lc110.md';
 import LC125PS from '@site/docs/_Partials/problem-stems/lc125.md';
 import LC141PS from '@site/docs/_Partials/problem-stems/lc141.md';
 import LC142PS from '@site/docs/_Partials/problem-stems/lc142.md';
@@ -3120,9 +3122,16 @@ The induction and traverse-and-accumulate templates can be mixed together with p
 </details>
 
 <details>
-<summary> Longest vertical path of same nodes (not on LeetCode) </summary>
+<summary> Longest unival vertical path (not on LeetCode) </summary>
 
 <Sol8NoLC />
+
+</details>
+
+<details>
+<summary> Find mode of a binary tree (not on LeetCode)</summary>
+
+<Sol6NoLC />
 
 </details>
 
@@ -3183,13 +3192,6 @@ The induction and traverse-and-accumulate templates can be mixed together with p
 <summary> Examples</summary>
 
 <details>
-<summary> Find mode of a binary tree (not on LeetCode)</summary>
-
-<Sol6NoLC />
-
-</details>
-
-<details>
 <summary> Find height of a tree node (not on LeetCode) </summary>
 
 <Sol7NoLC />
@@ -3197,7 +3199,7 @@ The induction and traverse-and-accumulate templates can be mixed together with p
 </details>
 
 <details>
-<summary> <LC id='543' type='long' ></LC> </summary>
+<summary> <LC id='543' type='long' ></LC> <MyStar stars={2} /> </summary>
 
 <LC543PS />
 
@@ -3208,13 +3210,24 @@ The induction and traverse-and-accumulate templates can be mixed together with p
 </details>
 
 <details>
-<summary> <LC id='563' type='long' ></LC> </summary>
+<summary> <LC id='563' type='long' ></LC> <MyStar stars={2} /> </summary>
 
 <LC563PS />
 
 ---
 
 <LC563TSol />
+
+</details>
+
+<details>
+<summary> <LC id='110' type='long' ></LC> <MyStar stars={2} /> </summary>
+
+<LC110PS />
+
+---
+
+<LC110TSol />
 
 </details>
 

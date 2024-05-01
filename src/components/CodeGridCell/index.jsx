@@ -7,7 +7,7 @@ export default function CodeGridCell({ children, styles={} }) {
 
   let baseStyles = {
     backgroundColor: codeBackgroundColor,
-    overflow: 'auto'
+    overflow: 'auto !important'
   };
 
   return (
