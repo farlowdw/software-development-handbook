@@ -90,6 +90,7 @@ import LC94TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-94.m
 
 <!-- 100 - 199 -->
 import LC100TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-100.md';
+import LC103TSol from '@site/docs/_Partials/template-solutions/trees/levels/lc-103.md';
 import LC104TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-104.md';
 import LC110TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-110.md';
 import LC111TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-111.md';
@@ -139,6 +140,7 @@ import LC496TSol from '@site/docs/_Partials/template-solutions/stacks-queues/mon
 
 <!-- 500 - 599 -->
 import LC503TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-503.md';
+import LC515TSol from '@site/docs/_Partials/template-solutions/trees/levels/lc-515.md';
 import LC525TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-525.md';
 import LC530TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-530.md';
 import LC543TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-543.md';
@@ -176,6 +178,7 @@ import LC907TSol from '@site/docs/_Partials/template-solutions/stacks-queues/mon
 import LC912TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-912.md';
 import LC917TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-917.md';
 import LC933TSol from '@site/docs/_Partials/template-solutions/stacks-queues/queues/lc-933.md';
+import LC938TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-938.md';
 import LC946TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-946.md';
 import LC965TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-965.md';
 import LC977TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-977.md';
@@ -198,6 +201,8 @@ import LC1248TSol from '@site/docs/_Partials/template-solutions/misc/hashing/pre
 import LC1290TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-1290.md';
 
 <!-- 1300 - 1399 -->
+import LC1302TSol from '@site/docs/_Partials/template-solutions/trees/levels/lc-1302.md';
+
 <!-- 1400 - 1499 -->
 import LC1413TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1413.md';
 import LC1426TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1426.md';
@@ -293,6 +298,7 @@ import LC98PS from '@site/docs/_Partials/problem-stems/lc98.md';
 
 <!-- 100 - 199 -->
 import LC100PS from '@site/docs/_Partials/problem-stems/lc100.md';
+import LC103PS from '@site/docs/_Partials/problem-stems/lc103.md';
 import LC104PS from '@site/docs/_Partials/problem-stems/lc104.md';
 import LC110PS from '@site/docs/_Partials/problem-stems/lc110.md';
 import LC111PS from '@site/docs/_Partials/problem-stems/lc111.md';
@@ -338,6 +344,7 @@ import LC496PS from '@site/docs/_Partials/problem-stems/lc496.md';
 
 <!-- 500 - 599 -->
 import LC503PS from '@site/docs/_Partials/problem-stems/lc503.md';
+import LC515PS from '@site/docs/_Partials/problem-stems/lc515.md';
 import LC525PS from '@site/docs/_Partials/problem-stems/lc525.md';
 import LC530PS from '@site/docs/_Partials/problem-stems/lc530.md';
 import LC543PS from '@site/docs/_Partials/problem-stems/lc543.md';
@@ -372,6 +379,7 @@ import LC907PS from '@site/docs/_Partials/problem-stems/lc907.md';
 import LC912PS from '@site/docs/_Partials/problem-stems/lc912.md';
 import LC917PS from '@site/docs/_Partials/problem-stems/lc917.md';
 import LC933PS from '@site/docs/_Partials/problem-stems/lc933.md';
+import LC938PS from '@site/docs/_Partials/problem-stems/lc938.md';
 import LC946PS from '@site/docs/_Partials/problem-stems/lc946.md';
 import LC965PS from '@site/docs/_Partials/problem-stems/lc965.md';
 import LC977PS from '@site/docs/_Partials/problem-stems/lc977.md';
@@ -394,6 +402,8 @@ import LC1248PS from '@site/docs/_Partials/problem-stems/lc1248.md';
 import LC1290PS from '@site/docs/_Partials/problem-stems/lc1290.md';
 
 <!-- 1300 - 1399 -->
+import LC1302PS from '@site/docs/_Partials/problem-stems/lc1302.md';
+
 <!-- 1400 - 1499 -->
 import LC1413PS from '@site/docs/_Partials/problem-stems/lc1413.md';
 import LC1426PS from '@site/docs/_Partials/problem-stems/lc1426.md';
@@ -3019,6 +3029,39 @@ def fn(node):
 
 </details>
 
+<details>
+<summary> <LC id='515' type='long' ></LC> (&check;) </summary>
+
+<LC515PS />
+
+---
+
+<LC515TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1302' type='long' ></LC> (&check;) </summary>
+
+<LC1302PS />
+
+---
+
+<LC1302TSol />
+
+</details>
+
+<details>
+<summary> <LC id='103' type='long' ></LC> (&check;) </summary>
+
+<LC103PS />
+
+---
+
+<LC103TSol />
+
+</details>
+
 </details>
 
 ### Induction (solve subtrees recursively, aggregate results at root) {#t-bt-induction}
@@ -3219,6 +3262,17 @@ We need something more, namely the traverse-and-accumulate method where we can t
 ---
 
 <LC1026TSol />
+
+</details>
+
+<details>
+<summary> <LC id='938' type='long' ></LC> (&check;) </summary>
+
+<LC938PS />
+
+---
+
+<LC938TSol />
 
 </details>
 
