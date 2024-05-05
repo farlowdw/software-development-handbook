@@ -104,6 +104,8 @@ import LC145TSol from '@site/docs/_Partials/template-solutions/trees/induction/l
 import LC145TSol2 from '@site/docs/_Partials/template-solutions/trees/tac/lc-145.md';
 import LC155TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-155.md';
 import LC167TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-167.md';
+import LC199TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-199.md';
+import LC199TSol2 from '@site/docs/_Partials/template-solutions/trees/levels/lc-199.md';
 
 <!-- 200 - 299 -->
 import LC203TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-203.md';
@@ -302,6 +304,7 @@ import LC144PS from '@site/docs/_Partials/problem-stems/lc144.md';
 import LC145PS from '@site/docs/_Partials/problem-stems/lc145.md';
 import LC155PS from '@site/docs/_Partials/problem-stems/lc155.md';
 import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
+import LC199PS from '@site/docs/_Partials/problem-stems/lc199.md';
 
 <!-- 200 - 299 -->
 import LC203PS from '@site/docs/_Partials/problem-stems/lc203.md';
@@ -2978,6 +2981,46 @@ TBD
 
 </details>
 
+### Level-order (BFS)
+
+<details>
+<summary> Remarks</summary>
+
+tbd
+
+</details>
+
+```python
+def fn(node):
+    queue = deque()
+    queue.append(node)
+    while queue:
+        num_nodes_this_level = len(queue)
+        for _ in range(num_nodes_this_level):
+            node = queue.popleft()
+            visit(node)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='199' type='long' ></LC> (&check;) </summary>
+
+<LC199PS />
+
+---
+
+<LC199TSol2 />
+
+</details>
+
+</details>
+
 ### Induction (solve subtrees recursively, aggregate results at root) {#t-bt-induction}
 
 <details>
@@ -3357,6 +3400,17 @@ The induction and traverse-and-accumulate templates can be mixed together with p
 ---
 
 <LC111TSol2 />
+
+</details>
+
+<details>
+<summary> <LC id='199' type='long' ></LC> (&check;) </summary>
+
+<LC199PS />
+
+---
+
+<LC199TSol />
 
 </details>
 
