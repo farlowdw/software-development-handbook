@@ -23,6 +23,13 @@ import BibRef from '@site/src/components/BibRef';
 import MyStar from '@site/src/components/MyStar';
 
 <!-- TEMPLATES -->
+
+<!-- backtracking -->
+import BacktrackingTemplate from '@site/docs/_Partials/templates/backtracking.md';
+
+<!-- binary search -->
+import BinarySearchFirstTargetIndexTemplate from '@site/docs/_Partials/templates/binary-search-first-target-if-exists.md';
+
 <!-- trees -->
 import TraverseAndAccumulateTreeTemplate from '@site/docs/_Partials/templates/trees/trees-traverse-and-accumulate.md';
 import InductionTreeTemplate from '@site/docs/_Partials/templates/trees/trees-induction.md';
@@ -37,6 +44,8 @@ import InorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/tree
 import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-snippets/trees/combining-induction-and-tac-templates.md';
 
 <!-- TEMPLATE REMARKS -->
+import BinarySearchFirstIndexRemark from '@site/docs/_Partials/template-remarks/binary-search-first-index.md';
+import BinarySearchLeftmostTargetIndexInsertionPointRemark from '@site/docs/_Partials/template-remarks/binary-search-leftmost-target-index-insertion-point.md';
 import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
 import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/linked-list-node-comparisons.md';
 import LinkedListPointerManipulation from '@site/docs/_Partials/template-remarks/linked-list-pointer-manipulation.md';
@@ -109,6 +118,7 @@ import LC199TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-199.
 import LC199TSol2 from '@site/docs/_Partials/template-solutions/trees/levels/lc-199.md';
 
 <!-- 200 - 299 -->
+import LC200TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-200.md';
 import LC203TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-203.md';
 import LC205TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-205.md';
 import LC206TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-206.md';
@@ -127,6 +137,7 @@ import LC290TSol from '@site/docs/_Partials/template-solutions/misc/hashing/exis
 
 <!-- 300 - 399 -->
 import LC303TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-303.md';
+import LC323TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-323.md';
 import LC328TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-328.md';
 import LC344TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-344.md';
 import LC346TSol from '@site/docs/_Partials/template-solutions/stacks-queues/queues/lc-346.md';
@@ -144,6 +155,7 @@ import LC515TSol from '@site/docs/_Partials/template-solutions/trees/levels/lc-5
 import LC525TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-525.md';
 import LC530TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-530.md';
 import LC543TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-543.md';
+import LC547TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-547.md';
 import LC557TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-557.md';
 import LC560TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-560.md';
 import LC563TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-563.md';
@@ -152,6 +164,7 @@ import LC563TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc
 import LC643TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-643.md';
 import LC643TSol2 from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/lc-643.md';
 import LC649TSol from '@site/docs/_Partials/template-solutions/stacks-queues/queues/lc-649.md';
+import LC695TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-695.md';
 
 <!-- 700 - 799 -->
 import LC700TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-700.md';
@@ -167,6 +180,7 @@ import LC771TSol from '@site/docs/_Partials/template-solutions/misc/hashing/coun
 import LC791TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-791.md';
 
 <!-- 800 - 899 -->
+import LC841TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-841.md';
 import LC844TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-844.md';
 import LC844TSol2 from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-844.md';
 import LC876TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-876.md';
@@ -211,12 +225,14 @@ import LC1438TSol from '@site/docs/_Partials/template-solutions/stacks-queues/mo
 import LC1448TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-1448.md';
 import LC1448TSol2 from '@site/docs/_Partials/template-solutions/trees/induction/lc-1448.md';
 import LC1456TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-1456.md';
+import LC1466TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-1466.md';
 import LC1475TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-1475.md';
 import LC1480TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1480.md';
 import LC1496TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1496.md';
 
 <!-- 1500 - 1599 -->
 import LC1544TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-1544.md';
+import LC1557TSol from '@site/docs/_Partials/template-solutions/graphs/general/lc-1557.md';
 
 <!-- 1600 - 1699 -->
 import LC1657TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1657.md';
@@ -234,6 +250,7 @@ import LC1845TSol from '@site/docs/_Partials/template-solutions/heaps/lc-1845.md
 <!-- 1900 - 1999 -->
 import LC1941TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-1941.md';
 import LC1944TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-1944.md';
+import LC1971TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-1971.md';
 
 <!-- 2000 - 2099 -->
 import LC2000TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-2000.md';
@@ -256,11 +273,14 @@ import LC2300TSol from '@site/docs/_Partials/template-solutions/binary-search/lc
 import LC2342TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2342.md';
 import LC2351TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-2351.md';
 import LC2352TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-2352.md';
+import LC2368TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-2368.md';
 import LC2390TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-2390.md';
 import LC2398TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-2398.md';
 
 <!-- 2400 - 2499 -->
 import LC2434TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-2434.md';
+import LC2487TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-2487.md';
+import LC2487TSol2 from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-2487.md';
 
 <!-- 2500 - 2599 -->
 import LC2540TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-2540.md';
@@ -268,6 +288,8 @@ import LC2540TSol from '@site/docs/_Partials/template-solutions/two-pointers/exh
 <!-- 2600 - 2699 -->
 <!-- 2700 - 2799 -->
 <!-- 2800 - 2899 -->
+import LC2816TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse/lc-2816.md';
+
 <!-- 2900 - 2999 -->
 <!-- 3000 - 3099 -->
 import LC3090TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3090.md';
@@ -313,6 +335,7 @@ import LC167PS from '@site/docs/_Partials/problem-stems/lc167.md';
 import LC199PS from '@site/docs/_Partials/problem-stems/lc199.md';
 
 <!-- 200 - 299 -->
+import LC200PS from '@site/docs/_Partials/problem-stems/lc200.md';
 import LC203PS from '@site/docs/_Partials/problem-stems/lc203.md';
 import LC205PS from '@site/docs/_Partials/problem-stems/lc205.md';
 import LC206PS from '@site/docs/_Partials/problem-stems/lc206.md';
@@ -331,6 +354,7 @@ import LC290PS from '@site/docs/_Partials/problem-stems/lc290.md';
 
 <!-- 300 - 399 -->
 import LC303PS from '@site/docs/_Partials/problem-stems/lc303.md';
+import LC323PS from '@site/docs/_Partials/problem-stems/lc323.md';
 import LC328PS from '@site/docs/_Partials/problem-stems/lc328.md';
 import LC344PS from '@site/docs/_Partials/problem-stems/lc344.md';
 import LC346PS from '@site/docs/_Partials/problem-stems/lc346.md';
@@ -348,6 +372,7 @@ import LC515PS from '@site/docs/_Partials/problem-stems/lc515.md';
 import LC525PS from '@site/docs/_Partials/problem-stems/lc525.md';
 import LC530PS from '@site/docs/_Partials/problem-stems/lc530.md';
 import LC543PS from '@site/docs/_Partials/problem-stems/lc543.md';
+import LC547PS from '@site/docs/_Partials/problem-stems/lc547.md';
 import LC557PS from '@site/docs/_Partials/problem-stems/lc557.md';
 import LC560PS from '@site/docs/_Partials/problem-stems/lc560.md';
 import LC563PS from '@site/docs/_Partials/problem-stems/lc563.md';
@@ -355,6 +380,7 @@ import LC563PS from '@site/docs/_Partials/problem-stems/lc563.md';
 <!-- 600 - 699 -->
 import LC643PS from '@site/docs/_Partials/problem-stems/lc643.md';
 import LC649PS from '@site/docs/_Partials/problem-stems/lc649.md';
+import LC695PS from '@site/docs/_Partials/problem-stems/lc695.md';
 
 <!-- 700 - 799 -->
 import LC700PS from '@site/docs/_Partials/problem-stems/lc700.md';
@@ -369,6 +395,7 @@ import LC771PS from '@site/docs/_Partials/problem-stems/lc771.md';
 import LC791PS from '@site/docs/_Partials/problem-stems/lc791.md';
 
 <!-- 800 - 899 -->
+import LC841PS from '@site/docs/_Partials/problem-stems/lc841.md';
 import LC844PS from '@site/docs/_Partials/problem-stems/lc844.md';
 import LC876PS from '@site/docs/_Partials/problem-stems/lc876.md';
 
@@ -411,12 +438,14 @@ import LC1436PS from '@site/docs/_Partials/problem-stems/lc1436.md';
 import LC1438PS from '@site/docs/_Partials/problem-stems/lc1438.md';
 import LC1448PS from '@site/docs/_Partials/problem-stems/lc1448.md';
 import LC1456PS from '@site/docs/_Partials/problem-stems/lc1456.md';
+import LC1466PS from '@site/docs/_Partials/problem-stems/lc1466.md';
 import LC1475PS from '@site/docs/_Partials/problem-stems/lc1475.md';
 import LC1480PS from '@site/docs/_Partials/problem-stems/lc1480.md';
 import LC1496PS from '@site/docs/_Partials/problem-stems/lc1496.md';
 
 <!-- 1500 - 1599 -->
 import LC1544PS from '@site/docs/_Partials/problem-stems/lc1544.md';
+import LC1557PS from '@site/docs/_Partials/problem-stems/lc1557.md';
 
 <!-- 1600 - 1699 -->
 import LC1657PS from '@site/docs/_Partials/problem-stems/lc1657.md';
@@ -433,6 +462,7 @@ import LC1845PS from '@site/docs/_Partials/problem-stems/lc1845.md';
 <!-- 1900 - 1999 -->
 import LC1941PS from '@site/docs/_Partials/problem-stems/lc1941.md';
 import LC1944PS from '@site/docs/_Partials/problem-stems/lc1944.md';
+import LC1971PS from '@site/docs/_Partials/problem-stems/lc1971.md';
 
 <!-- 2000 - 2099 -->
 import LC2000PS from '@site/docs/_Partials/problem-stems/lc2000.md';
@@ -455,11 +485,13 @@ import LC2300PS from '@site/docs/_Partials/problem-stems/lc2300.md';
 import LC2342PS from '@site/docs/_Partials/problem-stems/lc2342.md';
 import LC2351PS from '@site/docs/_Partials/problem-stems/lc2351.md';
 import LC2352PS from '@site/docs/_Partials/problem-stems/lc2352.md';
+import LC2368PS from '@site/docs/_Partials/problem-stems/lc2368.md';
 import LC2390PS from '@site/docs/_Partials/problem-stems/lc2390.md';
 import LC2398PS from '@site/docs/_Partials/problem-stems/lc2398.md';
 
 <!-- 2400 - 2499 -->
 import LC2434PS from '@site/docs/_Partials/problem-stems/lc2434.md';
+import LC2487PS from '@site/docs/_Partials/problem-stems/lc2487.md';
 
 <!-- 2500 - 2599 -->
 import LC2540PS from '@site/docs/_Partials/problem-stems/lc2540.md';
@@ -467,6 +499,8 @@ import LC2540PS from '@site/docs/_Partials/problem-stems/lc2540.md';
 <!-- 2600 - 2699 -->
 <!-- 2700 - 2799 -->
 <!-- 2800 - 2899 -->
+import LC2816PS from '@site/docs/_Partials/problem-stems/lc2816.md';
+
 <!-- 2900 - 2999 -->
 <!-- 3000 - 3099 -->
 import LC3090PS from '@site/docs/_Partials/problem-stems/lc3090.md';
@@ -499,20 +533,7 @@ TBD
 
 </details>
 
-```python
-def backtrack(curr, OTHER_ARGUMENTS...):
-    if (BASE_CASE):
-        # modify the answer
-        return
-    
-    ans = 0
-    for (ITERATE_OVER_INPUT):
-        # modify the current state
-        ans += backtrack(curr, OTHER_ARGUMENTS...)
-        # undo the modification of the current state
-    
-    return ans
-```
+<BacktrackingTemplate />
 
 <details>
 <summary> Examples</summary>
@@ -528,27 +549,11 @@ TBD
 <details>
 <summary> Remarks</summary>
 
-This template will return the first index where `target` is encountered. If duplicates are present, then the index returned is effectively random (i.e., the `target` matched/identified by means of the search could be neither the leftmost occurrence nor the rightmost occurrence but somewhere in between). If no match is found, then the return value, `left`, will point to the insertion point where `target` would need to be inserted in order to maintain the sorted property of `arr`.
+<BinarySearchFirstIndexRemark />
 
 </details>
 
-```python
-def binary_search(arr, target):
-    left = 0
-    right = len(arr) - 1
-
-    while left <= right:
-        mid = left + (right - left) // 2
-
-        if arr[mid] > target:
-            right = mid - 1
-        elif arr[mid] < target:
-            left = mid + 1
-        else:
-            return mid
-
-    return left
-```
+<BinarySearchFirstTargetIndexTemplate />
 
 <details>
 <summary> Examples</summary>
@@ -582,17 +587,7 @@ def binary_search(arr, target):
 <details>
 <summary> Remarks</summary>
 
-This template ensures we find the leftmost occurrence (i.e., minimum index value) of `target` (if it exists). If `target` does not exist in the input array, `arr`, then this template will return the index at which `target` should be inserted to maintain the ordered property of `arr`.
-
-How does this work? What happens if it's ever the case that `arr[mid] == target` in the template function above? It's the *right* half that gets collapsed, by means of `right = mid`, thus pushing the search space *as far left as possible*.
-
-:::tip Computing total number of elements within input array less than target value
-
-The `left` value returned by the function in the template above is also the number of elements in `arr` that are less than `target`.
-
-This should make sense upon some reflection &#8212; if the function in our template returns the left-most occurrence of the `target` value as well as the insertion point of `target` to keep the sorted property of `arr`, then it must be the case that *all* values to the left of the returned value are less than `target`. The fact that arrays are 0-indexed helps here; for example, if our template function returns `3`, then this means the three elements at index `0`, `1`, and `2` are all less than `target`.
-
-:::
+<BinarySearchLeftmostTargetIndexInsertionPointRemark />
 
 </details>
 
@@ -832,7 +827,93 @@ def fn(graph):
 <details>
 <summary> Examples</summary>
 
-TBD
+<details>
+<summary> <LC id='547' type='long' ></LC> (&check;) </summary>
+
+<LC547PS />
+
+---
+
+<LC547TSol />
+
+</details>
+
+<details>
+<summary> <LC id='200' type='long' ></LC> (&check;) </summary>
+
+<LC200PS />
+
+---
+
+<LC200TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1466' type='long' ></LC> (&check;) </summary>
+
+<LC1466PS />
+
+---
+
+<LC1466TSol />
+
+</details>
+
+<details>
+<summary> <LC id='841' type='long' ></LC> (&check;) </summary>
+
+<LC841PS />
+
+---
+
+<LC841TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1971' type='long' ></LC> (&check;) </summary>
+
+<LC1971PS />
+
+---
+
+<LC1971TSol />
+
+</details>
+
+<details>
+<summary> <LC id='323' type='long' ></LC> (&check;) </summary>
+
+<LC323PS />
+
+---
+
+<LC323TSol />
+
+</details>
+
+<details>
+<summary> <LC id='695' type='long' ></LC> (&check;) </summary>
+
+<LC695PS />
+
+---
+
+<LC695TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2368' type='long' ></LC> (&check;) </summary>
+
+<LC2368PS />
+
+---
+
+<LC2368TSol />
+
+</details>
 
 </details>
 
@@ -901,6 +982,35 @@ def fn(graph):
 <summary> Examples</summary>
 
 TBD
+
+</details>
+
+### General
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='1557' type='long' ></LC> (&check;) </summary>
+
+<LC1557PS />
+
+---
+
+<LC1557TSol />
+
+</details>
 
 </details>
 
@@ -1228,6 +1338,28 @@ def fn(node):
 ---
 
 <LC234TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2487' type='long' ></LC> <MyStar stars={2} /> </summary>
+
+<LC2487PS />
+
+---
+
+<LC2487TSol2 />
+
+</details>
+
+<details>
+<summary> <LC id='2816' type='long' ></LC> (&check;) </summary>
+
+<LC2816PS />
+
+---
+
+<LC2816TSol />
 
 </details>
 
@@ -2219,6 +2351,17 @@ TBD
 ---
 
 <LC2104TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2487' type='long' ></LC> <MyStar stars={3} /> </summary>
+
+<LC2487PS />
+
+---
+
+<LC2487TSol />
 
 </details>
 
