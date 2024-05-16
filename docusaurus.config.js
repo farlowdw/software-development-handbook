@@ -46,6 +46,10 @@ const config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+  
   presets: [
     [
       'classic',
@@ -142,6 +146,7 @@ const config = {
     'docusaurus-plugin-sass',
     require.resolve("docusaurus-plugin-image-zoom"),
     'my-loaders',
+    '@docusaurus/theme-mermaid'
   ],
 
   themeConfig:
@@ -432,7 +437,6 @@ const config = {
           "markdown",
           "markup",
           "markup-templating",
-          "mermaid",
           "mongodb",
           "nginx",
           "perl",
