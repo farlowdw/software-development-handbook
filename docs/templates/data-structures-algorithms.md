@@ -138,6 +138,7 @@ import LC268TSol from '@site/docs/_Partials/template-solutions/misc/hashing/exis
 import LC270TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-270.md';
 import LC283TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-283.md';
 import LC290TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-290.md';
+import LC295TSol from '@site/docs/_Partials/template-solutions/heaps/multiple-heaps/lc-295.md';
 
 <!-- 300 - 399 -->
 import LC303TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-303.md';
@@ -156,6 +157,7 @@ import LC433TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/l
 import LC437TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-437.md';
 import LC450TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-450.md';
 import LC463TSol from '@site/docs/_Partials/template-solutions/graphs/general/lc-463.md';
+import LC480TSol from '@site/docs/_Partials/template-solutions/heaps/multiple-heaps/lc-480.md';
 import LC496TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-496.md';
 
 <!-- 500 - 599 -->
@@ -221,6 +223,7 @@ import LC1004TSol from '@site/docs/_Partials/template-solutions/sliding-window/v
 import LC1020TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-1020.md';
 import LC1026TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-1026.md';
 import LC1038TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-1038.md';
+import LC1046TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc-1046.md';
 import LC1047TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-1047.md';
 import LC1063TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-1063.md';
 import LC1091TSol from '@site/docs/_Partials/template-solutions/graphs/bfs/lc-1091.md';
@@ -296,6 +299,7 @@ import LC2130TSol from '@site/docs/_Partials/template-solutions/linked-lists/rev
 import LC2192TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-2192.md';
 
 <!-- 2200 - 2299 -->
+import LC2208TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc-2208.md';
 import LC2225TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2225.md';
 import LC2248TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2248.md';
 import LC2260TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2260.md';
@@ -388,6 +392,7 @@ import LC268PS from '@site/docs/_Partials/problem-stems/lc268.md';
 import LC270PS from '@site/docs/_Partials/problem-stems/lc270.md';
 import LC283PS from '@site/docs/_Partials/problem-stems/lc283.md';
 import LC290PS from '@site/docs/_Partials/problem-stems/lc290.md';
+import LC295PS from '@site/docs/_Partials/problem-stems/lc295.md';
 
 <!-- 300 - 399 -->
 import LC303PS from '@site/docs/_Partials/problem-stems/lc303.md';
@@ -406,6 +411,7 @@ import LC433PS from '@site/docs/_Partials/problem-stems/lc433.md';
 import LC437PS from '@site/docs/_Partials/problem-stems/lc437.md';
 import LC450PS from '@site/docs/_Partials/problem-stems/lc450.md';
 import LC463PS from '@site/docs/_Partials/problem-stems/lc463.md';
+import LC480PS from '@site/docs/_Partials/problem-stems/lc480.md';
 import LC496PS from '@site/docs/_Partials/problem-stems/lc496.md';
 
 <!-- 500 - 599 -->
@@ -468,6 +474,7 @@ import LC1004PS from '@site/docs/_Partials/problem-stems/lc1004.md';
 import LC1020PS from '@site/docs/_Partials/problem-stems/lc1020.md';
 import LC1026PS from '@site/docs/_Partials/problem-stems/lc1026.md';
 import LC1038PS from '@site/docs/_Partials/problem-stems/lc1038.md';
+import LC1046PS from '@site/docs/_Partials/problem-stems/lc1046.md';
 import LC1047PS from '@site/docs/_Partials/problem-stems/lc1047.md';
 import LC1063PS from '@site/docs/_Partials/problem-stems/lc1063.md';
 import LC1091PS from '@site/docs/_Partials/problem-stems/lc1091.md';
@@ -541,6 +548,7 @@ import LC2130PS from '@site/docs/_Partials/problem-stems/lc2130.md';
 import LC2192PS from '@site/docs/_Partials/problem-stems/lc2192.md';
 
 <!-- 2200 - 2299 -->
+import LC2208PS from '@site/docs/_Partials/problem-stems/lc2208.md';
 import LC2225PS from '@site/docs/_Partials/problem-stems/lc2225.md';
 import LC2248PS from '@site/docs/_Partials/problem-stems/lc2248.md';
 import LC2260PS from '@site/docs/_Partials/problem-stems/lc2260.md';
@@ -1317,6 +1325,106 @@ TBD
 </details>
 
 ## Heaps
+
+### Top k
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+# TBD
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
+### Multiple heaps
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+# TBD
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='295' type='long' ></LC> (&check;) </summary>
+
+<LC295PS />
+
+---
+
+<LC295TSol />
+
+</details>
+
+<details>
+<summary> <LC id='480' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC480PS />
+
+---
+
+<LC480TSol />
+
+</details>
+
+</details>
+
+### General
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+# TBD
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='1046' type='long' ></LC> (&check;) </summary>
+
+<LC1046PS />
+
+---
+
+<LC1046TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2208' type='long' ></LC> (&check;) </summary>
+
+<LC2208PS />
+
+---
+
+<LC2208TSol />
+
+</details>
+
+</details>
 
 ### Initialize heap in O(n) time
 
