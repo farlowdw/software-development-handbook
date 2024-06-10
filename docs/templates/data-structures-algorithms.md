@@ -85,9 +85,10 @@ import LC24TSol2 from '@site/docs/_Partials/template-solutions/linked-lists/swap
 import LC25TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse-k-nodes/lc-25.md';
 import LC26TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-26.md';
 import LC27TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-27.md';
+import LC35TSol from '@site/docs/_Partials/template-solutions/binary-search/first-index/lc-35.md';
 import LC49TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-49.md';
 import LC71TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-71.md';
-import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-74.md';
+import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/first-index/lc-74.md';
 import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
 import LC75TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-75.md';
 import LC82TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-82.md';
@@ -324,12 +325,13 @@ import LC2270TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/
 import LC2294TSol from '@site/docs/_Partials/template-solutions/greedy/lc-2294.md';
 
 <!-- 2300 - 2399 -->
-import LC2300TSol from '@site/docs/_Partials/template-solutions/binary-search/lc-2300.md';
+import LC2300TSol from '@site/docs/_Partials/template-solutions/binary-search/leftmost-with-duplicates/lc-2300.md';
 import LC2336TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc-2336.md';
 import LC2342TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-2342.md';
 import LC2351TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-2351.md';
 import LC2352TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-2352.md';
 import LC2368TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-2368.md';
+import LC2389TSol from '@site/docs/_Partials/template-solutions/binary-search/rightmost-with-duplicates/lc-2389.md';
 import LC2390TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-2390.md';
 import LC2398TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-2398.md';
 
@@ -366,6 +368,7 @@ import LC24PS from '@site/docs/_Partials/problem-stems/lc24.md';
 import LC25PS from '@site/docs/_Partials/problem-stems/lc25.md';
 import LC26PS from '@site/docs/_Partials/problem-stems/lc26.md';
 import LC27PS from '@site/docs/_Partials/problem-stems/lc27.md';
+import LC35PS from '@site/docs/_Partials/problem-stems/lc35.md';
 import LC49PS from '@site/docs/_Partials/problem-stems/lc49.md';
 import LC71PS from '@site/docs/_Partials/problem-stems/lc71.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
@@ -600,6 +603,7 @@ import LC2342PS from '@site/docs/_Partials/problem-stems/lc2342.md';
 import LC2351PS from '@site/docs/_Partials/problem-stems/lc2351.md';
 import LC2352PS from '@site/docs/_Partials/problem-stems/lc2352.md';
 import LC2368PS from '@site/docs/_Partials/problem-stems/lc2368.md';
+import LC2389PS from '@site/docs/_Partials/problem-stems/lc2389.md';
 import LC2390PS from '@site/docs/_Partials/problem-stems/lc2390.md';
 import LC2398PS from '@site/docs/_Partials/problem-stems/lc2398.md';
 
@@ -696,6 +700,17 @@ TBD
 
 </details>
 
+<details>
+<summary> <LC id='35' type='long' ></LC> (&check;) </summary>
+
+<LC35PS />
+
+---
+
+<LC35TSol />
+
+</details>
+
 </details>
 
 ### Find leftmost target index (or insertion point) {#bs-template-left}
@@ -786,7 +801,176 @@ def binary_search_rightmost(arr, target):
     return left - 1
 ```
 
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='2389' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC2389PS />
+
+---
+
+<LC2389TSol />
+
+</details>
+
+</details>
+
 ### Greedy (looking for minimum)
+
+<details>
+<summary> Temporary remarks for greedy-based binary searches on solution spaces</summary>
+
+As noted in [the editorial](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/710/binary-search/4533/) on binary search on solution spaces, we need a few conditions to be met in order to effectively conduct our search:
+
+1. Possibility/condition/check/feasible function can execute in $O(n)$ time -- we can quickly, in $O(n)$ or better, verify if the task is possible for a given threshold value `threshold`; that is, we define a function, `possible(threshold)`, that returns a boolean that indicates if the given task is possible or impossible when given the specifc `threshold` value.
+2. Max/min characteristic when task is *possible* given the specific `threshold` value -- if the task is possible for a number `threshold` and we are looking for
+
+  - a **maximum**, then it is also possible for all numbers less than `threshold`.
+  - a **minimum**, then it is also possible for all numbers greater than `threshold`.
+
+3. Max/min characteristic when task is *impossible* given the specific `threshold` value -- if the task is impossible for a number `threshold` and we are looking for
+
+  - a **maximum**, then it is also impossible for all numbers greater than `threshold`.
+  - a **minimum**, then it is also impossible for all numbers less than `threshold`.
+
+The above depictions can be somewhat difficult to envision at first so it can be helpful to draw out a very simple outline as if we're on a number line from 0 to infinity, left to right, as demonstrated below.
+
+**Looking for a maximum threshold:**
+
+*Example use case (illegal parking):* Maximize time spent parked illegally without getting a ticket. Under various conditions (e.g., parking enforcers, location, etc.), we can imagine this being possible for a certain amount of time before it becomes impossible. We'd like to maximize the POSSIBLE amount of time we do not have to worry about getting a ticket before it becomes IMPOSSIBLE to avoid getting a ticket:
+
+```a title="Problem is asking for a maximum"
+ -----------------------
+| Possible | Impossible |
+ -----------------------
+ 0         ^       ...inf
+      (threshold binary searched for)
+```
+
+As can be seen above, given a `threshold` amount of time, our task of going undetected when parked illegally is 
+
+- possible for all numbers less than `threshold`
+- impossible for all numbers greater than `threshold`
+
+**Looking for a minimum threshold:**
+
+*Example use case (mandatory online trainings):* Minimize time spent on a manadotry online trainin page before clicking to continue without arousing suspicion. Many online training requirements are modules that are "click-through" in nature, where an employee must complete the module but should not "click to continue" until a sufficient amount of time has elapsed to indicate the employee has possibly consumed all of the information on the page. The goal is to minimize the amount of time spent on any given page. We can imagine this being impossible for a certain amount of time before it becomes possible. We'd like to minimize the POSSIBLE amount of time we are required to be on any given training page where it is IMPOSSIBLE to avoid doing so until a certain amount of time has elapsed:
+
+```a title="Problem is asking for a minimum"
+ -----------------------
+| Impossible | Possible |
+ -----------------------
+ 0           ^     ...inf
+        (threshold binary searched for)
+```
+
+As can be seen above, given a `threshold` amount of time, our task of having to remain on a given training page before being allowed to continue making progress through the training is 
+
+- impossible for all numbers less than `threshold`
+- possible for all numbers greater than `threshold`
+
+**TAKEAWAY:** For minimums, we're basically trying to find the leftmost insertion point for `threshold` *within the possible solution space*. Our solution space should be closed: `[left, right]`. That is, the `left` bound should be as minimal as possible as well as inclusive. The `right` bound should be as maximal as possible *as well as inclusive* (this differs from the normal way we would try to find the leftmost insertion point when we're binary searching on a solution space that may contain duplicates ... the idea is that a solution/`threshold` that satisfies the problem requirement should exist within the original `left`/`right` bounds of the problem).
+
+Here's a template:
+
+```python
+def binary_search_on_solution_space_MINIMUM(arr):
+    def possible(threshold):
+        # this function is implemented depending on the problem
+        return BOOLEAN
+
+    left = MINIMUM_POSSIBLE_ANSWER
+    right = MAXIMUM_POSSIBLE_ANSWER # solution space being binary searched is [left, right];
+                                    # we are trying to find the leftmost insertion point for `threshold`
+                                    # in the possible segment
+    while left < right:
+        mid = left + (right - left) // 2
+        if possible(mid):
+            right = mid # squeeze `left` as far left as possible in the possible segment
+        else:
+            left = mid + 1
+    
+    return left
+```
+
+Finding a maximum for a threshold is a bit different. It's similar to binary searching on an array of values and trying to find the position right before whatever the rightmost insertion point would need to be for the inserted value to maintain order. It's probably easier to visualize if we think of the simple diagram above for problems where we're being asked to find a maximum:
+
+```a
+ -----------------------
+| Possible | Impossible |
+ -----------------------
+```
+
+We basically want to find the leftmost insertion point where we're satisfying the *impossible* condition, where the maximum value will then be whatever smaller position lies to the left (usually an integer value of `1`) to make the value the rightmost value in the *possible* segment (i.e., the maximum possible value).
+
+This requires a small adjustment to the template, most notably the solution space being `[left, right)`, where the `right` bound is extended just slightly to ensure we actually capture the maximum value. And instead of returning `left`, which would give us the leftmost insertion position of the impossible segment, we return `left - 1`, which gives us the first value in the possible segment before the impossible segment (i.e., the maximal value in the possible segment):
+
+```python
+def binary_search_on_solution_space_MAXIMUM(arr):
+    def possible(threshold):
+        # this function is implemented depending on the problem
+        return BOOLEAN
+
+    left = MINIMUM_POSSIBLE_ANSWER
+    right = MAXIMUM_POSSIBLE_ANSWER + 1 # solution space being binary searched is [left, right) as opposed to [left, right];
+                                        # we are trying to find the leftmost insertion point for `threshold`
+                                        # in the impossible segment so we can report the position immediately to its left,
+                                        # the last position in the possible segment before the impossible segment
+                                        # (i.e., the maximum possible value)
+    while left < right:
+        mid = left + (right - left) // 2
+        if not possible(mid):
+            right = mid # squeeze `left` as far left as possible in the impossible segment
+        else:
+            left = mid + 1
+    
+    return left - 1
+```
+
+**DIVIDING CHOCOLATE:** This is a [good problem](https://leetcode.com/problems/divide-chocolate/submissions/) for seeing how things work in regards to trying to find a maximum. Here's one potential solution:
+
+```python
+class Solution:
+    def maximizeSweetness(self, sweetness: List[int], k: int) -> int:
+        def possible(threshold):
+            total_pieces = 0
+            piece_sweetness = 0
+            for chunk in sweetness:
+                piece_sweetness += chunk
+                if piece_sweetness >= threshold:
+                    piece_sweetness = 0
+                    total_pieces += 1
+                    if total_pieces == k + 1:
+                        return True
+            return False
+        
+        left = min(sweetness)
+        right = sum(sweetness) + 1
+        
+        while left < right:
+            mid = left + (right - left) // 2
+            if not possible(mid):
+                right = mid
+            else:
+                left = mid + 1
+                
+        return left - 1
+```
+
+Consider the following simple test case:
+
+```python
+sweetness = [5,5]
+k = 0
+```
+
+Since we have `k = 0`, this means we are not going to share the chocolate with anyone else so we should just maximize the sweetness for our own enjoyment. The value returned should be `10`, the entire sum of the values in `sweetness`. But what happens if we change the line `right = sum(sweetness) + 1` to `right = sum(sweetness)`? Then the `while` loop will terminate when `left == right`, which will now happen when `left` and `right` both equal `10`, but the value returned, `left - 1`, will be `9`, which results in an off-by-one error.
+
+This simple example illustrates the importance of binary searching the solution space represented by the half-open interval `[left, right)` when looking for a maximum; otherwise, we might end up with an off-by-one error.
+
+</details>
 
 <details>
 <summary> Remarks</summary>
@@ -796,7 +980,23 @@ TBD
 </details>
 
 ```python
-TBD
+def binary_search_on_solution_space_MINIMUM(arr):
+    def possible(threshold):
+        # this function is implemented depending on the problem
+        return BOOLEAN
+
+    left = MINIMUM_POSSIBLE_ANSWER
+    right = MAXIMUM_POSSIBLE_ANSWER # solution space being binary searched is [left, right];
+                                    # we are trying to find the leftmost insertion point for `threshold`
+                                    # in the possible segment
+    while left < right:
+        mid = left + (right - left) // 2
+        if possible(mid):
+            right = mid # squeeze `left` as far left as possible in the possible segment
+        else:
+            left = mid + 1
+    
+    return left
 ```
 
 <details>
@@ -816,7 +1016,25 @@ TBD
 </details>
 
 ```python
-TBD
+def binary_search_on_solution_space_MAXIMUM(arr):
+    def possible(threshold):
+        # this function is implemented depending on the problem
+        return BOOLEAN
+
+    left = MINIMUM_POSSIBLE_ANSWER
+    right = MAXIMUM_POSSIBLE_ANSWER + 1 # solution space being binary searched is [left, right) as opposed to [left, right];
+                                        # we are trying to find the leftmost insertion point for `threshold`
+                                        # in the impossible segment so we can report the position immediately to its left,
+                                        # the last position in the possible segment before the impossible segment
+                                        # (i.e., the maximum possible value)
+    while left < right:
+        mid = left + (right - left) // 2
+        if not possible(mid):
+            right = mid # squeeze `left` as far left as possible in the impossible segment
+        else:
+            left = mid + 1
+    
+    return left - 1
 ```
 
 <details>

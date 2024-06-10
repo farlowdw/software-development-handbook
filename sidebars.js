@@ -110,6 +110,7 @@ const sidebars = {
         'templates/data-structures-algorithms',
         'templates/algorithm-grading-rubric',
         'templates/feynman-technique',
+        'templates/binary-search',
       ]
     },
     {
