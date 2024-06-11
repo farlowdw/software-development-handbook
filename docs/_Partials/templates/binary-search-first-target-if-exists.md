@@ -6,9 +6,9 @@ def binary_search(arr, target):
     while left <= right:
         mid = left + (right - left) // 2
 
-        if arr[mid] > target:
+        if target < arr[mid]:
             right = mid - 1
-        elif arr[mid] < target:
+        elif target > arr[mid]:
             left = mid + 1
         else:
             return mid

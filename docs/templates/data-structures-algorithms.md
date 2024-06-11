@@ -157,6 +157,7 @@ import LC392TSol from '@site/docs/_Partials/template-solutions/two-pointers/exha
 import LC399TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/lc-399.md';
 
 <!-- 400 - 499 -->
+import LC410TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-minimum/lc-410.md';
 import LC433TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/lc-433.md';
 import LC437TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-437.md';
 import LC450TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-450.md';
@@ -208,6 +209,7 @@ import LC844TSol from '@site/docs/_Partials/template-solutions/two-pointers/exha
 import LC844TSol2 from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-844.md';
 import LC863TSol from '@site/docs/_Partials/template-solutions/graphs/bfs/lc-863.md';
 import LC872TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-872.md';
+import LC875TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-minimum/lc-875.md';
 import LC876TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-876.md';
 import LC881TSol from '@site/docs/_Partials/template-solutions/greedy/lc-881.md';
 
@@ -248,7 +250,9 @@ import LC1196TSol from '@site/docs/_Partials/template-solutions/greedy/lc-1196.m
 
 <!-- 1200 - 1299 -->
 import LC1208TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-1208.md';
+import LC1231TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-maximum/lc-1231.md';
 import LC1248TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-1248.md';
+import LC1283TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-minimum/lc-1283.md';
 import LC1290TSol from '@site/docs/_Partials/template-solutions/linked-lists/general/lc-1290.md';
 import LC1293TSol from '@site/docs/_Partials/template-solutions/graphs/bfs/lc-1293.md';
 
@@ -283,6 +287,7 @@ import LC1557TSol from '@site/docs/_Partials/template-solutions/graphs/general/l
 <!-- 1600 - 1699 -->
 import LC1609TSol from '@site/docs/_Partials/template-solutions/trees/levels/lc-1609.md';
 import LC1615TSol from '@site/docs/_Partials/template-solutions/graphs/general/lc-1615.md';
+import LC1631TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-minimum/lc-1631.md';
 import LC1657TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1657.md';
 import LC1673TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-1673.md';
 
@@ -295,6 +300,7 @@ import LC1732TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/
 <!-- 1800 - 1899 -->
 import LC1832TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1832.md';
 import LC1845TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc-1845.md';
+import LC1870TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-minimum/lc-1870.md';
 
 <!-- 1900 - 1999 -->
 import LC1926TSol from '@site/docs/_Partials/template-solutions/graphs/bfs/lc-1926.md';
@@ -434,6 +440,7 @@ import LC392PS from '@site/docs/_Partials/problem-stems/lc392.md';
 import LC399PS from '@site/docs/_Partials/problem-stems/lc399.md';
 
 <!-- 400 - 499 -->
+import LC410PS from '@site/docs/_Partials/problem-stems/lc410.md';
 import LC433PS from '@site/docs/_Partials/problem-stems/lc433.md';
 import LC437PS from '@site/docs/_Partials/problem-stems/lc437.md';
 import LC450PS from '@site/docs/_Partials/problem-stems/lc450.md';
@@ -482,6 +489,7 @@ import LC841PS from '@site/docs/_Partials/problem-stems/lc841.md';
 import LC844PS from '@site/docs/_Partials/problem-stems/lc844.md';
 import LC863PS from '@site/docs/_Partials/problem-stems/lc863.md';
 import LC872PS from '@site/docs/_Partials/problem-stems/lc872.md';
+import LC875PS from '@site/docs/_Partials/problem-stems/lc875.md';
 import LC876PS from '@site/docs/_Partials/problem-stems/lc876.md';
 import LC881PS from '@site/docs/_Partials/problem-stems/lc881.md';
 
@@ -522,7 +530,9 @@ import LC1196PS from '@site/docs/_Partials/problem-stems/lc1196.md';
 
 <!-- 1200 - 1299 -->
 import LC1208PS from '@site/docs/_Partials/problem-stems/lc1208.md';
+import LC1231PS from '@site/docs/_Partials/problem-stems/lc1231.md';
 import LC1248PS from '@site/docs/_Partials/problem-stems/lc1248.md';
+import LC1283PS from '@site/docs/_Partials/problem-stems/lc1283.md';
 import LC1290PS from '@site/docs/_Partials/problem-stems/lc1290.md';
 import LC1293PS from '@site/docs/_Partials/problem-stems/lc1293.md';
 
@@ -556,6 +566,7 @@ import LC1557PS from '@site/docs/_Partials/problem-stems/lc1557.md';
 <!-- 1600 - 1699 -->
 import LC1609PS from '@site/docs/_Partials/problem-stems/lc1609.md';
 import LC1615PS from '@site/docs/_Partials/problem-stems/lc1615.md';
+import LC1631PS from '@site/docs/_Partials/problem-stems/lc1631.md';
 import LC1657PS from '@site/docs/_Partials/problem-stems/lc1657.md';
 import LC1673PS from '@site/docs/_Partials/problem-stems/lc1673.md';
 
@@ -567,6 +578,7 @@ import LC1732PS from '@site/docs/_Partials/problem-stems/lc1732.md';
 <!-- 1800 - 1899 -->
 import LC1832PS from '@site/docs/_Partials/problem-stems/lc1832.md';
 import LC1845PS from '@site/docs/_Partials/problem-stems/lc1845.md';
+import LC1870PS from '@site/docs/_Partials/problem-stems/lc1870.md';
 
 <!-- 1900 - 1999 -->
 import LC1926PS from '@site/docs/_Partials/problem-stems/lc1926.md';
@@ -1002,7 +1014,60 @@ def binary_search_on_solution_space_MINIMUM(arr):
 <details>
 <summary> Examples</summary>
 
-TBD
+<details>
+<summary> <LC id='875' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC875PS />
+
+---
+
+<LC875TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1631' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC1631PS />
+
+---
+
+<LC1631TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1870' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC1870PS />
+
+---
+
+<LC1870TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1283' type='long' ></LC> (&check;) </summary>
+
+<LC1283PS />
+
+---
+
+<LC1283TSol />
+
+</details>
+
+<details>
+<summary> <LC id='410' type='long' ></LC> (&check;) <MyStar stars={3} /> </summary>
+
+<LC410PS />
+
+---
+
+<LC410TSol />
+
+</details>
 
 </details>
 
@@ -1040,7 +1105,16 @@ def binary_search_on_solution_space_MAXIMUM(arr):
 <details>
 <summary> Examples</summary>
 
-TBD
+<details>
+<summary> <LC id='1231' type='long' ></LC> (&check;) <MyStar stars={3} /> </summary>
+
+<LC1231PS />
+
+---
+
+<LC1231TSol />
+
+</details>
 
 </details>
 
