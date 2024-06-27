@@ -21,7 +21,7 @@ const ResumeViewer = () => {
         }`}
 			</style>
 			<div style={{ height: '100%', width: '100%' }}>
-				<Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js">
+				<Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.js">
 					<Viewer
 						fileUrl={
 							require('@site/static/docs/Daniel_Farlow_resume.pdf').default
