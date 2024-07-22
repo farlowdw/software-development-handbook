@@ -377,6 +377,9 @@ import LC3090TSol from '@site/docs/_Partials/template-solutions/sliding-window/v
 <!-- 3100 - 3199 -->
 import LC3105TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3105.md';
 
+<!-- 3200 - 3299 -->
+import LC3228TSol from '@site/docs/_Partials/template-solutions/greedy/lc-3228.md';
+
 <!-- PROBLEM STEMS -->
 <!-- 1 - 99 -->
 import LC1PS from '@site/docs/_Partials/problem-stems/lc1.md';
@@ -667,6 +670,9 @@ import LC3090PS from '@site/docs/_Partials/problem-stems/lc3090.md';
 
 <!-- 3100 - 3199 -->
 import LC3105PS from '@site/docs/_Partials/problem-stems/lc3105.md';
+
+<!-- 3200 - 3299 -->
+import LC3228PS from '@site/docs/_Partials/problem-stems/lc3228.md';
 
 ## Contents
 
@@ -1953,6 +1959,17 @@ TBD
 
 </details>
 
+<details>
+<summary> <LC id='3228' type='long' ></LC> <MyStar stars={1} /> </summary>
+
+<LC3228PS />
+
+---
+
+<LC3228TSol />
+
+</details>
+
 </details>
 
 ## Heaps
@@ -2866,7 +2883,7 @@ def fn(arr):
         while left <= right and WINDOW_CONDITION_BROKEN # (e.g., curr > k):
             curr -= nums[left]
             left += 1
-        ans = max(ans, right - left + 1)
+        ans = max(ans, right - left + 1) # length of "valid" window
     return ans
 ```
 
@@ -5171,9 +5188,9 @@ def fn(arr):
 <details>
 <summary> Remarks</summary>
 
-Sometimes a problem provides two or more iterables as input. In such cases, specifically with two iterables (e.g., arrays), we can move pointers along both inputs simultaneously until all elements have been checked or *exhausted*.
+Sometimes a problem provides two or more iterables as input. In such cases, specifically with two iterables (e.g., arrays), we can move pointers along both inputs simultaneously until all elements have been checked or *exhausted*. The idea is to have logic that uses *both* inputs (or more in some cases) in some fashion until one of them has been exhausted. Then logic is passed on so the other input is similarly exhausted.
 
-The idea is to have logic that uses *both* inputs (or more in some cases) in some fashion until one of them has been exhausted. Then logic is passed on so the other input is similarly exhausted.
+The approach above generally has a linear time complexity of $O(n + m)$, where $n$ and $m$ represent the lengths of the first and second iterables, respectively.
 
 </details>
 
