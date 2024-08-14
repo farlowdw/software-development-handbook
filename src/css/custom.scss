@@ -926,6 +926,11 @@ body {
   border: 1px solid #FAD753 !important;
 }
 
+[class^='details_'].pragProgDetails {
+  --docusaurus-details-decoration-color: #4DACAB !important;
+  border: 1px solid #4DACAB !important;
+}
+
 [class^='details_'] {
   background-color: var(--color-gray-0) !important;
 }
