@@ -130,11 +130,11 @@ html[data-theme='dark'] {
 	}
 
 	.theme-edit-this-page {
+    color: var(--ifm-color-gray-2);
 		&::before,
 		&::after {
 			filter: invert(1);
 		}
-		color: var(--ifm-color-gray-2);
 		&:hover {
 			color: var(--ifm-color-gray-0);
 		}

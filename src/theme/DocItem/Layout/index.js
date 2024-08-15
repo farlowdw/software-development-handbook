@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { useWindowSize } from '@docusaurus/theme-common';
-import { useDoc } from '@docusaurus/theme-common/internal';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -10,6 +10,7 @@ import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
 import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
 import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+import ContentVisibility from '@theme/ContentVisibility';
 import styles from './styles.module.css';
 
 // added after swizzling
@@ -17,7 +18,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Giscus from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
 import { useLocation } from '@docusaurus/router';
-import { Footnotes } from 'react-a11y-footnotes';
 //
 
 /**
@@ -41,6 +41,7 @@ function useDocTOC() {
 }
 export default function DocItemLayout({ children }) {
   const docTOC = useDocTOC();
+  const { metadata } = useDoc();
 
   // added after swizzling
   const { siteConfig } = useDocusaurusContext();
@@ -72,6 +73,7 @@ export default function DocItemLayout({ children }) {
   return (
     <div className="row">
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
+        <ContentVisibility metadata={metadata} />
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
@@ -79,11 +81,9 @@ export default function DocItemLayout({ children }) {
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
-            <Footnotes />
             <DocItemFooter />
           </article>
           <DocItemPaginator />
-          {/* added after swizzling */}
           {!forbiddenGiscusDocPaths.includes(location.pathname) && giscus}
         </div>
       </div>

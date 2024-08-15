@@ -560,7 +560,7 @@ The ATS also allows recruiters to see all the roles you have applied to at their
 
 #### Summary checklist
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='450px' src={require('@site/static/img/learning-resources/tih/resume-overview.png').default} />
 </div>
 
@@ -1568,7 +1568,7 @@ Testing signals:
 | **Leaning no hire** | Conducted testing but did not handle corner cases. Not able to identify or correct bugs in code. |
 | **Strong no hire** | Did not even test code against typical cases. Did not spot glaring bugs in the code and announced they are done. |
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='500px' src={require('@site/static/img/learning-resources/tih/coding-interview-evaluation-criteria.png').default} />
 </div>
 
@@ -1818,7 +1818,7 @@ Generally covered during the interview as to how clearly they are explaining the
 
 After the interview, the interviewer will compile their feedback and give a hire/no-hire recommendation as well as the candidate's seniority. The hire/no-hire decision is given as a spectrum, ranging from low confidence to high confidence. This is illustrated below:
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='500px' src={require('@site/static/img/learning-resources/tih/hire-no-hire-behavioral.png').default} />
 </div>
 
@@ -3425,7 +3425,7 @@ Binary means two, so nodes in a binary tree have a maximum of two children.
 
 **Traversals**
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='350px' src={require('@site/static/img/learning-resources/tih/binary-tree-traversal.png').default} />
 </div>
 
@@ -4293,7 +4293,7 @@ Top tech companies pay a ridiculous amount even for junior candidates:
 
 [Data from 2016](https://twitter.com/rodneyfolz/status/724787290824798209):
 
-<div align='center' class='centeredImageDiv'>
+<div align='center' className='centeredImageDiv'>
   <img width='300px' src={require('@site/static/img/learning-resources/tih/internship-salaries-usa.png').default} />
 </div>
 
