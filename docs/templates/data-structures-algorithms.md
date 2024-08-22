@@ -44,6 +44,12 @@ import InorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/tree
 import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-snippets/trees/combining-induction-and-tac-templates.md';
 
 <!-- TEMPLATE REMARKS -->
+import TwoPointersOppositeEndsRemark from '@site/docs/_Partials/template-remarks/two-pointers-opposite-ends.md';
+import TwoPointersExhaustInputsRemark from '@site/docs/_Partials/template-remarks/two-pointers-exhaust-inputs.md';
+import TwoPointersFastSlowRemark from '@site/docs/_Partials/template-remarks/two-pointers-fast-slow.md';
+import SlidingWindowVariableSizeRemark from '@site/docs/_Partials/template-remarks/sliding-window-variable-size.md';
+import SlidingWindowFixedSizeMethod1Remark from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-method-1.md';
+import SlidingWindowFixedSizeMethod2Remark from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-method-2.md';
 import BinarySearchFirstIndexRemark from '@site/docs/_Partials/template-remarks/binary-search-first-index.md';
 import BinarySearchLeftmostTargetIndexInsertionPointRemark from '@site/docs/_Partials/template-remarks/binary-search-leftmost-target-index-insertion-point.md';
 import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
@@ -162,7 +168,7 @@ import LC350TSol from '@site/docs/_Partials/template-solutions/two-pointers/exha
 import LC347TSol from '@site/docs/_Partials/template-solutions/heaps/top-k/lc-347.md';
 import LC373TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc-373.md';
 import LC383TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-383.md';
-import LC392TSol from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/lc-392.md';
+import LC392TSol from '@site/docs/_Partials/template-solutions/two-pointers/fast-slow/lc-392.md';
 import LC399TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/lc-399.md';
 
 <!-- 400 - 499 -->
@@ -2834,18 +2840,12 @@ def index_to_value(matrix, index):
 <details>
 <summary> Remarks</summary>
 
-The general algorithm behind the sliding window pattern (variable width) is as follows:
-
-1. **Define window boundaries:** Define pointers `left` and `right` that bound the left- and right-hand sides of the current window, respectively, where both pointers usually start at `0`.
-2. **Add elements to window by moving right pointer:** Iterate over the source array with the `right` bound to "add" elements to the window.
-3. **Remove elements from window by checking constraint and moving left pointer:** Whenever the constraint is broken,  "remove" elements from the window by incrementing the `left` bound until the constraint is satisfied again.
-
-Note the usage of the non-strict inequality `left <= right` in the `while` loop &#8212; this makes sense for problems where a single-element window is valid; however, the inequality should be strict (i.e., `left < right`) for problems where a single-element window does not make sense.
+<SlidingWindowVariableSizeRemark />
 
 </details>
 
 <details>
-<summary> Template with comments</summary>
+<summary> Template with code comments</summary>
 
 ```python
 def fn(arr):
@@ -2859,7 +2859,7 @@ def fn(arr):
         curr += nums[right]
 
         # resize window if window condition/constraint is invalid
-        while left <= right and WINDOW_CONDITION_BROKEN # (e.g., curr > k):
+        while left <= right and WINDOW_IS_INVALID # (e.g., curr > k):
             
             # logic to remove element from window
             curr -= nums[left]
@@ -2880,10 +2880,11 @@ def fn(arr):
     left = curr = ans = 0
     for right in range(len(arr)):
         curr += nums[right]
-        while left <= right and WINDOW_CONDITION_BROKEN # (e.g., curr > k):
+        while left <= right and WINDOW_IS_INVALID # (e.g., curr > k):
             curr -= nums[left]
             left += 1
-        ans = max(ans, right - left + 1) # length of "valid" window
+        ans = max(ans, right - left + 1)  # length of "valid" window
+        # ans += right - left + 1         # number of "valid" subarrays ending at 'right'
     return ans
 ```
 
@@ -2990,13 +2991,12 @@ def fn(arr):
 <details>
 <summary> Remarks</summary>
 
-- **Window size greater than array size (possibility):** There is a chance that the window size `k` is greater than the array size `arr.length` &#8212; if not properly accounted for, this could easily lead to index out of range errors (it's not accounted for in the pseudocode below). It is often not a bad idea to have a check for this before proceeding with the window creation operation.
-- **Clarity:** Method 1 appears to be somewhat cleaner than Method 2 despite having another `for` loop. The construction of the window and initialization of `ans` is unambiguous and easy to understand in Method 1. We start by building the window, we set the initial answer, and then we move the window while iterative updating the answer. It's easier to keep things clear and straight with this approach.
+<SlidingWindowFixedSizeMethod1Remark />
 
 </details>
 
 <details>
-<summary> Template with commented code</summary>
+<summary> Template with code comments</summary>
 
 ```python
 def fn(arr, k):
@@ -3077,9 +3077,7 @@ def fn(arr, k):
 <details>
 <summary> Remarks</summary>
 
-- **Window size greater than array size (possibility):** There is a chance that the window size `k` is greater than the array size `arr.length` &#8212; if not properly accounted for, this could easily lead to index out of range errors (it's not accounted for in the pseudocode below). It is often not a bad idea to have a check for this before proceeding with the window creation operation.
-- **Initialization of `ans`:** Sometimes it can be a little unclear as to how best to initialize the `ans` variable. For example, in <LC id='643' type='' ></LC> we are looking for a "maximum average subarray" which means initializing `ans` to, say, `0` does not make sense because the maximum average could be negative depending on what elements are present in the array. It makes more sense in this problem to have `ans = float('-inf')` as the initialization even though it does not feel all that natural.
-- **Complicated logic:** The logic for managing the window is actually a bit more complicated than that used in Method 1. Here, in Method 2, the window is really being constructed by adding `arr[i]` to the window *until* `i == k`. If our array only has `k` elements, then our updating of `ans` before we return can save us from possible errors, but the whole thing takes a bit more effort to wrap your head around.
+<SlidingWindowFixedSizeMethod2Remark />
 
 </details>
 
@@ -5025,9 +5023,7 @@ The induction and traverse-and-accumulate templates can be mixed together with p
 <details>
 <summary> Remarks</summary>
 
-The idea behind the "opposite ends" two pointer template is to move from the *extremes* (i.e., *beginning* and *end*) toward each other. Binary search is a class example of this template in action.
-
-The template guarantees an $O(n)$ run time because only $n$ iterations of the `while` loop may occur &#8212; the `left` and `right` pointers begin $n$ units away from each other and move *at least one step closer* to each other on every iteration. If the work inside each iteration is kept to $O(1)$, then the result will be an $O(n)$ run time.
+<TwoPointersOppositeEndsRemark />
 
 </details>
 
@@ -5188,9 +5184,7 @@ def fn(arr):
 <details>
 <summary> Remarks</summary>
 
-Sometimes a problem provides two or more iterables as input. In such cases, specifically with two iterables (e.g., arrays), we can move pointers along both inputs simultaneously until all elements have been checked or *exhausted*. The idea is to have logic that uses *both* inputs (or more in some cases) in some fashion until one of them has been exhausted. Then logic is passed on so the other input is similarly exhausted.
-
-The approach above generally has a linear time complexity of $O(n + m)$, where $n$ and $m$ represent the lengths of the first and second iterables, respectively.
+<TwoPointersExhaustInputsRemark />
 
 </details>
 
@@ -5218,17 +5212,6 @@ def fn(arr1, arr2):
 <summary> Merge two sorted arrays into another sorted array (&check;)</summary>
 
 <Sol11NoLC />
-
-</details>
-
-<details>
-<summary> <LC id='392' type='long' ></LC> (&check;)</summary>
-
-<LC392PS />
-
----
-
-<LC392TSol />
 
 </details>
 
@@ -5294,7 +5277,7 @@ def fn(arr1, arr2):
 <details>
 <summary> Remarks</summary>
 
-The "fast and slow" template provided below is *not* for problems involving linked lists but for other commonly encountered problems where the iterable given is an array, string (array of characters), etc. The idea is that the fast pointer steadily advances while the slow pointer is only advanced in a piecemeal fashion (often after some sort of condition is met).
+<TwoPointersFastSlowRemark />
 
 </details>
 
@@ -5310,6 +5293,17 @@ def fn(arr):
 
 <details>
 <summary> Examples</summary>
+
+<details>
+<summary> <LC id='392' type='long' ></LC> (&check;)</summary>
+
+<LC392PS />
+
+---
+
+<LC392TSol />
+
+</details>
 
 <details>
 <summary> <LC id='26' type='long' ></LC> (&malt;)</summary>

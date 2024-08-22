@@ -1,0 +1,3 @@
+Sometimes a problem provides two or more iterables as input. In such cases, specifically with two iterables (e.g., arrays), we can move pointers along both inputs simultaneously until all elements have been checked or *exhausted*. The idea is to have logic that uses *both* inputs (or more in some cases) in some fashion until one of them has been exhausted. Then logic is passed on so the other input is similarly exhausted.
+
+This approach generally has a linear time complexity of $O(n + m)$, where $n$ and $m$ represent the lengths of the first and second iterables, respectively. Why? Because at every iteration we move at least one pointer forward, meaning the pointers cannot be moved forward more than $n + m$ times without the iterables being exhausted.

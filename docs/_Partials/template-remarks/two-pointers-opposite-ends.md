@@ -1,0 +1,3 @@
+The idea behind the "opposite ends" two pointer template is to move from the *extremes* (i.e., *beginning* and *end*) toward each other. Binary search is a class example of this template in action.
+
+The template guarantees an $O(n)$ run time because only $n$ iterations of the `while` loop may occur &#8212; the `left` and `right` pointers begin $n$ units away from each other and move *at least one step closer* to each other on every iteration. If the work inside each iteration is kept to $O(1)$, then the result will be an $O(n)$ run time.
