@@ -50,6 +50,8 @@ import TwoPointersFastSlowRemark from '@site/docs/_Partials/template-remarks/two
 import SlidingWindowVariableSizeRemark from '@site/docs/_Partials/template-remarks/sliding-window-variable-size.md';
 import SlidingWindowFixedSizeMethod1Remark from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-method-1.md';
 import SlidingWindowFixedSizeMethod2Remark from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-method-2.md';
+import PrefixSumRemark from '@site/docs/_Partials/template-remarks/prefix-sum.md';
+import PrefixSumNonTraditionalRemark from '@site/docs/_Partials/template-remarks/prefix-sum-non-traditional.md';
 import BinarySearchFirstIndexRemark from '@site/docs/_Partials/template-remarks/binary-search-first-index.md';
 import BinarySearchLeftmostTargetIndexInsertionPointRemark from '@site/docs/_Partials/template-remarks/binary-search-leftmost-target-index-insertion-point.md';
 import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
@@ -5816,55 +5818,41 @@ TBD
 <details>
 <summary> Remarks</summary>
 
-A [prefix sum](https://en.wikipedia.org/wiki/Prefix_sum), in its conventional sense (i.e., a "sum"), is effectively a *running total* of the input sequence. For example, the input sequence `1, 2, 3, 4, 5, 6, ...` has `1, 3, 6, 10, 15, 21` as its prefix sum. This idea can be very useful when dealing with problems where finding sums of subarrays happens frequently. The idea is to perform an $O(n)$ pre-processing operation at the beginning that allows summation queries to be answered in $O(1)$ time (i.e., as opposed to each summation query taking $O(n)$ time). Building the prefix sum can take $O(n)$ or $O(1)$ space depending on whether or not the input array itself is transformed or "mutated" into a prefix sum.
-
-The $O(n)$ non-mutation approach occurs most frequently:
-
-```python
-def prefix_sum(nums):
-    prefix = [nums[0]]
-    for i in range(1, len(nums)):
-        prefix.append(nums[i] + prefix[-1])
-        
-    return prefix
-```
-
-Its $O(1)$ mutation variant is arguably simpler to implement:
-
-```python
-def prefix_sum_inplace(nums):
-    for i in range(1, len(nums)):
-        nums[i] = nums[i] + nums[i - 1]
-```
-
-In practice, we often need to find the sum of a subarray between indices `i` and `j`, where `i < j`. If `prefix` is our prefix sum, and `nums` is the input sequence, then such a sum may be found by computing the following:
-
-```python
-prefix[j] - prefix[i] + nums[i]
-```
-
-Sometimes people will use `prefix[j] - prefix[i - 1]` instead of `prefix[j] - prefix[i] + nums[i]`, and that is fine except for the boundary case where `i = 0`. It's often safest to explicitly handle the inclusive nature of prefix sums as done above.
-
-Another approach is to initialize the prefix array as `[0, nums[0]]`, which means the sum of the subarray between `i` and `j` is no longer `prefix[j] - prefix[i - 1]` but `prefix[j + 1] - prefix[i]`, which thus eliminates the left endpoint boundary issue. There's also no right endpoint boundary issue because if `j` is the rightmost endpoint, then `j + 1` is simply the right endpoint of the prefix sum array (because it's been extended by a single element, the prepended `0`).
-
-Regardless, the approach `prefix[j] - prefix[i] + nums[i]` is still probably the *clearest*.
+<PrefixSumRemark />
 
 </details>
 
 <details>
 <summary> Prefix sums that are not "sums"</summary>
 
-As noted in [the wiki article](https://en.wikipedia.org/wiki/Prefix_sum), a prefix sum requires only a binary associative operator. The operator does not have to be `+`, the addition operation. The operator could just as well be `x`, the multiplication operator.
+<PrefixSumNonTraditionalRemark />
 
 </details>
 
 ```python
+# prefix sum WITH left padding
+#     usage: prefix[j + 1] - prefix[i]
+def prefix_sum(nums):
+    prefix = [0, nums[0]]
+    for i in range(1, len(nums)):
+        prefix.append(nums[i] + prefix[-1])
+        
+    return prefix
+
+# prefix sum WITHOUT left padding
+#     usage: prefix[j] - prefix[i - 1] OR prefix[j] - prefix[i] + nums[i]
 def prefix_sum(nums):
     prefix = [nums[0]]
     for i in range(1, len(nums)):
         prefix.append(nums[i] + prefix[-1])
         
     return prefix
+
+# prefix sum built in-place
+#     usage: nums[j] - nums[i - 1]
+def prefix_sum(nums):
+    for i in range(1, len(nums)):
+        nums[i] = nums[i] + nums[i - 1]
 ```
 
 <details>
@@ -5959,46 +5947,6 @@ def prefix_sum(nums):
 <LC303TSol />
 
 </details>
-
-</details>
-
-### String building
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-```python
-TBD
-```
-
-<details>
-<summary> Examples</summary>
-
-TBD
-
-</details>
-
-### Subarrays (number of) that fit an exact criteria
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-```python
-TBD
-```
-
-<details>
-<summary> Examples</summary>
-
-TBD
 
 </details>
 

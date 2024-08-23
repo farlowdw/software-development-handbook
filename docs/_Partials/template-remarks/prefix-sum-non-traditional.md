@@ -1,0 +1,1 @@
+As noted in [the wiki article](https://en.wikipedia.org/wiki/Prefix_sum), a prefix sum requires only a binary associative operator. The operator does not have to be `+`, the addition operation. The operator could just as well be `x`, the multiplication operator.
