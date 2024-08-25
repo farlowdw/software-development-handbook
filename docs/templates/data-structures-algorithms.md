@@ -52,9 +52,11 @@ import SlidingWindowFixedSizeMethod1Remark from '@site/docs/_Partials/template-r
 import SlidingWindowFixedSizeMethod2Remark from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-method-2.md';
 import PrefixSumRemark from '@site/docs/_Partials/template-remarks/prefix-sum.md';
 import PrefixSumNonTraditionalRemark from '@site/docs/_Partials/template-remarks/prefix-sum-non-traditional.md';
+import HashingCountingRemark from '@site/docs/_Partials/template-remarks/hashing-counting.md';
+import HashingDefaultdictRemark from '@site/docs/_Partials/template-remarks/hashing-defaultdict.md';
+import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
 import BinarySearchFirstIndexRemark from '@site/docs/_Partials/template-remarks/binary-search-first-index.md';
 import BinarySearchLeftmostTargetIndexInsertionPointRemark from '@site/docs/_Partials/template-remarks/binary-search-leftmost-target-index-insertion-point.md';
-import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
 import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/linked-list-node-comparisons.md';
 import LinkedListPointerManipulation from '@site/docs/_Partials/template-remarks/linked-list-pointer-manipulation.md';
 import LinkedListSentinelNodes from '@site/docs/_Partials/template-remarks/linked-list-sentinel-nodes.md';
@@ -80,6 +82,7 @@ import Sol16NoLC from '@site/docs/_Partials/template-solutions/misc/prefix-sum/q
 import Sol17NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/counting/q1.md';
 import Sol18NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/q1.md';
 import Sol19NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/q2.md';
+import Sol20NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/existence/q1.md';
 
 <!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
 <!-- 1 - 99 -->
@@ -5393,6 +5396,17 @@ if el in seen:      # existence check is O(1) for sets
 <summary> Examples</summary>
 
 <details>
+<summary> Determining unique numbers based on non-existent off-by-ones (&check;) </summary>
+
+Given an integer array `nums`, find all the *unique* numbers `x` in `nums` that satisfy the following: `x + 1` is not in `nums`, and `x - 1` is not in `nums`.
+
+---
+
+<Sol20NoLC />
+
+</details>
+
+<details>
 <summary> <LC id='1' type='long' ></LC> (&check;) </summary>
 
 <LC1PS />
@@ -5564,64 +5578,26 @@ if el in seen:      # existence check is O(1) for sets
 <details>
 <summary> Remarks</summary>
 
-Counting is a very common pattern with hash maps, where "counting" generally refers to tracking the frequency of different elements.
-
-In sliding window problems, a frequent constraint is limiting the amount of a certain element in the window. For example, maybe we're trying to find the longest substring with at most `k` `0`s. In such problems, simply using an integer variable `curr` is enough to handle the constraint because we are only focused on a single element, namely `0`. The template for variable width sliding window problems naturally suggests the use of `curr` for such situations:
-
-```python
-def fn(arr):
-    left = curr = ans = 0
-    for right in range(len(arr)):
-        curr += nums[right]
-        while left <= right and WINDOW_CONDITION_BROKEN # (e.g., curr > k):
-            curr -= nums[left]
-            left += 1
-        ans = max(ans, right - left + 1)
-    return ans
-```
-
-Using a hash map allows us to solve problems where the constraint involves *multiple* elements. For example, we would likely no longer use an *integer* variable `curr` but a hash map variable `lookup`, `counts`, or something similarly named, where *multiple integer variables* can be used to track constraints on multiple elements (i.e., the hashable, often required to be immutable, "keys" of the hashmap effectively serve as variables where their integer values convey something about the constraint being monitored).
+<HashingCountingRemark />
 
 </details>
 
 <details>
 <summary> <code>defaultdict</code> in Python </summary>
 
-The key feature of [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) is that it provides a default value for the key that does not exist. The type of this default value, usually provided in the form of a function like `int` (default value `0`) or `list` (default value `[]`) or `set` (default value `{}`), is specified when the `defaultdict` is instantiated.
-
-This means something as simple as tracking the character frequencies in the string `"hello world"` is simplified (because we do not have to check for the key's existence first). With `defaultdict`:
-
-```python
-from collections import defaultdict
-
-s = "hello world"
-frequency = defaultdict(int)
-
-for char in s:
-    frequency[char] += 1
-
-print(frequency)
-```
-
-Without `defaultdict`:
-
-```python
-s = "hello world"
-frequency = {}
-
-for char in s:
-    if char in frequency:
-        frequency[char] += 1
-    else:
-        frequency[char] = 1
-
-print(frequency)
-```
+<HashingDefaultdictRemark />
 
 </details>
 
 ```python
-TBD
+from collections import defaultdict
+
+def fn(s):
+    freqs = defaultdict(int)
+    for char in s:
+        freqs[char] += 1
+
+    return freqs
 ```
 
 <details>
@@ -5668,17 +5644,6 @@ TBD
 </details>
 
 <details>
-<summary> <LC id='1189' type='long' ></LC> (&check;) </summary>
-
-<LC1189PS />
-
----
-
-<LC1189TSol />
-
-</details>
-
-<details>
 <summary> <LC id='1133' type='long' ></LC> (&check;) </summary>
 
 <LC1133PS />
@@ -5690,7 +5655,18 @@ TBD
 </details>
 
 <details>
-<summary> <LC id='2260' type='long' ></LC> (&check;) </summary>
+<summary> <LC id='1189' type='long' ></LC> (&check;) </summary>
+
+<LC1189PS />
+
+---
+
+<LC1189TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2260' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
 
 <LC2260PS />
 
@@ -5724,7 +5700,7 @@ TBD
 
 </details>
 
-#### Rolling prefix and referential prefixes ("exact" number of subarrays)
+#### Complementary prefixes to determine "exact" number of subarrays
 
 <details>
 <summary> Remarks</summary>
@@ -5735,9 +5711,9 @@ TBD
 
 ```python
 def fn(nums, k):
-    lookup = defaultdict(int)   # initialize referential prefix lookup
+    lookup = defaultdict(int)   # initialize prefix lookup for efficient references
     lookup[0] = 1               # handle "empty prefix" reference
-    curr = 0                    # initialize cumulative or "rolling" prefix
+    curr = 0                    # initialize current prefix (maintained throughout algorithm)
     ans = 0
     
     for i in range(len(nums)):
@@ -5748,7 +5724,7 @@ def fn(nums, k):
             
         ans += lookup[curr - k] # update answer based on inputs and lookup
                                 # (updates usually depend on a complementary relationship
-                                # between curr and other inputs or conditions)
+                                # between curr and previously seen prefixes in lookup)
         
         lookup[curr] += 1       # update lookup based on curr in a problem-specific way
             
