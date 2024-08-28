@@ -61,6 +61,9 @@ import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/lin
 import LinkedListPointerManipulation from '@site/docs/_Partials/template-remarks/linked-list-pointer-manipulation.md';
 import LinkedListSentinelNodes from '@site/docs/_Partials/template-remarks/linked-list-sentinel-nodes.md';
 import LinkedListVisualizeSinglyLinkedList from '@site/docs/_Partials/template-remarks/linked-list-visualize-singly-linked-list.md';
+import GraphsDijkstraRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra.md';
+import GraphsDijkstraTargetRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-with-target.md';
+import GraphsDijkstraPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-path-reconstruction.md';
 
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q1.md';
@@ -219,9 +222,11 @@ import LC713TSol from '@site/docs/_Partials/template-solutions/sliding-window/va
 import LC724TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-724.md';
 import LC735TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-735.md';
 import LC739TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-739.md';
+import LC743TSol from '@site/docs/_Partials/template-solutions/graphs/dijkstra/lc-743.md';
 import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc-746.md';
 import LC752TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/lc-752.md';
 import LC771TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-771.md';
+import LC787TSol from '@site/docs/_Partials/template-solutions/graphs/dijkstra/lc-787.md';
 import LC791TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-791.md';
 import LC797TSol from '@site/docs/_Partials/template-solutions/backtracking/lc-797.md';
 
@@ -305,6 +310,7 @@ import LC1482TSol from '@site/docs/_Partials/template-solutions/binary-search/so
 import LC1496TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1496.md';
 
 <!-- 1500 - 1599 -->
+import LC1514TSol from '@site/docs/_Partials/template-solutions/graphs/dijkstra/lc-1514.md';
 import LC1544TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-1544.md';
 import LC1552TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-maximum/lc-1552.md';
 import LC1557TSol from '@site/docs/_Partials/template-solutions/graphs/general/lc-1557.md';
@@ -328,6 +334,7 @@ import LC1845TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc
 import LC1870TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-minimum/lc-1870.md';
 
 <!-- 1900 - 1999 -->
+import LC1905TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-1905.md';
 import LC1926TSol from '@site/docs/_Partials/template-solutions/graphs/bfs/lc-1926.md';
 import LC1941TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-1941.md';
 import LC1944TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-1944.md';
@@ -517,9 +524,11 @@ import LC713PS from '@site/docs/_Partials/problem-stems/lc713.md';
 import LC724PS from '@site/docs/_Partials/problem-stems/lc724.md';
 import LC735PS from '@site/docs/_Partials/problem-stems/lc735.md';
 import LC739PS from '@site/docs/_Partials/problem-stems/lc739.md';
+import LC743PS from '@site/docs/_Partials/problem-stems/lc743.md';
 import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
 import LC752PS from '@site/docs/_Partials/problem-stems/lc752.md';
 import LC771PS from '@site/docs/_Partials/problem-stems/lc771.md';
+import LC787PS from '@site/docs/_Partials/problem-stems/lc787.md';
 import LC791PS from '@site/docs/_Partials/problem-stems/lc791.md';
 import LC797PS from '@site/docs/_Partials/problem-stems/lc797.md';
 
@@ -601,6 +610,7 @@ import LC1482PS from '@site/docs/_Partials/problem-stems/lc1482.md';
 import LC1496PS from '@site/docs/_Partials/problem-stems/lc1496.md';
 
 <!-- 1500 - 1599 -->
+import LC1514PS from '@site/docs/_Partials/problem-stems/lc1514.md';
 import LC1544PS from '@site/docs/_Partials/problem-stems/lc1544.md';
 import LC1552PS from '@site/docs/_Partials/problem-stems/lc1552.md';
 import LC1557PS from '@site/docs/_Partials/problem-stems/lc1557.md';
@@ -623,6 +633,7 @@ import LC1845PS from '@site/docs/_Partials/problem-stems/lc1845.md';
 import LC1870PS from '@site/docs/_Partials/problem-stems/lc1870.md';
 
 <!-- 1900 - 1999 -->
+import LC1905PS from '@site/docs/_Partials/problem-stems/lc1905.md';
 import LC1926PS from '@site/docs/_Partials/problem-stems/lc1926.md';
 import LC1941PS from '@site/docs/_Partials/problem-stems/lc1941.md';
 import LC1944PS from '@site/docs/_Partials/problem-stems/lc1944.md';
@@ -1553,6 +1564,17 @@ def fn(graph):
 
 </details>
 
+<details>
+<summary> <LC id='1905' type='long' ></LC> <MyStar stars={3} /> </summary>
+
+<LC1905PS />
+
+---
+
+<LC1905TSol />
+
+</details>
+
 </details>
 
 ### DFS (iterative)
@@ -1788,6 +1810,92 @@ TBD
 ---
 
 <LC2101TSol />
+
+</details>
+
+</details>
+
+### Dijkstra (lazy)
+
+<details>
+<summary> Remarks</summary>
+
+<GraphsDijkstraRemark />
+
+</details>
+
+<details>
+<summary> Dijkstra with a target/destination node</summary>
+
+<GraphsDijkstraTargetRemark />
+
+</details>
+
+<details>
+<summary> Dijkstra with shortest path reconstruction</summary>
+
+<GraphsDijkstraPathReconstructionRemark />
+
+</details>
+
+```python
+def fn(graph, source):
+    n = len(graph)                          # Dijkstra on graph with n nodes
+    distances = [float('inf')] * n          # "infinitely" far from source (unvisited nodes)
+    distances[source] = 0
+    min_heap = []
+    heapq.heappush(min_heap, (0, source))   # heap contents: (d(v, source), v), where
+                                            # d gives a distance from source node
+                                            # to node v, another node in graph
+    
+    while min_heap:
+        curr_dist, node = heapq.heappop(min_heap)
+        if curr_dist > distances[node]:     # optimization for lazy Dijkstra: ignore current path
+            continue                        # if we already found a better one (i.e., node was previously
+                                            # extracted from min_heap with a smaller distance)
+    
+        for neighbor, weight in graph[node]:
+            dist = curr_dist + weight
+            if dist < distances[neighbor]:  # add neighbor to min_heap if it creates a shorter path
+                distances[neighbor] = dist
+                heapq.heappush(min_heap, (dist, neighbor))
+    
+    return distances
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='743' type='long' ></LC> (&check;) </summary>
+
+<LC743PS />
+
+---
+
+<LC743TSol />
+
+</details>
+
+<details>
+<summary> <LC id='787' type='long' ></LC> (&check;) <MyStar stars={3} /> </summary>
+
+<LC787PS />
+
+---
+
+<LC787TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1514' type='long' ></LC> <MyStar stars={2} /> </summary>
+
+<LC1514PS />
+
+---
+
+<LC1514TSol />
 
 </details>
 
@@ -5366,8 +5474,6 @@ TBD
 TBD
 
 </details>
-
-### Dijkstra's algorithm
 
 ### Hashing (and sets)
 
