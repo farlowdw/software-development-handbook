@@ -250,6 +250,7 @@ import LC917TSol from '@site/docs/_Partials/template-solutions/two-pointers/oppo
 import LC933TSol from '@site/docs/_Partials/template-solutions/stacks-queues/queues/lc-933.md';
 import LC938TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-938.md';
 import LC946TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-946.md';
+import LC947TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-947.md';
 import LC965TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-965.md';
 import LC967TSol from '@site/docs/_Partials/template-solutions/backtracking/lc-967.md';
 import LC973TSol from '@site/docs/_Partials/template-solutions/heaps/top-k/lc-973.md';
@@ -551,6 +552,7 @@ import LC917PS from '@site/docs/_Partials/problem-stems/lc917.md';
 import LC933PS from '@site/docs/_Partials/problem-stems/lc933.md';
 import LC938PS from '@site/docs/_Partials/problem-stems/lc938.md';
 import LC946PS from '@site/docs/_Partials/problem-stems/lc946.md';
+import LC947PS from '@site/docs/_Partials/problem-stems/lc947.md';
 import LC965PS from '@site/docs/_Partials/problem-stems/lc965.md';
 import LC967PS from '@site/docs/_Partials/problem-stems/lc967.md';
 import LC973PS from '@site/docs/_Partials/problem-stems/lc973.md';
@@ -1575,6 +1577,17 @@ def fn(graph):
 
 </details>
 
+<details>
+<summary> <LC id='947' type='long' ></LC> <MyStar stars={2} /> </summary>
+
+<LC947PS />
+
+---
+
+<LC947TSol />
+
+</details>
+
 </details>
 
 ### DFS (iterative)
@@ -1898,6 +1911,46 @@ def fn(graph, source):
 <LC1514TSol />
 
 </details>
+
+</details>
+
+### Bellman-Ford
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+TBD
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
+### Topological sort
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+TBD
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
 
 </details>
 
