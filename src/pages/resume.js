@@ -8,6 +8,11 @@ const ResumePage = () => (
     <Head>
       <title>Resume - Daniel W. Farlow</title>
       <meta name="description" content="Current resume for Daniel W. Farlow, a software engineer based in Nashville, TN" />
+      <meta property="og:title" content="Resume - Daniel W. Farlow" />
+      <meta property="og:description" content="Current resume for Daniel W. Farlow, a software engineer based in Nashville, TN" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://dwf.dev/resume/" />
+      <meta property="og:image" content="https://dwf.dev/img/logo.svg" />
     </Head>
     <ResumeViewer />
   </Layout>
