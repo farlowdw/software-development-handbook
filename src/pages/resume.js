@@ -7,6 +7,7 @@ const ResumePage = () => (
   <Layout>
     <Head>
       <title>Resume - Daniel W. Farlow</title>
+      <meta name="description" content="Current resume for Daniel W. Farlow, a software engineer based in Nashville, TN" />
     </Head>
     <ResumeViewer />
   </Layout>
