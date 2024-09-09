@@ -64,6 +64,12 @@ import LinkedListVisualizeSinglyLinkedList from '@site/docs/_Partials/template-r
 import GraphsDijkstraRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra.md';
 import GraphsDijkstraTargetRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-with-target.md';
 import GraphsDijkstraPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-path-reconstruction.md';
+import GraphsTopsortInventionRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-invention.md';
+import GraphsTopsortSSSPRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-sssp.md';
+import GraphsUnionFindTemplateWithCommentsRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-template-with-comments.md';
+import GraphsUnionFindDynamicRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-dynamic.md';
+import GraphsUnionFindBySizeRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-by-size.md';
+import GraphsUnionFindReferencesRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-references.md';
 
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q1.md';
@@ -1934,7 +1940,7 @@ TBD
 
 </details>
 
-### Topological sort
+### Topological sort (Kahn's algorithm)
 
 <details>
 <summary> Remarks</summary>
@@ -1943,8 +1949,124 @@ TBD
 
 </details>
 
+<details>
+<summary> SSSPs on DAGs (shortest and longest paths)</summary>
+
+<GraphsTopsortSSSPRemark />
+
+</details>
+
+<details>
+<summary> Inventing a topological sort algorithm (Kahn's algorithm)</summary>
+
+<GraphsTopsortInventionRemark />
+
+</details>
+
 ```python
+# n-vertex graph provided as an adjacency list
+def topological_sort(graph):
+    n = len(graph)
+    in_degree = [0] * n                   # incoming degree for each node that will decrease as nodes 
+    for node in range(n):                 # are 'peeled off' and placed in the generated topological order
+        for neighbor in graph[node]:
+            in_degree[neighbor] += 1
+            
+    deg_zero = []                         # nodes that have no incoming edges and are ready to be
+    for node in range(n):                 # 'peeled off' and placed in the topological ordering
+        if in_degree[node] == 0:
+            deg_zero.append(node)
+            
+    top_order = []
+    while deg_zero:
+        node = deg_zero.pop()             # 'peel off' node and
+        top_order.append(node)            # place in topological order
+        for neighbor in graph[node]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                deg_zero.append(neighbor)
+                
+    if len(top_order) != n:               # cycle exists if all nodes can't be 'peeled off'
+        return []
+    
+    return top_order
+```
+
+<details>
+<summary> Examples</summary>
+
 TBD
+
+</details>
+
+### Union-find (disjoint sets)
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+<details>
+<summary> References</summary>
+
+<GraphsUnionFindReferencesRemark />
+
+</details>
+
+<details>
+<summary> Union by size (instead of by rank)</summary>
+
+<GraphsUnionFindBySizeRemark />
+
+</details>
+
+<details>
+<summary> Union-find when number of vertices is not fixed (dynamic union-find)</summary>
+
+<GraphsUnionFindDynamicRemark />
+
+</details>
+
+<details>
+<summary> Union-find template with comments</summary>
+
+<GraphsUnionFindTemplateWithCommentsRemark />
+
+</details>
+
+```python
+class UnionFind:
+    def __init__(self, num_vertices):
+        self.root = [i for i in range(num_vertices)]
+        self.rank = [0] * num_vertices
+
+    def find(self, x):
+        if self.root[x] != x:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False
+        
+        rank_x = self.rank[root_x]
+        rank_y = self.rank[root_y]
+        if rank_x > rank_y:
+            self.root[root_y] = root_x
+        elif rank_x < rank_y:
+            self.root[root_x] = root_y
+        else:
+            self.root[root_y] = root_x
+            self.rank[root_x] += 1
+            
+        return True
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
 ```
 
 <details>

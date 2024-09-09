@@ -5,6 +5,13 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'DPV',
+      title: `Algorithms`,
+      author: 'Sanjoy Dasgupta, Christos Papadimitriou, and Umesh Vazirani',
+      time: '2006',
+      link: 'https://www.amazon.com/gp/product/0073523402',
+    },
+    {
       id: 'AL2011_Puzzles',
       title: `Algorithmic Puzzles`,
       author: 'Anany Levitin',
