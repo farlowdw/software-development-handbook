@@ -2,7 +2,7 @@ If we only care about the distance or shortest path from the `source` to a speci
 
 ```python
 #highlight-success-next-line
-def fn(graph, source, target):
+def dijkstra(graph, source, target):
     n = len(graph)                          # Dijkstra on graph with n nodes
     distances = [float('inf')] * n          # "infinitely" far from source (unvisited nodes)
     distances[source] = 0

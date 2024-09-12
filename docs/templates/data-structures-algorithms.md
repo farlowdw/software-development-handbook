@@ -65,6 +65,11 @@ import GraphsDijkstraRemark from '@site/docs/_Partials/template-remarks/graphs-d
 import GraphsDijkstraTargetRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-with-target.md';
 import GraphsDijkstraPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-path-reconstruction.md';
 import GraphsTopsortInventionRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-invention.md';
+import GraphsBellmanFordIntuitionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-intuition.md';
+import GraphsBellmanFordRepetitionExplanationRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-repetition-explanation.md';
+import GraphsBellmanFordPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-path-reconstruction.md';
+import GraphsBellmanFordNegativeCycleReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-negative-cycle.md';
+import GraphsBellmanFordNegativeCycleReachableNodesRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-negative-cycle-reachable-nodes.md';
 import GraphsTopsortSSSPRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-sssp.md';
 import GraphsUnionFindTemplateWithCommentsRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-template-with-comments.md';
 import GraphsUnionFindDynamicRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-dynamic.md';
@@ -1858,7 +1863,7 @@ TBD
 </details>
 
 ```python
-def fn(graph, source):
+def dijkstra(graph, source):
     n = len(graph)                          # Dijkstra on graph with n nodes
     distances = [float('inf')] * n          # "infinitely" far from source (unvisited nodes)
     distances[source] = 0
@@ -1929,8 +1934,71 @@ TBD
 
 </details>
 
+<details>
+<summary> Intuition for Bellman-Ford algorithm</summary>
+
+<GraphsBellmanFordIntuitionRemark />
+
+</details>
+
+<details>
+<summary> Why we do |V| - 1 iterations in Bellman-Ford</summary>
+
+<GraphsBellmanFordRepetitionExplanationRemark />
+
+</details>
+
+<details>
+<summary> Bellman-Ford with shortest path reconstruction</summary>
+
+<GraphsBellmanFordPathReconstructionRemark />
+
+</details>
+
+<details>
+<summary> Bellman-Ford to get shortest paths despite negative cycles</summary>
+
+<GraphsBellmanFordNegativeCycleReachableNodesRemark />
+
+</details>
+
+<details>
+<summary> Bellman-Ford with reconstructed negative cycle</summary>
+
+<GraphsBellmanFordNegativeCycleReconstructionRemark />
+
+</details>
+
 ```python
-TBD
+# graph assumed to be an adjacency list of n nodes
+def bellman_ford(graph, start):
+    n = len(graph)
+    distances = [float('inf')] * n
+    distances[start] = 0
+    predecessors = [None] * n
+    
+    # main loop: run |V| - 1 times (i.e., n - 1 times)
+    for _ in range(n - 1):
+        # optimization: return early if no edge is updated after relaxing all edges
+        edge_updated = False
+        # relax every edge in the graph
+        for node in range(n):
+            for neighbor, weight in graph[node]:
+                if distances[node] != float('inf') and distances[node] + weight < distances[neighbor]:
+                    edge_updated = True
+                    distances[neighbor] = distances[node] + weight
+                    predecessors[neighbor] = node
+        
+        if not edge_updated:
+            return distances, predecessors
+    
+    # run main loop 1 more time for negative cycle detection
+    for node in range(n):
+        for neighbor, weight in graph[node]:
+            if distances[node] != float('inf') and distances[node] + weight < distances[neighbor]:
+                return False
+            
+    return distances, predecessors
 ```
 
 <details>
