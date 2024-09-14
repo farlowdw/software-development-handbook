@@ -75,6 +75,12 @@ import GraphsUnionFindTemplateWithCommentsRemark from '@site/docs/_Partials/temp
 import GraphsUnionFindDynamicRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-dynamic.md';
 import GraphsUnionFindBySizeRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-by-size.md';
 import GraphsUnionFindReferencesRemark from '@site/docs/_Partials/template-remarks/graphs-union-find-references.md';
+import GraphsPrimCutPropertyRemark from '@site/docs/_Partials/template-remarks/graphs-prim-cut-property.md';
+import GraphsPrimOverviewRemark from '@site/docs/_Partials/template-remarks/graphs-prim-overview.md';
+import GraphsPrimTemplateDiscussionRemark from '@site/docs/_Partials/template-remarks/graphs-prim-template-discussion.md';
+import GraphsPrimTemplateTimeSpaceRemark from '@site/docs/_Partials/template-remarks/graphs-prim-time-space.md';
+import GraphsKruskalExploreMotivateRemark from '@site/docs/_Partials/template-remarks/graphs-kruskal-explore-motivate.md';
+import GraphsKruskalTemplateTimeSpaceRemark from '@site/docs/_Partials/template-remarks/graphs-kruskal-time-space.md';
 
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q1.md';
@@ -1839,6 +1845,58 @@ TBD
 
 </details>
 
+### Topological sort (Kahn's algorithm)
+
+<details>
+<summary> SSSPs on DAGs (shortest and longest paths)</summary>
+
+<GraphsTopsortSSSPRemark />
+
+</details>
+
+<details>
+<summary> Inventing a topological sort algorithm (Kahn's algorithm)</summary>
+
+<GraphsTopsortInventionRemark />
+
+</details>
+
+```python
+# n-vertex graph provided as an adjacency list
+def topological_sort(graph):
+    n = len(graph)
+    in_degree = [0] * n                   # incoming degree for each node that will decrease as nodes 
+    for node in range(n):                 # are 'peeled off' and placed in the generated topological order
+        for neighbor in graph[node]:
+            in_degree[neighbor] += 1
+            
+    deg_zero = []                         # nodes that have no incoming edges and are ready to be
+    for node in range(n):                 # 'peeled off' and placed in the topological ordering
+        if in_degree[node] == 0:
+            deg_zero.append(node)
+            
+    top_order = []
+    while deg_zero:
+        node = deg_zero.pop()             # 'peel off' node and
+        top_order.append(node)            # place in topological order
+        for neighbor in graph[node]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                deg_zero.append(neighbor)
+                
+    if len(top_order) != n:               # cycle exists if all nodes can't be 'peeled off'
+        return []
+    
+    return top_order
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
 ### Dijkstra (lazy)
 
 <details>
@@ -1928,13 +1986,6 @@ def dijkstra(graph, source):
 ### Bellman-Ford
 
 <details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-<details>
 <summary> Intuition for Bellman-Ford algorithm</summary>
 
 <GraphsBellmanFordIntuitionRemark />
@@ -2008,56 +2059,62 @@ TBD
 
 </details>
 
-### Topological sort (Kahn's algorithm)
+### Prim (lazy)
 
 <details>
-<summary> Remarks</summary>
+<summary> Why MST algorithms work: the cut property</summary>
 
-TBD
+<GraphsPrimCutPropertyRemark />
 
 </details>
 
 <details>
-<summary> SSSPs on DAGs (shortest and longest paths)</summary>
+<summary> Mechanical overview of Prim's algorithm and similarity to Dijkstra</summary>
 
-<GraphsTopsortSSSPRemark />
+<GraphsPrimOverviewRemark />
 
 </details>
 
 <details>
-<summary> Inventing a topological sort algorithm (Kahn's algorithm)</summary>
+<summary> Template discussion (key components and their roles)</summary>
 
-<GraphsTopsortInventionRemark />
+<GraphsPrimTemplateDiscussionRemark />
+
+</details>
+
+<details>
+<summary> Time and space complexity</summary>
+
+<GraphsPrimTemplateTimeSpaceRemark />
 
 </details>
 
 ```python
-# n-vertex graph provided as an adjacency list
-def topological_sort(graph):
-    n = len(graph)
-    in_degree = [0] * n                   # incoming degree for each node that will decrease as nodes 
-    for node in range(n):                 # are 'peeled off' and placed in the generated topological order
-        for neighbor in graph[node]:
-            in_degree[neighbor] += 1
-            
-    deg_zero = []                         # nodes that have no incoming edges and are ready to be
-    for node in range(n):                 # 'peeled off' and placed in the topological ordering
-        if in_degree[node] == 0:
-            deg_zero.append(node)
-            
-    top_order = []
-    while deg_zero:
-        node = deg_zero.pop()             # 'peel off' node and
-        top_order.append(node)            # place in topological order
-        for neighbor in graph[node]:
-            in_degree[neighbor] -= 1
-            if in_degree[neighbor] == 0:
-                deg_zero.append(neighbor)
-                
-    if len(top_order) != n:               # cycle exists if all nodes can't be 'peeled off'
-        return []
+# T: O(E log V); S: O(V + E)
+def prim(graph, start = 0):
+    n = len(graph)              # n-node graph assumed to be an adjacency list
+    dist = [float('inf')] * n   # infinite distance for each node upon initialization
+    dist[start] = 0             # start can be any node, defaults to 0th node
+    pred = [None] * n           # predecessors are marked as non-existant upon initialization
+    visited = [False] * n       # no node has been visited upon initialization
     
-    return top_order
+    min_heap = []                           # use min heap to exploit cut property effectively
+    heapq.heappush(min_heap, (0, start))    # node value: weight of incoming edge from intermediate MST
+    while min_heap:
+        _, node = heapq.heappop(min_heap)   # only the node itself is needed
+        
+        if visited[node]:                   # node is already part of the MST
+            continue                        # (skip stale entries, prevent cycles)
+        visited[node] = True                # add node to MST
+        
+        for nbr, w in graph[node]:
+            if w < dist[nbr] and not visited[nbr]:  # ensure nbr is not already in MST and that edge weight from node to nbr is less than currently recorded min distance to nbr
+                dist[nbr] = w                       # update minimum known distance from node to nbr 
+                pred[nbr] = node                    # update predecessor of nbr to current node, recording the MST edge
+                heapq.heappush(min_heap, (w, nbr))  # adds nbr to min heap with updated minimum distance as its priority
+                                                    # (ensures next node selected will expand MST with the minimum possible total weight)
+    
+    return sum(dist), pred                          # sum(dist) = total weight of MST; pred = MST (can use to reconstruct)
 ```
 
 <details>
@@ -2068,13 +2125,6 @@ TBD
 </details>
 
 ### Union-find (disjoint sets)
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
 
 <details>
 <summary> References</summary>
@@ -2105,6 +2155,7 @@ TBD
 </details>
 
 ```python
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self, num_vertices):
         self.root = [i for i in range(num_vertices)]
@@ -2143,6 +2194,46 @@ class UnionFind:
 TBD
 
 </details>
+
+### Kruskal
+
+<details>
+<summary> Kruskal's algorithm as an intuitive greedy approach for finding minimum spanning trees (MSTs) and a motivator for learning the union-find data structure</summary>
+
+<GraphsKruskalExploreMotivateRemark />
+
+</details>
+
+<details>
+<summary> Time and space complexity</summary>
+
+<GraphsKruskalTemplateTimeSpaceRemark />
+
+</details>
+
+```python
+# T: O(E log E); S: O(V + E)
+def kruskal(graph, num_vertices):
+    uf = UnionFind(num_vertices)  # assumes efficient implementation (e.g., union by rank with path compression)
+    mst = []                      # the final MST as a list of edges
+    mst_cost = 0                  # total edge cost of MST
+    graph.sort(key=lambda edge: edge[2])  # sort edge list before greedily adding edges to MST
+    for src, dst, wgt in graph:           # assumed edge formulation: [source, destination, weight]
+        if not uf.connected(src, dst):    # add minimum edge (src, dst) to MST if src and dst are in separate components
+            mst.append((src, dst))
+            mst_cost += wgt
+            uf.union(src, dst)            # connect src and dst so as to be in the same component
+            
+    return mst_cost, mst
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
 
 ### General
 

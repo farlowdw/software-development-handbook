@@ -6,7 +6,8 @@ As noted in the remark above, the `union` in union-find is often implemented eit
 <CodeGrid>
 <CodeGridCell>
 
-```python title="Union by rank"
+```python title="Union by rank (not dynamic)"
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self, num_vertices):
         self.root = [i for i in range(num_vertices)]
@@ -42,7 +43,8 @@ class UnionFind:
 </CodeGridCell>
 <CodeGridCell>
 
-```python title="Union by size"
+```python title="Union by size (not dynamic)"
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self, num_vertices):
         self.root = [i for i in range(num_vertices)]
@@ -89,6 +91,7 @@ Things can get a bit messy if we start adding a bunch of membership checks. What
 <CodeGridCell>
 
 ```python title="Union by rank (dynamic)"
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self):
         self.root = {}
@@ -131,6 +134,7 @@ class UnionFind:
 <CodeGridCell>
 
 ```python title="Union by size (dynamic)"
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self):
         self.root = {}
