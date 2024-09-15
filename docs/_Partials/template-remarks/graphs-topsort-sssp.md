@@ -1,6 +1,7 @@
 Given a `start` node, we can find single-source shortest paths in (weighted) DAGs by first generating a topological ordering of the nodes (e.g., using Khan's algorithm, as provided in the template) and *then* relaxing the edges of all nodes in the graph, following the ordering, where both of these steps can be done in linear time proportional to the size of the graph:
 
 ```python
+# T: O(V + E); S: O(V + E)
 def shortest_path_DAG(graph, start):
     n = len(graph)
     top_order = topological_sort(graph)
@@ -17,6 +18,7 @@ def shortest_path_DAG(graph, start):
 The returned `distances` array will contain the length of the shortest path from `start` to each node. In the case of DAGs, since there are no cycles, we can also find single-source longest paths by simply negating the weight of each edge, finding the shortest path, and *then* negating the results:
 
 ```python
+# T: O(V + E); S: O(V + E)
 def longest_path_DAG(graph, start):
     n = len(graph)
     top_order = topological_sort(graph)

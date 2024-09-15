@@ -1,6 +1,7 @@
 Dijkstra finds the shortest path from a source node to all other nodes in a graph. If we want to *reconstruct* the shortest paths themselves, then we need to compute the predecessors of each node in the shortest path tree. A small modification to the template is needed:
 
 ```python
+# T: O(E log V); S: O(V + E)
 def dijkstra(graph, source):
     n = len(graph)                          # Dijkstra on graph with n nodes
     distances = [float('inf')] * n          # "infinitely" far from source (unvisited nodes)
@@ -33,6 +34,7 @@ def dijkstra(graph, source):
 All that remains is to reverse the steps from any given node to the source and then reverse that path to get the original shortest path from source to destination.
 
 ```python
+# T: O(E log V); S: O(V + E)
 def dijkstra_shortest_path(graph, source, target):
     distances, predecessors = dijkstra(graph, source)
     path = []

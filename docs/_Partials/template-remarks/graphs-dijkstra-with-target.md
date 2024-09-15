@@ -1,6 +1,7 @@
 If we only care about the distance or shortest path from the `source` to a specific node, `target`, then we can halt the algorithm with an early termination as soon as we **extract** the target node from `min_heap` (not as soon as we *add* the target node to `min_heap`). In Dijkstra, unlike in BFS, we only know that we have found the shortest distance to a node once we have extracted it for the first time from the priority queue, `min_heap` in the case of the template:
 
 ```python
+# T: O(E log V); S: O(V + E)
 #highlight-success-next-line
 def dijkstra(graph, source, target):
     n = len(graph)                          # Dijkstra on graph with n nodes

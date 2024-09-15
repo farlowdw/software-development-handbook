@@ -3,9 +3,9 @@ import BibRef from '@site/src/components/BibRef';
 If a negative cycle exists, then we can modify our Bellman-Ford template to capture and return the first negative cycle we discover (the highlighted code below has been added to the template):
 
 ```python
-# graph assumed to be an adjacency list of n nodes
+# T: O(VE); S: O(V + E)
 def bellman_ford(graph, start):
-    n = len(graph)
+    n = len(graph) # graph assumed to be an adjacency list of n nodes
     distances = [float('inf')] * n
     distances[start] = 0
     predecessors = [None] * n

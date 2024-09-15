@@ -3,9 +3,9 @@ Bellman-Ford is an SSSP algorithm, which means it will find the shortest path fr
 Is our shortest path work useless if a negative cycle exists or can we salvage it by still finding shortest paths to the nodes that are neither on nor reachable from a negative-weight cycle? We can salvage it! As [this video notes](https://www.youtube.com/watch?v=lyw4FaxrwHg&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=21), we basically need to iterate over all edges again, marking nodes on or reachable from negative-weight cycles by $-\infty$ to indicate a weight of negative infinity and updating their predecessor values to `None`. How many times do we need to iterate over all edges again? A maximum of $|V| - 1$ times in order to let the negatively infinite values fully propagate throughout the graph:
 
 ```python
-# graph assumed to be an adjacency list of n nodes
+# T: O(VE); S: O(V + E)
 def bellman_ford(graph, start):
-    n = len(graph)
+    n = len(graph) # graph assumed to be an adjacency list of n nodes
     distances = [float('inf')] * n
     distances[start] = 0
     predecessors = [None] * n

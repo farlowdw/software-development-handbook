@@ -4,6 +4,7 @@ import CodeGridCell from '@site/src/components/CodeGridCell';
 Generally speaking, there's not much variation in the way the `find` method of the union-find data structure is implemented (path compression is always used for the sake of optimality), but there are at least *two* notable variations in how the `union` method may be implemented, namely *by rank* and *by size*. Many sources (e.g., Cormen et al.) use union by rank, including the designated template on this page, but other sources (e.g., [Algorithms with Attitude](https://www.youtube.com/watch?v=axaOsCgpupk&list=PLSVu1-lON6LwGquZz42Mnf9qiJ1hvZxTf&index=3)) use union by size:
 
 ```python
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self, num_vertices):
         self.root = [i for i in range(num_vertices)]
@@ -38,6 +39,7 @@ What's the difference? Let's compare the *by rank* and *by size* approaches side
 <CodeGridCell>
 
 ```python title="Union by rank"
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self, num_vertices):
         self.root = [i for i in range(num_vertices)]
@@ -77,6 +79,7 @@ class UnionFind:
 <CodeGridCell>
 
 ```python title="Union by size"
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     def __init__(self, num_vertices):
         self.root = [i for i in range(num_vertices)]

@@ -4,7 +4,13 @@ To elaborate on why we do $|V|-1$ iterations, it comes from the following lemma:
 
 > If the shortest path from the source node to a node $v$ *ends* with the edge $u \to v$, and we already know the correct distance to $u$ (i.e., shortest distance from the source node to node $u$), and then we relax the edge $u \to v$, then we will find the correct distance to $v$. 
 
-It may seem like a pretty obvious lemma, but the correctness of Bellman-Ford, Dijkstra, and topological sort are all based on it. The consequence of this lemma is that, in order to find the correct distance to a node $v$, we need to relax all the edges in the shortest path from the source to $v$ *IN ORDER*. 
+It may seem like a pretty obvious lemma, but the correctness of Bellman-Ford, Dijkstra, and topological sort are all based on it:
+
+- **Dijkstra's Algorithm:** Utilizes this lemma by always selecting the unvisited node with the smallest known distance (the "greedy" approach), ensuring that when an edge $u\to v$ is relaxed, the distance to $u$ is already optimal. (This is why each edge only needs to be relaxed once.)
+- **Topological Sort-Based Algorithms:** In Directed Acyclic Graphs (DAGs), nodes are processed in a topological order, guaranteeing that when processing node $u$, all predecessors have been processed, and their distances are correct. (This is why each edge only needs to be relaxed once.)
+- **Bellman-Ford Algorithm:** Cannot rely on a specific processing order due to the presence of cycles and negative edge weights. It compensates by repeatedly relaxing all edges, ensuring that the correct distances eventually propagate through the graph.
+
+The consequence of this lemma is that, in order to find the correct distance to a node $v$, we need to relax all the edges in the shortest path from the source to $v$ *IN ORDER*. 
 
 Dijkstra and topological sort are efficient because we only relax the out-going edges from each node *after* we found the correct distance for that node, so we only need to relax the edges once. Unfortunately, the combination of cycles and negative edges makes it impossible to find a "good" order to relax the edges. Thus, Bellman-Ford just relaxes all the edges in an arbitrary order (this is one iteration of Bellman-Ford). 
 

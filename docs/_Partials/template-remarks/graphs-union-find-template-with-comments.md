@@ -1,4 +1,5 @@
 ```python
+# T: O(α(n)) per operation; S: O(n)
 class UnionFind:
     # MakeSet operations implicit for graph with n vertices (n = num_vertices)
     def __init__(self, num_vertices):

@@ -65,6 +65,7 @@ import GraphsDijkstraRemark from '@site/docs/_Partials/template-remarks/graphs-d
 import GraphsDijkstraTargetRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-with-target.md';
 import GraphsDijkstraPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-path-reconstruction.md';
 import GraphsTopsortInventionRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-invention.md';
+import GraphsTopsortNumPathsRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-num-paths.md';
 import GraphsBellmanFordIntuitionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-intuition.md';
 import GraphsBellmanFordRepetitionExplanationRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-repetition-explanation.md';
 import GraphsBellmanFordPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-path-reconstruction.md';
@@ -1848,6 +1849,13 @@ TBD
 ### Topological sort (Kahn's algorithm)
 
 <details>
+<summary> Number of paths between nodes in a DAG</summary>
+
+<GraphsTopsortNumPathsRemark />
+
+</details>
+
+<details>
 <summary> SSSPs on DAGs (shortest and longest paths)</summary>
 
 <GraphsTopsortSSSPRemark />
@@ -1862,9 +1870,9 @@ TBD
 </details>
 
 ```python
-# n-vertex graph provided as an adjacency list
+# T: O(V + E); S: O(V + E)
 def topological_sort(graph):
-    n = len(graph)
+    n = len(graph)                        # n-vertex graph provided as an adjacency list
     in_degree = [0] * n                   # incoming degree for each node that will decrease as nodes 
     for node in range(n):                 # are 'peeled off' and placed in the generated topological order
         for neighbor in graph[node]:
@@ -1900,7 +1908,7 @@ TBD
 ### Dijkstra (lazy)
 
 <details>
-<summary> Remarks</summary>
+<summary> How Dijkstra and BFS are similar but strikingly different</summary>
 
 <GraphsDijkstraRemark />
 
@@ -1921,8 +1929,9 @@ TBD
 </details>
 
 ```python
+# T: O(E log V); S: O(V + E)
 def dijkstra(graph, source):
-    n = len(graph)                          # Dijkstra on graph with n nodes
+    n = len(graph)                          # Dijkstra on graph with n nodes (assumed to be adjacency list)
     distances = [float('inf')] * n          # "infinitely" far from source (unvisited nodes)
     distances[source] = 0
     min_heap = []
@@ -2021,9 +2030,9 @@ def dijkstra(graph, source):
 </details>
 
 ```python
-# graph assumed to be an adjacency list of n nodes
+# T: O(VE); S: O(V + E)
 def bellman_ford(graph, start):
-    n = len(graph)
+    n = len(graph) # graph assumed to be an adjacency list of n nodes
     distances = [float('inf')] * n
     distances[start] = 0
     predecessors = [None] * n

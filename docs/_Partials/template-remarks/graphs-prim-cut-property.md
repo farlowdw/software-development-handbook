@@ -16,7 +16,7 @@ Second, a [cut](https://en.wikipedia.org/wiki/Cut_(graph_theory)) definition fro
 >
 > In graph theory, a *cut* is a partition of the vertices of a graph into two disjoint subsets. Any cut determines a *cut-set*, the set of edges that have one endpoint in each subset of the partition. These edges are said to *cross* the cut. In a connected graph, each cut-set determines a unique cut, and in some cases cuts are identified with their cut-sets rather than with their vertex partitions.
 >
-> More formally, a cut $C = (S, T)$ is a partition of $V$ of a graph $G = (V, E)$ into two subsets $S$ and $T$. The cut-set of a cut $C = (S, T)$ is the set $\{ (u,v)\in E\mid u\in S, v\in T \} of edges that have one endpoint in $S$ and the other endpoint in $T$. If $s$ and $t$ are specified vertices of the graph $G$, then an $s$–$t$ cut is a cut in which $s$ belongs to the set $S$ and $t$ belongs to the set $T$.
+> More formally, a cut $C = (S, T)$ is a partition of $V$ of a graph $G = (V, E)$ into two subsets $S$ and $T$. The cut-set of a cut $C = (S, T)$ is the set $\{ (u,v)\in E\mid u\in S, v\in T \}$ of edges that have one endpoint in $S$ and the other endpoint in $T$. If $s$ and $t$ are specified vertices of the graph $G$, then an $s$–$t$ cut is a cut in which $s$ belongs to the set $S$ and $t$ belongs to the set $T$.
 >
 > *Note:* If $V$ is partitioned into two disjoint subsets, then if $S$ is one subset, then $V - S$ must be the other subset. For this reason, it is common to see the set $T$ referred to above as $V - S$ since $T = V - S$. 
 
