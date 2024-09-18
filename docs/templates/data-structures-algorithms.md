@@ -66,6 +66,7 @@ import GraphsDijkstraTargetRemark from '@site/docs/_Partials/template-remarks/gr
 import GraphsDijkstraPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-path-reconstruction.md';
 import GraphsTopsortInventionRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-invention.md';
 import GraphsTopsortNumPathsRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-num-paths.md';
+import GraphsTopsortDFSDAGInput from '@site/docs/_Partials/template-remarks/graphs-topsort-dfs-dag-input.md';
 import GraphsBellmanFordIntuitionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-intuition.md';
 import GraphsBellmanFordRepetitionExplanationRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-repetition-explanation.md';
 import GraphsBellmanFordPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-path-reconstruction.md';
@@ -82,6 +83,12 @@ import GraphsPrimTemplateDiscussionRemark from '@site/docs/_Partials/template-re
 import GraphsPrimTemplateTimeSpaceRemark from '@site/docs/_Partials/template-remarks/graphs-prim-time-space.md';
 import GraphsKruskalExploreMotivateRemark from '@site/docs/_Partials/template-remarks/graphs-kruskal-explore-motivate.md';
 import GraphsKruskalTemplateTimeSpaceRemark from '@site/docs/_Partials/template-remarks/graphs-kruskal-time-space.md';
+import GraphsTarjanStandardImplementation from '@site/docs/_Partials/template-remarks/graphs-tarjan-standard-implementation.md';
+import GraphsTarjanTemplateDivergence from '@site/docs/_Partials/template-remarks/graphs-tarjan-template-divergence.md';
+import KadaneClarificationRemark from '@site/docs/_Partials/template-remarks/kadane-clarification.md';
+import KadaneAllowEmptyRemark from '@site/docs/_Partials/template-remarks/kadane-allow-empty.md';
+import KadaneReturnSubarrayRemark from '@site/docs/_Partials/template-remarks/kadane-return-subarray.md';
+import KadaneDPRemark from '@site/docs/_Partials/template-remarks/kadane-dp.md';
 
 <!-- TEMPLATE SOLUTIONS (NON-LEETCODE PROBLEMS) -->
 import Sol1NoLC from '@site/docs/_Partials/template-solutions/trees/induction/q1.md';
@@ -1905,6 +1912,50 @@ TBD
 
 </details>
 
+### Topological sort (DFS)
+
+<details>
+<summary> Revised template when input is guaranteed to be a DAG</summary>
+
+<GraphsTopsortDFSDAGInput />
+
+</details>
+
+```python
+# T: O(V + E); S: O(V)
+def topsort(graph):
+    n = len(graph)      # graph assumed to be provided as an adjacency list of index arrays
+    top_order = []
+    visited = [0] * n   # 0: unvisited; 1: visiting; 2: visited
+    
+    def dfs(node):
+        visited[node] = 1           # mark as visiting
+        for nbr in graph[node]:
+            if visited[nbr] == 0:   # visit unvisited neighbor
+                if not dfs(nbr):
+                    return False
+            elif visited[nbr] == 1: # found a back edge: graph has a cycle
+                return False
+            
+        visited[node] = 2           # mark as visited
+        top_order.append(node)      # add node after all descendants have been visited
+        return True
+    
+    for node in range(n):
+        if not visited[node]:
+            if not dfs(node):       # topological sort not possible
+                return []           # (return empty list)
+    
+    return top_order
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
 ### Dijkstra (lazy)
 
 <details>
@@ -2243,6 +2294,144 @@ TBD
 
 </details>
 
+### Kosaraju (SCC)
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+# T: O(V + E); S: O(V + E)
+def kosaraju(graph):
+    n = len(graph)          # graph assumed to be adjacency list of index arrays
+    visited = [False] * n
+    finish_order = []       # stack of nodes to be ordered based on finish time (first to last)
+
+    # transpose the given graph (reverses all edges)
+    def transpose_graph(graph):
+        gt = [[] for _ in range(n)]
+        for node in range(n):
+            for nbr in graph[node]:
+                gt[nbr].append(node)  # reverse edge direction
+        return gt
+
+    # first DFS pass: record finish times of nodes
+    def dfs_first_pass(node):
+        visited[node] = True            # mark current node as visited
+        for nbr in graph[node]:
+            if not visited[nbr]:
+                dfs_first_pass(nbr)     # visit all unvisited neighbors
+        
+        finish_order.append(node)       # add node to finish_order after all its descendants are visited
+
+    # second DFS pass (on transposed graph): find strongly connected components (SCCs)
+    def dfs_second_pass(node, component):
+        visited[node] = True            # mark current node as visited
+        component.append(node)          # add node to current SCC
+        for nbr in graph_transpose[node]:
+            if not visited[nbr]:
+                dfs_second_pass(nbr, component)  # visit all unvisited neighbors
+
+    # step 1: perform DFS on original graph to compute finish times
+    for node in range(n):
+        if not visited[node]:
+            dfs_first_pass(node)
+
+    # step 2: create transpose graph (reverse all edges of original graph)
+    graph_transpose = transpose_graph(graph)
+
+    # step 3: process all nodes in order of decreasing finish times
+    visited = [False] * n   # reset visited array for second pass
+    sccs = []               # initialize collection of SCCs
+    while finish_order:     # process nodes in order of decreasing finish times
+        node = finish_order.pop()   # root (first node) of current SCC
+        if not visited[node]:
+            component = []          # store nodes in current SCC
+            dfs_second_pass(node, component)  # perform DFS on transposed graph
+            sccs.append(component)  # add component to overall list of SCCs
+
+    return sccs  # return complete list of SCCs
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
+### Tarjan (SCC)
+
+<details>
+<summary> Standard implementation as it appears on Wikipedia (distinguish between tree edges and back edges)</summary>
+
+<GraphsTarjanStandardImplementation />
+
+</details>
+
+<details>
+<summary> Slight divergence from core template below to William Fiset's template (return SCCs not low-link values)</summary>
+
+<GraphsTarjanTemplateDivergence />
+
+</details>
+
+```python
+# T: O(V + E); S: O(V)
+def tarjan(graph):
+    n = len(graph)          # graph assumed to be adjacency list of index arrays
+    index = 0               # unique index assigned to each node
+    indices = [-1] * n      # index of each node
+    low_link = [0] * n      # store lowest index reachable from each node
+    on_stack = [False] * n  # boolean array to check if a node is on the stack
+    stack = []              # stack to keep track of nodes in current SCC
+    sccs = []               # list to store all SCCs
+
+    def dfs(node):
+        nonlocal index
+        low_link[node] = index  # initialize low_link value of node to be its own index
+        indices[node] = index   # assign smallest unused index to node
+        index += 1              # increment index value to ensure later nodes have higher index values
+        stack.append(node)      # push node onto the stack
+        on_stack[node] = True   # mark node as being on the stack
+
+        # explore all outgoing edges from the node
+        for nbr in graph[node]:
+            if indices[nbr] == -1:  # visit nbr if it has not yet been visited
+                dfs(nbr)
+            if on_stack[nbr]:       # nbr is on stack, thus part of current SCC (minimize low-link on callback)
+                low_link[node] = min(low_link[node], low_link[nbr])
+
+        # if node is a root node of an SCC, pop from stack and generate SCC
+        if indices[node] == low_link[node]:
+            scc = []
+            while stack:
+                scc_nbr = stack.pop()
+                on_stack[scc_nbr] = False
+                low_link[scc_nbr] = indices[node]
+                scc.append(scc_nbr)
+                if scc_nbr == node:
+                    break
+                
+            sccs.append(scc)  # add SCC to overall list of SCCs
+
+    # initialize DFS traversal
+    for v in range(n):
+        if indices[v] == -1:
+            dfs(v)
+
+    return sccs  # return list of SCCs
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
 
 ### General
 
@@ -6218,17 +6407,46 @@ def fn(nums, k):
 
 </details>
 
-### Monotonic increasing stack
+### Kadane's algorithm
 
 <details>
-<summary> Remarks</summary>
+<summary> Template clarifications</summary>
 
-TBD
+<KadaneClarificationRemark />
+
+</details>
+
+<details>
+<summary> Allow empty subarrays</summary>
+
+<KadaneAllowEmptyRemark />
+
+</details>
+
+<details>
+<summary> Return the actual subarray</summary>
+
+<KadaneReturnSubarrayRemark />
+
+</details>
+
+<details>
+<summary> Kadane's algorithm as a trivial case of dynamic programming</summary>
+
+<KadaneDPRemark />
 
 </details>
 
 ```python
-TBD
+# T: O(n); S: O(1)
+def kadane(nums):
+    max_sum = float('-inf')
+    curr_sum = 0
+    for i in range(len(nums)):
+        num = nums[i]
+        curr_sum = max(num, curr_sum + num) # maximum sum of a subarray ending at index i
+        max_sum = max(max_sum, curr_sum)    # maximum sum found so far in entire array up through index i
+    return max_sum
 ```
 
 <details>
@@ -6372,25 +6590,5 @@ def prefix_sum(nums):
 <LC303TSol />
 
 </details>
-
-</details>
-
-### Top k elements with a heap
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-```python
-TBD
-```
-
-<details>
-<summary> Examples</summary>
-
-TBD
 
 </details>

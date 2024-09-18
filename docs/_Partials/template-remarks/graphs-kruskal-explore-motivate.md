@@ -224,4 +224,27 @@ We now know that the ranks of root nodes are unaltered, but what about *nonroot*
 
 </details>
 
-As seen above, an efficient union-find data structure is critical for the viability of Kruskal's algorithm.
+We can test our template on the graph provided before the pseudocode for Kruskal's algorithm:
+
+```python
+def kruskal(graph, num_vertices):
+    # ...
+
+graph = [
+    [1, 2, 1], # B - C (1)
+    [2, 3, 2], # C - D (2)
+    [1, 3, 2], # B - D (2)
+    [2, 5, 3], # C - F (3)
+    [3, 5, 4], # D - F (4)
+    [4, 5, 4], # E - F (4)
+    [0, 3, 4], # A - D (4)
+    [0, 1, 5], # A - B (5)
+    [2, 4, 5], # C - E (5)
+    [0, 2, 6], # A - C (6)
+]
+
+kruskal(graph, 6)   # (14, [(1, 2), (2, 3), (2, 5), (4, 5), (0, 3)])
+                    #      [(B, C), (C, D), (C, F), (E, F), (A, D)]
+```
+
+The final edge list returned, namely `[(B, C), (C, D), (C, F), (E, F), (A, D)]`, *is* the MST, and this confirms the MST shown in the picture.
