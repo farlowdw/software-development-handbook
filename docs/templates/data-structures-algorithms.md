@@ -61,12 +61,15 @@ import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/lin
 import LinkedListPointerManipulation from '@site/docs/_Partials/template-remarks/linked-list-pointer-manipulation.md';
 import LinkedListSentinelNodes from '@site/docs/_Partials/template-remarks/linked-list-sentinel-nodes.md';
 import LinkedListVisualizeSinglyLinkedList from '@site/docs/_Partials/template-remarks/linked-list-visualize-singly-linked-list.md';
+import GraphsBFSConsiderations from '@site/docs/_Partials/template-remarks/graphs-bfs-basic-concepts-considerations.md';
+import GraphsDFSConsiderations from '@site/docs/_Partials/template-remarks/graphs-dfs-basic-concepts-considerations.md';
 import GraphsDijkstraRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra.md';
 import GraphsDijkstraTargetRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-with-target.md';
 import GraphsDijkstraPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-dijkstra-path-reconstruction.md';
 import GraphsTopsortInventionRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-invention.md';
 import GraphsTopsortNumPathsRemark from '@site/docs/_Partials/template-remarks/graphs-topsort-num-paths.md';
 import GraphsTopsortDFSDAGInput from '@site/docs/_Partials/template-remarks/graphs-topsort-dfs-dag-input.md';
+import GraphsTopsortDFSMotivation from '@site/docs/_Partials/template-remarks/graphs-topsort-dfs-motivation.md';
 import GraphsBellmanFordIntuitionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-intuition.md';
 import GraphsBellmanFordRepetitionExplanationRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-repetition-explanation.md';
 import GraphsBellmanFordPathReconstructionRemark from '@site/docs/_Partials/template-remarks/graphs-bellman-ford-path-reconstruction.md';
@@ -1442,12 +1445,158 @@ TBD
 
 ## Graphs
 
+### BFS
+
+<details>
+<summary> Remarks</summary>
+
+Assume the nodes are numbered from `0` to `n - 1` and the graph is given as an adjacency list. Depending on the problem, you may need to convert the input into an equivalent adjacency list before using the templates.
+
+</details>
+
+<details>
+<summary> Basic motivation, concepts, and considerations for BFS</summary>
+
+<GraphsBFSConsiderations />
+
+</details>
+
+```python
+from collections import deque
+
+def fn(graph):
+    queue = deque([START_NODE])
+    seen = {START_NODE}
+    ans = 0
+
+    while queue:
+        node = queue.popleft()
+        # do some logic
+        for neighbor in graph[node]:
+            if neighbor not in seen:
+                seen.add(neighbor)
+                queue.append(neighbor)
+    
+    return ans
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='1091' type='long' ></LC> (&check;) </summary>
+
+<LC1091PS />
+
+---
+
+<LC1091TSol />
+
+</details>
+
+<details>
+<summary> <LC id='863' type='long' ></LC> (&check;) </summary>
+
+<LC863PS />
+
+---
+
+<LC863TSol />
+
+</details>
+
+<details>
+<summary> <LC id='542' type='long' ></LC> (&check;) </summary>
+
+<LC542PS />
+
+---
+
+<LC542TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1293' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC1293PS />
+
+---
+
+<LC1293TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1129' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC1129PS />
+
+---
+
+<LC1129TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1926' type='long' ></LC> (&check;) </summary>
+
+<LC1926PS />
+
+---
+
+<LC1926TSol />
+
+</details>
+
+<details>
+<summary> <LC id='909' type='long' ></LC> (&check;) </summary>
+
+<LC909PS />
+
+---
+
+<LC909TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1376' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
+
+<LC1376PS />
+
+---
+
+<LC1376TSol />
+
+</details>
+
+<details>
+<summary> <LC id='994' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC994PS />
+
+---
+
+<LC994TSol />
+
+</details>
+
+</details>
+
 ### DFS (recursive)
 
 <details>
 <summary> Remarks</summary>
 
 Assume the nodes are numbered from `0` to `n - 1` and the graph is given as an adjacency list. Depending on the problem, you may need to convert the input into an equivalent adjacency list before using the templates.
+
+</details>
+
+<details>
+<summary> Basic motivation, concepts, and considerations for DFS</summary>
+
+<GraphsDFSConsiderations />
 
 </details>
 
@@ -1648,211 +1797,6 @@ TBD
 
 </details>
 
-### BFS
-
-<details>
-<summary> Remarks</summary>
-
-Assume the nodes are numbered from `0` to `n - 1` and the graph is given as an adjacency list. Depending on the problem, you may need to convert the input into an equivalent adjacency list before using the templates.
-
-</details>
-
-```python
-from collections import deque
-
-def fn(graph):
-    queue = deque([START_NODE])
-    seen = {START_NODE}
-    ans = 0
-
-    while queue:
-        node = queue.popleft()
-        # do some logic
-        for neighbor in graph[node]:
-            if neighbor not in seen:
-                seen.add(neighbor)
-                queue.append(neighbor)
-    
-    return ans
-```
-
-<details>
-<summary> Examples</summary>
-
-<details>
-<summary> <LC id='1091' type='long' ></LC> (&check;) </summary>
-
-<LC1091PS />
-
----
-
-<LC1091TSol />
-
-</details>
-
-<details>
-<summary> <LC id='863' type='long' ></LC> (&check;) </summary>
-
-<LC863PS />
-
----
-
-<LC863TSol />
-
-</details>
-
-<details>
-<summary> <LC id='542' type='long' ></LC> (&check;) </summary>
-
-<LC542PS />
-
----
-
-<LC542TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1293' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
-
-<LC1293PS />
-
----
-
-<LC1293TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1129' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
-
-<LC1129PS />
-
----
-
-<LC1129TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1926' type='long' ></LC> (&check;) </summary>
-
-<LC1926PS />
-
----
-
-<LC1926TSol />
-
-</details>
-
-<details>
-<summary> <LC id='909' type='long' ></LC> (&check;) </summary>
-
-<LC909PS />
-
----
-
-<LC909TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1376' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
-
-<LC1376PS />
-
----
-
-<LC1376TSol />
-
-</details>
-
-<details>
-<summary> <LC id='994' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
-
-<LC994PS />
-
----
-
-<LC994TSol />
-
-</details>
-
-</details>
-
-### Implicit
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-```python
-TBD
-```
-
-<details>
-<summary> Examples</summary>
-
-<details>
-<summary> <LC id='752' type='long' ></LC> (&check;) </summary>
-
-<LC752PS />
-
----
-
-<LC752TSol />
-
-</details>
-
-<details>
-<summary> <LC id='399' type='long' ></LC> (&check;) </summary>
-
-<LC399PS />
-
----
-
-<LC399TSol />
-
-</details>
-
-<details>
-<summary> <LC id='433' type='long' ></LC> (&check;) </summary>
-
-<LC433PS />
-
----
-
-<LC433TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1306' type='long' ></LC> (&check;) </summary>
-
-<LC1306PS />
-
----
-
-<LC1306TSol />
-
-</details>
-
-<details>
-<summary> <LC id='2101' type='long' ></LC> (&check;) </summary>
-
-<LC2101PS />
-
----
-
-<LC2101TSol />
-
-</details>
-
-</details>
-
 ### Topological sort (Kahn's algorithm)
 
 <details>
@@ -1918,6 +1862,13 @@ TBD
 <summary> Revised template when input is guaranteed to be a DAG</summary>
 
 <GraphsTopsortDFSDAGInput />
+
+</details>
+
+<details>
+<summary> Motivation for DFS-based algorithm for finding a topological sort</summary>
+
+<GraphsTopsortDFSMotivation />
 
 </details>
 
@@ -2430,6 +2381,79 @@ def tarjan(graph):
 <summary> Examples</summary>
 
 TBD
+
+</details>
+
+### Implicit
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+TBD
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='752' type='long' ></LC> (&check;) </summary>
+
+<LC752PS />
+
+---
+
+<LC752TSol />
+
+</details>
+
+<details>
+<summary> <LC id='399' type='long' ></LC> (&check;) </summary>
+
+<LC399PS />
+
+---
+
+<LC399TSol />
+
+</details>
+
+<details>
+<summary> <LC id='433' type='long' ></LC> (&check;) </summary>
+
+<LC433PS />
+
+---
+
+<LC433TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1306' type='long' ></LC> (&check;) </summary>
+
+<LC1306PS />
+
+---
+
+<LC1306TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2101' type='long' ></LC> (&check;) </summary>
+
+<LC2101PS />
+
+---
+
+<LC2101TSol />
+
+</details>
 
 </details>
 
