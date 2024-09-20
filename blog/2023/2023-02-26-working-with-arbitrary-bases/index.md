@@ -228,7 +228,8 @@ $$
 
 in the expression
 
-$${\small
+$$
+{\small
 N=\underbrace{a_nb^n+a_{n-1}b^{n-1}+a_{n-2}b^{n-2}+\cdots+a_2b^2+a_1b^1+a_0b^0}_{\text{integer portion}}+\underbrace{a_{-1}b^{-1}+\cdots+a_{-(m-1)}b^{-(m-1)}+a_{-m}b^{-m}+\cdots}_{\text{fractional portion}},}
 $$
 
@@ -380,7 +381,8 @@ An expression like $(.3012)_b$ is called a **radix fraction** for base $b$. A ra
 
 **Solution:** Consider the following number $N$ in base $b$:
 
-$${\small
+$$
+{\small
 N=\underbrace{a_nb^n+a_{n-1}b^{n-1}+a_{n-2}b^{n-2}+\cdots+a_2b^2+a_1b^1+a_0b^0}_{\text{integer portion}}+\underbrace{a_{-1}b^{-1}+\cdots+a_{-(m-1)}b^{-(m-1)}+a_{-m}b^{-m}+\cdots}_{\text{fractional portion}}.}
 $$
 
