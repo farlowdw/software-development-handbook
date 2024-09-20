@@ -86,6 +86,7 @@ import GraphsPrimTemplateDiscussionRemark from '@site/docs/_Partials/template-re
 import GraphsPrimTemplateTimeSpaceRemark from '@site/docs/_Partials/template-remarks/graphs-prim-time-space.md';
 import GraphsKruskalExploreMotivateRemark from '@site/docs/_Partials/template-remarks/graphs-kruskal-explore-motivate.md';
 import GraphsKruskalTemplateTimeSpaceRemark from '@site/docs/_Partials/template-remarks/graphs-kruskal-time-space.md';
+import GraphsKosarajuMotivationRemark from '@site/docs/_Partials/template-remarks/graphs-kosaraju-motivation.md';
 import GraphsTarjanStandardImplementation from '@site/docs/_Partials/template-remarks/graphs-tarjan-standard-implementation.md';
 import GraphsTarjanTemplateDivergence from '@site/docs/_Partials/template-remarks/graphs-tarjan-template-divergence.md';
 import KadaneClarificationRemark from '@site/docs/_Partials/template-remarks/kadane-clarification.md';
@@ -1859,16 +1860,16 @@ TBD
 ### Topological sort (DFS)
 
 <details>
-<summary> Revised template when input is guaranteed to be a DAG</summary>
+<summary> Motivation for DFS-based algorithm for finding a topological sort</summary>
 
-<GraphsTopsortDFSDAGInput />
+<GraphsTopsortDFSMotivation />
 
 </details>
 
 <details>
-<summary> Motivation for DFS-based algorithm for finding a topological sort</summary>
+<summary> Revised template when input is guaranteed to be a DAG</summary>
 
-<GraphsTopsortDFSMotivation />
+<GraphsTopsortDFSDAGInput />
 
 </details>
 
@@ -2248,9 +2249,9 @@ TBD
 ### Kosaraju (SCC)
 
 <details>
-<summary> Remarks</summary>
+<summary> Basic motivation, concepts, and considerations for Kosaraju</summary>
 
-TBD
+<GraphsKosarajuMotivationRemark />
 
 </details>
 
