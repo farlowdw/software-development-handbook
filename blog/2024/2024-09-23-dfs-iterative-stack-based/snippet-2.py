@@ -1,5 +1,6 @@
 from collections import deque
 
+# node mapping from index to letter: "index : letter"
 lookup = {
     0: 'S',
     1: 'A',
@@ -12,6 +13,7 @@ lookup = {
     8: 'H',
 }
 
+# graph definition (adjacency list of index arrays)
 graph = [         # Edges:
     [1, 3],       # S: (S, A), (S, C)
     [0, 2, 4],    # A: (A, S), (A, B), (A, D)
@@ -24,7 +26,8 @@ graph = [         # Edges:
     [5, 7],       # H: (H, E), (H, G)
 ]
 
+# tinker with your own traversals
 def some_traversal(graph, source):
-    # tinker with your own traversal(s)
+    pass # your traversal code here
 
 some_traversal(graph, 0)

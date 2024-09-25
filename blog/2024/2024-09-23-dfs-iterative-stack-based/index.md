@@ -372,13 +372,13 @@ The code editors below use [Piston API](https://piston.readthedocs.io/en/latest/
 
 All of the traversals and their variants remarked on above in this post can be difficult to absorb all at once. It can help to see each traversal implemented in one environment, where discovered nodes and the nodes by which they are discovered are detailed explicitly:
 
-<CodeEditor initialCode={snippet1} editorSettings={{ line: 155 }} />
+<CodeEditor initialCode={snippet1} foldedRegions={[[4,13], [17,26], [30,43], [46,58], [61,74], [77,91], [94,108], [111, 122], [125,136]]} />
 
 ### Your own traversals
 
 Try experimenting with your own traversals by tweaking different approaches in the editor above or by engineering something completely new. The `graph` definition and corresponding `lookup` have been pre-filled for ease of use and reference.
 
-<CodeEditor initialCode={snippet2} editorSettings={{ line: 25 }} />
+<CodeEditor initialCode={snippet2} foldedRegions={[[4,13], [17,26]]} />
 
 ## Stack-based graph traversal ≠ depth first search (original blog post) {#blog-post}
 

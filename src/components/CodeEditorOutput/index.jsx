@@ -14,6 +14,7 @@ const CodeEditorOutput = ({
 	compile_memory_limit,
 	run_memory_limit,
 	initial_code,
+  foldCodeRegions, // Receive the function as a prop
 }) => {
 	const [output, setOutput] = useState(
 		'Click "Run Code" to see the output here'
@@ -58,17 +59,20 @@ const CodeEditorOutput = ({
 		}
 	};
 
-	const resetCode = () => {
-		setIsResetting(true);
-		if (editorRef.current) {
-			editorRef.current.setValue(initial_code);
-		}
-		setOutput('Click "Run Code" to see the output here');
+  const resetCode = async () => {
+    setIsResetting(true);
+    if (editorRef.current) {
+      editorRef.current.setValue(initial_code);
+    }
+    setOutput('Click "Run Code" to see the output here');
 
-		setTimeout(() => {
-			setIsResetting(false);
-		}, 100);
-	};
+    // Re-apply code folding
+    if (foldCodeRegions) {
+      await foldCodeRegions();
+    }
+
+    setIsResetting(false);
+  };
 
 	const clearEditor = () => {
 		if (editorRef.current) {

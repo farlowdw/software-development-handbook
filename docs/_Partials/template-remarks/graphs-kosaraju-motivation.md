@@ -113,7 +113,7 @@ graph = [
     [8],
     [9],
     [0],
-    [7],
+    [0, 7],
     [6, 10],
     [2],
     [4, 8],
@@ -160,6 +160,7 @@ Running the aforementioned algorithm yields the following (formatted manually fo
     ('K', 'J'): 'crossEdge',
     ('B', 'I'): 'treeEdge',
     ('I', 'K'): 'crossEdge',
+    ('E', 'A'): 'crossEdge',
     ('E', 'H'): 'treeEdge',
     ('H', 'E'): 'backEdge',
     ('H', 'I'): 'crossEdge'
