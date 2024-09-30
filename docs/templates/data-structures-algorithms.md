@@ -882,6 +882,61 @@ TBD
 
 ## Binary search
 
+The two templates immediately below represent *pending* templates. The first for binary search on an array:
+
+```python
+def binary_search(arr, target):
+    left = 0              # starting index of search range (inclusive)
+    right = len(arr) - 1  # ending index of search range (inclusive)
+    result = -1           # result of -1 indicates target has not been found yet
+
+    while left <= right:                  # continue search while range is valid
+        mid = left + (right - left) // 2  # prevent potential overflow
+        if arr[mid] < target:             # target is in right half
+            left = mid + 1                #   (move `left` to narrow search range to right half)
+        elif arr[mid] > target:           # target is in left half
+            right = mid - 1               #   (move `right` to narrow search range to left half)
+        else:                             # target found (i.e., arr[mid] == target)
+            result = mid                  # store index where target is found (early return, if desired)
+            right = mid - 1               # uncomment to find first occurrence by narrowing search range to left half
+            # left = mid + 1              # uncomment to find last occurrence by narrowing search range to right half
+            
+    if result != -1:
+        return result                     # target was found; return its index
+    else:
+        return left                       # target was not found; return insertion point to maintain sorted order
+
+# NOTES:
+# only one of the following lines should be uncommented in the else clause: `right = mid - 1` and `left = mid + 1` should 
+# `right = mid - 1` uncommented and `left = mid + 1` commented out results in searching for first occurrence of target
+# `left = mid + 1` uncommented and `right = mid - 1` commented out results in searching for last occurrence of target
+```
+
+And for binary search on a solution space:
+
+```python
+def binary_search_sol_space(arr):
+    def possible(threshold):
+        # this function is implemented depending on the problem
+        return BOOLEAN
+
+    left = MINIMUM_POSSIBLE_ANSWER  # minimum possible value in solution space (inclusive)
+    right = MAXIMUM_POSSIBLE_ANSWER # maximum possible value in solution space (inclusive)
+    result = -1                     # desired result (-1 to indicate no valid value found yet)
+    
+    while left <= right:            # continue search while range is valid
+        mid = left + (right - left) // 2
+        if possible(mid):
+            result = mid            # mid satisfies condition; update result
+            right = mid - 1         # adjust right to find smaller valid value (minimization)
+        else:
+            left = mid + 1          # mid doesn't satisfy condition; search right half
+                                    # IMPORTANT: swap `right = mid - 1` and `left = mid + 1`
+                                    #   if looking to maximize valid value (i.e., instead of minimize)
+    
+    return result                   # return best value found satisfying condition
+```
+
 ### Find first target index (if it exists) {#bs-template}
 
 <details>
