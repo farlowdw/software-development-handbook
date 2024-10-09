@@ -728,6 +728,11 @@ div[class*='codeBlockTitle_'] {
       pointer-events: none; // Ensures click events pass through
   }
 }
+
+.code-block-error-line-numbers {
+  background-color: #ff000020;
+  box-shadow: inset 3px 0 0 0 #ff000080;
+}
 /* End code block error line styling */
 
 /* Begin code block success line styling */
@@ -749,6 +754,11 @@ div[class*='codeBlockTitle_'] {
       pointer-events: none; // Ensures click events pass through
   }
 }
+
+.code-block-success-line-numbers {
+  background-color: #00ff0020;
+  box-shadow: inset 3px 0 0 0 #00ff0080;
+}
 /* End code block success line styling */
 
 /* Begin code block warning line styling */
@@ -769,6 +779,11 @@ div[class*='codeBlockTitle_'] {
       background: #ffff0080; // Border color
       pointer-events: none; // Ensures click events pass through
   }
+}
+
+.code-block-warning-line-numbers {
+  background-color: #ffff0035;
+  box-shadow: inset 3px 0 0 0 #ffff0080;
 }
 /* End code block warning line styling */
 

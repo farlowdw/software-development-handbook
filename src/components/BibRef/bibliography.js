@@ -5,6 +5,27 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'AL2024',
+      title: `Guide to Competitive Programming: Learning and Improving Algorithms Through Contests`,
+      author: 'Antti Laaksonen',
+      time: '2024',
+      link: 'https://www.amazon.com/gp/product/3030393569',
+    },
+    {
+      id: 'CP4B2',
+      title: `Competitive Programming 4 - Book 2`,
+      author: 'Steven Halim',
+      time: '2018',
+      link: 'https://www.amazon.com/gp/product/B093K67NVN',
+    },
+    {
+      id: 'CP4B1',
+      title: `Competitive Programming 4 - Book 1`,
+      author: 'Steven Halim',
+      time: '2018',
+      link: 'https://www.amazon.com/gp/product/B093G64LY2',
+    },
+    {
       id: 'DPV',
       title: `Algorithms`,
       author: 'Sanjoy Dasgupta, Christos Papadimitriou, and Umesh Vazirani',

@@ -48,7 +48,6 @@ const CodeEditorOutput = ({
 				'https://emkc.org/api/v2/piston/execute',
 				payload
 			);
-      console.log(response)
 			const result = response.data.run;
 			setOutput(result.output || 'No output');
 		} catch (error) {

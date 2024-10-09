@@ -382,14 +382,29 @@ const config = {
             block: { start: 'highlight-error-start', end: 'highlight-error-end' },
           },
           {
+            className: 'code-block-error-line-numbers',
+            line: 'highlight-error-next-line-numbers',
+            block: { start: 'highlight-error-start-numbers', end: 'highlight-error-end-numbers' },
+          },
+          {
             className: 'code-block-success-line',
             line: 'highlight-success-next-line',
             block: { start: 'highlight-success-start', end: 'highlight-success-end' },
           },
           {
+            className: 'code-block-success-line-numbers',
+            line: 'highlight-success-next-line-numbers',
+            block: { start: 'highlight-success-start-numbers', end: 'highlight-success-end-numbers' },
+          },
+          {
             className: 'code-block-warning-line',
             line: 'highlight-warning-next-line',
             block: { start: 'highlight-warning-start', end: 'highlight-warning-end' },
+          },
+          {
+            className: 'code-block-warning-line-numbers',
+            line: 'highlight-warning-next-line-numbers',
+            block: { start: 'highlight-warning-start-numbers', end: 'highlight-warning-end-numbers' },
           },
         ],
         additionalLanguages: [

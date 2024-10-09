@@ -3,15 +3,12 @@ import Editor from '@monaco-editor/react';
 import CodeEditorOutput from '@site/src/components/CodeEditorOutput';
 import { useColorMode } from '@docusaurus/theme-common';
 
-// https://microsoft.github.io/monaco-editor/playground.html?source=v0.52.0
-// https://www.npmjs.com/package/@monaco-editor/react#monaco-instance
-const CodeEditor = ({ 
-    initialCode = '', 
-    editorSettings = {},
-    outputSettings = {},
-    foldedRegions = []
-  }) => {
-
+const CodeEditor = ({
+  initialCode = '',
+  editorSettings = {},
+  outputSettings = {},
+  foldedRegions = [],
+}) => {
   const editorRef = useRef();
   const monacoRef = useRef();
   const [code, setCode] = useState(initialCode);
@@ -25,8 +22,11 @@ const CodeEditor = ({
     // Wait for the editor to be ready
     await editor.getModel(); // Ensure the model is loaded
 
-    // Fold the specified regions
-    await foldSpecifiedRegions(editor, monaco, foldedRegions);
+    if (foldedRegions && foldedRegions.length > 0) {
+      // Fold the specified regions
+      await foldSpecifiedRegions(editor, monaco, foldedRegions);
+    }
+
     editor.setPosition({ lineNumber: 1, column: 1 });
     editor.revealLineInCenter(1);
   };
@@ -48,7 +48,12 @@ const CodeEditor = ({
 
   // Expose the foldCodeRegions function
   const foldCodeRegions = async () => {
-    if (editorRef.current && monacoRef.current) {
+    if (
+      editorRef.current &&
+      monacoRef.current &&
+      foldedRegions &&
+      foldedRegions.length > 0
+    ) {
       await foldSpecifiedRegions(editorRef.current, monacoRef.current, foldedRegions);
     }
   };
@@ -61,11 +66,8 @@ const CodeEditor = ({
     value: code,
     options: { minimap: { enabled: false }, fontSize: 14 },
     onChange: (value) => setCode(value),
-  }
-
-  if (foldedRegions.length != 0) {
-    DEFAULT_EDITOR_SETTINGS['onMount'] = handleEditorMount;
-  }
+    onMount: handleEditorMount,
+  };
 
   const DEFAULT_OUTPUT_PROPS = {
     language: 'python',
@@ -78,11 +80,17 @@ const CodeEditor = ({
     compile_memory_limit: -1,
     run_memory_limit: -1,
     initial_code: initialCode,
-    foldCodeRegions: foldCodeRegions, // Pass the function as a prop
-  }
+    foldCodeRegions: foldCodeRegions,
+  };
 
-  const FINAL_EDITOR_SETTINGS = Object.assign(DEFAULT_EDITOR_SETTINGS, editorSettings);
-  const FINAL_OUTPUT_PROPS = Object.assign(DEFAULT_OUTPUT_PROPS, outputSettings);
+  const FINAL_EDITOR_SETTINGS = {
+    ...DEFAULT_EDITOR_SETTINGS,
+    ...editorSettings,
+  };
+  const FINAL_OUTPUT_PROPS = {
+    ...DEFAULT_OUTPUT_PROPS,
+    ...outputSettings,
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
