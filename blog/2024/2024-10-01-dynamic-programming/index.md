@@ -96,7 +96,7 @@ This post explores dynamic programming. As usual, the Fibonacci numbers are used
 
 :::info Attribution
 
-The notes below come from the [Algorithms with Attitude](https://www.youtube.com/@AlgorithmswithAttitude/playlists) YouTube channel, specifically the [Dynamic Programming](https://www.youtube.com/playlist?list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX) playlist comprised of the following videos: [Introduction to Dynamic Programming: Fibonacci Numbers](https://www.youtube.com/watch?v=GqdW9Abi2gE&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=1), [Rod Cutting](https://www.youtube.com/watch?v=re9rF9SqRFc&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=2), [Subset Sum](https://www.youtube.com/watch?v=C0xiOGhS_js&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=3), and [Floyd-Warshall All-Pairs Shortest Paths: A Dynamic Programming Approach](https://www.youtube.com/watch?v=miJ88I43x4E&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=4.)
+The notes below come from the [Algorithms with Attitude](https://www.youtube.com/@AlgorithmswithAttitude/playlists) YouTube channel, specifically the [Dynamic Programming](https://www.youtube.com/playlist?list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX) playlist comprised of the following videos: [Introduction to Dynamic Programming: Fibonacci Numbers](https://www.youtube.com/watch?v=GqdW9Abi2gE&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=1), [Rod Cutting](https://www.youtube.com/watch?v=re9rF9SqRFc&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=2), [Subset Sum](https://www.youtube.com/watch?v=C0xiOGhS_js&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=3), and [Floyd-Warshall All-Pairs Shortest Paths: A Dynamic Programming Approach](https://www.youtube.com/watch?v=miJ88I43x4E&list=PLSVu1-lON6LwaLkn1J4slNQEp2oEjWCqX&index=4).
 
 :::
 
