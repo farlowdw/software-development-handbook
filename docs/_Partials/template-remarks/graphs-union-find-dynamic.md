@@ -80,7 +80,7 @@ But both approaches above rely on being provided a graph with a fixed number of 
 
 We can use hash maps! But note how this now becomes much more of a data structure *design* problem in terms of how the different methods should behave:
 
-- `make_set(x)`: If `x` is already in the data structure, then should its information be overwritten? Probably note.
+- `make_set(x)`: If `x` is already in the data structure, then should its information be overwritten? Probably not.
 - `find(x)`: If `x` is not yet in the data structure, then should this method throw an error? Maybe.
 - `union(x, y)`: If one or both of the elements is not in the data structure, then should this method throw an error? Maybe.
 - `connected(x, y)`: If one or both of the elements is not in the data structure, then should this method throw an error? Maybe.
