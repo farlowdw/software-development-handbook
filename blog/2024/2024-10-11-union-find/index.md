@@ -21,36 +21,11 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import TOCInline from '@theme/TOCInline';
 import LC from '@site/src/components/LC';
 import BibRef from '@site/src/components/BibRef';
-import TOCInline from '@theme/TOCInline';
-
 import CodeGrid from '@site/src/components/CodeGrid';
 import CodeGridCell from '@site/src/components/CodeGridCell';
-import CodeEditor from '@site/src/components/CodeEditor';
-import ImageCarousel from '@site/src/components/ImageCarousel';
-
-<!-- import snippet1 from '!!raw-loader!./snippet-1.py'; -->
-<!-- import snippet2 from '!!raw-loader!./snippet-2.py'; -->
-
-export const bfsLevelImages = [
-  {
-    label: '0 links away from start node',
-    path: '/img/blog-images/learning-bfs/f7.png',
-  },
-  {
-    label: '1 link away from start node',
-    path: '/img/blog-images/learning-bfs/f8.png',
-  },
-  {
-    label: '2 links away from start node',
-    path: '/img/blog-images/learning-bfs/f9.png',
-  },
-  {
-    label: '3 links away from start node',
-    path: '/img/blog-images/learning-bfs/f10.png',
-  }
-]
 
 This post explores the union-find data structure specifically from the vantage point of how we might endeavor going about coming up with the data structure ourselves. A number of templates are then provided.
 
