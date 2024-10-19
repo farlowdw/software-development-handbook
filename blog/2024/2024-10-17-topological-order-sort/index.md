@@ -5,17 +5,12 @@ draft: false
 description: >-
   This post explores what topological sorting is all about and includes two methods for obtaining a topological ordering on a DAG: Kahn's algorithm and a DFS-based approach. The DFS approach is then used in Kosaraju's algorithm to identify strongly connected components of a graph.
 tags: 
-  - Graphs
-  - Bellman-Ford
-  - Dijkstra
-  - DAG
+  - Topological Sort
+  - Kosaraju
   - Tutorial
   - Algorithms with Attitude
 keywords: 
-  - graphs
-  - dag
-  - dijkstra
-  - bellman-ford
+  - topological sort
   - algorithms with attitude
 authors: 
   - farlow
