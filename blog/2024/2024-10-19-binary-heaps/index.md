@@ -33,7 +33,7 @@ import ImageCarousel from '@site/src/components/ImageCarousel';
 
 <!-- import snippet1 from '!!raw-loader!./snippet-1.py'; -->
 
-This post explores what topological sorting is all about and includes two methods for obtaining a topological ordering on a DAG: Kahn's algorithm and a DFS-based approach. The DFS approach is then used in Kosaraju's algorithm to identify strongly connected components of a graph.
+This post explores binary heaps, including what they are, a linear time method for building a heap, heap sort, binary heaps for priority queues, and optimized heapify.
 
 <!--truncate-->
 
