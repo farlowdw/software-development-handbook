@@ -1,6 +1,6 @@
 ---
 title: >-
-  Graphs: Basics (with attitude)
+  Graphs: basics (with attitude)
 draft: false
 description: This post explores graphs (as a concept), how to represent graphs in code, breadth-first search (BFS), and depth-first search (DFS).
 tags: 

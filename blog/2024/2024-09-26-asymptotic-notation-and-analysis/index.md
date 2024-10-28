@@ -1,5 +1,5 @@
 ---
-title: Asymptotic notation and analysis, recurrence relations, and random background math topics
+title: Asymptotic notation and analysis, recurrence relations, and random background math topics (with attitude)
 draft: false
 description: This post explores a variety of topics related to asymptotic notation and analysis, specifically big-O notation. We then venture into recurrence relations and a few different isolated mathematical topics.
 tags: 

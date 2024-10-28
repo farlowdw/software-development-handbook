@@ -1645,11 +1645,500 @@ The pseudocode above can be implemented in Python in the following way:
 
 ## Runtime analysis for quick sort and quick select {#qs-full-analysis}
 
-TBD
+### Introduction
+
+We'll start by looking at the intuition behind and formal anlysis of quick select. Then we'll move on to quick sort.
+
+### Quick select analysis
+
+In quick select, when we partition the array, it takes linear time, and afterwards we have one partition comprised of elements smaller than the pivot and one partition comprised of elements larger than the pivot. If one partition has 90% of the original set, and the number we're looking for is in *that* partition, it seems like we got a bit unlucky. We'd hope to do better than that.
+
+What happens if we get unlucky like that every time? That is, if our pivot only eliminates 10% of the elements for each pass, then we get a simple recurrence relation:
+
+$$
+T(n) = T(9n/10) + n
+$$
+
+Any of the three analytical methods we saw previously can be used to prove that this recurrence relation is linear. 
+
+We could *guess* that it's linear and use the substitution method, expand it using the recursion tree method, or use the master method:
+
+1. Substitution method:
+    + Inductive hypothesis: for $k < n$, $T(k)\leq Ck$
+    + $T(n) = T(9n/10) + n\stackrel{\text{i.h.}}{\leq} C9n/10 + n\stackrel{?}{\leq} Cn$
+    + True for $C=10$
+2. Recursion tree:
+    + Prove $T(n) = T((9/10)^i n) + \sum_{j=0}^{i-1}(9/10)^jn$ by induction
+    + For $i = \lg_{10/9}n$, $T(n) = T(1) + \sum_{j=0}^{(\lg_{10/9}n)-1}(9/10)^j n\leq T(1) + \sum_{j=0}^\infty(9/10)^j n\leq T(1)+10n$
+3. Master Theorem:
+    + $a = 1, b = 10/9, f(n) = n$
+    + $\lg_b a = \lg_{10/9}1 = 0$
+    + $n=\Omega(n^{0+\epsilon})$ for $\epsilon=1$, case 3, $T(n) = O(f(n)) = O(n)$
+
+Even if we're most pessimistic and imagine that we only get rid of 1% of the set each time we partition, changing our recurrence to $T(n) = T(99n/100) + n$:
+
+1. Substitution method:
+    + Inductive hypothesis: for $k < n$, $T(k)\leq Ck$
+    + $T(n) = T(99n/100) + n\stackrel{\text{i.h.}}{\leq} C99n/100 + n\stackrel{?}{\leq} Cn$
+    + True for $C=100$
+2. Recursion tree:
+    + Prove $T(n) = T((99/100)^i n) + \sum_{j=0}^{i-1}(99/100)^jn$ by induction
+    + For $i = \lg_{100/99}n$, $T(n) = T(1) + \sum_{j=0}^{(\lg_{100/99}n)-1}(99/100)^j n\leq T(1) + \sum_{j=0}^\infty(99/100)^j n\leq T(1)+100n$
+3. Master Theorem:
+    + $a = 1, b = 100/99, f(n) = n$
+    + $\lg_b a = \lg_{100/99}1 = 0$
+    + $n=\Omega(n^{0+\epsilon})$ for $\epsilon=1$, case 3, $T(n) = O(f(n)) = O(n)$
+
+Or maybe 1% of the set each 5 times we partition, changing our recurrence to $T(n) = T(99n/100) + 5n$:
+
+1. Substitution method:
+    + Inductive hypothesis: for $k < n$, $T(k)\leq Ck$
+    + $T(n) = T(99n/100) + 5n\stackrel{\text{i.h.}}{\leq} C99n/100 + 5n\stackrel{?}{\leq} Cn$
+    + True for $C=500$
+2. Recursion tree:
+    + Prove $T(n) = T((99/100)^i n) + \sum_{j=0}^{i-1}(99/100)^jn$ by induction
+    + For $i = \lg_{100/99}n$, $T(n) = T(1) + \sum_{j=0}^{(\lg_{100/99}n)-1}(99/100)^j 5n\leq T(1) + \sum_{j=0}^\infty(99/100)^j 5n\leq T(1)+500n$
+3. Master Theorem:
+    + $a = 1, b = 100/99, f(n) = 5n$
+    + $\lg_b a = \lg_{100/99}1 = 0$
+    + $5n=\Omega(n^{0+\epsilon})$ for $\epsilon=1$, case 3, $T(n) = O(f(n)) = O(5n) = O(n)$
+
+We *still* get a linear runtime. It's just that the *constants* get worse, as seen above. That's a good intuition, but what if we want to make it a bit more formal and accurate?
+
+### Complexity of precision
+
+We're assuming that we're looking for the $k$th smallest item from $n$ distinct values when we perform quick select, where the first smallest item is the smallest item, and the $n$th smallest item is the largest item, and all of the items are distinct. 
+
+Our runtime might then depend not only on $n$ but also on $k$. Can we write down an accurate recurrence relation for that? It takes linear time to partition, and for any $i$ from $1$ to $n$, there's an equal probability of picking the $i$th smallest item from the array as our pivot. If $i$ is less than $k$, then we need to recursively search all elements with rank larger than $i$ for the $k-1$th smallest element. If $i$ equals $k$, then we're done. And if $i$ is greater than $k$, then we need to search all elements with rank less than $i$ for the $k$th smallest. This gives us the following recurrence:
+
+$$
+T(n, k) = n - 1 + \frac{1}{n}\Bigl(\sum_{i=1}^{k-1} T(n-i, k-i) + 0 + \sum_{i=k+1}^n T(i-1,k)\Bigr)
+$$
+
+Maybe the formulation above is a bit too precise. It looks complex enough that we really don't want to solve it. We'll leave it as an exercise for the reader. Ha. 
+
+### Formal analysis
+
+Instead, we'll make some pessimistic assumptions that aren't quite as clumsy as the ones we started with. Imagine we're running the algorithm but against an adversary that gets to change the rank we're seeing after each time we partition, as long as it doesn't change it to something we've already discarded, but it can force us to always have to search the bigger partition (i.e., the adversary can tell us if the rank is larger or smaller than each pivot we pick):
+
+- Pick a random pivot from $n$ distinct items
+- Adversary won't let us finish until there is only one item left
+- Adversary always picks the larger partition for us to recursively search
+
+Thus, given $n$ distinct items, we still assume, that we pick a random item as our pivot, but unless there's just one item, we never get lucky and pick it, and we always have to recursively step into whichever partition has more elements. If our pivot has rank less than $n/2$, then we need to search everything that's larger than it, and if the pivot has rank larger than $n/2$, then we need to search everything smaller:
+
+$$
+T(n) = n\frac{1}{n}\Bigl(\sum_{i=1}^{n/2} T(n-i) +  \sum_{i=n/2+1}^n T(i)\Bigr) = n+\frac{2}{n}\sum_{i=n/2+1}^n T(i)
+$$
+
+We can simplify some repeated terms, and the recurrence relation above is pessimistic but also more realistic than our first pessimistic recurrence relation. It allows for the possibility that we get a really bad partition like picking the absolute maximum value element when we're looking for something else, but that possibility is weighted by a realistic probability.
+
+So how do we solve that recurrence relation? Well, this is a recurrence relation where we should be glad to have a guess to start. Guessing that it's linear, we use the substitution method, plug in for the arithmetic series, and see that linear works.
+
+Specifically, the inductive hypothesis is that for $k < n$, $T(k)\leq Ck$, and we have
+
+$$
+\begin{align*}
+T(n)
+&= n+\frac{2}{n}\sum_{i=n/2+1}^n T(i)\\
+&\stackrel{\text{i.h.}}{\leq} n + \sum_{i=n/2+1}^n + Ci\\
+&= n + \frac{2}{n}C\frac{n}{2}\frac{n/2+1+n}{2}\\
+&= n + C\frac{3}{4}n + C/2\\
+&\stackrel{?}{\leq} Cn
+\end{align*}
+$$
+
+which is true for $C = 8, n\geq 4=n_0$. 
+
+The math above makes the simplifying assumption that $n$ is even, but the result holds for odd $n$ too.
+
+### Quick sort analysis
+
+Let's start with the same intuitive approach we used for quick select. If we break exactly in the middle, we get a well-known recurrence relation that gives us order $n\lg n$ runtime:
+
+$$
+T(n) = 2T(n/2) + n = \Theta(n\lg n)
+$$
+
+But what if we go back to our assumption that we get a pivot 90% of the way through the block? We can use the substitution method to show that that gives an order $n\lg n$ relation:
+
+- What if we pick 90% pivot each pass?
+- $T(n) = T(9n/10) + T(n/10) + n$
+- Substitution method:
+  + Inductive hypothesis: for $k < n$, $T(k)\leq Ck\lg k$
+  + $T(n) = T(9n/10) + T(n/10) + n \stackrel{\text{i.h.}}{\leq} C9n/10\lg 9n/10 + Cn/10\lg n/10 + n = C9n/10(\lg n - \lg 10/9) + Cn/10(\lg n - \lg 10) + n = Cn\lg n + n - (C9n/10) \lg 10/9 - (Cn/10)\lg 10\stackrel{?}{\leq} Cn\lg n$
+  + True for $C = 10$
+
+But already that's pretty ugly looking. We could also prove that with the Akra-Bazzi extension of the Master Theorem.
+
+### Original approach
+
+If we want more precision, then, unlike quick select, we only have one parameter here. So let's again go back to write out the recurrence relation, assuming that we pick the $i$th smallest element as our pivot. And we'll assume that we're using the Lomuto partition on distinct elements. We'll have two recursive calls, one on the $i - 1$ elements smaller than the pivot and one on the $n - i$ elements larger than the pivot:
+
+$$
+T(n) = n - 1 + \frac{1}{n}\Bigl(\sum_{i=1}^n (T(i-1) + T(n-i)\Bigr) = n - 1 + \frac{2}{n}\sum_{i=0}^{n-1} T(i)
+$$
+
+Not very pretty. The above was the analysis in the first edition of CLRS. A much more graceful analysis has sense been used.
+
+Below is a really small array:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f96.png').default} />
+</div>
+
+And instead of asking *how long* it takes to run, let's ask a much more limited question: if we run randomized quick sort, what's the probability that `3` will get compared to `17`? If we happen to pick `9` as our first pivot, then it will separate `3` and `17` into different partitions, and then during the entire rest of the sort they won't get compared:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f97.gif').default} />
+</div>
+
+Similarly, if we had chosen `7`, `8`, or `15`, then `3` and `17` also wouldn't ever get compared. Only if we choose `3` or `17` as our *first* pivot will they get compared to each other. Because `3` and `17` are the minimum and maximum items, we will know after picking just one pivot if those values will get compared. If one of them is chosen first, then they get compared. Or if one of the four values between them gets chosen first, then they don't get compared.
+
+There's a $1/3$ chance they get compared because there are four values between them.
+
+Let's recap &#8212; for randomized quick sort on the small example array above, what is the probability that `3` gets compared to `17`?
+
+- If we pick $9$ as our first pivot, then $3$ and $17$ will never be compared.
+- Similarly, if $7$, $8$, or $15$ is our first pivot, then $3$ and $17$ will never be compared.
+- If we pick $3$ or $17$ as our first pivot, then $3$ and $17$ will be compared.
+- Four items between the two extreme values:
+  + $4/(4 + 2) = 2/3$ chance they do not get compared.
+  + $2/(4 + 2) = 1/3$ chance they get compared.
+
+Now let's consider a bigger array:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f98.png').default} />
+</div>
+
+To simplify it, the array holds integers `1` through `20`, inclusive. What's the probability of comparing the number `2` against the number `7` during quick sort? To make it a bit easier to see what's going on, we'll add a second view of the same values but in sorted order:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f99.png').default} />
+</div>
+
+Like before, there are four values between `2` and `7` in the sorted order, but now we have a lot more values that we can pick as a pivot. If we happen to pick `11` as our first pivot, then it gets compared to everything, and both `2` and `7` fall into the partition of smaller elements. Unlike before, we picked our first pivot, but we still don't know if they're ever going to get compared to each other or not:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f100.gif').default} />
+</div>
+
+The array after the first partition is as follows:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f101.png').default} />
+</div>
+
+Stepping into that partition on the left, if we pick `1` as our next pivot, then it gets compared to the numbers `2` to `10`, but both `7` and `2` are larger than the pivot, `1`, so they both fall into the same partition again:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f102.gif').default} />
+</div>
+
+The partition containing `7` and `2` after this second partitioning still needs to be sorted, and we still don't know if they are going to be compared:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f103.png').default} />
+</div>
+
+As long as we keep picking pivots either larger than `7` or smaller than `2`, then `7` and `2` will both fall into the same partition, and we won't know yet if we're going to compare them. But, at some point, we'll pick a pivot of `2`, `7`, or something between them. If we pick `2` or `7` before anything between them, then they get compared to each other, and if we pick something between them first, then they get separated into different partitions, and they won't ever be compared (below, `7` is picked):
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f104.gif').default} />
+</div>
+
+The result after this third partitioning, where we use `7` as the pivot, shows how `7` and `2` get compared and are then separated thereafter:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f105.png').default} />
+</div>
+
+Even though everything above *looks* different than the first small array with just $6$ values, the probably that `2` and `7` get compared is still $1/3$. The added values larger than `7`, or smaller than `2`, don't change that probability of comparing those two items. The important thing is that there are four values between them.
+
+Let's recap our observations from using this bigger array &#8212; what is the probability that (non-extreme) elements, `2` and `7`, get compared?
+- For pivot $> 7$, both fall into the same partition, maybe compared later.
+- For pivot $< 2$, both fall into the same partition, maybe compared later.
+- Eventually, $2$, $7$, or something between them will be chosen as a pivot.
+  + If $2$ or $7$ is chosen before $x$, for $2 < x < 7$, they get compared.
+  + If $x$, for $2 < x < 7$, is chosen before $2$ or $7$, they do not get compared.
+- Four items between the two chosen values:
+  + $4/(4 + 2) = 2/3$ chance they do not get compared.
+  + $2/(4 + 2) = 1/3$ chance they get compared.
+
+More generally, we can calculate the probability that the $i$th smallest value is ever compared to the $j$th smallest value. If we want to know how many comparisons take place during the entire algorithm, then we can sum that up over all possible $i$ and $j$ values. That might look a little complex but not compared to the original recurrence relation we were considering. 
+
+We manipulate our sum to get the inner summation to be the harmonic series, and it works out to order $n\lg n$ comparisons. Because quick sort takes time proportional to the number of comparisons it performs, this sorting algorithm gives us an order $n\lg n$ expected runtime for quick sort.
+
+In summary:
+
+- For $i < j$, there are $j - i = 1$ elements from the $i$th to the $j$th smallest
+- Probability $i$th smallest element is compared to the $j$th smallest element: $2/(j - i + 1)$
+- Over all $i < j$ pairs, the expected number of comparisons is given by the following:
+
+$$
+\begin{align*}
+\sum_{i=1}^{n-1}\sum_{j=i+1}^n 2/(j-i+1)\\
+&= \sum_{i=1}^{n-1}\sum_{j=1}^{n-i} 1/(j + 1)\\
+&\leq \sum_{i=1}^{n-1}2\sum_{j=1}^{n-i} 1/j\\
+&\leq \sum_{i=1}^{n-1}2\sum_{j=1}^n 1/j\\
+&\leq \sum_{i=1}^{n-1}2(\ln n + O(1))\\
+&\leq 2n\ln n + O(n)
+\end{align*}
+$$
 
 ## Lower bounds for comparison based sorting - decision trees {#comparison-based-lower-bound}
 
-TBD
+### Introduction
+
+This section will be about lower bounds for comparison-based sorting, using decision trees. We should have already seen some of the following basic comparison-based sorting algorithms:
+
+- Bubble sort
+- Selection sort
+- Insertion sort
+- Merge sort
+- Heap sort
+- Quick sort
+
+We'll use insertion sort the most. We'll see what a comparison-based sort is, and we'll specifically look at how it acts on $3$ elements. We'll also introduce decision trees and how they relate back to the algorithm, and then show trees for each of the comparison-based sorts listed above. We use those trees to make a lower bound argument for sorting $3$ items, and then generalize that to prove a lower bound for sorting $n$ items. 
+
+### Sorting (n square to n log n to ?)
+
+Let's say that the first sorting algorithm we learn is insertion sort. It seems great at first. But then we learn merge sort, and we realize that insertion sort isn't that great. Insertion sort's $O(n^2)$ worst-case runtime doesn't look so good once we know that we can do better and sort the same array in $O(n\lg n)$ using merge sort. But is $O(n\lg n)$ good? Well, can we do better?
+
+### Insertion sort
+
+Here's the insertion sort algorithm in pseudocode:
+
+```a showLineNumbers
+InsertionSort(array A)
+    for(i = 1 to A.length - 1)
+        tmp = A[i]
+        j = i
+        while(j > 0 && tmp < A[j - 1])
+            A[j] = A[j - 1]
+            j--
+        A[j] = tmp
+```
+
+Let's consider running the algorithm above on an array with just three items:
+
+```a showLineNumbers
+InsertionSort(array A[0..2])
+    for(i = 1 to 2)
+        tmp = A[i]
+        j = i
+        while(j > 0 && tmp < A[j - 1])
+            A[j] = A[j - 1]
+            j--
+        A[j] = tmp
+```
+
+If the code above is running, then the outcomes of the comparisons between elements from `A` tell us everything there is to know about what is happening in the code. So, if the first comparison comes out true (i.e., line `5`), then the first two items of the array will get swapped; otherwise, they won't get swapped. Either way, we won't enter that while loop a second time, until we are in the second pass of the outer for loop.
+
+An ordered list of true/false outcomes for the comparisons tells us everything that there is to know about what happens in the code, even without a list of what was compared. The first comparison is between the first two elements, and the second comparison is between the third element and which of the first two elements is smaller, assuming they are different. If that second comparison comes out false, then there isn't a third comparison. If the first two comparisons are false, then the numbers given to us were already in increasing order.
+
+This is what we're talking about when we say a *comparison-based* sorting algorithm. The important, data-driven *forks* in the code happen because two different elements are compared against each other, and the outcome of that comparison determines what will happen next in the code. Insertion, bubble, selection, heap, merge, and quick sorts are all comparison-based sorting algorithms. And there are more. They are general sorting algorithms that can sort any inputs as long as input values can be compared to each other.
+
+With just $3$ items, we know that we go through that outer loop twice. Let's get rid of that loop:
+
+```a showLineNumbers
+InsertionSort(array A[0..2])
+    i = 1
+    tmp = A[i]
+    j = i
+    while(j > 0 && tmp < A[j - 1])
+        A[j] = A[j - 1]
+        j--
+    A[j] = tmp
+    i = 2
+    tmp = A[i]
+    j = i
+    while(j > 0 && tmp < A[j - 1])
+        A[j] = A[j - 1]
+        j--
+    A[j] = tmp
+```
+
+For the comparisons inside the while loop, what happens depends on the outcome of those comparisons. Let's get rid of those loops too, while keeping the same comparisons between the same elements in the same order, but the rest of the code looks different:
+
+```a showLineNumbers
+InsertionSort(array A[0..2])
+    x = A[0], y = A[1], z = A[2]
+    if(x <= y)
+        if(y <= z)
+            A[0] = x, A[1] = y, A[2] = z            x <= y <= z
+        else
+            if(x <= z)
+                A[0] = x, A[1] = z, A[2] = y        x <= z <  y
+            else
+                A[0] = z, A[1] = x, A[2] = y        z <  x <= y
+    else
+        if(x <= z)
+            A[0] = y, A[1] = x, A[2] = z            y <  x <= z
+        else
+            if(y <= z)
+                A[0] = y, A[1] = z, A[2] = x        y <= z <= x
+            else
+                A[0] = z, A[1] = y, A[2] = x        z <  y <  x
+```
+
+The code above is ugly, but we could write it once we we know `if`/`else` statements without even knowing loops. It has the original comparisons, and they will be executed in the same order as the original code, starting with the first two items. But all comparisons are now written explicitly.
+
+If we consider running insertion sort on `[1, 3, 2]`, then we can see the three comparisons the code will perform:
+
+```a
+InsertionSort(array A = [1, 3, 2])
+    #highlight-next-line
+    x = 1, y = 3, z = 2
+    #highlight-success-next-line
+    if(1 <= 3)
+        #highlight-error-start
+        if(3 <= 2)
+            A[0] = x, A[1] = y, A[2] = z            x <= y <= z
+        #highlight-error-end
+        #highlight-success-start
+        else
+            if(1 <= 2)
+                A[0] = 1, A[1] = 2, A[2] = 3        1 <= 2 <  3
+        #highlight-success-end
+            else
+                A[0] = z, A[1] = x, A[2] = y        z <  x <= y
+    else
+        if(x <= z)
+            A[0] = y, A[1] = x, A[2] = z            y <  x <= z
+        else
+            if(y <= z)
+                A[0] = y, A[1] = z, A[2] = x        y <= z <= x
+            else
+                A[0] = z, A[1] = y, A[2] = x        z <  y <  x
+```
+
+Like any comparison-based sort, it's the relative sizes of the inputs that are important, not the absolute values. So, insertion sort will go through the same steps to sort `[11, 13, 12]` as it does for `[1, 3, 2]`. The problem here is that this is just a horrific way to see what's happening. So let's introduce decision trees.
+
+### Decision tree for insertion sort
+
+Below is a decision tree for insertion sort on $3$ items:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f84.png').default} />
+</div>
+
+It might look like some kind of data structure, but it isn't. It's just a more visual representation of which elements get compared by the code. The non-leaf nodes of the decision tree represent the comparisons, and the two children for a node represent the two possible outcomes of its comparison. The leaves represent final outcomes for the program.
+
+So we can again look at what happens on input `[1, 3, 2]`, and see which leaf we get to:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f85.png').default} />
+</div>
+
+The path above, from the decision tree root to a leaf, represents running the algorithm on some particular set of data. Each inner node on the path represents a comparison that the algorithm executes, in that order. The length of the path is the number of comparisons the algorithm executes for that input.
+
+It's easy to see above that while `[1, 3, 2]` has $3$ comparisons, other inputs like `[2, 1, 3]`, would only have two.
+
+### Other decision trees
+
+Different sorting algorithms have different decision trees. We just saw the decision tree for insertion sort:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f86.png').default} />
+</div>
+
+Let's look at the decision tree for bubble sort:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f87.png').default} />
+</div>
+
+We see from the decision tree above that bubble sort *always* performs $3$ comparisons, although for two possible inputs, the last comparison doesn't tell us anything we didn't already know:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f88.png').default} />
+</div>
+
+Let's consider now the decision tree for selection sort:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f89.png').default} />
+</div>
+
+Selection sort is only broadly defined in <BibRef id='TC2022' pages='p. 33'></BibRef>, but for our implementation (looping from front, select min element, swap to front), we have another occurrence of making a comparison that doesn't tell us something we don't already know:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f90.png').default} />
+</div>
+
+We also get this weird 7th outcome, where if the first two elements are equal but larger than the third, it sorts but unstably puts the second item before the first:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f91.png').default} />
+</div>
+
+Weird stuff isn't exclusive to quadratic sorts. Heap sort has two of those useless comparisons, a bunch of unstable outputs:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f92.png').default} />
+</div>
+
+And the strange leaf node with two labels, `x <= z < y` and `x < z = y`, we hit if the first value is strictly less than the second, and the third is somewhere between those two, but if all three are equal, then we go to a completely different node (far right leaf node with label `y <= z <= x`).
+
+We wouldn't *choose* to make redundant comparisons if we were making a decision tree for $3$ items from scratch, but to write code that cleanly works on any number of inputs using natural operations on a heap, some comparisons can be duplicated. 
+
+Let's now consider the decision tree for merge sort:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f93.png').default} />
+</div>
+
+The tree above is the decision tree for both top-down and bottom-up merge sort. Those are different algorithms, with different trees for $5$ or more elements, but for $4$ or less, they have the same trees. Meanwhile, for just $2$ items, if we are only doing one comparison, then there are pretty much only $2$ possible trees, depending on if we are stable on $2$ equal items or not.
+
+Finally, let's look at the decision tree for quick sort:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='700px' src={require('./f94.png').default} />
+</div>
+
+We can see its instability in the output above (leaf node on bottom with label `x < y <= x`).
+
+### Bound for 3 items
+
+Let's recall all of the decision trees remarked on above:
+
+<div align='center' className='centeredImageDiv'>
+  <img width='900px' src={require('./f95.png').default} />
+</div>
+
+Some of these trees *always* take $3$ comparisons, while others sometimes use $2$ and other times use $3$. The real question is whether or not we can make a decision tree with at most $2$ comparisons. And the answer is *no*.
+
+Each of the trees above has at least $6$ leaf nodes, because if we give the program $3$ distinct values like `1`, `2`, and `3`, then there are `6` possible permutations that we can use to order the input. Each comparison has at most $2$ children, for the possible outcomes of the comparison. If we try to make a binary tree, with at most $2$ comparisons, then it gives us a tree with height at most $2$, with at most $4$ leaves. To get $6$ permutations into $4$ leaves, at least $2$ permutations must go to one leaf, and the algorithm will do the exact same thing for both of those permutations. If we reorder $2$ different permutations in the same way such as, "keep the first element first but swap the other two," at most one of those two permutations can be sorted afterwards. So every permutation needs to get to its own leaf. It boils down to the problem that $6$ is not less than or equal to $4$. So no matter what our comparison-based sorting algorithm is, for $3$ items, its decision tree needs height at least $3$, and some inputs will require $3$ comparisons. 
+
+Let's recap these seemingly dense observations &#8212; to sort $3$ items:
+
+- $3$ distinct inputs have $3! = 6$ permutations
+- At most $2$ comparisons: at most $2^2 = 4$ possible different outcomes
+- No two permutations can be sorted by getting to the same outcome leaf
+- $6\not\leq 4$ (proof left as an exercise)
+- With height $2$, each permutation cannot have its own outcome.
+- We need at least $3$ comparisons (worst case) to sort $3$ items.
+
+### Bound for n items
+
+Finally the finale: we don't want to sort just $3$ items, we want to sort $n$ items. Great. Assume that we have some comparison-based sorting algorithm for sorting $n$ items. Instead of just $6$ permutations, $n$ items can come in $n!$ permutations, so the decision tree for the algorithm will have to have at least $n!$ leaves. If the decision tree's height is $h$, then it will have at most $2^h$ leaves. So, $2^h$ has to be at least $n!$, and $h$ has to be at least order $n\lg n$.
+
+If the tree has height order $n\lg n$, that means that, in the worst case, the decision tree makes order $n\lg n$ comparisons, so the algorithm takes at least $n\lg n$ time; that is, no matter how clever it might be, any comparison-based sorting algorithm will take at least $n\lg n$ runtime in the worst case.
+
+That's it. That's the whole argument. It doesn't prove that $n\lg n$ comparisons are sufficient, it just proves it as a lower bound. Of course, we know that order $n\lg n$ comparisons are sufficient, because merge sort and heap sort both follown that bound. Consequently, we won't find a general sorting algorithm asymptotically faster than them.
+
+Let's recap &#8212; how about a height $h$ tree to sort $n$ items:
+
+- $n$ distinct inputs have $n!$ permutations
+- At most $h$ comparisons: at most $2^h$ possible different outcomes
+- Need $h$ large enough to make $2^h\geq n!$
+- Need $h\geq \lg n! = \Omega(n\lg n)$
+- Every comparison-based sorting algorithm needs $\Omega(n\lg n)$ worst case time
+- This doesn't prove that $\Theta(n\lg n)$ comparisons are sufficient
+- Merge sort and heap sort prove $O(n\lg n)$ comparisons are sufficient
+- Comparison-based sorts cannot asymptotically beat merge or heap sort
 
 ## Linear time sorting - counting sort, radix sort, and bucket sort
 
