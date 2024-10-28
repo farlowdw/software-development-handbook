@@ -2301,6 +2301,135 @@ TBD
 
 </details>
 
+### Boruvka
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+# T: O(α(n)) per operation; S: O(n)
+class UnionFind:
+    def __init__(self, num_vertices):
+        self.root = [i for i in range(num_vertices)]
+        self.rank = [0] * num_vertices
+
+    def find(self, x):
+        if self.root[x] != x:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False
+        
+        rank_x = self.rank[root_x]
+        rank_y = self.rank[root_y]
+        if rank_x > rank_y:
+            self.root[root_y] = root_x
+        elif rank_x < rank_y:
+            self.root[root_x] = root_y
+        else:
+            self.root[root_y] = root_x
+            self.rank[root_x] += 1
+            
+        return True
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+def boruvka(edge_list, n):
+    uf = UnionFind(n)   # union-find structure to efficiently manage connected components
+    mst = []            # list to store edges included in the final returned MST
+    num_components = n  # number of components (starts with n, where each vertex is its own component)
+    
+    # current edge list to process (size is reduced from phase to phase)
+    # (used for edge removal optimization)
+    current_edge_list = [ edge[:] for edge in edge_list ]
+    
+    # continue until all vertices are connected into a single component
+    while num_components > 1:
+        cheapest = [None] * n   # initialize cheapest edge for each component to None
+                                # (index corresponds to component's representative or root in union-find structure)
+        
+        new_edge_list = []      # prepare new edge list for next phase (for edge removal optimization)
+        
+        # iterate over all edges to find cheapest outgoing edge from each component
+        for edge in current_edge_list:
+            u, v, weight = edge
+            comp_u = uf.find(u) # find component (root) of vertex u
+            comp_v = uf.find(v) # find component (root) of vertex v
+            if comp_u != comp_v:# consider edge (u,v) if u and v are in different components
+                new_edge_list.append(edge) # keep edge for next phase
+                # check if edge is cheapest for component comp_u
+                if cheapest[comp_u] is None or is_preferred_over(edge, cheapest[comp_u]):
+                    cheapest[comp_u] = edge
+                # check if edge is cheapest for component comp_v
+                if cheapest[comp_v] is None or is_preferred_over(edge, cheapest[comp_v]):
+                    cheapest[comp_v] = edge
+            # edges connecting vertices within same component are ignored
+        
+        current_edge_list = new_edge_list # update edge list to only include edges connecting different components
+        print(cheapest)
+        print(f'Components before merge: {[uf.find(i) for i in range(n)]}')
+        
+        # add cheapest edges to MST and merge components
+        edges_added = False                     # track whether or not any edges were added in a phase
+        for i in range(n):
+            if cheapest[i] is not None:
+                u, v, weight = cheapest[i]
+                                                # attempt to union components
+                if uf.union(u, v):              # (union() returns True if a merge occurs, False otherwise)
+                    mst.append([u, v, weight])  # add edge to MST
+                    num_components -= 1         # decrement component count
+                    edges_added = True          # an edge was added to the MST in this pase
+        
+        print(f'Components after merge: {[uf.find(i) for i in range(n)]}')
+        # if no edges were added, then MST cannot be formed (graph may be disconnected)
+        if not edges_added:
+            return []
+    
+    return mst
+
+# determines if edge1 is preferred over edge2 (based on weight and tie-breaking rules)
+def is_preferred_over(edge1, edge2):
+    if edge2 is None:
+        return True
+    weight1 = edge1[2]
+    weight2 = edge2[2]
+    if weight1 < weight2:
+        return True
+    elif weight1 > weight2:
+        return False
+    else:
+        return tie_breaking_rule(edge1, edge2)
+
+# tie-breaking rule for when edge weights are equal
+# edges are compared based on vertex indices
+# (first by smaller vertex index (u), then by larger vertex index (v))
+def tie_breaking_rule(edge1, edge2):
+    u1, v1 = sorted((edge1[0], edge1[1]))
+    u2, v2 = sorted((edge2[0], edge2[1]))
+    if u1 < u2:
+        return True
+    elif u1 > u2:
+        return False
+    else:
+        return v1 < v2
+```
+
+<details>
+<summary> Examples</summary>
+
+TBD
+
+</details>
+
 ### Kosaraju (SCC)
 
 <details>

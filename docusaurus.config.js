@@ -4,7 +4,7 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 const katexMacros = require('./katex-macros');
@@ -49,7 +49,7 @@ const config = {
   markdown: {
     mermaid: true,
   },
-  
+
   presets: [
     [
       'classic',
@@ -405,6 +405,16 @@ const config = {
             className: 'code-block-warning-line-numbers',
             line: 'highlight-warning-next-line-numbers',
             block: { start: 'highlight-warning-start-numbers', end: 'highlight-warning-end-numbers' },
+          },
+          {
+            className: 'code-block-removed-line',
+            line: 'highlight-remove-next-line',
+            block: { start: 'highlight-remove-start', end: 'highlight-remove-end' },
+          },
+          {
+            className: 'code-block-added-line',
+            line: 'highlight-add-next-line',
+            block: { start: 'highlight-add-start', end: 'highlight-add-end' },
           },
         ],
         additionalLanguages: [

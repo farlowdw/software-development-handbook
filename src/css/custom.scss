@@ -787,6 +787,44 @@ div[class*='codeBlockTitle_'] {
 }
 /* End code block warning line styling */
 
+/* Begin code block add/remove diff line styling */
+.code-block-removed-line::before {
+  content: '-';
+  display: inline-block;
+  width: 0;
+  position: relative;
+  left: -0.7em;
+  color: red;
+}
+
+.code-block-removed-line {
+  background-color: #ff000020;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  user-select: none;
+}
+
+.code-block-added-line::before {
+  content: '+';
+  display: inline-block;
+  width: 0;
+  position: relative;
+  left: -0.7em;
+  color: rgb(2 164 113);
+  font-weight: 700;
+}
+
+.code-block-added-line {
+  background-color: #00ff9520;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+/* End code block add/remove diff line styling */
+
+
+
 /* Video content container */
 
 .unleash-video-container {
