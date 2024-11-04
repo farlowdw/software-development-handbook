@@ -1878,7 +1878,7 @@ In summary:
 
 $$
 \begin{align*}
-\sum_{i=1}^{n-1}\sum_{j=i+1}^n 2/(j-i+1)\\
+\sum_{i=1}^{n-1}\sum_{j=i+1}^n 2/(j-i+1)
 &= \sum_{i=1}^{n-1}\sum_{j=1}^{n-i} 1/(j + 1)\\
 &\leq \sum_{i=1}^{n-1}2\sum_{j=1}^{n-i} 1/j\\
 &\leq \sum_{i=1}^{n-1}2\sum_{j=1}^n 1/j\\

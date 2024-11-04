@@ -3,6 +3,10 @@ import Editor from '@monaco-editor/react';
 import CodeEditorOutput from '@site/src/components/CodeEditorOutput';
 import { useColorMode } from '@docusaurus/theme-common';
 
+// play around with interactive code editor using Piston API
+// (https://emkc.org/snippets)
+// see different language versions support
+// (https://code-sync-live.vercel.app/)
 const CodeEditor = ({
   initialCode = '',
   editorSettings = {},
