@@ -27,9 +27,6 @@ import MyStar from '@site/src/components/MyStar';
 <!-- backtracking -->
 import BacktrackingTemplate from '@site/docs/_Partials/templates/backtracking.md';
 
-<!-- binary search -->
-import BinarySearchFirstTargetIndexTemplate from '@site/docs/_Partials/templates/binary-search-first-target-if-exists.md';
-
 <!-- trees -->
 import TraverseAndAccumulateTreeTemplate from '@site/docs/_Partials/templates/trees/trees-traverse-and-accumulate.md';
 import InductionTreeTemplate from '@site/docs/_Partials/templates/trees/trees-induction.md';
@@ -44,6 +41,7 @@ import InorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/tree
 import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-snippets/trees/combining-induction-and-tac-templates.md';
 
 <!-- TEMPLATE REMARKS -->
+import BinarySearchSolutionSpacesRemark from '@site/docs/_Partials/template-remarks/binary-search-solution-spaces.md';
 import TwoPointersOppositeEndsRemark from '@site/docs/_Partials/template-remarks/two-pointers-opposite-ends.md';
 import TwoPointersExhaustInputsRemark from '@site/docs/_Partials/template-remarks/two-pointers-exhaust-inputs.md';
 import TwoPointersFastSlowRemark from '@site/docs/_Partials/template-remarks/two-pointers-fast-slow.md';
@@ -55,8 +53,6 @@ import PrefixSumNonTraditionalRemark from '@site/docs/_Partials/template-remarks
 import HashingCountingRemark from '@site/docs/_Partials/template-remarks/hashing-counting.md';
 import HashingDefaultdictRemark from '@site/docs/_Partials/template-remarks/hashing-defaultdict.md';
 import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
-import BinarySearchFirstIndexRemark from '@site/docs/_Partials/template-remarks/binary-search-first-index.md';
-import BinarySearchLeftmostTargetIndexInsertionPointRemark from '@site/docs/_Partials/template-remarks/binary-search-leftmost-target-index-insertion-point.md';
 import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/linked-list-node-comparisons.md';
 import LinkedListPointerManipulation from '@site/docs/_Partials/template-remarks/linked-list-pointer-manipulation.md';
 import LinkedListSentinelNodes from '@site/docs/_Partials/template-remarks/linked-list-sentinel-nodes.md';
@@ -882,7 +878,14 @@ TBD
 
 ## Binary search
 
-The two templates immediately below represent *pending* templates. The first for binary search on an array:
+### Array
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
 
 ```python
 def binary_search(arr, target):
@@ -911,42 +914,6 @@ def binary_search(arr, target):
 # `right = mid - 1` uncommented and `left = mid + 1` commented out results in searching for first occurrence of target
 # `left = mid + 1` uncommented and `right = mid - 1` commented out results in searching for last occurrence of target
 ```
-
-And for binary search on a solution space:
-
-```python
-def binary_search_sol_space(arr):
-    def possible(threshold):
-        # this function is implemented depending on the problem
-        return BOOLEAN
-
-    left = MINIMUM_POSSIBLE_ANSWER  # minimum possible value in solution space (inclusive)
-    right = MAXIMUM_POSSIBLE_ANSWER # maximum possible value in solution space (inclusive)
-    result = -1                     # desired result (-1 to indicate no valid value found yet)
-    
-    while left <= right:            # continue search while range is valid
-        mid = left + (right - left) // 2
-        if possible(mid):
-            result = mid            # mid satisfies condition; update result
-            right = mid - 1         # adjust right to find smaller valid value (minimization)
-        else:
-            left = mid + 1          # mid doesn't satisfy condition; search right half
-                                    # IMPORTANT: swap `right = mid - 1` and `left = mid + 1`
-                                    #   if looking to maximize valid value (i.e., instead of minimize)
-    
-    return result                   # return best value found satisfying condition
-```
-
-### Find first target index (if it exists) {#bs-template}
-
-<details>
-<summary> Remarks</summary>
-
-<BinarySearchFirstIndexRemark />
-
-</details>
-
-<BinarySearchFirstTargetIndexTemplate />
 
 <details>
 <summary> Examples</summary>
@@ -995,36 +962,6 @@ def binary_search_sol_space(arr):
 
 </details>
 
-</details>
-
-### Find leftmost target index (or insertion point) {#bs-template-left}
-
-<details>
-<summary> Remarks</summary>
-
-<BinarySearchLeftmostTargetIndexInsertionPointRemark />
-
-</details>
-
-```python
-def binary_search_leftmost(arr, target):
-    left = 0
-    right = len(arr)
-
-    while left < right:
-        mid = left + (right - left) // 2
-
-        if target <= arr[mid]:
-            right = mid
-        else:
-            left = mid + 1
-
-    return left
-```
-
-<details>
-<summary> Examples</summary>
-
 <details>
 <summary> <LC id='2300' type='long' ></LC> </summary>
 
@@ -1035,58 +972,6 @@ def binary_search_leftmost(arr, target):
 <LC2300TSol />
 
 </details>
-
-</details>
-
-### Find rightmost target index {#bs-template-right}
-
-<details>
-<summary> Remarks</summary>
-
-This template ensures we find the rightmost occurrence (i.e., maximum index value) of `target` (if it exists). If `target` does not exist in the input array, `arr`, then this template will return the index before which `target` should be inserted to maintain the ordered property of `arr` (i.e., `left` will return the proper insertion point as opposed to `left - 1`).
-
-How does this work? What happens if it's ever the case that `arr[mid] == target` in the template function above? It's the *left* half that gets collapsed, by means of `left = mid + 1`, thus pushing the search space *as far right as possible*.
-
-:::tip Computing total number of elements within input array greater than target value (as well as insertion point)
-
-Consider the following sorted array: `[4, 6, 8, 8, 8, 10, 12, 13]`. If we applied the function in the template above to this array with a target value of `8`, then the index returned would be `4`, the index of the right-most target value `8` in the input array. This simple example illustrates two noteworthy observations:
-
-- **Insertion point:** Add a value of `1` to the return value of the template function to find the appropriate insertion point &#8212; this assumes the desired insertion point is meant to keep the input array sorted as well as for the inserted element to be as far-right as possible.
-
-  In the context of the simple example, this means the insertion point for another `8` would be `4 + 1 = 5`. What if the element to be added is not present? If we wanted to add `9`, then our template function would return `4`. Again, adding `1` to this result gives us our desired insertion point: `4 + 1 = 5`. The correct insertion point will always be the returned value plus `1`.
-
-- **Number of elements greater than target:** If `x` is the return value of our template function, then computing `len(arr) - x + 1` will give us the total number of elements in the input array that are greater than the target.
-
-  In the context of the simple example, how many elements are greater than `8`? There are three such elements, namely `10`, `12`, and `13`; hence, the answer we want is `3`. How can we reliably find the value we desire for all sorted input arrays and target values? 
-  
-  If our template function returns the right-most index of the target element if it exists or where it would need to be inserted if it doesn't exist, then this means all elements in the input array to the right of this index are greater than the target value. How can we reliably calculate this number? Well, if you're tasked with reading pages 23-27, inclusive, then how many pages are you tasked with reading? It's not `27 - 23 = 4`. You have to read pages 23, 24, 25, 26, and 27 or simply `27 - 23 + 1 = 5`. The same reasoning, albeit slightly nuanced, applies here: If index `x` is the index returned by our function, then how many elements exist from the right of this element to the end of the array, inclusive? The last element in the array has an index of `len(arr) - 1` and the element to the right of the returned value has an index of `x + 1`. Hence, the total number of values shakes out to be
-
-  ```
-  (len(arr) - 1) - (x + 1) + 1 = len(arr) - x + 1
-  ```
-
-:::
-
-</details>
-
-```python
-def binary_search_rightmost(arr, target):
-    left = 0
-    right = len(arr)
-
-    while left < right:
-        mid = left + (right - left) // 2
-
-        if target < arr[mid]:
-            right = mid
-        else:
-            left = mid + 1
-
-    return left - 1
-```
-
-<details>
-<summary> Examples</summary>
 
 <details>
 <summary> <LC id='2389' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
@@ -1101,186 +986,36 @@ def binary_search_rightmost(arr, target):
 
 </details>
 
-### Greedy (looking for minimum)
-
-<details>
-<summary> Temporary remarks for greedy-based binary searches on solution spaces</summary>
-
-As noted in [the editorial](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/710/binary-search/4533/) on binary search on solution spaces, we need a few conditions to be met in order to effectively conduct our search:
-
-1. Possibility/condition/check/feasible function can execute in $O(n)$ time -- we can quickly, in $O(n)$ or better, verify if the task is possible for a given threshold value `threshold`; that is, we define a function, `possible(threshold)`, that returns a boolean that indicates if the given task is possible or impossible when given the specifc `threshold` value.
-2. Max/min characteristic when task is *possible* given the specific `threshold` value -- if the task is possible for a number `threshold` and we are looking for
-
-  - a **maximum**, then it is also possible for all numbers less than `threshold`.
-  - a **minimum**, then it is also possible for all numbers greater than `threshold`.
-
-3. Max/min characteristic when task is *impossible* given the specific `threshold` value -- if the task is impossible for a number `threshold` and we are looking for
-
-  - a **maximum**, then it is also impossible for all numbers greater than `threshold`.
-  - a **minimum**, then it is also impossible for all numbers less than `threshold`.
-
-The above depictions can be somewhat difficult to envision at first so it can be helpful to draw out a very simple outline as if we're on a number line from 0 to infinity, left to right, as demonstrated below.
-
-**Looking for a maximum threshold:**
-
-*Example use case (illegal parking):* Maximize time spent parked illegally without getting a ticket. Under various conditions (e.g., parking enforcers, location, etc.), we can imagine this being possible for a certain amount of time before it becomes impossible. We'd like to maximize the POSSIBLE amount of time we do not have to worry about getting a ticket before it becomes IMPOSSIBLE to avoid getting a ticket:
-
-```a title="Problem is asking for a maximum"
- -----------------------
-| Possible | Impossible |
- -----------------------
- 0         ^       ...inf
-      (threshold binary searched for)
-```
-
-As can be seen above, given a `threshold` amount of time, our task of going undetected when parked illegally is 
-
-- possible for all numbers less than `threshold`
-- impossible for all numbers greater than `threshold`
-
-**Looking for a minimum threshold:**
-
-*Example use case (mandatory online trainings):* Minimize time spent on a manadotry online trainin page before clicking to continue without arousing suspicion. Many online training requirements are modules that are "click-through" in nature, where an employee must complete the module but should not "click to continue" until a sufficient amount of time has elapsed to indicate the employee has possibly consumed all of the information on the page. The goal is to minimize the amount of time spent on any given page. We can imagine this being impossible for a certain amount of time before it becomes possible. We'd like to minimize the POSSIBLE amount of time we are required to be on any given training page where it is IMPOSSIBLE to avoid doing so until a certain amount of time has elapsed:
-
-```a title="Problem is asking for a minimum"
- -----------------------
-| Impossible | Possible |
- -----------------------
- 0           ^     ...inf
-        (threshold binary searched for)
-```
-
-As can be seen above, given a `threshold` amount of time, our task of having to remain on a given training page before being allowed to continue making progress through the training is 
-
-- impossible for all numbers less than `threshold`
-- possible for all numbers greater than `threshold`
-
-**TAKEAWAY:** For minimums, we're basically trying to find the leftmost insertion point for `threshold` *within the possible solution space*. Our solution space should be closed: `[left, right]`. That is, the `left` bound should be as minimal as possible as well as inclusive. The `right` bound should be as maximal as possible *as well as inclusive* (this differs from the normal way we would try to find the leftmost insertion point when we're binary searching on a solution space that may contain duplicates ... the idea is that a solution/`threshold` that satisfies the problem requirement should exist within the original `left`/`right` bounds of the problem).
-
-Here's a template:
-
-```python
-def binary_search_on_solution_space_MINIMUM(arr):
-    def possible(threshold):
-        # this function is implemented depending on the problem
-        return BOOLEAN
-
-    left = MINIMUM_POSSIBLE_ANSWER
-    right = MAXIMUM_POSSIBLE_ANSWER # solution space being binary searched is [left, right];
-                                    # we are trying to find the leftmost insertion point for `threshold`
-                                    # in the possible segment
-    while left < right:
-        mid = left + (right - left) // 2
-        if possible(mid):
-            right = mid # squeeze `left` as far left as possible in the possible segment
-        else:
-            left = mid + 1
-    
-    return left
-```
-
-Finding a maximum for a threshold is a bit different. It's similar to binary searching on an array of values and trying to find the position right before whatever the rightmost insertion point would need to be for the inserted value to maintain order. It's probably easier to visualize if we think of the simple diagram above for problems where we're being asked to find a maximum:
-
-```a
- -----------------------
-| Possible | Impossible |
- -----------------------
-```
-
-We basically want to find the leftmost insertion point where we're satisfying the *impossible* condition, where the maximum value will then be whatever smaller position lies to the left (usually an integer value of `1`) to make the value the rightmost value in the *possible* segment (i.e., the maximum possible value).
-
-This requires a small adjustment to the template, most notably the solution space being `[left, right)`, where the `right` bound is extended just slightly to ensure we actually capture the maximum value. And instead of returning `left`, which would give us the leftmost insertion position of the impossible segment, we return `left - 1`, which gives us the first value in the possible segment before the impossible segment (i.e., the maximal value in the possible segment):
-
-```python
-def binary_search_on_solution_space_MAXIMUM(arr):
-    def possible(threshold):
-        # this function is implemented depending on the problem
-        return BOOLEAN
-
-    left = MINIMUM_POSSIBLE_ANSWER
-    right = MAXIMUM_POSSIBLE_ANSWER + 1 # solution space being binary searched is [left, right) as opposed to [left, right];
-                                        # we are trying to find the leftmost insertion point for `threshold`
-                                        # in the impossible segment so we can report the position immediately to its left,
-                                        # the last position in the possible segment before the impossible segment
-                                        # (i.e., the maximum possible value)
-    while left < right:
-        mid = left + (right - left) // 2
-        if not possible(mid):
-            right = mid # squeeze `left` as far left as possible in the impossible segment
-        else:
-            left = mid + 1
-    
-    return left - 1
-```
-
-**DIVIDING CHOCOLATE:** This is a [good problem](https://leetcode.com/problems/divide-chocolate/submissions/) for seeing how things work in regards to trying to find a maximum. Here's one potential solution:
-
-```python
-class Solution:
-    def maximizeSweetness(self, sweetness: List[int], k: int) -> int:
-        def possible(threshold):
-            total_pieces = 0
-            piece_sweetness = 0
-            for chunk in sweetness:
-                piece_sweetness += chunk
-                if piece_sweetness >= threshold:
-                    piece_sweetness = 0
-                    total_pieces += 1
-                    if total_pieces == k + 1:
-                        return True
-            return False
-        
-        left = min(sweetness)
-        right = sum(sweetness) + 1
-        
-        while left < right:
-            mid = left + (right - left) // 2
-            if not possible(mid):
-                right = mid
-            else:
-                left = mid + 1
-                
-        return left - 1
-```
-
-Consider the following simple test case:
-
-```python
-sweetness = [5,5]
-k = 0
-```
-
-Since we have `k = 0`, this means we are not going to share the chocolate with anyone else so we should just maximize the sweetness for our own enjoyment. The value returned should be `10`, the entire sum of the values in `sweetness`. But what happens if we change the line `right = sum(sweetness) + 1` to `right = sum(sweetness)`? Then the `while` loop will terminate when `left == right`, which will now happen when `left` and `right` both equal `10`, but the value returned, `left - 1`, will be `9`, which results in an off-by-one error.
-
-This simple example illustrates the importance of binary searching the solution space represented by the half-open interval `[left, right)` when looking for a maximum; otherwise, we might end up with an off-by-one error.
-
-</details>
+### Solution space
 
 <details>
 <summary> Remarks</summary>
 
-TBD
+<BinarySearchSolutionSpacesRemark />
 
 </details>
 
 ```python
-def binary_search_on_solution_space_MINIMUM(arr):
+def binary_search_sol_space(arr):
     def possible(threshold):
         # this function is implemented depending on the problem
         return BOOLEAN
 
-    left = MINIMUM_POSSIBLE_ANSWER
-    right = MAXIMUM_POSSIBLE_ANSWER # solution space being binary searched is [left, right];
-                                    # we are trying to find the leftmost insertion point for `threshold`
-                                    # in the possible segment
-    while left < right:
+    left = MINIMUM_POSSIBLE_ANSWER  # minimum possible value in solution space (inclusive)
+    right = MAXIMUM_POSSIBLE_ANSWER # maximum possible value in solution space (inclusive)
+    result = -1                     # desired result (-1 to indicate no valid value found yet)
+    
+    while left <= right:            # continue search while range is valid
         mid = left + (right - left) // 2
         if possible(mid):
-            right = mid # squeeze `left` as far left as possible in the possible segment
+            result = mid            # mid satisfies condition; update result
+            right = mid - 1         # adjust right to find smaller valid value (minimization)
         else:
-            left = mid + 1
+            left = mid + 1          # mid doesn't satisfy condition; search right half
+                                    # IMPORTANT: swap `right = mid - 1` and `left = mid + 1`
+                                    #   if looking to maximize valid value (i.e., instead of minimize)
     
-    return left
+    return result                   # return best value found satisfying condition
 ```
 
 <details>
@@ -1352,42 +1087,6 @@ def binary_search_on_solution_space_MINIMUM(arr):
 
 </details>
 
-</details>
-
-### Greedy (looking for maximum)
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-```python
-def binary_search_on_solution_space_MAXIMUM(arr):
-    def possible(threshold):
-        # this function is implemented depending on the problem
-        return BOOLEAN
-
-    left = MINIMUM_POSSIBLE_ANSWER
-    right = MAXIMUM_POSSIBLE_ANSWER + 1 # solution space being binary searched is [left, right) as opposed to [left, right];
-                                        # we are trying to find the leftmost insertion point for `threshold`
-                                        # in the impossible segment so we can report the position immediately to its left,
-                                        # the last position in the possible segment before the impossible segment
-                                        # (i.e., the maximum possible value)
-    while left < right:
-        mid = left + (right - left) // 2
-        if not possible(mid):
-            right = mid # squeeze `left` as far left as possible in the impossible segment
-        else:
-            left = mid + 1
-    
-    return left - 1
-```
-
-<details>
-<summary> Examples</summary>
-
 <details>
 <summary> <LC id='1231' type='long' ></LC> (&check;) <MyStar stars={3} /> </summary>
 
@@ -1413,6 +1112,22 @@ def binary_search_on_solution_space_MAXIMUM(arr):
 </details>
 
 ## Dynamic programming
+
+<details>
+<summary> Information gathering</summary>
+
+- **DP overview:** The [computer science](https://en.wikipedia.org/wiki/Dynamic_programming#Computer_science) explanation of DP on Wiki is succinct and nice.
+- **DP applicability:** A DP algorithm is worth considering when a problem exhibits [optimal substructure](https://en.wikipedia.org/wiki/Optimal_substructure) *and* [overlapping subproblems](https://en.wikipedia.org/wiki/Overlapping_subproblems).
+- **Optimal substructure:** As [a Wiki excerpt notes](https://en.wikipedia.org/wiki/Dynamic_programming#Computer_science), "*optimal substructure* means that the solution to a given optimization problem can be obtained by the combination of optimal solutions to its sub-problems." This seems to be a bigger deal than most learning resources indicate. There's a more extended discussion of what it means for a problem to have an optimal substructure in CLRS <BibRef id='TC2022' pages='pp. 382-387'></BibRef>. The authors note how the "unweighted shortest path" problem exhibits optimal substructure whereas the "unweighted longest simple path" problem does not (they emphasize that the subproblems in finding the longest simple path are not *independent*, whereas for shortest paths they are, where by "independent" they mean that the solution to one subproblem does not affect the solution another subproblem of the same problem). They also note in an exercise (14.3-5) that the rod-cutting problem no longer has the optimal substructure property if we introduce a limit on the number of pieces of length allowed to be produced. This is definitely a resource worth pondering to more fully grok the optimal substructure requirement a problem must have for a DP algorithm to apply.
+- **Overlapping subproblems:** The need for a problem to require solving overlapping subproblems is also addressed in CLRS <BibRef id='TC2022' pages='p. 387'></BibRef>, but this property is easier to see and understand than the optimal substructure property. The recursion tree for computing the $n$th Fibonacci number illustrates this property quite well.
+- **DP algorithm logic (optimal substructure implies recursion):** The *logic* underlying a DP algorithm is completely based on the optimal substructure observed for the problem in question. Given some input, the idea is to decompose or reduce the input into smaller and smaller inputs, which may be further decomposed or reduced, repeatedly, until the inputs are so small that we can compute the solution for the small inputs directly. The "repeatedly" part is the recursion and optimal substructure property at work, and the "direct computation" part is the base case(s) portion of the recursion.
+- **DP algorithm caching (overlapping subproblems implies caching):** A subproblem is never computed more than once in a DP algorithm; hence, to effectively handle overlapping subproblems, a DP algorithm must cache answers to subproblems in some manner so each cached answer can efficiently be retrieved whenever that subproblem is encountered again (i.e., "overlapped"). The primary methods used for caching subproblem solutions in DP algorithms are memoization and tabulation.
+- **How problems are broken down into smaller and smaller subproblems:** If a DP algorithm only applies when a problem exhibits the optimal substructure property, where a problem is broken down or decomposed or reduced into smaller and smaller subproblems, then how do we actually obtain the smaller and smaller subproblems? By means of a *recurrence*; that is, the *relationship* between larger and smaller inputs/subproblems is explicitly captured by a recurrence, where the recurrence relation calculates the solution to a problem and is defined in terms of itself on *smaller* inputs.
+- **There are two defining parts to coming up with a DP algorithm (problem-solving and implementation):** If *optimal substructure* and *overlapping subproblems* are the two defining *properties* of any problem that may be fruitfully solved by a DP algorithm, and the optimal substructure property manifests itself in the form of a recurrence relation, then it stands to reason that *every* DP algorithm must implement a recurrence (i.e., the recurrence captures the optimal substructure property); furthermore, *every* DP algorithm must efficiently cache solutions to subproblems in order for it to be efficient to solve *overlapping* subproblems. All of this means that coming up with a DP algorithm to solve a problem necessarily boils down to two defining steps: 1) *find a recurrence* that calculates the solution and captures the optimal substructure property of the problem at hand, and 2) transform the recurrence relation into efficient code by means of one of two popular caching strategies: memoization or tabulation. The first part, coming up with a recurrence relation, may be characterized as *problem-solving* since that's where the bulk of effort will often be spent, and the second part may be characterized as *implementation* since part one will be present in either caching strategy we choose.
+- **Why DP is difficult:** The *first* "defining part" mentioned above is largely why DP is difficult: *coming up with a recurrence* that suitably captures the optimal substructure property for a given problem requires creativity and a depth of insight not requisite in several other algorithmic techniques (e.g., two pointers, sliding window, etc.).
+- **House robber subproblem observation:** There are $2^n$ subsets of houses &#8212; to create a subset, for each of the $n$ houses, we have a binary choice of whether to put it in the subset or not. This results in $2\cdot 2\cdot 2\cdot\ldots\cdot 2$ ($n$ times) different subsets. Even if we consider only subsets of houses *without* adjacent houses, which is what we're really interested in, there is still an exponential number of subsets to consider, which means checking them all with brute force is not realistic. How do we know the number of subsets of non-adjacent houses is exponential? Let $H(n)$ denote the number of subsets of non-adjacent houses given $n$ houses. When $n=0$, there is only one subset, the empty subset; that is, $H(0) = 1$. When $n=1$, there are two subsets, the empty subset and the subset containing the single element; that is, $H(1) = 2$. In general, when $n\geq 2$, consider the possibilities for including or excluding the $n$th element. If we *exclude* the $n$th element, then the problem reduces to finding subsets of the first $n-1$ elements with the same non-adjacency condition (i.e., $H(n-1)$). If we *include* the $n$th element, then we must exclude the $(n-1)$th element to satisfy the non-adjacency condition, which means we are left with finding subsets of the first $n-2$ elements with the same non-adjacency conditions (i.e., $H(n-2)$). Consequently, when determining $H(n)$, we need to account for all of the subsets resulting from *excluding* the $n$th element as well as *including* the $n$th element: $H(n) = H(n-1) + H(n-2)$. Our base cases for this recurrence are $H(0) = 1$ and $H(1) = 2$, which means the sequence we've obtained is really the Fibonacci sequence shifted by one position. If we let $F_k$ denote the $k$th Fibonacci number, and we let $F_0 = 0$ and $F_1 = 1$ so $H(n)$ is offset from the Fibonacci sequence by two positions, then we see that $H(n) = F_{n+2}$. For example, if $n=1$, then we have $H(1) = F_3 = 2$. The important point is that the Fibonacci sequence [ehibits exponential growth](https://math.stackexchange.com/a/2981011/191378). Since $H(n)$ is just the shifted Fibonacci sequence, $H(n)$ is clearly exponential. This ultimately means we must be more efficient than brute force when looking at all of the subsets in $H(n)$.
+
+</details>
 
 ### Memoization (top-down)
 
