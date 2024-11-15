@@ -248,7 +248,7 @@ import LC724TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/l
 import LC735TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-735.md';
 import LC739TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-739.md';
 import LC743TSol from '@site/docs/_Partials/template-solutions/graphs/dijkstra/lc-743.md';
-import LC746TSol from '@site/docs/_Partials/template-solutions/dp/memoization/lc-746.md';
+import LC746TSol from '@site/docs/_Partials/template-solutions/dp/lc-746.md';
 import LC752TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/lc-752.md';
 import LC771TSol from '@site/docs/_Partials/template-solutions/misc/hashing/counting/lc-771.md';
 import LC787TSol from '@site/docs/_Partials/template-solutions/graphs/dijkstra/lc-787.md';
@@ -1113,7 +1113,7 @@ def binary_search_sol_space(arr):
 
 ## Dynamic programming
 
-<details>
+<details open>
 <summary> Information gathering</summary>
 
 - **DP overview:** The [computer science](https://en.wikipedia.org/wiki/Dynamic_programming#Computer_science) explanation of DP on Wiki is succinct and nice.
@@ -1129,16 +1129,7 @@ def binary_search_sol_space(arr):
 
 </details>
 
-### Memoization (top-down)
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-```python
+```python title="Memoization"
 def fn(arr):
     # 1. define a function that will compute/contain
     #   the answer to the problem for any given state
@@ -1159,32 +1150,7 @@ def fn(arr):
     return dp(STATE_FOR_WHOLE_INPUT)
 ```
 
-<details>
-<summary> Examples</summary>
-
-<details>
-<summary> <LC id='746' type='long' ></LC> </summary>
-
-<LC746PS />
-
----
-
-<LC746TSol />
-
-</details>
-
-</details>
-
-### Tabulation (bottom-up)
-
-<details>
-<summary> Remarks</summary>
-
-TBD
-
-</details>
-
-```python
+```python title="Tabulation"
 def fn(arr):
     # 1. initialize a table (array, list, etc.) 
     #   to store solutions of subproblems.
@@ -1210,7 +1176,16 @@ result = fn(arr)
 <details>
 <summary> Examples</summary>
 
-TBD
+<details>
+<summary> <LC id='746' type='long' ></LC> </summary>
+
+<LC746PS />
+
+---
+
+<LC746TSol />
+
+</details>
 
 </details>
 
