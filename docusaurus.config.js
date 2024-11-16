@@ -14,6 +14,20 @@ const coursesBaseURL = `https://courses.dwf.dev`;
 const manimBaseURL = `https://manim.dwf.dev`;
 const leetcodeBaseURL = `https://lc.dwf.dev`;
 
+const admonitionsConfig = {
+  admonitions: {
+    keywords: [
+      'info',
+      'note',
+      'tip',
+      'danger',
+      'warning',
+      'caution',
+      'dwf'
+    ],
+  },
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Software Engineering Handbook',
@@ -37,7 +51,7 @@ const config = {
       '/docs/algorithms/named-algorithms/introduction',
     ],
     forbiddenGiscusBlogPaths: [
-      '/blog/mdx-blog-post'
+      '/blog/dp',
     ],
   },
 
@@ -66,6 +80,7 @@ const config = {
             globalGroup: true,
             macros: katexMacros
           }]],
+          ...admonitionsConfig,
         },
 
         blog: {
@@ -83,6 +98,7 @@ const config = {
           postsPerPage: 'ALL',
           blogSidebarCount: 0,
           sortPosts: 'descending',
+          ...admonitionsConfig,
         },
 
         theme: {
@@ -95,6 +111,7 @@ const config = {
             globalGroup: true,
             macros: katexMacros
           }]],
+          ...admonitionsConfig,
         },
 
       }),

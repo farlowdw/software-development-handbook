@@ -247,6 +247,36 @@
 
 }
 
+/* Custom admonitions */
+// PINK version (looks a little too close to the danger admonition possibly)
+// .alert--dwf {
+//   --ifm-alert-background-color: rgba(252, 166, 182, 0.5); /* Light pink background */
+//   --ifm-alert-background-color-highlight: rgba(254, 210, 218, 0.15); /* Even lighter pink highlight */
+//   --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+//   --ifm-alert-border-color: #fc6c85; /* New pink border color */
+// }
+
+// html[data-theme='dark'] .alert--dwf {
+//   --ifm-alert-background-color: rgba(252, 166, 182, 0.5); /* Same pink background with transparency */
+//   --ifm-alert-background-color-highlight: rgba(254, 210, 218, 0.15); /* Same highlight */
+//   --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for contrast on dark background */
+//   --ifm-alert-border-color: #fc6c85; /* New pink border color */
+// }
+
+.alert--dwf {
+  --ifm-alert-background-color: rgba(211, 192, 242, 0.5); /* Light purple background */
+  --ifm-alert-background-color-highlight: rgba(225, 213, 247, 0.15); /* Even lighter purple highlight */
+  --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+  --ifm-alert-border-color: #986ee2; /* New purple border color */
+}
+
+html[data-theme='dark'] .alert--dwf {
+  --ifm-alert-background-color: rgba(211, 192, 242, 0.5); /* Same purple background with transparency */
+  --ifm-alert-background-color-highlight: rgba(225, 213, 247, 0.15); /* Same highlight */
+  --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for contrast on dark background */
+  --ifm-alert-border-color: #986ee2; /* New purple border color */
+}
+
 /* Docusaurus Specific Styles */
 .header-github-link {
 	&::before {

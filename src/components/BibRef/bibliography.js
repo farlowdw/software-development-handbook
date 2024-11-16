@@ -5,6 +5,13 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'PB2017',
+      title: `Forest Management and Planning`,
+      author: 'Pete Bettinger et al.',
+      time: '2017',
+      link: 'https://www.amazon.com/Forest-Management-Planning-Peter-Bettinger/dp/0128094761',
+    },
+    {
       id: 'AL2024',
       title: `Guide to Competitive Programming: Learning and Improving Algorithms Through Contests`,
       author: 'Antti Laaksonen',
