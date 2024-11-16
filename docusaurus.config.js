@@ -51,7 +51,7 @@ const config = {
       '/docs/algorithms/named-algorithms/introduction',
     ],
     forbiddenGiscusBlogPaths: [
-      '/blog/dp',
+      '/blog/dp/',
     ],
   },
 
