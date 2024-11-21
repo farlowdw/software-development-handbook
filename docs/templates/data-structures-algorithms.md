@@ -41,6 +41,7 @@ import InorderIterativeAnalogy from '@site/docs/_Partials/template-snippets/tree
 import CombiningInductionAndTACTemplates from '@site/docs/_Partials/template-snippets/trees/combining-induction-and-tac-templates.md';
 
 <!-- TEMPLATE REMARKS -->
+import SlidingWindowFixedSizeWithinLoop from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-within-main-loop.md';
 import BinarySearchSolutionSpacesRemark from '@site/docs/_Partials/template-remarks/binary-search-solution-spaces.md';
 import TwoPointersOppositeEndsRemark from '@site/docs/_Partials/template-remarks/two-pointers-opposite-ends.md';
 import TwoPointersExhaustInputsRemark from '@site/docs/_Partials/template-remarks/two-pointers-exhaust-inputs.md';
@@ -100,10 +101,8 @@ import Sol7NoLC from '@site/docs/_Partials/template-solutions/trees/combined/q1.
 import Sol9NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q1.md';
 import Sol10NoLC from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/q2.md';
 import Sol11NoLC from '@site/docs/_Partials/template-solutions/two-pointers/exhaust-inputs/q1.md';
-import Sol12NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/q1.md';
-import Sol13NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/q2.md';
-import Sol14NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/q1.md';
-import Sol15NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/q1.md';
+import Sol12NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/maximum/q1.md';
+import Sol13NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/maximum/q2.md';
 import Sol16NoLC from '@site/docs/_Partials/template-solutions/misc/prefix-sum/q1.md';
 import Sol17NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/counting/q1.md';
 import Sol18NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/q1.md';
@@ -111,6 +110,7 @@ import Sol19NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast
 import Sol20NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/existence/q1.md';
 import Sol21NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/q1.md';
 import Sol22NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/minimum/q1.md';
+import Sol23NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/q2.md';
 
 <!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
 <!-- 1 - 99 -->
@@ -235,8 +235,7 @@ import LC567TSol from '@site/docs/_Partials/template-solutions/sliding-window/fi
 import LC632TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc-632.md';
 import LC633TSol from '@site/docs/_Partials/template-solutions/binary-search/first-index/lc-633.md';
 import LC637TSol from '@site/docs/_Partials/template-solutions/trees/levels/lc-637.md';
-import LC643TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-643.md';
-import LC643TSol2 from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/within-main/lc-643.md';
+import LC643TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/lc-643.md';
 import LC649TSol from '@site/docs/_Partials/template-solutions/stacks-queues/queues/lc-649.md';
 import LC658TSol from '@site/docs/_Partials/template-solutions/heaps/top-k/lc-658.md';
 import LC692TSol from '@site/docs/_Partials/template-solutions/heaps/top-k/lc-692.md';
@@ -248,7 +247,7 @@ import LC701TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-701.
 import LC701TSol2 from '@site/docs/_Partials/template-solutions/trees/induction/lc-701.md';
 import LC703TSol from '@site/docs/_Partials/template-solutions/heaps/top-k/lc-703.md';
 import LC704TSol from '@site/docs/_Partials/template-solutions/binary-search/first-index/lc-704.md';
-import LC713TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-713.md';
+import LC713TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/maximum/lc-713.md';
 import LC724TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-724.md';
 import LC735TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-735.md';
 import LC739TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-739.md';
@@ -3459,6 +3458,13 @@ TBD
 
 </details>
 
+<details>
+<summary> Building the initial window within the main loop instead of outside the main loop</summary>
+
+<SlidingWindowFixedSizeWithinLoop />
+
+</details>
+
 ```python
 def fn(arr, k):
     structs = ...                 # window data structures initialized for the starting window
@@ -3478,9 +3484,27 @@ def fn(arr, k):
 <summary> Examples</summary>
 
 <details>
-<summary> Most 1s in subarray of size k (&malt;) </summary>
+<summary> Most 1s in subarray of size k (&malt;, 💎) </summary>
 
 <Sol21NoLC />
+
+</details>
+
+<details>
+<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
+
+<Sol23NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
+
+<LC643PS />
+
+---
+
+<LC643TSol />
 
 </details>
 
@@ -3519,52 +3543,6 @@ def fn(arr, k):
 
 </details>
 
-<details>
-<summary> Examples (build window outside main loop)</summary>
-
-<details>
-<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
-
-<Sol14NoLC />
-
-</details>
-
-<details>
-<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
-
-<LC643PS />
-
----
-
-<LC643TSol />
-
-</details>
-
-</details>
-
-<details>
-<summary> Examples (build window within main loop)</summary>
-
-<details>
-<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
-
-<Sol15NoLC />
-
-</details>
-
-<details>
-<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
-
-<LC643PS />
-
----
-
-<LC643TSol2 />
-
-</details>
-
-</details>
-
 ### Variable window size (maximum)
 
 <details>
@@ -3595,7 +3573,21 @@ def fn(arr):
 <summary> Examples</summary>
 
 <details>
-<summary> <LC id='1004' type='long' ></LC> (&check;, &malt;) </summary>
+<summary> Longest subarray of positive integer array with sum not greater than <code>k</code> (&check;)</summary>
+
+<Sol12NoLC />
+
+</details>
+
+<details>
+<summary> Longest substring of <code>1</code>'s given binary string and one possible <code>0</code> flip (&check;)</summary>
+
+<Sol13NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='1004' type='long' ></LC> (&check;, &malt;, 💎) </summary>
 
 <LC1004PS />
 
@@ -3627,25 +3619,6 @@ def fn(arr):
 
 </details>
 
-</details>
-
-<details>
-<summary> Examples (old way)</summary>
-
-<details>
-<summary> Longest subarray of positive integer array with sum not greater than <code>k</code> (&check;)</summary>
-
-<Sol12NoLC />
-
-</details>
-
-<details>
-<summary> Longest substring of <code>1</code>'s given binary string and one possible <code>0</code> flip (&check;)</summary>
-
-<Sol13NoLC />
-
-</details>
-
 <details>
 <summary> <LC id='713' type='long' ></LC> (&check;) <MyStar /></summary>
 
@@ -3657,16 +3630,10 @@ def fn(arr):
 
 </details>
 
-<details>
-<summary> <LC id='1004' type='long' ></LC> (&check;) <MyStar /></summary>
-
-<LC1004PS />
-
----
-
-<LC1004TSol />
-
 </details>
+
+<details>
+<summary> Examples (old way)</summary>
 
 <details>
 <summary> <LC id='209' type='long' ></LC> (&check;) </summary>
