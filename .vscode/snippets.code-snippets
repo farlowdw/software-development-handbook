@@ -167,7 +167,7 @@
     "prefix": "lctempsol",
     "body": [
       "<details>",
-      "<summary> <LC id='$1' type='long' ></LC> (&check;) </summary>",
+      "<summary> <LC id='$1' type='long' ></LC> (&check;, &malt;) </summary>",
       "",
       "$0import LC$1TSol from '@site/docs/_Partials/template-solutions/${2:category}/lc-$1.md';",
       "import LC$1PS from '@site/docs/_Partials/problem-stems/lc$1.md';",

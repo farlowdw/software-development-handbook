@@ -46,8 +46,6 @@ import TwoPointersOppositeEndsRemark from '@site/docs/_Partials/template-remarks
 import TwoPointersExhaustInputsRemark from '@site/docs/_Partials/template-remarks/two-pointers-exhaust-inputs.md';
 import TwoPointersFastSlowRemark from '@site/docs/_Partials/template-remarks/two-pointers-fast-slow.md';
 import SlidingWindowVariableSizeRemark from '@site/docs/_Partials/template-remarks/sliding-window-variable-size.md';
-import SlidingWindowFixedSizeMethod1Remark from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-method-1.md';
-import SlidingWindowFixedSizeMethod2Remark from '@site/docs/_Partials/template-remarks/sliding-window-fixed-size-method-2.md';
 import PrefixSumRemark from '@site/docs/_Partials/template-remarks/prefix-sum.md';
 import PrefixSumNonTraditionalRemark from '@site/docs/_Partials/template-remarks/prefix-sum-non-traditional.md';
 import HashingCountingRemark from '@site/docs/_Partials/template-remarks/hashing-counting.md';
@@ -111,11 +109,13 @@ import Sol17NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/coun
 import Sol18NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/q1.md';
 import Sol19NoLC from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/q2.md';
 import Sol20NoLC from '@site/docs/_Partials/template-solutions/misc/hashing/existence/q1.md';
+import Sol21NoLC from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/q1.md';
+import Sol22NoLC from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/minimum/q1.md';
 
 <!-- TEMPLATE SOLUTIONS (LEETCODE PROBLEMS) -->
 <!-- 1 - 99 -->
 import LC1TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1.md';
-import LC3TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-3.md';
+import LC3TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/maximum/lc-3.md';
 import LC15TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-15.md';
 import LC17TSol from '@site/docs/_Partials/template-solutions/backtracking/lc-17.md';
 import LC19TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-19.md';
@@ -131,6 +131,7 @@ import LC39TSol from '@site/docs/_Partials/template-solutions/backtracking/lc-39
 import LC46TSol from '@site/docs/_Partials/template-solutions/backtracking/lc-46.md';
 import LC49TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-49.md';
 import LC52TSol from '@site/docs/_Partials/template-solutions/backtracking/lc-52.md';
+import LC53TSol from '@site/docs/_Partials/template-solutions/sliding-window/restarting/lc-53.md';
 import LC71TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-71.md';
 import LC74TSol from '@site/docs/_Partials/template-solutions/binary-search/first-index/lc-74.md';
 import LC74TSol2 from '@site/docs/_Partials/template-solutions/matrices/lc-74.md';
@@ -206,11 +207,14 @@ import LC399TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/l
 
 <!-- 400 - 499 -->
 import LC410TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-minimum/lc-410.md';
+import LC424TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/maximum/lc-424.md';
 import LC433TSol from '@site/docs/_Partials/template-solutions/graphs/implicit/lc-433.md';
 import LC437TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-437.md';
+import LC438TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/lc-438.md';
 import LC450TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-450.md';
 import LC463TSol from '@site/docs/_Partials/template-solutions/graphs/general/lc-463.md';
 import LC480TSol from '@site/docs/_Partials/template-solutions/heaps/multiple-heaps/lc-480.md';
+import LC485TSol from '@site/docs/_Partials/template-solutions/sliding-window/restarting/lc-485.md';
 import LC496TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-496.md';
 
 <!-- 500 - 599 -->
@@ -225,6 +229,7 @@ import LC547TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-547
 import LC557TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-557.md';
 import LC560TSol from '@site/docs/_Partials/template-solutions/misc/hashing/prefixes/lc-560.md';
 import LC563TSol from '@site/docs/_Partials/template-solutions/trees/combined/lc-563.md';
+import LC567TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/lc-567.md';
 
 <!-- 600 - 699 -->
 import LC632TSol from '@site/docs/_Partials/template-solutions/heaps/general/lc-632.md';
@@ -286,7 +291,7 @@ import LC994TSol from '@site/docs/_Partials/template-solutions/graphs/bfs/lc-994
 import LC997TSol from '@site/docs/_Partials/template-solutions/graphs/general/lc-997.md';
 
 <!-- 1000 - 1099 -->
-import LC1004TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/lc-1004.md';
+import LC1004TSol from '@site/docs/_Partials/template-solutions/sliding-window/variable-size/maximum/lc-1004.md';
 import LC1020TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-1020.md';
 import LC1026TSol from '@site/docs/_Partials/template-solutions/trees/induction/lc-1026.md';
 import LC1038TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-1038.md';
@@ -325,9 +330,10 @@ import LC1413TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/
 import LC1426TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1426.md';
 import LC1436TSol from '@site/docs/_Partials/template-solutions/misc/hashing/existence/lc-1436.md';
 import LC1438TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-1438.md';
+import LC1446TSol from '@site/docs/_Partials/template-solutions/sliding-window/restarting/lc-1446.md';
 import LC1448TSol from '@site/docs/_Partials/template-solutions/trees/tac/lc-1448.md';
 import LC1448TSol2 from '@site/docs/_Partials/template-solutions/trees/induction/lc-1448.md';
-import LC1456TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/outside-main/lc-1456.md';
+import LC1456TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/lc-1456.md';
 import LC1466TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-1466.md';
 import LC1475TSol from '@site/docs/_Partials/template-solutions/stacks-queues/monotonic-stacks/lc-1475.md';
 import LC1480TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-1480.md';
@@ -442,6 +448,7 @@ import LC39PS from '@site/docs/_Partials/problem-stems/lc39.md';
 import LC46PS from '@site/docs/_Partials/problem-stems/lc46.md';
 import LC49PS from '@site/docs/_Partials/problem-stems/lc49.md';
 import LC52PS from '@site/docs/_Partials/problem-stems/lc52.md';
+import LC53PS from '@site/docs/_Partials/problem-stems/lc53.md';
 import LC71PS from '@site/docs/_Partials/problem-stems/lc71.md';
 import LC74PS from '@site/docs/_Partials/problem-stems/lc74.md';
 import LC75PS from '@site/docs/_Partials/problem-stems/lc75.md';
@@ -511,11 +518,14 @@ import LC399PS from '@site/docs/_Partials/problem-stems/lc399.md';
 
 <!-- 400 - 499 -->
 import LC410PS from '@site/docs/_Partials/problem-stems/lc410.md';
+import LC424PS from '@site/docs/_Partials/problem-stems/lc424.md';
 import LC433PS from '@site/docs/_Partials/problem-stems/lc433.md';
 import LC437PS from '@site/docs/_Partials/problem-stems/lc437.md';
+import LC438PS from '@site/docs/_Partials/problem-stems/lc438.md';
 import LC450PS from '@site/docs/_Partials/problem-stems/lc450.md';
 import LC463PS from '@site/docs/_Partials/problem-stems/lc463.md';
 import LC480PS from '@site/docs/_Partials/problem-stems/lc480.md';
+import LC485PS from '@site/docs/_Partials/problem-stems/lc485.md';
 import LC496PS from '@site/docs/_Partials/problem-stems/lc496.md';
 
 <!-- 500 - 599 -->
@@ -530,6 +540,7 @@ import LC547PS from '@site/docs/_Partials/problem-stems/lc547.md';
 import LC557PS from '@site/docs/_Partials/problem-stems/lc557.md';
 import LC560PS from '@site/docs/_Partials/problem-stems/lc560.md';
 import LC563PS from '@site/docs/_Partials/problem-stems/lc563.md';
+import LC567PS from '@site/docs/_Partials/problem-stems/lc567.md';
 
 <!-- 600 - 699 -->
 import LC632PS from '@site/docs/_Partials/problem-stems/lc632.md';
@@ -627,6 +638,7 @@ import LC1413PS from '@site/docs/_Partials/problem-stems/lc1413.md';
 import LC1426PS from '@site/docs/_Partials/problem-stems/lc1426.md';
 import LC1436PS from '@site/docs/_Partials/problem-stems/lc1436.md';
 import LC1438PS from '@site/docs/_Partials/problem-stems/lc1438.md';
+import LC1446PS from '@site/docs/_Partials/problem-stems/lc1446.md';
 import LC1448PS from '@site/docs/_Partials/problem-stems/lc1448.md';
 import LC1456PS from '@site/docs/_Partials/problem-stems/lc1456.md';
 import LC1466PS from '@site/docs/_Partials/problem-stems/lc1466.md';
@@ -3370,7 +3382,190 @@ def index_to_value(matrix, index):
 
 ## Sliding window
 
-### Variable window size
+### Restarting window
+
+<details>
+<summary> Remarks</summary>
+
+"Restarting" windows are for problems where we're tasked with not only optimizing a certain property of a 1-dimensional input (oftentimes *maximizing* the *length* of a subarray or substring) but also where we may encounter elements which cause the entire window to become invalid, thus forcing us to start again from an empty window (i.e., `left == right`).
+
+Mechanically, how restarting windows work is that the `right` pointer advances one by one, as usual, expanding the window, but the `left` pointer remains fixed until an element is encountered that effectively invalidates the entire window. When this happens, we need to start again with an empty window, which means moving the `left` pointer to wherever the `right` pointer resides (recall that `left == right` means we have an empty window), thus effectively "resetting" the window.
+
+Generally speaking, because the `left` pointer stays fixed until the window restarts, we don't even need the `left` pointer: we simply update the window data structures as we advance the right pointer and reset the data structures when the window restarts.
+
+Note that we most often initialize/restart the window to be empty, but sometimes it is more convenient to always have a single element within the window. We initialize the window data structures and the result (the best window found so far) accordingly.
+
+</details>
+
+```python
+def fn(arr):
+    structs = ...                         # window data structures initialized for the starting window
+    ans = ...                             # value of the starting window (example: 0)
+
+    for right in range(1, len(arr) + 1):  # the '1' depends on the starting window size
+        if WINDOW_IS_INVALID:             # adding arr[right - 1] invalidates the window somehow
+            structs = ...                 # RESET data structures for maintaining the window
+        else:
+            structs += ...                # UPDATE data structures to reflect addition of arr[right - 1] to the window
+            ans = max(ans, ...)           # update ans if the current window is better
+
+    return ans
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='485' type='long' ></LC> (&malt;) </summary>
+
+<LC485PS />
+
+---
+
+<LC485TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1446' type='long' ></LC> (&malt;) </summary>
+
+<LC1446PS />
+
+---
+
+<LC1446TSol />
+
+</details>
+
+<details>
+<summary> <LC id='53' type='long' ></LC> (&malt;) </summary>
+
+<LC53PS />
+
+---
+
+<LC53TSol />
+
+</details>
+
+</details>
+
+### Fixed window size
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+def fn(arr, k):
+    structs = ...                 # window data structures initialized for the starting window
+    for right in range(1, k + 1): # process k elements from indices 0 to k - 1, inclusive
+      structs += ...              # update data structures to reflect addition of arr[right - 1] to window
+
+    ans = ...                   # value of the window of size k
+    for right in range(k + 1, len(arr) + 1): # process remaining elements in input
+        structs += ...          # update data structures to reflect addition of arr[right - 1] to window
+        structs -= ...          # update data structures to reflect removal of arr[right - 1] from window
+        ans = max(ans, ...)     # update ans if the current window is better
+
+    return ans
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> Most 1s in subarray of size k (&malt;) </summary>
+
+<Sol21NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='1456' type='long' ></LC> (&check;, &malt;) </summary>
+
+<LC1456PS />
+
+---
+
+<LC1456TSol />
+
+</details>
+
+<details>
+<summary> <LC id='567' type='long' ></LC> (&check;, &malt;) </summary>
+
+<LC567PS />
+
+---
+
+<LC567TSol />
+
+</details>
+
+<details>
+<summary> <LC id='438' type='long' ></LC> (&malt;) </summary>
+
+<LC438PS />
+
+---
+
+<LC438TSol />
+
+</details>
+
+</details>
+
+<details>
+<summary> Examples (build window outside main loop)</summary>
+
+<details>
+<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
+
+<Sol14NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
+
+<LC643PS />
+
+---
+
+<LC643TSol />
+
+</details>
+
+</details>
+
+<details>
+<summary> Examples (build window within main loop)</summary>
+
+<details>
+<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
+
+<Sol15NoLC />
+
+</details>
+
+<details>
+<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
+
+<LC643PS />
+
+---
+
+<LC643TSol2 />
+
+</details>
+
+</details>
+
+### Variable window size (maximum)
 
 <details>
 <summary> Remarks</summary>
@@ -3379,52 +3574,63 @@ def index_to_value(matrix, index):
 
 </details>
 
-<details>
-<summary> Template with code comments</summary>
-
 ```python
 def fn(arr):
-    # initialize left boundary, window, and answer variables
-    left = curr = ans = 0
+    structs = ... # window data structures initialized for the starting window
+    ans = ...     # value of the starting window (example: 0)
+    left = 0      # initialize left = 0 (explicit) and right = 0 (implied)
 
-    # initialize right boundary
-    for right in range(len(arr)):
+    for right in range(1, len(arr) + 1):
+        structs = ...                             # update data structures to reflect addition of arr[right - 1] to window
+        while left < right and WINDOW_IS_INVALID: # adding arr[right - 1] invalidates the window somehow
+            structs = ...                         # update data structures to reflect removal of arr[right - 1] from window
+            left += 1                             # shrink window until it either becomes or empty (left == right) or is valid again
+        ans = max(ans, right - left)              # length of "valid" window
+        # ans += right - left                     # number of "valid" subarrays ending at 'right - 1' (when counting)
 
-        # logic for adding element arr[right] to window
-        curr += nums[right]
-
-        # resize window if window condition/constraint is invalid
-        while left <= right and WINDOW_IS_INVALID # (e.g., curr > k):
-            
-            # logic to remove element from window
-            curr -= nums[left]
-            
-            # shift window
-            left += 1
-
-        # logic to update answer
-        ans = max(ans, right - left + 1)
-    
-    return ans
-```
-
-</details>
-
-```python
-def fn(arr):
-    left = curr = ans = 0
-    for right in range(len(arr)):
-        curr += nums[right]
-        while left <= right and WINDOW_IS_INVALID # (e.g., curr > k):
-            curr -= nums[left]
-            left += 1
-        ans = max(ans, right - left + 1)  # length of "valid" window
-        # ans += right - left + 1         # number of "valid" subarrays ending at 'right'
     return ans
 ```
 
 <details>
 <summary> Examples</summary>
+
+<details>
+<summary> <LC id='1004' type='long' ></LC> (&check;, &malt;) </summary>
+
+<LC1004PS />
+
+---
+
+<LC1004TSol />
+
+</details>
+
+<details>
+<summary> <LC id='3' type='long' ></LC> (&check;, &malt;) <MyStar stars={2} /> </summary>
+
+<LC3PS />
+
+---
+
+<LC3TSol />
+
+</details>
+
+<details>
+<summary> <LC id='424' type='long' ></LC> (&malt;) </summary>
+
+<LC424PS />
+
+---
+
+<LC424TSol />
+
+</details>
+
+</details>
+
+<details>
+<summary> Examples (old way)</summary>
 
 <details>
 <summary> Longest subarray of positive integer array with sum not greater than <code>k</code> (&check;)</summary>
@@ -3496,17 +3702,6 @@ def fn(arr):
 </details>
 
 <details>
-<summary> <LC id='3' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
-
-<LC3PS />
-
----
-
-<LC3TSol />
-
-</details>
-
-<details>
 <summary> <LC id='3105' type='long' ></LC> (&check;) <MyStar stars={1} /> </summary>
 
 <LC3105PS />
@@ -3519,56 +3714,27 @@ def fn(arr):
 
 </details>
 
-### Fixed window size
-
-#### Method 1 (build window outside main loop)
+### Variable window size (minimum)
 
 <details>
 <summary> Remarks</summary>
 
-<SlidingWindowFixedSizeMethod1Remark />
-
-</details>
-
-<details>
-<summary> Template with code comments</summary>
-
-```python
-def fn(arr, k):
-    # some data to keep track of with the window (e.g., sum of elements)
-    curr = 0
-
-    # build the first window (of size k)
-    for i in range(k):
-        # do something with curr or other variables to build first window
-        curr += arr[i]
-
-    # initialize answer variable (might be equal to curr here depending on the problem)
-    ans = curr
-    for i in range(k, len(arr)):
-        # add arr[i] to window
-        curr += arr[i]
-        # remove arr[i - k] from window
-        curr -= arr[i - k]
-        # update ans
-        ans = max(ans, curr)
-
-    return ans
-```
+TBD
 
 </details>
 
 ```python
-def fn(arr, k):
-    curr = 0
-    for i in range(k):
-        curr += arr[i]
+def fn(arr):
+    structs = ... # window data structures initialized for the starting window
+    ans = ...     # value of the starting window (example: float('inf'))
+    left = 0      # initialize left = 0 (explicit) and right = 0 (implied)
 
-    ans = curr
-    for i in range(k, len(arr)):
-        curr += arr[i]
-        curr -= arr[i - k]
-        ans = max(ans, curr)
+    for right in range(1, len(arr) + 1):
+        structs = ...                             # update data structures to reflect addition of arr[right - 1] to window
+        while left < right and WINDOW_IS_VALID:   # adding arr[right - 1] makes the window valid somehow
+            ans = max(ans, right - left)          # length of "valid" window
+            structs = ...                         # update data structures to reflect removal of arr[left] from window
+            left += 1                             # shrink window until it either becomes empty (left == right) or invalid again
 
     return ans
 ```
@@ -3577,103 +3743,9 @@ def fn(arr, k):
 <summary> Examples</summary>
 
 <details>
-<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
+<summary> Shortest subarray with k 1s (&malt;) </summary>
 
-<Sol14NoLC />
-
-</details>
-
-<details>
-<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
-
-<LC643PS />
-
----
-
-<LC643TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1456' type='long' ></LC> (&check;) </summary>
-
-<LC1456PS />
-
----
-
-<LC1456TSol />
-
-</details>
-
-</details>
-
-#### Method 2 (build window within main loop)
-
-<details>
-<summary> Remarks</summary>
-
-<SlidingWindowFixedSizeMethod2Remark />
-
-</details>
-
-<details>
-<summary> Template with code comments</summary>
-
-```python
-def fn(arr, k):
-    # some data to keep track of with the window (e.g., sum of elements)
-    curr = 0
-
-    # initialize answer variable (initial value depends on problem)
-    ans = float('-inf')
-    for i in range(len(arr)):
-        if i >= k:
-            # update ans
-            ans = max(curr, ans)
-            # remove arr[i - k] from window
-            curr -= arr[i - k]
-        
-        # add arr[i] to window
-        curr += arr[i]
-
-    # update ans
-    ans = max(ans, curr)
-    return ans
-```
-
-</details>
-
-```python
-def fn(arr, k):
-    curr = 0
-    ans = float('-inf')
-    for i in range(len(arr)):
-        if i >= k:
-            ans = max(curr, ans)
-            curr -= arr[i - k]
-        curr += arr[i]
-    ans = max(ans, curr)
-    return ans
-```
-
-<details>
-<summary> Examples</summary>
-
-<details>
-<summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
-
-<Sol15NoLC />
-
-</details>
-
-<details>
-<summary> <LC id='643' type='long' ></LC> (&check;) </summary>
-
-<LC643PS />
-
----
-
-<LC643TSol2 />
+<Sol22NoLC />
 
 </details>
 
@@ -6297,7 +6369,7 @@ def fn(nums, k):
 
 </details>
 
-### Kadane's algorithm
+### Kadane's algorithm {#kadane}
 
 <details>
 <summary> Template clarifications</summary>
