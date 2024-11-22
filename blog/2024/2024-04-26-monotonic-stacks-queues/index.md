@@ -291,7 +291,7 @@ def next_greater_height_0(heights):
 
 What's the computational burden of the approach above (i.e., what is the time and space complexity of the `next_greater_height_0` function)?
 
-- **Time** If `heights` has $n$ elements, then how many total iterations can we possibly perform? The worst-case scenario is if the `heights` input array is strictly decreasing (because then no height will have a next greater height and we must exhaust the search space every time we look for a next greater height). Our function appears to be $O(n^2)$ in terms of time complexity, but let's confirm this &#8212; the inner loop is where the heavy lifting is done. How many times can we possibly enter the innermost loop and perform an operation in the worst-case scenario? The table below shows how many times the innermost loop can fire (i.e., how many elements are traversed or "people searched" in service of looking for a next greater height for index `i`):
+- **Time:** If `heights` has $n$ elements, then how many total iterations can we possibly perform? The worst-case scenario is if the `heights` input array is strictly decreasing (because then no height will have a next greater height and we must exhaust the search space every time we look for a next greater height). Our function appears to be $O(n^2)$ in terms of time complexity, but let's confirm this &#8212; the inner loop is where the heavy lifting is done. How many times can we possibly enter the innermost loop and perform an operation in the worst-case scenario? The table below shows how many times the innermost loop can fire (i.e., how many elements are traversed or "people searched" in service of looking for a next greater height for index `i`):
 
   $$
   \begin{array}{l|cccccc}

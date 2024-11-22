@@ -39,7 +39,11 @@ prefix_2 = [0, 1, 3, 6, 10, 15]
 # calculate subarray sum from i = 0 to j = 3, inclusive
 prefix_1[3] - prefix_1[0 - 1]         # prefix[j] - prefix[i - 1]: left boundary issue
 prefix_1[3] - prefix_1[0] + nums[0]   # prefix[j] - prefix[i] + nums[i]: must add back left boundary
-prefix_2[4] - prefix_2[0]             # prefix[j+1] - prefix[i]: no left boundary issue
+prefix_2[4] - prefix_2[0]             # prefix[j+1] - prefix[i]: no left boundary issue (no adding back needed either)
 ```
 
-The best approach will likely depend on context. If the prefix array is built in-place, then `prefix[j] - prefix[i] + nums[i]` will probably be the best and clearest approach. If the prefix array must be built separately, then the left padding approach above helps reduce the possibility of encountering boundary issues, but it may not be clear at first to those unfamiliar with the technique.
+The best approach will naturally depend on context. 
+
+If the prefix array is built in-place, then care must be exercised when the left boundary is involved; for example, if `nums` is modified in-place to be a prefix sum, then the prefix sum from `i` to `j` cannot be simply expressed as `nums[j] - nums[i - 1]` because `i = 0` causes issues, and this can't be fixed in the usual way of writing `prefix[j] - prefix[i] + nums[i]` because `nums` has been overwritten at this point (writing something like `nums[j] - nums[i] + nums[i]` is just equivalent to `nums[j]` and is only appropriate when `i = 0`). The result is that we need `nums[j]` when `i = 0` and `nums[j] - nums[i - 1]` otherwise. The logic is slightly complicated by doing this.
+
+If, however, the prefix array must be built separately, then the left padding approach above helps reduce the possibility of encountering boundary issues, but it may not be clear at first to those unfamiliar with the technique.

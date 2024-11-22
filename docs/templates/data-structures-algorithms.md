@@ -21,6 +21,7 @@ import LC from '@site/src/components/LC';
 import ImageCarousel from '@site/src/components/ImageCarousel';
 import BibRef from '@site/src/components/BibRef';
 import MyStar from '@site/src/components/MyStar';
+import ChipDivider from '@site/src/components/ChipDivider';
 
 <!-- TEMPLATES -->
 
@@ -375,6 +376,7 @@ import LC1971TSol from '@site/docs/_Partials/template-solutions/graphs/dfs/lc-19
 import LC2000TSol from '@site/docs/_Partials/template-solutions/two-pointers/opposite-ends/lc-2000.md';
 import LC2074TSol from '@site/docs/_Partials/template-solutions/linked-lists/reverse-k-nodes/lc-2074.md';
 import LC2090TSol from '@site/docs/_Partials/template-solutions/misc/prefix-sum/lc-2090.md';
+import LC2090TSol2 from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/lc-2090.md';
 import LC2095TSol from '@site/docs/_Partials/template-solutions/linked-lists/fast-slow/lc-2095.md';
 
 <!-- 2100 - 2199 -->
@@ -3484,13 +3486,6 @@ def fn(arr, k):
 <summary> Examples</summary>
 
 <details>
-<summary> Most 1s in subarray of size k (&malt;, 💎) </summary>
-
-<Sol21NoLC />
-
-</details>
-
-<details>
 <summary> Max sum of subarray of size <code>k</code> (&check;)</summary>
 
 <Sol23NoLC />
@@ -3505,6 +3500,15 @@ def fn(arr, k):
 ---
 
 <LC643TSol />
+
+</details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider> 
+
+<details>
+<summary> Most 1s in subarray of size k (&malt;, 💎) </summary>
+
+<Sol21NoLC />
 
 </details>
 
@@ -3538,6 +3542,17 @@ def fn(arr, k):
 ---
 
 <LC438TSol />
+
+</details>
+
+<details>
+<summary> <LC id='2090' type='long' ></LC> (&check;) </summary>
+
+<LC2090PS />
+
+---
+
+<LC2090TSol2 />
 
 </details>
 
@@ -3587,6 +3602,17 @@ def fn(arr):
 </details>
 
 <details>
+<summary> <LC id='713' type='long' ></LC> (&check;) <MyStar /></summary>
+
+<LC713PS />
+
+---
+
+<LC713TSol />
+
+</details>
+
+<details>
 <summary> <LC id='1004' type='long' ></LC> (&check;, &malt;, 💎) </summary>
 
 <LC1004PS />
@@ -3596,6 +3622,8 @@ def fn(arr):
 <LC1004TSol />
 
 </details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
 
 <details>
 <summary> <LC id='3' type='long' ></LC> (&check;, &malt;) <MyStar stars={2} /> </summary>
@@ -3616,17 +3644,6 @@ def fn(arr):
 ---
 
 <LC424TSol />
-
-</details>
-
-<details>
-<summary> <LC id='713' type='long' ></LC> (&check;) <MyStar /></summary>
-
-<LC713PS />
-
----
-
-<LC713TSol />
 
 </details>
 
@@ -5624,7 +5641,7 @@ def fn(arr):
 </details>
 
 <details>
-<summary> Determine if pair of integers sums to target in sorted array of unique integers (&check;)</summary>
+<summary> Determine if a pair of integers sums to a target in a sorted array of unique integers (&check;)</summary>
 
 <Sol10NoLC />
 
@@ -5651,6 +5668,8 @@ def fn(arr):
 <LC977TSol />
 
 </details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider> 
 
 <details>
 <summary> <LC id='125' type='long' ></LC> (&malt;)</summary>
@@ -5789,6 +5808,8 @@ def fn(arr1, arr2):
 
 </details>
 
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider> 
+
 <details>
 <summary> <LC id='350' type='long' ></LC> (&malt;)</summary>
 
@@ -5878,6 +5899,8 @@ def fn(arr):
 <LC392TSol />
 
 </details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider> 
 
 <details>
 <summary> <LC id='26' type='long' ></LC> (&malt;)</summary>
@@ -6424,7 +6447,7 @@ def prefix_sum(nums):
 #     usage: nums[j] - nums[i - 1]
 def prefix_sum(nums):
     for i in range(1, len(nums)):
-        nums[i] = nums[i] + nums[i - 1]
+        nums[i] += nums[i - 1]
 ```
 
 <details>
@@ -6477,7 +6500,7 @@ def prefix_sum(nums):
 </details>
 
 <details>
-<summary> <LC id='2090' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+<summary> <LC id='2090' type='long' ></LC> (&check;, 💎) <MyStar stars={2} /> </summary>
 
 <LC2090PS />
 
@@ -6486,6 +6509,8 @@ def prefix_sum(nums):
 <LC2090TSol />
 
 </details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
 
 <details>
 <summary> <LC id='1732' type='long' ></LC> (&check;) </summary>

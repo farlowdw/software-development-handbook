@@ -198,4 +198,18 @@
     ],
     "description": "Solution boilerplate for creating a non-LC template solution"
   },
+  "Diamond for problem solutions with extended discussions": {
+    "prefix": "lcdiamond",
+    "body": [
+      "💎$0"
+    ],
+    "description": "Diamond emoji to denote example problems whose solutions involve extended discussions"
+  },
+  "Chip divider for LC": {
+    "prefix": "chiplc",
+    "body": [
+      "<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>$0"
+    ],
+    "description": "Chip divider for LC problems"
+  },
 }
