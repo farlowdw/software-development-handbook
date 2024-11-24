@@ -53,6 +53,7 @@ import PrefixSumNonTraditionalRemark from '@site/docs/_Partials/template-remarks
 import HashingCountingRemark from '@site/docs/_Partials/template-remarks/hashing-counting.md';
 import HashingDefaultdictRemark from '@site/docs/_Partials/template-remarks/hashing-defaultdict.md';
 import HashingPrefixesTemplateRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes.md';
+import HashingPrefixesShortRemark from '@site/docs/_Partials/template-remarks/hashing-prefixes-short.md';
 import LinkedListNodeComparisons from '@site/docs/_Partials/template-remarks/linked-list-node-comparisons.md';
 import LinkedListPointerManipulation from '@site/docs/_Partials/template-remarks/linked-list-pointer-manipulation.md';
 import LinkedListSentinelNodes from '@site/docs/_Partials/template-remarks/linked-list-sentinel-nodes.md';
@@ -5986,17 +5987,6 @@ if el in seen:      # existence check is O(1) for sets
 <summary> Examples</summary>
 
 <details>
-<summary> Determining unique numbers based on non-existent off-by-ones (&check;) </summary>
-
-Given an integer array `nums`, find all the *unique* numbers `x` in `nums` that satisfy the following: `x + 1` is not in `nums`, and `x - 1` is not in `nums`.
-
----
-
-<Sol20NoLC />
-
-</details>
-
-<details>
 <summary> <LC id='1' type='long' ></LC> (&check;) </summary>
 
 <LC1PS />
@@ -6015,6 +6005,17 @@ Given an integer array `nums`, find all the *unique* numbers `x` in `nums` that 
 ---
 
 <LC2351TSol />
+
+</details>
+
+<details>
+<summary> Determining unique numbers based on non-existent off-by-ones (&check;) </summary>
+
+Given an integer array `nums`, find all the *unique* numbers `x` in `nums` that satisfy the following: `x + 1` is not in `nums`, and `x - 1` is not in `nums`.
+
+---
+
+<Sol20NoLC />
 
 </details>
 
@@ -6052,39 +6053,6 @@ Given an integer array `nums`, find all the *unique* numbers `x` in `nums` that 
 </details>
 
 <details>
-<summary> <LC id='217' type='long' ></LC> (&check;) </summary>
-
-<LC217PS />
-
----
-
-<LC217TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1436' type='long' ></LC> (&check;) </summary>
-
-<LC1436PS />
-
----
-
-<LC1436TSol />
-
-</details>
-
-<details>
-<summary> <LC id='1496' type='long' ></LC> (&check;) </summary>
-
-<LC1496PS />
-
----
-
-<LC1496TSol />
-
-</details>
-
-<details>
 <summary> <LC id='49' type='long' ></LC> (&check;) </summary>
 
 <LC49PS />
@@ -6114,6 +6082,41 @@ Given an integer array `nums`, find all the *unique* numbers `x` in `nums` that 
 ---
 
 <LC383TSol />
+
+</details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
+
+<details>
+<summary> <LC id='217' type='long' ></LC> (&check;) </summary>
+
+<LC217PS />
+
+---
+
+<LC217TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1436' type='long' ></LC> (&check;) </summary>
+
+<LC1436PS />
+
+---
+
+<LC1436TSol />
+
+</details>
+
+<details>
+<summary> <LC id='1496' type='long' ></LC> (&check;) </summary>
+
+<LC1496PS />
+
+---
+
+<LC1496TSol />
 
 </details>
 
@@ -6288,12 +6291,21 @@ def fn(s):
 
 </details>
 
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
+
 </details>
 
 #### Complementary prefixes to determine "exact" number of subarrays
 
 <details>
-<summary> Remarks</summary>
+<summary> Motivation (subarray sum equals <code>k</code>) </summary>
+
+<HashingPrefixesShortRemark />
+
+</details>
+
+<details>
+<summary> More motivation (extended remarks)</summary>
 
 <HashingPrefixesTemplateRemark />
 
@@ -6356,6 +6368,8 @@ def fn(nums, k):
 <LC525TSol />
 
 </details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
 
 </details>
 

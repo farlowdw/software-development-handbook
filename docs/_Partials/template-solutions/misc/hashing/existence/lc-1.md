@@ -5,7 +5,7 @@ class Solution:
         for i in range(len(nums)):
             complement = target - nums[i]
             if complement in lookup:
-                return [i, lookup[complement]]
+                return [lookup[complement], i]
             lookup[nums[i]] = i
 ```
 
