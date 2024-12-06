@@ -347,6 +347,7 @@ import LC1514TSol from '@site/docs/_Partials/template-solutions/graphs/dijkstra/
 import LC1544TSol from '@site/docs/_Partials/template-solutions/stacks-queues/stacks/lc-1544.md';
 import LC1552TSol from '@site/docs/_Partials/template-solutions/binary-search/sol-space-greedy-maximum/lc-1552.md';
 import LC1557TSol from '@site/docs/_Partials/template-solutions/graphs/general/lc-1557.md';
+import LC1588TSol from '@site/docs/_Partials/template-solutions/misc/math/lc-1588.md';
 
 <!-- 1600 - 1699 -->
 import LC1609TSol from '@site/docs/_Partials/template-solutions/trees/levels/lc-1609.md';
@@ -431,6 +432,9 @@ import LC3105TSol from '@site/docs/_Partials/template-solutions/sliding-window/v
 
 <!-- 3200 - 3299 -->
 import LC3228TSol from '@site/docs/_Partials/template-solutions/greedy/lc-3228.md';
+
+<!-- 3300 - 3399 -->
+import LC3364TSol from '@site/docs/_Partials/template-solutions/sliding-window/fixed-size/lc-3364.md';
 
 <!-- PROBLEM STEMS -->
 <!-- 1 - 99 -->
@@ -655,6 +659,7 @@ import LC1514PS from '@site/docs/_Partials/problem-stems/lc1514.md';
 import LC1544PS from '@site/docs/_Partials/problem-stems/lc1544.md';
 import LC1552PS from '@site/docs/_Partials/problem-stems/lc1552.md';
 import LC1557PS from '@site/docs/_Partials/problem-stems/lc1557.md';
+import LC1588PS from '@site/docs/_Partials/problem-stems/lc1588.md';
 
 <!-- 1600 - 1699 -->
 import LC1609PS from '@site/docs/_Partials/problem-stems/lc1609.md';
@@ -736,6 +741,9 @@ import LC3105PS from '@site/docs/_Partials/problem-stems/lc3105.md';
 
 <!-- 3200 - 3299 -->
 import LC3228PS from '@site/docs/_Partials/problem-stems/lc3228.md';
+
+<!-- 3300 - 3399 -->
+import LC3364PS from '@site/docs/_Partials/problem-stems/lc3364.md';
 
 ## Contents
 
@@ -2913,7 +2921,7 @@ def fn(head):
 <summary> Examples</summary>
 
 <details>
-<summary> Return the middle node value of a linked list with an odd number of nodes (&check;) </summary>
+<summary> Return the middle node value of a linked list with an <strong>odd</strong> number of nodes (&check;) </summary>
 
 <Sol18NoLC />
 
@@ -2938,17 +2946,6 @@ def fn(head):
 </details>
 
 <details>
-<summary> <LC id='142' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
-
-<LC142PS />
-
----
-
-<LC142TSol />
-
-</details>
-
-<details>
 <summary> <LC id='876' type='long' ></LC> (&check;) </summary>
 
 <LC876PS />
@@ -2956,6 +2953,19 @@ def fn(head):
 ---
 
 <LC876TSol />
+
+</details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
+
+<details>
+<summary> <LC id='142' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
+
+<LC142PS />
+
+---
+
+<LC142TSol />
 
 </details>
 
@@ -3063,7 +3073,7 @@ def fn(node):
 </details>
 
 <details>
-<summary> <LC id='24' type='long' ></LC> (&check;) </summary>
+<summary> <LC id='24' type='long' ></LC> (&check;) <MyStar stars={2} /> </summary>
 
 <LC24PS />
 
@@ -3083,6 +3093,8 @@ def fn(node):
 <LC2130TSol />
 
 </details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
 
 <details>
 <summary> <LC id='234' type='long' ></LC> (&check;) </summary>
@@ -3177,22 +3189,22 @@ The image above, particularly the top part of the image with the initial list an
 
 ```python
 def reverse_k_nodes(prev, k):
-    if not prev.next or k < 2:
+    if not prev.next or k < 2:          # not possible to reverse at least 2 nodes (early return)
         return prev.next
     
-    rev_start = prev.next
-    next_node = rev_start.next
-    rev_end = rev_start
+    rev_start = prev.next               # start node of segment to reverse
+    next_node = rev_start.next          # next node to be moved in front of start node
+    rev_end = rev_start                 # start node of reversed segment will eventually be its last node, which we return
     
     count = 1 
-    while count <= k - 1 and next_node:
-        rev_start.next = next_node.next
-        next_node.next = prev.next
-        prev.next = next_node
-        next_node = rev_start.next
-        count += 1
+    while count <= k - 1 and next_node: # k - 1 iterations to move k - 1 nodes before start node (in reverse order)
+        rev_start.next = next_node.next # point start node to next node to be processed
+        next_node.next = prev.next      # point node being moved before start node to current beginning node of reversed segment
+        prev.next = next_node           # ensure node before reversed segment points to new start node of reversed segment (i.e., the node being moved)
+        next_node = rev_start.next      # prepare for next node to be processed
+        count += 1                      # keep track of iteration count to ensure proper termination
         
-    return rev_end
+    return rev_end                      # return last node of newly reversed segment
 ```
 
 <details>
@@ -3208,6 +3220,8 @@ def reverse_k_nodes(prev, k):
 <LC92TSol />
 
 </details>
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
 
 <details>
 <summary> <LC id='2074' type='long' ></LC> (&check;) <MyStar stars={3} /> </summary>
@@ -3268,15 +3282,19 @@ When nodes `left` and `right` are adjacent, we want `right.next` to point to `le
 
 ```python
 def swap_nodes(prev_left, prev_right):
-    if not prev_left or not prev_right \
-        or not prev_left.next or not prev_right.next \
-            or prev_left.next == prev_right.next:
+    if (                        # determine whether or not it makes sense to try to swap nodes (return early if not)
+        not prev_left or        # anchor node before left node to be swapped
+        not prev_right or       # anchor node before right node to be swapped
+        not prev_left.next or   # left node to be swapped
+        not prev_right.next or  # right node to be swapped
+        prev_left.next == prev_right.next   # test if nodes are identical in memory
+    ):
         return
     
-    left = prev_left.next
-    right = prev_right.next
-    prev_left.next, prev_right.next = right, left
-    right.next, left.next = left.next, right.next
+    left = prev_left.next       # actual left node to be swapped
+    right = prev_right.next     # actual right node to be swapped
+    prev_left.next, prev_right.next = right, left   # adjust anchor pointers
+    right.next, left.next = left.next, right.next   # adjust swapped node pointers
 ```
 
 <details>
@@ -3554,6 +3572,17 @@ def fn(arr, k):
 ---
 
 <LC2090TSol2 />
+
+</details>
+
+<details>
+<summary> <LC id='3364' type='long' ></LC> </summary>
+
+<LC3364PS />
+
+---
+
+<LC3364TSol />
 
 </details>
 
@@ -6419,6 +6448,37 @@ def kadane(nums):
 <summary> Examples</summary>
 
 TBD
+
+</details>
+
+### Math
+
+<details>
+<summary> Remarks</summary>
+
+TBD
+
+</details>
+
+```python
+# There is no general template for "math"
+# The examples included below illustrate solutions to problems
+#   where a mathematical observation is key to coming up with an effective solution
+```
+
+<details>
+<summary> Examples</summary>
+
+<details>
+<summary> <LC id='1588' type='long' ></LC> </summary>
+
+<LC1588PS />
+
+---
+
+<LC1588TSol />
+
+</details>
 
 </details>
 
