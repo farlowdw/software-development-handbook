@@ -3857,6 +3857,8 @@ len(stack) # 1
 
 </details>
 
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
+
 <details>
 <summary> <LC id='2390' type='long' ></LC> (&check;) </summary>
 
@@ -3975,6 +3977,8 @@ len(queue) # 3
 ---
 
 <LC933TSol />
+
+<ChipDivider>The problems above appear in the LeetCode DSA crash course</ChipDivider>
 
 </details>
 
