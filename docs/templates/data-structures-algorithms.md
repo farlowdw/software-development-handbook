@@ -4022,16 +4022,12 @@ len(queue) # 3
 <details>
 <summary> Remarks</summary>
 
-TBD
+See the [monotonic stack blog post](/blog/2024/04/26/2024/monotonic-stacks-queues) for more on gaining an intuition for monotonic stacks and deques.
 
 </details>
 
-```python
-TBD
-```
-
 <details>
-<summary> Examples</summary>
+<summary> Old examples</summary>
 
 <details>
 <summary> <LC id='739' type='long' ></LC> (&check;) </summary>
@@ -4188,6 +4184,108 @@ TBD
 </details>
 
 </details>
+
+#### Next values
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    stack = [] # monotonic stack
+    for i in range(n):
+        val_B = nums[i]
+        # the comparison operator (?) dictates what A's next value B represents
+        # (<)  next larger value (weakly decreasing stack)
+        # (<=) next larger or equal value (strictly decreasing stack)
+        # (>)  next smaller value (weakly increasing stack)
+        # (>=) next smaller or equal value (strictly increasing stack)
+        while stack and nums[stack[-1]] ? val_B:
+            idx_val_A = stack.pop()
+            ans[idx_val_A] = val_B
+        stack.append(i)
+    
+    # process elements that never had a "next" value that satisfied the criteria
+    while stack:
+        idx_val_A = stack.pop()
+        ans[idx_val_A] = -1
+    
+    return ans
+```
+
+#### Previous values
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [None] * n
+    stack = [] # monotonic stack
+    for i in range(n):
+        val_A = nums[i]
+        # the comparison operator (?) dictates what A's previous value B represents
+        # (<)  previous larger or equal value (weakly decreasing stack)
+        # (<=) previous larger (strictly decreasing stack)
+        # (>)  previous smaller or equal value (weakly increasing stack)
+        # (>=) previous smaller value (strictly increasing stack)
+        while stack and nums[stack[-1]] ? val_A:
+            stack.pop()
+            
+        if stack:
+            idx_val_B = stack[-1]
+            val_B = nums[idx_val_B]
+            ans[i] = val_B
+        else:
+            ans[i] = -1
+        
+        stack.append(i)
+        
+    return ans
+```
+
+#### Next and previous values (combined)
+
+```python
+def fn(nums):
+    n = len(nums)
+    ans = [[-1, -1] for _ in range(n)] # default values for missing PREVIOUS and NEXT values, respectively
+    stack = [] # monotonic stack
+    
+    # the comparison operator (?) dictates what each element's PREVIOUS and NEXT values will be
+    # (<)  PREVIOUS larger or equal value and NEXT larger value (weakly decreasing stack)
+    # (<=) PREVIOUS larger value and NEXT larger or equal value (strictly decreasing stack)
+    # (>)  PREVIOUS smaller or equal value and NEXT smaller value (weakly increasing stack)
+    # (>=) PREVIOUS smaller value and NEXT smaller or equal value (strictly increasing stack)
+    for i in range(n):
+        while stack and nums[stack[-1]] ? nums[i]:
+            # NEXT values processed
+            idx = stack.pop()
+            ans[idx][1] = i # use nums[i] instead of i to directly record array values instead of indexes
+        # PREVIOUS values processed
+        ans[i][0] = -1 if not stack else stack[-1] # use nums[stack[-1]] instead of stack[-1] 
+                                                   # to directly record array values instead of indexes 
+        stack.append(i)
+    
+    return ans
+```
+
+#### Double-ended queue (deque)
+
+```python
+from collections import deque
+def fn(nums):
+    queue = deque() # monotonic deque (weakly decreasing)
+    ans = []
+    
+    for i in range(len(nums)):
+        curr_num = nums[i]
+        while queue and nums[queue[-1]] < curr_num:
+            queue.pop()
+        queue.append(i)
+        
+        if CONDITION:
+            queue.popleft()
+        
+    return ans
+```
 
 ## Trees
 

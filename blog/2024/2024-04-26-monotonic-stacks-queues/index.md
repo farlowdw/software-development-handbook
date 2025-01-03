@@ -68,9 +68,9 @@ Read the [important observations](#important-observations) section if you don't 
 
 ---
 
-Stacks and queues are defined by their *interfaces* (e.g., `push`, `pop`, `pop left`, `peek`, etc.). [Monotonicity](https://en.wikipedia.org/wiki/Monotonic_function) is not. The following are all examples of monotonic stacks, where the removal of values needed to maintain the monotonic [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)#Invariants_in_computer_science) (i.e., strictly/weakly increasing/decreasing) is illustrated in the context of adding `5` to each value collection:
+Stacks and queues are defined by their *interfaces* (e.g., `push`, `pop`, `enqueue`, `dequeue`, `peek`, etc.). [Monotonicity](https://en.wikipedia.org/wiki/Monotonic_function) is not. The following are all examples of monotonic stacks, where the removal of values needed to maintain the monotonic [invariant](https://en.wikipedia.org/wiki/Invariant_(mathematics)#Invariants_in_computer_science) (i.e., strictly/weakly increasing/decreasing) is illustrated in the context of adding `5` to each value collection:
 
-<CodeGrid>
+<CodeGrid styles={{gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))'}}>
 <CodeGridCell>
 
 ```python title="Strictly decreasing"
@@ -105,7 +105,7 @@ Stacks and queues are defined by their *interfaces* (e.g., `push`, `pop`, `pop l
 </CodeGridCell>
 </CodeGrid>
 
-The removals above are all stack-like in nature (i.e., popping and pushing from the right), which is why the term "monotonic queue" can be rather misleading. If elements need to be removed from the left, then we use a *double-ended queue* or *deque* (e.g., see Python's [`deque`](https://docs.python.org/3/library/collections.html#collections.deque) from its `collections` module). Stack-like operations (push and pop) are *always* performed on the right end to maintain the monotonic invariant. If the queue-like operation of removing an element from the left end (pop left) is needed, then we can use a deque instead of a simple stack (this allows us to still use stack-like operations to maintain the monotonic invariant while also allowing us to pop elements from the left, as needed).
+The removals above are all stack-like in nature (i.e., popping and pushing from the right), which is why the term "monotonic queue" can be rather misleading. If elements need to be removed *from the left*, then we use a *double-ended queue* or *deque* (e.g., see Python's [`deque`](https://docs.python.org/3/library/collections.html#collections.deque) from its `collections` module). Stack-like operations (push and pop) are *always* performed on the right end to maintain the monotonic invariant. If the queue-like operation of removing an element from the left end (dequeue) is needed, then we can use a deque instead of a simple stack (this allows us to still use stack-like operations to maintain the monotonic invariant while also allowing us to pop elements from the left, as needed).
 
 What can make monotonic stacks and deques challenging at first is not *what* they are (all possibilities are shown above) but *how* they are used in sophisticated ways to solve problems of varying complexity. This post thoroughly explores two introductory problems and various approaches to solving these problems without ever mentioning the words *monotonic*, *stack*, *queue*, or *deque* (double-ended queue). The *ideas* behind these structures *are* used though, where an emphasis is placed on trying to use these ideas as organically as possible (i.e., not getting mired in technical mumbo jumbo but exploring new ways of thinking). If you can make it through the "next greater height" and "sliding window minimum" introductory problems, then you will largely know what you need to know about monotonic stacks and deques.
 
@@ -173,10 +173,10 @@ def fn(nums):
     for i in range(n):
         val_A = nums[i]
         # the comparison operator (?) dictates what A's previous value B represents
-        # (<=) previous larger (strictly decreasing)
-        # (<)  previous larger or equal value (weakly decreasing)
-        # (>=) previous smaller value (strictly increasing)
-        # (>)  previous smaller or equal value (weakly increasing)
+        # (<)  previous larger or equal value (weakly decreasing stack)
+        # (<=) previous larger (strictly decreasing stack)
+        # (>)  previous smaller or equal value (weakly increasing stack)
+        # (>=) previous smaller value (strictly increasing stack)
         #highlight-next-line
         while stack and nums[stack[-1]] ? val_A:
             stack.pop()
@@ -1121,7 +1121,7 @@ In the context of programming, we're generally concerned with a collection or "s
 
 Basic code examples are illustrative in clarifying these definitions:
 
-<CodeGrid>
+<CodeGrid styles={{gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))'}}>
 <CodeGridCell>
 
 ```python title="Strictly decreasing"
@@ -1191,7 +1191,7 @@ There are several important observations worth noting that stem directly from th
 
 - **Removing elements:** Adding values generally happens from the right. Removal of values, which typically *precedes* the addition of new values, also generally happens from the right. Why? Because values that would otherwise break the invariant are effectively popped from the top/right before adding the new value to the top/right. Consider the following examples that illustrate what elements must be removed to keep the invariant intact in order to accommodate the addition of the value `5`:
 
-  <CodeGrid>
+  <CodeGrid styles={{gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))'}}>
   <CodeGridCell>
 
   ```python title="Strictly decreasing"
@@ -1328,7 +1328,7 @@ The [important observations](#important-observations) discussed previously are f
 
 A *monotonic stack* is a *stack* whose values demonstrate monotonicity in some capacity: strictly decreasing, weakly decreasing, strictly increasing, or weakly increasing. The following are all examples of monotonic stacks (with an illustration of how monotonicity is maintained when a new value, `5`, is added):
 
-<CodeGrid>
+<CodeGrid styles={{gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))'}}>
 <CodeGridCell>
 
 ```python title="Monotonic stack (strictly decreasing)"
@@ -1375,7 +1375,7 @@ The [important observations](#important-observations) discussed previously are f
 
 A *monotonic queue* is really a double-ended queue or *deque* whose values demonstrate monotonicity in some capacity: strictly decreasing, weakly decreasing, strictly increasing, or weakly increasing. The following are all examples of monotonic deques (with an illustration of how monotonicity is maintained when a new value, `5`, is added):
 
-<CodeGrid>
+<CodeGrid styles={{gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))'}}>
 <CodeGridCell>
 
 ```python title="Monotonic deque (strictly decreasing)"
