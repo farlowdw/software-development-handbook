@@ -6,6 +6,8 @@ import AdmonitionTypeWarning from '@theme/Admonition/Type/Warning';
 import AdmonitionTypeDanger from '@theme/Admonition/Type/Danger';
 import AdmonitionTypeCaution from '@theme/Admonition/Type/Caution';
 import AdmonitionTypeDWF from './Type/DWF';
+import AdmonitionTypeTool from './Type/Tool';
+import AdmonitionTypeKey from './Type/Key';
 const admonitionTypes = {
   note: AdmonitionTypeNote,
   tip: AdmonitionTypeTip,
@@ -13,6 +15,8 @@ const admonitionTypes = {
   warning: AdmonitionTypeWarning,
   danger: AdmonitionTypeDanger,
   dwf: AdmonitionTypeDWF,
+  tool: AdmonitionTypeTool,
+  key: AdmonitionTypeKey,
 };
 // Undocumented legacy admonition type aliases
 // Provide hardcoded/untranslated retrocompatible label

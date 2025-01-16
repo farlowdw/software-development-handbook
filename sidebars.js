@@ -125,6 +125,7 @@ const sidebars = {
         'learning-resources/neetcode',
         'learning-resources/lc-sql-problems',
         'learning-resources/lc-tagged-problems',
+        'learning-resources/lc-solution-categories',
       ]
     },
     {

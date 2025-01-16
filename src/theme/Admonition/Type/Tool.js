@@ -2,22 +2,22 @@ import React from 'react';
 import clsx from 'clsx';
 import Translate from '@docusaurus/Translate';
 import AdmonitionLayout from '@theme/Admonition/Layout';
-import BoltIcon from '@mui/icons-material/Bolt';      // lightning bolt (default)
+import ConstructionIcon from '@mui/icons-material/Construction';  // hammer and wrench (default)
 
-const infimaClassName = 'alert alert--dwf';
+const infimaClassName = 'alert alert--tool';
 
 const defaultProps = {
-  icon: <BoltIcon fontSize='tiny' />,
+  icon: <ConstructionIcon fontSize='tiny' />,
   title: (
     <Translate
-      id="theme.admonition.dwf"
-      description="The default label used for the DWF admonition (:::dwf)">
-      dwf
+      id="theme.admonition.tool"
+      description="The default label used for the Tool admonition (:::tool)">
+      tool
     </Translate>
   ),
 };
 
-export default function AdmonitionTypeDWF(props) {
+export default function AdmonitionTypeTool(props) {
   return (
     <AdmonitionLayout
       {...defaultProps}

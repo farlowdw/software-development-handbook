@@ -277,6 +277,34 @@ html[data-theme='dark'] .alert--dwf {
   --ifm-alert-border-color: #986ee2; /* New purple border color */
 }
 
+.alert--tool {
+  --ifm-alert-background-color: rgba(250, 88, 48, 0.5); /* King Crab Orange with transparency */
+  --ifm-alert-background-color-highlight: rgba(255, 153, 120, 0.2); /* Light crab peach highlight */
+  --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+  --ifm-alert-border-color: #FA5830; /* King Crab Orange for the border */
+}
+
+html[data-theme='dark'] .alert--tool {
+  --ifm-alert-background-color: rgba(250, 88, 48, 0.5); /* Same King Crab Orange with transparency */
+  --ifm-alert-background-color-highlight: rgba(255, 153, 120, 0.2); /* Same light crab peach highlight */
+  --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for contrast on dark background */
+  --ifm-alert-border-color: #FA5830; /* King Crab Orange for the border */
+}
+
+.alert--key {
+  --ifm-alert-background-color: rgba(241, 179, 24, 0.5); /* Yellow/Gold with transparency */
+  --ifm-alert-background-color-highlight: rgba(255, 221, 120, 0.2); /* Lighter gold highlight */
+  --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+  --ifm-alert-border-color: #F1B318; /* Yellow/Gold for the border */
+}
+
+html[data-theme='dark'] .alert--key {
+  --ifm-alert-background-color: rgba(241, 179, 24, 0.5); /* Same Yellow/Gold with transparency */
+  --ifm-alert-background-color-highlight: rgba(255, 221, 120, 0.2); /* Same lighter gold highlight */
+  --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for contrast on dark background */
+  --ifm-alert-border-color: #F1B318; /* Yellow/Gold for the border */
+}
+
 /* Docusaurus Specific Styles */
 .header-github-link {
 	&::before {

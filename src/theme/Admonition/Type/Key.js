@@ -2,22 +2,22 @@ import React from 'react';
 import clsx from 'clsx';
 import Translate from '@docusaurus/Translate';
 import AdmonitionLayout from '@theme/Admonition/Layout';
-import BoltIcon from '@mui/icons-material/Bolt';      // lightning bolt (default)
+import VpnKeyIcon from '@mui/icons-material/VpnKey';  // key (default)
 
-const infimaClassName = 'alert alert--dwf';
+const infimaClassName = 'alert alert--key';
 
 const defaultProps = {
-  icon: <BoltIcon fontSize='tiny' />,
+  icon: <VpnKeyIcon fontSize='tiny' />,
   title: (
     <Translate
-      id="theme.admonition.dwf"
-      description="The default label used for the DWF admonition (:::dwf)">
-      dwf
+      id="theme.admonition.key"
+      description="The default label used for the Key admonition (:::key)">
+      key
     </Translate>
   ),
 };
 
-export default function AdmonitionTypeDWF(props) {
+export default function AdmonitionTypeKey(props) {
   return (
     <AdmonitionLayout
       {...defaultProps}

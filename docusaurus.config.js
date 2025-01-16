@@ -23,7 +23,9 @@ const admonitionsConfig = {
       'danger',
       'warning',
       'caution',
-      'dwf'
+      'dwf',
+      'tool',
+      'key',
     ],
   },
 }
@@ -52,6 +54,7 @@ const config = {
     ],
     forbiddenGiscusBlogPaths: [
       '/blog/dp/',
+      '/blog/2025/01/07/2025/difference-arrays',
     ],
   },
 
