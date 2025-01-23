@@ -26,6 +26,9 @@ const admonitionsConfig = {
       'dwf',
       'tool',
       'key',
+      'perf',
+      'extension',
+      'study'
     ],
   },
 }
@@ -53,7 +56,9 @@ const config = {
       '/docs/algorithms/named-algorithms/introduction',
     ],
     forbiddenGiscusBlogPaths: [
-      '/blog/dp/',
+      '/docs/dp/',
+      '/docs/backtracking/',
+      '/docs/daily/',
       '/blog/2025/01/07/2025/difference-arrays',
     ],
   },

@@ -4,7 +4,7 @@ title: >-
 description: >-
   Sandbox for dynamic programming thoughts
 unlisted: true
-slug: dp
+slug: /dp
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 5
@@ -23,7 +23,7 @@ import ImageCarousel from '@site/src/components/ImageCarousel';
 
 <!-- import snippet1 from '!!raw-loader!./snippet-1.py'; -->
 
-This page is largely a sandbox meant for collecting thoughts related to dynamic programming (DP). It is a work in progress, and likely will be for some time.
+This page is largely a sandbox meant for collecting thoughts related to dynamic programming (DP). It is a work in progress and likely will be for some time.
 
 <!--truncate-->
 

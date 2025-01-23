@@ -23,6 +23,7 @@ yarn-error.log*
 .netlify
 sandbox.py
 .venv
+netlify.toml
 
 # Custom config
 .graphs

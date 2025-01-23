@@ -8,6 +8,9 @@ import AdmonitionTypeCaution from '@theme/Admonition/Type/Caution';
 import AdmonitionTypeDWF from './Type/DWF';
 import AdmonitionTypeTool from './Type/Tool';
 import AdmonitionTypeKey from './Type/Key';
+import AdmonitionTypePerf from './Type/Perf';
+import AdmonitionTypeStudy from './Type/Study';
+import AdmonitionTypeExtension from './Type/Extension';
 const admonitionTypes = {
   note: AdmonitionTypeNote,
   tip: AdmonitionTypeTip,
@@ -17,6 +20,9 @@ const admonitionTypes = {
   dwf: AdmonitionTypeDWF,
   tool: AdmonitionTypeTool,
   key: AdmonitionTypeKey,
+  perf: AdmonitionTypePerf,
+  study: AdmonitionTypeStudy,
+  extension: AdmonitionTypeExtension,
 };
 // Undocumented legacy admonition type aliases
 // Provide hardcoded/untranslated retrocompatible label

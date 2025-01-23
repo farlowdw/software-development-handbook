@@ -5,6 +5,20 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'AL2011Puzzles',
+      title: `Algorithmic Puzzles`,
+      author: 'Anany Levitin and Maria Levitin',
+      time: '2011',
+      link: 'https://www.amazon.com/Algorithmic-Puzzles-Anany-Levitin/dp/0199740445/ref=sr_1_1',
+    },
+    {
+      id: 'AL2011',
+      title: `Introduction to the Design and Analysis of Algorithms (3rd Ed.)`,
+      author: 'Anany Levitin',
+      time: '2011',
+      link: 'https://www.amazon.com/Introduction-Design-Analysis-Algorithms-3rd/dp/0132316811/ref=sr_1_1',
+    },
+    {
       id: 'PB2017',
       title: `Forest Management and Planning`,
       author: 'Pete Bettinger et al.',

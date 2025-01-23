@@ -305,6 +305,48 @@ html[data-theme='dark'] .alert--key {
   --ifm-alert-border-color: #F1B318; /* Yellow/Gold for the border */
 }
 
+.alert--perf {
+  --ifm-alert-background-color: rgba(119, 182, 234, 0.5); /* Argentinian Blue with transparency */
+  --ifm-alert-background-color-highlight: rgba(212, 234, 251, 0.2); /* Lighter blue highlight */
+  --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+  --ifm-alert-border-color: #77B6EA; /* Argentinian Blue for the border */
+}
+
+html[data-theme='dark'] .alert--perf {
+  --ifm-alert-background-color: rgba(119, 182, 234, 0.5); /* Same Argentinian Blue with transparency */
+  --ifm-alert-background-color-highlight: rgba(212, 234, 251, 0.2); /* Same lighter blue highlight */
+  --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for contrast on dark background */
+  --ifm-alert-border-color: #77B6EA; /* Argentinian Blue for the border */
+}
+
+.alert--extension {
+  --ifm-alert-background-color: rgba(121, 30, 55, 0.5); /* Deep Maroon with transparency */
+  --ifm-alert-background-color-highlight: rgba(186, 74, 104, 0.2); /* Lighter maroon highlight */
+  --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+  --ifm-alert-border-color: #791E37; /* Deep Maroon for the border */
+}
+
+html[data-theme='dark'] .alert--extension {
+  --ifm-alert-background-color: rgba(121, 30, 55, 0.5); /* Same Deep Maroon with transparency */
+  --ifm-alert-background-color-highlight: rgba(186, 74, 104, 0.2); /* Same lighter maroon highlight */
+  --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for contrast on dark background */
+  --ifm-alert-border-color: #791E37; /* Deep Maroon for the border */
+}
+
+.alert--study {
+  --ifm-alert-background-color: rgba(255, 235, 205, 0.5); /* Blanched Almond with transparency */
+  --ifm-alert-background-color-highlight: rgba(255, 245, 225, 0.2); /* Lighter almond highlight */
+  --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+  --ifm-alert-border-color: #FFEBCD; /* Blanched Almond for the border */
+}
+
+html[data-theme='dark'] .alert--study {
+  --ifm-alert-background-color: rgba(255, 235, 205, 0.2); /* Softer almond tone for dark mode */
+  --ifm-alert-background-color-highlight: rgba(139, 69, 19, 0.3); /* SaddleBrown highlight for contrast */
+  --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for better contrast in dark mode */
+  --ifm-alert-border-color: #D2B48C; /* Tan border for a subtle, non-intrusive appearance */
+}
+
 /* Docusaurus Specific Styles */
 .header-github-link {
 	&::before {
