@@ -347,6 +347,20 @@ html[data-theme='dark'] .alert--study {
   --ifm-alert-border-color: #D2B48C; /* Tan border for a subtle, non-intrusive appearance */
 }
 
+.alert--iio {
+  --ifm-alert-background-color: rgba(5, 164, 172, 0.5); /* Teal with transparency */
+  --ifm-alert-background-color-highlight: rgba(153, 221, 225, 0.2); /* Lighter teal highlight */
+  --ifm-alert-foreground-color: rgb(66, 69, 73); /* Dark gray text for readability */
+  --ifm-alert-border-color: #05A4AC; /* Teal for the border */
+}
+
+html[data-theme='dark'] .alert--iio {
+  --ifm-alert-background-color: rgba(5, 164, 172, 0.3); /* Softer teal for dark mode */
+  --ifm-alert-background-color-highlight: rgba(0, 102, 102, 0.4); /* Darker teal for contrast */
+  --ifm-alert-foreground-color: rgb(255, 255, 255); /* White text for better contrast in dark mode */
+  --ifm-alert-border-color: #03B3BB; /* Slightly lighter teal for the border in dark mode */
+}
+
 /* Docusaurus Specific Styles */
 .header-github-link {
 	&::before {
@@ -1087,6 +1101,11 @@ body {
 [class^='details_'].iioDetails {
   --docusaurus-details-decoration-color: #FAD753 !important;
   border: 1px solid #FAD753 !important;
+}
+
+[class^='details_'].bctciDetails {
+  --docusaurus-details-decoration-color: #03B3BB !important;
+  border: 1px solid #03B3BB !important;
 }
 
 [class^='details_'].pragProgDetails {

@@ -28,7 +28,8 @@ const admonitionsConfig = {
       'key',
       'perf',
       'extension',
-      'study'
+      'study',
+      'iio',
     ],
   },
 }
@@ -54,11 +55,11 @@ const config = {
       '/docs/reference-list',
       '/docs/algorithms/sorting/introduction',
       '/docs/algorithms/named-algorithms/introduction',
+      '/docs/dp',
+      '/docs/backtracking',
+      '/docs/2025',
     ],
     forbiddenGiscusBlogPaths: [
-      '/docs/dp/',
-      '/docs/backtracking/',
-      '/docs/daily/',
       '/blog/2025/01/07/2025/difference-arrays',
     ],
   },

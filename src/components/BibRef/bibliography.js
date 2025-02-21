@@ -5,6 +5,13 @@
 const bibItems = {
   printMaterials: [
     {
+      id: 'MM2025',
+      title: `Beyond Cracking the Coding Interview`,
+      author: 'Gayle Laakmann McDowell, Mike Mroczka, Aline Lerner, Nil Mamano',
+      time: '2025',
+      link: 'https://www.amazon.com/dp/195570600X',
+    },
+    {
       id: 'AL2011Puzzles',
       title: `Algorithmic Puzzles`,
       author: 'Anany Levitin and Maria Levitin',

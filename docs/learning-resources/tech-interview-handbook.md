@@ -1,7 +1,7 @@
 ---
 title: Tech Interview Handbook
 hide_title: false
-sidebar_label: Tech interview handbook
+sidebar_label: Tech interview handbook (reproduced)
 description: Distilled information from the Tech Interview Handbook online resource
 draft: false
 tags: [Templates]

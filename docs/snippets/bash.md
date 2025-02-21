@@ -17,6 +17,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TOCInline from '@theme/TOCInline';
 
+<TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={5} />
+
 ## Filenames
 
 ### Lowercase all filenames

@@ -4,6 +4,7 @@ title: >-
 description: >-
   Sandbox for dynamic programming thoughts
 unlisted: true
+custom_edit_url: null
 slug: /dp
 hide_table_of_contents: false
 toc_min_heading_level: 2
@@ -21,7 +22,33 @@ import CodeGridCell from '@site/src/components/CodeGridCell';
 import CodeEditor from '@site/src/components/CodeEditor';
 import ImageCarousel from '@site/src/components/ImageCarousel';
 
-<!-- import snippet1 from '!!raw-loader!./snippet-1.py'; -->
+import snippet1 from '!!raw-loader!./snippet-1.py';
+import snippet2 from '!!raw-loader!./snippet-2.py';
+import snippet3 from '!!raw-loader!./snippet-3.py';
+import snippet4 from '!!raw-loader!./snippet-4.py';
+import snippet5 from '!!raw-loader!./snippet-5.py';
+import snippet6 from '!!raw-loader!./snippet-6.py';
+import snippet7 from '!!raw-loader!./snippet-7.py';
+import snippet8 from '!!raw-loader!./snippet-8.py';
+import snippet9 from '!!raw-loader!./snippet-9.py';
+import snippet10 from '!!raw-loader!./snippet-10.py';
+import snippet11 from '!!raw-loader!./snippet-11.py';
+import snippet12 from '!!raw-loader!./snippet-12.py';
+import snippet13 from '!!raw-loader!./snippet-13.py';
+import snippet14 from '!!raw-loader!./snippet-14.py';
+
+import LC746PS from '@site/docs/_Partials/problem-stems/lc746.md';
+import LC70PS from '@site/docs/_Partials/problem-stems/lc70.md';
+import LC63PS from '@site/docs/_Partials/problem-stems/lc63.md';
+import LC64PS from '@site/docs/_Partials/problem-stems/lc64.md';
+import LC139PS from '@site/docs/_Partials/problem-stems/lc139.md';
+import LC1143PS from '@site/docs/_Partials/problem-stems/lc1143.md';
+import LC300PS from '@site/docs/_Partials/problem-stems/lc300.md';
+import LC1312PS from '@site/docs/_Partials/problem-stems/lc1312.md';
+import LC1155PS from '@site/docs/_Partials/problem-stems/lc1155.md';
+import LC410PS from '@site/docs/_Partials/problem-stems/lc410.md';
+import LC337PS from '@site/docs/_Partials/problem-stems/lc337.md';
+import LC329PS from '@site/docs/_Partials/problem-stems/lc329.md';
 
 This page is largely a sandbox meant for collecting thoughts related to dynamic programming (DP). It is a work in progress and likely will be for some time.
 
@@ -29,13 +56,84 @@ This page is largely a sandbox meant for collecting thoughts related to dynamic 
 
 <TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={4} />
 
-## Information gathering
-
 :::info Interviewing IO Observations
 
-The following observations/notes are from reading about dynamic programming in an IIO guide.
+The following observations/notes are from reading about dynamic programming in an IIO guide. Several of the first sections (information gathering x1) are more like paraphrasing. Subsequent sections are more independent.
 
 :::
+
+## Information gathering (x1)
+
+### Practice makes better
+
+The best way to become comfortable with dynamic programming (DP) is to *practice*. Specifically, there are 14 [practice problems](#practice-problems) at the bottom of this page, ordered from easier to harder, that aim to introduce the central ideas of DP *gradually* (no prior experience with DP is necessary). Always try to solve the problems yourself before looking at the discussion/solution.
+
+Of course, practice is *not* just about solving a narrowly restricted set of problems &#8212; it is critically important to get comfortable with developing a framework/template that can be followed *under pressure* in the context of an interview.
+
+Fortunately, all DP problems have similarities that make it possible for us to roughly follow the same template for each one of them. Before venturing into the practice problems though, we'll consider building up a framework in two parts:
+
+1. Recurrences
+2. Implementation
+
+Practice problem discussions/solutions will then show exactly how the framework is applied.
+
+In general, we should note that DP is one of the frameworks where there are *many* ways to go about designing the algorithm you ultimately use to solve whatever problem is at hand. This can be liberating for seasoned veterans, but it can also be confusing for the beginner. The ultimate goal is for *you* to come up with *your* preferred way of doing things. The more you can get comfortable in your own "problem-solving skin" the better. Eventually, you'll find yourself refining *your own template*. The best way to get to that point is by practicing and trying to gain an intuition for how, when, and where DP is used and in what ways.
+
+Throughout this process, it's a good idea to take note of the key things to rememeber and the common mistakes you make (i.e., essentially maintain a "bug list"). This makes it possible for you to get better and better at employing your own DP template when appropriate.
+
+The most important thing for solving problems with DP is to be able to solve those problems with an acceptable runtime. That's the whole goal of DP after all &#8212; use cached solutions to overlapping subproblems. Once we get a feel for how to do this, then we may venture on to two other important, albeit more advanced, DP topics:
+
+1. Space optimization (sometimes we can cut down on memory usage by trimming what is not entirely necessary)
+2. Solution reconstruction (sometimes we seek a constructive result instead of an existential one)
+
+### What really is DP?
+
+Dynamic programming is an *algorithm framework* (i.e., a general strategy for solving problems with certain characteristics). Other algorithm frameworks include the following: divide and conquer, sliding window, backtracking, etc.
+
+### What characteristics does a problem need to have in order to use DP?
+
+Generally speaking, we should think about the possibility of trying to use DP when a problem satisfies *at least* the following two properties:
+
+1. *Optimal substructure:* The problem can be "broken down" into smaller but similar subproblems, and the solutions to those subproblems can help us find the solution to the original problem. In turn, each series of subproblems can be broken into smaller and smaller subproblems in the same way, and so on, until we've reached some sort of "atomic" state where nothing can be broken down anymore (i.e., we've reached a situation where the problem is as simple as it could possibly be and the solution is trivial).
+2. *Overlapping subproblems:* Two or more subproblems are broken down into smaller subproblems that contain the same subproblem.
+
+The simplest kind of problem where DP is applicable is one where we're tasked with using a math formula to make computations where the math formula is defined in terms of itself for smaller values. The quintessential example is using the formula
+
+$$
+F_n = F_{n-1} + F_{n-2},\quad n > 1
+$$
+
+to compute the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence), where $F_0=0$ and $F_1=1$ are assumed/defined.
+
+The problem of computing $F_n$ given some $n>1$ has optimal substructure since $F_n$ is "broken down" into $F_{n-1}$ and $F_{n-2}$, where the solutions to $F_{n-1}$ and $F_{n-2}$ help us find the solution to $F_n$. Our computational problem also has overlapping subproblems because computing both $F_n$ and $F_{n-1}$ relies on computing $F_{n-2}$. 
+
+For example:
+
+- $F_6 = F_5 + \boxed{F_4}$
+- $F_5 = \boxed{F_4} + F_3$
+
+Essentially, we have the following concerning the characteristics remarked on above that indicate DP may be used as a problem-solving strategy:
+
+- **Good (optimal substructure):** A problem that has optimal substructure is *good*. This means we can write algorithms that find the solutions to the subproblems first, recursively, and then use those solutions to get the solution to the original problem.
+- **Bad (overlapping subproblems):** It is *bad* if solving a problem necessarily involves solving overlapping subproblems. Why? Because, if we're not careful, then whatever algorithm we write may be horribly inefficient.
+
+### Why are overlapping subproblems bad?
+
+If we write an algorithm to solve a problem that works by computing the solutions to subproblems, and those subproblems overlap, then we may end up repeating a ton of computational work. For example, consider the problem of calculating $F_6$. This involves computing $F_5$ and $F_4$, which, in turn, involves computing $F_4$ and $F_3$ (i.e., $F_5 = F_4 + F_3)$ as well as $F_3$ and $F_2$ (i.e., $F_4 = F_3 + F_2$). And so on. Things get out of hand quickly &#8212; the size of our computational tree grows exponentially (the circles with the same color are repeated subproblems):
+
+<div align='center' className='centeredImageDiv'>
+  <img width='750px' src={require('./f1.png').default} />
+</div>
+
+Note that the number of *unique* subproblems is $n$, but the number of repeated subproblems grows exponentially (the importance of having a manageable number of unique subproblems will be remarked on more later).
+
+
+
+
+
+
+
+## Information gathering (x2)
 
 ### DP overview
 
@@ -921,3 +1019,201 @@ Sometimes forward recursion is not the best choice. Sometimes backward recursion
 ## Case study: minimum cost climbing stairs
 
 TBD
+
+## Practice problems 
+
+### Min-sum stairs (LC 746)
+
+**Link:** <LC id='746' type='long' ></LC> 
+
+**Problem statement:** 
+
+> <LC746PS />
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet1} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Climbing stairs (LC 70)
+
+**Link:** <LC id='70' type='long' ></LC> 
+
+**Problem statement:** 
+
+> <LC70PS />
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet2} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Climbing stairs with hops (non-LC)
+
+**Link:** TBD
+
+**Problem statement:** 
+
+> TBD
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet3} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Min-sum stairs with hops (non-LC)
+
+**Link:** TBD
+
+**Problem statement:** 
+
+> TBD
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet4} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Count paths in grid with obstacles (LC 63)
+
+**Link:** <LC id='63' type='long' ></LC> 
+
+**Problem statement:** 
+
+> <LC63PS />
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet5} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Min-cost path in grid (LC 64)
+
+**Link:** <LC id='64' type='long' ></LC> 
+
+**Problem statement:** 
+
+> <LC64PS />
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet6} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Word break (LC 139)
+
+**Link:** <LC139PS />
+
+**Problem statement:** 
+
+> <LC id='139' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet7} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Longest common subsequence (LC 1143)
+
+**Link:** <LC1143PS />
+
+**Problem statement:** 
+
+> <LC id='1143' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet8} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Longest increasing subsequence (LC 300)
+
+**Link:** <LC300PS />
+
+**Problem statement:** 
+
+> <LC id='300' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet9} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Minimum insertions to make palindrome (LC 1312)
+
+**Link:** <LC1312PS />
+
+**Problem statement:** 
+
+> <LC id='1312' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet10} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Number of roll sequences with target sum (LC 1155)
+
+**Link:** <LC1155PS />
+
+**Problem statement:** 
+
+> <LC id='1155' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet11} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Minimum max-sum m-partition (LC 410)
+
+**Link:** <LC410PS />
+
+**Problem statement:** 
+
+> <LC id='410' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet12} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Tree robber (LC 337)
+
+**Link:** <LC337PS />
+
+**Problem statement:** 
+
+> <LC id='337' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet13} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD
+
+### Longest increasing path (LC 329)
+
+**Link:** <LC329PS />
+
+**Problem statement:** 
+
+> <LC id='329' type='long' ></LC> 
+
+**Interactive attempt:** 
+
+  <CodeEditor initialCode={snippet14} editorSettings={{ height: '50vh' }} foldedRegions={[]} />
+
+**Discussion:** TBD

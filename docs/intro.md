@@ -42,7 +42,7 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
     <div className='introCardDetails' >
       Check out time and space complexity overviews for various data structures and array sorting algorithms.
     </div>
-    <DocsLink to='/docs/data-structures/introduction'>See Data Structures Overview <ArrowRight className='arrow' /></DocsLink>
+    <DocsLink to='/docs/dsa-topics/introduction'>See Data Structures Overview <ArrowRight className='arrow' /></DocsLink>
   </div>
   <div className='card'>
     <h4>Window Functions (SQL)</h4>
@@ -129,19 +129,5 @@ import ArrowRight from '@site/static/icons/arrow_right.svg';
       Comprehensive reference for the popular online Postgres Exercises tutorial.
     </div>
     <DocsLink to='https://courses.dwf.dev/docs/reference/sql/pg-exercises'>Visit <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
-    <h4>Algorithm Design Manual (Book Notes)</h4>
-    <div className='introCardDetails'>
-      Book notes to accompany Steven Skiena's <em>Algorithm Design Manual</em>.
-    </div>
-    <DocsLink to='https://cs.dwf.dev/docs/dsa/algorithm-design-manual/introduction-to-algorithm-design-old'>Visit <ArrowRight className='arrow' /></DocsLink>
-  </div>
-  <div className='card'>
-    <h4>MIT Missing Semester (Notes)</h4>
-    <div className='introCardDetails'>
-      Notes to accompany the MIT's Missing Semester curriculum.
-    </div>
-    <DocsLink to='https://cs.dwf.dev/docs/supplemental-resources/courses/mit-missing-semester/introduction'>Visit <ArrowRight className='arrow' /></DocsLink>
   </div>
 </div>

@@ -1,7 +1,7 @@
 ---
 title: LeetCode SQL Problems by Problem Domain
 hide_title: false
-sidebar_label: LeetCode SQL problems by problem domain
+sidebar_label: LeetCode SQL problems by category
 description: LeetCode SQL problems by problem domain
 draft: false
 tags:

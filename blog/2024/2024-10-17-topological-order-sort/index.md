@@ -33,6 +33,7 @@ import ImageCarousel from '@site/src/components/ImageCarousel';
 import snippet1 from '!!raw-loader!./snippet-1.py';
 import snippet2 from '!!raw-loader!./snippet-2.py';
 import snippet3 from '!!raw-loader!./snippet-3.py';
+import snippet4 from '!!raw-loader!./snippet-4.py';
 
 export const topSortImagesObs1 = [
   {
@@ -150,7 +151,17 @@ If we just want the clean, final, linear-time algorithm, then we can jump ahead 
 
 ### Observation 1
 
-To start, notice that if a vertex has no incoming edges, then it can go first. Also, in an acyclic graph, there has to be at least one vertex with no incoming edges: if we want to find one, start at an arbitrary vertex, and follow a path of incoming edges *backwards*. If we get to a vertex with no incoming edges, great. If not, then once we've gone back $|V|$ edges in a graph with $|V|$ vertices, then we must be repeating vertices, which means we have a cycle. 
+To start, notice that if a vertex has no incoming edges, then it can go first (i.e., if vertex `A` has no incoming edges, then vertex `A` has no dependencies, which means `A` can be placed anywhere in the topological ordering &#8212; we may as well place it first). 
+
+Also, in an acyclic graph, there has to be *at least one* vertex with no incoming edges (if every vertex had an incoming edge, then *every* vertex would have a dependency, which would mean there's no way to resolve the dependencies): if we want to find a vertex with no incoming edges, then we can simply start at an arbitrary vertex and follow a path of incoming edges *backwards* (e.g., if we start at `C` in `A -> B -> C -> D`, then we work our way back to `A`, which has no incoming edges). If we get to a vertex with no incoming edges, then great! That's what we wanted. If not, then once we've gone back $|V|$ edges in a graph with $|V|$ vertices, then we must be repeating vertices, which means we have a cycle.
+
+:::dwf Why going back $|V|$ edges would result in a cycle
+
+As noted above, we try to find the first vertex in the topological ordering by choosing an arbitrary vetex and then follow a *path* of incoming edges backwards &#8212; we're trying to follow a [simple path](https://en.wikipedia.org/wiki/Simple_path) of the incoming edges backwards until we reach a vertex that has no incoming edges (a simple path is a path on which no vertex is repeated). To connect $|V|$ distinct vertices with a path, we need at most $|V|-1$ edges because each edge would connect one vertex to the next. Adding another edge (i.e., going back $|V|$ edges) would prevent the creation of a simple path and, instead, would create a cycle.
+
+It's worth noting that, of course, a graph with $|V|$ vertices can have far more than $|V|-1$ edges. But in the context above, where we're trying to follow a simple path from an arbitrary vertex to a vertex with no incoming edges, there can be at most $|V|-1$ edges along such a path. A graph with $|V|$ vertices that actually has $|V|-1$ edges in total is called a *tree* (a tree is a connected graph with *no cycles*).
+
+:::
 
 Let's recap:
 
@@ -192,7 +203,7 @@ Then remove that vertex and its outgoing edges from the graph:
 
 Then repeat for the remaining graph.
 
-It's worth pausing for a moment and reflecting on *why* it makes sense to remove the outgoing edges from whatever vertex we identify as being next in the topological ordering. For example, above, we noted that `A` had no incoming edges, which means `A` does not have any dependencies. So we add it first to our topological ordering (`C` could have worked as well, but recall that we break ties alphabetically). Why does it make sense to then remove all outgoing edges from `A`, specifically `A -> B`, `A -> G`, and `A -> E`? Because removing these edges communicates to the other vertices that the `A` dependency has been resolved. For example, if we were to look at vertex `E`, then the edge `A -> E` communicates to `E` that the `A` dependency needs to be resolved before we can consider adding `E` to the topological ordering. If we delete the `A -> E` edge, then this effectively tells `E` that the `A` dependency has been resolved.
+It's worth pausing for a moment to reflect on *why* it makes sense to remove the outgoing edges from whatever vertex we identify as being next in the topological ordering. For example, above, we noted that `A` had no incoming edges, which means `A` does not have any dependencies. So we add it first to our topological ordering (`C` could have worked as well, but recall that we break ties alphabetically). Why does it make sense to then remove all outgoing edges from `A`, specifically `A -> B`, `A -> G`, and `A -> E`? Because removing these edges communicates to the other vertices that the `A` dependency has been resolved. For example, if we were to look at vertex `E`, then the edge `A -> E` communicates to `E` that the `A` dependency needs to be resolved before we can consider adding `E` to the topological ordering. If we delete the `A -> E` edge, then this effectively tells `E` that the `A` dependency has been resolved.
 
 Returning to our example, if we look at the graph above, where `A` has been removed along with its outgoing edges, then we see that `C` or `E` could go next. We'll pick `C` since we're using an alphabetical tie-breaker:
 
@@ -200,7 +211,7 @@ Returning to our example, if we look at the graph above, where `A` has been remo
   <img width='500px' src={require('./f7.png').default} />
 </div>
 
-We delete `C`'s outgoing edge:
+We delete `C`'s outgoing edges (it only has one):
 
 <div align='center' className='centeredImageDiv'>
   <img width='500px' src={require('./f8.png').default} />
@@ -226,9 +237,13 @@ And then we just continue on like this until all vertices are ordered:
 
 The algorithm above *works*. Its efficiency depends on implementation details, but if we get the graph in outgoing adjacency list format, then finding a vertex with no incoming edges might take a while (line `3` in the pseudocode), and we do that once for each vertex we put into the ordering.
 
+Here is one possible implementation:
+
+<CodeEditor initialCode={snippet4} editorSettings={{ height: '50vh' }} foldedRegions={[[2,11],[14,22]]} />
+
 ### Observation 2
 
-To make our algorithm faster, maybe we don't need to do that (i.e., find a vertex with no incoming edges) *from scratch* after every vertex. To start the algorithm, in time linear for the size of the graph, we can create an *incoming* adjacency list for each vertex. With those incoming adjacency lists, we can find all vertices with no incoming edges, and those are the vertices that can go first. We can add all of those vertices to make an ordered list of vertices that are ready to go, `A` and `C` below:
+To make our algorithm faster, maybe we don't need to do that *from scratch* after each vertex is added to the topological order (i.e., find a vertex with no incoming edges). To start the algorithm, in time linear for the size of the graph, we can create an *incoming* adjacency list for each vertex. With those incoming adjacency lists, we can find all vertices with no incoming edges, and those are the vertices that can go first. We can add all of those vertices to make an ordered list of vertices that are ready to go, `A` and `C` below:
 
 <div align='center' className='centeredImageDiv'>
   <img width='500px' src={require('./f11.png').default} />
@@ -257,9 +272,9 @@ As shown in the animation above, we repeat the same steps for each vertex, where
 Let's summarize this second set of observations we've been discussing:
 
 - There's no need to start from scratch each time:
-  + Compute incoming adjacency list just once to start
-  + Grab a set of all 0 in-degree vertices
-  + Find new 0 in-degree vertices as vertices are removed from the graph
+- Compute incoming adjacency list just once to start
+- Grab a set of all 0 in-degree vertices
+- Find new 0 in-degree vertices as vertices are removed from the graph
 
 ### Algorithm 2
 
@@ -280,7 +295,7 @@ TopSort(G)
 
 - First, calculate incoming adjacency lists (line `2`), which takes time linear in the size of the graph
 - Then add a list of all finished vertices (i.e., vertices with no incoming edges) in order $O(|V|)$ time (line `4`)
-- Finally, for each vertex in our list that we consider, use its outgoing edges to modify those newly created incoming adjacency lists (lines `8`-`10`).
+- Finally, for each vertex in our list that we consider, use its outgoing edges to modify those newly created incoming adjacency lists (lines `8`-`10`)
 
 Now we don't have to scan the whole graph to look for new vertices to go next. This algorithm still follows the idea of the first one, but it's a bit more efficient in its implementation because it decreases some of the repeated work.
 
@@ -363,7 +378,7 @@ TopSort(G)
 
 How efficient is the algorithm now? 
 
-The initialization stuff takes linear time, and assuming that we can add *to* and get the next vertex *from* `S` in constant time (e.g., either using a queue or stack), going through all vertices and edges takes linear total time, excluding the time to remove edges from the incoming lists (line `8`). But that removal, for each edge, take some non-constant time. It might be a bit slow.
+The initialization stuff takes linear time, and assuming that we can add *to* and get the next vertex *from* `S` in constant time (e.g., either using a queue or stack), going through all vertices and edges takes linear total time, excluding the time to remove edges from the incoming lists (line `8`). But that removal, for each edge, takes some non-constant time. It might be a bit slow.
 
 Linked lists or array lists can take linear time in the in-degree, and a balanced tree would take logarithmic time. Without analyzing it exactly, can we do better?
 

@@ -10,6 +10,7 @@ import AdmonitionTypeTool from './Type/Tool';
 import AdmonitionTypeKey from './Type/Key';
 import AdmonitionTypePerf from './Type/Perf';
 import AdmonitionTypeStudy from './Type/Study';
+import AdmonitionTypeIIO from './Type/IIO';
 import AdmonitionTypeExtension from './Type/Extension';
 const admonitionTypes = {
   note: AdmonitionTypeNote,
@@ -22,6 +23,7 @@ const admonitionTypes = {
   key: AdmonitionTypeKey,
   perf: AdmonitionTypePerf,
   study: AdmonitionTypeStudy,
+  iio: AdmonitionTypeIIO,
   extension: AdmonitionTypeExtension,
 };
 // Undocumented legacy admonition type aliases

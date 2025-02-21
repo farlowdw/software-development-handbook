@@ -4,6 +4,7 @@ title: >-
 description: >-
   A catalogue of loosely organized learnings from day to day.
 unlisted: true
+custom_edit_url: null
 slug: /2025
 hide_table_of_contents: false
 toc_min_heading_level: 2
